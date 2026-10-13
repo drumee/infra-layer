@@ -68,3 +68,12 @@ allowlist auditing; release metadata and this ledger are its intentional changes
 from the corrective snapshot. Transient is synchronized to the exact release
 tree after verification. The retained .gitignore matches the pre-existing
 standalone initial commit; no unrelated work/history is overwritten.
+
+## Unreleased IL-2 checkpoints
+
+All IL-2 work is new infrastructure implementation in this canonical repository,
+starting b1b8e8666e92ec604d933b9c99145c90b966362b. Persistent secret lifecycle
+uses Node cryptographic primitives, private owned generation files and explicit
+consumer projections; it does not copy historical regenerating credential logic.
+See docs/IL-2-infrastructure-services.md for checkpoint evidence and phase limits.
+No published alpha tag or historical kernel/source implementation is modified.
