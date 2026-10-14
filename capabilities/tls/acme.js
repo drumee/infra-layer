@@ -15,14 +15,22 @@ function createLegoIssuer(config) {
   let version; try { version = execFileSync(config.acme_binary, ["--version"], { encoding: "utf8", stdio: "pipe", timeout: 10000 }); } catch (_) { F.fail("ACME_CLIENT_UNVERIFIED"); }
   if (!/^lego version 5\.5\.2 /.test(version)) F.fail("ACME_CLIENT_UNVERIFIED");
   const bound = S.serialize(config);
-  return { register({ config, store, operation }) {
+  function verifyAccount(config, store) {
+    if (S.serialize(config) !== bound) F.fail("INVALID_ACME_CONFIGURATION");
+    const root = path.join(config.directory, "lego-state"); const owner_file = path.join(config.directory, "lego-owner.json");
+    const account_dir = path.join(root, "accounts", new URL(config.acme_directory).hostname, config.owner);
+    let state, account; try { state = JSON.parse(F.read(owner_file)); account = JSON.parse(F.read(path.join(account_dir, "account.json"))); } catch (_) { F.fail("ACME_STATE_CORRUPTED"); }
+    if (state.owner !== config.owner || state.directory !== config.acme_directory || state.fingerprint !== store.inspect(config.account_key_ref).fingerprint || account.id !== config.owner || account.server !== config.acme_directory || account.email !== config.email || !F.read(path.join(account_dir, `${config.owner}.key`)).equals(store.read(config.account_key_ref, "tls-issuer"))) F.fail("ACME_STATE_CORRUPTED");
+    return store.inspect(config.account_key_ref);
+  }
+  return { verifyAccount, register({ config, store, operation }) {
     if (S.serialize(config) !== bound) F.fail("INVALID_ACME_CONFIGURATION");
     if (operation?.authorized !== true || operation.accept_terms !== true) F.fail("ACME_OPERATION_NOT_AUTHORIZED");
     F.privateDirectory(config.directory, true);
     return F.lock(config.directory, () => {
     const root = path.join(config.directory, "lego-state");
     const owner_file = path.join(config.directory, "lego-owner.json");
-    if (fs.existsSync(owner_file)) return store.inspect(config.account_key_ref);
+    if (fs.existsSync(owner_file)) return verifyAccount(config, store);
     if (fs.existsSync(root)) F.fail("ACME_STATE_CORRUPTED");
     try { store.inspect(config.account_key_ref); F.fail("ACME_ACCOUNT_REGISTRATION_REQUIRED"); } catch (error) { if (error.code !== "SECRET_MISSING") throw error; }
     F.privateDirectory(root, true);
@@ -46,6 +54,7 @@ function createLegoIssuer(config) {
     } else {
       F.fail("ACME_ACCOUNT_REGISTRATION_REQUIRED");
     }
+    verifyAccount(config, store);
     const stage = fs.mkdtempSync(path.join(config.directory, ".acme-credentials-"));
     try {
       const leaf_file = path.join(stage, "leaf.key"); const credential = path.join(stage, "dns-token"); F.atomic(leaf_file, leaf_key); F.atomic(credential, store.read(config.challenge_secret_ref, "tls-issuer"));

@@ -5,7 +5,7 @@ const crypto = require("node:crypto");
 const S = require("../../lib/spec");
 const F = require("../../lib/filesystem-safety");
 const types = ["database-admin", "database-service", "redis-auth", "tls-ca-key", "tls-leaf-key", "acme-account-key", "acme-dns-credential", "dkim-key", "smtp-relay-credential", "dns-tsig"];
-function validRef(ref) { return S.record(ref) && Object.keys(ref).length === 2 && S.identifier(ref.resource) && S.identifier(ref.key); }
+function validRef(ref) { return S.plainTree(ref) && S.record(ref) && Object.keys(ref).length === 2 && S.identifier(ref.resource) && S.identifier(ref.key); }
 function descriptor(value) {
   return S.plainTree(value) && S.record(value) && Object.keys(value).every((key) => ["ref", "type", "consumers"].includes(key)) && validRef(value.ref) && types.includes(value.type) && Array.isArray(value.consumers) && value.consumers.length > 0 && value.consumers.every(S.identifier) && new Set(value.consumers).size === value.consumers.length;
 }
@@ -14,7 +14,7 @@ function validateValue(type, value) {
   if (!Buffer.isBuffer(value) || value.length === 0 || value.length > 65536) F.fail("SECRET_CORRUPTED");
   const text = value.toString("utf8");
   if (["tls-ca-key", "tls-leaf-key", "acme-account-key", "dkim-key"].includes(type)) {
-    try { const key = crypto.createPrivateKey(value); if (key.asymmetricKeyType !== "rsa" && key.asymmetricKeyType !== "ec") F.fail("SECRET_CORRUPTED"); } catch (_) { F.fail("SECRET_CORRUPTED"); }
+    try { const key = crypto.createPrivateKey(value); if (key.asymmetricKeyType !== "rsa" && key.asymmetricKeyType !== "ec") F.fail("SECRET_CORRUPTED"); if (key.asymmetricKeyType === "rsa" && key.asymmetricKeyDetails.modulusLength < 2048) F.fail("SECRET_CORRUPTED"); if (type === "dkim-key" && key.asymmetricKeyType !== "rsa") F.fail("SECRET_CORRUPTED"); if (key.asymmetricKeyType === "ec" && !["prime256v1", "secp384r1", "secp521r1"].includes(key.asymmetricKeyDetails.namedCurve)) F.fail("SECRET_CORRUPTED"); } catch (_) { F.fail("SECRET_CORRUPTED"); }
   } else if (/\s|[\x00-\x1f\x7f]/.test(text) || !/^[a-zA-Z0-9_+=.:/@-]+$/.test(text) || (type === "dns-tsig" && !/^[a-zA-Z0-9+/]{43}=$/.test(text))) F.fail("SECRET_CORRUPTED");
 }
 function generate(type) {
@@ -66,7 +66,7 @@ function createFilesystemSecretStore(root, owner) {
       if ((ownership.uid !== undefined || ownership.gid !== undefined) && (!Number.isInteger(ownership.uid) || ownership.uid < 0 || !Number.isInteger(ownership.gid) || ownership.gid < 0)) F.fail("SECRET_OWNERSHIP_MISMATCH");
       const value = this.read(ref, consumer); F.privateDirectory(path.dirname(destination), true);
       if (fs.lstatSync(destination, { throwIfNoEntry: false })) F.fail("SECRET_DESTINATION_OCCUPIED");
-      F.atomic(destination, value, 0o600);
+      F.atomic(destination, value, 0o600, true);
       if (ownership.uid !== undefined || ownership.gid !== undefined) { try { fs.chownSync(destination, ownership.uid, ownership.gid); } catch (_) { fs.unlinkSync(destination); F.fail("SECRET_MATERIALIZATION_FAILED"); } }
       return { ref: S.clone(ref), consumer, fingerprint: fingerprint(value), mode: 0o600 };
     }

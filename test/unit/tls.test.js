@@ -57,4 +57,6 @@ test("ACME issuer-boundary success validates actual certificate/key/chain; faile
   const account_fp = store.inspect(refs.account).fingerprint;
   await assert.rejects(() => tls.prepareAcmeCertificate(acme, store, { ...operation, renew: true }, { issue: async () => { throw new Error("FAILED_RENEWAL"); } }), { code: "ACME_ISSUANCE_FAILED" });
   assert.equal(store.inspect(refs.account).fingerprint, account_fp); const preserved = await tls.prepareAcmeCertificate(acme, store, operation, { issue: async () => { throw new Error("MUST_NOT_REISSUE"); } }); assert.equal(preserved.fingerprint, issued.fingerprint);
+  await assert.rejects(() => tls.prepareAcmeCertificate(acme, store, { ...operation, now: Date.now() + 40 * 86400000 }, { issue: async () => { throw new Error("MUST_NOT_REISSUE"); } }), { code: "TLS_CERTIFICATE_EXPIRED" });
+  fs.unlinkSync(path.join(acme.directory, "account.json")); await assert.rejects(() => tls.prepareAcmeCertificate(acme, store, operation, { issue: async () => { throw new Error("MUST_NOT_REISSUE"); } }), { code: "ACME_STATE_CORRUPTED" });
 });

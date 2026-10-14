@@ -81,11 +81,18 @@ async function prepareAcmeCertificate(config, store, operation = {}, issuer) {
   if (!publicAcmeHostname(config.hostname)) F.fail("ACME_HOSTNAME_INVALID");
   if (!["https://acme-v02.api.letsencrypt.org/directory", "https://acme-staging-v02.api.letsencrypt.org/directory"].includes(config.acme_directory) || !validRef(config.account_key_ref) || S.serialize(config.account_key_ref) === S.serialize(config.private_key_ref) || typeof config.email !== "string" || !/^[a-zA-Z0-9_.+-]+@[a-z0-9.-]+\.[a-z]+$/.test(config.email)) F.fail("INVALID_ACME_CONFIGURATION");
   return F.lockAsync(config.directory, async () => {
-    const existing = storedLeaf(config, store, operation.now); if (existing && operation.renew !== true) return existing;
+    const existing = storedLeaf(config, store, operation.now);
     const account_key = store.read(config.account_key_ref, "tls-issuer"); const leaf_key = store.read(config.private_key_ref, "tls-issuer");
     const account_file = path.join(config.directory, "account.json");
+    if (existing && !fs.existsSync(account_file)) F.fail("ACME_STATE_CORRUPTED");
     if (fs.existsSync(account_file)) { let state; try { state = JSON.parse(F.read(account_file)); } catch (_) { F.fail("ACME_STATE_CORRUPTED"); } if (state.owner !== config.owner || state.directory !== config.acme_directory || state.account_fingerprint !== store.inspect(config.account_key_ref).fingerprint) F.fail("ACME_STATE_CORRUPTED"); }
     const client = issuer || require("./acme").createLegoIssuer(config); let certificate;
+    if (existing && operation.renew !== true) {
+      if (client.verifyAccount) client.verifyAccount(config, store);
+      const stage = fs.mkdtempSync(path.join(config.directory, ".tls-stage-"));
+      try { F.atomic(path.join(stage, "leaf.key"), leaf_key); validateCertificate({ certificate: existing.file, key: path.join(stage, "leaf.key"), hostname: config.hostname, ca_bundle: config.ca_bundle, now: operation.now }); } finally { fs.rmSync(stage, { recursive: true, force: true }); }
+      return existing;
+    }
     try {
       certificate = await client.issue({ config, account_key, leaf_key, store, renew: operation.renew === true, operation });
       const stage = fs.mkdtempSync(path.join(config.directory, ".tls-stage-"));

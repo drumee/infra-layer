@@ -4,6 +4,8 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const os = require("node:os");
+const crypto = require("node:crypto");
+const { spawn } = require("node:child_process");
 const { createFilesystemSecretStore, types } = require("../../capabilities/secrets");
 function fixture(t) { const root = fs.mkdtempSync(path.join(os.tmpdir(), "infra-secret-")); t.after(() => fs.rmSync(root, { recursive: true, force: true })); return { root, store: createFilesystemSecretStore(path.join(root, "store"), "instance-a"), descriptor: { ref: { resource: "database", key: "admin" }, type: "database-admin", consumers: ["database"] } }; }
 test("secrets require explicit first-install authorization; repeated execution preserves bytes/fingerprint", (t) => {
@@ -47,4 +49,24 @@ test("all declared secret types validate; imported relay/DNS credentials are nev
     else store.ensure(descriptor, { authorized: true });
     assert.equal(store.inspect(descriptor.ref).type, type);
   }
+});
+test("weak imported keys and accessor references are rejected without executing getters", (t) => {
+  const { store } = fixture(t); const descriptor = { ref: { resource: "tls", key: "weak" }, type: "tls-ca-key", consumers: ["tls-issuer"] };
+  const weak = crypto.generateKeyPairSync("rsa", { modulusLength: 1024 }).privateKey.export({ type: "pkcs8", format: "pem" }); assert.throws(() => store.import(descriptor, Buffer.from(weak), { authorized: true }), { code: "SECRET_CORRUPTED" });
+  let accessed = false; const reference = { key: "value", get resource() { accessed = true; return "tls"; } }; assert.throws(() => store.inspect(reference), { code: "INVALID_SECRET_REFERENCE" }); assert.equal(accessed, false);
+});
+test("secret projection cannot overwrite a competing destination created after validation", (t) => {
+  const { root, store, descriptor } = fixture(t); store.ensure(descriptor, { authorized: true }); const destination = path.join(root, "projection/admin");
+  const link = fs.linkSync; fs.linkSync = (source, target) => { if (target === destination) fs.writeFileSync(target, "unrelated", { mode: 0o600 }); return link(source, target); };
+  try { assert.throws(() => store.materialize(descriptor.ref, "database", destination), { code: "SECRET_DESTINATION_OCCUPIED" }); } finally { fs.linkSync = link; } assert.equal(fs.readFileSync(destination, "utf8"), "unrelated");
+});
+test("two independent secret creators preserve a single committed fingerprint", async (t) => {
+  const { root, store, descriptor } = fixture(t); const module_file = require.resolve("../../capabilities/secrets");
+  const script = `const fs=require("node:fs");const {createFilesystemSecretStore}=require(process.argv[1]);fs.writeFileSync(process.argv[2],"ready");const timer=setInterval(()=>{if(!fs.existsSync(process.argv[3]))return;clearInterval(timer);try{const result=createFilesystemSecretStore(process.argv[4],"instance-a").ensure(JSON.parse(process.argv[5]),{authorized:true});console.log(JSON.stringify({code:"OK",fingerprint:result.fingerprint}));}catch(error){console.log(JSON.stringify({code:error.code}));}},5);`;
+  const children = [0, 1].map((number) => spawn(process.execPath, ["-e", script, module_file, path.join(root, "ready-" + number), path.join(root, "gate"), path.join(root, "store"), JSON.stringify(descriptor)], { stdio: ["ignore", "pipe", "pipe"] }));
+  t.after(() => children.forEach((child) => { if (child.exitCode === null) child.kill(); }));
+  const results = children.map((child) => new Promise((resolve, reject) => { let text = ""; child.stdout.on("data", (data) => { text += data; }); child.on("error", reject); child.on("exit", (code) => { if (code !== 0) reject(new Error("CHILD_SECRET_CREATION_FAILED")); else { try { resolve(JSON.parse(text)); } catch (error) { reject(error); } } }); }));
+  for (let i = 0; i < 500 && ![0, 1].every((number) => fs.existsSync(path.join(root, "ready-" + number))); i++) await new Promise((resolve) => setTimeout(resolve, 5));
+  assert.ok([0, 1].every((number) => fs.existsSync(path.join(root, "ready-" + number)))); fs.writeFileSync(path.join(root, "gate"), "go");
+  const settled = await Promise.all(results); assert.ok(settled.some((value) => value.code === "OK")); assert.ok(settled.every((value) => ["OK", "RESOURCE_LOCKED"].includes(value.code))); const fingerprint = store.inspect(descriptor.ref).fingerprint; assert.ok(settled.filter((value) => value.code === "OK").every((value) => value.fingerprint === fingerprint));
 });
