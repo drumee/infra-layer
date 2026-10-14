@@ -8,6 +8,10 @@ lifecycle, isolated native-service recovery and HTTPS contract-fixture results
 are documented in [docs/IL-3-docker-lifecycle.md](docs/IL-3-docker-lifecycle.md).
 The npm alpha still represents IL-1.1; this development tree is not published.
 
+The missing distribution artifact and a proposed scoped integration fixture are
+specified in [the IL-3 kernel handoff](docs/IL-3-kernel-distribution-handoff.md).
+That proposal requires distribution-fixture approval before implementation.
+
 The five root functions retain their contracts. Explicit operations use:
 
 ```js

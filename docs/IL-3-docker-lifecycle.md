@@ -212,6 +212,11 @@ contract and are refused rather than guessed.
 
 ## Real-kernel integration blocker and evidence
 
+The [kernel distribution handoff](IL-3-kernel-distribution-handoff.md) records
+the follow-up source/registry recheck, concrete host/job/recovery contract and
+proposed temporary distribution-owned fixture. It is a reviewable proposal,
+not implemented kernel acceptance or approval to change upstream packages.
+
 A complete deployable minimal-kernel composition was not found in the inspected
 repositories. The required missing distribution-owned artifact must provide:
 immutable kernel image, HTTP/page/WebSocket listeners, validated rootless filesystem

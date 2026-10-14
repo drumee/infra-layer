@@ -133,3 +133,9 @@ not a deployable real-kernel distribution. Exact revisions, source paths,
 checkpoint commits, test evidence and remaining acceptance boundaries are in
 docs/IL-3-docker-lifecycle.md. Historical source attribution/licensing above
 remains intact. The source repository never moved back to transient.
+
+The IL-3 follow-up handoff in docs/IL-3-kernel-distribution-handoff.md rechecks
+revision-pinned runtime/control-plane/distribution sources and registry metadata.
+It adds a proposed distribution-owned integration scope, not runtime source,
+SQL provisioning or another canonical implementation. Inspected sources are
+unchanged; registry metadata is distinguished from verified artifact acceptance.
