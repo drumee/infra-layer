@@ -1,3 +1,5 @@
+// Explicit operational interfaces are available from the separate ./lifecycle subpath.
+// The five root API functions below retain their established semantics.
 // Documentation declarations only. Runtime implementation is CommonJS JavaScript.
 export interface SecretRef { resource: string; key: string }
 export interface Endpoint { host: string; port: number; transport: "tcp" }

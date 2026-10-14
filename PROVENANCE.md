@@ -116,3 +116,20 @@ DNS contracts), ad7b64c (MariaDB/Redis), f468ceb (SMTP/DKIM). Subsequent integra
 and documentation commits close security, observations, types and reproduction;
 their full revisions are available in Git history and the final review report.
 No npm release or replacement alpha tag is produced by IL-2.
+
+## IL-3 unreleased lifecycle work
+
+Canonical source remains drumee/infra-layer, main, starting at
+0f5fb92cccae1441ba45c288acf7fc06b57ba6eb. The published alpha tag
+v0.1.0-alpha.1 / b1b8e8666e92ec604d933b9c99145c90b966362b is unchanged.
+No new package publication occurred. lifecycle/** is new AGPL-3.0-only code
+composing this repository's existing versioned planners and capability adapters;
+it does not copy kernel implementation or historical provisioning SQL.
+
+The lifecycle HTTPS harness reuses the unchanged existing IL-1 fixture with
+its pinned transient dependency acquisition; temporary kernel files stay outside
+the standalone tree and npm tarball. It is explicitly contract-fixture evidence,
+not a deployable real-kernel distribution. Exact revisions, source paths,
+checkpoint commits, test evidence and remaining acceptance boundaries are in
+docs/IL-3-docker-lifecycle.md. Historical source attribution/licensing above
+remains intact. The source repository never moved back to transient.

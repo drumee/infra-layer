@@ -1,5 +1,44 @@
 # Drumee Infra Layer — IL-2 (unreleased)
 
+## Unreleased IL-3 lifecycle work
+
+IL-3 is **INTEGRATION_BLOCKED**, pending a distribution-owned deployable minimal
+kernel host, initialization jobs and canonical recovery probes. Infrastructure
+lifecycle, isolated native-service recovery and HTTPS contract-fixture results
+are documented in [docs/IL-3-docker-lifecycle.md](docs/IL-3-docker-lifecycle.md).
+The npm alpha still represents IL-1.1; this development tree is not published.
+
+The five root functions retain their contracts. Explicit operations use:
+
+```js
+const lifecycle = require("@drumee/infra-layer/lifecycle");
+const composition = lifecycle.composeDeployment(plan, distribution);
+// The operator chooses a private empty root and explicitly authorizes creation.
+const context = { root: "/absolute/private/owned-deployment", authorized: true,
+  create_resources: true };
+const prepared = await lifecycle.prepareDeployment(composition, context);
+// Preparation does not start daemons. Activation is a separate decision.
+const state = await lifecycle.activateDeployment(prepared, context);
+```
+
+This snippet belongs inside an async CommonJS composition function. The
+`distribution` is a validated supplied image/listener/job/resource contract;
+Infra Layer does not provide kernel provisioning SQL or an application host.
+See [lifecycle/index.d.ts](lifecycle/index.d.ts) for operational contracts and
+supported boundaries. Configured services require locally available pinned
+images and explicit host bindings. Lifecycle execution requires local Docker,
+Compose, ss, Node 22 and OpenSSL; these executable prerequisites are not bundled
+in npm. Kernel/application readiness is not inferred from infrastructure probes.
+
+`npm run test:integration` runs the unchanged gateway/service suites followed by
+isolated lifecycle and HTTPS contract-fixture tests. `npm run test:lifecycle`
+and `npm run test:lifecycle:gateway` run those independently. All harness resources
+have unique ownership/project identities and are cleaned up after validation.
+Full real-kernel, LAN browser and canonical ACL/MFS recovery acceptance remain
+unverified until the distribution artifact is supplied. No IL-4 or release is
+implicitly authorized.
+
+
 CommonJS infrastructure contracts, pure plans, safe rendering and independently
 testable HTTP, secrets, TLS, DNS, MariaDB, Redis and outbound SMTP capabilities.
 The five root functions and version-1 gateway behavior remain compatible.
