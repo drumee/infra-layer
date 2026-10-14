@@ -23,3 +23,14 @@ test("corrupt active pointer is rejected before any daemon request",()=>{
 test("filesystem helpers reject a replaced symlink mount before invoking Docker",()=>{
   const root=fs.mkdtempSync(path.join(os.tmpdir(),"il3-helper-"));try{const directory=path.join(root,"real");fs.mkdirSync(directory,{mode:0o700});const link=path.join(root,"link");fs.symlinkSync(directory,link);assert.throws(()=>require("../../lifecycle/docker").helper({project:"test",distribution:{helper_image:"invalid"}},link,"process.exit(0)"),{code:"UNSAFE_RESOURCE_PATH"});}finally{fs.rmSync(root,{recursive:true,force:true});}
 });
+test("a corrupted pre-existing rotation generation cannot be committed over a valid canonical secret", async()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),"il3-rotation-"));const secret_api=require("../../capabilities/secrets");const original_read=A.readActive,original_inspect=A.inspectDeployment;
+ try{
+  const owner="test-instance",ref={resource:"redis",key:"auth"},descriptor={ref,type:"redis-auth",consumers:["redis"]};const store=secret_api.createFilesystemSecretStore(path.join(root,"secrets"),owner);const before=store.ensure(descriptor,{authorized:true});
+  const id="a".repeat(32),directory=path.join(root,"rotations",id);F.privateDirectory(directory,true);const staged=secret_api.createFilesystemSecretStore(path.join(directory,"secrets"),owner);const first=staged.import(descriptor,store.read(ref,"redis"),{authorized:true});const rotated=staged.rotate(descriptor,{authorized:true,expected_fingerprint:first.fingerprint,consumer_transition:"test"});
+  const current=JSON.parse(F.read(path.join(directory,"secrets/redis/auth/current.json")));F.atomic(path.join(root,"secrets/redis/auth",current.generation+".secret"),"corrupted");
+  F.atomic(path.join(directory,"rotation.json"),JSON.stringify({id,ref,type:"redis-auth",project:"test",previous_revision:"a".repeat(64),candidate_revision:"b".repeat(64),previous_fingerprint:before.fingerprint,candidate_fingerprint:rotated.fingerprint,consumers:["redis"],status:"transitioning"}));
+  F.atomic(path.join(root,"pending-rotation.json"),JSON.stringify({id}));A.readActive=()=>({revision:"b".repeat(64),prepared:{instance_id:owner}});A.inspectDeployment=async()=>({ready:true});
+  await assert.rejects(()=>T.finishRotation(root,id,{authorized:true,rotation_id:id}),{code:"SECRET_CORRUPTED"});assert.equal(store.inspect(ref).fingerprint,before.fingerprint);assert.equal(JSON.parse(F.read(path.join(directory,"rotation.json"))).status,"transitioning");
+ }finally{A.readActive=original_read;A.inspectDeployment=original_inspect;fs.rmSync(root,{recursive:true,force:true});}
+});

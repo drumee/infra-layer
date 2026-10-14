@@ -61,11 +61,18 @@ async function finishRotation(root, id, context) {
   return F.lockAsync(root, async () => {
     const state = await A.inspectDeployment(root, { ...context, allow_pending_rotation: true }); if (!state.ready) F.fail("SECRET_ROTATION_RECOVERY_REQUIRED");
     const canonical = path.join(root, "secrets", record.ref.resource, record.ref.key); const staged = path.join(root, "rotations", id, "secrets", record.ref.resource, record.ref.key);
+    const staged_store = secrets.createFilesystemSecretStore(path.join(root, "rotations", id, "secrets"), active.prepared.instance_id);
+    if (staged_store.inspect(record.ref).fingerprint !== record.candidate_fingerprint) F.fail("SECRET_CORRUPTED");
     const current = JSON.parse(F.read(path.join(staged, "current.json"))); const source_file = path.join(staged, current.generation + ".secret"); const destination = path.join(canonical, current.generation + ".secret");
-    const observed = secrets.createFilesystemSecretStore(path.join(root, "secrets"), active.prepared.instance_id).inspect(record.ref).fingerprint;
-    if (![record.previous_fingerprint, record.candidate_fingerprint].includes(observed)) F.fail("CONCURRENT_SECRET_ROTATION_DETECTED");
-    if (!fs.existsSync(destination)) F.atomic(destination, F.read(source_file), 0o600, true);
-    F.atomic(path.join(canonical, "current.json"), F.read(path.join(staged, "current.json")));
+    F.lock(canonical, () => {
+      const store = secrets.createFilesystemSecretStore(path.join(root, "secrets"), active.prepared.instance_id);
+      if (![record.previous_fingerprint, record.candidate_fingerprint].includes(store.inspect(record.ref).fingerprint)) F.fail("CONCURRENT_SECRET_ROTATION_DETECTED");
+      const bytes = F.read(source_file);
+      if (fs.existsSync(destination)) { if (!F.read(destination).equals(bytes)) F.fail("SECRET_CORRUPTED"); }
+      else F.atomic(destination, bytes, 0o600, true);
+      F.atomic(path.join(canonical, "current.json"), F.read(path.join(staged, "current.json")));
+      if (store.inspect(record.ref).fingerprint !== record.candidate_fingerprint) F.fail("SECRET_CORRUPTED");
+    });
     record.status = "committed"; record.active_generation = "candidate"; record.transitioned = [...record.consumers]; F.atomic(path.join(root, "rotations", id, "rotation.json"), JSON.stringify(record));
     fs.unlinkSync(path.join(root, "pending-rotation.json")); J.append(root, "rotation-active", active.revision, { resource: record.ref.resource, consumers: record.consumers }); return { id, status: record.status, active_fingerprint: record.candidate_fingerprint, previous_fingerprint: record.previous_fingerprint, consumers: record.consumers, transitioned: record.transitioned, pending_cleanup: true };
   });
