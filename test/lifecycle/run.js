@@ -45,6 +45,7 @@ async function main() {
   } finally {
     if (prepared) { driver.inspectProject(project, Object.keys(prepared.compose.services)); driver.compose(prepared, ["down"]); }
     assert.equal(command(["docker", "ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim(), "");
+    const upgrade_file = path.join(root, "test-upgrade-image.json"); if (fs.existsSync(upgrade_file)) { const upgrade = JSON.parse(fs.readFileSync(upgrade_file)).image; assert.equal(upgrade, "drumee-il3-upgrade:" + project); assert.equal(command(["docker", "image", "inspect", upgrade, "--format", '{{index .Config.Labels "org.drumee.infra.owner"}}']).trim(), project); command(["docker", "image", "rm", upgrade]); }
     command(["docker", "run", "--rm", "--network", "none", "--label", "org.drumee.infra.owner=" + project, "--mount", `type=bind,source=${root},target=/cleanup`, image_node, "node", "-e", "const fs=require('fs');for(const name of fs.readdirSync('/cleanup'))fs.rmSync('/cleanup/'+name,{recursive:true,force:true});"]);
     command(["docker", "image", "rm", image]); fs.rmdirSync(root); console.log("IL3 cleanup confirmed: " + project);
   }

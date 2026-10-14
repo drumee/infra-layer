@@ -38,7 +38,8 @@
     "test:package": "node test/package-audit.js",
     "test:gateway": "node test/integration/run.js",
     "test:services": "node test/services/run.js",
-    "test:lifecycle": "node test/lifecycle/run.js"
+    "test:lifecycle": "node test/lifecycle/run.js",
+    "test:lifecycle:gateway": "node test/lifecycle/gateway-run.js"
   },
   "devDependencies": {
     "jsonfile": "5.0.0",

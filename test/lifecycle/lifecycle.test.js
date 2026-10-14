@@ -122,3 +122,22 @@ test("compatible configuration rollback preserves data; schema and credential ro
   const earlier = JSON.parse(fs.readFileSync(process.env.IL3_METADATA)).prepared;
   await assert.rejects(() => recovery.rollbackDeployment(metadata.root, earlier.revision, context), { code: "INCOMPATIBLE_ROLLBACK" });
 });
+test("image rebuild requires verified backup and unchanged engine version; tag-only rollback is rejected", async () => {
+  const { spawnSync } = require("node:child_process"); const repository = path.resolve(__dirname, "../.."); const image = "drumee-il3-upgrade:" + metadata.project;
+  const backup_directory = fs.mkdtempSync(path.join(os.tmpdir(), "il3-upgrade-backup-"));
+  try {
+    const build = spawnSync("docker", ["build", "--label", "org.drumee.infra.owner=" + metadata.project, "--label", "org.drumee.infra.test.upgrade=1", "-t", image, "-f", path.join(repository, "capabilities/docker/Dockerfile.services"), repository], { stdio: "pipe", timeout: 300000 }); assert.equal(build.status, 0);
+    fs.writeFileSync(path.join(metadata.root, "test-upgrade-image.json"), JSON.stringify({image}), {mode:0o600});
+    const image_id = driver.docker(["image", "inspect", image, "--format", "{{.Id}}"] ).trim(); const inputs = JSON.parse(JSON.stringify(metadata.prepared.composition.plan.inputs)); inputs.adapter_input.services.dns.image = image_id;
+    const candidate = await lifecycle.prepareDeployment(lifecycle.composeDeployment(api.planInfrastructure(inputs.spec, inputs.requirements, inputs.adapter_input), metadata.distribution), context);
+    await assert.rejects(() => lifecycle.activateDeployment(candidate, context), { code: "VERIFIED_BACKUP_REQUIRED" });
+    const backup = await recovery.backupDeployment(metadata.root, backup_directory, { ...context, quiescence: "stop-owned-writers", resume_after_backup: true });
+    const state = await lifecycle.activateDeployment(candidate, { ...context, backup_evidence: { directory: backup_directory, manifest_digest: backup.manifest_digest } }); assert.equal(state.ready, true); assert.ok(state.change.categories.includes("image-upgrade"));
+    await assert.rejects(() => recovery.rollbackDeployment(metadata.root, metadata.prepared.revision, context), { code: "INCOMPATIBLE_ROLLBACK" }); metadata.prepared = candidate;
+  } finally {
+    driver.helper(metadata.prepared.composition, backup_directory, "const fs=require('fs');for(const name of fs.readdirSync('/work'))fs.rmSync('/work/'+name,{recursive:true,force:true});", [], true); fs.rmdirSync(backup_directory);
+    // Remove only this task-created tag after its container has been replaced
+    // by the harness cleanup; an in-use image is retained until cleanup there.
+    // The parent removes the owned tag after stopping its containers.
+  }
+});

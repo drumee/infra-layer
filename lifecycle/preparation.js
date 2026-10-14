@@ -65,7 +65,7 @@ async function prepareDeployment(composition, context) {
     for (const resource of composition.resources) {
       const service = Object.entries(composition.plan.inputs.adapter_input.services).find(([, value]) => value.data_source === resource.source);
       const uid = service ? service[0] === "database" ? 999 : service[1].uid : resource.uid; const gid = service ? service[0] === "database" ? 999 : service[1].gid : resource.gid;
-      driver.helper(composition, resource.source, "const fs=require('fs');const s=fs.lstatSync('/work');if(!s.isDirectory()||s.isSymbolicLink())throw Error('unsafe');if(s.uid!==Number(process.argv[1])||s.gid!==Number(process.argv[2]))fs.chownSync('/work',Number(process.argv[1]),Number(process.argv[2]));", [String(uid), String(gid)], true);
+      driver.helper(composition, resource.source, "const fs=require('node:fs');const s=fs.lstatSync('/work');if(!s.isDirectory()||s.isSymbolicLink())throw Error('unsafe');if(s.uid!==Number(process.argv[1])||s.gid!==Number(process.argv[2]))fs.chownSync('/work',Number(process.argv[1]),Number(process.argv[2]));", [String(uid), String(gid)], true);
     }
     const rotation = require("./transitions").pending(root);
     if (rotation && context.rotation_id !== rotation.id) F.fail("SECRET_ROTATION_RECOVERY_REQUIRED");
@@ -131,7 +131,7 @@ async function prepareDeployment(composition, context) {
     if (zone) {
       const target = composition.plan.inputs.adapter_input.services.dns.data_source; const content = F.read(path.join(root, "dns-state", zone.file));
       const adapter = composition.plan.inputs.adapter_input.services.dns;
-      driver.helper(composition, target, "const fs=require('fs');const p='/work/'+process.argv[1];if(fs.existsSync(p)){if(!fs.readFileSync(p).equals(Buffer.from(process.argv[2],'base64')))throw Error('zone');}else fs.writeFileSync(p,Buffer.from(process.argv[2],'base64'),{mode:0o600});fs.chownSync(p,Number(process.argv[3]),Number(process.argv[4]));", [zone.file, content.toString("base64"), String(adapter.uid), String(adapter.gid)], true);
+      driver.helper(composition, target, "const fs=require('node:fs');const p='/work/'+process.argv[1];if(fs.existsSync(p)){if(!fs.readFileSync(p).equals(Buffer.from(process.argv[2],'base64')))throw Error('zone');}else fs.writeFileSync(p,Buffer.from(process.argv[2],'base64'),{mode:0o600});fs.chownSync(p,Number(process.argv[3]),Number(process.argv[4]));", [zone.file, content.toString("base64"), String(adapter.uid), String(adapter.gid)], true);
     }
     const compose_file = path.join(candidate, "deployment.compose.json"); F.atomic(compose_file, JSON.stringify(S.canonical(compose), null, 2) + "\n");
     const pre_inventory = driver.inventory(composition, candidate); driver.prepareOwnership(composition, ownership, candidate);
