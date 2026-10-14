@@ -6,9 +6,7 @@ const F = require("../lib/filesystem-safety");
 const socket = ["--host", "unix:///var/run/docker.sock"];
 function docker(args, options = {}) {
   try { return execFileSync("docker", [...socket, ...args], { encoding: "utf8", stdio: "pipe", timeout: 180000, maxBuffer: 8 * 1024 * 1024, ...options }); }
-  catch (error) { const failure = Object.assign(new Error("DOCKER_LIFECYCLE_COMMAND_FAILED"), { code: "DOCKER_LIFECYCLE_COMMAND_FAILED", operation: args[0] === "compose" ? "compose-" + args[5] : args[0] });
-    // Internal, non-public test diagnostics; never projected by observers.
-    Object.defineProperty(failure, "diagnostic", { value: String(error.stderr || ""), enumerable: false }); throw failure; }
+  catch (_) { F.fail("DOCKER_LIFECYCLE_COMMAND_FAILED"); }
 }
 function helper(composition, directory, script, args = [], writable = false) {
   F.directory(require("node:path").dirname(directory));
@@ -41,8 +39,9 @@ function checkImages(composition) {
 function checkNetworks(composition) {
   const names = docker(["network", "ls", "--format", "{{.Name}}"] ).trim().split("\n");
   for (const [role, network] of Object.entries(composition.compose.networks)) if (names.includes(network.name)) {
-    const observed = JSON.parse(docker(["network", "inspect", "--format", '{"owner":{{json (index .Labels "org.drumee.infra.owner")}},"project":{{json (index .Labels "com.docker.compose.project")}},"driver":{{json .Driver}},"internal":{{json .Internal}}}', network.name]));
+    const observed = JSON.parse(docker(["network", "inspect", "--format", '{"owner":{{json (index .Labels "org.drumee.infra.owner")}},"project":{{json (index .Labels "com.docker.compose.project")}},"driver":{{json .Driver}},"internal":{{json .Internal}},"containers":{{json .Containers}}}', network.name]));
     if (observed.owner !== composition.project || observed.project !== composition.project || observed.driver !== "bridge" || observed.internal !== (role === "mail-control")) F.fail("NETWORK_OWNERSHIP_MISMATCH");
+    for (const id of Object.keys(observed.containers || {})) { const resource = JSON.parse(docker(["inspect", "--format", format, id])); if (resource.owner !== composition.project || resource.project !== composition.project || !composition.compose.services[resource.service]) F.fail("NETWORK_OWNERSHIP_MISMATCH"); }
   }
 }
 function checkPorts(composition, owned = []) {

@@ -68,7 +68,10 @@ function composeDeployment(plan, distribution) {
     for (const dependency of value.requires) { if (!S.identifier(dependency) || !compose.services[dependency]) F.fail("INVALID_DEPENDENCY_ORDERING"); dependencies[dependency] = { condition: distribution.init_jobs.some((entry) => entry.id === dependency) ? "service_completed_successfully" : "service_healthy" }; }
     if (job && (!strings(value.validation_command) || value.effect !== "idempotent" || !/^[a-f0-9]{40,64}$/.test(value.artifact_revision || ""))) F.fail("INITIALIZATION_CONTRACT_REQUIRED");
     if (!job && (!S.record(value.healthcheck) || !Array.isArray(value.healthcheck.test) || value.healthcheck.test[0] !== "CMD" || !strings(value.healthcheck.test) || !Array.isArray(value.listener_ports) || value.listener_ports.some((port) => !S.port(port) || port < 1024))) F.fail("KERNEL_READINESS_CONTRACT_REQUIRED");
-    if (value.healthcheck) keys(value.healthcheck, ["test", "interval", "timeout", "retries", "start_period"]);
+    if (value.healthcheck) {
+      keys(value.healthcheck, ["test", "interval", "timeout", "retries", "start_period"]);
+      if (["interval", "timeout", "start_period"].some((field) => value.healthcheck[field] !== undefined && !/^[1-9][0-9]{0,3}(?:ms|s|m)$/.test(value.healthcheck[field])) || !Number.isInteger(value.healthcheck.retries) || value.healthcheck.retries < 1 || value.healthcheck.retries > 100) F.fail("KERNEL_READINESS_CONTRACT_REQUIRED");
+    }
     return { image: value.image, user: `${value.uid}:${value.gid}`, command: value.command, ...(value.entrypoint ? { entrypoint: value.entrypoint } : {}), ...(value.environment ? { environment: value.environment } : {}), networks: ["kernel"], volumes, read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], tmpfs: [`/tmp:rw,noexec,nosuid,size=33554432,uid=${value.uid},gid=${value.gid},mode=0700`], mem_limit: "512m", pids_limit: 128, stop_grace_period: "30s", restart: job ? "no" : "unless-stopped", depends_on: dependencies, ...(job ? {} : { healthcheck: S.clone(value.healthcheck) }), labels: { "org.drumee.infra.owner": project, "org.drumee.infra.revision": plan.revision, "org.drumee.infra.role": job ? "initialization" : "kernel" } };
   }
   const infra_order = ["dns", "database", "redis"].filter((name) => compose.services[name]); const jobs = [];

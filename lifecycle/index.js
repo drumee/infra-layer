@@ -6,5 +6,9 @@ module.exports = {
   activateDeployment: require("./activation").activateDeployment,
   inspectDeployment: require("./activation").inspectDeployment,
   diagnoseDeployment: require("./activation").diagnoseDeployment,
-  classifyChanges: require("./activation").classifyChanges
+  classifyChanges: require("./activation").classifyChanges,
+  rotateSecret: require("./transitions").rotateSecret,
+  resumeSecretRotation: require("./transitions").resumeSecretRotation,
+  renewDeployment: require("./transitions").renewDeployment,
+  renewalTrigger: require("./transitions").renewalTrigger
 };

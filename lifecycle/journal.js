@@ -17,7 +17,7 @@ function readJournal(root) {
   return entries;
 }
 function append(root, phase, revision, details = {}) {
-  if (!phases.has(phase) || !/^[a-f0-9]{64}$/.test(revision || "") || !S.plainTree(details) || Object.keys(details).some((key) => !["service", "code", "prior_revision", "attestation_digest", "backup_id", "resource", "consumers"].includes(key))) F.fail("INVALID_JOURNAL_EVENT");
+  if (!phases.has(phase) || !/^[a-f0-9]{64}$/.test(revision || "") || !S.plainTree(details) || Object.keys(details).some((key) => !["service", "code", "prior_revision", "attestation_digest", "artifact_digest", "backup_id", "resource", "consumers"].includes(key))) F.fail("INVALID_JOURNAL_EVENT");
   if (Object.entries(details).some(([key, value]) => key === "consumers" ? !Array.isArray(value) || value.some((item) => !S.identifier(item)) : typeof value !== "string" || !/^[a-zA-Z0-9_.-]{1,128}$/.test(value))) F.fail("INVALID_JOURNAL_EVENT");
   const entries = readJournal(root); const directory = path.join(root, "journal"); F.privateDirectory(directory, true);
   const body = { sequence: entries.length + 1, previous: entries.at(-1)?.digest || "0".repeat(64), phase, revision, timestamp: new Date().toISOString(), details };

@@ -18,7 +18,7 @@ function contextRoot(composition, context, create = false) {
 }
 function resources(composition, root, context) {
   const file = path.join(root, "resources.json"); let existing = [];
-  if (fs.existsSync(file)) { try { existing = JSON.parse(F.read(file)); } catch (_) { F.fail("RESOURCE_OWNERSHIP_MISMATCH"); } if (!S.plainTree(existing) || !Array.isArray(existing)) F.fail("RESOURCE_OWNERSHIP_MISMATCH"); }
+  if (fs.existsSync(file)) { try { existing = JSON.parse(F.read(file)); } catch (_) { F.fail("RESOURCE_OWNERSHIP_MISMATCH"); } if (!S.plainTree(existing) || !Array.isArray(existing) || existing.some((value) => !S.record(value) || Object.keys(value).sort().join(",") !== "id,owner,source" || !S.identifier(value.id) || !S.resourcePath(value.source) || value.owner !== composition.instance_id) || new Set(existing.map(value => value.id)).size !== existing.length) F.fail("RESOURCE_OWNERSHIP_MISMATCH"); }
   for (const resource of composition.resources) {
     if (!S.contains(root, resource.source) || resource.source === root || !S.contains(path.join(root, "durable"), resource.source)) F.fail("RESOURCE_OUTSIDE_DEPLOYMENT_ROOT");
     const record = existing.find((value) => value.id === resource.id);
@@ -67,7 +67,11 @@ async function prepareDeployment(composition, context) {
       const uid = service ? service[0] === "database" ? 999 : service[1].uid : resource.uid; const gid = service ? service[0] === "database" ? 999 : service[1].gid : resource.gid;
       driver.helper(composition, resource.source, "const fs=require('fs');const s=fs.lstatSync('/work');if(!s.isDirectory()||s.isSymbolicLink())throw Error('unsafe');if(s.uid!==Number(process.argv[1])||s.gid!==Number(process.argv[2]))fs.chownSync('/work',Number(process.argv[1]),Number(process.argv[2]));", [String(uid), String(gid)], true);
     }
-    const store = secrets.createFilesystemSecretStore(path.join(root, "secrets"), composition.instance_id);
+    const rotation = require("./transitions").pending(root);
+    if (rotation && context.rotation_id !== rotation.id) F.fail("SECRET_ROTATION_RECOVERY_REQUIRED");
+    const store_root = context.secret_store || path.join(root, "secrets");
+    if (store_root !== path.join(root, "secrets") && (!rotation || store_root !== path.join(root, "rotations", rotation.id, "secrets"))) F.fail("SECRET_STORE_OWNERSHIP_MISMATCH");
+    const store = secrets.createFilesystemSecretStore(store_root, composition.instance_id);
     for (const descriptor of composition.plan.required_secrets) {
       let present = false; try { store.inspect(descriptor.ref); present = true; } catch (error) { if (error.code !== "SECRET_MISSING") throw error; }
       if (present) { store.ensure(descriptor); continue; }
@@ -88,7 +92,20 @@ async function prepareDeployment(composition, context) {
       } else F.fail("ACME_PREPARED_MATERIAL_REQUIRED");
     }
     let zone;
-    if (spec.dns.mode === "local") zone = require("../capabilities/dns").prepareZone(composition.plan.effective_domain, spec.dns, spec.mail?.dkim, path.join(root, "dns-state"), { authorized: true, owner: composition.instance_id });
+    if (spec.dns.mode === "local") {
+      const dns = require("../capabilities/dns");
+      try { zone = dns.prepareZone(composition.plan.effective_domain, spec.dns, spec.mail?.dkim, path.join(root, "dns-state"), { authorized: true, owner: composition.instance_id }); }
+      catch (error) {
+        if (error.code !== "DNS_SERIAL_NOT_ADVANCED") throw error;
+        // A failed higher-serial candidate must not prevent TLS/secret work on
+        // the last verified active zone. Do not rewind the highest serial state.
+        const active = require("./activation").readActive(root); const output = dns.zoneFile(composition.plan.effective_domain, spec.dns, spec.mail?.dkim);
+        if (!active || active.prepared.zone?.file !== output.file || active.prepared.zone?.zone_digest !== S.digest(output.zone)) throw error;
+        verifyPrepared(active.prepared, context, driver);
+        if (!F.read(path.join(root, "dns-state", output.file)).equals(Buffer.from(output.zone))) F.fail("DNS_STATE_CORRUPTED");
+        zone = { ...active.prepared.zone, active: false, activation_required: true };
+      }
+    }
     const fingerprints = composition.plan.required_secrets.map((value) => store.inspect(value.ref));
     const revision = S.digest({ composition: composition.revision, fingerprints, certificate: tls_material?.fingerprint || null, zone: zone?.zone_digest || null });
     const candidate = path.join(root, "candidates", revision); F.privateDirectory(path.dirname(candidate), true);
@@ -119,13 +136,15 @@ async function prepareDeployment(composition, context) {
     const compose_file = path.join(candidate, "deployment.compose.json"); F.atomic(compose_file, JSON.stringify(S.canonical(compose), null, 2) + "\n");
     const pre_inventory = driver.inventory(composition, candidate); driver.prepareOwnership(composition, ownership, candidate);
     const file_records = driver.inventory(composition, candidate); if (pre_inventory.filter((value) => value.type === "file").some((value) => file_records.find((entry) => entry.path === value.path)?.digest !== value.digest)) F.fail("PREPARATION_CONTENT_CHANGED");
-    const prepared = { contract_version: "1", project: composition.project, instance_id: composition.instance_id, root, revision, desired_revision: original.plan_revision, composition, compose, compose_file, candidate, files: file_records, fingerprints, ...(tls_material ? { certificate: { fingerprint: tls_material.fingerprint, ca_fingerprint: tls_material.ca_fingerprint || null, expires_at: tls_material.expires_at, activation_required: true } } : {}), ...(zone ? { zone } : {}), prepared: true, activated: false };
+    const prepared = { contract_version: "1", project: composition.project, instance_id: composition.instance_id, root, secret_store: store_root, revision, desired_revision: original.plan_revision, composition, compose, compose_file, candidate, files: file_records, fingerprints, ...(tls_material ? { certificate: { fingerprint: tls_material.fingerprint, ca_fingerprint: tls_material.ca_fingerprint || null, expires_at: tls_material.expires_at, activation_required: true } } : {}), ...(zone ? { zone } : {}), prepared: true, activated: false };
     F.atomic(manifest_file, JSON.stringify(prepared)); J.append(root, "prepared", revision); return prepared;
   });
 }
 function verifyPrepared(prepared, context, driver = context.driver || D) {
   if (!S.plainTree(prepared) || prepared?.contract_version !== "1" || !/^[a-f0-9]{64}$/.test(prepared.revision || "") || !prepared.composition) F.fail("INVALID_PREPARED_DEPLOYMENT");
   const composition = C.verifyComposition(prepared.composition); const root = contextRoot(composition, context);
+  const secret_store = prepared.secret_store;
+  if (secret_store !== path.join(root, "secrets") && !(typeof secret_store === "string" && /^rotations\/[a-f0-9]{32}\/secrets$/.test(path.relative(root, secret_store)))) F.fail("SECRET_STORE_OWNERSHIP_MISMATCH");
   if (root !== prepared.root || prepared.candidate !== path.join(root, "candidates", prepared.revision) || prepared.compose_file !== path.join(prepared.candidate, "deployment.compose.json")) F.fail("INVALID_PREPARED_DEPLOYMENT");
   const saved = JSON.parse(F.read(path.join(prepared.candidate, "prepared.json"))); if (S.serialize(saved) !== S.serialize(prepared)) F.fail("PREPARED_DEPLOYMENT_TAMPERED");
   if (S.digest({ composition: composition.revision, fingerprints: prepared.fingerprints, certificate: prepared.certificate?.fingerprint || null, zone: prepared.zone?.zone_digest || null }) !== prepared.revision || S.serialize(materializedCompose(composition, prepared.revision)) !== S.serialize(prepared.compose)) F.fail("PREPARED_DEPLOYMENT_TAMPERED");
