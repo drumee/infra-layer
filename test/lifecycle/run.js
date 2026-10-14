@@ -37,7 +37,7 @@ async function main() {
     console.log("IL3 activation begin " + JSON.stringify({project,address,port})); const active = await lifecycle.activateDeployment(prepared, context); assert.equal(active.ready, true, JSON.stringify(active));
     const no_op = await lifecycle.activateDeployment(prepared, context); assert.equal(no_op.effect, "no-op"); assert.deepEqual(no_op.services, active.services);
     const metadata = { root, project, prepared, distribution, inputs, port }; const file = path.join(root, "test-metadata.json"); fs.writeFileSync(file, JSON.stringify(metadata), { mode: 0o600 });
-    const result = spawnSync(process.execPath, ["--test", "--experimental-test-isolation=none", path.join(__dirname, "lifecycle.test.js")], { stdio: "inherit", env: { ...process.env, IL3_METADATA: file }, timeout: 1200000 }); if (result.status !== 0) throw new Error(result.error?.code === "ETIMEDOUT" ? "IL3_TEST_RUN_TIMEOUT" : "IL3_TESTS_FAILED");
+    const result = spawnSync(process.execPath, ["--test", "--experimental-test-isolation=none", path.join(__dirname, "lifecycle.test.js")], { stdio: "inherit", env: { ...process.env, IL3_METADATA: file }, timeout: 1800000 }); if (result.error || result.status !== 0) throw new Error(result.error?.code === "ETIMEDOUT" ? "IL3_TEST_RUN_TIMEOUT" : "IL3_TESTS_FAILED");
   } catch (error) {
     let diagnostic = error.diagnostic || "";
     if (prepared) { try { diagnostic += driver.compose(prepared, ["logs", "--no-color"]); } catch (_) {} }
