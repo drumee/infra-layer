@@ -275,3 +275,185 @@ was performed.
 This ledger records final clean-checkout commands, results, remote ownership,
 LAN observations and checkpoint revisions. It is completed after validation;
 unverified acceptance paths above cannot be converted into passes by this ledger.
+
+### Final source and checkpoints
+
+Implementation/test qualification revision:
+`f605d76f5a5c3e194d9948a1fcb8bc7efa0c9b02`, main. The final documentation
+commit adds this ledger only; production files and validation scripts retain
+that qualified content. `git log` identifies the enclosing closure-record commit.
+
+| Checkpoint/change | Exact commit |
+|---|---|
+| IL-3.1 pure composition | 35ef0390882307611e7778fdf39064722a6724b0 |
+| IL-3.2 preparation/activation/attestation | bb542d56e1e227b65398aab1556639b3fbda2c5c |
+| Checkpoint export correction | 291ea0405b94a71a3db3ef140a07fb2b6be25472 |
+| IL-3.3 persistence/Redis transition/TLS renewal | e901c7ba58f76b390a82dd0853d920cbb5ff624b |
+| IL-3.4 cold backup/isolated restore/rollback | 99cd0c29184e6080062bfb6500faa51647a429e1 |
+| IL-3.5 supplementary HTTPS contract fixture | 2617de821a9493a754a41d43f5b69b239957c3b8 |
+| Lifecycle/security/package/image tests | a6a917b0940454ca01aa7a321a4f9fb43b0791b5 |
+| Architecture/integration boundary dossier | 0d95d01159c3788dc8fcabfe432e6a66326b00a8 |
+| Supplied job gating, harness interruption recovery | 9e9c683ffbd602e49d34b470d6f9516dc3828a9c |
+| Helper mount and test-image ownership checks | c3a9b867d8857914da225387407999880a409e8b |
+| Corrupt staged-generation commit refusal | b141bbf0df3878530ca1ac930700595a227159b1 |
+| Strict watchdog error handling | f605d76f5a5c3e194d9948a1fcb8bc7efa0c9b02 |
+
+IL-3.5 real-kernel acceptance is blocked, and IL-3.6 is a validation/boundary
+record, not a declaration that every requested phase requirement is complete.
+`git diff 0f5fb92 -- lib capabilities adapters` is empty: existing IL-1/IL-2
+production primitives were not changed. Transient is clean at
+5469b48109dbb20eacbbc9314a6772264b388843, with an empty `git diff -- sources/`.
+No kernel/runtime/Finder/history sources changed.
+
+### Local and clean-checkout commands/results
+
+A fresh Git checkout containing only tracked standalone files ran npm ci,
+npm test, npm run test:integration and npm run test:package. The combined
+integration entry point completed at 0d95d01159c3788dc8fcabfe432e6a66326b00a8;
+after subsequent focused corrections, affected unit/lifecycle/HTTPS/package
+suites were rerun in that clean checkout at the revisions listed above.
+Unchanged gateway/services do not import the new lifecycle module. No local
+sibling repository is required by these scripts: kernel test acquisition fetches
+the explicit GitHub SHA in kernel-dependencies.json into a disposable directory.
+The separate 68/27 read-only regressions use unchanged local source revisions and
+are supplemental, not hidden prerequisites for standalone scripts.
+
+```sh
+npm ci
+npm test
+npm run test:integration
+npm run test:lifecycle
+npm run test:lifecycle:gateway
+npm run test:package
+npm pack --dry-run --json
+node --test target/foundation/server-runtime/test/*.test.js \
+  target/modules/host-filesystem/test/*.test.js \
+  target/modules/mfs-transfer/test/*.test.js \
+  target/modules/mfs-service/test/*.test.js \
+  target/modules/media-service/test/*.test.js
+node --test test/finder-core.test.js
+```
+
+| Suite | Final pass | Fail | Skip | Evidence scope |
+|---|---:|---:|---:|---|
+| Standalone units | 123 | 0 | 0 | Original 109 plus 14 composition/journal/lifecycle security cases |
+| Nginx/kernel/Chromium contract suite | 17 | 0 | 0 | Actual Session/ACL/FileIo/transfer/WebSocket/LETC code; memory identity fixtures |
+| Native infrastructure services | 17 | 0 | 0 | BIND9, MariaDB, Redis/runtime client, SMTP capture/STARTTLS/auth/DKIM/queue |
+| IL-3 lifecycle | 16 | 0 | 0 | Native Docker lifecycle, failures, persistence, isolated restoration, guarded image rebuild/rollback |
+| Supplemental runtime/capability | 68 | 0 | 0 | Unchanged transient revision above |
+| Supplemental Finder | 27 | 0 | 0 | Unchanged standalone b46e2c94b615a1993b6162716d9e8965d0029564 |
+| HTTPS/job scenarios (separate assertion harness) | 4 | 0 | 0 | Real Nginx strict CA/SAN, served renewal, failed activation recovery, supplied idempotent job validation gate |
+
+Total: **268 TAP tests**, plus **four HTTPS/job scenarios**. The scenarios are
+not relabeled as TAP test cases or full kernel provisioning. npm ci installed
+44 development packages; npm audit reported zero vulnerabilities. The native
+optional addon install-script warnings do not change those results.
+
+Clean-checkout project evidence: gateway drumee-il1-test-47d65613 on
+127.0.0.1:36937; services drumee-il2-test-2c52102b; lifecycle
+drumee-il3-test-a2cd68f4, drumee-il3-test-9197ef5e,
+drumee-il3-test-4e6f5dce and final drumee-il3-test-3ee4ec76; HTTPS/job
+fixture drumee-il3-gateway-7a058dab. Each reported ownership-checked cleanup.
+The final strict-watchdog lifecycle command completed 16/16 at f605d76.
+
+Development failures were retained as findings and corrected before qualification:
+private-store copy permissions, reuse of a verified active DNS generation after
+a failed higher-serial candidate, cached TLS probe connections during renewal,
+package auditing of helper builtin imports, and interrupted harness cleanup.
+A corrupted pre-existing candidate secret generation now fails before changing
+the canonical pointer, with per-secret locking and fingerprint checks. Tests
+requiring real Unix ownership were run outside the mapped filesystem sandbox;
+its mapped /tmp UID is not a valid native permission-test environment.
+
+The package audit passed the explicit allowlist: **38 files**, production source,
+Docker descriptors/Dockerfile, declarations, README, PROVENANCE and LICENSE only.
+No tests, generated state, archives, SQL data, keys, secrets, historical trees or
+node_modules are packed; no production npm dependency or file: dependency exists.
+The archive installed offline into an isolated consumer, exported the original
+five root functions and the lifecycle subpath, and accepted representative v2
+planning with drumee.lan. Unpublished development archive integrity:
+
+`sha512-lD+7zcoPaIjTxYSoYTFMWyzmEdijZvT8qLGVTrQGF66ABPKKRP711vqfeCHhmabSlRDwK5wXGzm0aQIQXHXa6Q==`
+
+This archive is **not** the immutable npm alpha release. No npm publication ran.
+Registry inspection still reports versions 0.0.0-stage and 0.1.0-alpha.1, with next
+and latest both pointing to 0.1.0-alpha.1. The published Git tag dereferences to
+b1b8e8666e92ec604d933b9c99145c90b966362b and was not rewritten.
+
+### testbox observations and owned tests
+
+Read-only preflight: Debian 13.6/trixie, hostname minis, UID/GID 1000, Node 22.23.2,
+Docker 29.7.2 and Compose 5.4.0. Declared reachable LAN address:
+192.168.5.202 on wlp2s0/24. No globally reachable IPv6 address was observed.
+Ports 53/80/443 were checked free before tests. No address was inferred from a
+container, and no resolver, DHCP, firewall, SSH or trust-store setting was changed.
+
+The infrastructure-only profile used exactly domain drumee.lan and dns.mode local,
+BIND on the declared LAN address TCP/UDP 53 (internal rootless listener 1053),
+private MariaDB/Redis listeners, persistent owned bind roots, a temporary local CA,
+and an isolated journal. HTTP was disabled because no approved deployable kernel
+composition was available. TLS state was explicitly prepared-pending-activation,
+not remote HTTPS acceptance. SMTP/Oxymotion were not deployed.
+
+First project drumee-il3-test-99a1efb1 exceeded the original global harness deadline;
+cleanup initially refused an interrupted one-off identity collision. Its exact
+owner/project/container evidence was inspected, then only that project's resources
+were removed. The corrected harness handles owned interrupted test jobs and never
+silently accepts watchdog errors; the final watchdog bound is 30 minutes.
+
+The next project, **drumee-il3-test-0b765a5d**, returned exit 0 and reported
+**16 successful subtests**, including physical/logical database backup,
+independent restore, byte/CA/DNS/credential preservation, failure reconciliation,
+rotation, conflicts, configuration rollback and backed-up same-version image
+rebuild. The remote source was c3a9b867d8857914da225387407999880a409e8b; archive SHA-256:
+8d2291b918de1bb1084402b17d764d85d7deccb91e7e220fe62cffb76adb8cba.
+The later corrupt-generation guard and strict watchdog guard were qualified
+locally, not retrospectively claimed as remotely executed changes.
+
+From the independent LAN client 192.168.5.201/wlp3s0, the following actually ran
+while the first owned BIND instance was available:
+
+```sh
+dig @192.168.5.202 drumee.lan A +time=2 +tries=2 +noall +answer
+dig @192.168.5.202 drumee.lan SOA +tcp +time=2 +tries=2 +noall +answer
+dig @192.168.5.202 example.net A +time=2 +tries=1 +noall +comments
+```
+
+A returned 192.168.5.202; TCP SOA reported serial 2; out-of-zone recursion was
+REFUSED with recursion unavailable. This proves a real LAN client's DNS queries,
+not trusted LAN HTTPS/browser or real-kernel acceptance. Client resolver use was
+explicit through dig @address; no client settings were automatically installed.
+
+Final inspection preserved these exact pre-existing containers and states:
+c514f6c155f5 drumee-migrate-1, 86e518b5a6ec drumee-schemas-init-1,
+e29b72ba5093 drumee-infra-init-1, all still Exited (0). The original drumee_drumee
+network and five volumes drumee_cache_data, drumee_db_data, drumee_drumee_conf,
+drumee_mfs_data, drumee_web_cache remain. No IL-3 containers, networks, durable
+test roots, restored roots, backup payloads or source working directory remain;
+ports 53/80/443 are again free. Historical images were not altered. Three newly
+pulled pinned Node/MariaDB/Redis image caches were conservatively retained because
+Docker reported image references; no global image/build-cache prune ran. BuildKit
+cache may also remain. There is no active IL-3 service endpoint after cleanup.
+
+Pinned engine resources used the existing IL-2 references:
+MariaDB @sha256:611a2fcc5fa7c6ceb8644c6f74b25ede004ff6c3a6b38c8f8c23d3bbf6c26430,
+Redis @sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf,
+Node @sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392,
+Nginx @sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752
+in local gateway tests. Owned tooling images were built from the pinned
+capabilities/docker/Dockerfile.services recipe and referenced by inspected
+immutable local image IDs. No image was published.
+
+### Review gate
+
+Before completing IL-3, the owner/distribution must supply the pinned minimal
+host and canonical initialization/acceptance/recovery jobs described above.
+The incomplete lifecycle support paths already listed also need qualification;
+file timestamps/xattrs/POSIX ACLs are not preserved by the initial byte/mode/UID
+copy provider and must be explicitly addressed if declared consumers require them.
+Only after real persisted kernel/ACL/MFS/browser recovery and the complete
+accepted lifecycle matrix pass should IL-4 stabilization, Debian distribution
+integration, release preparation and Oxymotion D0 be authorized. This workstream
+has not started any of them.
+
+**IL-3 — INTEGRATION_BLOCKED**
