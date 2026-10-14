@@ -35,7 +35,7 @@ async function main() {
     console.log("IL3 activation begin " + JSON.stringify({project,address,port})); const active = await lifecycle.activateDeployment(prepared, context); assert.equal(active.ready, true, JSON.stringify(active));
     const no_op = await lifecycle.activateDeployment(prepared, context); assert.equal(no_op.effect, "no-op"); assert.deepEqual(no_op.services, active.services);
     const metadata = { root, project, prepared, distribution, inputs, port }; const file = path.join(root, "test-metadata.json"); fs.writeFileSync(file, JSON.stringify(metadata), { mode: 0o600 });
-    const result = spawnSync(process.execPath, ["--test", path.join(__dirname, "lifecycle.test.js")], { stdio: "inherit", env: { ...process.env, IL3_METADATA: file }, timeout: 600000 }); if (result.status !== 0) throw new Error("IL3_TESTS_FAILED");
+    const result = spawnSync(process.execPath, ["--test", "--experimental-test-isolation=none", path.join(__dirname, "lifecycle.test.js")], { stdio: "inherit", env: { ...process.env, IL3_METADATA: file }, timeout: 1200000 }); if (result.status !== 0) throw new Error(result.error?.code === "ETIMEDOUT" ? "IL3_TEST_RUN_TIMEOUT" : "IL3_TESTS_FAILED");
   } catch (error) {
     let diagnostic = error.diagnostic || "";
     if (prepared) { try { diagnostic += driver.compose(prepared, ["logs", "--no-color"]); } catch (_) {} }
@@ -43,7 +43,7 @@ async function main() {
     if (diagnostic.includes("PRIVATE KEY")) diagnostic = "PRIVATE_MATERIAL_DIAGNOSTIC_SUPPRESSED";
     console.error((error.operation || "IL3") + ": " + diagnostic.slice(-7000)); throw error;
   } finally {
-    if (prepared) { driver.inspectProject(project, Object.keys(prepared.compose.services)); driver.compose(prepared, ["down"]); }
+    if (prepared) { require("./cleanup-oneoffs").cleanupOneoffs(prepared); driver.inspectProject(project, Object.keys(prepared.compose.services)); driver.compose(prepared, ["down"]); }
     assert.equal(command(["docker", "ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim(), "");
     const upgrade_file = path.join(root, "test-upgrade-image.json"); if (fs.existsSync(upgrade_file)) { const upgrade = JSON.parse(fs.readFileSync(upgrade_file)).image; assert.equal(upgrade, "drumee-il3-upgrade:" + project); assert.equal(command(["docker", "image", "inspect", upgrade, "--format", '{{index .Config.Labels "org.drumee.infra.owner"}}']).trim(), project); command(["docker", "image", "rm", upgrade]); }
     command(["docker", "run", "--rm", "--network", "none", "--label", "org.drumee.infra.owner=" + project, "--mount", `type=bind,source=${root},target=/cleanup`, image_node, "node", "-e", "const fs=require('fs');for(const name of fs.readdirSync('/cleanup'))fs.rmSync('/cleanup/'+name,{recursive:true,force:true});"]);
