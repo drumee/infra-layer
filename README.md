@@ -1,12 +1,15 @@
-# Drumee Infra Layer — IL-1
+# Drumee Infra Layer — IL-2 (unreleased)
 
-CommonJS alpha capability extracted from transient. Produces a validated Nginx
-gateway plan and a **gateway-only** Docker Compose fragment for a distribution
-such as drumee/debian. No complete installer, apply/deploy operation, kernel
-policy, schema bootstrap, secret generation, DNS daemon or certificate issuer.
+CommonJS infrastructure contracts, pure plans, safe rendering and independently
+testable HTTP, secrets, TLS, DNS, MariaDB, Redis and outbound SMTP capabilities.
+The five root functions and version-1 gateway behavior remain compatible.
+Version 2 explicitly opts into IL-2 service resources. This development tree is
+private and has not been published; the npm alpha/tag remains the IL-1.1 baseline.
 
-The kernel composition host declares its requirements; this module satisfies
-the HTTP/configuration side. Kernel packages do not import Infra Layer.
+The kernel declares requirements and retains identity, sessions, ACL, MFS and
+schema ownership. Infra Layer provides capability fragments, never application
+installation. Complete Compose assembly, activation, coordinated upgrades and
+backup/restore belong to IL-3 and the distribution. There is no applyPlan.
 
 ## Public API
 
@@ -14,7 +17,7 @@ the HTTP/configuration side. Kernel packages do not import Infra Layer.
 const {
   validateSpec, planInfrastructure, renderPlan,
   inspectInfrastructure, diagnoseInfrastructure
-} = require("./lib");
+} = require("@drumee/infra-layer");
 
 const validation = validateSpec(spec, requirements);
 const plan = planInfrastructure(spec, requirements, adapter_input, {
@@ -26,7 +29,7 @@ if (!plan.applicable) {
 }
 renderPlan(plan, "/tmp/operator-owned-render"); // render only; no activation
 
-const docker = require("./adapters/docker/nginx");
+const docker = require("@drumee/infra-layer/adapters/docker/nginx");
 const state = await inspectInfrastructure({
   id: "instance-gateway", desired_revision: plan.revision,
   container_id: "<full-64-character-Docker-id>", plan
@@ -43,7 +46,7 @@ time, random, sysEnv or secret-store access. JSON-compatible plain objects only;
 accessors/cycles/unknown properties are rejected. No implicit hostname or port
 fallback. The versioned field contract is also documented in [index.d.ts](index.d.ts).
 
-## Configuration schema implemented
+## Version-1 compatibility schema
 
 Unknown fields are errors. Values below are explicit inputs, not Team defaults.
 
@@ -53,7 +56,7 @@ Unknown fields are errors. Values below are explicit inputs, not Team defaults.
 | `spec.instance` | `id`; optional `domain` | Infrastructure resource identity, not a UID/Hub. |
 | `spec.dns` | `mode` | Exactly `none`, `local`, `localhost`. |
 | `spec.http` | `enabled`, `https`; optional `accepted_hosts` | Explicit booleans; finite hostname allowlist. localhost mode accepts only localhost as effective/accepted hostname. |
-| `spec.tls` | When HTTPS: `provider: "provided"`, `certificate_ref`, `private_key_ref` | Opaque `{resource,key}` refs only. No certificate/key contents or issuance; local/ACME providers remain IL-2. |
+| `spec.tls` | When HTTPS: `provider: "provided"`, `certificate_ref`, `private_key_ref` | Opaque `{resource,key}` refs only. No certificate/key contents or issuance; local/ACME providers require the explicit version-2 capability contract. |
 | KernelInfrastructureRequirements | `contract_version: "1"`, `http` | The actual composition host's listener and file-delegation contract. |
 | `requirements.http` | `service_endpoint`, `page_endpoint`, `websocket_endpoint`, `public_assets`, `delegated_artifact_root`, `internal_artifact_prefix`, `max_binary_chunk_bytes`, `readiness_path`, `bootstrap_paths` | Endpoints `{host,port,transport:"tcp"}`; no URL/userinfo/config snippets. Chunk ceiling positive, at most 64 MiB; composition must declare its runtime's actual ceiling. |
 | Public assets | `{id,url_prefix,root}` | Allowed prefixes `/-/app/`, `/-/api/`, `/-/plugins/`, `/-/static/`, `/-/images/`, `/-/fonts/`; only declare consumed views. Roots are scoped absolute paths, disjoint from protected storage. |
@@ -83,7 +86,7 @@ Endpoints must resolve/reach the kernel on the declared Docker network;
 | localhost | any valid supplied domain | localhost | No service; supplied name does not affect revision; host publication must be loopback |
 | localhost | absent | localhost | Same behavior |
 
-No DNS mode is inferred from TLS. BIND and LAN resolution remain IL-2/IL-3.
+No DNS mode is inferred from TLS. Version 1 records prerequisites only; version 2 plans BIND resources. LAN resolver configuration remains operator-owned.
 
 ### Plans, revisions and rendering
 
@@ -204,8 +207,7 @@ only allowlisted diagnostic codes, never raw errors.
 ## Reproduce validation
 
 Prerequisites: Node 22+, Docker/Compose, Chromium-compatible browser, `unzip`,
-Git and tar. Infra Layer has **no production dependency**; the only
-addition is test-only `websocket@1.0.35` with its lockfile. Runtime tests have no
+Git, tar and OpenSSL. Infra Layer has **no production npm dependency**. All test-only dependencies are pinned in package-lock.json. Runtime tests have no
 external service/network dependency; initial image/package preparation may need
 registry/APT access.
 
@@ -215,9 +217,10 @@ cd infra-layer
 npm ci
 npm test
 npm run test:integration
+npm run test:package
 ```
 
-The integration runner uses a unique `drumee-il1-test-<suffix>` project, a free
+The gateway runner (`npm run test:gateway`) uses a unique `drumee-il1-test-<suffix>` project, a free
 127.0.0.1 high port, a dedicated network and caller-owned temporary fixtures. It
 refuses existing project/network/image ownership collisions. Fetches only the
 test dependency revision in `test/integration/kernel-dependencies.json`, archives
@@ -245,6 +248,90 @@ in-memory test stores. This does not prove MariaDB/Redis lifecycle, provisioned
 platform identities, Finder product acceptance, TLS trust or Oxymotion D0.
 
 See [PROVENANCE.md](PROVENANCE.md). `drumee/infra-layer` is the canonical source;
-the transient copy is a pinned integration snapshot. IL-2 requires
-separate approval; certificate lifecycle, actual DNS/services and full deployment
-orchestration remain outside this implementation.
+the transient copy remains a pinned IL-1.1 integration snapshot. IL-2 is implemented in this standalone development tree; release and IL-3 require separate approval.
+
+## IL-2 version-2 contracts
+
+Migration is explicit: set **both** Spec and Requirements to `contract_version:
+"2"`, declare `requirements.capabilities`, retain `requirements.http` only when
+the gateway is enabled, and select `kind: "docker-services"`. Supply the previous
+Docker Nginx input as `adapter_input.gateway` when required. Project/network
+ownership must agree. Mixed versions, new fields on version 1 and unsupported
+capability combinations are errors; nothing is silently dropped.
+
+| Declaration | Purpose and supported boundary |
+|---|---|
+| `secrets.store_resource`, `resources[]` | Durable store identity and opaque `{ref,type,consumers}` descriptors; no values. Only selected capability secrets enter `required_secrets`. |
+| `dns.mode` | Exactly `none`, `local`, `localhost`; deterministic effective domain, `drumee.lan` default for local. None/localhost produce no DNS fragment or TSIG requirement. |
+| Local DNS `ipv4`, optional `ipv6`/`ipv6_reachable`, `serial`, `listen`, `clients`, `recursion`, `state_resource` | Explicit reachable LAN record, monotonic unsigned serial, listening addresses and client CIDRs. Authoritative-only by default; recursion needs explicit forwarders and restricted clients. `tsig_ref` permits authenticated zone transfer, never automatic updates. Public-domain authority requires `split_horizon:true`. |
+| `tls.provider` | `local`, `provided`, or narrow `acme`; certificate/key/CA resource refs. Local declares separate CA key, durable issuer state and renewal bounds. ACME declares separate account/challenge refs, Cloudflare and an allowed Let's Encrypt directory. Provider is independent of DNS mode. |
+| `database` | Managed or external TCP MariaDB 11.4, service user/ref. Managed adds admin ref, durable state and explicit first-initialization permission. No kernel/application schemas or grants. |
+| `redis` | Managed or external TCP endpoint and auth ref. Explicit `ephemeral` or `aof`; only managed AOF declares durable state. |
+| `mail` | Optional capture/controlled relay, endpoint/hostname, client CIDRs, queue identity and first initialization. Incoming STARTTLS; optional submission/relay credentials. Relay requires verified outbound TLS. Capture accepts only an internal single-label sink. Optional DKIM domain/selector/key/public TXT. |
+| Docker service input | Digest/local-image-ID pin, uid/gid, listener, scoped state source and explicit bindings. Only DNS publishes TCP/UDP; DB/Redis/mail production fragments publish none. MariaDB/Postfix initialization needs scoped root capabilities; DNS/Redis/OpenDKIM are non-root. |
+| `resource_sources[]` | Explicit individual read-only credential/certificate projections. No store-root mount. Duplicate/overlapping durable ownership and secret/data overlaps are rejected. |
+
+Generated fragments are `dns.compose.json`, `database.compose.json`,
+`redis.compose.json`, `mail.compose.json`, optional `dkim.compose.json` and the
+existing gateway fragment. Associated native configurations and the mail
+entrypoint are owned render artifacts. Networks and persistent resources must
+already be supplied by the future distribution. `capabilities/docker/Dockerfile.services` is a pinned capability image recipe, not a distribution
+installer; callers supply its exact resulting digest. OpenDKIM's control network
+is separate from the kernel network and is not published.
+
+### Explicit lifecycle functions
+
+These subpaths are intentionally separate from the five pure/render/observe
+root functions. They are trusted **operator** operations; `authorized:true`
+records explicit execution intent, not kernel user authorization.
+
+| CommonJS subpath | Functions |
+|---|---|
+| `capabilities/secrets` | `createFilesystemSecretStore(root, owner)` → `inspect`, `ensure`, `import`, `rotate`, `read`, `materialize`. First creation/import explicitly authorized; rotation additionally checks current fingerprint and named consumer transition. |
+| `capabilities/tls` | `prepareLocalCertificate(config, store, operation)`, `validateCertificate({certificate,key,hostname,ca_bundle,now})`, `prepareAcmeCertificate(config,store,operation,issuer?)`. Return prepared material/public fingerprints, never activation. |
+| `capabilities/tls/acme` | `createLegoIssuer(config)` → explicit account `register`, account-state verification and DNS-01 issuance. Verified external lego 5.5.2 executable/SHA required; no binary bundled. |
+| `capabilities/dns` | `prepareZone(domain,dns,dkim,directory,{authorized:true,owner})`, deterministic zone/config functions. New contents require an advanced explicit serial; no running-server activation. |
+| `capabilities/database` | `createServiceAccount(config,store,authenticated_client,{authorized:true})`. Engine checked; fresh account has USAGE only. Existing credentials are never reset. Schema owners decide grants separately. |
+| `capabilities/redis` | `materializeClientConfiguration(store,ref,endpoint,directory,{authorized:true,owner})`. Private owned authenticated `redisUrl`, consumed by actual Essentials RedisStore. `redisAuth` alone is not used by that client. |
+| `capabilities/mail` | `dkimRecord(domain,selector,store,ref)` exposes public TXT/fingerprint; rotation uses the secret store and requires later consumer/DNS transition. |
+
+Lifecycle directories are private and owned. Exclusive locks reject concurrent
+or stale writers; no PID/time-based takeover. Interrupted incomplete state fails
+closed. Secret generations, CA/leaf keys, account state, TSIG/DKIM keys, queues
+and durable engine files survive ordinary render/restart/recreation. Consumer
+projections are exclusive, narrowly mounted files; administrators with host root
+or Docker access remain trusted. Never mount the secret store into services.
+
+Local TLS uses a persistent CA, separate leaf key and DNS SAN. Operators distribute
+the **public** CA certificate/fingerprint and configure client trust themselves.
+Provided keys are never replaced. ACME rejects drumee.lan/localhost/private
+names; registration, terms and public-DNS execution are explicit, and tests make
+no public issuance/challenge. Scheduling, coordinated reload and crash recovery
+remain IL-3. Prepared certificates are not reported active.
+
+### Observation and validation
+
+`adapters/docker/services` observes only plan-owned local Docker identities,
+images, projects, revisions and exact published bindings before protocol exec.
+No arbitrary diagnostic URL or destination. Native DNS, authenticated DB/Redis,
+SMTP and certificate checks remain distinct from loaded-configuration evidence.
+External endpoints require an explicit trusted observer. Matching labels cannot
+prove loaded configuration; the built-in observer conservatively reports it
+unverified and keeps activation/dependency diagnostics. Gateway readiness also
+requires protected-delivery evidence. Database engine readiness never establishes
+schema readiness.
+
+`npm run test:integration` executes gateway then infrastructure-service harnesses.
+`npm run test:services` runs the latter independently: actual BIND9 checks/queries,
+MariaDB initialization/TCP/auth/persistence, Redis auth/pubsub/AOF/ephemeral modes
+and revision-pinned Essentials client, Postfix STARTTLS/auth/queue retry, verified
+OpenDKIM message signatures and outbound TLS/auth to an isolated capture alias.
+All host publications are disposable loopback/high ports. Tests generate and
+remove only their own credentials, queues, data and networks. No external mail,
+testbox deployment, LAN resolver change or system CA installation occurs.
+
+`npm run test:package` audits the exact allowlist and installs the packed archive
+offline into an isolated consumer. No test harness, historical kernel source,
+generated private key, executable ACME binary or production npm dependency is
+distributed. See the implementation/validation record in
+[docs/IL-2-infrastructure-services.md](docs/IL-2-infrastructure-services.md).

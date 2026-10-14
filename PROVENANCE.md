@@ -5,8 +5,10 @@ Architecture approval: transient `a31b544f565ca4438f1ed8df5eccb21bf0486104`,
 Implementation baseline: transient branch `refactor/mapping`,
 `9680a8cb09adfea5b40122a2df72cfdaa49fd8dd`.
 
-This is an incremental CommonJS capability in transient. It is not an extracted
-repository, a published package, a complete distribution or a new kernel loader.
+The following IL-1 source ledger records the original incremental CommonJS
+capability in transient. The IL-1.1 ledger below records its standalone extraction
+and alpha release; this repository is now canonical. It is not a complete
+distribution or a new kernel loader.
 
 | New path | Source repository / file / symbol / inspected revision | Reason and intentional difference |
 |---|---|---|
@@ -83,3 +85,34 @@ maintained executable prerequisite, inspected at go-acme/lego tag commit
 452dc82113609488fb680acf8fc72712b1794f8d. AccountsStorage's missing-key regeneration
 is guarded by prior ownership/fingerprint/state validation. No upstream client
 code/binary, transient source tree or generated private key is shipped here.
+
+IL-2 DNS, MariaDB and Redis resource modules are new implementations of the
+approved capability boundaries, not copied installers. BIND9 9.18 native checks
+and queries, official MariaDB 11.4 and Redis 7.4 pinned images provide execution
+evidence. Image digests and exact Debian capability package versions are recorded
+in the IL-2 report and Dockerfile.services. The native recipe removes package
+installation-generated RNDC/snakeoil private material in its creation layer.
+
+Mail adapts only Postfix relay/TLS/DKIM concepts from setup-infra main
+643d74fa8bc89d418ff1169daa09554ae84e48ef, templates/etc/postfix/main.cf,
+templates/etc/opendkim/KeyTable and infra.js::getDkim (historical paths inspected
+in the IL-0 dossier and rechecked during IL-2).
+It introduces no mailbox SQL, Team bootstrap or host-level installer. Native
+Debian Postfix/Cyrus SASL configuration paths and OpenDKIM datasets were verified
+against executable packages and primary documentation:
+https://www.postfix.org/SASL_README.html and
+https://manpages.debian.org/bookworm/opendkim/opendkim.conf.5.en.html.
+All additions retain AGPL-3.0-only; LICENSE and historical notices are unchanged.
+
+The real Redis client test acquires sources/server-essentials/lib/redis-store.js
+from explicit transient revision faee9a57487d80f79a8ec79a68887e6da36ca489.
+Its upstream import is server-essentials main b9460ba442c9962471a592c49ce36b01e0327ff5.
+No runtime copy is distributed. Authenticated redisUrl is consumed; redisAuth
+alone is ignored by this exact implementation. The fixture tests actual client,
+publisher and duplicate subscriber authentication without changing that code.
+
+IL-2 source checkpoints: ef2798d (secrets), 22e3494 (TLS), 9907576 (versioned
+DNS contracts), ad7b64c (MariaDB/Redis), f468ceb (SMTP/DKIM). Subsequent integration
+and documentation commits close security, observations, types and reproduction;
+their full revisions are available in Git history and the final review report.
+No npm release or replacement alpha tag is produced by IL-2.
