@@ -42,3 +42,41 @@ and concurrent creation, interrupted state, rotation CAS/failure, consumer
 isolation and symlink/hardlink/path escape. Remaining checkpoints extend the
 versioned declarative contracts and integrate these independently testable
 capabilities with planning/rendering/observations.
+
+## Checkpoint IL-2.2: TLS lifecycle
+
+Local TLS persists a real RSA CA certificate separately from its private key in
+the secret store. Leaf generations use a separate persistent key, SAN hostname,
+serverAuth and non-CA constraints. Renewal is explicit and preserves both keys
+and CA fingerprint. Existing issuer mismatch/corruption fails closed. Provided
+material is read-only validated for SAN, matching private key, validity dates,
+trust chain and permissions; CN-only matching is rejected. Candidate creation
+and validation never perform Nginx activation or install client trust.
+
+ACME is narrow DNS-01/Cloudflare through verified lego 5.5.2, source tag commit
+452dc82113609488fb680acf8fc72712b1794f8d. The explicit binary path and SHA-256
+are checked along with version/ownership/permissions. The linux-amd64 release
+archive hash was 2a35505089e7772c92e1e9ac144df91151ef2eca8568630db0ff91fca06d9bef;
+binary hash c7ccc528bb254bec3e8ca998a8994dab9653c3e1aa083fd3bfaaa0b75b527b62.
+No executable is bundled in npm. Account registration is explicit, importing
+the maintained client's account key into the secret store; future missing or
+mismatched client state is refused before invoking its historical repair path.
+Only the two Let's Encrypt production/staging directories are supported, with
+explicit terms/public-DNS execution authorization. No local/localhost public
+issuance. Challenge tokens are supplied through private files in a sanitized
+environment; arbitrary executable hooks, URL overrides and TLS-skip-verify are
+not exposed. CLI logs/errors are suppressed and mapped to stable diagnostics.
+
+The evaluated acme-client npm package was removed before commit because its
+node-forge dependency was flagged by npm audit (GHSA-86w9-cpqp-85rv). No production
+npm dependency was retained. Primary references:
+[lego CLI](https://go-acme.github.io/lego/obtain/index.html),
+[OpenSSL verification](https://docs.openssl.org/3.4/man1/openssl-x509/).
+
+Validation: node --test test/unit/tls.test.js, 5 pass, 0 fail/skip, plus official
+lego --version/run --help/dnshelp inspection. ACME success/failure/renewal tests
+use issuer-boundary mocks returning real locally issued X509 material; no
+production/staging certificate or public DNS record has been requested. This
+does not validate live Cloudflare or public CA connectivity. CA certificate and
+fingerprint are exposed for operator trust distribution; trust installation,
+renewal scheduling, coordinated activation and crash recovery remain IL-3.

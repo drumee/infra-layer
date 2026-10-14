@@ -26,7 +26,8 @@ function createFilesystemSecretStore(root, owner) {
   if (!S.identifier(owner)) F.fail("SECRET_OWNERSHIP_MISMATCH");
   const location = (ref) => { if (!validRef(ref)) F.fail("INVALID_SECRET_REFERENCE"); return path.join(root, ref.resource, ref.key); };
   function entry(ref) {
-    F.privateDirectory(root); const directory = location(ref); F.privateDirectory(directory);
+    const directory = location(ref); if (!fs.existsSync(root) || !fs.existsSync(directory)) F.fail("SECRET_MISSING");
+    F.privateDirectory(root); F.privateDirectory(directory);
     let state; try { state = JSON.parse(F.read(path.join(directory, "current.json"))); } catch (error) { if (error.code === "RESOURCE_MISSING") F.fail("SECRET_MISSING"); if (["UNSAFE_RESOURCE_PATH", "RESOURCE_PERMISSIONS_UNSAFE"].includes(error.code)) throw error; F.fail("SECRET_CORRUPTED"); }
     if (!S.plainTree(state) || state.owner !== owner || S.serialize(state.ref) !== S.serialize(ref) || !descriptor(state.descriptor) || !/^[a-f0-9]{32}$/.test(state.generation) || !/^[a-f0-9]{64}$/.test(state.fingerprint)) F.fail("SECRET_OWNERSHIP_MISMATCH");
     const value = F.read(path.join(directory, `${state.generation}.secret`)); validateValue(state.descriptor.type, value);

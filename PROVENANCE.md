@@ -77,3 +77,9 @@ uses Node cryptographic primitives, private owned generation files and explicit
 consumer projections; it does not copy historical regenerating credential logic.
 See docs/IL-2-infrastructure-services.md for checkpoint evidence and phase limits.
 No published alpha tag or historical kernel/source implementation is modified.
+
+TLS lifecycle uses OpenSSL/Node X509 validation and lego 5.5.2 as an explicit
+maintained executable prerequisite, inspected at go-acme/lego tag commit
+452dc82113609488fb680acf8fc72712b1794f8d. AccountsStorage's missing-key regeneration
+is guarded by prior ownership/fingerprint/state validation. No upstream client
+code/binary, transient source tree or generated private key is shipped here.
