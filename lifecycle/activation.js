@@ -133,7 +133,7 @@ async function activateDeployment(prepared, context) {
     const prior = readActive(prepared.root); const change = classifyChanges(prior, prepared);
     if (!change.compatible) { if (change.categories.length === 1 && change.categories[0] === "secret-rotation") require("./transitions").allowTransition(prior, prepared, context); else F.fail("INCOMPATIBLE_DEPLOYMENT_CHANGE"); }
     const observed = driver.inspectProject(prepared.project, Object.keys(prepared.compose.services)); driver.checkPorts(prepared.composition, observed); driver.checkNetworks(prepared.composition); const images = driver.checkImages(prepared.composition);
-    if (change.categories.includes("image-upgrade")) F.fail("IMAGE_UPGRADE_COMPATIBILITY_UNVERIFIED");
+    if (change.categories.includes("image-upgrade")) { require("./recovery").validateBackupEvidence(context.backup_evidence, prior, context); verifyImageUpgrade(prior.prepared, prepared, driver); }
     if (prior?.revision === prepared.revision) { const state = await inspectDeployment(prepared.root, context); if (state.ready) return { ...state, effect: "no-op" }; }
     J.append(prepared.root, "activation-intent", prepared.revision, prior ? { prior_revision: prior.revision } : {});
     const evidence = []; const optional_diagnostics = [];

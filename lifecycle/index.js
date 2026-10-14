@@ -10,5 +10,10 @@ module.exports = {
   rotateSecret: require("./transitions").rotateSecret,
   resumeSecretRotation: require("./transitions").resumeSecretRotation,
   renewDeployment: require("./transitions").renewDeployment,
-  renewalTrigger: require("./transitions").renewalTrigger
+  renewalTrigger: require("./transitions").renewalTrigger,
+  stopDeployment: require("./recovery").stopDeployment,
+  backupDeployment: require("./recovery").backupDeployment,
+  validateBackup: require("./recovery").validateBackup,
+  restoreDeployment: require("./recovery").restoreDeployment,
+  rollbackDeployment: require("./recovery").rollbackDeployment
 };
