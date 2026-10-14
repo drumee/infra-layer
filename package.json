@@ -2,7 +2,7 @@
   "name": "@drumee/infra-layer",
   "version": "0.1.0-alpha.1",
   "private": true,
-  "description": "Unreleased IL-2 infrastructure capabilities; IL-1 contracts retained.",
+  "description": "Unreleased IL-3 Docker infrastructure lifecycle; IL-1 and IL-2 contracts retained.",
   "license": "AGPL-3.0-only",
   "type": "commonjs",
   "main": "lib/index.js",
@@ -19,6 +19,7 @@
     "lib/",
     "capabilities/",
     "adapters/",
+    "lifecycle/",
     "index.d.ts",
     "README.md",
     "LICENSE",
@@ -36,7 +37,8 @@
     "test:integration": "node test/all-integration.js",
     "test:package": "node test/package-audit.js",
     "test:gateway": "node test/integration/run.js",
-    "test:services": "node test/services/run.js"
+    "test:services": "node test/services/run.js",
+    "test:lifecycle": "node test/lifecycle/run.js"
   },
   "devDependencies": {
     "jsonfile": "5.0.0",

@@ -7,7 +7,7 @@ const { execFileSync } = require("node:child_process");
 const root = path.resolve(__dirname, "..");
 const packed = JSON.parse(execFileSync("npm", ["pack", "--dry-run", "--json"], { cwd: root, encoding: "utf8" }))[0];
 for (const entry of packed.files) {
-  assert.match(entry.path, /^(?:lib\/[a-z0-9-]+\.js|capabilities\/http\/nginx\/[a-z]+\.js|capabilities\/(?:secrets|tls|dns|database|redis|mail)\/[a-z-]+\.js|capabilities\/docker\/Dockerfile\.services|adapters\/docker\/[a-z-]+\.js|index\.d\.ts|README\.md|PROVENANCE\.md|LICENSE|package\.json)$/);
+  assert.match(entry.path, /^(?:lib\/[a-z0-9-]+\.js|lifecycle\/[a-z-]+\.js|lifecycle\/index\.d\.ts|capabilities\/http\/nginx\/[a-z]+\.js|capabilities\/(?:secrets|tls|dns|database|redis|mail)\/[a-z-]+\.js|capabilities\/docker\/Dockerfile\.services|adapters\/docker\/[a-z-]+\.js|index\.d\.ts|README\.md|PROVENANCE\.md|LICENSE|package\.json)$/);
   const contents = fs.readFileSync(path.join(root, entry.path), "utf8");
   assert.doesNotMatch(contents, /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|isolated-fixture-password|\/home\/[^\s"']+|"file:/);
   if (entry.path.endsWith(".js")) for (const match of contents.matchAll(/require\(["']([^"']+)["']\)/g)) assert.ok(match[1].startsWith(".") || match[1].startsWith("node:"), "Undeclared production import");
