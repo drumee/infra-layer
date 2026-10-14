@@ -15,10 +15,12 @@ function command(args, options = {}) { const result = spawnSync(args[0], args.sl
 const freePort = () => new Promise((resolve) => { const server = net.createServer(); server.listen(0, "127.0.0.1", () => { const port = server.address().port; server.close(() => resolve(port)); }); });
 async function main() {
   const project = "drumee-il3-test-" + crypto.randomBytes(4).toString("hex"); const root = fs.mkdtempSync(path.join(os.tmpdir(), project + "-")); const image = "drumee-il3-services:" + project; const repository = path.resolve(__dirname, "../..");
-  let prepared;
+  let prepared; let built = false;
   try {
     assert.equal(command(["docker", "ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim(), "");
+    if (spawnSync("docker", ["image", "inspect", image], {stdio:"ignore"}).status === 0) throw Error("TEST_IMAGE_ALREADY_EXISTS");
     command(["docker", "build", "--label", "org.drumee.infra.owner=" + project, "-t", image, "-f", path.join(repository, "capabilities/docker/Dockerfile.services"), repository], { stdio: "inherit" });
+    built = true;
     const image_id = command(["docker", "image", "inspect", image, "--format", "{{.Id}}"] ).trim();
     const inputs = serviceInputs(path.join(root, "durable"), project, image_id); delete inputs.spec.mail; delete inputs.adapter_input.services.mail; delete inputs.adapter_input.services.dkim; inputs.requirements.capabilities = ["dns", "database", "redis"];
     const address = process.env.IL3_LAN_ADDRESS || "127.0.0.1"; const port = process.env.IL3_DNS_PORT ? Number(process.env.IL3_DNS_PORT) : await freePort();
@@ -47,7 +49,7 @@ async function main() {
     assert.equal(command(["docker", "ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim(), "");
     const upgrade_file = path.join(root, "test-upgrade-image.json"); if (fs.existsSync(upgrade_file)) { const upgrade = JSON.parse(fs.readFileSync(upgrade_file)).image; assert.equal(upgrade, "drumee-il3-upgrade:" + project); assert.equal(command(["docker", "image", "inspect", upgrade, "--format", '{{index .Config.Labels "org.drumee.infra.owner"}}']).trim(), project); command(["docker", "image", "rm", upgrade]); }
     command(["docker", "run", "--rm", "--network", "none", "--label", "org.drumee.infra.owner=" + project, "--mount", `type=bind,source=${root},target=/cleanup`, image_node, "node", "-e", "const fs=require('fs');for(const name of fs.readdirSync('/cleanup'))fs.rmSync('/cleanup/'+name,{recursive:true,force:true});"]);
-    command(["docker", "image", "rm", image]); fs.rmdirSync(root); console.log("IL3 cleanup confirmed: " + project);
+    if (built) { assert.equal(command(["docker", "image", "inspect", image, "--format", '{{index .Config.Labels "org.drumee.infra.owner"}}']).trim(), project); command(["docker", "image", "rm", image]); } fs.rmdirSync(root); console.log("IL3 cleanup confirmed: " + project);
   }
 }
 main().catch((error) => { console.error(error.code || error.message); process.exitCode = 1; });

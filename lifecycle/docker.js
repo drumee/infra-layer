@@ -10,6 +10,7 @@ function docker(args, options = {}) {
 }
 function helper(composition, directory, script, args = [], writable = false) {
   F.directory(require("node:path").dirname(directory));
+  const stat = fs.lstatSync(directory); if (!stat.isDirectory() || stat.isSymbolicLink()) F.fail("UNSAFE_RESOURCE_PATH");
   return docker(["run", "--rm", "--network", "none", "--read-only", "--cap-drop", "ALL", "--cap-add", "DAC_OVERRIDE", ...(writable ? ["--cap-add", "CHOWN", "--cap-add", "FOWNER"] : []), "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "128m", "--label", `org.drumee.infra.owner=${composition.project}`, "--label", "org.drumee.infra.role=lifecycle-helper", "--mount", `type=bind,source=${directory},target=/work${writable ? "" : ",readonly"}`, composition.distribution.helper_image, "node", "-e", script, ...args]);
 }
 function compose(prepared, args, options) { return docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args], options); }

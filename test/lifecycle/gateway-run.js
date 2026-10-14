@@ -8,13 +8,15 @@ const node_image = "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff6
 function command(args, options = {}) { const result = spawnSync(args[0], args.slice(1), { encoding: "utf8", timeout: 300000, maxBuffer: 8*1024*1024, ...options }); if (result.status !== 0) throw Error("GATEWAY_LIFECYCLE_TEST_COMMAND_FAILED"); return result.stdout; }
 const freePort = () => new Promise((resolve) => { const s=net.createServer();s.listen(0,"127.0.0.1",()=>{const p=s.address().port;s.close(()=>resolve(p));}); });
 async function main() {
-  const project="drumee-il3-gateway-"+crypto.randomBytes(4).toString("hex"), directory=fs.mkdtempSync(path.join(os.tmpdir(),project+"-")), repository=path.resolve(__dirname,"../.."), root=path.join(directory,"deployment"), image="drumee-il3-fixture:"+project; let prepared;
+  const project="drumee-il3-gateway-"+crypto.randomBytes(4).toString("hex"), directory=fs.mkdtempSync(path.join(os.tmpdir(),project+"-")), repository=path.resolve(__dirname,"../.."), root=path.join(directory,"deployment"), image="drumee-il3-fixture:"+project; let prepared,built=false;
   try {
+    assert.equal(command(["docker","ps","-a","--filter","label=com.docker.compose.project="+project,"--format","{{.ID}}"] ).trim(), "");
+    if(spawnSync("docker",["image","inspect",image],{stdio:"ignore"}).status===0)throw Error("TEST_IMAGE_ALREADY_EXISTS");
     const source=prepareKernel(directory,repository), build=path.join(directory,"build");fs.mkdirSync(build);
     for(const component of ["foundation/server-runtime","modules/hello/server","modules/host-filesystem","modules/media-service","modules/mfs-service","modules/mfs-transfer","modules/infra-layer/test/integration"]) fs.cpSync(path.join(source,"target",component),path.join(build,"target",component),{recursive:true,filter:file=>!file.split(path.sep).includes("node_modules")});
     fs.cpSync(path.join(repository,"node_modules"),path.join(build,"target/modules/infra-layer/node_modules"),{recursive:true});fs.mkdirSync(path.join(build,"sources/server-essentials/lib/lex"),{recursive:true});
     for(const file of ["permission.js","functions.js"])fs.copyFileSync(path.join(source,"sources/server-essentials/lib/lex",file),path.join(build,"sources/server-essentials/lib/lex",file));fs.copyFileSync(path.join(repository,"test/integration/Dockerfile.kernel"),path.join(build,"Dockerfile"));
-    command(["docker","build","--label","org.drumee.infra.owner="+project,"-t",image,build],{stdio:"inherit"});const image_id=command(["docker","image","inspect",image,"--format","{{.Id}}"] ).trim();
+    command(["docker","build","--label","org.drumee.infra.owner="+project,"-t",image,build],{stdio:"inherit"});built=true;const image_id=command(["docker","image","inspect",image,"--format","{{.Id}}"] ).trim();
     const fixture=path.join(root,"durable/fixture"), port=await freePort(), gateway=inputs(fixture,port), services=serviceInputs(path.join(root,"durable"),project,image_id);
     const value={spec:{...gateway.spec,contract_version:"2",instance:{id:project,domain:"drumee.lan"},http:{enabled:true,https:true},tls:services.spec.tls,secrets:{store_resource:"infrastructure-secrets",resources:services.spec.secrets.resources.filter(x=>x.type.startsWith("tls-"))}},requirements:{...gateway.requirements,contract_version:"2",capabilities:["http-gateway","tls"]},adapter_input:{kind:"docker-services",project,network:project+"-kernel",services:{},gateway:{...gateway.adapter_input,project,network:project+"-kernel",tls_views:[{ref:services.keys.certificate,source:root+"/logical/certificate",target:"/run/secrets/tls-certificate"},{ref:services.keys.leaf,source:root+"/logical/key",target:"/run/secrets/tls-private-key"}]},resource_sources:services.adapter_input.resource_sources.filter(x=>[services.keys.ca.resource].includes(x.ref.resource))}};
     const plan=api.planInfrastructure(value.spec,value.requirements,value.adapter_input);assert.equal(plan.applicable,true,JSON.stringify(plan.diagnostics));
@@ -41,7 +43,7 @@ async function main() {
     throw error;
   } finally {
     if(prepared){require("./cleanup-oneoffs").cleanupOneoffs(prepared);driver.inspectProject(project,Object.keys(prepared.compose.services));driver.compose(prepared,["down"]);driver.helper(prepared.composition,root,"const fs=require('fs');for(const name of fs.readdirSync('/work'))fs.rmSync('/work/'+name,{recursive:true,force:true});",[],true);}
-    command(["docker","image","rm",image]);fs.rmSync(directory,{recursive:true,force:true});console.log("IL3 gateway fixture cleanup confirmed: "+project);
+    if(built){assert.equal(command(["docker","image","inspect",image,"--format",'{{index .Config.Labels "org.drumee.infra.owner"}}']).trim(),project);command(["docker","image","rm",image]);}fs.rmSync(directory,{recursive:true,force:true});console.log("IL3 gateway fixture cleanup confirmed: "+project);
   }
 }
 main().catch(error=>{console.error(error.code||error.message);process.exitCode=1;});
