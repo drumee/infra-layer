@@ -96,6 +96,9 @@ function composeDeployment(plan, distribution) {
   }
   const activation_order = [...infra_order, ...jobs, ...(distribution.kernel ? [distribution.kernel.id, "gateway"] : []), ...["dkim", "mail"].filter((name) => compose.services[name])];
   const normalized = S.clone(distribution); normalized.persistent_resources.sort((a, b) => S.lexical(a.id, b.id));
+  // Verification rebuilds from the normalized distribution. Keep the derived
+  // inventory in the same order even when callers supplied unsorted resources.
+  resources.sort((a, b) => S.lexical(a.id, b.id));
   const revision = S.digest({ plan_revision: plan.revision, distribution: normalized, compose });
   return { contract_version: "1", revision, plan_revision: plan.revision, project, instance_id: plan.inputs.spec.instance.id, plan, distribution: normalized, compose: S.canonical(compose), resources, projections, activation_order, shutdown_order: [...activation_order].reverse(), applicability: "validated-composition", acceptance: distribution.provenance.acceptance };
 }

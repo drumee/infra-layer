@@ -3,6 +3,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const api = require("../../lib");
 const { composeDeployment } = require("../../lifecycle");
+const { verifyComposition } = require("../../lifecycle/composition");
 const { serviceInputs } = require("../support/service-inputs");
 const { inputs: gatewayInputs } = require("../support/inputs");
 const helper_image = "node@sha256:" + "b".repeat(64);
@@ -42,3 +43,16 @@ test("duplicate service, invalid secret consumer, listener mismatch and missing 
   for (const mutate of [(value) => { value.kernel.id = "database"; }, (value) => { value.init_jobs[0].secret_mounts[0].consumer = "unrelated"; }, (value) => { value.kernel.listener_ports = [9000]; }, (value) => { value.kernel.requires = ["database"]; }, (value) => { value.init_jobs[0].requires = ["kernel"]; }, (value) => { value.kernel.environment = { PASSWORD: "DO-NOT-ECHO" }; }]) { const { plan, distribution } = kernelFixture(); mutate(distribution); assert.throws(() => composeDeployment(plan, distribution)); }
 });
 module.exports = { fixture };
+test("resource input order cannot change composition identity or fail its own verification", () => {
+  const { plan, distribution } = fixture();
+  const resource = id => ({ id, source: "/tmp/distribution-" + id, uid: 1000, gid: 1000, backup_required: true });
+  distribution.persistent_resources = [resource("zeta"), resource("alpha")];
+  const before = JSON.stringify(distribution);
+  const composition = composeDeployment(plan, distribution);
+  assert.deepEqual(verifyComposition(composition), composition);
+  assert.equal(JSON.stringify(distribution), before);
+  distribution.persistent_resources.reverse();
+  assert.deepEqual(composeDeployment(plan, distribution), composition);
+  const modified = structuredClone(composition); modified.resources[0].owner = "unrelated";
+  assert.throws(() => verifyComposition(modified), { code: "COMPOSITION_TAMPERED" });
+});
