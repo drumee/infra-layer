@@ -49,6 +49,8 @@ test("resource input order cannot change composition identity or fail its own ve
   distribution.persistent_resources = [resource("zeta"), resource("alpha")];
   const before = JSON.stringify(distribution);
   const composition = composeDeployment(plan, distribution);
+  const infrastructure = plan.resources.filter(value => value.kind === "filesystem-state");
+  assert.deepEqual(composition.resources.slice(0, infrastructure.length), infrastructure);
   assert.deepEqual(verifyComposition(composition), composition);
   assert.equal(JSON.stringify(distribution), before);
   distribution.persistent_resources.reverse();

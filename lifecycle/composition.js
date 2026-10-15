@@ -37,7 +37,9 @@ function composeDeployment(plan, distribution) {
   for (const [name, network] of Object.entries(compose.networks)) compose.networks[name] = { name: network.name, ...(name === "mail-control" ? { internal: true } : {}), labels: { "org.drumee.infra.owner": project } };
   if (!compose.networks.kernel) compose.networks.kernel = { name: plan.inputs.adapter_input.network, labels: { "org.drumee.infra.owner": project } };
   const resources = S.clone(plan.resources.filter((value) => value.kind === "filesystem-state"));
-  for (const resource of distribution.persistent_resources) {
+  // Preserve the historical infrastructure inventory prefix. Only distribution
+  // inputs need normalization, matching the stored distribution below.
+  for (const resource of [...distribution.persistent_resources].sort((a, b) => S.lexical(a.id, b.id))) {
     keys(resource, ["id", "source", "uid", "gid", "backup_required"]);
     if (!S.identifier(resource.id) || !S.resourcePath(resource.source) || !Number.isInteger(resource.uid) || resource.uid < 0 || !Number.isInteger(resource.gid) || resource.gid < 0 || resource.backup_required !== true) F.fail("INVALID_PERSISTENT_RESOURCE");
     if (resources.some((value) => value.id === resource.id || S.contains(value.source, resource.source) || S.contains(resource.source, value.source))) F.fail("DUPLICATE_VOLUME_OWNERSHIP");
@@ -96,9 +98,6 @@ function composeDeployment(plan, distribution) {
   }
   const activation_order = [...infra_order, ...jobs, ...(distribution.kernel ? [distribution.kernel.id, "gateway"] : []), ...["dkim", "mail"].filter((name) => compose.services[name])];
   const normalized = S.clone(distribution); normalized.persistent_resources.sort((a, b) => S.lexical(a.id, b.id));
-  // Verification rebuilds from the normalized distribution. Keep the derived
-  // inventory in the same order even when callers supplied unsorted resources.
-  resources.sort((a, b) => S.lexical(a.id, b.id));
   const revision = S.digest({ plan_revision: plan.revision, distribution: normalized, compose });
   return { contract_version: "1", revision, plan_revision: plan.revision, project, instance_id: plan.inputs.spec.instance.id, plan, distribution: normalized, compose: S.canonical(compose), resources, projections, activation_order, shutdown_order: [...activation_order].reverse(), applicability: "validated-composition", acceptance: distribution.provenance.acceptance };
 }
