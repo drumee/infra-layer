@@ -173,3 +173,8 @@ enrollment contract. It does not introduce a production account initializer.
 IL-3 history and release provenance remain intact. See
 docs/IL-4-release-qualification.md for current tests, remaining qualification
 and the precise integration boundary.
+
+Final validation guard adf56e04961c3974e0bd0ad481b1700a15d99c09 validates
+resource records before canonical sorting. Null and non-string identities keep
+stable diagnostics, with no change to valid composition output or public API.
+The existing added regression also exercises both malformed-input cases.

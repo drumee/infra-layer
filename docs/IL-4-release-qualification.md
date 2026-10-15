@@ -31,6 +31,8 @@ Implementation commits:
 
 - `070224b9048541f82ed819d65a458cc075b96d1f`: composition normalization regression.
 - `2d1f6aa6774f70f1d3cfc00f47a94ecf4133e314`: preserve legacy infrastructure order.
+- `adf56e04961c3974e0bd0ad481b1700a15d99c09`: validate malformed records before
+  sorting, preserving stable diagnostics instead of leaking a JavaScript TypeError.
 
 The regression checks permutation equivalence, immutable input, self-verification,
 historical prefix order and continued tamper rejection. No API/type/contract
