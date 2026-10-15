@@ -37,11 +37,14 @@ function composeDeployment(plan, distribution) {
   for (const [name, network] of Object.entries(compose.networks)) compose.networks[name] = { name: network.name, ...(name === "mail-control" ? { internal: true } : {}), labels: { "org.drumee.infra.owner": project } };
   if (!compose.networks.kernel) compose.networks.kernel = { name: plan.inputs.adapter_input.network, labels: { "org.drumee.infra.owner": project } };
   const resources = S.clone(plan.resources.filter((value) => value.kind === "filesystem-state"));
-  // Preserve the historical infrastructure inventory prefix. Only distribution
-  // inputs need normalization, matching the stored distribution below.
-  for (const resource of [...distribution.persistent_resources].sort((a, b) => S.lexical(a.id, b.id))) {
+  // Validate before sorting so malformed records retain stable diagnostics.
+  const distribution_resources = distribution.persistent_resources.map((resource) => {
     keys(resource, ["id", "source", "uid", "gid", "backup_required"]);
     if (!S.identifier(resource.id) || !S.resourcePath(resource.source) || !Number.isInteger(resource.uid) || resource.uid < 0 || !Number.isInteger(resource.gid) || resource.gid < 0 || resource.backup_required !== true) F.fail("INVALID_PERSISTENT_RESOURCE");
+    return resource;
+  }).sort((a, b) => S.lexical(a.id, b.id));
+  // Preserve the historical infrastructure inventory prefix.
+  for (const resource of distribution_resources) {
     if (resources.some((value) => value.id === resource.id || S.contains(value.source, resource.source) || S.contains(resource.source, value.source))) F.fail("DUPLICATE_VOLUME_OWNERSHIP");
     resources.push({ ...resource, owner: plan.inputs.spec.instance.id, persistent: true, kind: "distribution-state" });
   }

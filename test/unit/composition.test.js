@@ -57,4 +57,8 @@ test("resource input order cannot change composition identity or fail its own ve
   assert.deepEqual(composeDeployment(plan, distribution), composition);
   const modified = structuredClone(composition); modified.resources[0].owner = "unrelated";
   assert.throws(() => verifyComposition(modified), { code: "COMPOSITION_TAMPERED" });
+  distribution.persistent_resources = [resource("zeta"), null];
+  assert.throws(() => composeDeployment(plan, distribution), { code: "INVALID_DISTRIBUTION_CONTRACT" });
+  distribution.persistent_resources = [resource("zeta"), { ...resource("alpha"), id: { toString: "invalid" } }];
+  assert.throws(() => composeDeployment(plan, distribution), { code: "INVALID_PERSISTENT_RESOURCE" });
 });
