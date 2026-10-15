@@ -1,10 +1,56 @@
 # IL-3 Docker lifecycle — implementation and integration boundary
 
-Status: **INTEGRATION_BLOCKED**. Infrastructure lifecycle work is committed in the
-canonical `drumee/infra-layer` repository. This is not full minimal-kernel or
-Oxymotion acceptance, release qualification, or authorization to start IL-4.
+Status: **READY_FOR_TECHNICAL_REVIEW** for the documented minimal Docker profile.
+The owner-approved distribution fixture closes the initial kernel-host blocker
+with actual SQL/MFS recovery and testbox/LAN acceptance. The follow-up ledger
+below records the exact evidence and supported limits. This is not Oxymotion
+acceptance, release approval, or authorization to start IL-4.
 Published `0.1.0-alpha.1` and `v0.1.0-alpha.1` remain unchanged.
 Starting main: `0f5fb92cccae1441ba45c288acf7fc06b57ba6eb`.
+
+## Approved distribution follow-up qualification
+
+The owner-approved fixture is independently maintained as distribution glue in
+transient, not a second infrastructure implementation. Its exact source/commands,
+images, test counts, failures corrected before qualification, private-state
+boundaries and cleanup are in the
+[pinned distribution report](https://github.com/drumee/transient/blob/c5ee4591c87e7be2a7d91398cfcaa277787558e0/docs/refactoring/37-infra-layer-il3-distribution.md).
+
+- Infra Layer implementation qualification:
+  `95db6c7aed097b62aa8081df17b3467d850e779c`; only the Redis native-check
+  authenticated readiness wait differs from the earlier reviewed implementation.
+  `npm test`: 123/123; `npm run test:lifecycle`: 16/16;
+  `npm run test:lifecycle:gateway`: four scenarios;
+  `npm run test:package`: 38 files, zero runtime dependencies,
+  `PACKED_CONSUMER_OK`. No failures/skips in these final commands.
+- Unchanged gateway/service suites: 17 + 17 passing cases. GitHub acquisition
+  failures were disclosed; their regression-only fallback used the exact pinned
+  transient Git objects through a process-scoped read-only local transport,
+  without changing global Git configuration. The complete 68 runtime/capability
+  and 27 Finder regressions also pass. Baseline total remains 268 TAP cases.
+- Independent clean fixture checkout:
+  `259189eb1d1452fae92e7a8c255a71d4fe29bc09`, four unit tests, 25 grouped
+  functional checks across fresh/restart/restored states, plus actual SIGKILL
+  rotation recovery with both Redis and kernel consumers and retained old keys.
+  Browser uses real LETC/Finder/Window Manager and the actual WebSocket client.
+- testbox qualification at distribution source
+  `ae200e6ec502f4c62df9926d82d201564f665d62`:
+  project `drumee-il3-kernel-5e42e59f`, BIND9 TCP/UDP
+  `192.168.5.202:53`, Nginx local-CA HTTPS `192.168.5.202:443`, private MariaDB,
+  Redis and kernel; all 25 grouped checks passed. The LAN client verified DNS,
+  strict CA/SAN HTTPS and browser paths before/after restart; restored-loopback
+  browser verification used an owned SSH tunnel. This revision predates only
+  the added local crash test, not different host/kernel implementation.
+- All task-owned containers, networks, bind data, protected backups and test
+  image tags were removed; the owned testbox checkout/browser directory was
+  deleted. The exact three pre-existing stopped containers, five volumes and
+  original network remained unchanged. Ports 53/80/443 were free afterward.
+  Ordinary build/download caches and harmless reports may remain; no unrelated
+  image/cache pruning, host resolver/trust modification or permanent deployment.
+
+The published alpha/tag is unchanged. Technical review must retain the explicit
+support limits later in this document. This qualification is not approval to
+publish, start IL-4, deploy Oxymotion or claim arbitrary provider compatibility.
 
 ## Contracts and ownership
 
@@ -210,15 +256,16 @@ unchanged observed native daemon version. Version-changing engine upgrades and
 kernel/gateway image transitions require a separate distribution compatibility
 contract and are refused rather than guessed.
 
-## Real-kernel integration blocker and evidence
+## Distribution handoff: original blocker and resolution
 
 The [kernel distribution handoff](IL-3-kernel-distribution-handoff.md) records
 the follow-up source/registry recheck, concrete host/job/recovery contract and
 proposed temporary distribution-owned fixture. It is a reviewable proposal,
 not implemented kernel acceptance or approval to change upstream packages.
 
-A complete deployable minimal-kernel composition was not found in the inspected
-repositories. The required missing distribution-owned artifact must provide:
+At the initial audit a complete deployable minimal-kernel composition was not
+found. The approved fixture now supplies the previously missing contract. Its
+required distribution-owned artifact provides:
 immutable kernel image, HTTP/page/WebSocket listeners, validated rootless filesystem
 views, database/authenticated Redis configuration, kernel/module schema jobs,
 platform identity and Hub/MFS provisioning jobs, version/schema contracts, actual
@@ -249,9 +296,11 @@ Concrete revision-pinned evidence:
   `b46e2c94b615a1993b6162716d9e8965d0029564`. Packages alone do not supply the
   missing distribution image and initialization/recovery contract.
 
-The owner was asked for the approved distribution artifact while independent
-infrastructure work continued. No new kernel host, permissive SQL provisioning
-mock, Team installation or transient implementation fork was introduced.
+The owner explicitly approved the distribution fixture under IL-3 section 10.
+The new composition host is distribution-owned in transient; no kernel host or
+provisioning SQL was introduced into Infra Layer. Real SQL session/ACL/module
+APIs are used; no permissive provisioning mock, Team installation or second
+Infra Layer implementation was introduced.
 
 ## Acceptance stages and remaining mandatory coverage
 
@@ -260,16 +309,18 @@ backup/restore, and a separate unchanged IL-1 contract fixture for HTTPS renewal
 Existing real FileIo/session/ACL/WebSocket/upload/Range/Chromium contract suites
 remain independent regression evidence. A fixture pass is not full acceptance.
 Stage B is infrastructure-only on Debian testbox; details/results below.
-Stage C remains blocked on the distribution artifact. Persisted canonical users,
-ACLs, Hubs, MFS-to-content recovery, real kernel Redis reconnect and full browser
-acceptance of the composed profile are unverified.
+The approved follow-up completes Stage C for the declared profile: persisted
+canonical users, ACLs, Hubs, MFS-to-content recovery, authenticated Redis/pubsub,
+restart and full LETC/Finder browser checks through the composed gateway.
 
-Also outstanding before full IL-3 qualification: live interruption/resumption
-of a coordinated secret rotation, non-Redis consumer rotation, durable automatic
-renewal scheduling, SMTP queue backup/recovery, supplied real initialization-job
-execution across upgrades/restores, engine-version compatibility upgrades and
-zero-downtime/selective activation. These are explicit incomplete requirements,
-not skipped tests or features implied by generated configuration.
+The additional local test kills the rotation process after Redis transitions,
+then explicitly recovers its inspected owned stale lock and resumes both Redis
+and kernel consumers. Real initialization validators also run across restarts,
+rotation and isolated restoration. Non-Redis coordinated rotation, installed
+automatic renewal scheduling, SMTP spool IPC backup, version-changing upgrades
+and zero-downtime/selective activation remain outside the qualified support
+boundary. Optional mail is absent from the acceptance profile. Unsupported
+operations remain explicit; this report claims no unrestricted provider support.
 
 No IL-4, permanent stack, Oxymotion deployment, npm publication, host trust/DNS
 change, deletion of unrelated Docker resources or kernel/package source change

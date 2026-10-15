@@ -2,15 +2,17 @@
 
 ## Unreleased IL-3 lifecycle work
 
-IL-3 is **INTEGRATION_BLOCKED**, pending a distribution-owned deployable minimal
-kernel host, initialization jobs and canonical recovery probes. Infrastructure
-lifecycle, isolated native-service recovery and HTTPS contract-fixture results
+IL-3 is **READY_FOR_TECHNICAL_REVIEW** for the documented minimal Docker profile.
+The owner-approved distribution fixture now supplies the real kernel host,
+initialization jobs and canonical recovery probes. Infrastructure
+lifecycle, native-service recovery and real-kernel/testbox results
 are documented in [docs/IL-3-docker-lifecycle.md](docs/IL-3-docker-lifecycle.md).
 The npm alpha still represents IL-1.1; this development tree is not published.
 
-The missing distribution artifact and a proposed scoped integration fixture are
-specified in [the IL-3 kernel handoff](docs/IL-3-kernel-distribution-handoff.md).
-That proposal requires distribution-fixture approval before implementation.
+The approved distribution boundary and qualified fixture are recorded in
+[the IL-3 kernel handoff](docs/IL-3-kernel-distribution-handoff.md).
+The fixture lives in transient; Infra Layer remains the canonical reusable
+infrastructure repository. No new npm release or IL-4 is authorized.
 
 The five root functions retain their contracts. Explicit operations use:
 
@@ -38,9 +40,12 @@ in npm. Kernel/application readiness is not inferred from infrastructure probes.
 isolated lifecycle and HTTPS contract-fixture tests. `npm run test:lifecycle`
 and `npm run test:lifecycle:gateway` run those independently. All harness resources
 have unique ownership/project identities and are cleaned up after validation.
-Full real-kernel, LAN browser and canonical ACL/MFS recovery acceptance remain
-unverified until the distribution artifact is supplied. No IL-4 or release is
-implicitly authorized.
+The separate approved distribution fixture verifies real SQL authentication,
+Hub/MFS authorization, FileIo, Redis/WebSocket, LETC/Finder, persistent restart
+and isolated recovery. LAN BIND9/HTTPS and browser checks ran on testbox through
+the declared client configuration. This evidence does not turn the original
+memory-store contract fixture into full acceptance. Scope limits remain in
+the lifecycle report; no IL-4 or release is implicitly authorized.
 
 
 CommonJS infrastructure contracts, pure plans, safe rendering and independently

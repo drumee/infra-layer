@@ -1,8 +1,12 @@
 # IL-3 real-kernel distribution handoff
 
-Status: **PROPOSED / AWAITING DISTRIBUTION FIXTURE APPROVAL**. This document
-narrows the existing IL-3 integration blocker; it does not introduce a kernel
-host, authorize upstream changes, or establish application acceptance.
+Status: **APPROVED / IMPLEMENTED / VALIDATED MINIMAL PROFILE**. The owner
+approved the scoped distribution fixture on 2026-10-15. It is implemented in
+transient; this document preserves the original handoff requirements.
+Qualified implementation/tests: transient
+`259189eb1d1452fae92e7a8c255a71d4fe29bc09`; closure record:
+[`c5ee4591c87e7be2a7d91398cfcaa277787558e0`](https://github.com/drumee/transient/blob/c5ee4591c87e7be2a7d91398cfcaa277787558e0/docs/refactoring/37-infra-layer-il3-distribution.md).
+No kernel/runtime/module implementation was changed.
 Infra Layer baseline: `b783e244cee321ed815d72e6f8d56b24ee48726e`.
 The [lifecycle report](IL-3-docker-lifecycle.md) remains the validation record.
 
@@ -168,13 +172,13 @@ public CA, without automatic system trust/resolver installation.
 
 ## Next action and remaining IL-3 work
 
-The concrete decision is to approve the proposed temporary distribution fixture
-or supply an existing pinned image/jobs contract. Until then, Stage C, real
-identity/ACL/MFS recovery and LAN browser acceptance remain blocked. No fixture
-implementation or remote deployment was performed during this follow-up.
-Independent lifecycle limitations listed in the main report also remain open;
-approving a host does not close rotation, scheduling, SMTP recovery or upgrade
-compatibility requirements automatically.
+The scoped fixture was approved and supplies the real host/jobs contract.
+Stage C, canonical identity/ACL/MFS recovery, LAN DNS/HTTPS and browser acceptance
+now pass for the declared minimal profile. Actual Redis rotation process
+interruption/recovery was additionally verified locally with both kernel and
+Redis consumers. The main report retains explicit limits for non-Redis rotation,
+automatic scheduling, optional SMTP backup and version-changing upgrades.
+Technical review is required before IL-4, release or broader provider support.
 
 ## Follow-up validation
 

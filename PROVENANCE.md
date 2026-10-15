@@ -139,3 +139,15 @@ revision-pinned runtime/control-plane/distribution sources and registry metadata
 It adds a proposed distribution-owned integration scope, not runtime source,
 SQL provisioning or another canonical implementation. Inspected sources are
 unchanged; registry metadata is distinguished from verified artifact acceptance.
+
+The project owner approved that fixture on 2026-10-15. Its implementation lives
+in transient at target/distributions/minimal-kernel-il3; runtime/module sources
+remain unchanged. Qualified test source is
+259189eb1d1452fae92e7a8c255a71d4fe29bc09, with exact execution evidence in
+transient c5ee4591c87e7be2a7d91398cfcaa277787558e0,
+docs/refactoring/37-infra-layer-il3-distribution.md. Infra Layer remains canonical.
+The fixture pins this repository's 95db6c7aed097b62aa8081df17b3467d850e779c,
+which adds bounded authenticated Redis native-check readiness. That correction
+passes all 16 lifecycle tests, 123 units and package checks. No kernel SQL,
+authorization or runtime implementation was copied or modified here. The
+enclosing follow-up commit updates evidence/ownership documentation only.
