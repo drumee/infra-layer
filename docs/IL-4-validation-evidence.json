@@ -1,0 +1,112 @@
+{
+  "contract_version": "1",
+  "phase": "IL-4",
+  "status": "INTEGRATION_BLOCKED",
+  "release_qualified": false,
+  "source_commit": "759d0cc3e950cb4056d54f6bcb75044616be191d",
+  "runtime_implementation_commit": "2d1f6aa6774f70f1d3cfc00f47a94ecf4133e314",
+  "debian_inventory_commit": "4382c96d3362ed9eadce67cb59b18aaeb5e00ed9",
+  "debian_handoff_commit": "1fa0939d5c73cdc40b0fb4ac936b76aaa63e4e7e",
+  "transient_sql_probe_commit": "96acf364841b7556e4bce34b96be592b6fc94a38",
+  "candidate": {
+    "proposed_version": "0.1.0-alpha.2",
+    "prepared": false,
+    "reason": "Canonical first-operator enrollment and production-profile qualification outstanding"
+  },
+  "development_archive": {
+    "name": "@drumee/infra-layer",
+    "version": "0.1.0-alpha.1",
+    "filename": "drumee-infra-layer-0.1.0-alpha.1.tgz",
+    "integrity": "sha512-Bspkr6685T8HXcvtM8zAn1MEQ+3/YtExAPWwM8CSKr3QLLtqDqHjdaf1uc4wkq25y9PKvflcOw4ckm/ennELYA==",
+    "shasum": "d6b9b25076715cb3764f73656ebf54bee6185072",
+    "files": [
+      "LICENSE",
+      "PROVENANCE.md",
+      "README.md",
+      "adapters/docker/nginx.js",
+      "adapters/docker/resources.js",
+      "adapters/docker/services.js",
+      "capabilities/database/index.js",
+      "capabilities/dns/index.js",
+      "capabilities/docker/Dockerfile.services",
+      "capabilities/http/nginx/index.js",
+      "capabilities/http/nginx/routes.js",
+      "capabilities/mail/index.js",
+      "capabilities/redis/index.js",
+      "capabilities/secrets/index.js",
+      "capabilities/tls/acme.js",
+      "capabilities/tls/index.js",
+      "index.d.ts",
+      "lib/contracts-v2.js",
+      "lib/diagnostics.js",
+      "lib/filesystem-safety.js",
+      "lib/index.js",
+      "lib/plan-v2.js",
+      "lib/plan.js",
+      "lib/rendering.js",
+      "lib/spec.js",
+      "lib/state-v2.js",
+      "lib/state.js",
+      "lib/validation.js",
+      "lifecycle/activation.js",
+      "lifecycle/composition.js",
+      "lifecycle/docker.js",
+      "lifecycle/index.d.ts",
+      "lifecycle/index.js",
+      "lifecycle/journal.js",
+      "lifecycle/preparation.js",
+      "lifecycle/recovery.js",
+      "lifecycle/transitions.js",
+      "package.json"
+    ],
+    "private": true,
+    "published": false,
+    "production_dependencies": []
+  },
+  "integration_archive": {
+    "source_commit": "2d1f6aa6774f70f1d3cfc00f47a94ecf4133e314",
+    "integrity": "sha512-epjbLJrHxjAT+7ayv1h0BDSlhU8p6KKuotsvgbQZxB+aOa1/sdn/VN1eSDLRA4zZVZQcplwH53Z0IOShLf2wIQ==",
+    "runtime_bytes_identical_to_final": true,
+    "changed_files": [
+      "PROVENANCE.md",
+      "README.md"
+    ]
+  },
+  "tests": {
+    "infra_unit": 124,
+    "gateway_kernel_chromium": 17,
+    "native_services": 17,
+    "lifecycle": 16,
+    "https_scenarios": 4,
+    "runtime_capabilities": 68,
+    "standalone_finder": 31,
+    "fixture_unit": 4,
+    "sql_probe_including_parent": 7,
+    "debian_inventory": 8,
+    "debian_lightweight_checks": 330,
+    "fixture_grouped_checks": 25,
+    "fixture_chromium_stages": 3,
+    "actual_interrupted_redis_rotation_recovered": true,
+    "final_failures": 0,
+    "skips": 0
+  },
+  "registry": {
+    "versions": [
+      "0.0.0-stage",
+      "0.1.0-alpha.1"
+    ],
+    "dist_tags": {
+      "next": "0.1.0-alpha.1",
+      "latest": "0.1.0-alpha.1"
+    },
+    "unchanged": true
+  },
+  "remote_il4_tests_executed": false,
+  "permanent_deployment": false,
+  "oxymotion_deployed": false,
+  "blocker": {
+    "repository": "https://github.com/drumee/transient",
+    "path": "target/control-plane/bootstrap/lib/index.js",
+    "contract": "Canonical authorized first-human/operator enrollment; bootstrap currently creates reserved platform identities only"
+  }
+}
