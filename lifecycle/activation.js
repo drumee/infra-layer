@@ -19,7 +19,9 @@ function nativeCheck(prepared, name, driver) {
   const run = (...args) => driver.compose(prepared, ["run", "--rm", "--no-deps", ...args]);
   if (name === "dns") { run("dns", "named-checkconf", "/config/bind9.conf"); run("dns", "named-checkzone", prepared.composition.plan.effective_domain, "/var/cache/bind/" + prepared.zone.file); }
   if (name === "database") run("--entrypoint", "mariadbd", "database", "--defaults-extra-file=/config/mariadb.cnf", "--verbose", "--help");
-  if (name === "redis") run("--entrypoint", "/bin/sh", "redis", "-c", 'set -eu; umask 077; infra_password="$(cat /run/secrets/redis-auth)"; printf \'requirepass "%s"\\n\' "$infra_password" >/tmp/redis-auth.conf; redis-server /config/redis.conf --port 0 --unixsocket /tmp/redis-check.sock --dir /tmp --appendonly no --save "" --daemonize yes --pidfile /tmp/redis-check.pid --logfile /tmp/redis-check.log; REDISCLI_AUTH="$infra_password" redis-cli -s /tmp/redis-check.sock shutdown nosave');
+  // Daemonization returns before the socket necessarily accepts connections.
+  // Bound authenticated readiness before shutdown; invalid config still fails.
+  if (name === "redis") run("--entrypoint", "/bin/sh", "redis", "-c", 'set -eu; umask 077; infra_password="$(cat /run/secrets/redis-auth)"; printf \'requirepass "%s"\\n\' "$infra_password" >/tmp/redis-auth.conf; redis-server /config/redis.conf --port 0 --unixsocket /tmp/redis-check.sock --dir /tmp --appendonly no --save "" --daemonize yes --pidfile /tmp/redis-check.pid --logfile /tmp/redis-check.log; infra_attempt=0; until REDISCLI_AUTH="$infra_password" redis-cli -s /tmp/redis-check.sock ping >/dev/null 2>&1; do infra_attempt=$((infra_attempt+1)); [ "$infra_attempt" -lt 100 ] || exit 78; sleep 0.05; done; REDISCLI_AUTH="$infra_password" redis-cli -s /tmp/redis-check.sock shutdown nosave');
   if (name === "dkim") run("dkim", "-n", "-x", "/config/opendkim.conf");
   if (name === "mail") run("--entrypoint", "postconf", "mail", "-c", "/config", "-n");
   if (name === "gateway") run("gateway", "-t");
