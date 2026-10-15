@@ -175,3 +175,33 @@ remain: same-engine-version compatible rebuilds, no schema downgrade by image
 tag, cold coordinated owned-writer backups, no automatic trust/DHCP/resolver
 changes, no installed automatic renewal scheduler, single process-local transfer
 backend. No IL-4 testbox deployment or Oxymotion deployment was made.
+
+## Final guard validation and retry disclosure
+
+The complete clean-checkout command sequence above was repeated successfully
+at `adf56e04961c3974e0bd0ad481b1700a15d99c09`: 124 units, 17 gateway tests,
+17 service tests, 16 lifecycle tests, four HTTPS/job scenarios and packed-consumer
+audit. Counts are unchanged; these repeated runs are not added as new tests.
+
+The first fixture attempt against that revision stopped after its nine initial
+groups with `DOCKER_LIFECYCLE_COMMAND_FAILED`, before confirming interrupted
+rotation recovery. Resources were cleaned. The cause is not established;
+concurrent test execution is not proven causal. A sequential rerun with a
+temporary test-only error classifier passed all 25 groups, actual interrupted
+Redis rotation, three Chromium stages and isolated SQL/MFS/ACL recovery, with
+no Docker error classifier output. No production or kernel code was changed
+to make that retry pass. Treat the unreproduced command failure as an operational
+diagnostic limitation, not a silently discarded success.
+
+Final successful project: `drumee-il3-kernel-6faacb7e`, loopback HTTPS 45625/DNS
+36623; restored project used separate high ports. Owned resources were cleaned.
+The integrated archive's SRI is
+`sha512-yDUjkDIOotn3ujPV/zzWflwemWO/lEA1XYtharBZkWwH/Udc/ZBxK1Omzz0sxkvWhfPerIJwLpTYOxpD24XTlA==`.
+The final documentation archive at source
+`574a9307f57de813a54e678ccca3fa436fdf5076` has SRI
+`sha512-yQD6QsmHoI0sMtqCJvbPGwf5Nc527kpEJwsEbZkHwwAugfKqQnE5O/58yXSPfHmHLLxhbRyBXWZbeg2xnuxD1A==`.
+Archive comparison proves all runtime bytes identical; only PROVENANCE differs.
+The final archive also passes package audit/isolated consumer. Exact inventory,
+image IDs, commits and attempted-run disclosure are recorded in
+`IL-4-validation-evidence.json`. Both archives are private development alpha.1
+metadata, not registry alpha.1 and not release-qualified alpha.2.

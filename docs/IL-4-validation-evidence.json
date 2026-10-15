@@ -3,8 +3,8 @@
   "phase": "IL-4",
   "status": "INTEGRATION_BLOCKED",
   "release_qualified": false,
-  "source_commit": "759d0cc3e950cb4056d54f6bcb75044616be191d",
-  "runtime_implementation_commit": "2d1f6aa6774f70f1d3cfc00f47a94ecf4133e314",
+  "source_commit": "574a9307f57de813a54e678ccca3fa436fdf5076",
+  "runtime_implementation_commit": "adf56e04961c3974e0bd0ad481b1700a15d99c09",
   "debian_inventory_commit": "4382c96d3362ed9eadce67cb59b18aaeb5e00ed9",
   "debian_handoff_commit": "1fa0939d5c73cdc40b0fb4ac936b76aaa63e4e7e",
   "transient_sql_probe_commit": "96acf364841b7556e4bce34b96be592b6fc94a38",
@@ -14,6 +14,101 @@
     "reason": "Canonical first-operator enrollment and production-profile qualification outstanding"
   },
   "development_archive": {
+    "name": "@drumee/infra-layer",
+    "version": "0.1.0-alpha.1",
+    "filename": "drumee-infra-layer-0.1.0-alpha.1.tgz",
+    "integrity": "sha512-yQD6QsmHoI0sMtqCJvbPGwf5Nc527kpEJwsEbZkHwwAugfKqQnE5O/58yXSPfHmHLLxhbRyBXWZbeg2xnuxD1A==",
+    "shasum": "0ec90c7f238a2e44c693869560bca2bc2b2b4f83",
+    "files": [
+      "LICENSE",
+      "PROVENANCE.md",
+      "README.md",
+      "adapters/docker/nginx.js",
+      "adapters/docker/resources.js",
+      "adapters/docker/services.js",
+      "capabilities/database/index.js",
+      "capabilities/dns/index.js",
+      "capabilities/docker/Dockerfile.services",
+      "capabilities/http/nginx/index.js",
+      "capabilities/http/nginx/routes.js",
+      "capabilities/mail/index.js",
+      "capabilities/redis/index.js",
+      "capabilities/secrets/index.js",
+      "capabilities/tls/acme.js",
+      "capabilities/tls/index.js",
+      "index.d.ts",
+      "lib/contracts-v2.js",
+      "lib/diagnostics.js",
+      "lib/filesystem-safety.js",
+      "lib/index.js",
+      "lib/plan-v2.js",
+      "lib/plan.js",
+      "lib/rendering.js",
+      "lib/spec.js",
+      "lib/state-v2.js",
+      "lib/state.js",
+      "lib/validation.js",
+      "lifecycle/activation.js",
+      "lifecycle/composition.js",
+      "lifecycle/docker.js",
+      "lifecycle/index.d.ts",
+      "lifecycle/index.js",
+      "lifecycle/journal.js",
+      "lifecycle/preparation.js",
+      "lifecycle/recovery.js",
+      "lifecycle/transitions.js",
+      "package.json"
+    ],
+    "private": true,
+    "published": false,
+    "production_dependencies": []
+  },
+  "integration_archive": {
+    "source_commit": "adf56e04961c3974e0bd0ad481b1700a15d99c09",
+    "integrity": "sha512-yDUjkDIOotn3ujPV/zzWflwemWO/lEA1XYtharBZkWwH/Udc/ZBxK1Omzz0sxkvWhfPerIJwLpTYOxpD24XTlA==",
+    "runtime_bytes_identical_to_final": true,
+    "changed_files": [
+      "PROVENANCE.md"
+    ]
+  },
+  "tests": {
+    "infra_unit": 124,
+    "gateway_kernel_chromium": 17,
+    "native_services": 17,
+    "lifecycle": 16,
+    "https_scenarios": 4,
+    "runtime_capabilities": 68,
+    "standalone_finder": 31,
+    "fixture_unit": 4,
+    "sql_probe_including_parent": 7,
+    "debian_inventory": 8,
+    "debian_lightweight_checks": 330,
+    "fixture_grouped_checks": 25,
+    "fixture_chromium_stages": 3,
+    "actual_interrupted_redis_rotation_recovered": true,
+    "final_failures": 0,
+    "skips": 0
+  },
+  "registry": {
+    "versions": [
+      "0.0.0-stage",
+      "0.1.0-alpha.1"
+    ],
+    "dist_tags": {
+      "next": "0.1.0-alpha.1",
+      "latest": "0.1.0-alpha.1"
+    },
+    "unchanged": true
+  },
+  "remote_il4_tests_executed": false,
+  "permanent_deployment": false,
+  "oxymotion_deployed": false,
+  "blocker": {
+    "repository": "https://github.com/drumee/transient",
+    "path": "target/control-plane/bootstrap/lib/index.js",
+    "contract": "Canonical authorized first-human/operator enrollment; bootstrap currently creates reserved platform identities only"
+  },
+  "previous_development_archive": {
     "name": "@drumee/infra-layer",
     "version": "0.1.0-alpha.1",
     "filename": "drumee-infra-layer-0.1.0-alpha.1.tgz",
@@ -63,50 +158,37 @@
     "published": false,
     "production_dependencies": []
   },
-  "integration_archive": {
-    "source_commit": "2d1f6aa6774f70f1d3cfc00f47a94ecf4133e314",
-    "integrity": "sha512-epjbLJrHxjAT+7ayv1h0BDSlhU8p6KKuotsvgbQZxB+aOa1/sdn/VN1eSDLRA4zZVZQcplwH53Z0IOShLf2wIQ==",
-    "runtime_bytes_identical_to_final": true,
-    "changed_files": [
-      "PROVENANCE.md",
-      "README.md"
-    ]
+  "fixture_run": {
+    "project": "drumee-il3-kernel-6faacb7e",
+    "source_revision": "96acf364841b7556e4bce34b96be592b6fc94a38",
+    "composition_revision": "948dac13aa4461f8ccee491f9995128042bface8514d6da8f9633d221be433e7",
+    "image_id": "sha256:be1979c7d86da1be27279e0e2a8415249d2722d70640d6ce63afc74ddcf814a1",
+    "tools_id": "sha256:c84e29c6e4e931d9066cfc3f484abfc5b4f36ffdae694c30c546ed6fee35aea8",
+    "https_port": 45625,
+    "dns_port": 36623,
+    "binding": "127.0.0.1",
+    "real_kernel": true,
+    "interrupted_rotation_recovered": true,
+    "restart": true,
+    "isolated_recovery": true,
+    "owned_resources_cleaned": true,
+    "diagnostic_preload": "Temporary test-only child_process error classifier; no raw Docker error or argument logging; no behavior change on success"
   },
-  "tests": {
-    "infra_unit": 124,
-    "gateway_kernel_chromium": 17,
-    "native_services": 17,
-    "lifecycle": 16,
-    "https_scenarios": 4,
-    "runtime_capabilities": 68,
-    "standalone_finder": 31,
-    "fixture_unit": 4,
-    "sql_probe_including_parent": 7,
-    "debian_inventory": 8,
-    "debian_lightweight_checks": 330,
-    "fixture_grouped_checks": 25,
-    "fixture_chromium_stages": 3,
-    "actual_interrupted_redis_rotation_recovered": true,
-    "final_failures": 0,
-    "skips": 0
-  },
-  "registry": {
-    "versions": [
-      "0.0.0-stage",
-      "0.1.0-alpha.1"
-    ],
-    "dist_tags": {
-      "next": "0.1.0-alpha.1",
-      "latest": "0.1.0-alpha.1"
+  "failed_attempts": [
+    {
+      "suite": "IL-4 SQL probe initial run",
+      "cause": "Test-only expiry_time column typo",
+      "initial_tap_failed_including_parent": 2,
+      "resolution": "Use actual YellowPageStore.resolveOtak; 7/7 rerun passed"
     },
-    "unchanged": true
-  },
-  "remote_il4_tests_executed": false,
-  "permanent_deployment": false,
-  "oxymotion_deployed": false,
-  "blocker": {
-    "repository": "https://github.com/drumee/transient",
-    "path": "target/control-plane/bootstrap/lib/index.js",
-    "contract": "Canonical authorized first-human/operator enrollment; bootstrap currently creates reserved platform identities only"
-  }
+    {
+      "suite": "Fixture against adf56e0, first run",
+      "project": "drumee-il3-kernel-1c4ff3e4",
+      "code": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+      "stage": "After nine initial grouped checks; before rotation recovery confirmation",
+      "cause": "Unestablished; do not attribute to concurrency without evidence",
+      "owned_resources_cleaned": true,
+      "resolution": "Sequential diagnostic rerun passed all 25 groups, actual interruption and three browsers; no Docker failure classifier output"
+    }
+  ]
 }
