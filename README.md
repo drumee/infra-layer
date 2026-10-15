@@ -1,4 +1,14 @@
-# Drumee Infra Layer — IL-2 (unreleased)
+# Drumee Infra Layer — unreleased development
+
+## IL-4 distribution qualification
+
+IL-4 is **INTEGRATION_BLOCKED** on a canonical first-human/operator enrollment
+contract in the minimal-kernel control plane. The approved IL-3 fixture uses
+disposable acceptance identities and is not a normal installation policy.
+The current work corrects composition inventory normalization, preserves the
+existing API and records Debian's pinned dependency inventory and real SQL
+role investigation. See [the IL-4 report](docs/IL-4-release-qualification.md).
+No new npm release, image publication or release tag has been made.
 
 ## Unreleased IL-3 lifecycle work
 
@@ -12,7 +22,8 @@ The npm alpha still represents IL-1.1; this development tree is not published.
 The approved distribution boundary and qualified fixture are recorded in
 [the IL-3 kernel handoff](docs/IL-3-kernel-distribution-handoff.md).
 The fixture lives in transient; Infra Layer remains the canonical reusable
-infrastructure repository. No new npm release or IL-4 is authorized.
+infrastructure repository. IL-4 stabilization is authorized; package/image
+publication still requires separate owner approval.
 
 The five root functions retain their contracts. Explicit operations use:
 

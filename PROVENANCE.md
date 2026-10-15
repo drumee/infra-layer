@@ -151,3 +151,25 @@ which adds bounded authenticated Redis native-check readiness. That correction
 passes all 16 lifecycle tests, 123 units and package checks. No kernel SQL,
 authorization or runtime implementation was copied or modified here. The
 enclosing follow-up commit updates evidence/ownership documentation only.
+
+## IL-4 qualification checkpoint
+
+Starting revision: 6516c70349cc02bacffac565b5e103e660f970aa, main.
+The owner approved IL-4 stabilization, not npm/image/tag publication.
+070224b9048541f82ed819d65a458cc075b96d1f and
+2d1f6aa6774f70f1d3cfc00f47a94ecf4133e314 correct distribution resource
+normalization and preserve the historical infrastructure inventory prefix.
+No public API, contract version, SQL or kernel implementation changes.
+The new composition regression verifies deterministic permutation handling,
+input purity, self-verification, legacy inventory order and tamper rejection.
+
+Debian inventory checkpoint 4382c96d3362ed9eadce67cb59b18aaeb5e00ed9
+records approved transient fixture c5ee4591c87e7be2a7d91398cfcaa277787558e0
+and all locked artifacts. Transient SQL probe
+96acf364841b7556e4bce34b96be592b6fc94a38 uses real canonical bootstrap,
+authentication, Hub and MFS owners on disposable MariaDB. It demonstrates
+restricted runtime grants, while explicitly exposing the absent first-human
+enrollment contract. It does not introduce a production account initializer.
+IL-3 history and release provenance remain intact. See
+docs/IL-4-release-qualification.md for current tests, remaining qualification
+and the precise integration boundary.
