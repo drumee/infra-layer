@@ -46,6 +46,7 @@ function projectionRecords(composition) {
   }
   const database = composition.plan.inputs.spec.database;
   if (database?.mode === "managed") records.push({ ref: database.service_secret_ref, consumer: "database-client", target: "/run/secrets/database-service", format: "raw", uid: 0, gid: 0, path: "secrets/database-service.value", service: "database" });
+  for (const account of database?.accounts || []) records.push({ ref: account.secret_ref, consumer: "database-account", target: "/run/secrets/database-account-" + account.user, format: "raw", uid: 0, gid: 0, path: "secrets/database-account-" + account.user + ".value", service: "database" });
   return records;
 }
 function materializedCompose(composition, revision) {

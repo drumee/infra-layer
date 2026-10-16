@@ -39,6 +39,18 @@ test("full supplied kernel composition orders engine health, completed jobs, ker
   assert.equal(value.compose.services.kernel.depends_on.bootstrap.condition, "service_completed_successfully"); assert.equal(value.compose.services.kernel.depends_on.database.condition, "service_healthy"); assert.equal(value.compose.services.gateway.depends_on.kernel.condition, "service_healthy"); assert.equal(value.compose.services.bootstrap.restart, "no"); assert.equal(value.projections[0].consumer, "bootstrap");
   assert.deepEqual(value.activation_order, ["dns", "database", "redis", "bootstrap", "kernel", "gateway"]);
 });
+test("separate control-plane services retain private health, ownership and secret boundaries", () => {
+  const { plan, distribution } = kernelFixture();
+  distribution.services = [{ ...distribution.kernel, id: "provisioner", listener_ports: [3103], requires: ["database", "bootstrap"] }];
+  distribution.kernel.requires.push("provisioner");
+  const composition = composeDeployment(plan, distribution);
+  assert.deepEqual(composition.activation_order, ["dns", "database", "redis", "bootstrap", "provisioner", "kernel", "gateway"]);
+  assert.equal(composition.compose.services.provisioner.ports, undefined);
+  assert.equal(composition.compose.services.kernel.depends_on.provisioner.condition, "service_healthy");
+  assert.deepEqual(verifyComposition(composition), composition);
+  distribution.kernel.requires.pop();
+  assert.throws(() => composeDeployment(plan, distribution), { code: "KERNEL_DEPENDENCY_REQUIRED" });
+});
 test("duplicate service, invalid secret consumer, listener mismatch and missing dependency fail closed", () => {
   for (const mutate of [(value) => { value.kernel.id = "database"; }, (value) => { value.init_jobs[0].secret_mounts[0].consumer = "unrelated"; }, (value) => { value.kernel.listener_ports = [9000]; }, (value) => { value.kernel.requires = ["database"]; }, (value) => { value.init_jobs[0].requires = ["kernel"]; }, (value) => { value.kernel.environment = { PASSWORD: "DO-NOT-ECHO" }; }]) { const { plan, distribution } = kernelFixture(); mutate(distribution); assert.throws(() => composeDeployment(plan, distribution)); }
 });
