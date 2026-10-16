@@ -28,4 +28,6 @@ are normalized by username. These additions do not supply an identity API,
 authorization engine or second installer. Additional-account credential rotation
 remains unsupported and must fail closed; no new rotation policy is claimed.
 
-Qualification is in progress; this is not an npm release qualification claim.
+Qualification passed within the explicit Debian minimal container profile;
+see [IL-4R release review](IL-4R-release-candidate.md) for exact source, tarball
+integrity, counts, failed-attempt disclosure and limits. Nothing is published.
