@@ -64,7 +64,7 @@ export interface InfrastructureState {
 export type CapabilityName = "http-gateway" | "tls" | "dns" | "database" | "redis" | "smtp";
 export interface SecretDescriptor {
   ref: SecretRef;
-  type: "database-admin" | "database-service" | "redis-auth" | "tls-ca-key" | "tls-leaf-key" | "acme-account-key" | "acme-dns-credential" | "dkim-key" | "smtp-relay-credential" | "dns-tsig";
+  type: "database-admin" | "database-service" | "redis-auth" | "tls-ca-key" | "tls-leaf-key" | "acme-account-key" | "acme-dns-credential" | "dkim-key" | "smtp-relay-credential" | "dns-tsig" | "application-secret";
   consumers: string[];
 }
 export type DnsSpec = { mode: "none" | "localhost" } | {
@@ -98,7 +98,7 @@ export interface InfrastructureSpecV2 {
   dns: DnsSpec; secrets: { store_resource: string; resources: SecretDescriptor[] };
   tls?: TlsSpec; database?: DatabaseSpec; redis?: RedisSpec; mail?: MailSpec;
 }
-export interface KernelInfrastructureRequirementsV2 { contract_version: "2"; capabilities: CapabilityName[]; http?: KernelInfrastructureRequirements["http"] }
+export interface KernelInfrastructureRequirementsV2 { contract_version: "2"; capabilities: CapabilityName[]; http?: KernelInfrastructureRequirements["http"]; secret_refs?: SecretRef[] }
 export interface DockerServiceInput {
   image: string; uid: number; gid: number; listen_port: number; data_source?: string;
   bindings: { host_address: string; host_port: number; protocol: "tcp" | "udp" }[];

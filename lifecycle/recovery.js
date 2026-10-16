@@ -36,6 +36,7 @@ async function stopDeployment(prepared, context) {
 async function backupDeployment(root, directory, context) {
   const active = A.readActive(root); if (!active || context?.authorized !== true || context.quiescence !== "stop-owned-writers") F.fail("BACKUP_QUIESCENCE_CONTRACT_REQUIRED");
   const prepared = active.prepared; const driver = context.driver || D; P.verifyPrepared(prepared, { ...context, root }, driver);
+  if (prepared.composition.distribution.profile === "application" && prepared.compose.services.mail) F.fail("SMTP_RECOVERY_UNQUALIFIED");
   if (S.contains(root, directory) || S.contains(directory, root)) F.fail("UNSAFE_BACKUP_PATH"); F.privateDirectory(directory, true); if (fs.readdirSync(directory).length) F.fail("BACKUP_DESTINATION_OCCUPIED");
   let stopped = false; let result;
   try {
@@ -81,6 +82,7 @@ function validateBackup(directory, expected_schema_versions, context) {
 }
 async function restoreDeployment(directory, composition, context) {
   composition = require("./composition").verifyComposition(composition);
+  if (composition.distribution.profile === "application" && composition.compose.services.mail) F.fail("SMTP_RECOVERY_UNQUALIFIED");
   if (context?.authorized !== true || context.create_resources !== true || !S.resourcePath(context.root)) F.fail("RESTORE_OPERATION_NOT_AUTHORIZED");
   const manifest = validateBackup(directory, composition.distribution.schema_versions, context);
   if (composition.instance_id !== manifest.owner || composition.project === manifest.project || composition.plan.effective_domain !== manifest.composition.plan.effective_domain) F.fail("RESTORE_IDENTITY_MISMATCH");

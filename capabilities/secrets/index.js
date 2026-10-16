@@ -4,7 +4,7 @@ const path = require("node:path");
 const crypto = require("node:crypto");
 const S = require("../../lib/spec");
 const F = require("../../lib/filesystem-safety");
-const types = ["database-admin", "database-service", "redis-auth", "tls-ca-key", "tls-leaf-key", "acme-account-key", "acme-dns-credential", "dkim-key", "smtp-relay-credential", "dns-tsig"];
+const types = ["database-admin", "database-service", "redis-auth", "tls-ca-key", "tls-leaf-key", "acme-account-key", "acme-dns-credential", "dkim-key", "smtp-relay-credential", "dns-tsig", "application-secret"];
 function validRef(ref) { return S.plainTree(ref) && S.record(ref) && Object.keys(ref).length === 2 && S.identifier(ref.resource) && S.identifier(ref.key); }
 function descriptor(value) {
   return S.plainTree(value) && S.record(value) && Object.keys(value).every((key) => ["ref", "type", "consumers"].includes(key)) && validRef(value.ref) && types.includes(value.type) && Array.isArray(value.consumers) && value.consumers.length > 0 && value.consumers.every(S.identifier) && new Set(value.consumers).size === value.consumers.length;

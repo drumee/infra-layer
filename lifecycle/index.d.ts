@@ -4,16 +4,28 @@ export interface SuppliedService {
   id: string; image: string; uid: number; gid: number; command: string[]; entrypoint?: string[];
   environment?: Record<string, string>; requires: string[];
   mounts: { resource: string; target: string; read_only: boolean }[];
-  secret_mounts: { ref: SecretRef; consumer: string; target: string; format: "raw" | "redis-client-config" }[];
+  secret_mounts: { ref: SecretRef; consumer: string; target: string; format: "raw" | "redis-client-config" | "tls-ca-bundle" }[];
   listener_ports?: number[];
   healthcheck?: { test: string[]; interval?: string; timeout?: string; retries: number; start_period?: string };
   validation_command?: string[]; effect?: "idempotent"; artifact_revision?: string;
 }
 export interface Distribution {
-  contract_version: "1"; id: string; profile: "infrastructure" | "kernel";
+  contract_version: "1"; id: string; profile: "infrastructure" | "kernel" | "application";
   helper_image: string; kernel?: SuppliedService; services?: SuppliedService[]; init_jobs: SuppliedService[];
+  application?: SuppliedApplication; external_gateway?: ExternalGateway;
   persistent_resources: PersistentResource[]; schema_versions: Record<string, string>; external_writers: "none";
-  provenance: { repository: string; revision: string; path: string; acceptance: "infrastructure" | "contract-fixture" | "real-kernel" };
+  provenance: { repository: string; revision: string; path: string; acceptance: "infrastructure" | "contract-fixture" | "real-kernel" | "real-application" };
+}
+export interface ApplicationPlugin { id: string; root: string; revision: string }
+export interface SuppliedApplication extends SuppliedService { plugins: ApplicationPlugin[] }
+export interface ExternalGateway {
+  kind: "host-loopback"; protocol: "http"; host_address: "127.0.0.1";
+  host_port: number; container_port: number; route_prefix: "/-/"; rpc_prefix: "/-/svc/";
+  tls_termination: "external"; readiness_path: string;
+}
+export interface ApplicationObservation {
+  upstream: string; container_port: number; binding_address: "127.0.0.1"; host_port: number;
+  route_prefix: "/-/"; rpc_prefix: "/-/svc/"; tls_termination: "external"; protocol_functional: true;
 }
 export interface Composition {
   contract_version: "1"; revision: string; plan_revision: string; project: string; instance_id: string;
@@ -42,6 +54,7 @@ export interface DeploymentState {
   assurance?: "controlled-recreation-and-protocol-verification"; in_memory_config_measured?: false;
   services?: { service: string; container_id: string; protocol_functional: true }[];
   schema_versions?: Record<string, string>; certificate?: Record<string, unknown>;
+  application?: ApplicationObservation;
 }
 export function composeDeployment(plan: InfrastructurePlanV2, distribution: Distribution): Composition;
 export function prepareDeployment(composition: Composition, context: ExecutionContext): Promise<PreparedDeployment>;
