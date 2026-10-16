@@ -16,8 +16,11 @@ function checkedPlan(plan) {
 function composeDeployment(plan, distribution) {
   plan = checkedPlan(plan);
   if (!S.plainTree(distribution)) F.fail("INVALID_DISTRIBUTION_CONTRACT");
-  keys(distribution, ["contract_version", "id", "profile", "kernel", "services", "init_jobs", "persistent_resources", "schema_versions", "external_writers", "helper_image", "provenance"]);
-  if (distribution.contract_version !== "1" || !S.identifier(distribution.id) || !["infrastructure", "kernel"].includes(distribution.profile) || !image(distribution.helper_image) || !S.record(distribution.schema_versions) || distribution.external_writers !== "none" || !Array.isArray(distribution.init_jobs) || !Array.isArray(distribution.persistent_resources)) F.fail("INVALID_DISTRIBUTION_CONTRACT");
+  keys(distribution, ["contract_version", "id", "profile", "kernel", "services", "application", "external_gateway", "init_jobs", "persistent_resources", "schema_versions", "external_writers", "helper_image", "provenance"]);
+  if (distribution.contract_version !== "1" || !S.identifier(distribution.id) || !["infrastructure", "kernel", "application"].includes(distribution.profile) || !image(distribution.helper_image) || !S.record(distribution.schema_versions) || distribution.external_writers !== "none" || !Array.isArray(distribution.init_jobs) || !Array.isArray(distribution.persistent_resources)) F.fail("INVALID_DISTRIBUTION_CONTRACT");
+  const application_profile = distribution.profile === "application";
+  if (!application_profile && (distribution.application !== undefined || distribution.external_gateway !== undefined)) F.fail("APPLICATION_COMPOSITION_REQUIRED");
+  const external_gateway = application_profile ? require("./external-gateway").validate(distribution, plan) : null;
   if (Object.entries(distribution.schema_versions).some(([name, version]) => !S.identifier(name) || !S.identifier(version))) F.fail("INVALID_SCHEMA_COMPATIBILITY");
   if (distribution.services !== undefined && (!Array.isArray(distribution.services) || distribution.services.length > 16 || distribution.profile !== "kernel")) F.fail("INVALID_DISTRIBUTION_CONTRACT");
   keys(distribution.provenance, ["repository", "revision", "path", "acceptance"]);
@@ -50,8 +53,8 @@ function composeDeployment(plan, distribution) {
     resources.push({ ...resource, owner: plan.inputs.spec.instance.id, persistent: true, kind: "distribution-state" });
   }
   const projections = [];
-  function suppliedService(value, job) {
-    keys(value, ["id", "image", "uid", "gid", "command", "entrypoint", "environment", "mounts", "secret_mounts", "healthcheck", "listener_ports", "requires", "validation_command", "effect", "artifact_revision"]);
+  function suppliedService(value, job, application = false) {
+    keys(value, ["id", "image", "uid", "gid", "command", "entrypoint", "environment", "mounts", "secret_mounts", "healthcheck", "listener_ports", "requires", "validation_command", "effect", "artifact_revision", ...(application ? ["plugins"] : [])]);
     if (!S.identifier(value.id) || compose.services[value.id] || !image(value.image) || !Number.isInteger(value.uid) || value.uid <= 0 || !Number.isInteger(value.gid) || value.gid < 0 || !strings(value.command) || (value.entrypoint !== undefined && !strings(value.entrypoint)) || !Array.isArray(value.requires) || !Array.isArray(value.mounts) || !Array.isArray(value.secret_mounts)) F.fail(compose.services[value.id] ? "DUPLICATE_SERVICE_IDENTITY" : "INVALID_DISTRIBUTION_SERVICE");
     if (value.environment !== undefined && (!S.record(value.environment) || Object.entries(value.environment).some(([key, text]) => !/^[a-zA-Z_][a-zA-Z0-9_]{0,79}$/.test(key) || /password|secret|token|credential/i.test(key) || typeof text !== "string" || /[\x00\r\n]/.test(text)))) F.fail("SECRET_VALUE_FORBIDDEN");
     const volumes = [];
@@ -78,7 +81,7 @@ function composeDeployment(plan, distribution) {
       keys(value.healthcheck, ["test", "interval", "timeout", "retries", "start_period"]);
       if (["interval", "timeout", "start_period"].some((field) => value.healthcheck[field] !== undefined && !/^[1-9][0-9]{0,3}(?:ms|s|m)$/.test(value.healthcheck[field])) || !Number.isInteger(value.healthcheck.retries) || value.healthcheck.retries < 1 || value.healthcheck.retries > 100) F.fail("KERNEL_READINESS_CONTRACT_REQUIRED");
     }
-    return { image: value.image, user: `${value.uid}:${value.gid}`, command: value.command, ...(value.entrypoint ? { entrypoint: value.entrypoint } : {}), ...(value.environment ? { environment: value.environment } : {}), networks: ["kernel"], volumes, read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], tmpfs: [`/tmp:rw,noexec,nosuid,size=33554432,uid=${value.uid},gid=${value.gid},mode=0700`], mem_limit: "512m", pids_limit: 128, stop_grace_period: "30s", restart: job ? "no" : "unless-stopped", depends_on: dependencies, ...(job ? {} : { healthcheck: S.clone(value.healthcheck) }), labels: { "org.drumee.infra.owner": project, "org.drumee.infra.revision": plan.revision, "org.drumee.infra.role": job ? "initialization" : "kernel" } };
+    return { image: value.image, user: `${value.uid}:${value.gid}`, command: value.command, ...(value.entrypoint ? { entrypoint: value.entrypoint } : {}), ...(value.environment ? { environment: value.environment } : {}), networks: ["kernel"], volumes, read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], tmpfs: [`/tmp:rw,noexec,nosuid,size=33554432,uid=${value.uid},gid=${value.gid},mode=0700`], mem_limit: "512m", pids_limit: 128, stop_grace_period: "30s", restart: job ? "no" : "unless-stopped", depends_on: dependencies, ...(job ? {} : { healthcheck: S.clone(value.healthcheck) }), ...(application ? { ports: [require("./external-gateway").binding(external_gateway)] } : {}), labels: { "org.drumee.infra.owner": project, "org.drumee.infra.revision": plan.revision, "org.drumee.infra.role": job ? "initialization" : application ? "application" : "kernel" } };
   }
   const infra_order = ["dns", "database", "redis"].filter((name) => compose.services[name]); const jobs = [];
   for (const value of distribution.init_jobs) { compose.services[value.id] = suppliedService(value, true); jobs.push(value.id); }
@@ -91,6 +94,8 @@ function composeDeployment(plan, distribution) {
     for (const endpoint of [plan.inputs.requirements.http.service_endpoint, plan.inputs.requirements.http.page_endpoint, plan.inputs.requirements.http.websocket_endpoint]) if (endpoint.host !== kernel.id || !kernel.listener_ports.includes(endpoint.port)) F.fail("KERNEL_LISTENER_CONTRACT_MISMATCH");
     for (const name of [...infra_order.filter((name) => name !== "dns"), ...jobs, ...services]) if (!kernel.requires.includes(name)) F.fail("KERNEL_DEPENDENCY_REQUIRED");
     compose.services.gateway.depends_on = { [kernel.id]: { condition: "service_healthy" } };
+  } else if (application_profile) {
+    compose.services[distribution.application.id] = suppliedService(distribution.application, false, true);
   } else if (distribution.kernel !== undefined || distribution.init_jobs.length || plan.inputs.spec.http.enabled) F.fail("KERNEL_COMPOSITION_REQUIRED");
   if (compose.services.mail && compose.services.dkim) compose.services.mail.depends_on = { dkim: { condition: "service_healthy" } };
   const bindings = [];
@@ -102,7 +107,8 @@ function composeDeployment(plan, distribution) {
     }
     if (!image(service.image) || service.network_mode || service.privileged || !service.mem_limit || !service.pids_limit || !service.read_only) F.fail("UNSAFE_SERVICE_CONFIGURATION");
   }
-  const activation_order = [...infra_order, ...jobs, ...services, ...(distribution.kernel ? [distribution.kernel.id, "gateway"] : []), ...["dkim", "mail"].filter((name) => compose.services[name])];
+  const mail_order = ["dkim", "mail"].filter((name) => compose.services[name]);
+  const activation_order = application_profile ? [...infra_order, ...mail_order, ...jobs, distribution.application.id] : [...infra_order, ...jobs, ...services, ...(distribution.kernel ? [distribution.kernel.id, "gateway"] : []), ...mail_order];
   const normalized = S.clone(distribution); normalized.persistent_resources.sort((a, b) => S.lexical(a.id, b.id));
   const revision = S.digest({ plan_revision: plan.revision, distribution: normalized, compose });
   return { contract_version: "1", revision, plan_revision: plan.revision, project, instance_id: plan.inputs.spec.instance.id, plan, distribution: normalized, compose: S.canonical(compose), resources, projections, activation_order, shutdown_order: [...activation_order].reverse(), applicability: "validated-composition", acceptance: distribution.provenance.acceptance };

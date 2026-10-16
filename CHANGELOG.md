@@ -1,3 +1,10 @@
+# 0.1.0-alpha.3 — IL-5 development, unpublished
+
+- Add an explicitly private application distribution without a managed gateway.
+- Reuse native service, resource, secret and lifecycle contracts; retain legacy profiles.
+- Add application plugin inventory and explicit required secret references.
+- Reject unqualified application SMTP backup/restore. Qualification pending.
+
 # Changelog
 
 ## 0.1.0-alpha.2 — release candidate, unpublished
