@@ -24,7 +24,8 @@ function composeDeployment(plan, distribution) {
   if (Object.entries(distribution.schema_versions).some(([name, version]) => !S.identifier(name) || !S.identifier(version))) F.fail("INVALID_SCHEMA_COMPATIBILITY");
   if (distribution.services !== undefined && (!Array.isArray(distribution.services) || distribution.services.length > 16 || distribution.profile !== "kernel")) F.fail("INVALID_DISTRIBUTION_CONTRACT");
   keys(distribution.provenance, ["repository", "revision", "path", "acceptance"]);
-  if (typeof distribution.provenance.repository !== "string" || !/^https:\/\/github\.com\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+(?:\.git)?$/.test(distribution.provenance.repository) || !/^[a-f0-9]{40}$/.test(distribution.provenance.revision || "") || !["infrastructure", "contract-fixture", "real-kernel"].includes(distribution.provenance.acceptance) || typeof distribution.provenance.path !== "string" || !/^[a-zA-Z0-9_./-]+$/.test(distribution.provenance.path) || distribution.provenance.path.split("/").includes("..")) F.fail("INVALID_SOURCE_PROVENANCE");
+  if (typeof distribution.provenance.repository !== "string" || !/^https:\/\/github\.com\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+(?:\.git)?$/.test(distribution.provenance.repository) || !/^[a-f0-9]{40}$/.test(distribution.provenance.revision || "") || !["infrastructure", "contract-fixture", "real-kernel", "real-application"].includes(distribution.provenance.acceptance) || typeof distribution.provenance.path !== "string" || !/^[a-zA-Z0-9_./-]+$/.test(distribution.provenance.path) || distribution.provenance.path.split("/").includes("..")) F.fail("INVALID_SOURCE_PROVENANCE");
+  if (distribution.provenance.acceptance === "real-application" && !application_profile) F.fail("INVALID_SOURCE_PROVENANCE");
   const compose = { services: {}, networks: {} }; const project = plan.inputs.adapter_input.project;
   for (const artifact of plan.artifacts.filter((value) => value.path.endsWith(".compose.json"))) {
     const fragment = JSON.parse(artifact.content);
@@ -67,7 +68,8 @@ function composeDeployment(plan, distribution) {
     for (const mount of value.secret_mounts) {
       keys(mount, ["ref", "consumer", "target", "format"]);
       const descriptor = plan.required_secrets.find((entry) => S.serialize(entry.ref) === S.serialize(mount.ref));
-      if (!validRef(mount.ref) || !descriptor?.consumers.includes(mount.consumer) || !S.resourcePath(mount.target) || !["raw", "redis-client-config"].includes(mount.format)) F.fail("INVALID_SECRET_REFERENCE");
+      const public_ca = mount.format === "tls-ca-bundle" && !descriptor && plan.inputs.spec.tls && S.serialize(mount.ref) === S.serialize(plan.inputs.spec.tls.ca_bundle_ref) && mount.consumer === value.id;
+      if (!validRef(mount.ref) || !(public_ca || descriptor?.consumers.includes(mount.consumer)) || !S.resourcePath(mount.target) || !["raw", "redis-client-config", "tls-ca-bundle"].includes(mount.format) || mount.format === "tls-ca-bundle" && !public_ca) F.fail("INVALID_SECRET_REFERENCE");
       if (mount.format === "redis-client-config" && descriptor.type !== "redis-auth") F.fail("INVALID_SECRET_REFERENCE");
       const path = `secrets/${value.id}-${S.digest(mount).slice(0, 24)}.value`;
       projections.push({ ...mount, path, service: value.id, uid: value.uid, gid: value.gid }); volumes.push({ type: "bind", source: `./${path}`, target: mount.target, read_only: true, bind: { create_host_path: false } });

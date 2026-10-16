@@ -4,7 +4,7 @@ export interface SuppliedService {
   id: string; image: string; uid: number; gid: number; command: string[]; entrypoint?: string[];
   environment?: Record<string, string>; requires: string[];
   mounts: { resource: string; target: string; read_only: boolean }[];
-  secret_mounts: { ref: SecretRef; consumer: string; target: string; format: "raw" | "redis-client-config" }[];
+  secret_mounts: { ref: SecretRef; consumer: string; target: string; format: "raw" | "redis-client-config" | "tls-ca-bundle" }[];
   listener_ports?: number[];
   healthcheck?: { test: string[]; interval?: string; timeout?: string; retries: number; start_period?: string };
   validation_command?: string[]; effect?: "idempotent"; artifact_revision?: string;
@@ -14,7 +14,7 @@ export interface Distribution {
   helper_image: string; kernel?: SuppliedService; services?: SuppliedService[]; init_jobs: SuppliedService[];
   application?: SuppliedApplication; external_gateway?: ExternalGateway;
   persistent_resources: PersistentResource[]; schema_versions: Record<string, string>; external_writers: "none";
-  provenance: { repository: string; revision: string; path: string; acceptance: "infrastructure" | "contract-fixture" | "real-kernel" };
+  provenance: { repository: string; revision: string; path: string; acceptance: "infrastructure" | "contract-fixture" | "real-kernel" | "real-application" };
 }
 export interface ApplicationPlugin { id: string; root: string; revision: string }
 export interface SuppliedApplication extends SuppliedService { plugins: ApplicationPlugin[] }

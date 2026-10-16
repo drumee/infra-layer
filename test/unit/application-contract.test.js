@@ -59,6 +59,13 @@ test("SMTP/DKIM compose unchanged, private and before an explicitly dependent ap
   assert.deepEqual(Object.keys(result.compose.services.dkim.networks), ["mail-control"]); assert.equal(result.compose.networks["mail-control"].internal, true);
   for (const id of ["mail", "dkim"]) assert.equal((result.compose.services[id].ports || []).length, 0);
   assert.equal(result.compose.services.application.depends_on.mail.condition, "service_healthy");
+  const ca = { ref: smtp.spec.tls.ca_bundle_ref, consumer: "application", target: "/run/secrets/mail-ca", format: "tls-ca-bundle" };
+  value.distribution.application.secret_mounts = [ca];
+  assert.equal(compose(value).projections[0].format, "tls-ca-bundle");
+  ca.ref = smtp.spec.tls.private_key_ref; assert.throws(() => compose(value), { code: "INVALID_SECRET_REFERENCE" });
+  ca.ref = smtp.spec.tls.ca_bundle_ref; ca.consumer = "unrelated"; assert.throws(() => compose(value), { code: "INVALID_SECRET_REFERENCE" });
+  ca.consumer = "application"; ca.format = "raw"; assert.throws(() => compose(value), { code: "INVALID_SECRET_REFERENCE" });
+  ca.format = "tls-ca-bundle";
   value.requirements.capabilities = []; assert.throws(() => compose(value), { code: "APPLICATION_DEPENDENCY_REQUIREMENT" });
   value.distribution.application.requires = []; assert.deepEqual(compose(value).activation_order, ["dkim", "mail", "application"]);
 });

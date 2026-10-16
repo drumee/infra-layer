@@ -91,3 +91,19 @@ no unqualified engine/image downgrade is allowed.
 Public root functions/exports stay unchanged. New types are exported through
 the existing root/lifecycle declarations. The local development package will
 use alpha.3 and is not published by IL-5.
+
+## IL-5.2 integration clarification
+
+Actual SMTP client integration requires trust without leaking private keys. The
+existing projection pipeline now accepts `secret_mounts.format: tls-ca-bundle`
+only for the exact plan TLS ca_bundle_ref, for the service itself, and only when
+that reference is not a selected secret descriptor. It projects public CA PEM
+with existing canonical preparation; private/leaf-key references and unrelated
+consumers are rejected. No root secret store or HTTPS private key is mounted.
+
+For application profiles only, optional mail/DKIM process/protocol unavailability
+is diagnosed separately while verified application ingress remains ready. Image,
+mount, port and ownership violations still fail hard. Failed optional daemons
+are not listed as protocol-functional. Required SMTP remains a readiness gate.
+The additive provenance classification `real-application` distinguishes native
+application evidence from a full real-kernel/Hub/MFS qualification.
