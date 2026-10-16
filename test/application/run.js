@@ -45,7 +45,10 @@ async function main() {
   if (!process.env.IL5_NETWORK_CLIENT || !net.isIPv4(process.env.IL5_LAN_ADDRESS || "") || !process.env.IL5_HOST_NGINX) throw Error("EXPLICIT_NETWORK_AND_HOST_PROXY_REQUIRED");
   const project = "drumee-il5-" + crypto.randomBytes(4).toString("hex"), base = fs.mkdtempSync(path.join(os.tmpdir(), project + "-")); fs.chmodSync(base, 0o700);
   const root = path.join(base, "deployment"), port = await freePort(), values = resources(applicationInputs(root, project, undefined, port), root);
-  const report = { project, groups: [], assertions: 0, smtp_recovery: "explicitly-unsupported", internet_delivery: "not-tested", runtime_version: "0.1.0-alpha.4" };
+  const source_revision = command("git", ["rev-parse", "HEAD"], { cwd: path.resolve(__dirname, "../..") }).trim();
+  values.distribution.provenance.revision = source_revision;
+  for (const plugin of values.distribution.application.plugins) plugin.revision = source_revision;
+  const report = { project, source_revision, groups: [], assertions: 0, smtp_recovery: "explicitly-unsupported", internet_delivery: "not-tested", runtime_version: "0.1.0-alpha.4" };
   const step = async (name, fn) => { await fn(); report.groups.push(name); console.log("IL5_APPLICATION_OK " + name); };
   let image, tools, proxy, prepared, restored, smtp_prepared; const context = { root, authorized: true, create_resources: true };
   try {
@@ -79,7 +82,7 @@ async function main() {
     const backup = path.join(base, "backup");
     await step("complete-no-smtp-backup-and-isolated-restore", async () => {
       const receipt = await L.backupDeployment(root, backup, { ...context, quiescence: "stop-owned-writers", resume_after_backup: true }); assert.equal(receipt.protected, true);
-      const restored_root = path.join(base, "restored"), restored_port = await freePort(); const next = resources(applicationInputs(restored_root, project + "-restored", image.image, restored_port), restored_root); next.spec.instance.id = project;
+      const restored_root = path.join(base, "restored"), restored_port = await freePort(); const next = resources(applicationInputs(restored_root, project + "-restored", image.image, restored_port), restored_root); next.spec.instance.id = project; next.distribution.provenance.revision = source_revision; for (const plugin of next.distribution.application.plugins) plugin.revision = source_revision;
       const recovered = await L.restoreDeployment(backup, compose(next), { root: restored_root, authorized: true, create_resources: true }); restored = recovered.prepared; assert.equal(recovered.activated, false); assert.equal(recovered.kernel_recovery_verified, false); assert.equal(owned(restored).length, 0); assert.deepEqual(restored.fingerprints, initial.fingerprints); assert.equal((await L.activateDeployment(restored, { root: restored_root, authorized: true })).ready, true); assert.equal((await request(restored_port, "qualification.write")).body.data.count, 3);
       const changed = structuredClone(values.distribution); changed.application.image = helper; const candidate = await L.prepareDeployment(L.composeDeployment(values.plan(), changed), context);
       await assert.rejects(L.activateDeployment(candidate, { ...context, backup_evidence: { directory: backup, manifest_digest: receipt.manifest_digest } }), { code: "IMAGE_UPGRADE_COMPATIBILITY_UNVERIFIED" }); assert.equal((await request(port, "qualification.ping")).status, 200);
@@ -87,6 +90,7 @@ async function main() {
     await step("smtp-dkim-composition-starttls-and-actual-relay-denial", async () => {
       const tag = "drumee-il5-services:" + project; command("docker", ["build", "--label", "org.drumee.infra.owner=" + project, "-t", tag, "-f", "capabilities/docker/Dockerfile.services", "."], { cwd: path.resolve(__dirname, "../.."), stdio: "inherit" }); tools = { tag, image: command("docker", ["image", "inspect", tag, "--format", "{{.Id}}"]).trim() };
       const smtp_root = path.join(base, "smtp"), smtp_project = project + "-smtp", smtp_port = await freePort(); const value = resources(applicationInputs(smtp_root, smtp_project, image.image, smtp_port), smtp_root), supplied = serviceInputs(path.join(smtp_root, "durable"), smtp_project, tools.image);
+      value.distribution.provenance.revision = source_revision; for (const plugin of value.distribution.application.plugins) plugin.revision = source_revision;
       value.spec.instance.domain = "drumee.lan"; value.spec.tls = supplied.spec.tls; value.spec.mail = supplied.spec.mail; value.spec.mail.clients = ["127.0.0.1/32"]; value.spec.secrets.resources.push(...supplied.spec.secrets.resources);
       value.adapter_input.services = { mail: supplied.adapter_input.services.mail, dkim: supplied.adapter_input.services.dkim }; value.adapter_input.resource_sources = supplied.adapter_input.resource_sources;
       value.distribution.application.secret_mounts.push({ ref: supplied.keys.smtp, consumer: "application", target: "/run/secrets/submission", format: "raw" }, { ref: supplied.keys.ca_bundle, consumer: "application", target: "/run/secrets/mail-ca", format: "tls-ca-bundle" });
