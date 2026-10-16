@@ -18,6 +18,11 @@ actual plugin content. No generic RPC worker or ACL implementation is in Infra.
 Existing service command, entrypoint, non-secret environment, dependencies,
 resource mounts, authorized secret projections, healthcheck and listener fields
 retain validation. Application has one declared listener matching host ingress.
+The existing supplied-service policy applies: non-root process, read-only root,
+capabilities dropped, no-new-privileges, 512 MiB memory and 128 PID bounds, private
+32 MiB temporary storage, 30-second graceful stop. This extension does not add
+a separate CPU/memory allocator or change historical service-limit semantics.
+Persistent resources and their UID/GID/mount/backup mapping remain explicit.
 Reserved infrastructure identities cannot masquerade as applications. Supplied
 application services keep the existing private `kernel` network role; the name
 does not imply installation of kernel capabilities. Host networking is refused.
