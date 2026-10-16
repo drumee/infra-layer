@@ -3,7 +3,10 @@
 - Add an explicitly private application distribution without a managed gateway.
 - Reuse native service, resource, secret and lifecycle contracts; retain legacy profiles.
 - Add application plugin inventory and explicit required secret references.
-- Reject unqualified application SMTP backup/restore. Qualification pending.
+- Add CA-only SMTP trust projections without application access to issuer keys.
+- Reject unqualified application SMTP backup/restore; preserve cold no-SMTP recovery.
+- Record actual Runtime/host-proxy/network/recovery and installed-consumer evidence
+  separately from future SMTP Internet delivery and Oxy-form acceptance.
 
 # Changelog
 

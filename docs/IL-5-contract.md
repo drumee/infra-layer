@@ -1,8 +1,8 @@
 # IL-5.1 — application / external-gateway public contract
 
 Implemented: additive `Distribution.profile: application`, native supplied
-service reuse and an explicit private host ingress. Network/process qualification
-is pending; pure composition tests are not network acceptance.
+service reuse and an explicit private host ingress. Actual network/process evidence is recorded in [qualification](IL-5-qualification.md);
+pure composition tests are not used as network acceptance.
 
 ## Distribution
 

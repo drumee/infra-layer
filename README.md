@@ -6,7 +6,9 @@ This branch adds a canonical application profile behind an external host proxy,
 with strict loopback publication and no implicit gateway/DB/Redis/DNS. It reuses
 the lifecycle, supplied-service and secret contracts; Runtime and consumers remain
 unchanged. See [architecture](docs/IL-5-architecture.md) and
-[public contract](docs/IL-5-contract.md). Qualification is in progress.
+[public contract](docs/IL-5-contract.md), [qualification ledger](docs/IL-5-qualification.md)
+and [review handoff](docs/IL-5-release-handoff.md). The ledger distinguishes
+measured qualification from future consumer acceptance.
 Published alpha.2 remains the baseline and has not been overwritten.
 No npm/image publication, production operation or D0 execution is authorized.
 
