@@ -1,10 +1,11 @@
-# Drumee Infra Layer — unreleased development
+# Drumee Infra Layer — unpublished alpha.2 candidate
 
 ## IL-4 distribution qualification
 
-IL-4 is **INTEGRATION_BLOCKED** on a canonical first-human/operator enrollment
-contract in the minimal-kernel control plane. The approved IL-3 fixture uses
-disposable acceptance identities and is not a normal installation policy.
+KB-01B resolves the historical first-human/operator enrollment blocker. Debian
+now integrates the canonical capability with runtime alpha.4, isolated SQL roles
+and a private provisioner. IL-4R candidate qualification is in progress; the
+earlier blocked checkpoint remains documented as historical evidence.
 The current work corrects composition inventory normalization, preserves the
 existing API and records Debian's pinned dependency inventory and real SQL
 role investigation. See [the IL-4 report](docs/IL-4-release-qualification.md).
