@@ -1,10 +1,11 @@
-# Drumee Infra Layer — unreleased development
+# Drumee Infra Layer — unpublished alpha.2 candidate
 
 ## IL-4 distribution qualification
 
-IL-4 is **INTEGRATION_BLOCKED** on a canonical first-human/operator enrollment
-contract in the minimal-kernel control plane. The approved IL-3 fixture uses
-disposable acceptance identities and is not a normal installation policy.
+KB-01B resolves the historical first-human/operator enrollment blocker. Debian
+now integrates the canonical capability with runtime alpha.4, isolated SQL roles
+and a private provisioner. IL-4R candidate qualification is in progress; the
+earlier blocked checkpoint remains documented as historical evidence.
 The current work corrects composition inventory normalization, preserves the
 existing API and records Debian's pinned dependency inventory and real SQL
 role investigation. See [the IL-4 report](docs/IL-4-release-qualification.md).
@@ -394,3 +395,24 @@ offline into an isolated consumer. No test harness, historical kernel source,
 generated private key, executable ACME binary or production npm dependency is
 distributed. See the implementation/validation record in
 [docs/IL-2-infrastructure-services.md](docs/IL-2-infrastructure-services.md).
+# Alpha.2 candidate integration
+
+The unpublished `0.1.0-alpha.2` candidate contains the qualified-development
+lifecycle implementation; published alpha.1 does not. Full Debian qualification
+is still in progress. See `CHANGELOG.md` and `docs/IL-4R-isolation.md`.
+
+Managed `database.accounts` accepts additional `{ user, secret_ref }` principals
+with independent database-service resources authorizing `database-account`.
+Activation creates absent accounts and verifies credentials without resets or
+SQL grants. The distribution supplies its own scoped SQL grant policy.
+
+`Distribution.services` accepts private supplied services with mandatory health,
+explicit dependency ordering, scoped mounts and secret projections. This keeps
+provisioning credentials out of the ordinary kernel host. Services participate
+in lifecycle observation, stopping and coordinated recovery. No service may
+publish an additional application port through this contract.
+
+The Debian compatibility dependency remains explicitly
+`@drumee/server-runtime@0.1.0-alpha.4`, whose KB-01A authority is consumed by
+canonical KB-01B enrollment. Infra Layer does not implement those capabilities.
+

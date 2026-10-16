@@ -178,3 +178,26 @@ Final validation guard adf56e04961c3974e0bd0ad481b1700a15d99c09 validates
 resource records before canonical sorting. Null and non-string identities keep
 stable diagnostics, with no change to valid composition output or public API.
 The existing added regression also exercises both malformed-input cases.
+# IL-4R candidate integration
+
+The original first-human blocker recorded in the historical sections is resolved
+by canonical KB-01B at transient `59985d4a78e142b64f5976cc7460a723cca29a79`.
+Debian consumes published `@drumee/server-runtime@0.1.0-alpha.4`, source
+`f961f6214432c2e6dbbcde2b926544c076935950`, without changes to runtime or identity
+contracts. The original 213-artifact/71-file inventory is preserved; the additive
+Debian alignment records the current source and npm artifacts.
+
+Infra Layer integration correction `9d8462b428db8c8421579067e7cb53b46630d39e`
+starts from qualified `35fe3d0e6b6311d43940338b65a7e5ae74c0d222`. A reproduced
+single-account limitation required independently projected managed SQL accounts
+and private distribution services. Infra Layer owns their accounts, secret
+generations, composition, observation and coordinated recovery. Debian owns
+application SQL grants; the control plane owns all enrollment/provisioning SQL.
+No planner, identity implementation, session or ACL engine is copied into Debian.
+
+Candidate alpha.2 metadata and explicit CommonJS/lifecycle exports were prepared
+at `08605d96161b9cea4044e97f0924e8e8561084d3`. No npm publication, release tag,
+image publication or permanent deployment is performed. See
+`docs/IL-4R-isolation.md` and the Debian IL-4R validation ledger for qualification
+scope, artifact integrities, executed tests and outstanding operations.
+

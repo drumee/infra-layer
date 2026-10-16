@@ -1,8 +1,8 @@
 {
   "name": "@drumee/infra-layer",
-  "version": "0.1.0-alpha.1",
-  "private": true,
-  "description": "Unreleased IL-3 Docker infrastructure lifecycle; IL-1 and IL-2 contracts retained.",
+  "version": "0.1.0-alpha.2",
+  "private": false,
+  "description": "Docker infrastructure planning, secret projections, isolated application composition and lifecycle recovery.",
   "license": "AGPL-3.0-only",
   "type": "commonjs",
   "main": "lib/index.js",
@@ -23,7 +23,8 @@
     "index.d.ts",
     "README.md",
     "LICENSE",
-    "PROVENANCE.md"
+    "PROVENANCE.md",
+    "CHANGELOG.md"
   ],
   "publishConfig": {
     "access": "public",
@@ -49,5 +50,29 @@
     "redis": "4.7.1",
     "smtp-server": "3.19.22",
     "websocket": "1.0.35"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./lifecycle": {
+      "types": "./lifecycle/index.d.ts",
+      "require": "./lifecycle/index.js",
+      "default": "./lifecycle/index.js"
+    },
+    "./lifecycle/*": "./lifecycle/*.js",
+    "./lib/*": "./lib/*.js",
+    "./adapters/docker/*": "./adapters/docker/*.js",
+    "./capabilities/secrets": "./capabilities/secrets/index.js",
+    "./capabilities/tls": "./capabilities/tls/index.js",
+    "./capabilities/dns": "./capabilities/dns/index.js",
+    "./capabilities/database": "./capabilities/database/index.js",
+    "./capabilities/redis": "./capabilities/redis/index.js",
+    "./capabilities/mail": "./capabilities/mail/index.js",
+    "./capabilities/http/nginx": "./capabilities/http/nginx/index.js",
+    "./capabilities/tls/acme": "./capabilities/tls/acme.js"
   }
 }

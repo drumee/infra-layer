@@ -83,7 +83,7 @@ export type TlsSpec = {
   dns_provider: "cloudflare"; email: string;
 });
 export type DatabaseSpec = { endpoint: Endpoint; engine_series: "11.4"; service_user: string; service_secret_ref: SecretRef } &
-  ({ mode: "external" } | { mode: "managed"; admin_secret_ref: SecretRef; state_resource: string; initialize: boolean });
+  ({ mode: "external" } | { mode: "managed"; admin_secret_ref: SecretRef; state_resource: string; initialize: boolean; accounts?: { user: string; secret_ref: SecretRef }[] });
 export type RedisSpec = { endpoint: Endpoint; auth_secret_ref: SecretRef } &
   ({ mode: "external"; persistence: "ephemeral" | "aof" } | { mode: "managed"; persistence: "ephemeral" } | { mode: "managed"; persistence: "aof"; state_resource: string });
 export interface MailSpec {

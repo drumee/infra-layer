@@ -32,10 +32,14 @@ function provisionAccount(prepared, driver) {
   const query = (sql) => exec(prepared, "database", driver, "/bin/sh", "-c", 'MYSQL_PWD="$(cat /run/secrets/database-admin)" exec mariadb --protocol=socket -uroot --batch --skip-column-names -e "$1"', "infra-account", sql);
   if (!/^11\.4\./.test(query("SELECT VERSION()").trim())) F.fail("DATABASE_ENGINE_INCOMPATIBLE");
   if (query("SELECT @@general_log, @@log_bin").trim() !== "0\t0") F.fail("DATABASE_CREDENTIAL_LOGGING_UNSAFE");
-  // The password stays inside the owned container, never in command arguments.
-  exec(prepared, "database", driver, "/bin/sh", "-c", `set -eu; infra_password="$(cat /run/secrets/database-service)"; case "$infra_password" in *[!A-Za-z0-9_+=.:/@-]*|"") exit 78;; esac; export MYSQL_PWD="$(cat /run/secrets/database-admin)"; if [ "$(mariadb --protocol=socket -uroot --batch --skip-column-names -e "SELECT COUNT(*) FROM mysql.user WHERE User='${config.service_user}' AND Host='%'")" = 0 ]; then printf "CREATE USER '${config.service_user}'@'%%' IDENTIFIED BY '%s';\\n" "$infra_password" | mariadb --protocol=socket -uroot --batch; fi`);
-  const response = exec(prepared, "database", driver, "/bin/sh", "-c", `MYSQL_PWD="$(cat /run/secrets/database-service)" exec mariadb -h127.0.0.1 -u${config.service_user} --batch --skip-column-names -e 'SELECT 1'`);
-  if (response.trim() !== "1") F.fail("DATABASE_SERVICE_AUTHENTICATION_FAILED");
+  // No grants here: SQL authorization belongs to the distribution's schema jobs.
+  // Passwords stay inside the owned database container, never in arguments.
+  const accounts = [{ user: config.service_user, file: "/run/secrets/database-service" }, ...(config.accounts || []).map(value => ({ user: value.user, file: "/run/secrets/database-account-" + value.user }))];
+  for (const account of accounts) {
+    exec(prepared, "database", driver, "/bin/sh", "-c", `set -eu; infra_password="$(cat ${account.file})"; case "$infra_password" in *[!A-Za-z0-9_+=.:/@-]*|"") exit 78;; esac; export MYSQL_PWD="$(cat /run/secrets/database-admin)"; if [ "$(mariadb --protocol=socket -uroot --batch --skip-column-names -e "SELECT COUNT(*) FROM mysql.user WHERE User='${account.user}' AND Host='%'")" = 0 ]; then printf "CREATE USER '${account.user}'@'%%' IDENTIFIED BY '%s';\\n" "$infra_password" | mariadb --protocol=socket -uroot --batch; fi`);
+    const response = exec(prepared, "database", driver, "/bin/sh", "-c", `MYSQL_PWD="$(cat ${account.file})" exec mariadb -h127.0.0.1 -u${account.user} --batch --skip-column-names -e 'SELECT 1'`);
+    if (response.trim() !== "1") F.fail("DATABASE_SERVICE_AUTHENTICATION_FAILED");
+  }
 }
 function protocolCheck(prepared, name, driver) {
   const spec = prepared.composition.plan.inputs.spec;
@@ -53,8 +57,10 @@ function protocolCheck(prepared, name, driver) {
     const authentication = spec.mail.submission_secret_ref ? `infra_auth="$(printf '\\0${spec.mail.submission_user}\\0%s' "$(cat /run/secrets/mail-submission)" | openssl base64 -A)"; printf 'EHLO infrastructure\\r\\nAUTH PLAIN %s\\r\\nQUIT\\r\\n' "$infra_auth"` : "printf 'EHLO infrastructure\\r\\nQUIT\\r\\n'";
     const response = exec(prepared, name, driver, "/bin/sh", "-c", `{ ${authentication}; } | openssl s_client -starttls smtp -connect 127.0.0.1:${spec.mail.endpoint.port} -servername ${spec.mail.hostname} -CAfile /run/secrets/mail-ca -verify_return_error -quiet`);
     if (spec.mail.submission_secret_ref ? !/(?:^|\n)235 /.test(response) : !/(?:^|\n)250/.test(response)) F.fail("SMTP_PROTOCOL_FAILED");
-  } else if (prepared.composition.distribution.kernel?.id === name) {
-    const health = prepared.composition.distribution.kernel.healthcheck.test.slice(1); exec(prepared, name, driver, ...health);
+  } else {
+    const service = [prepared.composition.distribution.kernel, ...(prepared.composition.distribution.services || [])].find(value => value?.id === name);
+    if (!service) F.fail("FUNCTIONAL_READINESS_FAILED");
+    exec(prepared, name, driver, ...service.healthcheck.test.slice(1));
   }
 }
 async function httpsCheck(prepared) {

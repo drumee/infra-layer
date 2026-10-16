@@ -11,7 +11,7 @@ export interface SuppliedService {
 }
 export interface Distribution {
   contract_version: "1"; id: string; profile: "infrastructure" | "kernel";
-  helper_image: string; kernel?: SuppliedService; init_jobs: SuppliedService[];
+  helper_image: string; kernel?: SuppliedService; services?: SuppliedService[]; init_jobs: SuppliedService[];
   persistent_resources: PersistentResource[]; schema_versions: Record<string, string>; external_writers: "none";
   provenance: { repository: string; revision: string; path: string; acceptance: "infrastructure" | "contract-fixture" | "real-kernel" };
 }

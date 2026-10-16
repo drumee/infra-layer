@@ -1,6 +1,10 @@
 # IL-4 distribution stabilization checkpoint
 
-Status: **IL-4 — INTEGRATION_BLOCKED**. IL-3 remains approved for its documented
+Historical checkpoint, superseded by [IL-4R release review](IL-4R-release-candidate.md).
+The canonical KB-01B boundary is resolved and final integration passed; the
+original checkpoint evidence below is retained unchanged.
+
+Historical status: **IL-4 — INTEGRATION_BLOCKED**. IL-3 remains approved for its documented
 minimal disposable Docker profile. This report does not promote that fixture
 to a production installation.
 

@@ -16,9 +16,10 @@ function checkedPlan(plan) {
 function composeDeployment(plan, distribution) {
   plan = checkedPlan(plan);
   if (!S.plainTree(distribution)) F.fail("INVALID_DISTRIBUTION_CONTRACT");
-  keys(distribution, ["contract_version", "id", "profile", "kernel", "init_jobs", "persistent_resources", "schema_versions", "external_writers", "helper_image", "provenance"]);
+  keys(distribution, ["contract_version", "id", "profile", "kernel", "services", "init_jobs", "persistent_resources", "schema_versions", "external_writers", "helper_image", "provenance"]);
   if (distribution.contract_version !== "1" || !S.identifier(distribution.id) || !["infrastructure", "kernel"].includes(distribution.profile) || !image(distribution.helper_image) || !S.record(distribution.schema_versions) || distribution.external_writers !== "none" || !Array.isArray(distribution.init_jobs) || !Array.isArray(distribution.persistent_resources)) F.fail("INVALID_DISTRIBUTION_CONTRACT");
   if (Object.entries(distribution.schema_versions).some(([name, version]) => !S.identifier(name) || !S.identifier(version))) F.fail("INVALID_SCHEMA_COMPATIBILITY");
+  if (distribution.services !== undefined && (!Array.isArray(distribution.services) || distribution.services.length > 16 || distribution.profile !== "kernel")) F.fail("INVALID_DISTRIBUTION_CONTRACT");
   keys(distribution.provenance, ["repository", "revision", "path", "acceptance"]);
   if (typeof distribution.provenance.repository !== "string" || !/^https:\/\/github\.com\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+(?:\.git)?$/.test(distribution.provenance.repository) || !/^[a-f0-9]{40}$/.test(distribution.provenance.revision || "") || !["infrastructure", "contract-fixture", "real-kernel"].includes(distribution.provenance.acceptance) || typeof distribution.provenance.path !== "string" || !/^[a-zA-Z0-9_./-]+$/.test(distribution.provenance.path) || distribution.provenance.path.split("/").includes("..")) F.fail("INVALID_SOURCE_PROVENANCE");
   const compose = { services: {}, networks: {} }; const project = plan.inputs.adapter_input.project;
@@ -81,12 +82,14 @@ function composeDeployment(plan, distribution) {
   }
   const infra_order = ["dns", "database", "redis"].filter((name) => compose.services[name]); const jobs = [];
   for (const value of distribution.init_jobs) { compose.services[value.id] = suppliedService(value, true); jobs.push(value.id); }
+  const services = [];
+  for (const value of distribution.services || []) { compose.services[value.id] = suppliedService(value, false); services.push(value.id); }
   if (distribution.profile === "kernel") {
     if (!distribution.kernel || !plan.inputs.spec.http.enabled) F.fail("KERNEL_COMPOSITION_REQUIRED");
     compose.services[distribution.kernel.id] = suppliedService(distribution.kernel, false);
     const kernel = distribution.kernel;
     for (const endpoint of [plan.inputs.requirements.http.service_endpoint, plan.inputs.requirements.http.page_endpoint, plan.inputs.requirements.http.websocket_endpoint]) if (endpoint.host !== kernel.id || !kernel.listener_ports.includes(endpoint.port)) F.fail("KERNEL_LISTENER_CONTRACT_MISMATCH");
-    for (const name of [...infra_order.filter((name) => name !== "dns"), ...jobs]) if (!kernel.requires.includes(name)) F.fail("KERNEL_DEPENDENCY_REQUIRED");
+    for (const name of [...infra_order.filter((name) => name !== "dns"), ...jobs, ...services]) if (!kernel.requires.includes(name)) F.fail("KERNEL_DEPENDENCY_REQUIRED");
     compose.services.gateway.depends_on = { [kernel.id]: { condition: "service_healthy" } };
   } else if (distribution.kernel !== undefined || distribution.init_jobs.length || plan.inputs.spec.http.enabled) F.fail("KERNEL_COMPOSITION_REQUIRED");
   if (compose.services.mail && compose.services.dkim) compose.services.mail.depends_on = { dkim: { condition: "service_healthy" } };
@@ -99,7 +102,7 @@ function composeDeployment(plan, distribution) {
     }
     if (!image(service.image) || service.network_mode || service.privileged || !service.mem_limit || !service.pids_limit || !service.read_only) F.fail("UNSAFE_SERVICE_CONFIGURATION");
   }
-  const activation_order = [...infra_order, ...jobs, ...(distribution.kernel ? [distribution.kernel.id, "gateway"] : []), ...["dkim", "mail"].filter((name) => compose.services[name])];
+  const activation_order = [...infra_order, ...jobs, ...services, ...(distribution.kernel ? [distribution.kernel.id, "gateway"] : []), ...["dkim", "mail"].filter((name) => compose.services[name])];
   const normalized = S.clone(distribution); normalized.persistent_resources.sort((a, b) => S.lexical(a.id, b.id));
   const revision = S.digest({ plan_revision: plan.revision, distribution: normalized, compose });
   return { contract_version: "1", revision, plan_revision: plan.revision, project, instance_id: plan.inputs.spec.instance.id, plan, distribution: normalized, compose: S.canonical(compose), resources, projections, activation_order, shutdown_order: [...activation_order].reverse(), applicability: "validated-composition", acceptance: distribution.provenance.acceptance };
