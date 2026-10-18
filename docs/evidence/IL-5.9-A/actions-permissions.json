@@ -1,0 +1,9 @@
+{
+  "endpoint": "repos/drumee/infra-layer/actions/permissions",
+  "exit_code": 1,
+  "result": {
+    "message": "Resource not accessible by personal access token",
+    "documentation_url": "https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository",
+    "status": "403"
+  }
+}
