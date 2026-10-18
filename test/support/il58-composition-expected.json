@@ -1,0 +1,130 @@
+[
+  {
+    "name": "minimal",
+    "digest": "abe1e83bde0027bdace0c01a900be596fa5c80ec99551b0787f4216930c26118"
+  },
+  {
+    "name": "plugin-key-order",
+    "digest": "abe1e83bde0027bdace0c01a900be596fa5c80ec99551b0787f4216930c26118"
+  },
+  {
+    "name": "smtp-dependent-ca",
+    "digest": "63cb0ab0e28db09f6769f12876936d81113fc159589002b1a755ad2a975f512b"
+  },
+  {
+    "name": "ordered-mounts-and-secrets",
+    "digest": "6c37fc27524fcd8c39c58b8475c482b6348ded53061cb708075aa49977f1c070"
+  },
+  {
+    "name": "uid",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "gid",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "image",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "command",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "entrypoint",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "environment",
+    "error": "SECRET_VALUE_FORBIDDEN"
+  },
+  {
+    "name": "resource",
+    "error": "UNDECLARED_RESOURCE_MOUNT"
+  },
+  {
+    "name": "secret",
+    "error": "INVALID_SECRET_REFERENCE"
+  },
+  {
+    "name": "dependency",
+    "error": "INVALID_DEPENDENCY_ORDERING"
+  },
+  {
+    "name": "healthcheck",
+    "error": "KERNEL_READINESS_CONTRACT_REQUIRED"
+  },
+  {
+    "name": "health-interval",
+    "error": "KERNEL_READINESS_CONTRACT_REQUIRED"
+  },
+  {
+    "name": "health-retries",
+    "error": "KERNEL_READINESS_CONTRACT_REQUIRED"
+  },
+  {
+    "name": "extra-plugin",
+    "error": "INVALID_APPLICATION_PLUGINS"
+  },
+  {
+    "name": "missing-plugin",
+    "error": "INVALID_APPLICATION_PLUGINS"
+  },
+  {
+    "name": "precedence-uid",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "precedence-gid",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "precedence-image",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "precedence-command",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "precedence-entrypoint",
+    "error": "INVALID_DISTRIBUTION_SERVICE"
+  },
+  {
+    "name": "precedence-environment",
+    "error": "SECRET_VALUE_FORBIDDEN"
+  },
+  {
+    "name": "precedence-resource",
+    "error": "SECRET_VALUE_FORBIDDEN"
+  },
+  {
+    "name": "precedence-secret",
+    "error": "SECRET_VALUE_FORBIDDEN"
+  },
+  {
+    "name": "precedence-dependency",
+    "error": "SECRET_VALUE_FORBIDDEN"
+  },
+  {
+    "name": "precedence-healthcheck",
+    "error": "SECRET_VALUE_FORBIDDEN"
+  },
+  {
+    "name": "precedence-health-interval",
+    "error": "SECRET_VALUE_FORBIDDEN"
+  },
+  {
+    "name": "precedence-health-retries",
+    "error": "SECRET_VALUE_FORBIDDEN"
+  },
+  {
+    "name": "precedence-extra-plugin",
+    "error": "INVALID_APPLICATION_PLUGINS"
+  },
+  {
+    "name": "precedence-missing-plugin",
+    "error": "INVALID_APPLICATION_PLUGINS"
+  }
+]

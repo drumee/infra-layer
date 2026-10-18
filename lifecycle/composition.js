@@ -13,6 +13,40 @@ function checkedPlan(plan) {
   if (!expected.applicable || expected.revision !== plan.revision || S.serialize(expected) !== S.serialize(plan)) F.fail("DEPLOYMENT_PLAN_TAMPERED");
   return expected;
 }
+function suppliedVolumes(value, resources, plan, projections) {
+  const volumes = [];
+  for (const mount of value.mounts) {
+    keys(mount, ["resource", "target", "read_only"]);
+    const resource = resources.find((entry) => entry.id === mount.resource);
+    if (!resource || !S.resourcePath(mount.target) || typeof mount.read_only !== "boolean" || ["/var/run/docker.sock", "/run/docker.sock"].includes(mount.target)) F.fail("UNDECLARED_RESOURCE_MOUNT");
+    volumes.push({ type: "bind", source: resource.source, target: mount.target, read_only: mount.read_only, bind: { create_host_path: false } });
+  }
+  appendSecretVolumes(value, plan, projections, volumes);
+  return volumes;
+}
+function appendSecretVolumes(value, plan, projections, volumes) {
+  for (const mount of value.secret_mounts) {
+    keys(mount, ["ref", "consumer", "target", "format"]);
+    const descriptor = plan.required_secrets.find((entry) => S.serialize(entry.ref) === S.serialize(mount.ref));
+    const public_ca = mount.format === "tls-ca-bundle" && !descriptor && plan.inputs.spec.tls && S.serialize(mount.ref) === S.serialize(plan.inputs.spec.tls.ca_bundle_ref) && mount.consumer === value.id;
+    if (!validRef(mount.ref) || !(public_ca || descriptor?.consumers.includes(mount.consumer)) || !S.resourcePath(mount.target) || !["raw", "redis-client-config", "tls-ca-bundle"].includes(mount.format) || mount.format === "tls-ca-bundle" && !public_ca) F.fail("INVALID_SECRET_REFERENCE");
+    if (mount.format === "redis-client-config" && descriptor.type !== "redis-auth") F.fail("INVALID_SECRET_REFERENCE");
+    const path = `secrets/${value.id}-${S.digest(mount).slice(0, 24)}.value`;
+    projections.push({ ...mount, path, service: value.id, uid: value.uid, gid: value.gid }); volumes.push({ type: "bind", source: `./${path}`, target: mount.target, read_only: true, bind: { create_host_path: false } });
+  }
+}
+function validateServiceIdentity(value, compose, application) {
+  keys(value, ["id", "image", "uid", "gid", "command", "entrypoint", "environment", "mounts", "secret_mounts", "healthcheck", "listener_ports", "requires", "validation_command", "effect", "artifact_revision", ...(application ? ["plugins"] : [])]);
+  if (!S.identifier(value.id) || compose.services[value.id] || !image(value.image) || !Number.isInteger(value.uid) || value.uid <= 0 || !Number.isInteger(value.gid) || value.gid < 0 || !strings(value.command) || (value.entrypoint !== undefined && !strings(value.entrypoint)) || !Array.isArray(value.requires) || !Array.isArray(value.mounts) || !Array.isArray(value.secret_mounts)) F.fail(compose.services[value.id] ? "DUPLICATE_SERVICE_IDENTITY" : "INVALID_DISTRIBUTION_SERVICE");
+  if (value.environment !== undefined && (!S.record(value.environment) || Object.entries(value.environment).some(([key, text]) => !/^[a-zA-Z_][a-zA-Z0-9_]{0,79}$/.test(key) || /password|secret|token|credential/i.test(key) || typeof text !== "string" || /[\x00\r\n]/.test(text)))) F.fail("SECRET_VALUE_FORBIDDEN");
+}
+function validateServiceReadiness(value, job) {
+  if (!job && (!S.record(value.healthcheck) || !Array.isArray(value.healthcheck.test) || value.healthcheck.test[0] !== "CMD" || !strings(value.healthcheck.test) || !Array.isArray(value.listener_ports) || value.listener_ports.some((port) => !S.port(port) || port < 1024))) F.fail("KERNEL_READINESS_CONTRACT_REQUIRED");
+  if (value.healthcheck) {
+    keys(value.healthcheck, ["test", "interval", "timeout", "retries", "start_period"]);
+    if (["interval", "timeout", "start_period"].some((field) => value.healthcheck[field] !== undefined && !/^[1-9][0-9]{0,3}(?:ms|s|m)$/.test(value.healthcheck[field])) || !Number.isInteger(value.healthcheck.retries) || value.healthcheck.retries < 1 || value.healthcheck.retries > 100) F.fail("KERNEL_READINESS_CONTRACT_REQUIRED");
+  }
+}
 function composeDeployment(plan, distribution) {
   plan = checkedPlan(plan);
   if (!S.plainTree(distribution)) F.fail("INVALID_DISTRIBUTION_CONTRACT");
@@ -55,35 +89,17 @@ function composeDeployment(plan, distribution) {
   }
   const projections = [];
   function suppliedService(value, job, application = false) {
-    keys(value, ["id", "image", "uid", "gid", "command", "entrypoint", "environment", "mounts", "secret_mounts", "healthcheck", "listener_ports", "requires", "validation_command", "effect", "artifact_revision", ...(application ? ["plugins"] : [])]);
-    if (!S.identifier(value.id) || compose.services[value.id] || !image(value.image) || !Number.isInteger(value.uid) || value.uid <= 0 || !Number.isInteger(value.gid) || value.gid < 0 || !strings(value.command) || (value.entrypoint !== undefined && !strings(value.entrypoint)) || !Array.isArray(value.requires) || !Array.isArray(value.mounts) || !Array.isArray(value.secret_mounts)) F.fail(compose.services[value.id] ? "DUPLICATE_SERVICE_IDENTITY" : "INVALID_DISTRIBUTION_SERVICE");
-    if (value.environment !== undefined && (!S.record(value.environment) || Object.entries(value.environment).some(([key, text]) => !/^[a-zA-Z_][a-zA-Z0-9_]{0,79}$/.test(key) || /password|secret|token|credential/i.test(key) || typeof text !== "string" || /[\x00\r\n]/.test(text)))) F.fail("SECRET_VALUE_FORBIDDEN");
-    const volumes = [];
-    for (const mount of value.mounts) {
-      keys(mount, ["resource", "target", "read_only"]);
-      const resource = resources.find((entry) => entry.id === mount.resource);
-      if (!resource || !S.resourcePath(mount.target) || typeof mount.read_only !== "boolean" || ["/var/run/docker.sock", "/run/docker.sock"].includes(mount.target)) F.fail("UNDECLARED_RESOURCE_MOUNT");
-      volumes.push({ type: "bind", source: resource.source, target: mount.target, read_only: mount.read_only, bind: { create_host_path: false } });
-    }
-    for (const mount of value.secret_mounts) {
-      keys(mount, ["ref", "consumer", "target", "format"]);
-      const descriptor = plan.required_secrets.find((entry) => S.serialize(entry.ref) === S.serialize(mount.ref));
-      const public_ca = mount.format === "tls-ca-bundle" && !descriptor && plan.inputs.spec.tls && S.serialize(mount.ref) === S.serialize(plan.inputs.spec.tls.ca_bundle_ref) && mount.consumer === value.id;
-      if (!validRef(mount.ref) || !(public_ca || descriptor?.consumers.includes(mount.consumer)) || !S.resourcePath(mount.target) || !["raw", "redis-client-config", "tls-ca-bundle"].includes(mount.format) || mount.format === "tls-ca-bundle" && !public_ca) F.fail("INVALID_SECRET_REFERENCE");
-      if (mount.format === "redis-client-config" && descriptor.type !== "redis-auth") F.fail("INVALID_SECRET_REFERENCE");
-      const path = `secrets/${value.id}-${S.digest(mount).slice(0, 24)}.value`;
-      projections.push({ ...mount, path, service: value.id, uid: value.uid, gid: value.gid }); volumes.push({ type: "bind", source: `./${path}`, target: mount.target, read_only: true, bind: { create_host_path: false } });
-    }
+    validateServiceIdentity(value, compose, application);
+    const volumes = suppliedVolumes(value, resources, plan, projections);
     if (new Set(volumes.map((mount) => mount.target)).size !== volumes.length || volumes.some((mount, index) => volumes.slice(0, index).some((other) => S.contains(other.target, mount.target) || S.contains(mount.target, other.target)))) F.fail("UNSAFE_RESOURCE_MOUNT");
     const dependencies = {};
     for (const dependency of value.requires) { if (!S.identifier(dependency) || !compose.services[dependency]) F.fail("INVALID_DEPENDENCY_ORDERING"); dependencies[dependency] = { condition: distribution.init_jobs.some((entry) => entry.id === dependency) ? "service_completed_successfully" : "service_healthy" }; }
     if (job && (!strings(value.validation_command) || value.effect !== "idempotent" || !/^[a-f0-9]{40,64}$/.test(value.artifact_revision || ""))) F.fail("INITIALIZATION_CONTRACT_REQUIRED");
-    if (!job && (!S.record(value.healthcheck) || !Array.isArray(value.healthcheck.test) || value.healthcheck.test[0] !== "CMD" || !strings(value.healthcheck.test) || !Array.isArray(value.listener_ports) || value.listener_ports.some((port) => !S.port(port) || port < 1024))) F.fail("KERNEL_READINESS_CONTRACT_REQUIRED");
-    if (value.healthcheck) {
-      keys(value.healthcheck, ["test", "interval", "timeout", "retries", "start_period"]);
-      if (["interval", "timeout", "start_period"].some((field) => value.healthcheck[field] !== undefined && !/^[1-9][0-9]{0,3}(?:ms|s|m)$/.test(value.healthcheck[field])) || !Number.isInteger(value.healthcheck.retries) || value.healthcheck.retries < 1 || value.healthcheck.retries > 100) F.fail("KERNEL_READINESS_CONTRACT_REQUIRED");
-    }
-    return { image: value.image, user: `${value.uid}:${value.gid}`, command: value.command, ...(value.entrypoint ? { entrypoint: value.entrypoint } : {}), ...(value.environment ? { environment: value.environment } : {}), networks: ["kernel"], volumes, read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], tmpfs: [`/tmp:rw,noexec,nosuid,size=33554432,uid=${value.uid},gid=${value.gid},mode=0700`], mem_limit: "512m", pids_limit: 128, stop_grace_period: "30s", restart: job ? "no" : "unless-stopped", depends_on: dependencies, ...(job ? {} : { healthcheck: S.clone(value.healthcheck) }), ...(application ? { ports: [require("./external-gateway").binding(external_gateway)] } : {}), labels: { "org.drumee.infra.owner": project, "org.drumee.infra.revision": plan.revision, "org.drumee.infra.role": job ? "initialization" : application ? "application" : "kernel" } };
+    validateServiceReadiness(value, job);
+    let role = "kernel";
+    if (job) { role = "initialization"; }
+    else if (application) { role = "application"; }
+    return { image: value.image, user: `${value.uid}:${value.gid}`, command: value.command, ...(value.entrypoint ? { entrypoint: value.entrypoint } : {}), ...(value.environment ? { environment: value.environment } : {}), networks: ["kernel"], volumes, read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], tmpfs: [`/tmp:rw,noexec,nosuid,size=33554432,uid=${value.uid},gid=${value.gid},mode=0700`], mem_limit: "512m", pids_limit: 128, stop_grace_period: "30s", restart: job ? "no" : "unless-stopped", depends_on: dependencies, ...(job ? {} : { healthcheck: S.clone(value.healthcheck) }), ...(application ? { ports: [require("./external-gateway").binding(external_gateway)] } : {}), labels: { "org.drumee.infra.owner": project, "org.drumee.infra.revision": plan.revision, "org.drumee.infra.role": role } };
   }
   const infra_order = ["dns", "database", "redis"].filter((name) => compose.services[name]); const jobs = [];
   for (const value of distribution.init_jobs) { compose.services[value.id] = suppliedService(value, true); jobs.push(value.id); }

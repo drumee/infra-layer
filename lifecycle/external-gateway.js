@@ -12,7 +12,7 @@ function validate(distribution, plan) {
   if (!Array.isArray(app.plugins) || app.plugins.length > 64) F.fail("INVALID_APPLICATION_PLUGINS");
   const ids = new Set(), roots = new Set();
   for (const plugin of app.plugins) {
-    if (!S.record(plugin) || Object.keys(plugin).sort().join(",") !== "id,revision,root" || !S.identifier(plugin.id) || !S.resourcePath(plugin.root) || !/^[a-f0-9]{40,64}$/.test(plugin.revision || "") || ids.has(plugin.id) || roots.has(plugin.root)) F.fail("INVALID_APPLICATION_PLUGINS");
+    if (!S.record(plugin) || Object.keys(plugin).sort(S.lexical).join(",") !== "id,revision,root" || !S.identifier(plugin.id) || !S.resourcePath(plugin.root) || !/^[a-f0-9]{40,64}$/.test(plugin.revision || "") || ids.has(plugin.id) || roots.has(plugin.root)) F.fail("INVALID_APPLICATION_PLUGINS");
     ids.add(plugin.id); roots.add(plugin.root);
   }
   if (!Array.isArray(app.requires) || app.requires.includes("dkim") || app.requires.includes("mail") && !plan.inputs.requirements.capabilities.includes("smtp")) F.fail("APPLICATION_DEPENDENCY_REQUIREMENT");
@@ -25,7 +25,16 @@ async function probe(prepared) {
   if (!gateway) return { applicable: false };
   return new Promise((resolve, reject) => {
     let settled = false;
-    const finish = (error) => { if (settled) return; settled = true; clearTimeout(timer); if (error) reject(Object.assign(new Error("APPLICATION_PROTOCOL_FAILED"), { code: "APPLICATION_PROTOCOL_FAILED" })); else resolve({ ...endpoint(gateway), protocol_functional: true }); };
+    const finish = (error) => {
+      if (settled) { return; }
+      settled = true;
+      clearTimeout(timer);
+      if (error) {
+        reject(Object.assign(new Error("APPLICATION_PROTOCOL_FAILED"), { code: "APPLICATION_PROTOCOL_FAILED" }));
+      } else {
+        resolve({ ...endpoint(gateway), protocol_functional: true });
+      }
+    };
     const req = http.get({ agent: false, hostname: gateway.host_address, port: gateway.host_port, path: gateway.readiness_path, headers: { Host: "localhost" } }, res => {
       const chunks = []; let length = 0;
       res.on("data", bytes => { length += bytes.length; if (length > 4096) { finish(true); req.destroy(); } else chunks.push(bytes); });

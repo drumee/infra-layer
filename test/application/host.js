@@ -1,7 +1,7 @@
 "use strict";
 // Test-only composition of the unchanged published runtime. No identity store,
 // SQL, Hub, MFS, custom session or alternate dispatcher is implemented here.
-if (process.env.APP_CRASH === "1") throw Error("ISOLATED_STARTUP_FAILURE");
+if (process.env.APP_CRASH === "1") throw new Error("ISOLATED_STARTUP_FAILURE");
 const { DescriptorRegistry, ServiceDispatcher, createAuthorizer, createServiceServer } = require("@drumee/server-runtime");
 const registry = new DescriptorRegistry();
 registry.registerDirectory("/app/plugins/qualification/acl");

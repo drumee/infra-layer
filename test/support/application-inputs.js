@@ -1,7 +1,8 @@
 "use strict";
 const api = require("../../lib");
 const helper = "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392";
-function applicationInputs(root = "/tmp/infra-application", project = "infra-application", image = "sha256:" + "a".repeat(64), port = 28971) {
+// The first argument is retained for fixture callers; this pure factory never allocates a root.
+function applicationInputs(_root, project = "infra-application", image = "sha256:" + "a".repeat(64), port = 28971) {
   const spec = { contract_version: "2", instance: { id: project }, http: { enabled: false, https: false }, dns: { mode: "none" }, secrets: { store_resource: "application-secrets", resources: [] } };
   const requirements = { contract_version: "2", capabilities: [] };
   const adapter_input = { kind: "docker-services", project, network: project + "-application", services: {}, resource_sources: [] };

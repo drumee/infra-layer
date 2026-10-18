@@ -12,5 +12,5 @@ module.exports = class Qualification {
       await transport.verify(); return { starttls_authenticated: true };
     } finally { transport.close(); }
   }
-  denied() { throw Error("UNAUTHORIZED_WORKER_MUST_NOT_EXECUTE"); }
+  denied() { throw new Error("UNAUTHORIZED_WORKER_MUST_NOT_EXECUTE"); }
 };

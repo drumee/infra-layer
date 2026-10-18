@@ -1,12 +1,13 @@
 "use strict";
+const { trustedExecutable, trustedEnvironment } = require("../support/trusted-process");
 // A tarball consumer with no imports from the source checkout. Its only runtime
 // inputs are JSON and an explicitly identified, already built immutable image.
 const fs = require("node:fs"), path = require("node:path"), os = require("node:os"), crypto = require("node:crypto"), assert = require("node:assert/strict");
 const { execFileSync } = require("node:child_process");
 const source = path.resolve(__dirname, "../.."), base = fs.mkdtempSync(path.join(os.tmpdir(), "drumee-il5-packed-consumer-"));
-const command = (file, args, options = {}) => execFileSync(file, args, { encoding: "utf8", stdio: "pipe", ...options });
+const command = (file, args, options = {}) => execFileSync(trustedExecutable(file), args, { encoding: "utf8", stdio: "pipe", ...options, env: trustedEnvironment(options.env) });
 try {
-  if (!/^sha256:[a-f0-9]{64}$/.test(process.env.IL5_APP_IMAGE || "") || !process.env.IL5_TSC) throw Error("EXPLICIT_IMAGE_AND_TYPESCRIPT_REQUIRED");
+  if (!/^sha256:[a-f0-9]{64}$/.test(process.env.IL5_APP_IMAGE || "") || !process.env.IL5_TSC) throw new Error("EXPLICIT_IMAGE_AND_TYPESCRIPT_REQUIRED");
   const packed = JSON.parse(command("npm", ["pack", "--json", "--pack-destination", base], { cwd: source }))[0];
   const consumer = path.join(base, "consumer"), root = path.join(base, "deployment"), project = "drumee-il5-consumer-" + crypto.randomBytes(4).toString("hex"); fs.mkdirSync(consumer);
   fs.writeFileSync(path.join(consumer, "package.json"), JSON.stringify({ name: "isolated-il5-consumer", version: "1.0.0", private: true }));
