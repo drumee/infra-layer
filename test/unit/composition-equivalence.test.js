@@ -12,3 +12,15 @@ test("IL-5.8 preserves exact composition bytes and diagnostic precedence from de
   });
   assert.deepEqual(actual, expected);
 });
+
+test("pure composition snapshots are identical for different runner owner IDs", t => {
+  t.mock.method(process, "getuid", () => 1001);
+  t.mock.method(process, "getgid", () => 1002);
+  const actual = cases().map(({ name, value }) => {
+    try {
+      const result = L.composeDeployment(api.planInfrastructure(value.spec, value.requirements, value.adapter_input), value.distribution);
+      return { name, digest: crypto.createHash("sha256").update(JSON.stringify(result)).digest("hex") };
+    } catch (error) { return { name, error: error.code || error.message }; }
+  });
+  assert.deepEqual(actual, expected);
+});

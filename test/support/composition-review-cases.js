@@ -7,7 +7,12 @@ function cases() {
   add("minimal", () => {});
   add("plugin-key-order", v => { v.distribution.application.plugins[0] = { root: "/app/plugins/qualification", revision: "b".repeat(40), id: "qualification" }; });
   add("smtp-dependent-ca", v => {
-    const smtp = serviceInputs(); v.spec.instance.domain = "drumee.lan"; v.spec.tls = smtp.spec.tls; v.spec.mail = smtp.spec.mail; v.spec.secrets = smtp.spec.secrets;
+    const smtp = serviceInputs();
+    // Pure composition snapshot: keep its input independent of the runner UID/GID.
+    // Real lifecycle fixtures continue to use the actual resource owner's IDs.
+    smtp.adapter_input.services.dkim.uid = 1000;
+    smtp.adapter_input.services.dkim.gid = 1000;
+    v.spec.instance.domain = "drumee.lan"; v.spec.tls = smtp.spec.tls; v.spec.mail = smtp.spec.mail; v.spec.secrets = smtp.spec.secrets;
     v.adapter_input.services = { mail: smtp.adapter_input.services.mail, dkim: smtp.adapter_input.services.dkim }; v.adapter_input.resource_sources = smtp.adapter_input.resource_sources;
     v.requirements.capabilities = ["smtp"]; v.distribution.application.requires = ["mail"];
     v.distribution.application.secret_mounts = [{ ref: smtp.spec.tls.ca_bundle_ref, consumer: "application", target: "/run/secrets/mail-ca", format: "tls-ca-bundle" }];
