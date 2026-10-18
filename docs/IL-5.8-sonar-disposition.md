@@ -19,7 +19,11 @@ exclusion, rule or protection is altered.
 - Initial Sonar GitHub check: 117199059647, FAILURE, Security D/Reliability D.
 - Correction check: 117626476477 on 744f995, FAILURE, Security B/Reliability A.
   [Sonar PR analysis](https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=2).
-  A final post-documentation snapshot is retained separately when completed.
+  Final examined PR HEAD `c7fe3b146b6f12a61fdbc2b59396d07ce8ccde9b`
+  has completed Sonar check **117632916652**, also FAILURE, with the same four
+  OPEN IDs and Security B/Reliability A. See final-checks/final-issues/final-gate
+  evidence. The subsequent closing evidence commit is documentation-only; its
+  exact hash and live check are identified in the execution handoff.
 
 The fresh initial snapshot matches all 26 IL-5.7 IDs. The correction API returns
 28 historical records: 24 CLOSED and four OPEN. Two of the closures are line/
@@ -123,7 +127,7 @@ passed. The first comparative fixture paired a null healthcheck mutation with an
 interval mutation and threw before testing either implementation; the generator
 was corrected, then 32 complete old/new outputs matched. That interim unit run
 failed for its missing comparison fixture; the final 153-test suite passes.
-The unsupported gh pr-view field and unavailable rule descriptions are read-only
+The unsupported gh pr-view field, deprecated Projects preflight in gh pr edit, and unavailable rule descriptions are read-only
 retrieval failures, not qualification results. The retained initial sandbox log and execution transcript preserve these failures; overwritten intermediate logs are not represented as retained raw evidence.
 
 ## Refreshed local candidate and consumer impact
@@ -141,6 +145,12 @@ Version remains unpublished `@drumee/infra-layer@0.1.0-alpha.3`; registry read o
   zero diff from initial HEAD. Tests/evidence/private test resources are absent
   from the package. Package audit and separate installed consumer produce the
   same new SRI, independently confirming repeat packing of the selected bytes.
+- Fresh download/extraction of the immutable f91253c GitHub archive, with no Git
+  directory/node_modules, produces the identical npm SRI and 40-file allowlist;
+  see clean-source-repack.json. Source archive is 246,882 bytes, SRI
+  `sha512-DVe44qGmOCM2gGu4DBbwCqZVtZxa7nynpRsbWGGVx5o7x3AUCpYkPTVpeyMOjYZQfUBD3ZMspvjI/US3ZgmAcQ==`.
+  Its exact codeload URL and SHA256 are in artifact.json. This is a verified
+  future selection input, not an automatic change to Debian's current lock.
 
 The old 98,007-byte/SRI +voNV... alpha.3 candidate remains historical and must not
 be used to identify these changed bytes. Debian still locks c6ef6e9 source archive
@@ -169,3 +179,17 @@ Integration order remains Infra #2, then Debian #7; no base change or merge.
    publication, image distribution and production/Oxy-form rollout are separate
    authorizations. SMTP Internet acceptance, SPF/DKIM/DMARC/bounces and spool
    recovery remain future work. Neither OF-02 nor Oxymotion D0 is started.
+
+## Closing evidence and PR update
+
+The completed post-report check on c7fe3b1 is retained in final-checks.json,
+final-issues.json and final-gate.json: four OPEN logical findings, no new
+annotation, Reliability A/Security B and FAILURE. The closing evidence commit
+changes only this report and evidence; package/executable source stays f91253c.
+The final execution handoff confirms the live check on that documentation commit.
+
+The PR body was updated with this security-review handoff, preserving its previous
+qualification history and main base. CLI update first failed on deprecated
+Projects GraphQL preflight, then REST returned token 403. The authorized GitHub
+connector update succeeded; no credential, repository permission or protection
+was changed. These are tooling observations, not Sonar or test successes.
