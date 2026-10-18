@@ -225,3 +225,19 @@ found alpha.2 as latest published alpha; no version, tag or image is published
 by IL-5. Historical release-candidate descriptions above retain their original
 checkpoint meaning. See docs/IL-5-qualification.md and
 docs/IL-5-release-handoff.md for measured evidence and scope limits.
+
+## IL-5.8 candidate refresh
+
+Implementation correction: `744f995` on `feat/il5-external-gateway`, following
+initial audit of `de4b34e99370bf3b9f0d17399db4b2ea3d107677`. Three shipped files
+change internally: planning, composition and the external-gateway probe/validator.
+No public API/type/export or dependency lock changes. Thirty-two original-source
+comparison cases preserve exact serialized results and error precedence.
+Test-only process/file hardening and real TLS rejection cases are not packaged.
+
+The old alpha.3 tarball and Debian's `c6ef6e9` source archive remain historical
+artifacts with their own integrity values. A new local npm pack receipt and
+source identity are recorded in `docs/IL-5.8-sonar-disposition.md` and its evidence;
+no publication or Debian lock change is performed here. A consumer must select
+and verify the newly qualified source/artifact explicitly before claiming these
+corrections. Same version is still an unpublished development candidate.
