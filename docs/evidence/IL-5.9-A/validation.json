@@ -1,6 +1,6 @@
 {
-  "source": "a9decbab4c6314538995f1005eefd5804fcbe709",
-  "unit_tap": 159,
+  "source": "d5b380b18448a55941748409ab28cf359d0cdd61",
+  "unit_tap": 161,
   "contract_subset_tap": 24,
   "contract_overlap": true,
   "lint_errors": 0,
@@ -8,10 +8,10 @@
   "lint_regressions": 0,
   "isolated_consumer_assertions": 8,
   "new_browser_or_remote_scenarios": 0,
-  "retained_heavy_proof": "IL-5.8; explicitly not rerun",
-  "quality_pr_run": 39130991341,
-  "codeql_pr_run": 39130988786,
-  "alert_inventory": "HTTP403; no zero-alert claim",
+  "retained_heavy_proof": "gateway/services/lifecycle/HTTPS-job/browser IL-5.8; application actually rerun",
+  "quality_pr_run": 39132936389,
+  "codeql_pr_run": 39132934220,
+  "alert_inventory": "full Security REST HTTP403; PR result checks/annotations accessible",
   "logs": [
     {
       "file": "/tmp/drumee-il59a-lint-qualified.log",
@@ -77,6 +77,49 @@
       "file": "/tmp/drumee-il59a-codeql-qualified.log",
       "sha256": "58ad1241035716472109576cb12cd14f98b07898abf445a8f85a5ea964672a3f",
       "bytes": 248802
+    },
+    {
+      "file": "/tmp/drumee-il59a-application-network.log",
+      "bytes": 3618,
+      "sha256": "0054097d53010c926fa9808923bc869c697077eb0c0fa14d70785a8790e46628"
+    },
+    {
+      "file": "/tmp/drumee-il59a-network-unit.log",
+      "bytes": 565,
+      "sha256": "e2280462362ff900efba15a72427a8f7218b26c12ab986d855dabb367f1a545a"
+    },
+    {
+      "file": "/tmp/drumee-il59a-unit-network.log",
+      "bytes": 34441,
+      "sha256": "7a674be1eb2625845b2e73b1285953e5d3223b30bfd050b01e606b4d23cd9614"
+    },
+    {
+      "file": "/tmp/drumee-il59a-lint-network.log",
+      "bytes": 6147,
+      "sha256": "a5c347915ae3622c33894c759f676f872ace9e62df37610f8bcc99a11f6ce3c9"
+    },
+    {
+      "file": "/tmp/drumee-il59a-clean-network-unit.log",
+      "bytes": 34436,
+      "sha256": "bfd0e1a10889658698b0940443d74c7461ce7a1e92fc04042d27a6cab2069bfc"
+    },
+    {
+      "file": "/tmp/drumee-il59a-codeql-network.log",
+      "bytes": 249528,
+      "sha256": "f6e62ae47124f3a454f10164d6e1b6f1c9fef333480d39f61147aa7a5f372e7a"
+    },
+    {
+      "file": "/tmp/drumee-il59a-network-client-host.log",
+      "bytes": 195,
+      "sha256": "41f0c55ef09ee52e77d293136b54d07b4f7e8fa0960c0bcba2caa18325efeecb"
     }
-  ]
+  ],
+  "fresh_application_assertions": 87,
+  "remote_assertions_in_application_total": 2,
+  "pr_result_check": 117691792450,
+  "initial_medium_alerts": 3,
+  "final_new_pr_alerts": 0,
+  "all_repository_alerts": "not claimed",
+  "final_status": "READY_FOR_GITHUB_SECURITY_REVIEW",
+  "decommission_status": "SONAR_EXTERNAL_CLEANUP_REQUIRED"
 }

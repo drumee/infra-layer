@@ -33,3 +33,9 @@ Official references:
 - https://docs.github.com/en/code-security/how-tos/find-and-fix-code-vulnerabilities/configure-code-scanning/configure-code-scanning
 - https://github.com/github/codeql-action
 - https://codeql.github.com/codeql-query-help/javascript/
+
+The authorized Checks API also exposes the separate Advanced Security result
+check. In this qualification it surfaced three medium alerts despite a successful
+job/conclusion. Those were corrected and the new result check has no new PR-code
+alerts. Always inspect its title/annotations, not just conclusion; this PR-scoped
+surface is distinct from full Security inventory and state administration.

@@ -108,3 +108,16 @@ merge checkout under read-only permissions; no pull_request_target is used.
 Dependabot YAML covers root npm, the separate application fixture and Actions,
 weekly with limited PR counts; no automerge. It takes effect on the default branch
 after owner-controlled integration, not merely by existing on this feature branch.
+
+## Completion note — authorized result checks
+
+The native Advanced Security result check is a separate accessible surface from
+the 403-denied Security REST inventory. It exposed three medium
+js/bad-code-sanitization diagnostics even while analysis/conclusion were green.
+Those were actually corrected by a fixed remote program + stdin data, unit
+regressed and requalified in the real LAN/application run. The new result check
+reports no new PR-code alerts. This resolves the initial PR-result visibility
+blocker without granting permissions or claiming full repository inventory access.
+Current status and exact source/check IDs are in the qualification report. The
+full Security inventory/admin limits and external Sonar cleanup remain explicit.
+YAML validation uses exact dev dependency yaml 2.9.1.

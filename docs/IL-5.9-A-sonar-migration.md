@@ -1,8 +1,9 @@
 # IL-5.9-A — Sonar to GitHub security migration
 
-Review status: **BLOCKED_GITHUB_PERMISSIONS** for complete security-result review.
-Decommission status: **SECURITY_MIGRATION_INCOMPLETE**. The independently
-implementable GitHub chain is running successfully; Sonar is still active.
+Review status: **READY_FOR_GITHUB_SECURITY_REVIEW**. Decommission state:
+**SONAR_EXTERNAL_CLEANUP_REQUIRED**. GitHub execution/upload/PR results are
+qualified; broader Security inventory/admin limitations remain explicit. Sonar
+is still active and its history is preserved.
 
 ## Preserved decisions
 
@@ -44,16 +45,16 @@ alongside the earlier four-OPEN evidence, without erasing either observation.
 No tests are globally excluded. ESLint excludes only generated node_modules and
 .cache directories; narrow browser globals are declared for the actual browser
 fixture. Its context-specific warning levels are coupled to a reviewed exact
-baseline and fail-on-new gate, not ignored findings. The six new tests validate
+baseline and fail-on-new gate, not ignored findings. The eight new tests validate
 lint regression rejection, real rule behavior, CI YAML safety and runner-owner
-independence. No deliberately vulnerable production code was introduced.
+independence and fixed-program network inputs. No deliberately vulnerable production code was introduced.
 
 ## Actual GitHub execution
 
 Native default setup already existed at audit start. It is retained rather than
 replaced by conflicting advanced YAML. Main run 39128072669 succeeds; PR run
-39130988786 succeeds on a9decbab, with results upload and server processing
-complete. Versioned Quality run 39130991341 passes all five jobs. Initial Quality
+39132934220 succeeds on d5b380b, with results upload and server processing
+complete. Versioned Quality run 39132936389 passes all five jobs. Initial Quality
 run 39130724308 failed one pre-existing golden fixture's host UID dependency;
 that failure and its narrow correction remain documented in qualification.
 
@@ -61,7 +62,14 @@ The fine-grained CLI token cannot read Code Scanning alert/analysis inventory,
 native setup options, Dependabot alert/enablement state or Actions administration:
 HTTP 403. Execution and upload **are proven**; zero alerts, configured suite label,
 full Security-tab visibility and alert-state administration **are not proven**.
-No new alert can be accepted/closed through inference from a successful job.
+A separately accessible published CodeQL result check exposed three medium
+js/bad-code-sanitization alerts despite job/check conclusion success. They were
+reviewed through the authorized Checks API, corrected in the test-only SSH
+harness by replacing generated code with a fixed program + JSON stdin, unit
+regressed and actually requalified over LAN. Corrected result check 117691792450
+reports no new PR-code alerts/zero annotations on d5b380b. That is the reviewed
+PR result, not a zero repository-wide inventory claim. Earlier check 117688886564
+and all three annotations are retained. No issue state was dismissed manually.
 The owner needs an authorized Security review or a connection with Code scanning
 alerts:read and Dependabot alerts:read, and owner verification of setup/enablement.
 Do not expand permissions or change protections automatically.
@@ -75,7 +83,7 @@ Its history and issue evidence are retained.
 
 Remaining owner operations, in order:
 
-1. Inspect the PR's actual Code Scanning alert inventory and any new findings;
+1. Review the corrected PR checks and inspect the broader branch/repository inventory;
    inspect Dependabot alert inventory/enablement and native CodeQL setup scope.
    Record reviewed SHA, findings, decisions and date. Resolve significant findings
    before approving a replacement; do not call an inaccessible inventory empty.

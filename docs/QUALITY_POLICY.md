@@ -8,9 +8,12 @@ change branch protections or automatically make new jobs required.
 New significant vulnerabilities must be investigated and corrected or receive an
 explicit, scoped owner risk decision. New CodeQL/ESLint/test regressions must be
 resolved before merge. A green scanner execution is not proof of zero alerts:
-review Code Scanning results with an authorized account and correlate their
-source SHA. CodeQL publication, alert reading and alert administration are
-separate capabilities. Missing result access remains an explicit review blocker.
+review Code Scanning result titles/annotations with authorized access and
+correlate their source SHA. A successful result check can still list medium
+vulnerabilities; job/check conclusion alone is insufficient. CodeQL publication, alert reading and alert administration are
+separate capabilities. If an authorized published result check exposes PR diagnostics, review those
+results and record the narrower scope; it does not supply full inventory/admin
+access. Missing actual diagnostic access remains an explicit review blocker.
 
 Run `npm ci --ignore-scripts --no-audit --no-fund`, `npm run lint`, `npm test`,
 `npm run test:contracts`, both npm production/development audits and

@@ -196,14 +196,16 @@ reviewed warnings; npm production/development audits report zero advisories.
 Weekly Dependabot proposals and QUALITY_POLICY.md are configured, without
 required-check/protection changes, automerge, publication or deployment.
 
-Full alert inventory/setup reads remain HTTP 403 for the available PAT. Latest
-review status is **BLOCKED_GITHUB_PERMISSIONS** for security-result review and
-**SECURITY_MIGRATION_INCOMPLETE** for decommissioning. Do not equate a successful
-scanner job with zero alerts. Sonar remains externally active with the historical
-owner-approved cases retained: three are still OPEN; S8431 is now externally
-reported CLOSED/FIXED despite unchanged Dockerfile, not an extra agent correction
-or an applied False Positive disposition. Its earlier history is preserved.
-Owner access/review is needed before authorizing external Sonar cleanup.
+Full alert inventory/setup reads remain HTTP 403, but the authorized Checks API
+exposes PR diagnostics. It surfaced three new medium CodeQL alerts despite job
+success; d5b380b removes input-dependent SSH program construction using a fixed
+program plus stdin data. The 161-test suite and real 87-assertion application/LAN
+acceptance pass; result check 117691792450 confirms no new PR-code alerts.
+Latest status is **READY_FOR_GITHUB_SECURITY_REVIEW**, with
+**SONAR_EXTERNAL_CLEANUP_REQUIRED** after owner review. Do not infer zero complete
+repository alerts or administration rights. Sonar remains active: three cases
+OPEN, S8431 externally CLOSED/FIXED without an agent disposition. Owner broader
+inventory/setup review and external cleanup remain separate operations.
 
 [Audit](IL-5.9-A-security-tooling-audit.md),
 [migration and coverage](IL-5.9-A-sonar-migration.md),
