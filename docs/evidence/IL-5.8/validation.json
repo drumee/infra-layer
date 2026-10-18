@@ -1,0 +1,91 @@
+{
+  "source": "f91253c1d034270af3c7815f514b1e8c91f78020",
+  "environment": {
+    "node": "v22.22.0",
+    "npm": "11.18.0",
+    "git": "git version 2.39.5",
+    "docker": "Docker version 29.2.0, build 0b9d198"
+  },
+  "counts": {
+    "unit_tap": 153,
+    "gateway_tap": 17,
+    "services_tap": 17,
+    "lifecycle_tap": 16,
+    "debian_locked_profile_tap": 5,
+    "application_functional_assertions": 87,
+    "installed_consumer_assertions": 8,
+    "https_job_scenarios": 4,
+    "browser_scenarios_in_gateway_tap": 1,
+    "remote_checks_in_application_assertions": 2
+  },
+  "failures": 0,
+  "skips": 0,
+  "failed_attempts_excluded": [
+    "sandbox initial unit/targeted/Debian workers",
+    "initial comparison fixture null-health mutation generator; corrected before valid comparison",
+    "unsupported gh pr-view field; read-only retrieval failure",
+    "unavailable long-form rule descriptions"
+  ],
+  "logs": [
+    {
+      "path": "/tmp/drumee-il58-unit-first.log",
+      "bytes": 3643,
+      "sha256": "df417902e6b312dadbd66a4e8c37c67d830fb6c2697556d36af45349f4f1e917"
+    },
+    {
+      "path": "/tmp/drumee-il58-unit-final.log",
+      "bytes": 32741,
+      "sha256": "fb10c59f0879d965cec37cdbc5b02cdfff6f14fc8aac09484db60d6839dfa5d1"
+    },
+    {
+      "path": "/tmp/drumee-il58-unit-qualified.log",
+      "bytes": 32738,
+      "sha256": "19dfd5e9527d7548c3a7ea58d2696a1e15c92f4291e9634fb5ac2657fb8ce46b"
+    },
+    {
+      "path": "/tmp/drumee-il58-targeted.log",
+      "bytes": 2604,
+      "sha256": "590dbb04d5175e0016e9abf80e14f89cabf23c52a85e35937796e21c880da8a6"
+    },
+    {
+      "path": "/tmp/drumee-il58-gateway.log",
+      "bytes": 5854,
+      "sha256": "978d8b6da98340e5e0bacf435c593b296688bc8d99c304e99d25dc81ec9df0eb"
+    },
+    {
+      "path": "/tmp/drumee-il58-services.log",
+      "bytes": 7542,
+      "sha256": "dada00771ad6c7c109a022eeb1c2e2e5327c92cde6e7d7769710b5a641e265d6"
+    },
+    {
+      "path": "/tmp/drumee-il58-lifecycle.log",
+      "bytes": 5965,
+      "sha256": "ed7864d2a19bd24c9c586bae2a50a22883c1057c01e89fdb91863853f09b1c95"
+    },
+    {
+      "path": "/tmp/drumee-il58-application.log",
+      "bytes": 3695,
+      "sha256": "20231f90dfe0e8655bfe91e508c3ee7afe7e0972321a553ebda97524e64095e3"
+    },
+    {
+      "path": "/tmp/drumee-il58-package-final.log",
+      "bytes": 1193,
+      "sha256": "e4dbaecb5d483cbefc0d327c15bf4ca003da33bea0fdbf4a6df338cb83d6a4a5"
+    },
+    {
+      "path": "/tmp/drumee-il58-consumer.log",
+      "bytes": 457,
+      "sha256": "e4a9c03b316ae9c6f3b2eb353f55d62950d3244a52aa7026e3a7cb14a9baeb88"
+    },
+    {
+      "path": "/tmp/drumee-il58-lifecycle-gateway.log",
+      "bytes": 1875,
+      "sha256": "49662c03f9af42bb02a40f0dab3a6620b995a784dafd520c3ec4e3ee9c7f8fcd"
+    },
+    {
+      "path": "/tmp/drumee-il58-debian-contracts.log",
+      "bytes": 1445,
+      "sha256": "86ffc191ceeaf74d2f9dd94b2910582a14168a1fcd16fb773eef4ed44d3540a3"
+    }
+  ]
+}

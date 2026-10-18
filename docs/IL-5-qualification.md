@@ -243,3 +243,37 @@ Publication, release tags, image registry delivery, merge, production deployment
 Internet SMTP integration, Oxy-form OF-01R resumption and Oxymotion D0 remain
 separate decisions. The implementation PRs and integration order are in
 [release handoff](IL-5-release-handoff.md).
+
+## IL-5.8 — security/reliability requalification, 2026-10-18
+
+Latest decision: **READY_FOR_SECURITY_REVIEW**, with four open Sonar findings
+requiring individual owner disposition. This is not merge authorization. The
+original IL-5 results above remain historical and are not silently replaced.
+Full [disposition](IL-5.8-sonar-disposition.md),
+[security review](IL-5.8-security-review.md) and
+[inventory](IL-5.8-sonar-inventory.md) record source, commands, attempts and scope.
+
+Correction source 744f995; final executable/package candidate source
+f91253c1d034270af3c7815f514b1e8c91f78020. Fresh results: 153 unit TAP, 17 gateway
+TAP (one browser case included), 17 service TAP, 16 lifecycle TAP; all pass without
+skips. Application acceptance has 87 functional assertions in 11 groups, including
+the two independent LAN checks. Separate installed consumer has eight assertions,
+strict types and actual preparation; HTTPS/job suite has four functional
+scenarios. These categories overlap neither by repeated runs nor by added counts.
+Read-only Debian's existing locked profile has five passing TAP tests. Prior
+Debian 90-assertion/minimal-kernel/Runtime qualification is not a fresh IL-5.8 run.
+
+Twenty-one initial findings have targeted corrections. Five receive contextual
+false-positive proposals, including the unused default-path cleanup. The new
+analysis has four OPEN logical findings (two use replacement IDs), no open shipped
+finding, Reliability A and Security B. The quality gate remains ERROR; the
+security rating does not substitute for behavioral TLS proof or owner review.
+No rule is suppressed, no issue is manually closed and no test is weakened.
+
+New alpha.3 local candidate: 40 files, 98,736 bytes, empty production dependency
+set; SRI `sha512-mwbKb02dvTHS7lthOXg+suJ7llUi88sT5e+GssHzqsZk4ajAE5P61YhrNg8kO+C/C8Q6F8t0vvoSSo5gLjW4Dg==`.
+[Member hashes and provenance](evidence/IL-5.8/artifact.json) identify the changed
+bytes. Old candidate/source SRIs above remain historical. Debian is not repinned
+by this mission. Runtime/contracts/exports/types/locks are unchanged, as are
+loopback-only publication, native routes, optional mail and
+SMTP_RECOVERY_UNQUALIFIED. No Internet SMTP, production or D0 acceptance is added.

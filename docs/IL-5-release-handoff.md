@@ -140,3 +140,30 @@ Testbox still has only the three previously observed stopped historical
 initialization containers; no IL-5 service/resource was installed there. Build
 images and the local npm archive are retained as explicitly identified review
 artifacts. The cleanroom worktree remains clean.
+
+## IL-5.8 security-review handoff (latest, 2026-10-18)
+
+Latest status: **READY_FOR_SECURITY_REVIEW**. The earlier technical-review
+handoff and old artifact receipts above are retained as history. The
+[IL-5.8 disposition](IL-5.8-sonar-disposition.md) now governs the security reserve:
+all initial findings examined; five shipped corrections preserve public behavior;
+21 initial findings FIX_COMPLETED, five contextual false-positive proposals.
+Four remain OPEN, including SMTP mandatory-STARTTLS proof. Reliability A/Security B
+still means the Sonar gate fails. No automatic issue closure or owner acceptance.
+
+Correction commit 744f995; final package/source f91253c1d034270af3c7815f514b1e8c91f78020.
+A new unpublished alpha.3 local package has 40 files/98,736 bytes and SRI
+`sha512-mwbKb02dvTHS7lthOXg+suJ7llUi88sT5e+GssHzqsZk4ajAE5P61YhrNg8kO+C/C8Q6F8t0vvoSSo5gLjW4Dg==`.
+Use its [complete member inventory](evidence/IL-5.8/artifact.json), not the old npm
+SRI. Declarations, exports and dependency locks are unchanged. npm pack/audit,
+strict offline installed consumer and all mandatory regression suites pass.
+
+Debian still selects c6ef6e9 with its original source-archive SRI: those bytes do
+not contain IL-5.8 corrections. No Debian/Oxy-form/Runtime file was modified.
+Owner-approved follow-up must select the exact new canonical source/archive
+integrity or a separately authorized future npm release, preserve immutable
+images/runtime pins and repeat new-selection consumer/cleanroom acceptance.
+Do not substitute npm SRI for a GitHub source-archive SRI. Infra #2 still precedes
+Debian #7; no merge-base change, merge, npm/image/tag publication, production
+operation, OF-02 or Oxymotion D0 occurs here. Internet SMTP and spool restoration
+remain unqualified and require their own controlled acceptance.
