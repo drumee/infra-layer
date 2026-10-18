@@ -99,3 +99,17 @@ No merge, publication, image/tag delivery, Debian lock/PR change, Oxy-form
 resumption, production operation or Oxymotion D0 occurs here. Source f91253c
 remains the qualified runtime implementation; the new package metadata has a
 separate integrity receipt and must not reuse the old SRI.
+
+## Closing observation
+
+The documentation HEAD 869897df has all five Quality jobs and native CodeQL
+analysis successful; separate result check **117693571717** reports no new alerts
+in changed PR code. The closing evidence commit changes only reports/JSON; its
+final SHA/check outcome is identified in the execution handoff.
+
+Final Sonar readback still has three logical OPEN cases. S7780 is now
+`AaFPQwg-CiUwZk3hfrD2` at run.js:42, replacing `AaFOFe0GZ2pN_ZCiPhed` after the
+harness edit. This is **not a fixed logical finding** or a new owner acceptance.
+S9382 remains `AaFOFe0GZ2pN_ZCiPhee` at line 74; S5332 remains
+`AaFGj__57h-_7ZHL5nVs` in the SMTP plugin. Closing snapshots and mapping retain
+the actual states; no Sonar disposition or shutdown was performed here.
