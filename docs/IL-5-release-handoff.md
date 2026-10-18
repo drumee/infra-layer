@@ -185,3 +185,31 @@ Debian still selects historical c6ef6e9 and has not received the IL-5.8 fixes.
 Resume with an authorized Sonar interface or individually verified owner actions,
 then verify/re-lock f91253c and execute the required new-selection qualification.
 No merge, publication, production/Oxy-form operation or D0 is authorized/performed.
+
+## IL-5.9-A — GitHub security migration (latest)
+
+Native GitHub CodeQL default setup is retained and actually runs on PR #2, with
+successful result upload/processing. The versioned read-only Quality workflow
+passes unit/contract/lint/dependency/package jobs after a pure snapshot UID/GID
+portability correction. ESLint has zero errors/new findings and 65 visible
+reviewed warnings; npm production/development audits report zero advisories.
+Weekly Dependabot proposals and QUALITY_POLICY.md are configured, without
+required-check/protection changes, automerge, publication or deployment.
+
+Full alert inventory/setup reads remain HTTP 403 for the available PAT. Latest
+review status is **BLOCKED_GITHUB_PERMISSIONS** for security-result review and
+**SECURITY_MIGRATION_INCOMPLETE** for decommissioning. Do not equate a successful
+scanner job with zero alerts. Sonar remains externally active with the historical
+owner-approved cases retained: three are still OPEN; S8431 is now externally
+reported CLOSED/FIXED despite unchanged Dockerfile, not an extra agent correction
+or an applied False Positive disposition. Its earlier history is preserved.
+Owner access/review is needed before authorizing external Sonar cleanup.
+
+[Audit](IL-5.9-A-security-tooling-audit.md),
+[migration and coverage](IL-5.9-A-sonar-migration.md),
+[qualification](IL-5.9-A-qualification.md) and [quality policy](QUALITY_POLICY.md)
+record exact evidence, limits and follow-up. The package implementation/types/
+exports remain identical to f91253c, but changed package.json dev-tool metadata
+has new npm SRI `sha512-ZZIxqtHsFA0tCwAR6vcGa3iOttFYTkHCS4rKN4UtPApLPDkq41FJ0xJWKfWLEWVUlvM3JZldb1aGrhyKMiM9Pw==`.
+No old integrity is reused, and Debian's locks/code/PR are not modified. Infra
+still precedes Debian; no consumer realignment, Oxy-form unblock or D0 is claimed.

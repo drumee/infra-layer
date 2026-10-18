@@ -1,0 +1,1839 @@
+{
+  "total": 28,
+  "p": 1,
+  "ps": 500,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 28
+  },
+  "effortTotal": 359,
+  "debtTotal": 359,
+  "issues": [
+    {
+      "key": "AaFOFe0GZ2pN_ZCiPhed",
+      "rule": "javascript:S7780",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "line": 41,
+      "hash": "c19467f6fb3b0915f1e40da43256034f",
+      "textRange": {
+        "startLine": 41,
+        "endLine": 41,
+        "startOffset": 204,
+        "endOffset": 211
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "`String.raw` should be used to avoid escaping `\\`.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "editable-source",
+        "es2015",
+        "readability"
+      ],
+      "creationDate": "2026-10-18T08:16:23+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFOFe0GZ2pN_ZCiPhee",
+      "rule": "javascript:S9382",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "line": 73,
+      "hash": "88bed08345da33f629d26c6d08f5736c",
+      "textRange": {
+        "startLine": 73,
+        "endLine": 73,
+        "startOffset": 8,
+        "endOffset": 49
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Unexpected `await` inside a loop.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "async",
+        "es2017",
+        "performance",
+        "promise"
+      ],
+      "creationDate": "2026-10-18T08:16:23+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAM7h-_7ZHL5nV7",
+      "rule": "javascript:S7723",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/package-consumer.js",
+      "project": "drumee_infra-layer",
+      "hash": "9a3e10614313a627fd266d17b25d59d9",
+      "textRange": {
+        "startLine": 9,
+        "endLine": 9,
+        "startOffset": 100,
+        "endOffset": 147
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use `new Error()` instead of `Error()`.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-10-16T20:51:37+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAHd7h-_7ZHL5nWA",
+      "rule": "javascript:S3776",
+      "severity": "CRITICAL",
+      "component": "drumee_infra-layer:lifecycle/composition.js",
+      "project": "drumee_infra-layer",
+      "hash": "d935d71b4efe56cb7eb96bc7ce733f45",
+      "textRange": {
+        "startLine": 57,
+        "endLine": 57,
+        "startOffset": 11,
+        "endOffset": 26
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 58,
+                "endLine": 58,
+                "startOffset": 227,
+                "endOffset": 228
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 59,
+                "endLine": 59,
+                "startOffset": 4,
+                "endOffset": 6
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 59,
+                "endLine": 59,
+                "startOffset": 246,
+                "endOffset": 248
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 59,
+                "endLine": 59,
+                "startOffset": 417,
+                "endOffset": 418
+              },
+              "msg": "+2 (incl. 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 60,
+                "endLine": 60,
+                "startOffset": 4,
+                "endOffset": 6
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 60,
+                "endLine": 60,
+                "startOffset": 40,
+                "endOffset": 42
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 62,
+                "endLine": 62,
+                "startOffset": 4,
+                "endOffset": 7
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 65,
+                "endLine": 65,
+                "startOffset": 6,
+                "endOffset": 8
+              },
+              "msg": "+2 (incl. 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 68,
+                "endLine": 68,
+                "startOffset": 4,
+                "endOffset": 7
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 71,
+                "endLine": 71,
+                "startOffset": 57,
+                "endOffset": 59
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 72,
+                "endLine": 72,
+                "startOffset": 6,
+                "endOffset": 8
+              },
+              "msg": "+2 (incl. 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 72,
+                "endLine": 72,
+                "startOffset": 241,
+                "endOffset": 243
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 73,
+                "endLine": 73,
+                "startOffset": 6,
+                "endOffset": 8
+              },
+              "msg": "+2 (incl. 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 73,
+                "endLine": 73,
+                "startOffset": 49,
+                "endOffset": 51
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 77,
+                "endLine": 77,
+                "startOffset": 4,
+                "endOffset": 6
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 79,
+                "endLine": 79,
+                "startOffset": 4,
+                "endOffset": 7
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 79,
+                "endLine": 79,
+                "startOffset": 47,
+                "endOffset": 49
+              },
+              "msg": "+2 (incl. 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 79,
+                "endLine": 79,
+                "startOffset": 254,
+                "endOffset": 255
+              },
+              "msg": "+2 (incl. 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 80,
+                "endLine": 80,
+                "startOffset": 4,
+                "endOffset": 6
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 80,
+                "endLine": 80,
+                "startOffset": 12,
+                "endOffset": 14
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 81,
+                "endLine": 81,
+                "startOffset": 4,
+                "endOffset": 6
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 81,
+                "endLine": 81,
+                "startOffset": 13,
+                "endOffset": 15
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 82,
+                "endLine": 82,
+                "startOffset": 4,
+                "endOffset": 6
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 84,
+                "endLine": 84,
+                "startOffset": 6,
+                "endOffset": 8
+              },
+              "msg": "+2 (incl. 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 86,
+                "endLine": 86,
+                "startOffset": 113,
+                "endOffset": 114
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 86,
+                "endLine": 86,
+                "startOffset": 177,
+                "endOffset": 178
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 86,
+                "endLine": 86,
+                "startOffset": 497,
+                "endOffset": 498
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 86,
+                "endLine": 86,
+                "startOffset": 558,
+                "endOffset": 559
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 86,
+                "endLine": 86,
+                "startOffset": 627,
+                "endOffset": 628
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 86,
+                "endLine": 86,
+                "startOffset": 823,
+                "endOffset": 824
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:lifecycle/composition.js",
+              "textRange": {
+                "startLine": 86,
+                "endLine": 86,
+                "startOffset": 856,
+                "endOffset": 857
+              },
+              "msg": "+2 (incl. 1 for nesting)"
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Refactor this function to reduce its Cognitive Complexity from 39 to the 15 allowed.",
+      "effort": "29min",
+      "debt": "29min",
+      "tags": [
+        "brain-overload",
+        "editable-source"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj__s7h-_7ZHL5nVp",
+      "rule": "docker:S8431",
+      "severity": "MAJOR",
+      "component": "drumee_infra-layer:test/application/Dockerfile",
+      "project": "drumee_infra-layer",
+      "hash": "79154b35c88f61dac0a557ce9c982142",
+      "textRange": {
+        "startLine": 1,
+        "endLine": 1,
+        "startOffset": 5,
+        "endOffset": 98
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use either the version tag or the digest for the image instead of both.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T13:15:11+0000",
+      "closeDate": "2026-10-18T13:15:11+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "1a85aa06-7981-44e0-b7d4-82a5e1bd6fcf",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj___7h-_7ZHL5nVu",
+      "rule": "javascript:S7723",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/build.js",
+      "project": "drumee_infra-layer",
+      "hash": "ff6713f9878492049ece473f73d5d981",
+      "textRange": {
+        "startLine": 5,
+        "endLine": 5,
+        "startOffset": 55,
+        "endOffset": 96
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use `new Error()` instead of `Error()`.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj___7h-_7ZHL5nVv",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/build.js",
+      "project": "drumee_infra-layer",
+      "hash": "c467b200b4e2f0b2dd9d85fd9dcedb9b",
+      "textRange": {
+        "startLine": 10,
+        "endLine": 10,
+        "startOffset": 17,
+        "endOffset": 22
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj___7h-_7ZHL5nVw",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/build.js",
+      "project": "drumee_infra-layer",
+      "hash": "adff3f6c8c22ba1c957e870a8243cf80",
+      "textRange": {
+        "startLine": 11,
+        "endLine": 11,
+        "startOffset": 17,
+        "endOffset": 25
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj___7h-_7ZHL5nVx",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/build.js",
+      "project": "drumee_infra-layer",
+      "hash": "6e728ac15a521127000367fa6bb72de8",
+      "textRange": {
+        "startLine": 12,
+        "endLine": 12,
+        "startOffset": 45,
+        "endOffset": 53
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAR7h-_7ZHL5nV8",
+      "rule": "javascript:S7723",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/host.js",
+      "project": "drumee_infra-layer",
+      "hash": "e82ddc0960bad95bcc1d3cd7a86b3e2b",
+      "textRange": {
+        "startLine": 4,
+        "endLine": 4,
+        "startOffset": 41,
+        "endOffset": 74
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use `new Error()` instead of `Error()`.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj__y7h-_7ZHL5nVr",
+      "rule": "jssecurity:S8707",
+      "severity": "MAJOR",
+      "component": "drumee_infra-layer:test/application/interrupt.js",
+      "project": "drumee_infra-layer",
+      "hash": "0c66e40a51afb40449ad6068895a3f37",
+      "textRange": {
+        "startLine": 5,
+        "endLine": 5,
+        "startOffset": 31,
+        "endOffset": 43
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "drumee_infra-layer:test/application/interrupt.js",
+              "textRange": {
+                "startLine": 5,
+                "endLine": 5,
+                "startOffset": 31,
+                "endOffset": 43
+              },
+              "msg": "Sink: this invocation is not safe; a malicious value can be used as argument"
+            },
+            {
+              "component": "drumee_infra-layer:test/application/interrupt.js",
+              "textRange": {
+                "startLine": 5,
+                "endLine": 5,
+                "startOffset": 57,
+                "endOffset": 58
+              },
+              "msg": "Source: an llm can pass malicious data through command-line arguments"
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Path Traversal via faulty LLM-supplied CLI arguments",
+      "effort": "30min",
+      "debt": "30min",
+      "tags": [
+        "cwe"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj__y7h-_7ZHL5nVq",
+      "rule": "javascript:S2681",
+      "severity": "MAJOR",
+      "component": "drumee_infra-layer:test/application/interrupt.js",
+      "project": "drumee_infra-layer",
+      "hash": "28616f8b7c498d86f49ca707c08456e8",
+      "textRange": {
+        "startLine": 6,
+        "endLine": 6,
+        "startOffset": 228,
+        "endOffset": 242
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "This statement will not be executed conditionally; only the first statement will be. The rest will execute unconditionally.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "cwe",
+        "editable-source"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "FORMATTED",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj__57h-_7ZHL5nVs",
+      "rule": "javascript:S5332",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/plugins/qualification/worker.js",
+      "project": "drumee_infra-layer",
+      "line": 11,
+      "hash": "c13d78fa2a2d96510f6c5eed82edd4bb",
+      "textRange": {
+        "startLine": 11,
+        "endLine": 11,
+        "startOffset": 41,
+        "endOffset": 59
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Using http protocol is insecure. Use https instead.",
+      "effort": "30min",
+      "debt": "30min",
+      "tags": [
+        "cryptography",
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-16T21:13:02+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "5eb35b72-630b-4bed-a943-a6e4f9baf933",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj__57h-_7ZHL5nVt",
+      "rule": "javascript:S7723",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/plugins/qualification/worker.js",
+      "project": "drumee_infra-layer",
+      "hash": "8f960d32206ce3b4755a4bbf0b3a6f81",
+      "textRange": {
+        "startLine": 15,
+        "endLine": 15,
+        "startOffset": 19,
+        "endOffset": 64
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use `new Error()` instead of `Error()`.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAG7h-_7ZHL5nVy",
+      "rule": "javascript:S1788",
+      "severity": "MAJOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "f3485af524935aeaa64876759364f58a",
+      "textRange": {
+        "startLine": 10,
+        "endLine": 10,
+        "startOffset": 32,
+        "endOffset": 42
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Move this default parameter last, so callers can omit it instead of passing \"undefined\".",
+      "effort": "20min",
+      "debt": "20min",
+      "tags": [
+        "es2015"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAG7h-_7ZHL5nV0",
+      "rule": "javascript:S7780",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "8b4ce2ab6ac0677845227ae47f56dd2b",
+      "textRange": {
+        "startLine": 40,
+        "endLine": 40,
+        "startOffset": 185,
+        "endOffset": 192
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "`String.raw` should be used to avoid escaping `\\`.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "editable-source",
+        "es2015",
+        "readability"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAG7h-_7ZHL5nV1",
+      "rule": "javascript:S7723",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "8b4ce2ab6ac0677845227ae47f56dd2b",
+      "textRange": {
+        "startLine": 40,
+        "endLine": 40,
+        "startOffset": 427,
+        "endOffset": 473
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use `new Error()` instead of `Error()`.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAG7h-_7ZHL5nVz",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "8b4ce2ab6ac0677845227ae47f56dd2b",
+      "textRange": {
+        "startLine": 40,
+        "endLine": 40,
+        "startOffset": 82,
+        "endOffset": 87
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAG7h-_7ZHL5nV2",
+      "rule": "javascript:S7723",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "eb644df5d3eec44fa22ddc9408992b56",
+      "textRange": {
+        "startLine": 45,
+        "endLine": 45,
+        "startOffset": 126,
+        "endOffset": 175
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use `new Error()` instead of `Error()`.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAG7h-_7ZHL5nV3",
+      "rule": "javascript:S2486",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "c3d3532a2f836e74a54124da445fb812",
+      "textRange": {
+        "startLine": 67,
+        "endLine": 67,
+        "startOffset": 153,
+        "endOffset": 209
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Handle this exception, don't catch it at all, or explain in a comment why it is ignored.",
+      "effort": "1h",
+      "debt": "1h",
+      "tags": [
+        "cwe",
+        "error-handling",
+        "suspicious"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAG7h-_7ZHL5nV4",
+      "rule": "javascript:S9382",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "c3d3532a2f836e74a54124da445fb812",
+      "textRange": {
+        "startLine": 67,
+        "endLine": 67,
+        "startOffset": 165,
+        "endOffset": 206
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Unexpected `await` inside a loop.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "async",
+        "es2017",
+        "performance",
+        "promise"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAG7h-_7ZHL5nV5",
+      "rule": "javascript:S2259",
+      "severity": "MAJOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "1b5e1beae45c3d508750dbc604feff9d",
+      "textRange": {
+        "startLine": 71,
+        "endLine": 71,
+        "startOffset": 430,
+        "endOffset": 437
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "TypeError can be thrown as \"initial\" might be null or undefined here.",
+      "effort": "10min",
+      "debt": "10min",
+      "tags": [
+        "cwe",
+        "type-dependent"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "BUG",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAG7h-_7ZHL5nV6",
+      "rule": "javascript:S6582",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "a9aa7b0b53d66b35a4aaf913430b215f",
+      "textRange": {
+        "startLine": 113,
+        "endLine": 113,
+        "startOffset": 32,
+        "endOffset": 64
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "editable-source",
+        "es2020",
+        "type-dependent"
+      ],
+      "creationDate": "2026-10-16T20:27:00+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGj_9q7h-_7ZHL5nVo",
+      "rule": "javascript:S7778",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:lib/plan-v2.js",
+      "project": "drumee_infra-layer",
+      "hash": "a5147b8f16407c9933eab580488c5f59",
+      "textRange": {
+        "startLine": 73,
+        "endLine": 73,
+        "startOffset": 16,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Merge these Array#push() calls into a single call with multiple arguments.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "editable-source",
+        "performance",
+        "readability",
+        "type-dependent"
+      ],
+      "creationDate": "2026-10-16T19:58:43+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAHd7h-_7ZHL5nWB",
+      "rule": "javascript:S3358",
+      "severity": "MAJOR",
+      "component": "drumee_infra-layer:lifecycle/composition.js",
+      "project": "drumee_infra-layer",
+      "hash": "3a2add3ea50756bf9486efd18b18cf09",
+      "textRange": {
+        "startLine": 86,
+        "endLine": 86,
+        "startOffset": 844,
+        "endOffset": 882
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "confusing",
+        "editable-source"
+      ],
+      "creationDate": "2026-10-16T19:58:43+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkACL7h-_7ZHL5nV-",
+      "rule": "javascript:S2871",
+      "severity": "CRITICAL",
+      "component": "drumee_infra-layer:lifecycle/external-gateway.js",
+      "project": "drumee_infra-layer",
+      "hash": "fa3ab5498c639893a102b1e7922b84b4",
+      "textRange": {
+        "startLine": 15,
+        "endLine": 15,
+        "startOffset": 49,
+        "endOffset": 53
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Provide a compare function that depends on \"String.localeCompare\", to reliably sort elements alphabetically.",
+      "effort": "10min",
+      "debt": "10min",
+      "tags": [
+        "bad-practice",
+        "type-dependent"
+      ],
+      "creationDate": "2026-10-16T19:58:43+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "BUG",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkACL7h-_7ZHL5nV_",
+      "rule": "javascript:S2681",
+      "severity": "MAJOR",
+      "component": "drumee_infra-layer:lifecycle/external-gateway.js",
+      "project": "drumee_infra-layer",
+      "hash": "2e6bf8ad269dc3b315e5ed1fdaea51a6",
+      "textRange": {
+        "startLine": 28,
+        "endLine": 28,
+        "startOffset": 53,
+        "endOffset": 68
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "This statement will not be executed conditionally; only the first statement will be. The rest will execute unconditionally.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "cwe",
+        "editable-source"
+      ],
+      "creationDate": "2026-10-16T19:58:43+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "FORMATTED",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaFGkAAX7h-_7ZHL5nV9",
+      "rule": "javascript:S5443",
+      "severity": "CRITICAL",
+      "component": "drumee_infra-layer:test/support/application-inputs.js",
+      "project": "drumee_infra-layer",
+      "hash": "b6de30f3ba2b150f1ca583c4c188fa65",
+      "textRange": {
+        "startLine": 4,
+        "endLine": 4,
+        "startOffset": 34,
+        "endOffset": 58
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure publicly writable directories are used safely here.",
+      "effort": "30min",
+      "debt": "30min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-16T19:58:43+0000",
+      "updateDate": "2026-10-18T08:16:36+0000",
+      "closeDate": "2026-10-18T08:16:36+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "pullRequest": "2",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "2167ae9a-41e6-43c9-a928-b89b1e95b286",
+      "lastChangeSource": "ANALYSIS"
+    }
+  ],
+  "components": [
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/application/plugins/qualification/worker.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nUp",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "worker.js",
+      "longName": "test/application/plugins/qualification/worker.js",
+      "path": "test/application/plugins/qualification/worker.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/application/interrupt.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nUo",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "interrupt.js",
+      "longName": "test/application/interrupt.js",
+      "path": "test/application/interrupt.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer",
+      "uuid": "AaFGj5n7UnbYVTaaeYpz",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "infra-layer",
+      "longName": "infra-layer",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/application/run.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nUt",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "run.js",
+      "longName": "test/application/run.js",
+      "path": "test/application/run.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:lifecycle/external-gateway.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nVe",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "external-gateway.js",
+      "longName": "lifecycle/external-gateway.js",
+      "path": "lifecycle/external-gateway.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/application/build.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nUs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "build.js",
+      "longName": "test/application/build.js",
+      "path": "test/application/build.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/application/host.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nUv",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "host.js",
+      "longName": "test/application/host.js",
+      "path": "test/application/host.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/support/application-inputs.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nU5",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "application-inputs.js",
+      "longName": "test/support/application-inputs.js",
+      "path": "test/support/application-inputs.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/application/package-consumer.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nUu",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "package-consumer.js",
+      "longName": "test/application/package-consumer.js",
+      "path": "test/application/package-consumer.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:lib/plan-v2.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nUJ",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "plan-v2.js",
+      "longName": "lib/plan-v2.js",
+      "path": "lib/plan-v2.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:lifecycle/composition.js",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nVm",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "composition.js",
+      "longName": "lifecycle/composition.js",
+      "path": "lifecycle/composition.js",
+      "pullRequest": "2"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/application/Dockerfile",
+      "uuid": "AaFGj_Yf7h-_7ZHL5nUn",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Dockerfile",
+      "longName": "test/application/Dockerfile",
+      "path": "test/application/Dockerfile",
+      "pullRequest": "2"
+    }
+  ],
+  "organizations": [
+    {
+      "key": "drumee",
+      "name": "Drumee"
+    }
+  ],
+  "facets": []
+}

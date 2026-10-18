@@ -1,0 +1,82 @@
+{
+  "source": "a9decbab4c6314538995f1005eefd5804fcbe709",
+  "unit_tap": 159,
+  "contract_subset_tap": 24,
+  "contract_overlap": true,
+  "lint_errors": 0,
+  "visible_baseline_warnings": 65,
+  "lint_regressions": 0,
+  "isolated_consumer_assertions": 8,
+  "new_browser_or_remote_scenarios": 0,
+  "retained_heavy_proof": "IL-5.8; explicitly not rerun",
+  "quality_pr_run": 39130991341,
+  "codeql_pr_run": 39130988786,
+  "alert_inventory": "HTTP403; no zero-alert claim",
+  "logs": [
+    {
+      "file": "/tmp/drumee-il59a-lint-qualified.log",
+      "sha256": "a5c347915ae3622c33894c759f676f872ace9e62df37610f8bcc99a11f6ce3c9",
+      "bytes": 6147
+    },
+    {
+      "file": "/tmp/drumee-il59a-unit-qualified.log",
+      "sha256": "44cdcdd393afd5f71901beeca156dbd46d46222635cef2c801720c91b7cda594",
+      "bytes": 33988
+    },
+    {
+      "file": "/tmp/drumee-il59a-contracts.log",
+      "sha256": "4be57e839ac1d4e98447b5edbbe5e3ec7afef50e76cff874dad555b583b21ca8",
+      "bytes": 5535
+    },
+    {
+      "file": "/tmp/drumee-il59a-package.log",
+      "sha256": "0dd1f2c2359b80f20b9159557dcc352de389fc726a57d7196a45af0f0d411e88",
+      "bytes": 1193
+    },
+    {
+      "file": "/tmp/drumee-il59a-consumer.log",
+      "sha256": "97f8d8bb54ff9fdd9ca72808c8175c6e4ba02379d99af36451500b273268f6eb",
+      "bytes": 457
+    },
+    {
+      "file": "/tmp/drumee-il59a-clean-ci.log",
+      "sha256": "5be44ef3f5a927df44b34160e1c195ed22284b1a3a494f548bd5a27366db2c77",
+      "bytes": 155
+    },
+    {
+      "file": "/tmp/drumee-il59a-clean-lint.log",
+      "sha256": "261955ab8d01530cbd52a030c701b14cfef552086c6b9cd7b95be537f0997a50",
+      "bytes": 6579
+    },
+    {
+      "file": "/tmp/drumee-il59a-clean-package.log",
+      "sha256": "0dd1f2c2359b80f20b9159557dcc352de389fc726a57d7196a45af0f0d411e88",
+      "bytes": 1193
+    },
+    {
+      "file": "/tmp/drumee-il59a-clean-unit.log",
+      "sha256": "1ab71b84c6099b0c391af868b2347cf45d6ee36988b4fb4f649a540c7cc7b4d2",
+      "bytes": 33972
+    },
+    {
+      "file": "/tmp/drumee-il59a-owner-regression.log",
+      "sha256": "fcf343c331630b8a963a3399539cefdbe79a649e91f728b3f66c349941686a50",
+      "bytes": 563
+    },
+    {
+      "file": "/tmp/drumee-il59a-ci-initial-failure.log",
+      "sha256": "53a43d734ff56c83df9664b1fc992b1b3c2168b273c969f82859dee190f6e59c",
+      "bytes": 96675
+    },
+    {
+      "file": "/tmp/drumee-il59a-quality-qualified.log",
+      "sha256": "a32cf0d494ed64988ffa8f7e43fb2f86fbd05e8739c86426c7342820b211d25e",
+      "bytes": 271657
+    },
+    {
+      "file": "/tmp/drumee-il59a-codeql-qualified.log",
+      "sha256": "58ad1241035716472109576cb12cd14f98b07898abf445a8f85a5ea964672a3f",
+      "bytes": 248802
+    }
+  ]
+}
