@@ -193,3 +193,21 @@ qualification history and main base. CLI update first failed on deprecated
 Projects GraphQL preflight, then REST returned token 403. The authorized GitHub
 connector update succeeded; no credential, repository permission or protection
 was changed. These are tooling observations, not Sonar or test successes.
+
+## IL-5.9 owner decision and blocked application (2026-10-18)
+
+The owner explicitly approved the four remaining contextual false positives
+(S8431, S5332, S7780, S9382). This supersedes the earlier pending-owner-decision
+statement only; historical source/qualification evidence is preserved.
+Application of those decisions is **BLOCKED_SONAR_PERMISSIONS**: the approved
+S8431 transition returned HTTP 401 Authentication is required. All four issues
+remain OPEN on independent readback, Security B/Reliability A, quality gate ERROR.
+No comment, disposition, severity/rule/protection change or passing gate is claimed.
+
+[IL-5.9 closure attempt](IL-5.9-sonar-closure.md) retains exact IDs, justifications,
+response/readback evidence and the four remaining individual operations. The
+mission's access stop rule prevents starting Debian realignment/requalification;
+Debian still selects historical c6ef6e9 and has not received the IL-5.8 fixes.
+Resume with an authorized Sonar interface or individually verified owner actions,
+then verify/re-lock f91253c and execute the required new-selection qualification.
+No merge, publication, production/Oxy-form operation or D0 is authorized/performed.

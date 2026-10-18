@@ -167,3 +167,21 @@ Do not substitute npm SRI for a GitHub source-archive SRI. Infra #2 still preced
 Debian #7; no merge-base change, merge, npm/image/tag publication, production
 operation, OF-02 or Oxymotion D0 occurs here. Internet SMTP and spool restoration
 remain unqualified and require their own controlled acceptance.
+
+## IL-5.9 owner decision and blocked application (2026-10-18)
+
+The owner explicitly approved the four remaining contextual false positives
+(S8431, S5332, S7780, S9382). This supersedes the earlier pending-owner-decision
+statement only; historical source/qualification evidence is preserved.
+Application of those decisions is **BLOCKED_SONAR_PERMISSIONS**: the approved
+S8431 transition returned HTTP 401 Authentication is required. All four issues
+remain OPEN on independent readback, Security B/Reliability A, quality gate ERROR.
+No comment, disposition, severity/rule/protection change or passing gate is claimed.
+
+[IL-5.9 closure attempt](IL-5.9-sonar-closure.md) retains exact IDs, justifications,
+response/readback evidence and the four remaining individual operations. The
+mission's access stop rule prevents starting Debian realignment/requalification;
+Debian still selects historical c6ef6e9 and has not received the IL-5.8 fixes.
+Resume with an authorized Sonar interface or individually verified owner actions,
+then verify/re-lock f91253c and execute the required new-selection qualification.
+No merge, publication, production/Oxy-form operation or D0 is authorized/performed.

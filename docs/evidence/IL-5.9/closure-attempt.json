@@ -1,0 +1,73 @@
+{
+  "observed_at": "2026-10-18T12:09:28.540726+00:00",
+  "initial_infra_head": "16154bccbc41922886269ed6de4e0ac214dc57b6",
+  "debian_head": "0d936b870bd634bac44939066f4a0e526e1b02ea",
+  "status": "BLOCKED_SONAR_PERMISSIONS",
+  "transition_request": {
+    "method": "POST",
+    "endpoint": "https://sonarcloud.io/api/issues/do_transition",
+    "issue": "AaFGj__s7h-_7ZHL5nVp",
+    "transition": "falsepositive",
+    "http_status": 401,
+    "response": {
+      "errors": [
+        {
+          "msg": "Authentication is required"
+        }
+      ]
+    }
+  },
+  "changed_issues": 0,
+  "readback_open_count": 4,
+  "decisions": [
+    {
+      "issue": "AaFGj__s7h-_7ZHL5nVp",
+      "rule": "docker:S8431",
+      "location": "test/application/Dockerfile:1",
+      "owner_decision": "FALSE_POSITIVE explicitly approved in IL-5.9 mission",
+      "approved_justification": "The qualification image is identified by an immutable digest. The descriptive tag does not determine the image bytes.",
+      "initial_status": "OPEN",
+      "action": "ATTEMPTED_REFUSED_HTTP_401",
+      "comment_submitted": false,
+      "final_status": "OPEN",
+      "observed_at": "2026-10-18T12:09:28.540726+00:00"
+    },
+    {
+      "issue": "AaFGj__57h-_7ZHL5nVs",
+      "rule": "javascript:S5332",
+      "location": "test/application/plugins/qualification/worker.js:11",
+      "owner_decision": "FALSE_POSITIVE explicitly approved in IL-5.9 mission",
+      "approved_justification": "The qualification SMTP client mandates STARTTLS with certificate, CA and server-name verification. Negative tests refuse absent STARTTLS, an invalid CA and a wrong server name before authentication. secure:false selects mandatory upgrade, not authorized plaintext delivery.",
+      "initial_status": "OPEN",
+      "action": "NOT_ATTEMPTED_BLOCKED_AUTH",
+      "comment_submitted": false,
+      "final_status": "OPEN",
+      "observed_at": "2026-10-18T12:09:28.540726+00:00"
+    },
+    {
+      "issue": "AaFOFe0GZ2pN_ZCiPhed",
+      "rule": "javascript:S7780",
+      "location": "test/application/run.js:41",
+      "owner_decision": "FALSE_POSITIVE explicitly approved in IL-5.9 mission",
+      "approved_justification": "The escaping constructs a literal SSH program argument according to POSIX quoting. Inputs are controlled and the independent network path was actually qualified.",
+      "initial_status": "OPEN",
+      "action": "NOT_ATTEMPTED_BLOCKED_AUTH",
+      "comment_submitted": false,
+      "final_status": "OPEN",
+      "observed_at": "2026-10-18T12:09:28.540726+00:00"
+    },
+    {
+      "issue": "AaFOFe0GZ2pN_ZCiPhee",
+      "rule": "javascript:S9382",
+      "location": "test/application/run.js:73",
+      "owner_decision": "FALSE_POSITIVE explicitly approved in IL-5.9 mission",
+      "approved_justification": "Sequential bounded polling observes deferred readiness. Unexpected errors propagate and exhaustion fails explicitly; only ECONNREFUSED is retried.",
+      "initial_status": "OPEN",
+      "action": "NOT_ATTEMPTED_BLOCKED_AUTH",
+      "comment_submitted": false,
+      "final_status": "OPEN",
+      "observed_at": "2026-10-18T12:09:28.540726+00:00"
+    }
+  ],
+  "consumer_realignment_started": false
+}
