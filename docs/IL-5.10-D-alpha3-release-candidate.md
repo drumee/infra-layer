@@ -157,3 +157,15 @@ The local candidate is retained at
 /tmp/drumee-il510-evidence/drumee-infra-layer-0.1.0-alpha.3.tgz. It is not committed
 or uploaded as a release artifact. Recreate it from the exact canonical commit
 if the disposable environment expires. No npm/image/tag release occurs here.
+
+
+## Documentary closing checks
+
+[Evidence PR #10](https://github.com/drumee/infra-layer/pull/10), at
+da42c0f3e1ce46419ec4895815a540f592e6b4d8, has all five Quality jobs and CodeQL
+SUCCESS, with no new changed-code alert. Its Sonar check also passes because
+that PR has only documentation/evidence changes; this does **not** clear the
+canonical main gate or close its 227 historical records. A post-documentation
+local lint still reports 0 errors/65 visible baseline warnings/0 new findings,
+and pack retains the exact candidate SRI. The new closing ledger/evidence does
+not change shipped files. [Check snapshot](evidence/IL-5.10/closing-documentary-ci.json).
