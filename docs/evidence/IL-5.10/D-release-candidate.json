@@ -1,0 +1,517 @@
+{
+  "canonical_commit": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+  "status": "RELEASE_CANDIDATE_QUALIFIED",
+  "quality": [
+    {
+      "check": "install",
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--cache",
+        "/tmp/drumee-il510-npm-cache"
+      ],
+      "exit": 0,
+      "log": "D-install.log"
+    },
+    {
+      "check": "unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit": 0,
+      "log": "D-unit.log"
+    },
+    {
+      "check": "contracts",
+      "command": [
+        "npm",
+        "run",
+        "test:contracts"
+      ],
+      "exit": 0,
+      "log": "D-contracts.log"
+    },
+    {
+      "check": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exit": 0,
+      "log": "D-lint.log"
+    },
+    {
+      "check": "package",
+      "command": [
+        "npm",
+        "run",
+        "test:package"
+      ],
+      "exit": 0,
+      "log": "D-package.log"
+    },
+    {
+      "check": "audit-production",
+      "command": [
+        "npm",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "exit": 0,
+      "log": "D-audit-production.log"
+    },
+    {
+      "check": "audit-development",
+      "command": [
+        "npm",
+        "audit",
+        "--include=dev",
+        "--json"
+      ],
+      "exit": 0,
+      "log": "D-audit-development.log"
+    }
+  ],
+  "source": {
+    "canonical_commit": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+    "source_url": "https://codeload.github.com/drumee/infra-layer/tar.gz/9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+    "source_sha256": "8bacfbc856cbf49d3722b1a22e78d5c520fdb45215bf96831e6e3326f7513468",
+    "source_integrity": "sha512-avsnkxzQulvLzyG7JNtXvvDygm0HTTtxdsv82TTEjx9RrIfQfut7xLwFmX7XGQDMa4Ht7g02tc9ENpPWrGEgyw==",
+    "archive_members": 260,
+    "files_compared": 225,
+    "all_source_file_bytes_equal_debian_pin_aa9057f": true,
+    "version": "0.1.0-alpha.3",
+    "license": "AGPL-3.0-only",
+    "production_dependencies": {},
+    "exports": {
+      ".": {
+        "types": "./index.d.ts",
+        "require": "./lib/index.js",
+        "default": "./lib/index.js"
+      },
+      "./package.json": "./package.json",
+      "./lifecycle": {
+        "types": "./lifecycle/index.d.ts",
+        "require": "./lifecycle/index.js",
+        "default": "./lifecycle/index.js"
+      },
+      "./lifecycle/*": "./lifecycle/*.js",
+      "./lib/*": "./lib/*.js",
+      "./adapters/docker/*": "./adapters/docker/*.js",
+      "./capabilities/secrets": "./capabilities/secrets/index.js",
+      "./capabilities/tls": "./capabilities/tls/index.js",
+      "./capabilities/dns": "./capabilities/dns/index.js",
+      "./capabilities/database": "./capabilities/database/index.js",
+      "./capabilities/redis": "./capabilities/redis/index.js",
+      "./capabilities/mail": "./capabilities/mail/index.js",
+      "./capabilities/http/nginx": "./capabilities/http/nginx/index.js",
+      "./capabilities/tls/acme": "./capabilities/tls/acme.js"
+    },
+    "lock_coherent": true,
+    "debian_pin_not_modified": true
+  },
+  "artifact": {
+    "name": "@drumee/infra-layer",
+    "version": "0.1.0-alpha.3",
+    "size": 98808,
+    "unpackedSize": 353683,
+    "shasum": "26aaf59f95825710a16e854246e1c35e5450c0ba",
+    "integrity": "sha512-ZZIxqtHsFA0tCwAR6vcGa3iOttFYTkHCS4rKN4UtPApLPDkq41FJ0xJWKfWLEWVUlvM3JZldb1aGrhyKMiM9Pw==",
+    "files": [
+      {
+        "path": "CHANGELOG.md",
+        "size": 2834,
+        "mode": 420
+      },
+      {
+        "path": "LICENSE",
+        "size": 34523,
+        "mode": 420
+      },
+      {
+        "path": "PROVENANCE.md",
+        "size": 17607,
+        "mode": 420
+      },
+      {
+        "path": "README.md",
+        "size": 30114,
+        "mode": 420
+      },
+      {
+        "path": "adapters/docker/nginx.js",
+        "size": 6848,
+        "mode": 420
+      },
+      {
+        "path": "adapters/docker/resources.js",
+        "size": 1972,
+        "mode": 420
+      },
+      {
+        "path": "adapters/docker/services.js",
+        "size": 8149,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/database/index.js",
+        "size": 3793,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/dns/index.js",
+        "size": 6214,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/docker/Dockerfile.services",
+        "size": 946,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/http/nginx/index.js",
+        "size": 3390,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/http/nginx/routes.js",
+        "size": 3438,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/mail/index.js",
+        "size": 9316,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/redis/index.js",
+        "size": 4026,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/secrets/index.js",
+        "size": 7510,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/tls/acme.js",
+        "size": 7441,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/tls/index.js",
+        "size": 11253,
+        "mode": 420
+      },
+      {
+        "path": "index.d.ts",
+        "size": 10673,
+        "mode": 420
+      },
+      {
+        "path": "lib/contracts-v2.js",
+        "size": 16245,
+        "mode": 420
+      },
+      {
+        "path": "lib/diagnostics.js",
+        "size": 571,
+        "mode": 420
+      },
+      {
+        "path": "lib/filesystem-safety.js",
+        "size": 4062,
+        "mode": 420
+      },
+      {
+        "path": "lib/index.js",
+        "size": 334,
+        "mode": 420
+      },
+      {
+        "path": "lib/plan-v2.js",
+        "size": 13706,
+        "mode": 420
+      },
+      {
+        "path": "lib/plan.js",
+        "size": 4713,
+        "mode": 420
+      },
+      {
+        "path": "lib/rendering.js",
+        "size": 6467,
+        "mode": 420
+      },
+      {
+        "path": "lib/spec.js",
+        "size": 3105,
+        "mode": 420
+      },
+      {
+        "path": "lib/state-v2.js",
+        "size": 6284,
+        "mode": 420
+      },
+      {
+        "path": "lib/state.js",
+        "size": 4224,
+        "mode": 420
+      },
+      {
+        "path": "lib/validation.js",
+        "size": 14618,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/activation.js",
+        "size": 24837,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/composition.js",
+        "size": 15165,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/docker.js",
+        "size": 8191,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/external-gateway.js",
+        "size": 4081,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/index.d.ts",
+        "size": 6454,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/index.js",
+        "size": 1046,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/journal.js",
+        "size": 2467,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/preparation.js",
+        "size": 17014,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/recovery.js",
+        "size": 15713,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/transitions.js",
+        "size": 11564,
+        "mode": 420
+      },
+      {
+        "path": "package.json",
+        "size": 2775,
+        "mode": 420
+      }
+    ],
+    "canonical_commit": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+    "sha256": "7385ee7acbc6582746b2f8d8713ce174f7136e7531e7e57221df06a15c906a75",
+    "two_packages_byte_identical": true,
+    "all_40_members_equal_debian_source_receipt": true,
+    "registry_alpha3_present": false,
+    "published_by_this_mission": false
+  },
+  "consumer": {
+    "status": "passed",
+    "assertions": 8,
+    "real_preparation": true,
+    "activated": false,
+    "revision": "e42dedc2c466705fe8d2721d38def56f3dc471363996bc02aac76a2435e19f5c",
+    "package": "@drumee/infra-layer",
+    "version": "0.1.0-alpha.3",
+    "integrity": "sha512-ZZIxqtHsFA0tCwAR6vcGa3iOttFYTkHCS4rKN4UtPApLPDkq41FJ0xJWKfWLEWVUlvM3JZldb1aGrhyKMiM9Pw==",
+    "files": 40,
+    "production_dependencies": [],
+    "types": "strict-NodeNext-passed",
+    "source_revision": "9e4166618ca519e5d9b9e58f5191d37c5fd56462"
+  },
+  "negative_consumer": {
+    "status": "passed",
+    "negative_contract_assertions": 6,
+    "cases": [
+      {
+        "name": "public-binding",
+        "refused": true,
+        "code": "PRIVATE_APPLICATION_BINDING_REQUIRED"
+      },
+      {
+        "name": "IPv6-binding",
+        "refused": true,
+        "code": "PRIVATE_APPLICATION_BINDING_REQUIRED"
+      },
+      {
+        "name": "altered-RPC-prefix",
+        "refused": true,
+        "code": "EXTERNAL_GATEWAY_ROUTE_INVALID"
+      },
+      {
+        "name": "mutable-image",
+        "refused": true,
+        "code": "INVALID_DISTRIBUTION_SERVICE"
+      },
+      {
+        "name": "undeclared-dependency",
+        "refused": true,
+        "code": "INVALID_DEPENDENCY_ORDERING"
+      },
+      {
+        "name": "unauthorized-secret",
+        "refused": true,
+        "code": "INVALID_SECRET_REFERENCE"
+      }
+    ],
+    "isolated_dependencies": [
+      "@drumee/infra-layer"
+    ],
+    "undeclared_production_dependencies": [],
+    "development_tools_installed": false
+  },
+  "github_runs": [
+    {
+      "id": 39254727097,
+      "name": "github_actions in /. - Update #1636905050",
+      "head_sha": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+      "conclusion": "success",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39254727097"
+    },
+    {
+      "id": 39254727235,
+      "name": "npm_and_yarn in /. - Update #1636905039",
+      "head_sha": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+      "conclusion": "success",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39254727235"
+    },
+    {
+      "id": 39254727493,
+      "name": "npm_and_yarn in /test/application - Update #1636905044",
+      "head_sha": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+      "conclusion": "success",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39254727493"
+    },
+    {
+      "id": 39254718852,
+      "name": "Quality",
+      "head_sha": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+      "conclusion": "success",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39254718852"
+    },
+    {
+      "id": 39254717741,
+      "name": "Push on main",
+      "head_sha": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+      "conclusion": "success",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39254717741"
+    }
+  ],
+  "github_checks": [
+    {
+      "id": 118067273631,
+      "name": "SonarCloud Code Analysis",
+      "conclusion": "failure",
+      "details_url": "https://sonarcloud.io/dashboard?id=drumee_infra-layer&branch=main"
+    },
+    {
+      "id": 118067024125,
+      "name": "Dependabot",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39254727493/job/118067024125"
+    },
+    {
+      "id": 118067024052,
+      "name": "Dependabot",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39254727235/job/118067024052"
+    },
+    {
+      "id": 118067023569,
+      "name": "Dependabot",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39254727097/job/118067023569"
+    },
+    {
+      "id": 118066994678,
+      "name": ".github/dependabot.yml",
+      "conclusion": "success",
+      "details_url": "https://dependabot-api.githubapp.com"
+    },
+    {
+      "id": 118066994256,
+      "name": "Analyze (javascript-typescript)",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39254717741/job/118066994256"
+    },
+    {
+      "id": 118066992302,
+      "name": "unit",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39254718852/job/118066992302"
+    },
+    {
+      "id": 118066992158,
+      "name": "contracts",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39254718852/job/118066992158"
+    },
+    {
+      "id": 118066992150,
+      "name": "eslint",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39254718852/job/118066992150"
+    },
+    {
+      "id": 118066992143,
+      "name": "packaging",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39254718852/job/118066992143"
+    },
+    {
+      "id": 118066991699,
+      "name": "dependencies",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39254718852/job/118066991699"
+    }
+  ],
+  "logs": {
+    "D-unit.log": "8561812306296dbe5eadc282307ddff15034f48ec4543fd60a77d3f1502de48b",
+    "D-contracts.log": "b69acf59a4dc0687ddc2b3ba113ace9471afd76a0ca4ba29ad2105e1818b0104",
+    "D-lint.log": "85897f33cc8b9ec05dc13e56447ffe954c9af1f8bc9254c15eb483bce0d0ea5d",
+    "D-package.log": "0dd1f2c2359b80f20b9159557dcc352de389fc726a57d7196a45af0f0d411e88",
+    "D-audit-production.log": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300",
+    "D-audit-development.log": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300",
+    "D-isolated-consumer.log": "896e373d5297b2bf41b9f3d6270f33b4730d6e61c4c8e5455736e409c94585c0",
+    "D-negative-consumer-initial-error.txt": "b664121b31f1ecc643fc729c45fb6c7b93c6656fc6b49c8953304a460665a11a",
+    "D-negative-consumer.json": "e63de935ed9bef607aed3fc3e80570d7c629499ccd74db911fa9e625df505a5a"
+  },
+  "initial_extra_consumer_check_error": "cwd-bound absence assertion corrected to __dirname; package/import resolution was isolated; no production source change",
+  "registry_versions": [
+    "0.0.0-stage",
+    "0.1.0-alpha.1",
+    "0.1.0-alpha.2"
+  ],
+  "registry_tags": {
+    "next": "0.1.0-alpha.2",
+    "latest": "0.1.0-alpha.1"
+  },
+  "new_heavy_network_smtp_browser_runs": 0
+}
