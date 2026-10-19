@@ -1,5 +1,15 @@
 # IL-5 qualification ledger
 
+## Current IL-5.10 decision dossier
+
+**READY_FOR_ALPHA3_PUBLICATION_DECISION**: PR #2 is integrated at canonical main
+9e4166618ca519e5d9b9e58f5191d37c5fd56462 and the clean-main alpha.3 candidate
+is qualified, not published. See [integration](IL-5.10-B-infra-integration.md)
+and [candidate qualification](IL-5.10-D-alpha3-release-candidate.md). Earlier
+phase results below remain historical records. Full main Sonar debt and limited
+Security/Dependabot visibility remain explicit owner-review inputs.
+
+
 Status: **READY_FOR_TECHNICAL_REVIEW**. All IL-5.0–5 feature gates below pass;
 the unchanged global packaging debt is disclosed separately. Evidence below distinguishes implementation,
 executed tests, measured qualification and future consumer acceptance.

@@ -215,3 +215,37 @@ exports remain identical to f91253c, but changed package.json dev-tool metadata
 has new npm SRI `sha512-ZZIxqtHsFA0tCwAR6vcGa3iOttFYTkHCS4rKN4UtPApLPDkq41FJ0xJWKfWLEWVUlvM3JZldb1aGrhyKMiM9Pw==`.
 No old integrity is reused, and Debian's locks/code/PR are not modified. Infra
 still precedes Debian; no consumer realignment, Oxy-form unblock or D0 is claimed.
+
+## IL-5.10 — canonical integration and unpublished alpha.3 decision
+
+Infra PR #2 is now confirmed merged into main at
+`9e4166618ca519e5d9b9e58f5191d37c5fd56462` (2026-10-19 12:46:41 UTC), with the
+exact aa9057f tree and preserved feature/source ancestry. See
+[IL-5.10 integration](IL-5.10-B-infra-integration.md) for the guarded merge and
+post-merge results and [alpha.3 qualification](IL-5.10-D-alpha3-release-candidate.md)
+for the fresh clean-main candidate, full inventory, consumer and limitations.
+
+The npm alpha.3 candidate still has SRI
+`sha512-ZZIxqtHsFA0tCwAR6vcGa3iOttFYTkHCS4rKN4UtPApLPDkq41FJ0xJWKfWLEWVUlvM3JZldb1aGrhyKMiM9Pw==`
+and SHA256 7385ee7acbc6582746b2f8d8713ce174f7136e7531e7e57221df06a15c906a75.
+It is locally packed twice, byte-identical, 40 files/98,808 bytes and dependency-free
+in production. Fresh D qualification: 161 TAP; 24 overlapping public-contract TAP;
+package guard; 0 lint errors/65 visible baseline warnings/0 new findings; both
+npm audits 0; 8 isolated consumer assertions/strict types and 6 extra installed
+contract negatives. Main's five Quality jobs and CodeQL analysis succeed.
+Historical real integration is reused by byte identity, not claimed rerun.
+
+Debian PR #7 is already merged into feat/container-distribution at 1ff957f,
+byte-identical to qualified delivery 490c4b0. It still acquires aa9057f from
+GitHub with the **old source archive SRI**; no registry/source lock migration is
+performed. The canonical main archive has a distinct source SRI recorded in D,
+while npm allowed bytes remain identical. The Debian convergence dossier is on
+its docs/il510-integration branch; no Debian-main merge is made.
+
+Quality/CodeQL remain the operational chain. External Sonar's default-branch
+inventory has 227 open historical records, broader than the three mapped IL-5
+cases; it is not blanket-accepted or closed. The failed Sonar gate, 65 visible
+ESLint warnings, Security/Dependabot HTTP 403 limits and Debian's two/91 historical
+CI debts remain explicit. Owner publication review must account for those scopes.
+Candidate qualification is not publication authorization or a zero-alert claim.
+No npm/image/tag publication, production action, Oxy-form change or D0 occurs.

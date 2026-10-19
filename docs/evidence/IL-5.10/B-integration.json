@@ -1,0 +1,283 @@
+{
+  "status": "PASS",
+  "merge_commit": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+  "qualified_head": "aa9057f224f4ae5cf80d777e3cb2fad092193fb1",
+  "tree": "83121b0357c4fc1fa2df6f6ffa49236fd5fa105e",
+  "tree_equals_qualified_head": true,
+  "branch_reference_preserved": true,
+  "npm_integrity": "sha512-ZZIxqtHsFA0tCwAR6vcGa3iOttFYTkHCS4rKN4UtPApLPDkq41FJ0xJWKfWLEWVUlvM3JZldb1aGrhyKMiM9Pw==",
+  "main_unit_pass": 161,
+  "main_contract_pass": 24,
+  "contracts_overlap_unit": true,
+  "main_checks": {
+    "SonarCloud Code Analysis": {
+      "id": 118067273631,
+      "conclusion": "failure",
+      "annotations": 0
+    },
+    "Dependabot": {
+      "id": 118067024125,
+      "conclusion": "success",
+      "annotations": 1
+    },
+    ".github/dependabot.yml": {
+      "id": 118066994678,
+      "conclusion": "success",
+      "annotations": 0
+    },
+    "Analyze (javascript-typescript)": {
+      "id": 118066994256,
+      "conclusion": "success",
+      "annotations": 1
+    },
+    "unit": {
+      "id": 118066992302,
+      "conclusion": "success",
+      "annotations": 0
+    },
+    "contracts": {
+      "id": 118066992158,
+      "conclusion": "success",
+      "annotations": 0
+    },
+    "eslint": {
+      "id": 118066992150,
+      "conclusion": "success",
+      "annotations": 10
+    },
+    "packaging": {
+      "id": 118066992143,
+      "conclusion": "success",
+      "annotations": 0
+    },
+    "dependencies": {
+      "id": 118066991699,
+      "conclusion": "success",
+      "annotations": 0
+    }
+  },
+  "sonar": {
+    "gate": "ERROR",
+    "main_open": 227,
+    "by_type": {
+      "CODE_SMELL": 188,
+      "VULNERABILITY": 23,
+      "BUG": 16
+    },
+    "mapped_reviewed_logical_cases": [
+      {
+        "key": "AaFUM8yI2ckiDDba3qAU",
+        "rule": "javascript:S7780",
+        "component": "drumee_infra-layer:test/application/run.js",
+        "line": 42,
+        "hash": "139a967c6f48bab76fc88363036a62aa"
+      },
+      {
+        "key": "AaFUM8yI2ckiDDba3qAV",
+        "rule": "javascript:S9382",
+        "component": "drumee_infra-layer:test/application/run.js",
+        "line": 74,
+        "hash": "88bed08345da33f629d26c6d08f5736c"
+      },
+      {
+        "key": "AaFUM8xx2ckiDDba3qAT",
+        "rule": "javascript:S5332",
+        "component": "drumee_infra-layer:test/application/plugins/qualification/worker.js",
+        "line": 11,
+        "hash": "c13d78fa2a2d96510f6c5eed82edd4bb"
+      }
+    ],
+    "other_preexisting": 224,
+    "legacy_vulnerabilities": [
+      {
+        "key": "AaE8TbnThgf3bSVnp8z4",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/lifecycle/run.js",
+        "line": 21,
+        "creationDate": "2026-10-14T16:55:42+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE8TcJkhgf3bSVnp80B",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:lifecycle/recovery.js",
+        "line": 22,
+        "creationDate": "2026-10-14T16:09:57+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE8TbpHhgf3bSVnp8z9",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/lifecycle/tracing-driver.js",
+        "line": 6,
+        "creationDate": "2026-10-14T16:09:57+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE8TcJ8hgf3bSVnp80i",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:lifecycle/docker.js",
+        "line": 8,
+        "creationDate": "2026-10-14T13:55:11+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE8TcJ8hgf3bSVnp80m",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:lifecycle/docker.js",
+        "line": 49,
+        "creationDate": "2026-10-14T13:55:11+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw2edL4i9l9HI8Cw",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/package-audit.js",
+        "line": 21,
+        "creationDate": "2026-10-14T09:41:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw2edL4i9l9HI8Cx",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/package-audit.js",
+        "line": 24,
+        "creationDate": "2026-10-14T09:41:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw1PdL4i9l9HI8CS",
+        "rule": "javascript:S2612",
+        "component": "drumee_infra-layer:test/services/run.js",
+        "line": 23,
+        "creationDate": "2026-10-14T09:41:18+0000",
+        "message": "Make sure this permission is safe."
+      },
+      {
+        "key": "AaE6Nw1PdL4i9l9HI8CT",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/services/run.js",
+        "line": 29,
+        "creationDate": "2026-10-14T09:41:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw1PdL4i9l9HI8CU",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/services/run.js",
+        "line": 51,
+        "creationDate": "2026-10-14T09:41:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw1PdL4i9l9HI8CW",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/services/run.js",
+        "line": 79,
+        "creationDate": "2026-10-14T09:41:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw1PdL4i9l9HI8CX",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/services/run.js",
+        "line": 80,
+        "creationDate": "2026-10-14T09:41:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw1FdL4i9l9HI8CN",
+        "rule": "javascript:S5443",
+        "component": "drumee_infra-layer:test/support/service-inputs.js",
+        "line": 3,
+        "creationDate": "2026-10-14T09:41:18+0000",
+        "message": "Make sure publicly writable directories are used safely here."
+      },
+      {
+        "key": "AaE6Nw4UdL4i9l9HI8Dz",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:capabilities/tls/index.js",
+        "line": 9,
+        "creationDate": "2026-10-14T06:09:55+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw4UdL4i9l9HI8D1",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:capabilities/tls/index.js",
+        "line": 19,
+        "creationDate": "2026-10-14T06:09:55+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw2edL4i9l9HI8Cu",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/package-audit.js",
+        "line": 8,
+        "creationDate": "2026-10-13T19:32:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw2UdL4i9l9HI8Cp",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/integration/run.js",
+        "line": 29,
+        "creationDate": "2026-10-13T17:09:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw2UdL4i9l9HI8Cq",
+        "rule": "javascript:S2612",
+        "component": "drumee_infra-layer:test/integration/run.js",
+        "line": 30,
+        "creationDate": "2026-10-13T17:09:18+0000",
+        "message": "Make sure this permission is safe."
+      },
+      {
+        "key": "AaE6Nw2UdL4i9l9HI8Cr",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/integration/run.js",
+        "line": 50,
+        "creationDate": "2026-10-13T17:09:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw2UdL4i9l9HI8Cs",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/integration/run.js",
+        "line": 92,
+        "creationDate": "2026-10-13T17:09:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nw2UdL4i9l9HI8Ct",
+        "rule": "javascript:S4036",
+        "component": "drumee_infra-layer:test/integration/run.js",
+        "line": 93,
+        "creationDate": "2026-10-13T17:09:18+0000",
+        "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories."
+      },
+      {
+        "key": "AaE6Nwx8dL4i9l9HI8CM",
+        "rule": "javascript:S5443",
+        "component": "drumee_infra-layer:test/support/inputs.js",
+        "line": 3,
+        "creationDate": "2026-10-13T17:09:18+0000",
+        "message": "Make sure publicly writable directories are used safely here."
+      }
+    ],
+    "legacy_vulnerability_statement_lines_present_in_premerge_base": true,
+    "legacy_findings_are_not_accepted_or_closed": true
+  },
+  "global_security_inventory": "HTTP403",
+  "dependabot_inventory": "HTTP403",
+  "logs": {
+    "B-infra-unit.log": "7a0418222442e04b9323efd4740c1c697761c0aced256a88a5d8e0a2ebf95b2d",
+    "B-infra-contracts.log": "f9ab81c7ac051b27daeacd6040fb7cf038d1f8bf1bf51ff2435fa6c8c9a5460d",
+    "B-infra-lint.log": "c6fa6f2b82dc8d82a5bd3db4e7fe445045e1314c77507df65bfdb1ddf1562f92",
+    "B-main-unit.log": "52d6b76ee68cfb176122c78c1676cc2a706b27b125db3bd0a5e051d5d58fe0c2",
+    "B-main-contracts.log": "80d38289eece0f041fd3514bd143b3489d324d40859006dae39e74377b4fd8f2",
+    "B-audit-production.json": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300",
+    "B-audit-development.json": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"
+  }
+}
