@@ -1,0 +1,380 @@
+{
+  "run": 39130988786,
+  "source": "a9decbab4c6314538995f1005eefd5804fcbe709",
+  "status": "success",
+  "upload_processed": true,
+  "queries": [
+    {
+      "pack": "2.4.7",
+      "path": "AngularJS/DisablingSce"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "AngularJS/DoubleCompilation"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "AngularJS/InsecureUrlWhitelist"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Diagnostics/ExtractedFiles"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Diagnostics/ExtractionErrors"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Electron/AllowRunningInsecureContent"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Electron/DisablingWebSecurity"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Performance/PolynomialReDoS"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Performance/ReDoS"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "RegExp/IdentityReplacement"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-020/IncompleteHostnameRegExp"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-020/IncompleteUrlSchemeCheck"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-020/IncompleteUrlSubstringSanitization"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-020/IncorrectSuffixCheck"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-020/OverlyLargeRange"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-020/UselessRegExpCharacterEscape"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-022/TaintedPath"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-022/ZipSlip"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-073/TemplateObjectInjection"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-078/CommandInjection"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-078/SecondOrderCommandInjection"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-078/ShellCommandInjectionFromEnvironment"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-078/UnsafeShellCommandConstruction"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-078/UselessUseOfCat"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-079/ExceptionXss"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-079/ReflectedXss"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-079/StoredXss"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-079/UnsafeHtmlConstruction"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-079/UnsafeJQueryPlugin"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-079/Xss"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-079/XssThroughDom"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-089/SqlInjection"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-094/CodeInjection"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-094/ImproperCodeSanitization"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-094/UnsafeDynamicMethodAccess"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-1004/ClientExposedCookie"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-116/BadTagFilter"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-116/DoubleEscaping"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-116/IncompleteHtmlAttributeSanitization"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-116/IncompleteMultiCharacterSanitization"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-116/IncompleteSanitization"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-116/UnsafeHtmlExpansion"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-134/TaintedFormatString"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-1427/SystemPromptInjection"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-178/CaseSensitiveMiddlewarePath"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-200/PrivateFileExposure"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-201/PostMessageStar"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-209/StackTraceExposure"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-295/DisablingCertificateValidation"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-300/InsecureDependencyResolution"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-312/BuildArtifactLeak"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-312/CleartextLogging"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-312/CleartextStorage"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-326/InsufficientKeySize"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-327/BadRandomness"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-327/BrokenCryptoAlgorithm"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-338/InsecureRandomness"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-346/CorsMisconfigurationForCredentials"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-347/MissingJWTKeyVerification"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-352/MissingCsrfMiddleware"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-400/DeepObjectResourceExhaustion"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-502/UnsafeDeserialization"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-598/SensitiveGetQuery"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-601/ClientSideUrlRedirect"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-601/ServerSideUrlRedirect"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-611/Xxe"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-614/ClearTextCookie"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-640/HostHeaderPoisoningInEmailGeneration"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-643/XpathInjection"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-693/InsecureHelmet"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-730/RegExpInjection"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-730/ServerCrash"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-754/UnvalidatedDynamicMethodCall"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-770/MissingRateLimiting"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-770/ResourceExhaustion"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-776/XmlBomb"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-829/InsecureDownload"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-830/FunctionalityFromUntrustedDomain"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-830/FunctionalityFromUntrustedSource"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-834/LoopBoundInjection"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-843/TypeConfusionThroughParameterTampering"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-915/PrototypePollutingAssignment"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-915/PrototypePollutingFunction"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-915/PrototypePollutingMergeCall"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-916/InsufficientPasswordHash"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-918/RequestForgery"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Security/CWE-942/CorsPermissiveConfiguration"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Summary/LinesOfCode"
+    },
+    {
+      "pack": "2.4.7",
+      "path": "Summary/LinesOfUserCode"
+    }
+  ],
+  "query_count": 89,
+  "log_sha256": "58ad1241035716472109576cb12cd14f98b07898abf445a8f85a5ea964672a3f",
+  "alerts_inventory": "unavailable: PAT HTTP403; no zero-alert claim",
+  "actions": [
+    {
+      "action": "actions/checkout@v6",
+      "sha": "d23441a48e516b6c34aea4fa41551a30e30af803"
+    },
+    {
+      "action": "github/codeql-action@v4",
+      "sha": "6f2ac81f5cd81fe351a197ba0b00d91d03cd2aee"
+    }
+  ],
+  "cli_versions": [
+    "2.27.2"
+  ]
+}

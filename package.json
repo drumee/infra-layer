@@ -1,6 +1,6 @@
 {
   "name": "@drumee/infra-layer",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "private": false,
   "description": "Docker infrastructure planning, secret projections, isolated application composition and lifecycle recovery.",
   "license": "AGPL-3.0-only",
@@ -40,16 +40,24 @@
     "test:gateway": "node test/integration/run.js",
     "test:services": "node test/services/run.js",
     "test:lifecycle": "node test/lifecycle/run.js",
-    "test:lifecycle:gateway": "node test/lifecycle/gateway-run.js"
+    "test:lifecycle:gateway": "node test/lifecycle/gateway-run.js",
+    "test:application": "node test/application/run.js",
+    "lint": "node tooling/lint.cjs",
+    "test:contracts": "node --test test/unit/application-contract.test.js test/unit/composition.test.js test/unit/distribution-isolation.test.js"
   },
   "devDependencies": {
+    "@drumee/server-runtime": "0.1.0-alpha.4",
+    "@eslint/js": "10.0.1",
+    "eslint": "10.13.0",
+    "globals": "17.13.0",
     "jsonfile": "5.0.0",
     "lodash": "4.18.1",
     "mariadb": "3.5.4",
     "nodemailer": "10.1.1",
     "redis": "4.7.1",
     "smtp-server": "3.19.22",
-    "websocket": "1.0.35"
+    "websocket": "1.0.35",
+    "yaml": "2.9.1"
   },
   "exports": {
     ".": {

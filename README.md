@@ -1,6 +1,18 @@
-# Drumee Infra Layer — unpublished alpha.2 candidate
+# Drumee Infra Layer — IL-5 development (alpha.3, unpublished)
 
-## IL-4 distribution qualification
+## IL-5 application distribution
+
+This branch adds a canonical application profile behind an external host proxy,
+with strict loopback publication and no implicit gateway/DB/Redis/DNS. It reuses
+the lifecycle, supplied-service and secret contracts; Runtime and consumers remain
+unchanged. See [architecture](docs/IL-5-architecture.md) and
+[public contract](docs/IL-5-contract.md), [qualification ledger](docs/IL-5-qualification.md)
+and [review handoff](docs/IL-5-release-handoff.md). The ledger distinguishes
+measured qualification from future consumer acceptance.
+Published alpha.2 remains the baseline and has not been overwritten.
+No npm/image publication, production operation or D0 execution is authorized.
+
+## Historical IL-4 distribution qualification
 
 KB-01B resolves the historical first-human/operator enrollment blocker. Debian
 now integrates the canonical capability with runtime alpha.4, isolated SQL roles

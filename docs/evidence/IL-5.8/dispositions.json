@@ -1,0 +1,262 @@
+[
+  {
+    "initial_id": "AaFGkAAM7h-_7ZHL5nV7",
+    "rule": "javascript:S7723",
+    "file": "test/application/package-consumer.js",
+    "initial_line": 9,
+    "classification": "FIX_COMPLETED",
+    "risk": "Constructor style inconsistency; no exploit demonstrated.",
+    "proof": "Use new Error with identical messages; actual application or isolated installed consumer exercises owning harness.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAHd7h-_7ZHL5nWA",
+    "rule": "javascript:S3776",
+    "file": "lifecycle/composition.js",
+    "initial_line": 57,
+    "classification": "FIX_COMPLETED",
+    "risk": "Dense supplied-service validation made ordering/security review difficult.",
+    "proof": "Internal helper extraction in original order; 32 exact baseline output/error comparisons; legacy lifecycle and HTTPS/jobs.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGj__s7h-_7ZHL5nVp",
+    "rule": "docker:S8431",
+    "file": "test/application/Dockerfile",
+    "initial_line": 1,
+    "classification": "FALSE_POSITIVE",
+    "risk": "Digest remains authoritative; descriptive Node tag is provenance, not a floating acquisition.",
+    "proof": "Immutable real image build; no Dockerfile edit.",
+    "sonar_observation": "OPEN"
+  },
+  {
+    "initial_id": "AaFGj___7h-_7ZHL5nVu",
+    "rule": "javascript:S7723",
+    "file": "test/application/build.js",
+    "initial_line": 5,
+    "classification": "FIX_COMPLETED",
+    "risk": "Constructor style inconsistency; no exploit demonstrated.",
+    "proof": "Use new Error with identical messages; actual application or isolated installed consumer exercises owning harness.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGj___7h-_7ZHL5nVv",
+    "rule": "javascript:S4036",
+    "file": "test/application/build.js",
+    "initial_line": 10,
+    "classification": "FIX_COMPLETED",
+    "risk": "Inherited PATH could select attacker code with developer/Docker rights.",
+    "proof": "Fixed absolute verified tools and child PATH; malicious PATH and writable tool/ancestor refusals; actual build/SSH run.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGj___7h-_7ZHL5nVw",
+    "rule": "javascript:S4036",
+    "file": "test/application/build.js",
+    "initial_line": 11,
+    "classification": "FIX_COMPLETED",
+    "risk": "Inherited PATH could select attacker code with developer/Docker rights.",
+    "proof": "Fixed absolute verified tools and child PATH; malicious PATH and writable tool/ancestor refusals; actual build/SSH run.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGj___7h-_7ZHL5nVx",
+    "rule": "javascript:S4036",
+    "file": "test/application/build.js",
+    "initial_line": 12,
+    "classification": "FIX_COMPLETED",
+    "risk": "Inherited PATH could select attacker code with developer/Docker rights.",
+    "proof": "Fixed absolute verified tools and child PATH; malicious PATH and writable tool/ancestor refusals; actual build/SSH run.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAAR7h-_7ZHL5nV8",
+    "rule": "javascript:S7723",
+    "file": "test/application/host.js",
+    "initial_line": 4,
+    "classification": "FIX_COMPLETED",
+    "risk": "Constructor style inconsistency; no exploit demonstrated.",
+    "proof": "Use new Error with identical messages; actual application or isolated installed consumer exercises owning harness.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGj__y7h-_7ZHL5nVr",
+    "rule": "jssecurity:S8707",
+    "file": "test/application/interrupt.js",
+    "initial_line": 5,
+    "classification": "FIX_COMPLETED",
+    "risk": "Arbitrary CLI read before canonical activation could consume external metadata.",
+    "proof": "Private normalized owned regular one-link input, no-follow/nonblocking/size/root/project checks; traversal/link/FIFO/mode negatives; actual SIGKILL/recovery.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGj__y7h-_7ZHL5nVq",
+    "rule": "javascript:S2681",
+    "file": "test/application/interrupt.js",
+    "initial_line": 6,
+    "classification": "FIX_COMPLETED",
+    "risk": "Compact control flow increased callback/return misreading risk.",
+    "proof": "Explicit braces preserve guard/return; unit timeout/late/double/error probes or actual interruption/recovery, according to file.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGj__57h-_7ZHL5nVs",
+    "rule": "javascript:S5332",
+    "file": "test/application/plugins/qualification/worker.js",
+    "initial_line": 11,
+    "classification": "FALSE_POSITIVE",
+    "risk": "Actual protocol is SMTP with mandatory verified STARTTLS; the HTTP label is inapplicable.",
+    "proof": "Real plugin TLS-positive/no-STARTTLS/bad-CA/bad-name tests plus Postfix SASL/relay denial.",
+    "sonar_observation": "OPEN"
+  },
+  {
+    "initial_id": "AaFGj__57h-_7ZHL5nVt",
+    "rule": "javascript:S7723",
+    "file": "test/application/plugins/qualification/worker.js",
+    "initial_line": 15,
+    "classification": "FIX_COMPLETED",
+    "risk": "Constructor style inconsistency; no exploit demonstrated.",
+    "proof": "Use new Error with identical messages; actual application or isolated installed consumer exercises owning harness.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAAG7h-_7ZHL5nVy",
+    "rule": "javascript:S1788",
+    "file": "test/application/run.js",
+    "initial_line": 10,
+    "classification": "FIX_COMPLETED",
+    "risk": "Default before TLS argument made fixture calling convention unclear.",
+    "proof": "Default handled in request body construction; same existing application call sites re-executed.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAAG7h-_7ZHL5nV0",
+    "rule": "javascript:S7780",
+    "file": "test/application/run.js",
+    "initial_line": 40,
+    "classification": "FALSE_POSITIVE",
+    "risk": "Literal quote escaping is intentional POSIX SSH-program quoting, with validated data.",
+    "proof": "Real independent-LAN nonce control/refusal; replacement ID is tracked below.",
+    "sonar_observation": "CLOSED; same finding OPEN as AaFOFe0GZ2pN_ZCiPhed"
+  },
+  {
+    "initial_id": "AaFGkAAG7h-_7ZHL5nV1",
+    "rule": "javascript:S7723",
+    "file": "test/application/run.js",
+    "initial_line": 40,
+    "classification": "FIX_COMPLETED",
+    "risk": "Constructor style inconsistency; no exploit demonstrated.",
+    "proof": "Use new Error with identical messages; actual application or isolated installed consumer exercises owning harness.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAAG7h-_7ZHL5nVz",
+    "rule": "javascript:S4036",
+    "file": "test/application/run.js",
+    "initial_line": 40,
+    "classification": "FIX_COMPLETED",
+    "risk": "Inherited PATH could select attacker code with developer/Docker rights.",
+    "proof": "Fixed absolute verified tools and child PATH; malicious PATH and writable tool/ancestor refusals; actual build/SSH run.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAAG7h-_7ZHL5nV2",
+    "rule": "javascript:S7723",
+    "file": "test/application/run.js",
+    "initial_line": 45,
+    "classification": "FIX_COMPLETED",
+    "risk": "Constructor style inconsistency; no exploit demonstrated.",
+    "proof": "Use new Error with identical messages; actual application or isolated installed consumer exercises owning harness.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAAG7h-_7ZHL5nV3",
+    "rule": "javascript:S2486",
+    "file": "test/application/run.js",
+    "initial_line": 67,
+    "classification": "FIX_COMPLETED",
+    "risk": "Catch-all retry hid unexpected certificate/protocol failures until timeout.",
+    "proof": "Retry only ECONNREFUSED, explicit timeout assertion; actual verified host-proxy run.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAAG7h-_7ZHL5nV4",
+    "rule": "javascript:S9382",
+    "file": "test/application/run.js",
+    "initial_line": 67,
+    "classification": "FALSE_POSITIVE",
+    "risk": "Bounded sequential polling must observe later startup rather than simultaneous attempts.",
+    "proof": "Real delayed Nginx startup; fail-closed timeout; only ECONNREFUSED is retried.",
+    "sonar_observation": "CLOSED; same finding OPEN as AaFOFe0GZ2pN_ZCiPhee"
+  },
+  {
+    "initial_id": "AaFGkAAG7h-_7ZHL5nV5",
+    "rule": "javascript:S2259",
+    "file": "test/application/run.js",
+    "initial_line": 71,
+    "classification": "FIX_COMPLETED",
+    "risk": "The analyzer could not prove async preparation completed before initial snapshot use.",
+    "proof": "Explicit non-null preparation guard; actual prepare/restart/rollback/restore checks.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAAG7h-_7ZHL5nV6",
+    "rule": "javascript:S6582",
+    "file": "test/application/run.js",
+    "initial_line": 113,
+    "classification": "FIX_COMPLETED",
+    "risk": "Redundant cleanup condition obscured nullable process state.",
+    "proof": "Optional chain retains no-proxy and already-exited semantics; real host proxy cleanup.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGj_9q7h-_7ZHL5nVo",
+    "rule": "javascript:S7778",
+    "file": "lib/plan-v2.js",
+    "initial_line": 73,
+    "classification": "FIX_COMPLETED",
+    "risk": "Adjacent appends obscure one ordered reference inventory.",
+    "proof": "Single append retains account refs before explicit refs; composition/secret tests and legacy SQL service tests.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAHd7h-_7ZHL5nWB",
+    "rule": "javascript:S3358",
+    "file": "lifecycle/composition.js",
+    "initial_line": 86,
+    "classification": "FIX_COMPLETED",
+    "risk": "Nested role selection obscured initialization precedence.",
+    "proof": "Explicit job/application/kernel role selection; byte-identical comparison, kernel/job tests.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkACL7h-_7ZHL5nV-",
+    "rule": "javascript:S2871",
+    "file": "lifecycle/external-gateway.js",
+    "initial_line": 15,
+    "classification": "FIX_COMPLETED",
+    "risk": "Implicit ordering obscured canonical schema-key intent; locale ordering would be wrong here.",
+    "proof": "Use existing S.lexical code-unit comparator; plugin permutation/invalid keys and exact output comparison.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkACL7h-_7ZHL5nV_",
+    "rule": "javascript:S2681",
+    "file": "lifecycle/external-gateway.js",
+    "initial_line": 28,
+    "classification": "FIX_COMPLETED",
+    "risk": "Compact control flow increased callback/return misreading risk.",
+    "proof": "Explicit braces preserve guard/return; unit timeout/late/double/error probes or actual interruption/recovery, according to file.",
+    "sonar_observation": "CLOSED"
+  },
+  {
+    "initial_id": "AaFGkAAX7h-_7ZHL5nV9",
+    "rule": "javascript:S5443",
+    "file": "test/support/application-inputs.js",
+    "initial_line": 4,
+    "classification": "FALSE_POSITIVE",
+    "risk": "Unused pure-fixture argument never allocated a file; predictable temporary allocation was not present.",
+    "proof": "Removed misleading unused default; 32 exact composition comparisons and actual private-root acceptance.",
+    "sonar_observation": "CLOSED"
+  }
+]

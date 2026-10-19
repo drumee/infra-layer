@@ -201,3 +201,43 @@ image publication or permanent deployment is performed. See
 `docs/IL-4R-isolation.md` and the Debian IL-4R validation ledger for qualification
 scope, artifact integrities, executed tests and outstanding operations.
 
+
+## IL-5 application / external gateway
+
+Starting published alpha.2 source: `bef9a379754bcf9a46fed8bcb6f88fe1f775c739`.
+Canonical branch: `feat/il5-external-gateway`. Audit `d0b53e8`, additive contract
+`11cd32c` and real application lifecycle checkpoint
+`cf4ac5735f7ec0d48e48a9a752951f77f7284c74` implement the new opt-in profile.
+Source-aware acceptance `d4a883a` and installed-consumer qualification `f0f48aa`
+add tests only. Exact final revisions and artifact integrity are recorded in the
+IL-5 review handoff, avoiding a self-referential package commit hash.
+
+The application contract, loopback publication and CA-only projection are new
+AGPL-3.0-only adaptations of this repository's own supplied-service/lifecycle
+primitives. No planner, SMTP stack, identity/session/ACL or runtime is copied.
+The real test host consumes published Server Runtime alpha.4, source
+`f961f6214432c2e6dbbcde2b926544c076935950`, with its exact lockfile integrity.
+Debian owns its generic host/image/plugin assembly and operator profile; Oxy-form
+reports are read-only architectural evidence, not a source dependency.
+
+Local metadata selects alpha.3, unpublished. Registry inspection on 2026-10-16
+found alpha.2 as latest published alpha; no version, tag or image is published
+by IL-5. Historical release-candidate descriptions above retain their original
+checkpoint meaning. See docs/IL-5-qualification.md and
+docs/IL-5-release-handoff.md for measured evidence and scope limits.
+
+## IL-5.8 candidate refresh
+
+Implementation correction: `744f995` on `feat/il5-external-gateway`, following
+initial audit of `de4b34e99370bf3b9f0d17399db4b2ea3d107677`. Three shipped files
+change internally: planning, composition and the external-gateway probe/validator.
+No public API/type/export or dependency lock changes. Thirty-two original-source
+comparison cases preserve exact serialized results and error precedence.
+Test-only process/file hardening and real TLS rejection cases are not packaged.
+
+The old alpha.3 tarball and Debian's `c6ef6e9` source archive remain historical
+artifacts with their own integrity values. A new local npm pack receipt and
+source identity are recorded in `docs/IL-5.8-sonar-disposition.md` and its evidence;
+no publication or Debian lock change is performed here. A consumer must select
+and verify the newly qualified source/artifact explicitly before claiming these
+corrections. Same version is still an unpublished development candidate.

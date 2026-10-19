@@ -1,0 +1,520 @@
+[
+  {
+    "file": "adapters/docker/nginx.js",
+    "line": 4,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'spec' is assigned a value but never used."
+  },
+  {
+    "file": "adapters/docker/nginx.js",
+    "line": 75,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "adapters/docker/services.js",
+    "line": 22,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "adapters/docker/services.js",
+    "line": 28,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "adapters/docker/services.js",
+    "line": 55,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/database/index.js",
+    "line": 2,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'S' is assigned a value but never used."
+  },
+  {
+    "file": "capabilities/dns/index.js",
+    "line": 22,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/redis/index.js",
+    "line": 26,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/secrets/index.js",
+    "line": 17,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/secrets/index.js",
+    "line": 18,
+    "rule": "no-control-regex",
+    "classification": "false-positive proposal: intentional control-character rejection",
+    "message": "Unexpected control character(s) in regular expression: \\x00, \\x1f."
+  },
+  {
+    "file": "capabilities/secrets/index.js",
+    "line": 70,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/acme.js",
+    "line": 15,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/acme.js",
+    "line": 22,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/acme.js",
+    "line": 37,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/acme.js",
+    "line": 50,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/acme.js",
+    "line": 52,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/acme.js",
+    "line": 63,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/index.js",
+    "line": 9,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/index.js",
+    "line": 14,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/index.js",
+    "line": 18,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/index.js",
+    "line": 19,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/index.js",
+    "line": 30,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/index.js",
+    "line": 60,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/index.js",
+    "line": 62,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "capabilities/tls/index.js",
+    "line": 88,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lib/plan-v2.js",
+    "line": 3,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'cidr' is assigned a value but never used."
+  },
+  {
+    "file": "lib/plan-v2.js",
+    "line": 58,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lib/rendering.js",
+    "line": 67,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/activation.js",
+    "line": 5,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'crypto' is assigned a value but never used."
+  },
+  {
+    "file": "lifecycle/activation.js",
+    "line": 13,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/composition.js",
+    "line": 9,
+    "rule": "no-control-regex",
+    "classification": "false-positive proposal: intentional control-character rejection",
+    "message": "Unexpected control character(s) in regular expression: \\x00."
+  },
+  {
+    "file": "lifecycle/composition.js",
+    "line": 41,
+    "rule": "no-control-regex",
+    "classification": "false-positive proposal: intentional control-character rejection",
+    "message": "Unexpected control character(s) in regular expression: \\x00."
+  },
+  {
+    "file": "lifecycle/composition.js",
+    "line": 120,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'name' is assigned a value but never used."
+  },
+  {
+    "file": "lifecycle/docker.js",
+    "line": 9,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/docker.js",
+    "line": 34,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/docker.js",
+    "line": 49,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/external-gateway.js",
+    "line": 42,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/external-gateway.js",
+    "line": 42,
+    "rule": "no-empty",
+    "classification": "historical parse/retry/cleanup catch requiring owning semantics; visible baseline",
+    "message": "Empty block statement."
+  },
+  {
+    "file": "lifecycle/journal.js",
+    "line": 12,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/preparation.js",
+    "line": 15,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/preparation.js",
+    "line": 21,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/recovery.js",
+    "line": 69,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/transitions.js",
+    "line": 12,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/transitions.js",
+    "line": 15,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/transitions.js",
+    "line": 54,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/transitions.js",
+    "line": 84,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "lifecycle/transitions.js",
+    "line": 89,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "test/application/run.js",
+    "line": 7,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'api' is assigned a value but never used."
+  },
+  {
+    "file": "test/application/run.js",
+    "line": 11,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "test/application/run.js",
+    "line": 11,
+    "rule": "no-empty",
+    "classification": "historical parse/retry/cleanup catch requiring owning semantics; visible baseline",
+    "message": "Empty block statement."
+  },
+  {
+    "file": "test/integration/browser-entry.js",
+    "line": 5,
+    "rule": "no-undef",
+    "classification": "legitimate browser globals: narrow configuration declaration completed",
+    "message": "'IL1_BROWSER_RESULT' is not defined."
+  },
+  {
+    "file": "test/integration/browser-entry.js",
+    "line": 6,
+    "rule": "no-undef",
+    "classification": "legitimate browser globals: narrow configuration declaration completed",
+    "message": "'IL1_BROWSER_RESULT' is not defined."
+  },
+  {
+    "file": "test/integration/browser-entry.js",
+    "line": 21,
+    "rule": "no-undef",
+    "classification": "legitimate browser globals: narrow configuration declaration completed",
+    "message": "'IL1_BROWSER_RESULT' is not defined."
+  },
+  {
+    "file": "test/integration/browser-entry.js",
+    "line": 22,
+    "rule": "no-undef",
+    "classification": "legitimate browser globals: narrow configuration declaration completed",
+    "message": "'IL1_BROWSER_RESULT' is not defined."
+  },
+  {
+    "file": "test/integration/browser-entry.js",
+    "line": 23,
+    "rule": "no-undef",
+    "classification": "legitimate browser globals: narrow configuration declaration completed",
+    "message": "'IL1_BROWSER_RESULT' is not defined."
+  },
+  {
+    "file": "test/integration/browser-entry.js",
+    "line": 23,
+    "rule": "no-undef",
+    "classification": "legitimate browser globals: narrow configuration declaration completed",
+    "message": "'IL1_BOOTSTRAP' is not defined."
+  },
+  {
+    "file": "test/integration/browser-entry.js",
+    "line": 24,
+    "rule": "no-undef",
+    "classification": "legitimate browser globals: narrow configuration declaration completed",
+    "message": "'IL1_BROWSER_RESULT' is not defined."
+  },
+  {
+    "file": "test/integration/browser-entry.js",
+    "line": 25,
+    "rule": "no-undef",
+    "classification": "legitimate browser globals: narrow configuration declaration completed",
+    "message": "'IL1_BROWSER_RESULT' is not defined."
+  },
+  {
+    "file": "test/integration/browser-entry.js",
+    "line": 26,
+    "rule": "no-undef",
+    "classification": "legitimate browser globals: narrow configuration declaration completed",
+    "message": "'IL1_BROWSER_RESULT' is not defined."
+  },
+  {
+    "file": "test/integration/gateway.test.js",
+    "line": 231,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "test/integration/gateway.test.js",
+    "line": 231,
+    "rule": "no-empty",
+    "classification": "historical parse/retry/cleanup catch requiring owning semantics; visible baseline",
+    "message": "Empty block statement."
+  },
+  {
+    "file": "test/integration/gateway.test.js",
+    "line": 235,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "test/integration/gateway.test.js",
+    "line": 235,
+    "rule": "no-empty",
+    "classification": "historical parse/retry/cleanup catch requiring owning semantics; visible baseline",
+    "message": "Empty block statement."
+  },
+  {
+    "file": "test/lifecycle/run.js",
+    "line": 43,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "test/lifecycle/run.js",
+    "line": 43,
+    "rule": "no-empty",
+    "classification": "historical parse/retry/cleanup catch requiring owning semantics; visible baseline",
+    "message": "Empty block statement."
+  },
+  {
+    "file": "test/lifecycle/run.js",
+    "line": 44,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "test/lifecycle/run.js",
+    "line": 44,
+    "rule": "no-empty",
+    "classification": "historical parse/retry/cleanup catch requiring owning semantics; visible baseline",
+    "message": "Empty block statement."
+  },
+  {
+    "file": "test/lifecycle/tracing-driver.js",
+    "line": 7,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "test/lifecycle/tracing-driver.js",
+    "line": 7,
+    "rule": "no-empty",
+    "classification": "historical parse/retry/cleanup catch requiring owning semantics; visible baseline",
+    "message": "Empty block statement."
+  },
+  {
+    "file": "test/services/services.test.js",
+    "line": 25,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "test/services/services.test.js",
+    "line": 25,
+    "rule": "no-empty",
+    "classification": "historical parse/retry/cleanup catch requiring owning semantics; visible baseline",
+    "message": "Empty block statement."
+  },
+  {
+    "file": "test/services/services.test.js",
+    "line": 32,
+    "rule": "no-unused-vars",
+    "classification": "historical maintenance debt or deliberately unused catch binding",
+    "message": "'_' is defined but never used."
+  },
+  {
+    "file": "test/services/services.test.js",
+    "line": 32,
+    "rule": "preserve-caught-error",
+    "classification": "rule/context mismatch: sanitized child failure, raw cause must not be exposed",
+    "message": "There is no `cause` attached to the symptom error being thrown."
+  },
+  {
+    "file": "test/unit/composition.test.js",
+    "line": 25,
+    "rule": "getter-return",
+    "classification": "false-positive proposal: intentionally uninvoked hostile getter fixture",
+    "message": "Expected to return a value in getter 'contract_version'."
+  }
+]

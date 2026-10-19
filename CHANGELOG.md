@@ -1,3 +1,23 @@
+# 0.1.0-alpha.3 — IL-5 development, unpublished
+
+- Add an explicitly private application distribution without a managed gateway.
+- Reuse native service, resource, secret and lifecycle contracts; retain legacy profiles.
+- Add application plugin inventory and explicit required secret references.
+- Add CA-only SMTP trust projections without application access to issuer keys.
+- Reject unqualified application SMTP backup/restore; preserve cold no-SMTP recovery.
+- Record actual Runtime/host-proxy/network/recovery and installed-consumer evidence
+  separately from future SMTP Internet delivery and Oxy-form acceptance.
+
+## IL-5.8 security/reliability review — unpublished candidate refresh
+
+- Harden qualification executable resolution and private interruption inputs.
+- Preserve exact composition output and validation precedence while extracting
+  internal validators; clarify probe completion and deterministic key sorting.
+- Add timeout/late-callback, unsafe-file/PATH and actual SMTP TLS refusal tests.
+- Public declarations, exports, dependency pins, loopback routes and canonical
+  SMTP/recovery policy are unchanged. Repack with a new integrity receipt; the
+  previous candidate SRI and Debian source lock do not identify these new bytes.
+
 # Changelog
 
 ## 0.1.0-alpha.2 — release candidate, unpublished
