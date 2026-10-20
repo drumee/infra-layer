@@ -33,6 +33,7 @@ test("D1/D6 fixed Docker selection ignores hostile caller PATH and options.env",
   const root = fixture(t), marker = hostile(t, root);
   assert.equal(T.resolveTrustedExecutable("docker"), "/usr/bin/docker");
   assert.match(D.docker(["--version"], { env: { PATH: root, DOCKER_CONFIG: root }, shell: true }), /^Docker version /);
+  try { D.docker(["--version", ";", "touch", marker], { shell: true }); } catch (error) { assert.equal(error.code, "DOCKER_LIFECYCLE_COMMAND_FAILED"); }
   assert.equal(fs.existsSync(marker), false);
   assert.throws(() => T.resolveTrustedExecutable("unlisted"), { code: "UNTRUSTED_SYSTEM_EXECUTABLE" });
 });
@@ -71,7 +72,7 @@ test("D8 child environment drops arbitrary secrets, loaders and caller Docker/SS
   assert.deepEqual(child, plain);
   assert.deepEqual(T.systemEnvironment("docker"), { ...plain, HOME: "/", DOCKER_CONFIG: "/etc/docker" });
   const qualification = Q.trustedEnvironment({ PATH: "/untrusted", REVIEW_PRIVATE_VALUE: "not-forwarded", IL1_PORT: "12345" });
-  assert.equal(qualification.IL1_PORT, "12345"); assert.equal(qualification.PATH, "/usr/bin:/bin");
+  assert.equal(qualification.IL1_PORT, "12345"); assert.equal(qualification.PATH, [...new Set([path.dirname(Q.trustedExecutable(process.execPath)), "/usr/bin", "/bin"])].join(path.delimiter));
   for (const name of names) assert.equal(qualification[name], undefined);
 });
 test("qualification rejects writable symlink entry ancestors even with a safe target", t => {

@@ -7,30 +7,42 @@ function refuse() { throw Object.assign(new Error("UNTRUSTED_SYSTEM_EXECUTABLE")
 function rootOwned(stat, link = false) {
   if (stat.uid !== 0 || (!link && (stat.mode & 0o022))) refuse();
 }
-function verifyPath(file, kind = "executable", optional = false, links = 0) {
+function absolutePath(file, links) {
   if (typeof file !== "string" || !path.isAbsolute(file) || path.normalize(file) !== file || links > 16) refuse();
+}
+function trustedStat(file, optional, links) {
+  let stat;
+  try { stat = fs.lstatSync(file); }
+  catch (error) {
+    if (optional && !links && error.code === "ENOENT") return null;
+    throw error;
+  }
+  rootOwned(stat, stat.isSymbolicLink());
+  return stat;
+}
+function verifyKind(file, stat, kind) {
+  if (kind === "directory" ? !stat.isDirectory() : !stat.isFile()) refuse();
+  if (kind === "executable") {
+    if (!(stat.mode & 0o111)) refuse();
+    fs.accessSync(file, fs.constants.X_OK);
+  }
+}
+function verifyPath(file, kind = "executable", optional = false, links = 0) {
+  absolutePath(file, links);
   rootOwned(fs.lstatSync("/"));
   const parts = file.split("/").filter(Boolean);
   if (!parts.length && kind !== "directory") refuse();
   let current = "/";
   for (let index = 0; index < parts.length; index++) {
     current = path.join(current, parts[index]);
-    let stat;
-    try { stat = fs.lstatSync(current); }
-    catch (error) { if (optional && !links && error.code === "ENOENT") return null; throw error; }
-    rootOwned(stat, stat.isSymbolicLink());
+    const stat = trustedStat(current, optional, links);
+    if (!stat) return null;
     if (stat.isSymbolicLink()) {
       const target = path.resolve(path.dirname(current), fs.readlinkSync(current), ...parts.slice(index + 1));
       return verifyPath(target, kind, false, links + 1);
     }
     if (index < parts.length - 1 && !stat.isDirectory()) refuse();
-    if (index === parts.length - 1) {
-      if (kind === "directory" ? !stat.isDirectory() : !stat.isFile()) refuse();
-      if (kind === "executable") {
-        if (!(stat.mode & 0o111)) refuse();
-        fs.accessSync(current, fs.constants.X_OK);
-      }
-    }
+    if (index === parts.length - 1) verifyKind(current, stat, kind);
   }
   return current;
 }

@@ -5,8 +5,25 @@ const { resolveTrustedExecutable, systemEnvironment } = require("../internal/sys
 const S = require("../lib/spec");
 const F = require("../lib/filesystem-safety");
 const socket = ["--host", "unix:///var/run/docker.sock"];
+function option(options, key, fallback) {
+  if (Object.hasOwn(options, key)) return options[key];
+  return fallback;
+}
 function docker(args, options = {}) {
-  try { return execFileSync(resolveTrustedExecutable("docker"), [...socket, ...args], { encoding: "utf8", stdio: "pipe", timeout: 180000, maxBuffer: 8 * 1024 * 1024, ...options, shell: false, env: systemEnvironment("docker") }); }
+  try {
+    options = options ?? {};
+    // Forward execution controls explicitly. Neither an opaque options object nor
+    // caller shell/env settings reach child_process.
+    const execution = {
+      encoding: option(options, "encoding", "utf8"), stdio: option(options, "stdio", "pipe"),
+      timeout: option(options, "timeout", 180000), maxBuffer: option(options, "maxBuffer", 8 * 1024 * 1024),
+      input: options.input, cwd: options.cwd, uid: options.uid, gid: options.gid,
+      killSignal: options.killSignal, windowsHide: options.windowsHide,
+      windowsVerbatimArguments: options.windowsVerbatimArguments, argv0: options.argv0,
+      shell: false, env: systemEnvironment("docker")
+    };
+    return execFileSync(resolveTrustedExecutable("docker"), [...socket, ...args], execution);
+  }
   catch { F.fail("DOCKER_LIFECYCLE_COMMAND_FAILED"); }
 }
 function helper(composition, directory, script, args = [], writable = false) {
