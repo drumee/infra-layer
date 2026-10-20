@@ -1,3 +1,5 @@
+> **IL-5.11 — BLOCKED_SECURITY (20 octobre 2026, Europe/Paris).** L’identité du candidat canonique alpha.3 est vérifiée, mais les risques conditionnels PATH examinés sur le package nécessitent une décision supplémentaire du propriétaire. Aucune publication n’est autorisée ; C/D/E ne sont pas requalifiés après l’arrêt B. Voir le [rapport d’arrêt](IL-5.11-final-decision.md) et les [23 évaluations individuelles](IL-5.11-security-assessment.md). Les statuts ci-dessous décrivent les phases historiques et ne valent pas décision de release actuelle.
+
 # IL-5 release and integration handoff
 
 Status: **READY_FOR_TECHNICAL_REVIEW**. No merge or publication authorization is
