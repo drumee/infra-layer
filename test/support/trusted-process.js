@@ -2,9 +2,9 @@
 // Qualification-only tools. Never search an inherited PATH or invoke a shell.
 const fs = require("node:fs"), path = require("node:path"), os = require("node:os");
 const tools = Object.freeze({ docker: "/usr/bin/docker", git: "/usr/bin/git", ssh: "/usr/bin/ssh", openssl: "/usr/bin/openssl", ss: "/usr/bin/ss", tar: "/usr/bin/tar", unzip: "/usr/bin/unzip" });
-function safeMetadata(stat) {
+function safeMetadata(stat, file) {
   const stickyRoot = stat.isDirectory() && stat.uid === 0 && (stat.mode & 0o1000);
-  if (![0, process.getuid()].includes(stat.uid) || (!stat.isSymbolicLink() && (stat.mode & 0o022) && !stickyRoot)) throw new Error("UNSAFE_QUALIFICATION_EXECUTABLE");
+  if (![0, process.getuid()].includes(stat.uid) || (!stat.isSymbolicLink() && (stat.mode & 0o022) && !stickyRoot)) throw Object.assign(new Error("UNSAFE_QUALIFICATION_EXECUTABLE"), { path: file, owner_uid: stat.uid, mode: (stat.mode & 0o7777).toString(8) });
 }
 function trustedExecutable(file, links = 0) {
   // npm belongs to the same already-installed Node toolchain, not to caller PATH.
@@ -15,7 +15,7 @@ function trustedExecutable(file, links = 0) {
   for (const part of selected.split("/").filter(Boolean)) {
     prefix = path.join(prefix, part);
     const stat = fs.lstatSync(prefix), link = stat.isSymbolicLink();
-    safeMetadata(stat);
+    safeMetadata(stat, prefix);
     if (link) {
       const target = path.resolve(path.dirname(prefix), fs.readlinkSync(prefix), path.relative(prefix, selected));
       return trustedExecutable(target, links + 1);
@@ -26,7 +26,7 @@ function trustedExecutable(file, links = 0) {
   if (!info.isFile() || !(info.mode & 0o111)) throw new Error("UNSAFE_QUALIFICATION_EXECUTABLE");
   for (let current = real;; current = path.dirname(current)) {
     const stat = fs.lstatSync(current);
-    safeMetadata(stat);
+    safeMetadata(stat, current);
     if (current === path.dirname(current)) break;
   }
   return real;
