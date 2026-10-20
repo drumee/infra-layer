@@ -3,20 +3,21 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const { execFileSync } = require("node:child_process");
+const { resolveTrustedExecutable, systemEnvironment } = require("../../internal/system-tools");
 const S = require("../../lib/spec");
 const F = require("../../lib/filesystem-safety");
 const { validRef } = require("../secrets");
-function openssl(args, input) { try { return execFileSync("openssl", args, { input, stdio: ["pipe", "pipe", "pipe"], timeout: 30000 }); } catch (_) { F.fail("TLS_CERTIFICATE_INVALID"); } }
+function openssl(args, input) { try { return execFileSync(resolveTrustedExecutable("openssl"), args, { input, stdio: ["pipe", "pipe", "pipe"], timeout: 30000, env: systemEnvironment("openssl") }); } catch { F.fail("TLS_CERTIFICATE_INVALID"); } }
 function validateCertificate({ certificate, key, hostname, ca_bundle, now = Date.now() }) {
   if (!S.hostname(hostname) || !Number.isFinite(now)) F.fail("INVALID_TLS_CONFIGURATION");
   const pem = F.read(certificate, false); const key_pem = F.read(key); const trust = F.read(ca_bundle, false);
   let leaf, private_key;
-  try { leaf = new crypto.X509Certificate(pem); private_key = crypto.createPrivateKey(key_pem); } catch (_) { F.fail("TLS_CERTIFICATE_INVALID"); }
+  try { leaf = new crypto.X509Certificate(pem); private_key = crypto.createPrivateKey(key_pem); } catch { F.fail("TLS_CERTIFICATE_INVALID"); }
   if (!leaf.subjectAltName || !leaf.checkHost(hostname, { subject: "never" })) F.fail("TLS_SAN_MISMATCH");
   if (!leaf.publicKey.export({ type: "spki", format: "der" }).equals(crypto.createPublicKey(private_key).export({ type: "spki", format: "der" }))) F.fail("TLS_KEY_MISMATCH");
   if (Date.parse(leaf.validFrom) > now || Date.parse(leaf.validTo) <= now) F.fail("TLS_CERTIFICATE_EXPIRED");
-  try { if (!new crypto.X509Certificate(trust).ca) F.fail("TLS_CHAIN_INVALID"); } catch (_) { F.fail("TLS_CHAIN_INVALID"); }
-  try { execFileSync("openssl", ["verify", "-purpose", "sslserver", "-verify_hostname", hostname, "-attime", String(Math.floor(now / 1000)), "-CAfile", ca_bundle, "-untrusted", certificate, certificate], { stdio: "pipe", timeout: 10000 }); } catch (_) { F.fail("TLS_CHAIN_INVALID"); }
+  try { if (!new crypto.X509Certificate(trust).ca) F.fail("TLS_CHAIN_INVALID"); } catch { F.fail("TLS_CHAIN_INVALID"); }
+  try { execFileSync(resolveTrustedExecutable("openssl"), ["verify", "-purpose", "sslserver", "-verify_hostname", hostname, "-attime", String(Math.floor(now / 1000)), "-CAfile", ca_bundle, "-untrusted", certificate, certificate], { stdio: "pipe", timeout: 10000, env: systemEnvironment("openssl") }); } catch { F.fail("TLS_CHAIN_INVALID"); }
   return { hostname, fingerprint: leaf.fingerprint256, expires_at: new Date(leaf.validTo).toISOString(), valid: true, active: false, activation_required: true };
 }
 function configuration(value) {
@@ -27,7 +28,7 @@ function configuration(value) {
 function storedLeaf(config, store, now = Date.now()) {
   const manifest_file = path.join(config.directory, "leaf.json");
   if (!fs.existsSync(manifest_file)) { if (fs.readdirSync(config.directory).some((name) => name.startsWith("leaf-") || name.startsWith(".tls-stage-"))) F.fail("TLS_STATE_CORRUPTED"); return null; }
-  let state; try { state = JSON.parse(F.read(manifest_file)); } catch (_) { F.fail("TLS_STATE_CORRUPTED"); }
+  let state; try { state = JSON.parse(F.read(manifest_file)); } catch { F.fail("TLS_STATE_CORRUPTED"); }
   if (!S.plainTree(state) || state.owner !== config.owner || state.hostname !== config.hostname || !/^leaf-[a-f0-9]{32}\.pem$/.test(state.file) || state.key_fingerprint !== store.inspect(config.private_key_ref).fingerprint) F.fail("TLS_STATE_CORRUPTED");
   const file = path.join(config.directory, state.file); const pem = F.read(file, false);
   if (S.digest(pem.toString()) !== state.digest) F.fail("TLS_STATE_CORRUPTED");
@@ -57,9 +58,9 @@ function prepareLocalCertificate(config, store, operation = {}) {
         const pem = F.read(path.join(temporary, "ca.pem"), false); F.atomic(ca_file, pem);
         F.atomic(issuer_file, `${S.serialize({ owner: config.owner, key_fingerprint: store.inspect(config.ca_key_ref).fingerprint, certificate_digest: S.digest(pem.toString()) })}\n`);
       }
-      let issuer; try { issuer = JSON.parse(F.read(issuer_file)); } catch (_) { F.fail("TLS_ISSUER_STATE_CORRUPTED"); }
+      let issuer; try { issuer = JSON.parse(F.read(issuer_file)); } catch { F.fail("TLS_ISSUER_STATE_CORRUPTED"); }
       const ca_pem = F.read(ca_file); let ca;
-      try { ca = new crypto.X509Certificate(ca_pem); } catch (_) { F.fail("TLS_ISSUER_STATE_CORRUPTED"); }
+      try { ca = new crypto.X509Certificate(ca_pem); } catch { F.fail("TLS_ISSUER_STATE_CORRUPTED"); }
       if (issuer.owner !== config.owner || issuer.key_fingerprint !== store.inspect(config.ca_key_ref).fingerprint || issuer.certificate_digest !== S.digest(ca_pem.toString()) || !ca.ca || !ca.verify(ca.publicKey) || !ca.publicKey.export({ type: "spki", format: "der" }).equals(crypto.createPublicKey(ca_key).export({ type: "spki", format: "der" }))) F.fail("TLS_ISSUER_STATE_CORRUPTED");
       if (existing && operation.renew !== true) {
         validateCertificate({ certificate: existing.file, key: leaf_key_file, hostname: config.hostname, ca_bundle: ca_file, now: operation.now });
@@ -85,7 +86,7 @@ async function prepareAcmeCertificate(config, store, operation = {}, issuer) {
     const account_key = store.read(config.account_key_ref, "tls-issuer"); const leaf_key = store.read(config.private_key_ref, "tls-issuer");
     const account_file = path.join(config.directory, "account.json");
     if (existing && !fs.existsSync(account_file)) F.fail("ACME_STATE_CORRUPTED");
-    if (fs.existsSync(account_file)) { let state; try { state = JSON.parse(F.read(account_file)); } catch (_) { F.fail("ACME_STATE_CORRUPTED"); } if (state.owner !== config.owner || state.directory !== config.acme_directory || state.account_fingerprint !== store.inspect(config.account_key_ref).fingerprint) F.fail("ACME_STATE_CORRUPTED"); }
+    if (fs.existsSync(account_file)) { let state; try { state = JSON.parse(F.read(account_file)); } catch { F.fail("ACME_STATE_CORRUPTED"); } if (state.owner !== config.owner || state.directory !== config.acme_directory || state.account_fingerprint !== store.inspect(config.account_key_ref).fingerprint) F.fail("ACME_STATE_CORRUPTED"); }
     const client = issuer || require("./acme").createLegoIssuer(config); let certificate;
     if (existing && operation.renew !== true) {
       if (client.verifyAccount) client.verifyAccount(config, store);

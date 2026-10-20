@@ -1,4 +1,5 @@
 "use strict";
+const { trustedExecutable, trustedEnvironment } = require("../support/trusted-process");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const os = require("node:os");
@@ -14,7 +15,7 @@ const dns = require("../../capabilities/dns");
 const { dkimRecord } = require("../../capabilities/mail");
 const { serviceInputs } = require("../support/service-inputs");
 const root = path.resolve(__dirname, "../..");
-function command(args, options = {}) { const result = spawnSync(args[0], args.slice(1), { encoding: "utf8", timeout: 300000, maxBuffer: 8 * 1024 * 1024, ...options }); if (result.status !== 0) throw Object.assign(new Error(`IL2_COMMAND_FAILED: ${args[0]} ${args[1]} status ${result.status}`), { code: "IL2_COMMAND_FAILED", detail: result.stderr || result.stdout }); return result.stdout; }
+function command(args, options = {}) { const result = spawnSync(trustedExecutable(args[0]), args.slice(1), { encoding: "utf8", timeout: 300000, maxBuffer: 8 * 1024 * 1024, ...options, env: trustedEnvironment(options.env) }); if (result.status !== 0) throw Object.assign(new Error(`IL2_COMMAND_FAILED: ${args[0]} ${args[1]} status ${result.status}`), { code: "IL2_COMMAND_FAILED", detail: result.stderr || result.stdout }); return result.stdout; }
 const freePort = () => new Promise((resolve) => { const listener = net.createServer(); listener.listen(0, "127.0.0.1", () => { const port = listener.address().port; listener.close(() => resolve(port)); }); });
 async function main() {
   command(["docker", "version", "--format", "{{.Server.Version}}"]);
@@ -26,7 +27,7 @@ async function main() {
   const redactions = [];
   let started = false;
   try {
-    for (const tag of [image, capture_image]) if (spawnSync("docker", ["image", "inspect", tag], { stdio: "ignore" }).status === 0) throw new Error("TEST_IMAGE_COLLISION");
+    for (const tag of [image, capture_image]) if (spawnSync(trustedExecutable("docker"), ["image", "inspect", tag], { stdio: "ignore" , env: trustedEnvironment()}).status === 0) throw new Error("TEST_IMAGE_COLLISION");
     command(["docker", "build", "--label", `org.drumee.infra.owner=${project}`, "-f", path.join(root, "capabilities/docker/Dockerfile.services"), "-t", image, root], { stdio: "inherit" }); images.push(image);
     const image_id = command(["docker", "image", "inspect", image, "--format", "{{.Id}}"] ).trim();
     const fixtures = path.join(directory, "fixtures"); fs.mkdirSync(fixtures);
@@ -48,7 +49,7 @@ async function main() {
     const rendered = path.join(directory, "rendered"); api.renderPlan(plan, rendered);
     const compose = { services: {}, networks: {} };
     for (const artifact of plan.artifacts.filter((entry) => entry.path.endsWith(".compose.json"))) { const fragment = JSON.parse(artifact.content); Object.assign(compose.services, fragment.services); Object.assign(compose.networks, fragment.networks); }
-    for (const [id, network] of Object.entries(compose.networks)) { if (spawnSync("docker", ["network", "inspect", network.name], { stdio: "ignore" }).status === 0) throw new Error("TEST_NETWORK_COLLISION"); compose.networks[id] = { name: network.name, ...(id === "mail-control" ? { internal: true } : {}) }; }
+    for (const [id, network] of Object.entries(compose.networks)) { if (spawnSync(trustedExecutable("docker"), ["network", "inspect", network.name], { stdio: "ignore" , env: trustedEnvironment()}).status === 0) throw new Error("TEST_NETWORK_COLLISION"); compose.networks[id] = { name: network.name, ...(id === "mail-control" ? { internal: true } : {}) }; }
     // Test-only loopback publication; production fragments publish DB/Redis/mail none.
     for (const name of ["database", "redis", "mail"]) compose.services[name].ports = [{ target: value.spec[name === "mail" ? "mail" : name].endpoint.port, published: String(ports[name]), host_ip: "127.0.0.1", protocol: "tcp" }];
     const context = path.join(directory, "capture-build"); fs.mkdirSync(context); fs.copyFileSync(path.join(__dirname, "Dockerfile.capture"), path.join(context, "Dockerfile")); fs.copyFileSync(path.join(__dirname, "capture.js"), path.join(context, "capture.js")); fs.cpSync(path.join(root, "node_modules"), path.join(context, "node_modules"), { recursive: true });
@@ -72,12 +73,12 @@ async function main() {
     docker("run", "--rm", "--no-deps", "dns", "named-checkzone", "drumee.lan", `/var/cache/bind/${dns.zoneFile("drumee.lan", value.spec.dns, value.spec.mail.dkim).file}`);
     docker("run", "--rm", "--no-deps", "dkim", "-n", "-x", "/config/opendkim.conf");
     docker("up", "-d", "--wait", "--wait-timeout", "90");
-    const tested = spawnSync(process.execPath, ["--test", path.join(__dirname, "services.test.js")], { stdio: "inherit", timeout: 300000, env: { ...process.env, IL2_METADATA: metadata_file } }); if (tested.status !== 0) throw new Error("IL2_SERVICE_TESTS_FAILED");
+    const tested = spawnSync(process.execPath, ["--test", path.join(__dirname, "services.test.js")], { stdio: "inherit", timeout: 300000, env: trustedEnvironment({ IL2_METADATA: metadata_file }) }); if (tested.status !== 0) throw new Error("IL2_SERVICE_TESTS_FAILED");
     const logs = docker("logs", "--no-color"); for (const descriptor of value.spec.secrets.resources) { const bytes = store.read(descriptor.ref, descriptor.consumers[0]).toString(); assert.equal(logs.includes(bytes), false); } assert.doesNotMatch(logs, /BEGIN (?:RSA )?PRIVATE KEY/);
   } catch (error) {
     let diagnostic = String(error.detail || "");
-    if (started) diagnostic += spawnSync("docker", ["inspect", "--format", "{{json .State.Health}}", `${project}-dns-1`], { encoding: "utf8", timeout: 15000 }).stdout || "";
-    if (started) diagnostic += spawnSync("docker", ["compose", "-p", project, "-f", compose_file, "logs", "--no-color"], { encoding: "utf8", timeout: 15000, maxBuffer: 1000000 }).stdout || "";
+    if (started) diagnostic += spawnSync(trustedExecutable("docker"), ["inspect", "--format", "{{json .State.Health}}", `${project}-dns-1`], { encoding: "utf8", timeout: 15000 , env: trustedEnvironment()}).stdout || "";
+    if (started) diagnostic += spawnSync(trustedExecutable("docker"), ["compose", "-p", project, "-f", compose_file, "logs", "--no-color"], { encoding: "utf8", timeout: 15000, maxBuffer: 1000000 , env: trustedEnvironment()}).stdout || "";
     for (const value of redactions) diagnostic = diagnostic.split(value).join("[redacted]");
     console.error(diagnostic.slice(-10000)); throw error;
   } finally {

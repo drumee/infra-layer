@@ -1,4 +1,5 @@
 "use strict";
+const { trustedExecutable, trustedEnvironment } = require("../support/trusted-process");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
@@ -11,14 +12,14 @@ const lifecycle = require("../../lifecycle");
 const driver = require("../../lifecycle/docker");
 const { serviceInputs } = require("../support/service-inputs");
 const image_node = "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392";
-function command(args, options = {}) { const result = spawnSync(args[0], args.slice(1), { encoding: "utf8", stdio: "pipe", timeout: 300000, ...options }); if (result.status !== 0) throw new Error("IL3_TEST_COMMAND_FAILED"); return result.stdout; }
+function command(args, options = {}) { const result = spawnSync(trustedExecutable(args[0]), args.slice(1), { encoding: "utf8", stdio: "pipe", timeout: 300000, ...options, env: trustedEnvironment(options.env) }); if (result.status !== 0) throw new Error("IL3_TEST_COMMAND_FAILED"); return result.stdout; }
 const freePort = () => new Promise((resolve) => { const server = net.createServer(); server.listen(0, "127.0.0.1", () => { const port = server.address().port; server.close(() => resolve(port)); }); });
 async function main() {
   const project = "drumee-il3-test-" + crypto.randomBytes(4).toString("hex"); const root = fs.mkdtempSync(path.join(os.tmpdir(), project + "-")); const image = "drumee-il3-services:" + project; const repository = path.resolve(__dirname, "../..");
   let prepared; let built = false;
   try {
     assert.equal(command(["docker", "ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim(), "");
-    if (spawnSync("docker", ["image", "inspect", image], {stdio:"ignore"}).status === 0) throw Error("TEST_IMAGE_ALREADY_EXISTS");
+    if (spawnSync(trustedExecutable("docker"), ["image", "inspect", image], {stdio:"ignore", env: trustedEnvironment()}).status === 0) throw Error("TEST_IMAGE_ALREADY_EXISTS");
     command(["docker", "build", "--label", "org.drumee.infra.owner=" + project, "-t", image, "-f", path.join(repository, "capabilities/docker/Dockerfile.services"), repository], { stdio: "inherit" });
     built = true;
     const image_id = command(["docker", "image", "inspect", image, "--format", "{{.Id}}"] ).trim();
@@ -37,11 +38,11 @@ async function main() {
     console.log("IL3 activation begin " + JSON.stringify({project,address,port})); const active = await lifecycle.activateDeployment(prepared, context); assert.equal(active.ready, true, JSON.stringify(active));
     const no_op = await lifecycle.activateDeployment(prepared, context); assert.equal(no_op.effect, "no-op"); assert.deepEqual(no_op.services, active.services);
     const metadata = { root, project, prepared, distribution, inputs, port }; const file = path.join(root, "test-metadata.json"); fs.writeFileSync(file, JSON.stringify(metadata), { mode: 0o600 });
-    const result = spawnSync(process.execPath, ["--test", "--experimental-test-isolation=none", path.join(__dirname, "lifecycle.test.js")], { stdio: "inherit", env: { ...process.env, IL3_METADATA: file }, timeout: 1800000 }); if (result.error || result.status !== 0) throw new Error(result.error?.code === "ETIMEDOUT" ? "IL3_TEST_RUN_TIMEOUT" : "IL3_TESTS_FAILED");
+    const result = spawnSync(process.execPath, ["--test", "--experimental-test-isolation=none", path.join(__dirname, "lifecycle.test.js")], { stdio: "inherit", env: trustedEnvironment({ IL3_METADATA: file }), timeout: 1800000 }); if (result.error || result.status !== 0) throw new Error(result.error?.code === "ETIMEDOUT" ? "IL3_TEST_RUN_TIMEOUT" : "IL3_TESTS_FAILED");
   } catch (error) {
     let diagnostic = error.diagnostic || "";
-    if (prepared) { try { diagnostic += driver.compose(prepared, ["logs", "--no-color"]); } catch (_) {} }
-    const store_root = path.join(root, "secrets"); if (fs.existsSync(store_root)) { const store = require("../../capabilities/secrets").createFilesystemSecretStore(store_root, project); for (const ref of prepared?.fingerprints || []) { try { const secret = store.read(ref.ref, ref.consumers[0]).toString(); diagnostic = diagnostic.split(secret).join("[redacted]"); } catch (_) {} } }
+    if (prepared) { try { diagnostic += driver.compose(prepared, ["logs", "--no-color"]); } catch { /* Keep the owning test failure; optional cleanup or diagnostic data may be unavailable. */ } }
+    const store_root = path.join(root, "secrets"); if (fs.existsSync(store_root)) { const store = require("../../capabilities/secrets").createFilesystemSecretStore(store_root, project); for (const ref of prepared?.fingerprints || []) { try { const secret = store.read(ref.ref, ref.consumers[0]).toString(); diagnostic = diagnostic.split(secret).join("[redacted]"); } catch { /* Keep the owning test failure; optional cleanup or diagnostic data may be unavailable. */ } } }
     if (diagnostic.includes("PRIVATE KEY")) diagnostic = "PRIVATE_MATERIAL_DIAGNOSTIC_SUPPRESSED";
     console.error((error.operation || "IL3") + ": " + diagnostic.slice(-7000)); throw error;
   } finally {

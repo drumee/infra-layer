@@ -28,6 +28,7 @@ function gatewayResources(inputs, effective_domain, revision) {
 async function observeDockerGateway(deployment) {
   const { execFile } = require("node:child_process");
   const { promisify } = require("node:util");
+  const { resolveTrustedExecutable, systemEnvironment } = require("../../internal/system-tools");
   const S = require("../../lib/spec");
   const { planInfrastructure } = require("../../lib/plan");
   const fail = (code) => { throw Object.assign(new Error(code), { code }); };
@@ -45,7 +46,7 @@ async function observeDockerGateway(deployment) {
   if (!binding) fail("INVALID_DEPLOYMENT_DESCRIPTOR");
   const address = ["::", "::1"].includes(binding.host_address) ? "::1" : "127.0.0.1";
   const format = '{"id":{{json .Id}},"running":{{json .State.Running}},"health":{{if .State.Health}}{{json .State.Health.Status}}{{else}}"unknown"{{end}},"owner":{{json (index .Config.Labels "org.drumee.infra.owner")}},"project":{{json (index .Config.Labels "com.docker.compose.project")}},"service":{{json (index .Config.Labels "com.docker.compose.service")}},"revision":{{json (index .Config.Labels "org.drumee.infra.revision")}},"ports":{{json .NetworkSettings.Ports}}}';
-  const { stdout } = await promisify(execFile)("docker", ["--host", "unix:///var/run/docker.sock", "inspect", "--format", format, deployment.container_id], { timeout: 10000, maxBuffer: 65536 });
+  const { stdout } = await promisify(execFile)(resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", "inspect", "--format", format, deployment.container_id], { timeout: 10000, maxBuffer: 65536, env: systemEnvironment("docker") });
   const observed = JSON.parse(stdout);
   const result = { running: observed.running === true, health: observed.health, observed_revision: observed.revision, loaded_configuration: { status: "unverified" }, diagnostic_codes: [] };
   const reject = (code) => ({ ...result, http_ready: false, diagnostic_codes: [code] });
@@ -72,7 +73,7 @@ async function observeDockerGateway(deployment) {
         response.on("error", () => finish(false, "GATEWAY_PROBE_FAILED"));
       });
       request.once("error", () => finish(false, "GATEWAY_PROBE_FAILED"));
-    } catch (_) { finish(false, "GATEWAY_PROBE_FAILED"); }
+    } catch { finish(false, "GATEWAY_PROBE_FAILED"); }
   });
   return { ...result, http_ready: probe.http_ready, diagnostic_codes: probe.code ? [probe.code] : [] };
 }

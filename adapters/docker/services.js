@@ -1,10 +1,11 @@
 "use strict";
 const { execFile } = require("node:child_process");
 const { promisify } = require("node:util");
+const { resolveTrustedExecutable, systemEnvironment } = require("../../internal/system-tools");
 const S = require("../../lib/spec");
 const F = require("../../lib/filesystem-safety");
 const execute = promisify(execFile);
-async function docker(args) { return (await execute("docker", ["--host", "unix:///var/run/docker.sock", ...args], { timeout: 15000, maxBuffer: 65536 })).stdout; }
+async function docker(args) { return (await execute(resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", ...args], { timeout: 15000, maxBuffer: 65536, env: systemEnvironment("docker") })).stdout; }
 async function observe(deployment) {
   if (!S.plainTree(deployment) || !S.record(deployment) || Object.keys(deployment).some((key) => !["contract_version", "id", "desired_revision", "plan", "containers"].includes(key)) || deployment.contract_version !== "2" || !S.identifier(deployment.id) || !S.record(deployment.containers) || deployment.plan?.contract_version !== "2" || !deployment.plan.inputs) F.fail("INVALID_DEPLOYMENT_DESCRIPTOR");
   const expected = require("../../lib/plan").planInfrastructure(deployment.plan.inputs.spec, deployment.plan.inputs.requirements, deployment.plan.inputs.adapter_input);
@@ -19,13 +20,13 @@ async function observe(deployment) {
     if (name === "tls") {
       const source = (ref) => inputs.adapter_input.resource_sources.find((value) => S.serialize(value.ref) === S.serialize(ref))?.source;
       try { const certificate = require("../../capabilities/tls").validateCertificate({ hostname: expected.effective_domain, certificate: source(inputs.spec.tls.certificate_ref), key: source(inputs.spec.tls.private_key_ref), ca_bundle: source(inputs.spec.tls.ca_bundle_ref) }); result.resource_present = true; result.protocol_functional = false; result.configuration_valid = true; result.certificate_valid = true; result.certificate_fingerprint = certificate.fingerprint; result.expires_at = certificate.expires_at; result.pending_activation = true; }
-      catch (_) { result.diagnostic_codes.push("TLS_MATERIAL_NOT_CONFIRMED"); }
+      catch { result.diagnostic_codes.push("TLS_MATERIAL_NOT_CONFIRMED"); }
       observations.push(result); continue;
     }
     if (!planned[service_name]) { result.diagnostic_codes.push("EXTERNAL_PROTOCOL_OBSERVER_REQUIRED"); observations.push(result); continue; }
     const container_id = deployment.containers[service_name]; if (!container_id) { result.diagnostic_codes.push("CAPABILITY_RESOURCE_MISSING"); observations.push(result); continue; }
     const format = '{"id":{{json .Id}},"running":{{json .State.Running}},"health":{{if .State.Health}}{{json .State.Health.Status}}{{else}}"unknown"{{end}},"image":{{json .Config.Image}},"owner":{{json (index .Config.Labels "org.drumee.infra.owner")}},"project":{{json (index .Config.Labels "com.docker.compose.project")}},"service":{{json (index .Config.Labels "com.docker.compose.service")}},"revision":{{json (index .Config.Labels "org.drumee.infra.revision")}},"ports":{{json .NetworkSettings.Ports}}}';
-    let observed; try { observed = JSON.parse(await docker(["inspect", "--format", format, container_id])); } catch (_) { result.diagnostic_codes.push("CAPABILITY_OBSERVATION_FAILED"); observations.push(result); continue; }
+    let observed; try { observed = JSON.parse(await docker(["inspect", "--format", format, container_id])); } catch { result.diagnostic_codes.push("CAPABILITY_OBSERVATION_FAILED"); observations.push(result); continue; }
     result.running = observed.running === true; result.health = observed.health; result.resource_present = true;
     if (/^[a-f0-9]{64}$/.test(observed.revision || "")) result.observed_revision = observed.revision;
     if (observed.id !== container_id || observed.owner !== inputs.adapter_input.project || observed.project !== inputs.adapter_input.project || observed.service !== service_name || observed.image !== planned[service_name].image) result.diagnostic_codes.push("CAPABILITY_OWNERSHIP_MISMATCH");
@@ -52,7 +53,7 @@ async function observe(deployment) {
         result.protocol_functional = config.submission_secret_ref ? /(?:^|\n)235 /.test(response) : /(?:^|\n)250/.test(response); result.authentication_functional = config.submission_secret_ref && result.protocol_functional;
         result.diagnostic_codes.push("SMTP_RELAY_AND_DKIM_PROTOCOL_ATTESTATION_OUTSTANDING");
       } else if (name === "http-gateway") { const response = await run("wget", "-q", "-O", "/dev/null", `http://127.0.0.1:${inputs.adapter_input.gateway.health_port}/__infra_ready`); result.protocol_functional = typeof response === "string"; result.diagnostic_codes.push("PROTECTED_DELIVERY_NOT_VERIFIED"); }
-    } catch (_) { result.diagnostic_codes.push("CAPABILITY_PROTOCOL_FAILED"); }
+    } catch { result.diagnostic_codes.push("CAPABILITY_PROTOCOL_FAILED"); }
     observations.push(result);
   }
   return { capabilities: observations };

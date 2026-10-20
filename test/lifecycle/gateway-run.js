@@ -1,17 +1,18 @@
 "use strict";
+const { trustedExecutable, trustedEnvironment } = require("../support/trusted-process");
 // Reuses the unchanged IL-1 contract fixture. This is NOT real-kernel acceptance.
 const fs = require("node:fs"), path = require("node:path"), os = require("node:os"), crypto = require("node:crypto"), net = require("node:net"), https = require("node:https");
 const { spawnSync } = require("node:child_process"); const assert = require("node:assert/strict");
 const api = require("../../lib"), lifecycle = require("../../lifecycle"), driver = require("./tracing-driver"), transitions = require("../../lifecycle/transitions");
 const { prepareKernel } = require("../integration/prepare-kernel"), { buildBrowser } = require("../integration/build-browser"), { inputs } = require("../support/inputs"), { serviceInputs } = require("../support/service-inputs");
 const node_image = "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392";
-function command(args, options = {}) { const result = spawnSync(args[0], args.slice(1), { encoding: "utf8", timeout: 300000, maxBuffer: 8*1024*1024, ...options }); if (result.status !== 0) throw Error("GATEWAY_LIFECYCLE_TEST_COMMAND_FAILED"); return result.stdout; }
+function command(args, options = {}) { const result = spawnSync(trustedExecutable(args[0]), args.slice(1), { encoding: "utf8", timeout: 300000, maxBuffer: 8*1024*1024, ...options, env: trustedEnvironment(options.env) }); if (result.status !== 0) throw Error("GATEWAY_LIFECYCLE_TEST_COMMAND_FAILED"); return result.stdout; }
 const freePort = () => new Promise((resolve) => { const s=net.createServer();s.listen(0,"127.0.0.1",()=>{const p=s.address().port;s.close(()=>resolve(p));}); });
 async function main() {
   const project="drumee-il3-gateway-"+crypto.randomBytes(4).toString("hex"), directory=fs.mkdtempSync(path.join(os.tmpdir(),project+"-")), repository=path.resolve(__dirname,"../.."), root=path.join(directory,"deployment"), image="drumee-il3-fixture:"+project; let prepared,built=false;
   try {
     assert.equal(command(["docker","ps","-a","--filter","label=com.docker.compose.project="+project,"--format","{{.ID}}"] ).trim(), "");
-    if(spawnSync("docker",["image","inspect",image],{stdio:"ignore"}).status===0)throw Error("TEST_IMAGE_ALREADY_EXISTS");
+    if(spawnSync(trustedExecutable("docker"),["image","inspect",image],{stdio:"ignore", env: trustedEnvironment()}).status===0)throw Error("TEST_IMAGE_ALREADY_EXISTS");
     const source=prepareKernel(directory,repository), build=path.join(directory,"build");fs.mkdirSync(build);
     for(const component of ["foundation/server-runtime","modules/hello/server","modules/host-filesystem","modules/media-service","modules/mfs-service","modules/mfs-transfer","modules/infra-layer/test/integration"]) fs.cpSync(path.join(source,"target",component),path.join(build,"target",component),{recursive:true,filter:file=>!file.split(path.sep).includes("node_modules")});
     fs.cpSync(path.join(repository,"node_modules"),path.join(build,"target/modules/infra-layer/node_modules"),{recursive:true});fs.mkdirSync(path.join(build,"sources/server-essentials/lib/lex"),{recursive:true});

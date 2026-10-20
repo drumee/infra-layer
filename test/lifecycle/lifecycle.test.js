@@ -1,4 +1,5 @@
 "use strict";
+const { trustedExecutable, trustedEnvironment } = require("../support/trusted-process");
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -126,7 +127,7 @@ test("image rebuild requires verified backup and unchanged engine version; tag-o
   const { spawnSync } = require("node:child_process"); const repository = path.resolve(__dirname, "../.."); const image = "drumee-il3-upgrade:" + metadata.project;
   const backup_directory = fs.mkdtempSync(path.join(os.tmpdir(), "il3-upgrade-backup-"));
   try {
-    const build = spawnSync("docker", ["build", "--label", "org.drumee.infra.owner=" + metadata.project, "--label", "org.drumee.infra.test.upgrade=1", "-t", image, "-f", path.join(repository, "capabilities/docker/Dockerfile.services"), repository], { stdio: "pipe", timeout: 300000 }); assert.equal(build.status, 0);
+    const build = spawnSync(trustedExecutable("docker"), ["build", "--label", "org.drumee.infra.owner=" + metadata.project, "--label", "org.drumee.infra.test.upgrade=1", "-t", image, "-f", path.join(repository, "capabilities/docker/Dockerfile.services"), repository], { stdio: "pipe", timeout: 300000, env: trustedEnvironment() }); assert.equal(build.status, 0);
     fs.writeFileSync(path.join(metadata.root, "test-upgrade-image.json"), JSON.stringify({image}), {mode:0o600});
     const image_id = driver.docker(["image", "inspect", image, "--format", "{{.Id}}"] ).trim(); const inputs = JSON.parse(JSON.stringify(metadata.prepared.composition.plan.inputs)); inputs.adapter_input.services.dns.image = image_id;
     const candidate = await lifecycle.prepareDeployment(lifecycle.composeDeployment(api.planInfrastructure(inputs.spec, inputs.requirements, inputs.adapter_input), metadata.distribution), context);

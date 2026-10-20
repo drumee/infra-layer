@@ -1,4 +1,5 @@
 "use strict";
+const { trustedExecutable, trustedEnvironment } = require("../support/trusted-process");
 
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -14,7 +15,7 @@ const { prepareKernel } = require("./prepare-kernel");
 const module_directory = path.resolve(__dirname, "../..");
 
 function command(args, options = {}) {
-  const result = spawnSync(args[0], args.slice(1), { encoding: "utf8", timeout: 300000, maxBuffer: 8 * 1024 * 1024, ...options });
+  const result = spawnSync(trustedExecutable(args[0]), args.slice(1), { encoding: "utf8", timeout: 300000, maxBuffer: 8 * 1024 * 1024, ...options, env: trustedEnvironment(options.env) });
   if (result.status !== 0) throw new Error(`${args[0]} ${args[1]} failed (${result.status}): ${result.stderr || result.stdout}`);
   return result.stdout;
 }
@@ -26,7 +27,7 @@ async function main() {
   command(["docker", "version", "--format", "{{.Server.Version}}"]);
   if (command(["docker", "ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim()) throw new Error("TEST_PROJECT_ALREADY_EXISTS");
   const network_name = `${project}-kernel`;
-  if (spawnSync("docker", ["network", "inspect", network_name], { stdio: "ignore" }).status === 0) throw new Error("TEST_NETWORK_ALREADY_EXISTS");
+  if (spawnSync(trustedExecutable("docker"), ["network", "inspect", network_name], { stdio: "ignore" , env: trustedEnvironment()}).status === 0) throw new Error("TEST_NETWORK_ALREADY_EXISTS");
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), `${project}-`)); fs.chmodSync(directory, 0o755);
   try {
   const root = prepareKernel(directory, module_directory);
@@ -47,7 +48,7 @@ async function main() {
   // Only the gateway publishes a port, and only on host loopback.
   compose.networks.kernel = { name: network_name };
   const image = `drumee-il1-kernel-test:${project}`;
-  if (spawnSync("docker", ["image", "inspect", image], { stdio: "ignore" }).status === 0) throw new Error("TEST_IMAGE_ALREADY_EXISTS");
+  if (spawnSync(trustedExecutable("docker"), ["image", "inspect", image], { stdio: "ignore" , env: trustedEnvironment()}).status === 0) throw new Error("TEST_IMAGE_ALREADY_EXISTS");
   compose.services.kernel = {
     image, networks: ["kernel"], read_only: true, user: `${process.getuid()}:${process.getgid()}`,
     cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"],
@@ -78,7 +79,7 @@ async function main() {
     docker("exec", "-T", "gateway", "nginx", "-t");
     const gateway_id = docker("ps", "-q", "gateway").trim();
     const kernel_id = docker("ps", "-q", "kernel").trim();
-    const result = spawnSync(process.execPath, ["--test", path.join(__dirname, "gateway.test.js")], { stdio: "inherit", timeout: 180000, env: { ...process.env, IL1_PORT: String(port), IL1_GATEWAY_ID: gateway_id, IL1_KERNEL_ID: kernel_id, IL1_REVISION: plan.revision, IL1_FIXTURES: fixtures, IL1_PLAN: plan_file } });
+    const result = spawnSync(process.execPath, ["--test", path.join(__dirname, "gateway.test.js")], { stdio: "inherit", timeout: 180000, env: trustedEnvironment({ IL1_PORT: String(port), IL1_GATEWAY_ID: gateway_id, IL1_KERNEL_ID: kernel_id, IL1_REVISION: plan.revision, IL1_FIXTURES: fixtures, IL1_PLAN: plan_file }) });
     if (result.status !== 0) throw new Error("GATEWAY_INTEGRATION_FAILED");
     const logs = docker("logs", "--no-color");
     assert.doesNotMatch(logs, /otak=|regsid=|isolated-fixture-password|outside-protected-view|\/__drumee_artifacts\//);
@@ -89,8 +90,8 @@ async function main() {
   } finally {
     if (started) docker("down");
     assert.equal(command(["docker", "ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim(), "");
-    assert.notEqual(spawnSync("docker", ["network", "inspect", network_name], { stdio: "ignore" }).status, 0);
-    if (spawnSync("docker", ["image", "inspect", image], { stdio: "ignore" }).status === 0) command(["docker", "image", "rm", image]);
+    assert.notEqual(spawnSync(trustedExecutable("docker"), ["network", "inspect", network_name], { stdio: "ignore" , env: trustedEnvironment()}).status, 0);
+    if (spawnSync(trustedExecutable("docker"), ["image", "inspect", image], { stdio: "ignore" , env: trustedEnvironment()}).status === 0) command(["docker", "image", "rm", image]);
     console.log(`IL1 cleanup confirmed: ${project}; no volumes created`);
   }
   } finally { if (process.env.IL1_KEEP_OUTPUT !== "1") fs.rmSync(directory, { recursive: true, force: true }); }

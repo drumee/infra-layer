@@ -1,11 +1,12 @@
 "use strict";
+const { trustedExecutable, trustedEnvironment } = require("../support/trusted-process");
 // Explicit pinned test dependency acquisition. Never imported by production code.
 const fs = require("node:fs");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");
 const dependency = require("./kernel-dependencies.json");
 function command(args, options = {}) {
-  const result = spawnSync(args[0], args.slice(1), { encoding: "utf8", timeout: 300000, maxBuffer: 8 * 1024 * 1024, ...options });
+  const result = spawnSync(trustedExecutable(args[0]), args.slice(1), { encoding: "utf8", timeout: 300000, maxBuffer: 8 * 1024 * 1024, ...options, env: trustedEnvironment(options.env) });
   if (result.status !== 0) throw new Error(`TEST_DEPENDENCY_COMMAND_FAILED: ${args[0]} ${args[1]}`);
   return result.stdout;
 }

@@ -58,7 +58,15 @@ See [lifecycle/index.d.ts](lifecycle/index.d.ts) for operational contracts and
 supported boundaries. Configured services require locally available pinned
 images and explicit host bindings. Lifecycle execution requires local Docker,
 Compose, ss, Node 22 and OpenSSL; these executable prerequisites are not bundled
-in npm. Kernel/application readiness is not inferred from infrastructure probes.
+in npm. Docker, ss and OpenSSL execute only from protected `/usr/bin` entries:
+root-owned files/ancestors, no group/world write, and protected symlink targets.
+Caller PATH, loader settings and arbitrary environment values are not inherited.
+Docker uses protected system CLI configuration `/etc/docker` and system plugins,
+not caller `~/.docker`; preinstall Compose system-wide through the host's approved
+package management. Infra Layer never downloads these binaries. Root/admin
+compromise and replacement races by a trusted administrator remain outside this
+permission-based boundary. See [the internal trust contract](docs/IL-5.11R-trust-contract.md).
+Kernel/application readiness is not inferred from infrastructure probes.
 
 `npm run test:integration` runs the unchanged gateway/service suites followed by
 isolated lifecycle and HTTPS contract-fixture tests. `npm run test:lifecycle`

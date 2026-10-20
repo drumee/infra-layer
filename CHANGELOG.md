@@ -18,6 +18,17 @@
   SMTP/recovery policy are unchanged. Repack with a new integrity receipt; the
   previous candidate SRI and Debian source lock do not identify these new bytes.
 
+## IL-5.11R trusted system tools — unpublished candidate refresh
+
+- Resolve Docker, ss and OpenSSL through fixed, root-controlled Debian paths;
+  validate symlink entry paths, targets, executable permissions and ancestors.
+- Use minimal child environments, system Docker CLI configuration and protected
+  Compose plugin paths; revalidate the configured ACME client before execution.
+- Harden the affected qualification launchers without changing public exports,
+  types, dependency pins, network policy or lifecycle operation order.
+- Include one private internal module. Previous 40-file candidate integrities and
+  Debian's source receipt do not identify this new 41-file candidate.
+
 # Changelog
 
 ## 0.1.0-alpha.2 — release candidate, unpublished

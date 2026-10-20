@@ -241,3 +241,19 @@ source identity are recorded in `docs/IL-5.8-sonar-disposition.md` and its evide
 no publication or Debian lock change is performed here. A consumer must select
 and verify the newly qualified source/artifact explicitly before claiming these
 corrections. Same version is still an unpublished development candidate.
+
+## IL-5.11R — trusted executable boundary, unpublished refresh
+
+Canonical parent: `9e4166618ca519e5d9b9e58f5191d37c5fd56462`.
+`internal/system-tools.js` is a new internal implementation of the owner-approved
+IL-5.11R security boundary, not a public export or vendored binary. System Docker,
+ss and OpenSSL remain operator-installed Debian prerequisites. Existing owning
+lifecycle, TLS and observation sites select protected absolute tools and minimal
+environments; public declarations, exported entry points and dependency pins are
+unchanged. The configured ACME binary remains explicitly SHA256-verified.
+
+This refresh changes distributed bytes and adds one private file. Its exact Git
+source and newly computed npm/source receipts belong to the versioned
+`docs/IL-5.11R-artifact-qualification.md` and evidence, not to a self-referential
+checksum inside this ledger. Do not reuse the earlier alpha.3 SRI or silently
+change Debian's source lock. No publication or release tag is implied.

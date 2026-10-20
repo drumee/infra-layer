@@ -16,7 +16,7 @@ function fixture(port = 28571) {
 }
 function mockDocker(t, inspected, error) {
   const original = cp.execFile; let calls = 0;
-  cp.execFile = (file, args, options, callback) => { calls++; assert.equal(file, "docker"); assert.deepEqual(args.slice(0, 4), ["--host", "unix:///var/run/docker.sock", "inspect", "--format"]); queueMicrotask(() => callback(error, JSON.stringify(inspected), "")); };
+  cp.execFile = (file, args, options, callback) => { calls++; assert.equal(file, "/usr/bin/docker"); assert.deepEqual(args.slice(0, 4), ["--host", "unix:///var/run/docker.sock", "inspect", "--format"]); queueMicrotask(() => callback(error, JSON.stringify(inspected), "")); };
   cp.execFile[require("node:util").promisify.custom] = (...args) => new Promise((resolve, reject) => cp.execFile(...args, (failure, stdout, stderr) => failure ? reject(failure) : resolve({ stdout, stderr })));
   t.after(() => { cp.execFile = original; }); return () => calls;
 }
