@@ -1,0 +1,455 @@
+{
+  "qualified_source": "71bd7b8b38345d61316771c07d76fece687af650",
+  "main_open_total": 227,
+  "main_vulnerabilities": 23,
+  "path_dispositions": [
+    {
+      "initial_id": "AaE8TbnThgf3bSVnp8z4",
+      "rule": "javascript:S4036",
+      "initial_file": "test/lifecycle/run.js",
+      "initial_line": 21,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        15,
+        22
+      ]
+    },
+    {
+      "initial_id": "AaE8TcJkhgf3bSVnp80B",
+      "rule": "javascript:S4036",
+      "initial_file": "lifecycle/recovery.js",
+      "initial_line": 22,
+      "scope": "SHIPPED_RUNTIME",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "resolveTrustedExecutable + systemEnvironment",
+      "current_call_lines": [
+        24
+      ]
+    },
+    {
+      "initial_id": "AaE8TbpHhgf3bSVnp8z9",
+      "rule": "javascript:S4036",
+      "initial_file": "test/lifecycle/tracing-driver.js",
+      "initial_line": 6,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        7
+      ]
+    },
+    {
+      "initial_id": "AaE8TcJ8hgf3bSVnp80i",
+      "rule": "javascript:S4036",
+      "initial_file": "lifecycle/docker.js",
+      "initial_line": 8,
+      "scope": "SHIPPED_RUNTIME",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "resolveTrustedExecutable + systemEnvironment",
+      "current_call_lines": [
+        25,
+        67
+      ]
+    },
+    {
+      "initial_id": "AaE8TcJ8hgf3bSVnp80m",
+      "rule": "javascript:S4036",
+      "initial_file": "lifecycle/docker.js",
+      "initial_line": 49,
+      "scope": "SHIPPED_RUNTIME",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "resolveTrustedExecutable + systemEnvironment",
+      "current_call_lines": [
+        25,
+        67
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw2edL4i9l9HI8Cw",
+      "rule": "javascript:S4036",
+      "initial_file": "test/package-audit.js",
+      "initial_line": 21,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        9,
+        38,
+        41
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw2edL4i9l9HI8Cx",
+      "rule": "javascript:S4036",
+      "initial_file": "test/package-audit.js",
+      "initial_line": 24,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        9,
+        38,
+        41
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw1PdL4i9l9HI8CT",
+      "rule": "javascript:S4036",
+      "initial_file": "test/services/run.js",
+      "initial_line": 29,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        18,
+        30,
+        52,
+        80,
+        81
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw1PdL4i9l9HI8CU",
+      "rule": "javascript:S4036",
+      "initial_file": "test/services/run.js",
+      "initial_line": 51,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        18,
+        30,
+        52,
+        80,
+        81
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw1PdL4i9l9HI8CW",
+      "rule": "javascript:S4036",
+      "initial_file": "test/services/run.js",
+      "initial_line": 79,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        18,
+        30,
+        52,
+        80,
+        81
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw1PdL4i9l9HI8CX",
+      "rule": "javascript:S4036",
+      "initial_file": "test/services/run.js",
+      "initial_line": 80,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        18,
+        30,
+        52,
+        80,
+        81
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw4UdL4i9l9HI8Dz",
+      "rule": "javascript:S4036",
+      "initial_file": "capabilities/tls/index.js",
+      "initial_line": 9,
+      "scope": "SHIPPED_RUNTIME",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "resolveTrustedExecutable + systemEnvironment",
+      "current_call_lines": [
+        10,
+        20
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw4UdL4i9l9HI8D1",
+      "rule": "javascript:S4036",
+      "initial_file": "capabilities/tls/index.js",
+      "initial_line": 19,
+      "scope": "SHIPPED_RUNTIME",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "resolveTrustedExecutable + systemEnvironment",
+      "current_call_lines": [
+        10,
+        20
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw2edL4i9l9HI8Cu",
+      "rule": "javascript:S4036",
+      "initial_file": "test/package-audit.js",
+      "initial_line": 8,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        9,
+        38,
+        41
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw2UdL4i9l9HI8Cp",
+      "rule": "javascript:S4036",
+      "initial_file": "test/integration/run.js",
+      "initial_line": 29,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        18,
+        30,
+        51,
+        93,
+        94
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw2UdL4i9l9HI8Cr",
+      "rule": "javascript:S4036",
+      "initial_file": "test/integration/run.js",
+      "initial_line": 50,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        18,
+        30,
+        51,
+        93,
+        94
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw2UdL4i9l9HI8Cs",
+      "rule": "javascript:S4036",
+      "initial_file": "test/integration/run.js",
+      "initial_line": 92,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        18,
+        30,
+        51,
+        93,
+        94
+      ]
+    },
+    {
+      "initial_id": "AaE6Nw2UdL4i9l9HI8Ct",
+      "rule": "javascript:S4036",
+      "initial_file": "test/integration/run.js",
+      "initial_line": 93,
+      "scope": "TEST_ONLY",
+      "mechanism": "FIX_IMPLEMENTED_AND_TESTED",
+      "current_main_sonar_status": "OPEN",
+      "qualified_branch_path_findings": 0,
+      "resolver": "trustedExecutable + trustedEnvironment",
+      "current_call_lines": [
+        18,
+        30,
+        51,
+        93,
+        94
+      ]
+    }
+  ],
+  "pr_open_total": 12,
+  "pr_findings": [
+    {
+      "id": "AaFZMuQhZ9JThwxqrsye",
+      "rule": "javascript:S2612",
+      "file": "test/security/system-tools-container.cjs",
+      "line": 23,
+      "type": "VULNERABILITY",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Répertoire 0777 volontairement rejeté (D3)",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuQhZ9JThwxqrsyf",
+      "rule": "javascript:S2612",
+      "file": "test/security/system-tools-container.cjs",
+      "line": 24,
+      "type": "VULNERABILITY",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Exécutable public de fixture 0755 sous le répertoire dangereux, jamais exécuté",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuQhZ9JThwxqrsyg",
+      "rule": "javascript:S2612",
+      "file": "test/security/system-tools-container.cjs",
+      "line": 28,
+      "type": "VULNERABILITY",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Fichier 0777 volontairement rejeté (D3)",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuQhZ9JThwxqrsyh",
+      "rule": "javascript:S2612",
+      "file": "test/security/system-tools-container.cjs",
+      "line": 32,
+      "type": "VULNERABILITY",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Fichier 0755 ensuite attribué à un propriétaire étranger et rejeté",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuQhZ9JThwxqrsyi",
+      "rule": "javascript:S2612",
+      "file": "test/security/system-tools-container.cjs",
+      "line": 58,
+      "type": "VULNERABILITY",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Entrée Docker de fixture dans le /usr/bin tmpfs vide du conteneur, pas un binaire hôte",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuQhZ9JThwxqrsyj",
+      "rule": "javascript:S2612",
+      "file": "test/security/system-tools-container.cjs",
+      "line": 64,
+      "type": "VULNERABILITY",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Plugin de fixture 0755 dans le namespace privé ; contrôle de cible protégée",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuQhZ9JThwxqrsyk",
+      "rule": "javascript:S2612",
+      "file": "test/security/system-tools-container.cjs",
+      "line": 67,
+      "type": "VULNERABILITY",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Config 0666 volontairement refusée avant toute exécution",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuSQZ9JThwxqrsyl",
+      "rule": "javascript:S9382",
+      "file": "adapters/docker/services.js",
+      "line": 29,
+      "type": "CODE_SMELL",
+      "severity": "MINOR",
+      "status": "OPEN",
+      "technical_review": "Lisibilité/style d’un wrapper historique ou observation séquentielle conservée ; aucun changement de contrôle de flux requis pour le durcissement",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuM_Z9JThwxqrsyb",
+      "rule": "javascript:S2681",
+      "file": "test/lifecycle/run.js",
+      "line": 15,
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Lisibilité/style d’un wrapper historique ou observation séquentielle conservée ; aucun changement de contrôle de flux requis pour le durcissement",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuM_Z9JThwxqrsyc",
+      "rule": "javascript:S7723",
+      "file": "test/lifecycle/run.js",
+      "line": 22,
+      "type": "CODE_SMELL",
+      "severity": "MINOR",
+      "status": "OPEN",
+      "technical_review": "Lisibilité/style d’un wrapper historique ou observation séquentielle conservée ; aucun changement de contrôle de flux requis pour le durcissement",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuH5Z9JThwxqrsyZ",
+      "rule": "javascript:S2681",
+      "file": "test/services/run.js",
+      "line": 18,
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Lisibilité/style d’un wrapper historique ou observation séquentielle conservée ; aucun changement de contrôle de flux requis pour le durcissement",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZMuH5Z9JThwxqrsya",
+      "rule": "javascript:S2681",
+      "file": "test/services/run.js",
+      "line": 52,
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "technical_review": "Lisibilité/style d’un wrapper historique ou observation séquentielle conservée ; aucun changement de contrôle de flux requis pour le durcissement",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
+    }
+  ],
+  "codeql_check": 118649409874,
+  "codeql_title": "No new alerts in code changed by this pull request",
+  "codeql_result_annotations": [],
+  "source_global_inventory_access": "HTTP 403",
+  "sonar_mutations": 0,
+  "new_owner_risk_decisions": 0
+}
