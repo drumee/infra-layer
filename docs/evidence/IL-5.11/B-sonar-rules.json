@@ -1,0 +1,208 @@
+[
+  {
+    "rule": {
+      "key": "javascript:S4036",
+      "repo": "javascript",
+      "name": "OS commands should not rely on PATH resolution",
+      "createdAt": "2022-06-02T14:06:26+0000",
+      "severity": "MINOR",
+      "status": "READY",
+      "isTemplate": false,
+      "sysTags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "lang": "js",
+      "langName": "JavaScript",
+      "params": [],
+      "defaultDebtRemFnType": "CONSTANT_ISSUE",
+      "defaultDebtRemFnOffset": "15min",
+      "debtRemFnType": "CONSTANT_ISSUE",
+      "debtRemFnOffset": "15min",
+      "type": "VULNERABILITY",
+      "defaultRemFnType": "CONSTANT_ISSUE",
+      "defaultRemFnBaseEffort": "15min",
+      "remFnType": "CONSTANT_ISSUE",
+      "remFnBaseEffort": "15min",
+      "scope": "MAIN",
+      "isExternal": false,
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "securityStandards": [
+        "cwe:426",
+        "cwe:427",
+        "owaspTop10-2021:a8",
+        "owaspTop10:a1"
+      ],
+      "requiredEntitlements": []
+    },
+    "actives": []
+  },
+  {
+    "rule": {
+      "key": "javascript:S2612",
+      "repo": "javascript",
+      "name": "File permissions should not be set to world-accessible values",
+      "createdAt": "2020-12-28T10:03:19+0000",
+      "severity": "MAJOR",
+      "status": "READY",
+      "isTemplate": false,
+      "sysTags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "lang": "js",
+      "langName": "JavaScript",
+      "params": [],
+      "defaultDebtRemFnType": "CONSTANT_ISSUE",
+      "defaultDebtRemFnOffset": "5min",
+      "debtRemFnType": "CONSTANT_ISSUE",
+      "debtRemFnOffset": "5min",
+      "type": "VULNERABILITY",
+      "defaultRemFnType": "CONSTANT_ISSUE",
+      "defaultRemFnBaseEffort": "5min",
+      "remFnType": "CONSTANT_ISSUE",
+      "remFnBaseEffort": "5min",
+      "scope": "MAIN",
+      "isExternal": false,
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "securityStandards": [
+        "cwe:266",
+        "cwe:732",
+        "owaspAsvs-4.0:4.3.3",
+        "owaspTop10-2021:a1",
+        "owaspTop10-2021:a4",
+        "owaspTop10:a5",
+        "pciDss-3.2:6.5.8",
+        "pciDss-4.0:6.2.4",
+        "stig-ASD_V5R3:V-222430"
+      ],
+      "requiredEntitlements": []
+    },
+    "actives": []
+  },
+  {
+    "rule": {
+      "key": "javascript:S5443",
+      "repo": "javascript",
+      "name": "Temporary files should not be created in publicly writable directories",
+      "createdAt": "2020-12-28T10:03:19+0000",
+      "severity": "CRITICAL",
+      "status": "READY",
+      "isTemplate": false,
+      "sysTags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "lang": "js",
+      "langName": "JavaScript",
+      "params": [],
+      "defaultDebtRemFnType": "CONSTANT_ISSUE",
+      "defaultDebtRemFnOffset": "30min",
+      "debtRemFnType": "CONSTANT_ISSUE",
+      "debtRemFnOffset": "30min",
+      "type": "VULNERABILITY",
+      "defaultRemFnType": "CONSTANT_ISSUE",
+      "defaultRemFnBaseEffort": "30min",
+      "remFnType": "CONSTANT_ISSUE",
+      "remFnBaseEffort": "30min",
+      "scope": "MAIN",
+      "isExternal": false,
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "HIGH"
+        }
+      ],
+      "securityStandards": [
+        "cwe:377",
+        "cwe:379",
+        "owaspTop10-2021:a1",
+        "owaspTop10:a3",
+        "owaspTop10:a5",
+        "pciDss-3.2:6.5.8",
+        "pciDss-4.0:6.2.4",
+        "stig-ASD_V5R3:V-222567"
+      ],
+      "requiredEntitlements": []
+    },
+    "actives": []
+  },
+  {
+    "rule": {
+      "key": "javascript:S5332",
+      "repo": "javascript",
+      "name": "Clear-text protocols should not be used",
+      "createdAt": "2020-12-28T10:03:19+0000",
+      "severity": "MINOR",
+      "status": "READY",
+      "isTemplate": false,
+      "sysTags": [
+        "cryptography",
+        "cwe",
+        "former-hotspot"
+      ],
+      "lang": "js",
+      "langName": "JavaScript",
+      "params": [],
+      "defaultDebtRemFnType": "CONSTANT_ISSUE",
+      "defaultDebtRemFnOffset": "30min",
+      "debtRemFnType": "CONSTANT_ISSUE",
+      "debtRemFnOffset": "30min",
+      "type": "VULNERABILITY",
+      "defaultRemFnType": "CONSTANT_ISSUE",
+      "defaultRemFnBaseEffort": "30min",
+      "remFnType": "CONSTANT_ISSUE",
+      "remFnBaseEffort": "30min",
+      "scope": "MAIN",
+      "isExternal": false,
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "securityStandards": [
+        "cwe:200",
+        "cwe:319",
+        "owaspAsvs-4.0:1.9.1",
+        "owaspAsvs-4.0:9.1.1",
+        "owaspAsvs-4.0:9.2.2",
+        "owaspTop10-2021:a2",
+        "owaspTop10:a3",
+        "pciDss-3.2:4.1",
+        "pciDss-3.2:6.5.4",
+        "pciDss-4.0:4.2.1",
+        "pciDss-4.0:6.2.4",
+        "stig-ASD_V5R3:V-222397",
+        "stig-ASD_V5R3:V-222534",
+        "stig-ASD_V5R3:V-222562",
+        "stig-ASD_V5R3:V-222563",
+        "stig-ASD_V5R3:V-222577",
+        "stig-ASD_V5R3:V-222596",
+        "stig-ASD_V5R3:V-222597",
+        "stig-ASD_V5R3:V-222598",
+        "stig-ASD_V5R3:V-222599"
+      ],
+      "requiredEntitlements": []
+    },
+    "actives": []
+  }
+]
