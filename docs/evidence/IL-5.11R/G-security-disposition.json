@@ -299,7 +299,7 @@
       ]
     }
   ],
-  "pr_open_total": 12,
+  "pr_open_total": 13,
   "pr_findings": [
     {
       "id": "AaFZMuQhZ9JThwxqrsye",
@@ -444,6 +444,18 @@
       "technical_review": "Lisibilité/style d’un wrapper historique ou observation séquentielle conservée ; aucun changement de contrôle de flux requis pour le durcissement",
       "owner_decision": "NOT_TAKEN",
       "disposition_written_to_sonar": false
+    },
+    {
+      "id": "AaFZl_1PcPSyTboN_x_L",
+      "rule": "json:S6418",
+      "file": "docs/evidence/IL-5.11R/F-artifact-receipt.json",
+      "line": 26,
+      "type": "VULNERABILITY",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "technical_review": "The value is the independently recomputed SHA256 of the public source file, not a credential; original receipt retained unchanged",
+      "owner_decision": "NOT_TAKEN",
+      "disposition_written_to_sonar": false
     }
   ],
   "codeql_check": 118649409874,
@@ -451,5 +463,7 @@
   "codeql_result_annotations": [],
   "source_global_inventory_access": "HTTP 403",
   "sonar_mutations": 0,
-  "new_owner_risk_decisions": 0
+  "new_owner_risk_decisions": 0,
+  "qualified_source_pr_open_total": 12,
+  "closing_review_head": "0f717045912370d658af08ab01fb41d75b2279df"
 }

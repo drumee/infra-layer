@@ -1,0 +1,16 @@
+{
+  "annotation_id": "AaFZl_1PcPSyTboN_x_L",
+  "rule": "json:S6418",
+  "severity": "BLOCKER",
+  "state": "OPEN",
+  "reported_document": "docs/evidence/IL-5.11R/F-artifact-receipt.json",
+  "reported_line": 26,
+  "value_kind": "SHA256_OF_PUBLIC_SOURCE_FILE_NOT_DEPLOYMENT_MATERIAL",
+  "public_source_file": "capabilities/secrets/index.js",
+  "public_source_url": "https://github.com/drumee/infra-layer/blob/71bd7b8b38345d61316771c07d76fece687af650/capabilities/secrets/index.js",
+  "computed_file_sha256": "b872fa5cdd6868d0b89f17038aa445a8c709e675f4e82452fb7283647d48c432",
+  "receipt_value_matches_file_digest": true,
+  "owner_disposition": "PENDING_REVIEW",
+  "sonar_mutation": false,
+  "receipt_rewritten_to_hide_finding": false
+}

@@ -250,5 +250,15 @@
       "command": "IL5_NETWORK_CLIENT=testbox IL5_LAN_ADDRESS=192.168.5.201 IL5_HOST_NGINX=/tmp/drumee-il511r-nginx/extracted/usr/sbin/nginx npm run test:application",
       "exit": 0
     }
-  ]
+  ],
+  "closure_inventory_change": {
+    "previous_pr_findings": 12,
+    "final_pr_findings": 13,
+    "guard_detected_new_id": "AaFZl_1PcPSyTboN_x_L",
+    "review_completed": true,
+    "proof": "G-public-digest-annotation-review.json",
+    "no_material_secret_found_in_reported_value": true,
+    "sonar_status": "OPEN",
+    "owner_disposition": "PENDING_REVIEW"
+  }
 }

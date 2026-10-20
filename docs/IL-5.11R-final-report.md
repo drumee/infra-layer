@@ -51,7 +51,7 @@ La première CI packaging a échoué sur /usr/bin/npm absent ; la suivante a rej
 
 Les cinq jobs Quality de 71bd7b8 sont SUCCESS. CodeQL result check **118649409874** : SUCCESS, **No new alerts in code changed by this pull request**, zéro annotation relue. Cela ne signifie pas zéro alerte globale : Code Scanning/Dependabot restent HTTP 403.
 
-**SonarCloud reste actif et en FAILURE** : 12 annotations PR ouvertes, dont sept S2612 de fixtures isolées et cinq de lisibilité ; aucune S4036 ouverte dans le diff examiné. Les 18 anciens ID PATH restent OPEN sur main tant que la correction n’est pas intégrée et réanalysée. Les sept contextes de tests sont présentés pour revue, sans nouvelle décision de faux positif ou d’acceptation au nom du propriétaire. Voir [la matrice G](IL-5.11R-security-disposition.md).
+**SonarCloud reste actif et en FAILURE** : 13 annotations PR ouvertes, dont sept S2612 de fixtures isolées, un S6418 BLOCKER sur le hash d’un fichier public dans le reçu, et cinq de lisibilité ; aucune S4036 ouverte dans le diff examiné. Les 18 anciens ID PATH restent OPEN sur main tant que la correction n’est pas intégrée et réanalysée. Les sept contextes de tests et la preuve que le S6418 désigne un SHA256 de source publique sont présentés pour revue, sans nouvelle décision de faux positif ou d’acceptation au nom du propriétaire. Voir [la matrice G](IL-5.11R-security-disposition.md).
 
 ## Dépôts consommateurs et reprise
 
@@ -64,3 +64,5 @@ Après revue et éventuelle intégration : sélectionner le nouveau SHA canoniqu
 ## Dossier
 
 [Inventaire A](IL-5.11R-executable-inventory.md), [contrat B](IL-5.11R-trust-contract.md), [tests D/E](IL-5.11R-security-tests.md), [artefact F](IL-5.11R-artifact-qualification.md), [disposition G](IL-5.11R-security-disposition.md). Les commandes exactes, sources et limites sont conservées ; aucun test simulé n’est présenté comme acceptation réelle.
+
+Contrôle de clôture : le nouvel ID S6418 n’était pas présent dans le relevé de la source qualifiée 71bd7b8. Il a été détecté sur le reçu documentaire ajouté ensuite, puis examiné par recalcul du fichier public. Son état OPEN et sa sévérité BLOCKER sont conservés, sans fuite de credential démontrée ni disposition administrative. Le candidat npm est inchangé : ce reçu n’est pas distribué.
