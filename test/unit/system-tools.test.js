@@ -7,6 +7,7 @@ const D = require("../../lifecycle/docker");
 const tls = require("../../capabilities/tls");
 const secrets = require("../../capabilities/secrets");
 const Q = require("../support/trusted-process");
+const crypto = require("node:crypto");
 function fixture(t) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "infra-trusted-tools-"));
   fs.chmodSync(root, 0o700);
@@ -92,6 +93,16 @@ test("qualification selects npm beside the verified current interpreter without 
   assert.equal(Q.trustedEnvironment().PATH.split(path.delimiter)[0], root);
   fs.unlinkSync(path.join(root, "npm"));
   assert.throws(() => Q.trustedExecutable("npm"), { code: "ENOENT" });
+});
+test("explicit ACME client is rehashed before a later authorized invocation", t => {
+  const root = fixture(t), file = path.join(root, "lego"), marker = path.join(root, "unexpected-execution");
+  fs.writeFileSync(file, "#!" + process.execPath + '\nprocess.stdout.write("lego version 5.5.2 fixture\\n");\n', { mode: 0o700 });
+  const config = { owner: "review", hostname: "example.com", acme_directory: "https://acme-staging-v02.api.letsencrypt.org/directory", email: "owner@example.com", acme_binary: file, acme_binary_sha256: crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex"), dns_provider: "cloudflare", challenge_secret_ref: { resource: "dns", key: "api" }, account_key_ref: { resource: "tls", key: "account" }, directory: path.join(root, "tls") };
+  const issuer = require("../../capabilities/tls/acme").createLegoIssuer(config);
+  fs.writeFileSync(file, "#!" + process.execPath + "\nrequire('node:fs').writeFileSync(" + JSON.stringify(marker) + ",'executed');\n");
+  const store = secrets.createFilesystemSecretStore(path.join(root, "secrets"), "review");
+  assert.throws(() => issuer.register({ config, store, operation: { authorized: true, accept_terms: true } }), { code: "ACME_ACCOUNT_REGISTRATION_FAILED" });
+  assert.equal(fs.existsSync(marker), false);
 });
 test("internal resolver has no public package subpath export", () => {
   assert.throws(() => require("@drumee/infra-layer/internal/system-tools"), { code: "ERR_PACKAGE_PATH_NOT_EXPORTED" });
