@@ -32,11 +32,23 @@
       "exit": 0
     }
   ],
-  "canonical_tap_tests_rerun": 0,
   "application_acceptance_scenarios_rerun": 0,
   "browser_scenarios_rerun": 0,
   "network_acceptance_rerun": 0,
   "sonar_mutations": 0,
   "publication": false,
-  "source_changes": false
+  "source_changes": false,
+  "canonical_tap_tests_rerun_locally": 0,
+  "delivery_ci_observation": {
+    "head": "564a6037dc3e4384653a34a75b39c804336db4f7",
+    "quality_jobs": {
+      "unit": "success",
+      "contracts": "success",
+      "eslint": "success",
+      "dependencies": "success",
+      "packaging": "success"
+    },
+    "codeql_analyze": "in_progress",
+    "does_not_lift_security_hold": true
+  }
 }

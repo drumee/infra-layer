@@ -1,6 +1,6 @@
 # IL-5.11-A — Audit de la source canonique
 
-Statut : **PASS** pour l’identité et la provenance, sans décision de sécurité ni autorisation de publication. Relevé du 19 octobre 2026 UTC (20 octobre à Paris).
+Statut : **PASS** pour l’identité et la provenance, sans décision de sécurité ni autorisation de publication. Relevé du 20 octobre 2026 UTC (voir horodatages des reçus).
 
 ## Révisions examinées
 

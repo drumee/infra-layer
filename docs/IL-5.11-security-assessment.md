@@ -30,7 +30,7 @@ Résultat : **4 scénarios de reproduction réussis**, pas des tests TAP ni une 
 
 Le point `recovery.js:22` est évalué par inspection : chemin de dump DB derrière backup autorisé et état actif vérifié, mais même résolution Docker héritée. Aucun backup DB n’est simulé comme preuve réelle. [Script](evidence/IL-5.11/path-probe.cjs) et [résultats](evidence/IL-5.11/B-path-probe.json) sont conservés hors allowlist npm. Les clés jetables et marqueurs sont supprimés par finally.
 
-Les premières exécutions ont rencontré EROFS sur le cache npm utilisateur, puis un échec de sous-processus dans le sandbox. L’installation a été reprise avec cache temporaire ; la reproduction autorisée hors sandbox a réussi. Ces essais d’environnement ne sont ni comptés comme preuves fonctionnelles réussies ni cachés comme skips. Aucun échec de test canonique n’est observé : ces suites ne sont pas rejouées après l’arrêt B.
+Les premières exécutions ont rencontré EROFS sur le cache npm utilisateur, puis un échec de sous-processus dans le sandbox. L’installation a été reprise avec cache temporaire ; la reproduction autorisée hors sandbox a réussi. Ces essais d’environnement ne sont ni comptés comme preuves fonctionnelles réussies ni cachés comme skips. Aucun échec de test canonique n’est observé : ces suites ne sont pas rejouées localement après l’arrêt B. Les résultats CI automatiques de la branche documentaire sont distingués dans le rapport final.
 
 ## Décisions individuelles
 

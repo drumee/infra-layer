@@ -29,7 +29,7 @@ Voir [inventaire des 23](IL-5.11-security-inventory.md), [analyse individuelle e
 
 ## Exécutions et limites
 
-Nouvelle archive source téléchargée et contrôlée ; nouveau pack comparé octet par octet à IL-5.10 ; comparaison des 40 fichiers avec Debian ; inventaire public et métadonnées des règles ; installation hors ligne du tarball ; **quatre scénarios de reproduction**, zéro scénario d’acceptation applicative ou navigateur exécuté dans cette mission. Aucun test TAP canonique réexécuté après B. Les 161 TAP et les preuves réseau/SMTP/lifecycle antérieurs demeurent historiques, sans inflation de total.
+Nouvelle archive source téléchargée et contrôlée ; nouveau pack comparé octet par octet à IL-5.10 ; comparaison des 40 fichiers avec Debian ; inventaire public et métadonnées des règles ; installation hors ligne du tarball ; **quatre scénarios de reproduction**, zéro scénario d’acceptation applicative ou navigateur exécuté dans cette mission. Aucun test TAP canonique réexécuté localement après B. Les 161 TAP et les preuves réseau/SMTP/lifecycle antérieurs demeurent historiques, sans inflation de total.
 
 Les premières tentatives d’installation et de sous-processus ont rencontré des restrictions du sandbox, puis réussi dans le cadre autorisé. Aucun échec fonctionnel de suite canonique n’est masqué. Le code distribué et les contrats ne sont pas modifiés ; le script de reproduction est dans docs/evidence, hors npm.
 
@@ -40,3 +40,7 @@ Le propriétaire peut faire examiner un durcissement ciblé de la résolution de
 Reprendre ensuite C → D → E → F, avec nouvelle source/SRI si les octets changent. Une publication ne sera proposée qu’après qualification complète et autorisation explicite distincte. Pas de demande d’autorisation de publication à ce stade.
 
 Aucune fusion documentaire, publication npm/image/tag, modification Debian/Runtime/Oxy-form, opération de production ou Oxymotion D0. Oxy-form n’est pas déclaré débloqué.
+
+## Livraison documentaire
+
+Branche `docs/il511-alpha3-release`, [PR #11](https://github.com/drumee/infra-layer/pull/11), ouverte vers main, non fusionnée. Au relevé du HEAD documentaire `564a6037dc3e4384653a34a75b39c804336db4f7`, les cinq jobs Quality déclenchés automatiquement par le push (unit, contracts, eslint, dependencies, packaging) sont SUCCESS et Analyze (javascript-typescript) est encore IN_PROGRESS. Ces exécutions automatiques de livraison sont distinctes des commandes locales et ne déclarent pas C/D/E exécutés ni la réserve B levée. Les seuls changements par rapport à main sont documentaires et le reproducer hors package. Le résultat final des analyses doit être relu avant toute décision ultérieure.

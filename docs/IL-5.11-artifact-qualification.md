@@ -10,7 +10,7 @@ Un consommateur temporaire installe ce tarball exact hors ligne, scripts désact
 
 ## Contrôles non rejoués dans IL-5.11
 
-`npm ci`, `npm test`, `npm run test:contracts`, `npm run lint`, les audits npm, `npm run test:package`, la double construction depuis une installation propre, les huit assertions du consommateur complet et sa compilation stricte : **non exécutés**, arrêt de la chaîne en B. Aucun scénario réseau, SMTP, lifecycle ou Chromium n’est rejoué. Aucun skip n’est présenté comme un succès.
+`npm ci`, `npm test`, `npm run test:contracts`, `npm run lint`, les audits npm, `npm run test:package`, la double construction depuis une installation propre, les huit assertions du consommateur complet et sa compilation stricte : **non exécutés localement**, arrêt de la chaîne en B. Aucun scénario réseau, SMTP, lifecycle ou Chromium n’est rejoué. Aucun skip n’est présenté comme un succès.
 
 IL-5.10 avait démontré 161 TAP (dont 24 contrats), les deux archives identiques, les audits sans vulnérabilité connue et le consommateur complet. Ces résultats et leurs limites restent dans le [rapport historique figé](https://github.com/drumee/infra-layer/blob/fcfe5b1c7188d60862af9251d630f97ef33269d3/docs/IL-5.10-D-alpha3-release-candidate.md). Ils ne constituent pas une acceptation des nouveaux risques évalués.
 
