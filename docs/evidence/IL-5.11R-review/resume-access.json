@@ -1,0 +1,24 @@
+[
+  {
+    "endpoint": "repos/drumee/infra-layer/collaborators/somanos/permission",
+    "exit_code": 1,
+    "response_headers": [
+      "HTTP/2.0 403 Forbidden",
+      "X-Accepted-Github-Permissions: metadata=read",
+      "X-Github-Request-Id: 9CA6:3997F9:612060:8CC3B3:6AD7DB15"
+    ],
+    "response_body": "{\"message\":\"Resource not accessible by personal access token\",\"documentation_url\":\"https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user\",\"status\":\"403\"}",
+    "stderr": "gh: Resource not accessible by personal access token (HTTP 403)"
+  },
+  {
+    "endpoint": "repos/drumee/infra-layer/branches/main/protection",
+    "exit_code": 1,
+    "response_headers": [
+      "HTTP/2.0 403 Forbidden",
+      "X-Accepted-Github-Permissions: administration=read",
+      "X-Github-Request-Id: 9CAC:3DF11C:5A7C2C:849EA4:6AD7DB16"
+    ],
+    "response_body": "{\"message\":\"Resource not accessible by personal access token\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"403\"}",
+    "stderr": "gh: Resource not accessible by personal access token (HTTP 403)"
+  }
+]

@@ -1,16 +1,27 @@
-# IL-5.11R-Review — Revue finale de sécurité de la PR #12
+# IL-5.11R-Review — Revue finale et vérification de la PR #12
 
-Date : 2026-10-20T18:07:16+00:00. Dépôt : `drumee/infra-layer`. Cible : `main`.
+Date de clôture : 2026-10-20T21:30:40+00:00. Dépôt : `drumee/infra-layer`.
 
-**Statut final : READY_FOR_MERGE. La PR #12 n’est pas fusionnée.**
+**Statut final : MERGED_AND_SECURITY_VERIFIED**, pour la correction IL-5.11R et le commit canonique `077258ca3ef9c77d6d6d94f13ba190b7c0314f56`. Ce statut n’annonce ni zéro alerte globale ni une gate SonarCloud verte.
 
-La revue R1–R4 est favorable. L’unique commande de fusion standard a été refusée par GitHub pour les droits du personal access token. Aucune autre stratégie de fusion n’a été tentée. Aucun contournement administratif, changement de protection, fermeture Sonar, publication, tag, modification Debian/Runtime/Oxy-form ou opération de production.
+La PR #12 est effectivement fusionnée, R1–R6 sont PASS, les octets qualifiés sont intégrés et les contrôles Quality/CodeQL post-fusion réussissent. Les 18 anciens ID Sonar PATH sont tous **CLOSED / FIXED**, relus individuellement. Les 13 observations déjà examinées apparaissent sur main sous de nouveaux ID ; leurs dispositions techniques restent valables par identité exacte du code. Aucune annotation administrée ou risque nouveau accepté.
+
+| Étape | Résultat final |
+| --- | --- |
+| R1 | PASS — HEAD exact, base et identité des sources vérifiés avant fusion |
+| R2 | PASS — 13 dispositions individuelles ; états Sonar séparés des conclusions |
+| R3 | PASS — contrats préservés, 171 tests et 12 scénarios avant fusion |
+| R4 | PASS — Quality/CodeQL, politiques effectives et artefact exact |
+| R5 | PASS — fusion normale via plugin GitHub, HEAD verrouillé |
+| R6 | PASS — commit/arbre, 41 membres et empreintes, 171 tests, Quality/CodeQL et annotations post-fusion vérifiés |
+
+Les sections R1–R4 décrivent les preuves avant fusion. Les nouvelles références canoniques figurent en R6 et dans le handoff. Aucune publication alpha.3, image ou tag ; aucun changement Debian, Server Runtime, Oxy-form ou production.
 
 ## État initial et provenance — R1 PASS
 
 - [PR #12](https://github.com/drumee/infra-layer/pull/12) OPEN, non draft, MERGEABLE ; état d’intégration UNSTABLE en raison du contrôle SonarCloud FAILURE.
 - HEAD exact examiné : `6a06d26a69d4480d4afc280cef1dee9e2e585754`, identique au HEAD demandé. Aucun commit supplémentaire depuis cette référence.
-- Base réelle : `9e4166618ca519e5d9b9e58f5191d37c5fd56462`. Ce commit est également le merge-base ; aucun changement de main intervenu avant la tentative.
+- Base réelle avant fusion : `9e4166618ca519e5d9b9e58f5191d37c5fd56462`. Ce commit est également le merge-base ; aucun changement de main intervenu avant la tentative.
 - Source exécutable/package qualifiée : `71bd7b8b38345d61316771c07d76fece687af650`. Les trois commits suivants modifient uniquement 32 fichiers documentaires. Les 41 fichiers npm sont individuellement identiques à cette source, au HEAD examiné et à la source d’acceptation lourde `68000c593a7c9aad0f9e7989ad2f69857e59eba8`.
 - Aucun `AGENTS.md` trouvé aux niveaux racine, home, github et dépôt, ni dans l’arbre Git du candidat.
 - Les 11 commits sont non signés (`verification.reason=unsigned`). Aucun impératif de signature applicable identifié : GET branches/main retourne `protected:false`, `protection.enabled:false`, contexts/checks vides, enforcement `off` ; GET rules/branches/main retourne `[]`.
@@ -76,7 +87,7 @@ Premières tentatives locales conservées comme incidents d’environnement : te
 
 Les acceptations lourdes ne sont pas rejouées dans cette revue : preuves existantes liées à `68000c5`, avec identité indépendante des 41 fichiers exécutés. Gateway 17/17, services 17/17, lifecycle 16/16, acceptation applicative **87 assertions**, Nginx hôte/HTTPS CA-SAN réels, RPC accepté/refusé, boucle locale et refus LAN indépendant, SMTP/DKIM/STARTTLS/SASL et refus d’open relay. [Rapport d’acceptation](https://github.com/drumee/infra-layer/blob/6a06d26a69d4480d4afc280cef1dee9e2e585754/docs/evidence/IL-5.11R/E-application-report.json). Consommateur antérieur huit assertions/types stricts et quatre attaques appariées sur package installé documentés dans le dossier F. Ces preuves sont héritées par identité de fichiers, pas annoncées comme de nouvelles exécutions.
 
-## GitHub et intégrité — R4 PASS
+## GitHub et intégrité avant fusion — R4 PASS
 
 | Contrôle au HEAD exact | Résultat / référence |
 | --- | --- |
@@ -88,7 +99,7 @@ Les acceptations lourdes ne sont pas rejouées dans cette revue : preuves exista
 
 Workflow Quality : `contents:read`, checkout sans persistance de credentials, actions checkout/setup-node épinglées par SHA ; aucun changement de permission du jeton dans le diff. La préparation de la VM CI protège seulement le Node déjà installé dans le cache hébergé, avec gardes de contexte, ownership/liens et inventaire de contenu identique avant/après. Elle ne relâche pas le resolver. La lecture des paramètres Actions/workflow permissions par API retourne HTTP 403 ; ces paramètres globaux ne sont pas attestés.
 
-Code Scanning et Dependabot globaux : **HTTP 403** revérifié. Le résultat PR CodeQL ne prouve pas l’absence de toute alerte globale. Les 227 annotations historiques Sonar de main et les 18 ID PATH antérieurs ne sont pas déclarés fermés. Leur état post-intégration reste à constater.
+Code Scanning et Dependabot globaux : **HTTP 403** revérifié. Le résultat PR CodeQL ne prouve pas l’absence de toute alerte globale. Le relevé antérieur de main contenait 227 annotations ouvertes. Leur état après intégration est vérifié séparément dans R6 ci-dessous ; aucune absence globale d’alerte n’est déduite du seul succès de CodeQL.
 
 ### Empreintes npm et source distinctes
 
@@ -104,46 +115,107 @@ Deux `npm pack --json --ignore-scripts` depuis le HEAD examiné, destinations di
 | SHA256 source HEAD PR | `c70c9fa084e07a20a7240f2bc5d2fd1082a76942965c402d6e57f22c2b051c7c` |
 | SRI source HEAD PR | `sha512-LY7QDobxJTjWl1TLremafI56cjANPmukKJ1NjDSb0Sz3gHqudF4iNxuh0WeDqTiRwI0siit6u1vFOO07mKmbTw==` |
 
-La nouvelle archive source inclut les documents de clôture ; son empreinte diffère légitimement de celle de `71bd7b8`. Son SRI ne remplace jamais le SRI npm. Aucun nouveau commit de fusion n’existe : aucune identité d’archive post-fusion n’est inventée. Reproductibilité attestée sur cet hôte et cette toolchain uniquement.
+La nouvelle archive source inclut les documents de clôture ; son empreinte diffère légitimement de celle de `71bd7b8`. Son SRI ne remplace jamais le SRI npm. Ces empreintes concernent le HEAD de PR avant fusion ; l’identité distincte de l’archive du commit intégré est mesurée en R6 ci-dessous. Reproductibilité attestée sur cet hôte et cette toolchain uniquement.
 
-## Décision et tentative de fusion — R5 AUTORISÉE, REFUSÉE PAR L’ACCÈS GITHUB
+## Fusion contrôlée — R5 PASS
 
-R1, R2, R3 et R4 sont PASS. Aucun défaut de sécurité significatif non résolu ni changement de contrat public détecté dans le périmètre de la PR. La décision favorable repose sur les preuves individuelles des faux positifs, sans nouvelle acceptation de risque. Sonar reste en échec ; ce contrôle n’est pas obligatoire dans la politique effective observée. Aucun contournement ni modification de règle.
+Les premières tentatives utilisant le personal access token de `GH_TOKEN` sous l’identité `somanos` ont été refusées : `Resource not accessible by personal access token`. La lecture détaillée des protections exigeant `administration=read` était également refusée ; la création de PR documentaire par gh échouait. Aucun secret de jeton conservé. Le push Git en SSH n’attestait pas ces droits API. Les refus ont entraîné l’arrêt demandé, sans essai de contournement.
 
-Immédiatement avant l’opération : HEAD `6a06d26a69d4480d4afc280cef1dee9e2e585754`, base `9e4166618ca519e5d9b9e58f5191d37c5fd56462`, PR ouverte/fusionnable, protections et résultats relus, tous inchangés.
+Le propriétaire a ensuite explicitement demandé l’utilisation du plugin. La connexion **GitHub** disponible dans Codex confirme `somanos`, ID `177176074`, et le rôle repository **admin** par sa lecture de permissions réussie. Ce résultat est distinct des permissions du personal access token local. La lecture de main confirme protected=false, aucune protection activée ni contexte obligatoire ; la liste des rulesets, parents inclus, est vide. Aucun réglage de permission ou de protection n’a été modifié. Le plugin n’offre pas l’administration détaillée des protections dans certaines connexions ; la preuve effective de branche et la liste des règles restent conservées.
 
-Commande unique :
+HEAD et base relus immédiatement avant fusion : `6a06d26a69d4480d4afc280cef1dee9e2e585754` / `9e4166618ca519e5d9b9e58f5191d37c5fd56462`, inchangés. Cinq Quality SUCCESS et deux résultats CodeQL SUCCESS au HEAD exact ; Sonar FAILURE explicitement maintenu et non obligatoire dans la politique observée. La décision s’appuie sur les faux positifs individuellement démontrés, sans acceptation de risque implicite.
 
-```sh
-gh pr merge 12 --repo drumee/infra-layer --merge --match-head-commit 6a06d26a69d4480d4afc280cef1dee9e2e585754
-```
+Une unique fusion a été demandée via le plugin GitHub, méthode `merge`, `expected_head_sha=6a06d26a69d4480d4afc280cef1dee9e2e585754`, sans option de contournement. Résultat GitHub : `merged:true`, `Pull Request successfully merged`.
 
-Résultat : exit 1, `Message: Resource not accessible by personal access token, Locations: [{Line:1 Column:58}]`. Pas de `--admin`, pas d’auto-merge, pas de seconde stratégie ou d’autre identité utilisée. La cause exacte du refus du champ GraphQL ne peut pas être précisée au-delà de ce message ; aucun rejet de protection de branche n’est démontré.
+- PR #12 : **CLOSED / merged=true**, fusion le **2026-10-20T21:24:57Z**.
+- Commit intégré : **`077258ca3ef9c77d6d6d94f13ba190b7c0314f56`**.
+- Parents : `9e4166618ca519e5d9b9e58f5191d37c5fd56462`, puis `6a06d26a69d4480d4afc280cef1dee9e2e585754`.
+- Signature de fusion : GitHub `verification.verified=true`.
+- La valeur antérieure `770e8f6cd4fa8361515f7b24ca2ccab40bb53914` n’était que le commit de test de la PR ouverte ; elle n’est pas la référence canonique.
 
-Lecture GitHub après refus : **state=open, merged=false, merged_at=null**, main toujours `9e4166618ca519e5d9b9e58f5191d37c5fd56462`. La valeur `merge_commit_sha=770e8f6cd4fa8361515f7b24ca2ccab40bb53914` est le commit de test de fusion d’une PR ouverte, **pas un commit intégré**.
+[Preuve plugin et contrôles avant/après](evidence/IL-5.11R-review/plugin-integration.json). Le changement de connexion est expressément demandé par le propriétaire ; aucune protection GitHub contournée.
 
-Statut **READY_FOR_MERGE** : l’exécution de la fusion avec un accès disposant des droits nécessaires reste administrative. Ce n’est ni MERGED_AND_SECURITY_VERIFIED ni une fusion à répéter sans contrôles. Toute reprise doit revérifier HEAD/base/contrôles/politiques avant l’opération ; nouvelle qualification si le code ou la base ont changé de façon pertinente.
+## Vérification post-fusion — R6 PASS
 
-## Vérification post-fusion — R6 NON EXÉCUTÉE
+### Commit, arbre et octets
 
-Aucune fusion confirmée, donc aucun test main post-fusion ni CodeQL post-fusion attribué à cette mission. Les runs listés après le refus restent ceux de la PR, sans run d’intégration nouveau. Le statut MERGED_AND_SECURITY_VERIFIED est interdit à ce stade.
+GitHub main et le fetch Git concordent sur `077258ca3ef9c77d6d6d94f13ba190b7c0314f56`. L’arbre **`51ceb7bf0e5275328c5c86475405b425fffcf301`** est intégralement identique à celui du HEAD PR examiné. Les corrections PATH, outils fixes, validations ownership/permissions/liens, environnements et revalidation ACME sont donc bien présentes, sans résolution de conflit ou changement non qualifié.
 
-Après une fusion effective, lire le commit réel et ses parents/arbre, comparer les 41 fichiers, reconstruire le npm et vérifier SHA256/SRI, télécharger et mesurer séparément l’archive source du commit intégré, attendre Quality et CodeQL sur main puis examiner les nouvelles annotations Sonar et les résultats de sécurité accessibles. Ne pas assimiler une archive GitHub à un tarball npm.
+Les SHA256 des **41 fichiers npm** correspondent individuellement au reçu, au HEAD de PR, à `71bd7b8` et à la source d’acceptation lourde `68000c5`. Deux packs depuis un worktree isolé du commit intégré sont identiques, et identiques au tarball de la revue initiale. Aucun membre non régulier ni chemin dangereux. Installation verrouillée offline et **171/171 tests**, dont 24 contrats, zéro échec/skip, sur le commit intégré. Aucun changement de code pour la qualification post-fusion.
+
+| Identité canonique | Valeur recalculée |
+| --- | --- |
+| Source intégrée | `077258ca3ef9c77d6d6d94f13ba190b7c0314f56` |
+| Version locale npm | `@drumee/infra-layer@0.1.0-alpha.3`, toujours non publiée |
+| Membres / taille npm | **41 / 101 242 octets** |
+| SHA256 npm | `f2fd950e1f54634fa97b9e74ccd3ceb8dfdb15cb3e8a08c0c46489704432ac9c` |
+| SRI npm | `sha512-BP1hSTOer0C7u118cixNtiJ/yOErtCFfEzQTjqZ6tP7bPTMDbXvWrJ24z8jNdKRjFRCTxjprpHxDZ5BUmWb2/Q==` |
+| Archive source intégrée | [codeload du commit intégré](https://codeload.github.com/drumee/infra-layer/tar.gz/077258ca3ef9c77d6d6d94f13ba190b7c0314f56) ; **266 fichiers**, zéro différence avec Git |
+| SHA256 archive source intégrée | `dcd7c9a8a0a5e191056b636c9b793adc4796f701c83d0e1a4bea25ab9cfceeeb` |
+| SRI archive source intégrée | `sha512-Syt/FYPnvPicSacaPE6rR50DapEXSFWv7Snmq8rONLAiSqLJdpYZkzhDavbtAH8EXnADjucfHub9KU6CVyBbuA==` |
+
+L’archive source intégrée est différente de celle du HEAD PR malgré l’arbre identique ; son préfixe et ses métadonnées GitHub ne sont pas l’identité npm. Les trois identités ont été contrôlées séparément : fichiers identiques, archive GitHub différente, package npm identique. [Vérification complète et liste des 41 membres](evidence/IL-5.11R-review/postmerge-verification.json).
+
+### Quality et CodeQL sur main
+
+Tous les runs suivants portent exactement sur `077258ca3ef9c77d6d6d94f13ba190b7c0314f56` et sont terminés SUCCESS :
+
+| Run | Résultat |
+| --- | --- |
+| [Quality 39500169039](https://github.com/drumee/infra-layer/actions/runs/39500169039) | unit, contracts, eslint, dependencies, packaging : cinq SUCCESS |
+| [Push on main 39500168564](https://github.com/drumee/infra-layer/actions/runs/39500168564) | CodeQL JavaScript/TypeScript : analyse et publication SUCCESS |
+| [CodeQL 39500179132](https://github.com/drumee/infra-layer/actions/runs/39500179132) | JavaScript/TypeScript, Actions et Upload Results : SUCCESS |
+
+Les logs confirment l’exécution des analyses et l’envoi des résultats. Notices de runner/migration et messages de dépréciation/outillage restent visibles ; ils ne sont pas dissimulés. Les URLs autonomes d’annotations de check-runs sont rejetées par l’allowlist du fetch générique du plugin (`INVALID_ARGUMENT`, pas un refus d’authentification) : les logs de jobs et les **deux SARIF réellement téléchargés** via les outils dédiés sont examinés à leur place. Les SHA256 ZIP correspondent aux digests fournis par GitHub :
+
+- Actions, artifact `12300370442` : `b49233dbb46a805efab53c969d8f243bd6b9afbfe3f27d213e1b249907243922` ; **zéro résultat SARIF**.
+- JavaScript, artifact `12298899882` : `1a84be02acb92975227bb5eb1cc6734c8a3b71b41780c2a856787776355b97cb` ; **trois résultats SARIF** : `js/polynomial-redos` dans `lib/validation.js:90`, `js/insufficient-key-size` dans `test/unit/secrets.test.js:55`, `js/insufficient-password-hash` dans `lib/spec.js:32`.
+
+Les trois fichiers sont individuellement identiques au main antérieur : aucun résultat SARIF dans le code modifié par IL-5.11R. Ces observations hors changement ne sont ni acceptées globalement ni déclarées fermées ; elles restent à reprendre dans l’inventaire sécurité. Le succès CodeQL ne signifie donc pas zéro alerte. Les inventaires globaux Code Scanning/Dependabot restent limités par les HTTP 403 précédemment constatés ; les SARIF du run courant ne sont pas assimilés à l’état administratif global. [Revue des SARIF et empreintes](evidence/IL-5.11R-review/postmerge-codeql-review.json).
+
+### SonarCloud sur main et fermeture PATH
+
+Nouvelle analyse **`4f9d8c8e-0d64-48f7-8499-d9797d555389`**, date **2026-10-20T21:25:04Z**, révision exacte `077258ca3ef9c77d6d6d94f13ba190b7c0314f56`. Check main **`118895613417` FAILURE**, gate **ERROR** : security rating E et reliability rating D sur une baseline previous_version du 14 octobre. **SonarCloud n’est pas vert.**
+
+Les **18 anciens ID S4036** ont été recherchés explicitement : **18/18 CLOSED, resolution FIXED**. Ce constat n’est pas déduit de leur seule absence dans les OPEN. Aucune fermeture manuelle effectuée. [Réponse individuelle complète](evidence/IL-5.11R-review/postmerge-path-dispositions.json).
+
+Main comporte désormais **211 OPEN** (13 VULNERABILITY, 16 BUG, 182 CODE_SMELL), contre 227 auparavant. Comparaison exacte des ID : 29 ne sont plus OPEN et 13 sont nouveaux sur main ; **les 13 nouveaux correspondent chacun à une des 13 annotations PR déjà revues**, par règle, fichier, ligne et message identiques. Aucun nouveau BUG introduit dans cet inventaire comparé. Les cinq autres VULNERABILITY sont historiques, conservées hors disposition de cette mission.
+
+Les ID PR et main sont distincts ; les états Sonar restent **OPEN** pour les 13 lignes ci-dessous. Leur disposition technique locale découle de l’analyse R2 et de l’identité des octets, pas d’une mutation administrative :
+
+| ID PR revu | Nouvel ID main | Règle / emplacement | Disposition technique locale |
+| --- | --- | --- | --- |
+| `AaFZl_1PcPSyTboN_x_L` | `AaFbNJFvv_dBCVdjM1HL` | json:S6418 ; `docs/evidence/IL-5.11R/F-artifact-receipt.json:26` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFZMuQhZ9JThwxqrsye` | `AaFbNJFmv_dBCVdjM1HE` | javascript:S2612 ; `test/security/system-tools-container.cjs:23` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFZMuQhZ9JThwxqrsyf` | `AaFbNJFmv_dBCVdjM1HF` | javascript:S2612 ; `test/security/system-tools-container.cjs:24` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFZMuQhZ9JThwxqrsyg` | `AaFbNJFmv_dBCVdjM1HG` | javascript:S2612 ; `test/security/system-tools-container.cjs:28` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFZMuQhZ9JThwxqrsyh` | `AaFbNJFmv_dBCVdjM1HH` | javascript:S2612 ; `test/security/system-tools-container.cjs:32` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFZMuQhZ9JThwxqrsyi` | `AaFbNJFmv_dBCVdjM1HI` | javascript:S2612 ; `test/security/system-tools-container.cjs:58` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFZMuQhZ9JThwxqrsyj` | `AaFbNJFmv_dBCVdjM1HJ` | javascript:S2612 ; `test/security/system-tools-container.cjs:64` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFZMuQhZ9JThwxqrsyk` | `AaFbNJFmv_dBCVdjM1HK` | javascript:S2612 ; `test/security/system-tools-container.cjs:67` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFZMuSQZ9JThwxqrsyl` | `AaFbNJGEv_dBCVdjM1HM` | javascript:S9382 ; `adapters/docker/services.js:29` | STYLE_NON_BLOCKING |
+| `AaFZMuM_Z9JThwxqrsyb` | `AaFbNJFdv_dBCVdjM1HC` | javascript:S2681 ; `test/lifecycle/run.js:15` | STYLE_NON_BLOCKING |
+| `AaFZMuM_Z9JThwxqrsyc` | `AaFbNJFdv_dBCVdjM1HD` | javascript:S7723 ; `test/lifecycle/run.js:22` | STYLE_NON_BLOCKING |
+| `AaFZMuH5Z9JThwxqrsyZ` | `AaFbNJEov_dBCVdjM1HA` | javascript:S2681 ; `test/services/run.js:18` | STYLE_NON_BLOCKING |
+| `AaFZMuH5Z9JThwxqrsya` | `AaFbNJEov_dBCVdjM1HB` | javascript:S2681 ; `test/services/run.js:52` | STYLE_NON_BLOCKING |
+
+[Inventaire main](evidence/IL-5.11R-review/postmerge-sonar-main.json), [analyse/révision](evidence/IL-5.11R-review/postmerge-sonar-analyses.json), [gate](evidence/IL-5.11R-review/postmerge-sonar-gate.json), [mapping individuel](evidence/IL-5.11R-review/postmerge-sonar-mapping.json). Le faux positif S6418 concerne toujours le checksum du fichier public, et non un credential. Aucune nouvelle acceptation de risque SonarCloud.
 
 ## Handoff IL-5.11 et conditions Debian
 
-- Canonique Infra Layer actuel : `9e4166618ca519e5d9b9e58f5191d37c5fd56462`, **inchangé**. Aucun nouveau SHA canonique sécurisé intégré disponible.
-- Source de revue prête : `6a06d26a69d4480d4afc280cef1dee9e2e585754` ; source exécutable qualifiée `71bd7b8b38345d61316771c07d76fece687af650` ; empreintes npm et source PR ci-dessus.
-- Liste npm complète et SHA256 individuels dans [verification.json](evidence/IL-5.11R-review/verification.json). Contrats publics inchangés ; résultats Quality/CodeQL favorables et dispositions des 13 annotations consignés ici.
-- Reprise : terminer fusion et R6, vérifier la fermeture technique du blocage PATH, puis **IL-5.11-B → IL-5.11-C → IL-5.11-D → IL-5.11-E → IL-5.11-F**. La publication alpha.3 nécessite une autorisation distincte.
-- Debian conserve `aa9057f224f4ae5cf80d777e3cb2fad092193fb1` et son ancien inventaire 40 fichiers. Aucun verrou ni fichier Debian modifié. Futur réalignement seulement vers un commit réellement intégré, avec son nouveau SRI source, inventaire 41 membres, chemins Docker/ss/OpenSSL/Compose protégés et requalification des images et acceptations réelles.
-- Limites résiduelles : confiance root/outils système/runner ; compte de qualification déjà compromis et fenêtre stat/exec TOCTOU non neutralisés ; pas de reproductibilité inter-hôtes démontrée ; inventaires globaux GitHub HTTP 403 ; Sonar PR toujours FAILURE ; alertes historiques sans acceptation globale.
-- **SMTP_RECOVERY_UNQUALIFIED** maintenu ; aucune restauration de spool SMTP ni délivrabilité Internet nouvellement qualifiée. Aucune opération production, oxymot.fr ou Oxymotion D0.
+- **Nouveau SHA canonique Infra Layer : `077258ca3ef9c77d6d6d94f13ba190b7c0314f56`**. Source PR examinée `6a06d26a69d4480d4afc280cef1dee9e2e585754`, source exécutable qualifiée `71bd7b8b38345d61316771c07d76fece687af650`, acceptation lourde `68000c593a7c9aad0f9e7989ad2f69857e59eba8`.
+- Nouveau SRI **source intégrée** : `sha512-Syt/FYPnvPicSacaPE6rR50DapEXSFWv7Snmq8rONLAiSqLJdpYZkzhDavbtAH8EXnADjucfHub9KU6CVyBbuA==`. SRI **npm** : `sha512-BP1hSTOer0C7u118cixNtiJ/yOErtCFfEzQTjqZ6tP7bPTMDbXvWrJ24z8jNdKRjFRCTxjprpHxDZ5BUmWb2/Q==`. Ils identifient deux archives distinctes. La liste et les SHA256 des 41 membres sont dans le reçu R6.
+- Signatures/types/exports, erreurs owning, absence de dépendances de production et contrats loopback/ownership/TLS/SMTP/lifecycle préservés. Quality/CodeQL sur main réussissent ; les 18 PATH sont CLOSED/FIXED ; les 13 annotations Sonar ont leur mapping et disposition technique. La gate demeure en échec.
+- Fermeture technique du blocage PATH vérifiée ; reprendre **IL-5.11-B → IL-5.11-C → IL-5.11-D → IL-5.11-E → IL-5.11-F** en vérifiant ces références. La publication alpha.3 nécessite une autorisation distincte.
+- Debian conserve **`aa9057f224f4ae5cf80d777e3cb2fad092193fb1`** et son ancien reçu 40 fichiers. Aucun verrou ni fichier Debian modifié. Futur réalignement séparé vers le commit intégré et son nouveau SRI source, inventaire 41 membres, prérequis Docker/ss/OpenSSL/Compose système protégés, avec requalification des images et acceptations réelles. Les anciennes preuves Debian ne valent pas qualification de ce nouvel alignement.
+- Limites résiduelles : autorité root/outils système/runner, compte de qualification déjà compromis et fenêtre stat/exec TOCTOU ; reproductibilité attestée seulement sur l’hôte/toolchain qualifiés ; inventaires globaux GitHub partiellement inaccessibles ; trois résultats SARIF dans du code inchangé et alertes Sonar historiques à reprendre sans acceptation globale.
+- **SMTP_RECOVERY_UNQUALIFIED** maintenu ; pas de restauration de spool SMTP ou de délivrabilité Internet nouvelle. Les acceptations lourdes antérieures (gateway 17/17, services 17/17, lifecycle 16/16, application 87 assertions, Nginx hôte/HTTPS, RPC, LAN indépendant, SMTP/DKIM/STARTTLS/SASL) sont héritées par identité des fichiers ; seules les vérifications R6 décrites sont de nouvelles exécutions.
+- Aucune publication npm/image/tag, modification Server Runtime/Oxy-form, opération production/oxymot.fr ou Oxymotion D0.
 
-## Preuves et conservation
+## Conservation documentaire et preuves
 
-[Contrôles GitHub](evidence/IL-5.11R-review/github-check-runs.json), [Quality](evidence/IL-5.11R-review/quality-run.json), [annotations Sonar brutes](evidence/IL-5.11R-review/sonar-issues.json), [gate Sonar](evidence/IL-5.11R-review/sonar-gate.json), [171 tests](evidence/IL-5.11R-review/unit.txt), [12 scénarios](evidence/IL-5.11R-review/container.json), [packaging](evidence/IL-5.11R-review/package.txt), [lint](evidence/IL-5.11R-review/lint.txt), [vérification d’intégrité et refus de fusion](evidence/IL-5.11R-review/verification.json).
+Rapport sur la branche dédiée **`docs/il511r-review-final`** ; intégration documentaire par PR distincte, sans ajout direct à main. Cette branche contient exclusivement le rapport et ses preuves, aucune modification exécutable. La création de la PR documentaire sera effectuée avec le plugin GitHub après push de ce rapport.
 
-Ce rapport et ses preuves sont préparés sur une branche documentaire distincte fondée sur main, sans importer le code de #12 dans cette branche et sans écriture directe sur main. Leur éventuelle intégration documentaire ne fusionne pas #12 et ne change pas son statut.
+Preuves avant fusion : [contrôles](evidence/IL-5.11R-review/github-check-runs.json), [Quality](evidence/IL-5.11R-review/quality-run.json), [Sonar PR](evidence/IL-5.11R-review/sonar-issues.json), [gate PR](evidence/IL-5.11R-review/sonar-gate.json), [171 tests](evidence/IL-5.11R-review/unit.txt), [12 scénarios](evidence/IL-5.11R-review/container.json), [packaging](evidence/IL-5.11R-review/package.txt), [lint](evidence/IL-5.11R-review/lint.txt), [reçu historique READY_FOR_MERGE](evidence/IL-5.11R-review/verification.json). Ces preuves historiques ne sont pas réétiquetées comme post-fusion.
 
-La branche `docs/il511r-review-final` a été poussée sur origin avec succès via Git. La création de la PR documentaire en brouillon a ensuite échoué : `GraphQL: Resource not accessible by personal access token (createPullRequest)`. Aucune PR documentaire créée par cette mission ; aucun autre mode de création tenté. Le rapport reste [consultable sur la branche dédiée](https://github.com/drumee/infra-layer/blob/docs/il511r-review-final/docs/IL-5.11R-review-final.md).
+Preuves nouvelles : [connexion/fusion/CI](evidence/IL-5.11R-review/plugin-integration.json), [arbre/empreintes/41 fichiers](evidence/IL-5.11R-review/postmerge-verification.json), [171 tests post-fusion](evidence/IL-5.11R-review/postmerge-unit.txt), [CodeQL SARIF](evidence/IL-5.11R-review/postmerge-codeql-review.json), [mapping Sonar](evidence/IL-5.11R-review/postmerge-sonar-mapping.json), [18 PATH CLOSED/FIXED](evidence/IL-5.11R-review/postmerge-path-dispositions.json), [ancien inventaire main](evidence/IL-5.11R-review/premerge-sonar-main.json), [refus antérieurs du jeton local](evidence/IL-5.11R-review/resume-access.json).

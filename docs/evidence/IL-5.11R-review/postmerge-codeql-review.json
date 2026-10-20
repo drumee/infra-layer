@@ -1,0 +1,47 @@
+[
+  {
+    "artifact": 12300370442,
+    "sarif_sha256": "dd641b9e9ed3b7bec760eafa1f9c93dc4d5142f99919abc8e35e2895a7bbac3b",
+    "zip_sha256": "b49233dbb46a805efab53c969d8f243bd6b9afbfe3f27d213e1b249907243922",
+    "results": 0,
+    "findings": []
+  },
+  {
+    "artifact": 12298899882,
+    "sarif_sha256": "3158ec909374dc1b1838ed8eb5c8e29e46a06f57b1d9704f2318e9d37cba0221",
+    "zip_sha256": "1a84be02acb92975227bb5eb1cc6734c8a3b71b41780c2a856787776355b97cb",
+    "results": 3,
+    "findings": [
+      {
+        "rule": "js/polynomial-redos",
+        "file": "lib/validation.js",
+        "line": 90,
+        "message": "This [regular expression](1) that depends on [library input](2) may run slow on strings starting with '-' and with many repetitions of '0'.\nThis [regular expression](1) that depends on [library input](3) may run slow on strings starting with '-' and with many repetitions of '0'.\nThis [regular expression](1) that depends on [library input](4) may run slow on strings starting with '-' and with many repetitions of '0'.\nThis [regular expression](1) that depends on [library input](5) may run slow on strings starting with '-' and with many repetitions of '0'.\nThis [regular expression](1) that depends on [library input](6) may run slow on strings starting with '-' and with many repetitions of '0'.\nThis [regular expression](1) that depends on [library input](7) may run slow on strings starting with '-' and with many repetitions of '0'.\nThis [regular expression](1) that depends on [library input](8) may run slow on strings starting with '-' and with many repetitions of '0'.\nThis [regular expression](1) that depends on [library input](9) may run slow on strings starting with '-' and with many repetitions of '0'.",
+        "security_severity": null,
+        "level": null,
+        "unchanged_from_premerge_main": true,
+        "disposition": "UNCHANGED_CODE_OUTSIDE_IL511R_NO_NEW_RISK_ACCEPTANCE"
+      },
+      {
+        "rule": "js/insufficient-key-size",
+        "file": "test/unit/secrets.test.js",
+        "line": 55,
+        "message": "Creation of an asymmetric RSA key uses 1024 bits, which is below 2048 and considered breakable.",
+        "security_severity": null,
+        "level": null,
+        "unchanged_from_premerge_main": true,
+        "disposition": "UNCHANGED_CODE_OUTSIDE_IL511R_NO_NEW_RISK_ACCEPTANCE"
+      },
+      {
+        "rule": "js/insufficient-password-hash",
+        "file": "lib/spec.js",
+        "line": 32,
+        "message": "Password from [an access to password](1) is hashed insecurely.",
+        "security_severity": null,
+        "level": null,
+        "unchanged_from_premerge_main": true,
+        "disposition": "UNCHANGED_CODE_OUTSIDE_IL511R_NO_NEW_RISK_ACCEPTANCE"
+      }
+    ]
+  }
+]

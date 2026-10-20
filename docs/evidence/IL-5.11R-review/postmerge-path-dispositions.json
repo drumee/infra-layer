@@ -1,0 +1,868 @@
+{
+  "total": 18,
+  "p": 1,
+  "ps": 100,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 100,
+    "total": 18
+  },
+  "effortTotal": 270,
+  "debtTotal": 270,
+  "issues": [
+    {
+      "key": "AaE8TbnThgf3bSVnp8z4",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/lifecycle/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "aaf76fbdcb3fadfcfe2d2e647f1163ca",
+      "textRange": {
+        "startLine": 21,
+        "endLine": 21,
+        "startOffset": 18,
+        "endOffset": 26
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T16:55:42+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE8TcJkhgf3bSVnp80B",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:lifecycle/recovery.js",
+      "project": "drumee_infra-layer",
+      "hash": "abbffe168b579b8de4938c9bbaa4377f",
+      "textRange": {
+        "startLine": 22,
+        "endLine": 22,
+        "startOffset": 29,
+        "endOffset": 37
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T16:09:57+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE8TbpHhgf3bSVnp8z9",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/lifecycle/tracing-driver.js",
+      "project": "drumee_infra-layer",
+      "hash": "e2c5940f52a038b89c97ebb773114c62",
+      "textRange": {
+        "startLine": 6,
+        "endLine": 6,
+        "startOffset": 26,
+        "endOffset": 34
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T16:09:57+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE8TcJ8hgf3bSVnp80i",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:lifecycle/docker.js",
+      "project": "drumee_infra-layer",
+      "hash": "d9e977c8f0bb3268a98661f9c8e988dd",
+      "textRange": {
+        "startLine": 8,
+        "endLine": 8,
+        "startOffset": 28,
+        "endOffset": 36
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T13:55:11+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE8TcJ8hgf3bSVnp80m",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:lifecycle/docker.js",
+      "project": "drumee_infra-layer",
+      "hash": "0d5a17617dae61c391eb871a5ab067bb",
+      "textRange": {
+        "startLine": 49,
+        "endLine": 49,
+        "startOffset": 42,
+        "endOffset": 46
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T13:55:11+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw2edL4i9l9HI8Cw",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/package-audit.js",
+      "project": "drumee_infra-layer",
+      "hash": "16628f07e31c65c9fc7b35fbb859668b",
+      "textRange": {
+        "startLine": 21,
+        "endLine": 21,
+        "startOffset": 42,
+        "endOffset": 47
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T09:41:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw2edL4i9l9HI8Cx",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/package-audit.js",
+      "project": "drumee_infra-layer",
+      "hash": "f31b4e7e9f6537735d44a0d373329f15",
+      "textRange": {
+        "startLine": 24,
+        "endLine": 24,
+        "startOffset": 15,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T09:41:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw1PdL4i9l9HI8CT",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/services/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "83df8c05f36be839c465125170cf2e15",
+      "textRange": {
+        "startLine": 29,
+        "endLine": 29,
+        "startOffset": 60,
+        "endOffset": 68
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T09:41:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw1PdL4i9l9HI8CU",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/services/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "901430b6004c59906afcb92b6e0553cc",
+      "textRange": {
+        "startLine": 51,
+        "endLine": 51,
+        "startOffset": 82,
+        "endOffset": 90
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T09:41:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw1PdL4i9l9HI8CW",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/services/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "577825cc276fbe2fecda8c11bfafa38f",
+      "textRange": {
+        "startLine": 79,
+        "endLine": 79,
+        "startOffset": 41,
+        "endOffset": 49
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T09:41:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw1PdL4i9l9HI8CX",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/services/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "bcf7391812b483be67862ff72f5a1054",
+      "textRange": {
+        "startLine": 80,
+        "endLine": 80,
+        "startOffset": 41,
+        "endOffset": 49
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T09:41:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw4UdL4i9l9HI8Dz",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:capabilities/tls/index.js",
+      "project": "drumee_infra-layer",
+      "hash": "27eef3cc5fd376cc861f03d9c3138378",
+      "textRange": {
+        "startLine": 9,
+        "endLine": 9,
+        "startOffset": 58,
+        "endOffset": 67
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T06:09:55+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw4UdL4i9l9HI8D1",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:capabilities/tls/index.js",
+      "project": "drumee_infra-layer",
+      "hash": "1ea73c90db64edab020e4ae91c79d7c4",
+      "textRange": {
+        "startLine": 19,
+        "endLine": 19,
+        "startOffset": 21,
+        "endOffset": 30
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-14T06:09:55+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw2edL4i9l9HI8Cu",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/package-audit.js",
+      "project": "drumee_infra-layer",
+      "hash": "484deb9fbf7f5bd69c78e07bcd4d33c5",
+      "textRange": {
+        "startLine": 8,
+        "endLine": 8,
+        "startOffset": 39,
+        "endOffset": 44
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-13T19:32:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw2UdL4i9l9HI8Cp",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/integration/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "1d8e2e14c24e5a833e406adda1792cae",
+      "textRange": {
+        "startLine": 29,
+        "endLine": 29,
+        "startOffset": 16,
+        "endOffset": 24
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-13T17:09:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw2UdL4i9l9HI8Cr",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/integration/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "109622feb422910f336d0caec6385ea6",
+      "textRange": {
+        "startLine": 50,
+        "endLine": 50,
+        "startOffset": 16,
+        "endOffset": 24
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-13T17:09:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw2UdL4i9l9HI8Cs",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/integration/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "e6110d38aec71751d2919dcd4b1c7836",
+      "textRange": {
+        "startLine": 92,
+        "endLine": 92,
+        "startOffset": 30,
+        "endOffset": 38
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-13T17:09:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AaE6Nw2UdL4i9l9HI8Ct",
+      "rule": "javascript:S4036",
+      "severity": "MINOR",
+      "component": "drumee_infra-layer:test/integration/run.js",
+      "project": "drumee_infra-layer",
+      "hash": "0c6e18dbd2a3fa520a6cb52f9573633d",
+      "textRange": {
+        "startLine": 93,
+        "endLine": 93,
+        "startOffset": 18,
+        "endOffset": 26
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "effort": "15min",
+      "debt": "15min",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-13T17:09:18+0000",
+      "updateDate": "2026-10-20T21:25:04+0000",
+      "closeDate": "2026-10-20T21:25:04+0000",
+      "type": "VULNERABILITY",
+      "organization": "drumee",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "infra-layer",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "4f9d8c8e-0d64-48f7-8499-d9797d555389",
+      "lastChangeSource": "ANALYSIS"
+    }
+  ],
+  "components": [
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer",
+      "uuid": "AaE1aSKstz0h1zLEG_hb",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "infra-layer",
+      "longName": "infra-layer"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/package-audit.js",
+      "uuid": "AaE6NwSjdL4i9l9HI8Bm",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "package-audit.js",
+      "longName": "test/package-audit.js",
+      "path": "test/package-audit.js"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:capabilities/tls/index.js",
+      "uuid": "AaE6NwSjdL4i9l9HI8B8",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "index.js",
+      "longName": "capabilities/tls/index.js",
+      "path": "capabilities/tls/index.js"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/lifecycle/tracing-driver.js",
+      "uuid": "AaE8TbGchgf3bSVnp8zr",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "tracing-driver.js",
+      "longName": "test/lifecycle/tracing-driver.js",
+      "path": "test/lifecycle/tracing-driver.js"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/integration/run.js",
+      "uuid": "AaE6NwSjdL4i9l9HI8Bj",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "run.js",
+      "longName": "test/integration/run.js",
+      "path": "test/integration/run.js"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/services/run.js",
+      "uuid": "AaE6NwSjdL4i9l9HI8BY",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "run.js",
+      "longName": "test/services/run.js",
+      "path": "test/services/run.js"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:test/lifecycle/run.js",
+      "uuid": "AaE8TbGchgf3bSVnp8zq",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "run.js",
+      "longName": "test/lifecycle/run.js",
+      "path": "test/lifecycle/run.js"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:lifecycle/docker.js",
+      "uuid": "AaE8TbGchgf3bSVnp8zv",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "docker.js",
+      "longName": "lifecycle/docker.js",
+      "path": "lifecycle/docker.js"
+    },
+    {
+      "organization": "drumee",
+      "key": "drumee_infra-layer:lifecycle/recovery.js",
+      "uuid": "AaE8TbGchgf3bSVnp8zt",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "recovery.js",
+      "longName": "lifecycle/recovery.js",
+      "path": "lifecycle/recovery.js"
+    }
+  ],
+  "organizations": [
+    {
+      "key": "drumee",
+      "name": "Drumee"
+    }
+  ],
+  "facets": []
+}
