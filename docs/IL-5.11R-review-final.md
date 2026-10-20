@@ -12,7 +12,7 @@ La revue R1–R4 est favorable. L’unique commande de fusion standard a été r
 - HEAD exact examiné : `6a06d26a69d4480d4afc280cef1dee9e2e585754`, identique au HEAD demandé. Aucun commit supplémentaire depuis cette référence.
 - Base réelle : `9e4166618ca519e5d9b9e58f5191d37c5fd56462`. Ce commit est également le merge-base ; aucun changement de main intervenu avant la tentative.
 - Source exécutable/package qualifiée : `71bd7b8b38345d61316771c07d76fece687af650`. Les trois commits suivants modifient uniquement 32 fichiers documentaires. Les 41 fichiers npm sont individuellement identiques à cette source, au HEAD examiné et à la source d’acceptation lourde `68000c593a7c9aad0f9e7989ad2f69857e59eba8`.
-- Aucun `AGENTS.md` trouvé aux niveaux racine, home, github et dépôt, ni dans l’arbre Git du candidat. Aucun travail parallèle délégué.
+- Aucun `AGENTS.md` trouvé aux niveaux racine, home, github et dépôt, ni dans l’arbre Git du candidat.
 - Les 11 commits sont non signés (`verification.reason=unsigned`). Aucun impératif de signature applicable identifié : GET branches/main retourne `protected:false`, `protection.enabled:false`, contexts/checks vides, enforcement `off` ; GET rules/branches/main retourne `[]`.
 - Les trois stratégies de fusion sont disponibles ; merge commit retenu pour conserver les 11 commits et leur provenance.
 
@@ -145,3 +145,5 @@ Après une fusion effective, lire le commit réel et ses parents/arbre, comparer
 [Contrôles GitHub](evidence/IL-5.11R-review/github-check-runs.json), [Quality](evidence/IL-5.11R-review/quality-run.json), [annotations Sonar brutes](evidence/IL-5.11R-review/sonar-issues.json), [gate Sonar](evidence/IL-5.11R-review/sonar-gate.json), [171 tests](evidence/IL-5.11R-review/unit.txt), [12 scénarios](evidence/IL-5.11R-review/container.json), [packaging](evidence/IL-5.11R-review/package.txt), [lint](evidence/IL-5.11R-review/lint.txt), [vérification d’intégrité et refus de fusion](evidence/IL-5.11R-review/verification.json).
 
 Ce rapport et ses preuves sont préparés sur une branche documentaire distincte fondée sur main, sans importer le code de #12 dans cette branche et sans écriture directe sur main. Leur éventuelle intégration documentaire ne fusionne pas #12 et ne change pas son statut.
+
+La branche `docs/il511r-review-final` a été poussée sur origin avec succès via Git. La création de la PR documentaire en brouillon a ensuite échoué : `GraphQL: Resource not accessible by personal access token (createPullRequest)`. Aucune PR documentaire créée par cette mission ; aucun autre mode de création tenté. Le rapport reste [consultable sur la branche dédiée](https://github.com/drumee/infra-layer/blob/docs/il511r-review-final/docs/IL-5.11R-review-final.md).
