@@ -214,7 +214,7 @@ Les ID PR et main sont distincts ; les états Sonar restent **OPEN** pour les 13
 
 ## Conservation documentaire et preuves
 
-Rapport sur la branche dédiée **`docs/il511r-review-final`** ; intégration documentaire par PR distincte, sans ajout direct à main. Cette branche contient exclusivement le rapport et ses preuves, aucune modification exécutable. La création de la PR documentaire sera effectuée avec le plugin GitHub après push de ce rapport.
+Rapport sur la branche dédiée **`docs/il511r-review-final`** ; intégration documentaire par PR distincte, sans ajout direct à main. Cette branche contient exclusivement le rapport et ses preuves, aucune modification exécutable. La [PR documentaire #13](https://github.com/drumee/infra-layer/pull/13) est ouverte, non draft et non fusionnée, créée avec le plugin GitHub. Elle cible le main intégré ; aucune intégration documentaire directe à main.
 
 Preuves avant fusion : [contrôles](evidence/IL-5.11R-review/github-check-runs.json), [Quality](evidence/IL-5.11R-review/quality-run.json), [Sonar PR](evidence/IL-5.11R-review/sonar-issues.json), [gate PR](evidence/IL-5.11R-review/sonar-gate.json), [171 tests](evidence/IL-5.11R-review/unit.txt), [12 scénarios](evidence/IL-5.11R-review/container.json), [packaging](evidence/IL-5.11R-review/package.txt), [lint](evidence/IL-5.11R-review/lint.txt), [reçu historique READY_FOR_MERGE](evidence/IL-5.11R-review/verification.json). Ces preuves historiques ne sont pas réétiquetées comme post-fusion.
 
