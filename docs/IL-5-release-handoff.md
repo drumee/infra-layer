@@ -1,3 +1,5 @@
+> **IL-5.11R — READY_FOR_SECURITY_REVIEW.** Correction proposée dans [PR #12](https://github.com/drumee/infra-layer/pull/12), non fusionnée ; nouveau candidat local 41 fichiers, source qualifiée 71bd7b8. Les substitutions PATH examinées sont neutralisées, mais SonarCloud reste rouge et ses contextes de tests nécessitent revue. Aucun changement du verrou Debian ni autorisation de publication. Voir le [rapport final R](IL-5.11R-final-report.md). Les statuts suivants sont historiques.
+
 # IL-5 release and integration handoff
 
 Status: **READY_FOR_TECHNICAL_REVIEW**. No merge or publication authorization is
