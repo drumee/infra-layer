@@ -1,12 +1,30 @@
 "use strict";
 const fs = require("node:fs");
 const { execFileSync } = require("node:child_process");
+const { resolveTrustedExecutable, systemEnvironment } = require("../internal/system-tools");
 const S = require("../lib/spec");
 const F = require("../lib/filesystem-safety");
 const socket = ["--host", "unix:///var/run/docker.sock"];
+function option(options, key, fallback) {
+  if (Object.hasOwn(options, key)) return options[key];
+  return fallback;
+}
 function docker(args, options = {}) {
-  try { return execFileSync("docker", [...socket, ...args], { encoding: "utf8", stdio: "pipe", timeout: 180000, maxBuffer: 8 * 1024 * 1024, ...options }); }
-  catch (_) { F.fail("DOCKER_LIFECYCLE_COMMAND_FAILED"); }
+  try {
+    options = options ?? {};
+    // Forward execution controls explicitly. Neither an opaque options object nor
+    // caller shell/env settings reach child_process.
+    const execution = {
+      encoding: option(options, "encoding", "utf8"), stdio: option(options, "stdio", "pipe"),
+      timeout: option(options, "timeout", 180000), maxBuffer: option(options, "maxBuffer", 8 * 1024 * 1024),
+      input: options.input, cwd: options.cwd, uid: options.uid, gid: options.gid,
+      killSignal: options.killSignal, windowsHide: options.windowsHide,
+      windowsVerbatimArguments: options.windowsVerbatimArguments, argv0: options.argv0,
+      shell: false, env: systemEnvironment("docker")
+    };
+    return execFileSync(resolveTrustedExecutable("docker"), [...socket, ...args], execution);
+  }
+  catch { F.fail("DOCKER_LIFECYCLE_COMMAND_FAILED"); }
 }
 function helper(composition, directory, script, args = [], writable = false) {
   F.directory(require("node:path").dirname(directory));
@@ -31,7 +49,7 @@ function checkImages(composition) {
   const images = [...new Set([composition.distribution.helper_image, ...Object.values(composition.compose.services).map((value) => value.image)])];
   const result = {};
   for (const image of images) {
-    let inspected; try { inspected = JSON.parse(docker(["image", "inspect", "--format", '{"id":{{json .Id}},"digests":{{json .RepoDigests}}}', image])); } catch (_) { F.fail("REFERENCED_IMAGE_UNAVAILABLE"); }
+    let inspected; try { inspected = JSON.parse(docker(["image", "inspect", "--format", '{"id":{{json .Id}},"digests":{{json .RepoDigests}}}', image])); } catch { F.fail("REFERENCED_IMAGE_UNAVAILABLE"); }
     const [repository, digest] = image.split("@"); const canonical = digest ? repository.replace(/:[^/:]+$/, "") + "@" + digest : image;
     if (image.startsWith("sha256:") ? inspected.id !== image : !inspected.digests?.includes(canonical)) F.fail("IMAGE_DIGEST_MISMATCH"); result[image] = inspected.id;
   }
@@ -46,7 +64,7 @@ function checkNetworks(composition) {
   }
 }
 function checkPorts(composition, owned = []) {
-  let output; try { output = execFileSync("ss", ["-H", "-lntu"], { encoding: "utf8", stdio: "pipe", timeout: 10000 }); } catch (_) { F.fail("PORT_OBSERVATION_UNAVAILABLE"); }
+  let output; try { output = execFileSync(resolveTrustedExecutable("ss"), ["-H", "-lntu"], { encoding: "utf8", stdio: "pipe", timeout: 10000, env: systemEnvironment("ss") }); } catch { F.fail("PORT_OBSERVATION_UNAVAILABLE"); }
   for (const service of Object.values(composition.compose.services)) for (const binding of service.ports || []) {
     const matches = output.split("\n").some((line) => { const fields = line.trim().split(/\s+/); if (fields[0] !== binding.protocol) return false; const local = fields[4]; if (!local) return false; const index = local.lastIndexOf(":"); const address = local.slice(0, index).replace(/^\[|\]$/g, ""); return local.slice(index + 1) === String(binding.published) && (address === binding.host_ip || ["*", "0.0.0.0", "::"].includes(address) || ["0.0.0.0", "::"].includes(binding.host_ip)); });
     const ours = owned.some((value) => Object.values(value.ports || {}).flat().filter(Boolean).some((port) => port.HostPort === String(binding.published) && port.HostIp === binding.host_ip));

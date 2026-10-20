@@ -1,0 +1,154 @@
+
+> @drumee/infra-layer@0.1.0-alpha.3 test:gateway
+> node test/integration/run.js
+
+{"project":"drumee-il1-test-7cb0d4aa","port":46095,"directory":"/tmp/drumee-il1-test-7cb0d4aa-d7aZpb","revision":"c68cd27d0d368c8c88553dd6242f53ac316c4ca950a8d48ae12358b7d25660dd","image":"drumee-il1-kernel-test:drumee-il1-test-7cb0d4aa","network":"drumee-il1-test-7cb0d4aa-kernel"}
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 560B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 27.82MB 0.4s done
+#5 DONE 0.4s
+
+#6 [2/4] RUN apt-get update -qq && apt-get install -y --no-install-recommends zip=3.0-13+deb12u1 && rm -rf /var/lib/apt/lists/*
+#6 CACHED
+
+#7 [3/4] COPY target /work/target
+#7 DONE 1.0s
+
+#8 [4/4] COPY sources /work/sources
+#8 DONE 0.0s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 0.4s done
+#9 writing image sha256:89ccf2c22348b7fa7e5f441e08e169f97c17cb46ab0d211d0173cad332ad027e done
+#9 naming to docker.io/library/drumee-il1-kernel-test:drumee-il1-test-7cb0d4aa done
+#9 DONE 0.4s
+TAP version 13
+# Subtest: Nginx syntax, rootless/read-only mounts and observed functional readiness
+ok 1 - Nginx syntax, rootless/read-only mounts and observed functional readiness
+  ---
+  duration_ms: 141.837916
+  type: 'test'
+  ...
+# Subtest: native services, session cookie/header bridge and kernel authorization pass through Nginx
+ok 2 - native services, session cookie/header bridge and kernel authorization pass through Nginx
+  ---
+  duration_ms: 9.578506
+  type: 'test'
+  ...
+# Subtest: page/bootstrap, public bundles and dynamic plugin resolution work, unknown paths fail closed
+ok 3 - page/bootstrap, public bundles and dynamic plugin resolution work, unknown paths fail closed
+  ---
+  duration_ms: 6.719779
+  type: 'test'
+  ...
+# Subtest: the direct-edge proxy overwrites forged forwarding metadata and preserves query/method
+ok 4 - the direct-edge proxy overwrites forged forwarding metadata and preserves query/method
+  ---
+  duration_ms: 1.281915
+  type: 'test'
+  ...
+# Subtest: OTAK, Origin, subprotocol and socket continuity stay kernel-authorized
+ok 5 - OTAK, Origin, subprotocol and socket continuity stay kernel-authorized
+  ---
+  duration_ms: 177.565378
+  type: 'test'
+  ...
+# Subtest: every successful original/representation response follows real FileIo; anonymous/user/Hub negatives deny
+ok 6 - every successful original/representation response follows real FileIo; anonymous/user/Hub negatives deny
+  ---
+  duration_ms: 12.981285
+  type: 'test'
+  ...
+# Subtest: internal URLs, raw/double-encoded traversal and symlink escapes are never public
+ok 7 - internal URLs, raw/double-encoded traversal and symlink escapes are never public
+  ---
+  duration_ms: 8.547491
+  type: 'test'
+  ...
+# Subtest: Nginx implements actual HEAD, 206, 416, suffix ranges and If-Range
+ok 8 - Nginx implements actual HEAD, 206, 416, suffix ranges and If-Range
+  ---
+  duration_ms: 4.554798
+  type: 'test'
+  ...
+# Subtest: offline archive worker delivers a real ZIP via FileIo and Nginx
+ok 9 - offline archive worker delivers a real ZIP via FileIo and Nginx
+  ---
+  duration_ms: 53.891786
+  type: 'test'
+  ...
+# Subtest: binary Content-Length, duplicate/out-of-order chunks and hash commit preserve bytes
+ok 10 - binary Content-Length, duplicate/out-of-order chunks and hash commit preserve bytes
+  ---
+  duration_ms: 31.433663
+  type: 'test'
+  ...
+# Subtest: slow chunked upload without Content-Length streams before end and respects client backpressure
+ok 11 - slow chunked upload without Content-Length streams before end and respects client backpressure
+  ---
+  duration_ms: 409.628104
+  type: 'test'
+  ...
+# Subtest: a file larger than the binary request ceiling is uploaded in bounded chunks and downloaded intact
+ok 12 - a file larger than the binary request ceiling is uploaded in bounded chunks and downloaded intact
+  ---
+  duration_ms: 263.225126
+  type: 'test'
+  ...
+# Subtest: gateway idle-body timeout logs 408, closes the stalled upload and cleans its partial tempfile
+ok 13 - gateway idle-body timeout logs 408, closes the stalled upload and cleans its partial tempfile
+  ---
+  duration_ms: 5017.795278
+  type: 'test'
+  ...
+# Subtest: oversized chunks yield 413; unauthorized and aborted uploads leave no incoming tempfiles
+ok 14 - oversized chunks yield 413; unauthorized and aborted uploads leave no incoming tempfiles
+  ---
+  duration_ms: 6.043383
+  type: 'test'
+  ...
+# Subtest: canceled large download leaves durable original bytes and gateway service available
+ok 15 - canceled large download leaves durable original bytes and gateway service available
+  ---
+  duration_ms: 2.553057
+  type: 'test'
+  ...
+# Subtest: gateway/kernel restart preserves original fixtures; interrupted transfer IDs are not resumable
+ok 16 - gateway/kernel restart preserves original fixtures; interrupted transfer IDs are not resumable
+  ---
+  duration_ms: 1171.935313
+  type: 'test'
+  ...
+# Subtest: Chromium loads real LETC + hello through gateway, native services and WebSocket reconnection
+ok 17 - Chromium loads real LETC + hello through gateway, native services and WebSocket reconnection
+  ---
+  duration_ms: 472.430951
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7862.369823
+IL1 logs: no session, OTAK, password or protected content disclosure
+IL1 cleanup confirmed: drumee-il1-test-7cb0d4aa; no volumes created

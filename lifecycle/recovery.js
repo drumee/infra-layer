@@ -3,6 +3,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const { spawnSync } = require("node:child_process");
+const { resolveTrustedExecutable, systemEnvironment } = require("../internal/system-tools");
 const S = require("../lib/spec");
 const F = require("../lib/filesystem-safety");
 const P = require("./preparation");
@@ -19,7 +20,9 @@ function copyState(composition, source, destination, names) {
 function dumpDatabase(prepared, file) {
   const fd = fs.openSync(file, "wx", 0o600);
   try {
-    const result = spawnSync("docker", ["--host", "unix:///var/run/docker.sock", "compose", "-p", prepared.project, "-f", prepared.compose_file, "exec", "-T", "database", "/bin/sh", "-c", 'MYSQL_PWD="$(cat /run/secrets/database-admin)" exec mariadb-dump --protocol=socket -uroot --all-databases --lock-all-tables --routines --events --triggers --hex-blob --skip-comments'], { stdio: ["ignore", fd, "pipe"], timeout: 600000, maxBuffer: 65536 });
+    let result;
+    try { result = spawnSync(resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", "compose", "-p", prepared.project, "-f", prepared.compose_file, "exec", "-T", "database", "/bin/sh", "-c", 'MYSQL_PWD="$(cat /run/secrets/database-admin)" exec mariadb-dump --protocol=socket -uroot --all-databases --lock-all-tables --routines --events --triggers --hex-blob --skip-comments'], { stdio: ["ignore", fd, "pipe"], timeout: 600000, maxBuffer: 65536, env: systemEnvironment("docker") }); }
+    catch { F.fail("CONSISTENT_DATABASE_DUMP_FAILED"); }
     if (result.status !== 0) F.fail("CONSISTENT_DATABASE_DUMP_FAILED"); fs.fsyncSync(fd);
   } finally { fs.closeSync(fd); }
 }
@@ -66,7 +69,7 @@ async function backupDeployment(root, directory, context) {
 }
 function validateBackup(directory, expected_schema_versions, context) {
   if (context?.authorized !== true) F.fail("BACKUP_OPERATION_NOT_AUTHORIZED"); F.privateDirectory(directory);
-  let manifest; try { manifest = JSON.parse(F.read(path.join(directory, "backup.json"))); } catch (_) { F.fail("BACKUP_MANIFEST_CORRUPTED"); }
+  let manifest; try { manifest = JSON.parse(F.read(path.join(directory, "backup.json"))); } catch { F.fail("BACKUP_MANIFEST_CORRUPTED"); }
   const { digest, ...body } = manifest;
   if (!S.plainTree(manifest) || manifest.contract_version !== "1" || digest !== S.digest(body) || !/^[a-f0-9]{32}$/.test(manifest.id || "") || !Array.isArray(manifest.inventory) || !manifest.composition) F.fail("BACKUP_MANIFEST_CORRUPTED");
   const composition = require("./composition").verifyComposition(manifest.composition);

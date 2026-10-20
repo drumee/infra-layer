@@ -16,6 +16,7 @@
     "url": "https://github.com/drumee/infra-layer/issues"
   },
   "files": [
+    "internal/",
     "lib/",
     "capabilities/",
     "adapters/",
@@ -42,6 +43,7 @@
     "test:lifecycle": "node test/lifecycle/run.js",
     "test:lifecycle:gateway": "node test/lifecycle/gateway-run.js",
     "test:application": "node test/application/run.js",
+    "test:system-tools": "node test/security/run.js",
     "lint": "node tooling/lint.cjs",
     "test:contracts": "node --test test/unit/application-contract.test.js test/unit/composition.test.js test/unit/distribution-isolation.test.js"
   },

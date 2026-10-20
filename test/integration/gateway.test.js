@@ -1,4 +1,5 @@
 "use strict";
+const { trustedExecutable, trustedEnvironment } = require("../support/trusted-process");
 
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -40,7 +41,7 @@ async function login(user) {
   assert.ok(response.headers.regsid === cookies.get(user).split("=")[1], "session response bridge must match cookie");
 }
 function media(node = nid, hub_id = hub_a) { return `/-/svc/media.orig?hub_id=${hub_id}&nid=${node}`; }
-function docker(...args) { const result = spawnSync("docker", args, { encoding: "utf8", timeout: 20000 }); assert.equal(result.status, 0, result.stderr); return result.stdout; }
+function docker(...args) { const result = spawnSync(trustedExecutable("docker"), args, { encoding: "utf8", timeout: 20000, env: trustedEnvironment() }); assert.equal(result.status, 0, result.stderr); return result.stdout; }
 function openSocket(token, protocol = "service", requested_origin = origin) {
   return new Promise((resolve, reject) => {
     const client = new WebSocketClient();
@@ -153,7 +154,7 @@ test("offline archive worker delivers a real ZIP via FileIo and Nginx", async ()
   assert.equal(response.status, 200); assert.equal(response.headers["content-type"], "application/zip"); assert.match(response.headers["content-disposition"], /download\.zip/); assert.deepEqual([...response.body.subarray(0, 4)], [80, 75, 3, 4]);
   // unzip needs seekable input; use an exclusively owned fixture file.
   const zip_file = path.join(process.env.IL1_FIXTURES, "assertion.zip"); fs.writeFileSync(zip_file, response.body);
-  const bytes = spawnSync("unzip", ["-p", zip_file], { maxBuffer: 1024 * 1024 }); fs.unlinkSync(zip_file); assert.equal(bytes.status, 0); assert.equal(bytes.stdout.length, 262144);
+  const bytes = spawnSync(trustedExecutable("unzip"), ["-p", zip_file], { maxBuffer: 1024 * 1024, env: trustedEnvironment() }); fs.unlinkSync(zip_file); assert.equal(bytes.status, 0); assert.equal(bytes.stdout.length, 262144);
   await service("mfs-transfer.download_status", { transfer_id: prepared.transfer_id }, "reader", { status: 403 });
   await service("mfs-transfer.download_release", { transfer_id: prepared.transfer_id });
 });
@@ -228,11 +229,11 @@ test("canceled large download leaves durable original bytes and gateway service 
 test("gateway/kernel restart preserves original fixtures; interrupted transfer IDs are not resumable", async () => {
   const file = path.join(process.env.IL1_FIXTURES, "artifacts", hub_a, nid); const before = crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
   docker("restart", process.env.IL1_GATEWAY_ID);
-  for (let index = 0; index < 60; index++) { try { if ((await request("GET", "/__infra_ready")).status === 200) break; } catch (_) {} await delay(100); }
+  for (let index = 0; index < 60; index++) { try { if ((await request("GET", "/__infra_ready")).status === 200) break; } catch { /* The bounded restart poll retries transient connection failures. */ } await delay(100); }
   assert.equal((await request("GET", media(), { headers: { cookie: cookies.get("owner") } })).status, 200);
   const started = (await service("mfs-transfer.upload_start", { destination: root_node, size: 0, metadata: { filename: "restart.bin", size: 0 } })).value.data;
   docker("restart", process.env.IL1_KERNEL_ID);
-  for (let index = 0; index < 60; index++) { try { if ((await request("GET", "/__infra_ready")).status === 200) break; } catch (_) {} await delay(100); }
+  for (let index = 0; index < 60; index++) { try { if ((await request("GET", "/__infra_ready")).status === 200) break; } catch { /* The bounded restart poll retries transient connection failures. */ } await delay(100); }
   await login("owner"); await service("mfs-transfer.upload_status", { transfer_id: started.transfer_id }, "owner", { status: 403 });
   assert.equal(crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex"), before); assert.equal((await service("probe.statistics")).value.data.uploads, 0);
 });
@@ -240,7 +241,7 @@ test("Chromium loads real LETC + hello through gateway, native services and WebS
   const chrome = [process.env.CHROME_BIN, "/usr/bin/google-chrome", "/usr/bin/chromium"].filter(Boolean).find((file) => fs.existsSync(file));
   assert.ok(chrome, "Chromium is mandatory for Level 4; not silently skipped");
   const profile = fs.mkdtempSync(path.join(os.tmpdir(), "il1-chrome-"));
-  const child = spawn(chrome, ["--headless=new", "--no-sandbox", "--disable-gpu", "--no-proxy-server", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "--host-resolver-rules=MAP kernel.test 127.0.0.1", "about:blank"], { stdio: ["ignore", "ignore", "pipe"] });
+  const child = spawn(trustedExecutable(chrome), ["--headless=new", "--no-sandbox", "--disable-gpu", "--no-proxy-server", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "--host-resolver-rules=MAP kernel.test 127.0.0.1", "about:blank"], { stdio: ["ignore", "ignore", "pipe"], env: trustedEnvironment() });
   let stderr = ""; child.stderr.on("data", (chunk) => { stderr += chunk.toString(); });
   t.after(async () => { child.kill("SIGTERM"); for (let index = 0; child.exitCode === null && index < 50; index++) await delay(50); if (child.exitCode === null) child.kill("SIGKILL"); fs.rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 }); });
   let devtools_port;

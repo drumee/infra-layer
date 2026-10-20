@@ -1,0 +1,264 @@
+{
+  "qualified_package_source": "71bd7b8b38345d61316771c07d76fece687af650",
+  "heavy_acceptance_source": "68000c593a7c9aad0f9e7989ad2f69857e59eba8",
+  "all_shipped_files_identical_between_them": true,
+  "unchanged_declarations_and_lock_sha256": {
+    "index.d.ts": "5aa3c8e77fe018686406bdbbb52a76ebb14f455342006b8cce7f6f380c31a6bf",
+    "lifecycle/index.d.ts": "eb19c680376d062a5c67ef8e33dd84deb9db2a9d68a8d040308a452243ad915b",
+    "package-lock.json": "ebb960fbeb9ee738fadbae0ab952585f7ccd6577a8cc740ac9c71bdb6130569a"
+  },
+  "exports_unchanged": true,
+  "production_dependencies": [],
+  "logs": {
+    "F-final-unit.log": {
+      "sha256": "b9c0f4f586b1e2a29c100aada65a2fa2b5ba83ce7ca89db9a81c8ea5d01d42db",
+      "bytes": 36655,
+      "tap": {
+        "tests": 171,
+        "pass": 171,
+        "fail": 0,
+        "skipped": 0
+      },
+      "tracked_evidence": "F-final-unit.txt"
+    },
+    "F-final-contracts.log": {
+      "sha256": "e45f111ae6545475aadcf04e2ae86ec1c307bf24338153ff99ddbbe4f101f17c",
+      "bytes": 5537,
+      "tap": {
+        "tests": 24,
+        "pass": 24,
+        "fail": 0,
+        "skipped": 0
+      },
+      "tracked_evidence": "F-final-contracts.txt"
+    },
+    "F-final-lint.log": {
+      "sha256": "67080966ff5e3691914e1ed0aaa1a175d869c6fd1cd7381d72942a8882bc5501",
+      "bytes": 3294,
+      "tap": {},
+      "tracked_evidence": "F-final-lint.txt"
+    },
+    "F-package-test.log": {
+      "sha256": "f87f6d556c0adaf056005cf05ee97d988827736d3c32c5662c0a3dceed6b33b0",
+      "bytes": 1220,
+      "tap": {}
+    },
+    "F-isolated-consumer.log": {
+      "sha256": "fb7a29f0ac16a8f0839cb3b934ed489388d0895be4bdfe67194baf4264514da9",
+      "bytes": 457,
+      "tap": {},
+      "tracked_evidence": "F-isolated-consumer.txt"
+    },
+    "E-final-gateway.log": {
+      "sha256": "9988c9802e2ee6ac976054f2396a6ad7e55478afd7375a6c69e686661f19e399",
+      "bytes": 5882,
+      "tap": {
+        "tests": 17,
+        "pass": 17,
+        "fail": 0,
+        "skipped": 0
+      },
+      "tracked_evidence": "E-final-gateway.txt"
+    },
+    "E-final-services.log": {
+      "sha256": "bb52039daae6a420e4fa3b634138faca879e5458b4184b7805aa8f0da863b9b7",
+      "bytes": 7779,
+      "tap": {
+        "tests": 17,
+        "pass": 17,
+        "fail": 0,
+        "skipped": 0
+      },
+      "tracked_evidence": "E-final-services.txt"
+    },
+    "E-final-lifecycle.log": {
+      "sha256": "a01b0ab2709f9cc9b06f25cfc77d70022c3982722183c87330b32d161c305169",
+      "bytes": 5965,
+      "tap": {
+        "tests": 16,
+        "pass": 16,
+        "fail": 0,
+        "skipped": 0
+      },
+      "tracked_evidence": "E-final-lifecycle.txt"
+    },
+    "E-final-https-jobs.log": {
+      "sha256": "467e183ffe9ebe60385d93c497c3d8e7ff0c4fd3870a9b75b13fc2f47935acde",
+      "bytes": 1875,
+      "tap": {},
+      "tracked_evidence": "E-final-https-jobs.txt"
+    },
+    "E-final-application.log": {
+      "sha256": "d75e4a8a1e47c6a8552fa273aef5f15678f68edbd3fcf9a33592d4f280212f81",
+      "bytes": 3643,
+      "tap": {}
+    },
+    "D-refined-container.log": {
+      "sha256": "9cc84f0bf82d4d81b4705043a313697cd5fc2b01314e3734af8be4bcb1f00c4b",
+      "bytes": 749,
+      "tap": {},
+      "tracked_evidence": "D-refined-container.txt"
+    },
+    "D-extra-toolchain-tests.log": {
+      "sha256": "59f71a337ff05cd5aaed9bab937eb8e2d264ce3e86c7e7cc70fe1a508571db99",
+      "bytes": 2326,
+      "tap": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "local_versions": {
+    "node": "22.22.0",
+    "npm": "11.18.0",
+    "docker": "29.2.0",
+    "compose": "5.0.2",
+    "typescript": "5.9.3",
+    "host_nginx": "1.22.1-9+deb12u10",
+    "openssl": "3.0.18 (2025-09-30)",
+    "ss": "iproute2-6.1.0",
+    "git": "2.39.5"
+  },
+  "host_nginx_deb_sha256": "cc7ae36d024f602861eeefe64656d14481b3bd224d81f8d69f789de49f16375a",
+  "network": {
+    "host": "192.168.5.201",
+    "client_alias": "testbox",
+    "client": "192.168.5.202"
+  },
+  "publication": false,
+  "merge": false,
+  "initial_failures_preserved": [
+    {
+      "stage": "first local syntax checks",
+      "cause": "two missing parentheses during harness editing; fixed before integrated tests"
+    },
+    {
+      "stage": "first filesystem container",
+      "cause": "positive fixture tmpfs was noexec; accessSync rejected it correctly; fixture mount made explicitly executable, validator unchanged"
+    },
+    {
+      "stage": "first lint",
+      "cause": "relocated historical unused catches plus one new unused import; fixed in touched owning sites, no baseline/rule change"
+    },
+    {
+      "stage": "local package-allowlist refactoring syntax check",
+      "cause": "incorrect split of grouped alternation; fixed before qualification; final equivalent allowlist tested"
+    },
+    {
+      "source": "4b4b41106ccb6973c0723cd76e0f8f7bdd39fdf6",
+      "ci_packaging": "FAILURE /usr/bin/npm ENOENT",
+      "codeql_new_alerts": 1,
+      "correction": "npm adjacent to verified active Node, explicit Docker execution controls"
+    },
+    {
+      "source": "c4e663b",
+      "ci_unit": "FAILURE (3 UNSAFE_QUALIFICATION_EXECUTABLE rejections)",
+      "ci_packaging": "FAILURE",
+      "actual_rejected_metadata": {
+        "path": "/opt",
+        "uid": 0,
+        "mode": "777"
+      },
+      "correction": "protect the dedicated disposable hosted Node installation and ancestors, binary content unchanged"
+    }
+  ],
+  "commands": [
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "npm ci --ignore-scripts --no-audit --no-fund --cache /tmp/drumee-il511r-npm-cache",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "npm test",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "npm run test:contracts",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "npm run lint",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "npm run test:package",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "npm audit --omit=dev --json",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "npm audit --include=dev --json",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "npm pack --json --ignore-scripts --pack-destination /tmp/drumee-il511r-evidence/pack-one",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "npm pack --json --ignore-scripts --pack-destination /tmp/drumee-il511r-evidence/pack-two",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "cmp /tmp/drumee-il511r-evidence/pack-one/drumee-infra-layer-0.1.0-alpha.3.tgz /tmp/drumee-il511r-evidence/pack-two/drumee-infra-layer-0.1.0-alpha.3.tgz",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "IL5_APP_IMAGE=sha256:d44327e37d37c612257822684a870d05d7f90fdae649b2dcbfb8e9f0566e7955 IL5_TSC=/tmp/drumee-il510-types/node_modules/typescript/bin/tsc node test/application/package-consumer.js",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 71bd7b8b38345d61316771c07d76fece687af650",
+      "command": "node test/security/installed-consumer.cjs /tmp/drumee-il511r-installed-consumer",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 68000c593a7c9aad0f9e7989ad2f69857e59eba8 (all shipped files identical)",
+      "command": "npm run test:gateway",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 68000c593a7c9aad0f9e7989ad2f69857e59eba8 (all shipped files identical)",
+      "command": "npm run test:services",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 68000c593a7c9aad0f9e7989ad2f69857e59eba8 (all shipped files identical)",
+      "command": "npm run test:lifecycle",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 68000c593a7c9aad0f9e7989ad2f69857e59eba8 (all shipped files identical)",
+      "command": "npm run test:lifecycle:gateway",
+      "exit": 0
+    },
+    {
+      "cwd": "clean remote clone at 68000c593a7c9aad0f9e7989ad2f69857e59eba8 (all shipped files identical)",
+      "command": "IL5_NETWORK_CLIENT=testbox IL5_LAN_ADDRESS=192.168.5.201 IL5_HOST_NGINX=/tmp/drumee-il511r-nginx/extracted/usr/sbin/nginx npm run test:application",
+      "exit": 0
+    }
+  ],
+  "closure_inventory_change": {
+    "previous_pr_findings": 12,
+    "final_pr_findings": 13,
+    "guard_detected_new_id": "AaFZl_1PcPSyTboN_x_L",
+    "review_completed": true,
+    "proof": "G-public-digest-annotation-review.json",
+    "no_material_secret_found_in_reported_value": true,
+    "sonar_status": "OPEN",
+    "owner_disposition": "PENDING_REVIEW"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "source": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+  "installed_package": "/tmp/drumee-il511-consumer/node_modules/@drumee/infra-layer/package.json",
+  "scenarios": 4,
+  "records": [
+    {
+      "site": "lifecycle/docker.js:8",
+      "observed": "PATH substitute executed; no Docker daemon contacted"
+    },
+    {
+      "site": "lifecycle/docker.js:49",
+      "observed": "PATH ss substitute executed in exported driver port observation"
+    },
+    {
+      "site": "capabilities/tls/index.js:9",
+      "observed": "authorized issuer executes PATH substitute; failure then reported"
+    },
+    {
+      "site": "capabilities/tls/index.js:19",
+      "observed": "unrelated CA rejected with system OpenSSL; same input accepted with PATH substitute"
+    }
+  ],
+  "precondition": "reviewer deliberately controls caller PATH; no remote-to-PATH input or cross-UID escalation demonstrated",
+  "production_secrets": false,
+  "real_docker": false
+}

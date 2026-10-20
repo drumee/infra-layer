@@ -14,7 +14,7 @@ test("qualification ignores a hostile inherited PATH and fixes the child PATH", 
   const { root } = fixture(t), marker = path.join(root, "executed");
   fs.writeFileSync(path.join(root, "git"), "#!/bin/sh\ntouch '" + marker + "'\n", { mode: 0o700 });
   const env = trustedEnvironment({ PATH: root });
-  assert.equal(env.PATH, "/usr/bin:/bin");
+  assert.equal(env.PATH, [...new Set([path.dirname(trustedExecutable(process.execPath)), "/usr/bin", "/bin"])].join(path.delimiter));
   assert.match(execFileSync(trustedExecutable("git"), ["--version"], { env, encoding: "utf8" }), /^git version /);
   assert.equal(fs.existsSync(marker), false); assert.throws(() => trustedExecutable("unlisted-command"));
 });

@@ -1,4 +1,5 @@
 "use strict";
+const { trustedExecutable, trustedEnvironment } = require("../support/trusted-process");
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -18,18 +19,18 @@ const metadata = JSON.parse(fs.readFileSync(process.env.IL2_METADATA));
 let plan = JSON.parse(fs.readFileSync(metadata.plan_file));
 const store = createFilesystemSecretStore(path.join(metadata.fixtures, "secrets"), metadata.project);
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-function command(args, options = {}) { const result = spawnSync(args[0], args.slice(1), { encoding: "utf8", timeout: 120000, maxBuffer: 4 * 1024 * 1024, ...options }); if (result.status !== 0) throw new Error(`TEST_COMMAND_FAILED ${args[0]} ${args[1]} ${result.status}`); return result.stdout; }
+function command(args, options = {}) { const result = spawnSync(trustedExecutable(args[0]), args.slice(1), { encoding: "utf8", timeout: 120000, maxBuffer: 4 * 1024 * 1024, ...options, env: trustedEnvironment(options.env) }); if (result.status !== 0) throw new Error(`TEST_COMMAND_FAILED ${args[0]} ${args[1]} ${result.status}`); return result.stdout; }
 function compose(...args) { return command(["docker", "compose", "-p", metadata.project, "-f", metadata.compose_file, ...args]); }
 function id(name) { return compose("ps", "-q", name).trim(); }
 function execute(name, ...args) { return command(["docker", "exec", id(name), ...args]); }
-async function wait(check) { for (let attempt = 0; attempt < 80; attempt++) { try { const result = await check(); if (result) return result; } catch (_) {} await delay(200); } throw new Error("PROTOCOL_READINESS_TIMEOUT"); }
+async function wait(check) { for (let attempt = 0; attempt < 80; attempt++) { try { const result = await check(); if (result) return result; } catch { /* Keep the owning test failure; optional cleanup or diagnostic data may be unavailable. */ } await delay(200); } throw new Error("PROTOCOL_READINESS_TIMEOUT"); }
 function resolver() { const result = new dnsNode.Resolver({ timeout: 1000, tries: 1 }); result.setServers([`127.0.0.1:${metadata.ports.dns}`]); return result; }
 function rootSQL(sql) { return command(["docker", "exec", "-i", id("database"), "/bin/sh", "-c", 'MYSQL_PWD="$(cat /run/secrets/database-admin)" exec mariadb --protocol=socket -uroot --batch --skip-column-names'], { input: sql }); }
 const database_client = { async query(sql, params = []) {
   let index = 0; const rendered = sql.replace(/\?/g, () => { const value = String(params[index++]); if (!/^[a-zA-Z0-9_+=.:/@-]+$/.test(value)) throw new Error("INVALID_FIXTURE_SQL_PARAMETER"); return `'${value}'`; });
   const output = rootSQL(rendered + ";\n").trim(); if (sql.startsWith("SELECT VERSION")) return [{ version: output }]; if (sql.startsWith("SELECT User")) return output ? output.split("\n").map((User) => ({ User })) : []; return [];
 } };
-async function redisClient(password = store.read(metadata.keys.redis, "redis").toString()) { const client = createClient({ url: `redis://:${encodeURIComponent(password)}@127.0.0.1:${metadata.ports.redis}`, socket: { reconnectStrategy: false } }); client.on("error", () => {}); try { await client.connect(); } catch (_) { if (client.isOpen) await client.disconnect(); throw new Error("REDIS_AUTH_REJECTED"); } return client; }
+async function redisClient(password = store.read(metadata.keys.redis, "redis").toString()) { const client = createClient({ url: `redis://:${encodeURIComponent(password)}@127.0.0.1:${metadata.ports.redis}`, socket: { reconnectStrategy: false } }); client.on("error", () => {}); try { await client.connect(); } catch (cause) { if (client.isOpen) await client.disconnect(); throw new Error("REDIS_AUTH_REJECTED", { cause }); } return client; }
 function mailClient(auth = true, password) { return nodemailer.createTransport({ host: "127.0.0.1", port: metadata.ports.mail, secure: false, requireTLS: true, connectionTimeout: 5000, greetingTimeout: 5000, socketTimeout: 10000, name: "il2-fixture.example", ...(auth ? { auth: { user: "fixture", pass: password || store.read(metadata.keys.smtp, "mail").toString() } } : {}), tls: { servername: "drumee.lan", ca: fs.readFileSync(path.join(metadata.fixtures, "projections/ca_bundle")), rejectUnauthorized: true } }); }
 const message = (subject) => ({ from: "sender@drumee.lan", to: "recipient@fixture.invalid", subject, text: "Isolated IL-2 protocol fixture. No external delivery." });
 async function capturedCount() { return (await (await fetch(`http://127.0.0.1:${metadata.ports.capture}`)).json()).count; }
@@ -61,16 +62,16 @@ test("BIND9 restart and recreation preserve zone serial and TSIG fingerprint", a
   assert.equal(store.inspect(metadata.keys.tsig).fingerprint, before); assert.deepEqual(fs.readFileSync(path.join(metadata.fixtures, "dns/infra-zone.json")), zone);
 });
 test("DNS port conflict and corrupt native configuration are rejected", () => {
-  const result = spawnSync("docker", ["run", "--rm", "--label", `org.drumee.infra.owner=${metadata.project}`, "-p", `127.0.0.1:${metadata.ports.dns}:1053`, plan.inputs.adapter_input.services.dns.image, "true"], { encoding: "utf8", timeout: 15000 }); assert.notEqual(result.status, 0);
+  const result = spawnSync(trustedExecutable("docker"), ["run", "--rm", "--label", `org.drumee.infra.owner=${metadata.project}`, "-p", `127.0.0.1:${metadata.ports.dns}:1053`, plan.inputs.adapter_input.services.dns.image, "true"], { encoding: "utf8", timeout: 15000, env: trustedEnvironment() }); assert.notEqual(result.status, 0);
   const file = path.join(metadata.rendered, "bind9.conf"); const before = fs.readFileSync(file); fs.appendFileSync(file, "invalid_statement;\n");
-  try { const invalid = spawnSync("docker", ["compose", "-p", metadata.project, "-f", metadata.compose_file, "run", "--rm", "--no-deps", "dns", "named-checkconf", "/config/bind9.conf"], { encoding: "utf8", timeout: 15000 }); assert.notEqual(invalid.status, 0); } finally { fs.writeFileSync(file, before); }
+  try { const invalid = spawnSync(trustedExecutable("docker"), ["compose", "-p", metadata.project, "-f", metadata.compose_file, "run", "--rm", "--no-deps", "dns", "named-checkconf", "/config/bind9.conf"], { encoding: "utf8", timeout: 15000, env: trustedEnvironment() }); assert.notEqual(invalid.status, 0); } finally { fs.writeFileSync(file, before); }
 });
 test("MariaDB fresh initialization creates no kernel/application schema and rejects incompatible engines", async () => {
   const schemas = rootSQL("SHOW DATABASES;\n").trim().split("\n"); assert.ok(schemas.every((value) => ["information_schema", "mysql", "performance_schema", "sys"].includes(value)));
   assert.match(rootSQL("SELECT VERSION();\n"), /^11\.4\./); const provisioned = await db.createServiceAccount(plan.inputs.spec.database, store, database_client, { authorized: true }); assert.equal(provisioned.created, true);
   await assert.rejects(() => db.createServiceAccount(plan.inputs.spec.database, store, { query: async () => [{ version: "10.6.1" }] }, { authorized: true }), { code: "DATABASE_VERSION_INCOMPATIBLE" });
   const file = path.join(metadata.rendered, "mariadb.cnf"); const before = fs.readFileSync(file); fs.appendFileSync(file, "invalid_il2_option=1\n");
-  try { const checked = spawnSync("docker", ["compose", "-p", metadata.project, "-f", metadata.compose_file, "run", "--rm", "--no-deps", "--entrypoint", "mariadbd", "database", "--defaults-extra-file=/config/mariadb.cnf", "--verbose", "--help"], { encoding: "utf8", timeout: 20000 }); assert.notEqual(checked.status, 0); } finally { fs.writeFileSync(file, before); }
+  try { const checked = spawnSync(trustedExecutable("docker"), ["compose", "-p", metadata.project, "-f", metadata.compose_file, "run", "--rm", "--no-deps", "--entrypoint", "mariadbd", "database", "--defaults-extra-file=/config/mariadb.cnf", "--verbose", "--help"], { encoding: "utf8", timeout: 20000, env: trustedEnvironment() }); assert.notEqual(checked.status, 0); } finally { fs.writeFileSync(file, before); }
 });
 test("MariaDB service account connects over TCP, rejects wrong credentials and owns no schema grants", async () => {
   const options = { host: "127.0.0.1", port: metadata.ports.database, user: plan.inputs.spec.database.service_user, password: store.read(metadata.keys.database, "database-client").toString(), connectTimeout: 5000 };
@@ -110,7 +111,7 @@ test("Redis ephemeral descriptor loses reconstructible state on recreation and r
   try {
     run("up", "-d", "--wait"); let container = run("ps", "-q", "redis").trim(); assert.equal(cli(container, "SET reconstructible fixture").trim(), "OK");
     run("up", "-d", "--force-recreate", "--wait"); container = run("ps", "-q", "redis").trim(); assert.equal(cli(container, "GET reconstructible").trim(), "");
-    fs.appendFileSync(path.join(directory, "redis.conf"), "invalid_il2_option yes\n"); const result = spawnSync("docker", ["compose", "-p", inputs.adapter_input.project, "-f", file, "run", "--rm", "--no-deps", "redis"], { encoding: "utf8", timeout: 15000 }); assert.notEqual(result.status, 0);
+    fs.appendFileSync(path.join(directory, "redis.conf"), "invalid_il2_option yes\n"); const result = spawnSync(trustedExecutable("docker"), ["compose", "-p", inputs.adapter_input.project, "-f", file, "run", "--rm", "--no-deps", "redis"], { encoding: "utf8", timeout: 15000, env: trustedEnvironment() }); assert.notEqual(result.status, 0);
   } finally { run("down"); }
 });
 test("SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails", async () => {

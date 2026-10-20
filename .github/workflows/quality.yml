@@ -29,6 +29,8 @@ jobs:
         with:
           node-version: '22.22.0'
           cache: npm
+      - name: Protect the installed Node toolchain on the disposable hosted runner
+        run: node tooling/prepare-hosted-node.cjs --execute
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - if: matrix.check == 'unit'
         run: npm test
