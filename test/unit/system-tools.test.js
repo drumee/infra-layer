@@ -82,6 +82,17 @@ test("qualification rejects writable symlink entry ancestors even with a safe ta
   fs.chmodSync(root, 0o777);
   assert.throws(() => Q.trustedExecutable(link), /UNSAFE_QUALIFICATION_EXECUTABLE/);
 });
+test("qualification selects npm beside the verified current interpreter without PATH fallback", t => {
+  const root = fixture(t), previous = process.execPath;
+  fs.writeFileSync(path.join(root, "node"), "#!/bin/sh\nexit 0\n", { mode: 0o700 });
+  fs.writeFileSync(path.join(root, "npm"), "#!/bin/sh\nexit 0\n", { mode: 0o700 });
+  process.execPath = path.join(root, "node");
+  t.after(() => { process.execPath = previous; });
+  assert.equal(Q.trustedExecutable("npm"), path.join(root, "npm"));
+  assert.equal(Q.trustedEnvironment().PATH.split(path.delimiter)[0], root);
+  fs.unlinkSync(path.join(root, "npm"));
+  assert.throws(() => Q.trustedExecutable("npm"), { code: "ENOENT" });
+});
 test("internal resolver has no public package subpath export", () => {
   assert.throws(() => require("@drumee/infra-layer/internal/system-tools"), { code: "ERR_PACKAGE_PATH_NOT_EXPORTED" });
 });
