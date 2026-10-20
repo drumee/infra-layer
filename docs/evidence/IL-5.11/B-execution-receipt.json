@@ -1,0 +1,42 @@
+{
+  "date_local": "2026-10-20 Europe/Paris",
+  "reviewed_source": "9e4166618ca519e5d9b9e58f5191d37c5fd56462",
+  "stage_a": "PASS",
+  "stage_b": "BLOCKED_SECURITY",
+  "stages_c_d_e": "NOT_EXECUTED_AFTER_B",
+  "commands": [
+    {
+      "command": "npm pack --json --ignore-scripts --pack-destination /tmp/drumee-il511-evidence",
+      "exit": 0,
+      "purpose": "A identity comparison; single fresh pack, not D double build"
+    },
+    {
+      "command": "npm install --offline --ignore-scripts --no-audit --no-fund --prefix /tmp/drumee-il511-consumer <exact-tarball>",
+      "exit": 226,
+      "error": "EROFS in default user npm cache; sandbox"
+    },
+    {
+      "command": "npm install --offline --ignore-scripts --no-audit --no-fund --cache /tmp/drumee-il511-npm-cache --prefix /tmp/drumee-il511-consumer <exact-tarball>",
+      "exit": 0,
+      "purpose": "B security reproducer installed consumer only"
+    },
+    {
+      "command": "node docs/evidence/IL-5.11/path-probe.cjs /tmp/drumee-il511-consumer",
+      "first_exit": 1,
+      "first_error": "subprocess denied in sandbox, mapped by canonical driver to DOCKER_LIFECYCLE_COMMAND_FAILED",
+      "authorized_rerun_exit": 0,
+      "functional_reproduction_scenarios": 4
+    },
+    {
+      "command": "node --check docs/evidence/IL-5.11/path-probe.cjs",
+      "exit": 0
+    }
+  ],
+  "canonical_tap_tests_rerun": 0,
+  "application_acceptance_scenarios_rerun": 0,
+  "browser_scenarios_rerun": 0,
+  "network_acceptance_rerun": 0,
+  "sonar_mutations": 0,
+  "publication": false,
+  "source_changes": false
+}
