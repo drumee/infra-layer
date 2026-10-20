@@ -1,0 +1,25 @@
+# IL-5.11R-B — Contrat interne des outils de confiance
+
+Contrôle B : **conception retenue** avant généralisation. Aucun export ni type public ajouté. Abstraction dans `internal/system-tools.js`, incluse par chemin relatif dans le package ; pas sous `lib/*` ou `lifecycle/*`, qui ont des exports wildcard publics existants. Aucun téléchargement de binaire, dépendance de production ou mécanisme d’installation.
+
+## Programmes système
+
+La seule table de production contient docker=/usr/bin/docker, ss=/usr/bin/ss, openssl=/usr/bin/openssl. Aucun nom, chemin ou fallback n’est lu dans l’environnement appelant. Outil absent ou inconnu : refus. Les installations Debian qualifiées fournissent ces entrées système ; une installation alternative doit être explicitement examinée dans un autre changement, jamais découverte sur PATH.
+
+Le validateur parcourt tous les composants du chemin d’entrée et des cibles de liens : propriétaire UID 0, aucune écriture groupe/autres ; les répertoires doivent être des répertoires et le fichier final régulier/exécutable. Les liens root-owned sont admis seulement si leurs parents et leur cible complète satisfont les mêmes contrôles. Le mode 0777 intrinsèque d’un symlink n’est pas confondu avec une permission sur sa cible. Les ancêtres sticky publics ne sont pas admis pour un outil système de production. Chaque exécution revalide ; aucun cache d’acceptation. Le chemin final résolu est celui exécuté.
+
+L’entrée approuvée et son administrateur root constituent l’identité de confiance du programme ; ce n’est pas une vérification cryptographique d’un paquet système ou une mesure contre un root hostile. Un root pouvant remplacer `/usr/bin/openssl` peut contourner ce contrat. Node ne fournit pas ici d’exécution atomique par descripteur validé : une fenêtre TOCTOU subsiste entre validation et exec. Des répertoires exclusivement contrôlés par root rendent le remplacement impossible pour l’adversaire non privilégié retenu. Ne pas promettre de résistance à root ou au compte déjà compromis.
+
+## Environnement enfant
+
+Production : environnement reconstruit, PATH fixe /usr/bin:/bin, LANG/LC_ALL=C. Ni LD_PRELOAD/LD_LIBRARY_PATH, NODE_OPTIONS, OPENSSL_CONF/OPENSSL_MODULES, HOME, proxy, secrets ou variables Docker hérités. Les paramètres fonctionnels demeurent dans les arguments et les fichiers déjà autorisés. L’environnement Docker ajoute HOME=/ et DOCKER_CONFIG=/etc/docker, dont les composants existants et la configuration sont vérifiés root-only. Les répertoires de plugins système et ceux explicitement référencés par la configuration root sont vérifiés ; les plugins présents ne doivent pas être modifiables par autrui. La configuration utilisateur ~/.docker et les credential helpers utilisateur ne sont pas adoptés silencieusement. Aucun secret de registre n’est copié depuis process.env.
+
+Le client ACME conserve son contrat public existant : chemin absolu fourni par l’opérateur, SHA256 attendu et propriétaire root ou UID appelant. Sa validation existante est réappliquée avant chaque appel et l’environnement est minimal, avec seuls les chemins de credentials Cloudflare explicitement nécessaires ajoutés par l’opération autorisée. Il n’utilise pas le resolver des trois outils système.
+
+Qualification : les outils nommés ont des entrées fixes /usr/bin (Docker, npm, Git, SSH, OpenSSL, ss, tar, unzip). Node et les chemins explicites de Nginx/Chromium/TypeScript sont déjà des entrées opérateur vérifiées par la politique de qualification root/UID courant ; cette politique ne devient pas celle des outils système de production. Les variables nécessaires sont autorisées par nom (HOME/cache npm, agent SSH et métadonnées de fixtures) ; pas de copie globale de process.env, et PATH toujours fixé en dernier. Les binaires et ancêtres root/UID courant ne doivent pas être inscriptibles par des tiers. Les limites same-UID et TOCTOU sont explicites.
+
+## Compatibilité et preuves attendues
+
+Conserver les tableaux d’arguments, signatures, réponses et erreurs owning : DOCKER_LIFECYCLE_COMMAND_FAILED, PORT_OBSERVATION_UNAVAILABLE, TLS_CERTIFICATE_INVALID, TLS_CHAIN_INVALID et erreurs ACME existantes. Les observateurs conservent leurs refus/diagnostics d’observation. Aucun changement de route, port, ACL, ownership, TLS ou ordre de cycle de vie.
+
+D1–D8 couvrent PATH hostile, absence sans fallback, répertoire inscriptible, liens sûrs/dangereux, chaîne TLS étrangère, Docker et ss, environnement enfant et plugins. Les contrôles de permissions utilisent aussi un conteneur jetable root-owned sans réseau : pas d’altération d’un binaire hôte ni d’exception réservée aux tests dans le code de production. La qualification réelle reprend les suites et opérations affectées ; tout manque d’environnement ou régression reste un arrêt, pas un skip.
