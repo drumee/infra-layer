@@ -34,7 +34,7 @@ Le processus de qualification s’arrête dès l’exit 1 de Services. Pas de re
 
 Le harnais confirme le nettoyage du projet Services `drumee-il2-test-1a3edee9` et Gateway `drumee-il1-test-5fb3fa7d`. Lecture Docker après arrêt : aucun conteneur ni réseau restant portant leurs labels de projet. Aucun nettoyage global ni ressource étrangère supprimée. Le consommateur n’a activé aucun service et a supprimé son répertoire temporaire.
 
-[Log Services complet](evidence/IL-5.11-resume/D-services-failed.txt), [arrêt structuré](evidence/IL-5.11-resume/D-stop.json), [ordre/exit codes/durées](evidence/IL-5.11-resume/D-suites.json).
+[Log Services complet](evidence/IL-5.11-resume/D-services-failed.txt) (deux espaces de fin de ligne retirés pour la présentation Git ; SHA256 brut et suffixes réversibles dans [D-log-integrity.json](evidence/IL-5.11-resume/D-log-integrity.json)), [arrêt structuré](evidence/IL-5.11-resume/D-stop.json), [ordre/exit codes/durées](evidence/IL-5.11-resume/D-suites.json).
 
 ## Identité de package vérifiée, sans approbation de release
 
