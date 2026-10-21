@@ -1,0 +1,39 @@
+{
+  "recorded_at_utc": "2026-10-21T15:07:21+00:00",
+  "status": "MERGED_POST_VALIDATION_FAILED",
+  "merge_confirmed": true,
+  "main_commit": "a02b76e4c421e96e63406d7b10edc2b76a6056c1",
+  "local_post_merge_validation": "PASS",
+  "main_actions_runs": 0,
+  "main_check_runs": 0,
+  "read_only_confirmation": "GitHub connector and gh REST reads both return total_count=0",
+  "manual_dispatch": {
+    "command": "gh workflow run quality.yml --repo drumee/infra-layer --ref main",
+    "authenticated_login": "somanos",
+    "exit_code": 1,
+    "http_status": 403,
+    "message": "Resource not accessible by personal access token",
+    "endpoint": "https://api.github.com/repos/drumee/infra-layer/actions/workflows/388454157/dispatches",
+    "required_fine_grained_permission": "Actions:write",
+    "required_permission_source": "https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event",
+    "token_grants_not_enumerated": true,
+    "no_authentication_fallback_after_refusal": true
+  },
+  "workflows_observed": [
+    {
+      "id": 388454157,
+      "name": "Quality",
+      "path": ".github/workflows/quality.yml",
+      "state": "active"
+    },
+    {
+      "id": 388429010,
+      "name": "CodeQL",
+      "path": "dynamic/github-code-scanning/codeql",
+      "state": "active"
+    }
+  ],
+  "reason_automatic_runs_absent": "NOT_ESTABLISHED",
+  "owner_smtp_decision": "SMTP_RESIDUAL_UNCERTAINTY_ACCEPTED_FOR_ALPHA3",
+  "publication_authorized": false
+}

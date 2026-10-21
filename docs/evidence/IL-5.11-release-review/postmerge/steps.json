@@ -1,0 +1,104 @@
+[
+  {
+    "name": "install",
+    "command": [
+      "npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "--offline"
+    ],
+    "exit_code": 0,
+    "seconds": 1.0153047099884134,
+    "sha256": "ac9e861b562e5b10a6783807c47cafb295e0c3d6a38a185f19c7a0f815aaa963"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "seconds": 3.4700945989752654,
+    "sha256": "016818392787d4bd58e70c059789da7ec7793a9749da12a51d6ed4bf5dc579e9"
+  },
+  {
+    "name": "contracts",
+    "command": [
+      "npm",
+      "run",
+      "test:contracts"
+    ],
+    "exit_code": 0,
+    "seconds": 0.36446093901759014,
+    "sha256": "dee46770e2ebc9e83a40c061b50d93ed110f22645ec87d0cb57acbb792ff224a"
+  },
+  {
+    "name": "system-tools",
+    "command": [
+      "npm",
+      "run",
+      "test:system-tools"
+    ],
+    "exit_code": 0,
+    "seconds": 0.6150298259744886,
+    "sha256": "9cc84f0bf82d4d81b4705043a313697cd5fc2b01314e3734af8be4bcb1f00c4b"
+  },
+  {
+    "name": "package",
+    "command": [
+      "npm",
+      "run",
+      "test:package"
+    ],
+    "exit_code": 0,
+    "seconds": 1.0656932830170263,
+    "sha256": "8d56bc75da311fddc41cbc06cea8cb26b97e786662a4fddd603b3c7b8619e7ef"
+  },
+  {
+    "name": "lint",
+    "command": [
+      "npm",
+      "run",
+      "lint"
+    ],
+    "exit_code": 0,
+    "seconds": 1.165933242009487,
+    "sha256": "42db984e550fda0a60266c49efcc7c594935320c1330116e8cfc970f6ebe1715"
+  },
+  {
+    "name": "audit-production",
+    "command": [
+      "npm",
+      "audit",
+      "--omit=dev",
+      "--json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.2643884829885792,
+    "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"
+  },
+  {
+    "name": "audit-development",
+    "command": [
+      "npm",
+      "audit",
+      "--include=dev",
+      "--json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.9161335259850603,
+    "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"
+  },
+  {
+    "name": "consumer",
+    "command": [
+      "node",
+      "test/application/package-consumer.js"
+    ],
+    "exit_code": 0,
+    "seconds": 2.868853046995355,
+    "sha256": "dfb0191fee05de97bcb5d6e7385581ee653328e1711153b8acd18675dafd4430"
+  }
+]
