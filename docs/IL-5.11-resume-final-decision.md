@@ -1,102 +1,86 @@
-# IL-5.11-Resume — Rapport complet et décision F
+# IL-5.11-Resume — Décision finale après D2
 
-Consolidation : **2026-10-21T10:27:59+00:00**. Dernière preuve fonctionnelle : rejeu Services du **2026-10-21T10:21:20+00:00**. Cette régénération ne relance aucune suite et ne remplace pas les preuves antérieures.
+Date : **2026-10-21T13:18:49+00:00**.
 
-**Publication alpha.3 BLOQUÉE : qualification D incomplète et E non exécutée.** Le dernier résultat Services est **17/17 PASS**, dont les quatre scénarios SMTP/DKIM ; l’essai initial 15/17 et sa cause non établie restent documentés. Le dernier contrôle D ayant clos la séquence a produit **FAILED_QUALIFICATION** ; aucun nouveau contrôle D complet ne l’a remplacé. Ce statut historique ne signifie pas que le dernier rejeu Services échoue.
+**READY_FOR_OWNER_RISK_DECISION. Publication alpha.3 non autorisée.** B est PASS, C reste PASS_WITH_VISIBILITY_LIMITATIONS, tous les contrôles D requis passent, E est préparée avec identité/ACL npm vérifiées. D est **D_QUALIFIED_WITH_RESIDUAL_UNCERTAINTY** : la cause du timeout SMTP initial reste inconnue. Une décision explicite du propriétaire sur cette réserve est nécessaire avant toute publication ; aucun risque n’est implicitement accepté et aucun READY_FOR_PUBLICATION_AUTHORIZATION n’est revendiqué.
 
-## Références et provenance
+## Références et source exacte
 
-| Référence | SHA / état |
+| Référence | Valeur |
 | --- | --- |
-| Fusion IL-5.11R, PR #12 | `077258ca3ef9c77d6d6d94f13ba190b7c0314f56` |
-| Fusion documentaire, PR #13 | `729b755e49f22c220b0cd1a42f619261ba9ce260` |
-| Main distant revérifié pendant cette régénération, PR #14 | **`8f297d8f676706f052a24ce4e875d91b76555b91`** |
-| Correctif et tests analysés en C | `299fa3ea740f44aa76eaea52115e006464e4a345` |
-| Source propre sélectionnée et testée en D | **`d19e62ba682dc2d781f5f941c7ba4b37e3a65053`** ; différence avec C documentaire seulement |
-| Livraison | Branche `feat/il511-resume-final-qualification`, [PR #15](https://github.com/drumee/infra-layer/pull/15) ouverte **en brouillon**, non fusionnée |
+| Main distant revérifié en clôture D2 | **`8f297d8f676706f052a24ce4e875d91b76555b91`** |
+| PR #12 / #13 | `077258ca3ef9c77d6d6d94f13ba190b7c0314f56` / `729b755e49f22c220b0cd1a42f619261ba9ce260` |
+| HEAD de démarrage D2 | `772875e2000545978d6b05f0f8d762900ec52188` |
+| Source exécutée / clone propre D2 | **`dbc0be5c20029374c68bdf510dfadd7da079fcf6`** |
+| Campagne instrumentée SMTP | `90a65bce5ce1de8fd89ff3db9a893770a525561f` |
+| Source exécutable antérieure | `d19e62ba682dc2d781f5f941c7ba4b37e3a65053`, **41 membres npm identiques** |
+| Livraison | [PR #15](https://github.com/drumee/infra-layer/pull/15), branche `feat/il511-resume-final-qualification`, brouillon ouvert, non fusionné |
 
-Le [relevé GitHub de cette consolidation](evidence/IL-5.11-resume/report-github-refs.json) conserve le HEAD de PR observé avant la régénération, distinct du SHA source testé. Les commits de rapport ne changent aucun des 41 membres npm. Le clone indépendant D reste propre au SHA sélectionné. La base canonique est acquise ; **le correctif ReDoS candidat n’est pas encore intégré à main**. Aucun nouveau SHA de fusion ou SRI d’archive source fusionnée n’est revendiqué.
+D2 modifie uniquement harnais et preuves/documentation. Aucun membre distribué ni contrat public modifié. Les commits de rapports ultérieurs ne sont pas prétendus avoir exécuté les tests : l’identité des 41 membres et leur source D2 sont explicitement démontrées. Le ReDoS corrigé demeure dans la PR candidate, pas encore dans main. Aucun nouveau SHA canonique intégré ni SRI d’archive source fusionnée inventé.
 
-## Contrôles B à F
+## Matrice de décision
 
-| Étape | Résultat consolidé | Ce qui reste nécessaire |
+| Domaine | Décision | Preuve / réserve |
 | --- | --- | --- |
-| B — sécurité | **PASS**, ReDoS corrigé, faux positifs SHA256/RSA justifiés individuellement | Préserver les frontières de confiance et les preuves |
-| C — GitHub Security | **PASS_WITH_VISIBILITY_LIMITATIONS**, sur source corrective exacte | Maintenir les limites d’accès et les checks réellement en échec visibles |
-| D — artefact / acceptation | **INCOMPLET**, premier arrêt FAILED_QUALIFICATION ; dernier Services 17/17 | Finir les suites et acceptations manquantes, apprécier l’intermittence initiale |
-| E — préparation npm | **NON EXÉCUTÉE** après arrêt D | Version/dist-tags, identité/droits npm, authentification et provenance |
-| F — décision | **Publication BLOQUÉE**, objectif READY non atteint | Refaire la décision après contrôles D et E satisfaits |
+| Source canonique | **PASS provenance/base** | Main revérifié ; correctif candidat non fusionné, source D2 propre/commise |
+| Sécurité B | **PASS** | Défaut ReDoS corrigé, diagnostics SHA256/RSA contextualisés individuellement |
+| Sécurité PATH | **CLOSED** | Correctifs IL-5.11R intégrés, tests adversariaux et outils approuvés conservés |
+| ReDoS | **FIXED** | Validation déterministe linéaire, reproduction bornée et test million de caractères |
+| SHA256 | **JUSTIFIED** | Empreintes de contenu ; cas privé Redis avec credential analysé, aucun password verifier |
+| RSA-1024 | **TEST_NEGATIVE_CONFIRMED** | Fixture de refus, quatre types/rotation contrôlés, aucune clé faible distribuée |
+| Autres alertes | **Dispositions documentées** | Matrice B individuelle, 13 annotations PR #12 et anciennes PATH distinguées de leurs états administratifs |
+| Couverture C | **PASS_WITH_VISIBILITY_LIMITATIONS** | Inventaires globaux Code Scanning/Dependabot HTTP 403, aucun inventaire vide revendiqué |
+| CodeQL | **LIMITED** | Analyses JS/TS et Actions SUCCESS au SHA D2 ; **résultat FAILURE** pour RSA-1024 du test négatif, alerte #8 inchangée |
+| SonarCloud | **FAILURE réel** | Conservé comme preuve, aucune règle/exclusion modifiée ou alerte fermée |
+| npm audit | **0 connu** | omit=dev et include=dev rejoués après D2 ; résultat daté, aucune dépendance runtime |
+| Qualification D | **D_QUALIFIED_WITH_RESIDUAL_UNCERTAINTY** | Onze commandes nécessaires réussies ; cause SMTP historique inconnue |
+| Tests | **PASS** | 176/176 unitaires dont 24 contrats, contrats séparés 24/24, Gateway 17/17, Services 17/17, Lifecycle 16/16 ; zéro skip/échec |
+| Acceptation réelle | **PASS dans le périmètre déclaré** | 87 assertions / 11 groupes, Nginx hôte, LAN indépendant, RPC, cycle de vie, SMTP ; Internet et récupération SMTP non qualifiés explicitement |
+| Consommateur | **PASS** | Préparation idempotente, types stricts, 8 assertions initiales + 37 supplémentaires ; exports/refus/absence d’import voisin |
+| Reproductibilité | **PASS** | Deux archives identiques, 41 fichiers / 101778 octets, mêmes empreintes que candidat D précédent |
+| Fiabilité SMTP | **INTERMITTENCE_NOT_REPRODUCED** | Campagne fixée à 3 essais : 3 × 17/17 ; passage intégré 17/17 ; premier échec conservé, aucune correction causale démontrée |
+| Permissions npm | **VERIFIED identité/ACL compte** | npm whoami somanos, deux vues serveur read-write, politique 2FA auth-and-writes ; revalidation exigée lors d’une écriture future |
+| Provenance | **PASS source/package local** | SHA et membres prouvés ; OIDC local indisponible, aucune attestation de publication revendiquée |
+| Préparation E | **PASS technique** | alpha.3 absente au relevé, tags/compte/ACL/2FA et procédure/post-vérification préparés |
+| Publication | **BLOQUÉE en attente de décision propriétaire** | Réserve SMTP non acceptée ; publication et fusion restent hors autorisation de cette mission |
 
-## Matrice obligatoire
+## SMTP : décision à prendre et limites
 
-| Domaine | Décision | Preuve et limite |
-| --- | --- | --- |
-| Source canonique | **PASS pour provenance/base** | Main revérifié ; source candidate commise et propre ; correctif non fusionné |
-| Sécurité PATH | **CLOSED** | 18 anciens ID CLOSED/FIXED ; aucun S4036 ouvert au relevé B ; tests adversariaux rejoués |
-| ReDoS | **FIXED** | Ancien coût quadratique démontré ; partition déterministe linéaire, test million de caractères borné |
-| SHA256 | **JUSTIFIED** | Empreintes de contenu/révision ; cas privé Redis contenant un credential analysé, aucun usage password verifier |
-| RSA-1024 | **TEST_NEGATIVE_CONFIRMED** | Fixture négative, refus des quatre types et rotation ; aucune clé faible distribuée |
-| Autres alertes | **Dispositions documentées** | Matrice individuelle des diagnostics significatifs ; aucune acceptation globale |
-| CodeQL | **LIMITED** | Analyses SUCCESS ; check de résultat **FAILURE** pour RSA-1024 de test ; inventaire global HTTP 403 |
-| SonarCloud | **FAILURE au relevé C** | État conservé, outil non opérationnel retenu pour IL-5 ; aucune désactivation ou clôture administrative |
-| npm audit | **0 vulnérabilité connue au relevé C** | omit=dev et include=dev ; lockfile inchangé ; résultat daté |
-| Tests | **Dernières suites exécutées PASS ; contrôle global incomplet** | 176 unitaires, 24 contrats, Gateway 17/17, Services 17/17 au rejeu ; autres suites manquantes |
-| Acceptation réelle | **LIMITED** | Gateway et Services réels passent ; Lifecycle/Application et autres refus consommateur à terminer |
-| Package reproductible | **PASS pour octets** | Deux archives identiques, 41 fichiers ; ne remplace pas test:package non exécuté |
-| Provenance | **PASS source/package local** | SHA D propre et 41 empreintes ; provenance de publication/OIDC non vérifiée |
-| Permissions npm | **UNVERIFIED** | E non exécutée ; aucun refus de droits npm démontré |
-| Publication | **BLOQUÉE** | D non clos et E non exécutée ; aucun READY_FOR_PUBLICATION_AUTHORIZATION |
+L’échec historique 15/17 comprend un timeout **avant greeting** au test 15 puis une lecture de capture échouée au test 16. Le flux montre que l’exception de 15 empêche le redémarrage capture prévu avant 16 : cascade caractérisée, cause du timeout non établie. Le rejeu historique 17/17 reste distinct.
 
-## Sécurité : conclusions et portée
+D2 a défini trois essais complets avant campagne, avec arrêt au premier échec, sorties conservées, ressources isolées et nettoyage vérifié. **3/3 réussissent**, sans changement de timeout/readiness/TLS, retry ajouté ou test ignoré. Le passage Services de la qualification complète réussit aussi, mêmes octets distribués. Les traces montrent greeting, STARTTLS, authentification, capture, reprise de file et fermeture. Aucun défaut distribué significatif persistant observé ; aucun mécanisme initial confirmé ou correction inventée.
 
-Le validateur d’image Docker v1 acceptait une entrée non bornée parcourue par une regex ambiguë : environ 835 ms à 32768 caractères, limites CPU atteintes sur des cas plus longs. Une application relayant une configuration non fiable pouvait bloquer son event loop ; aucune route distante native exposant ce champ n’est démontrée. La partition déterministe corrige ce défaut sans dépendance, export ou type supplémentaire. Digests, formats historiques, codes d’erreur et refus sont testés ; les terminaisons de ligne accidentellement tolérées sont rejetées.
+Ces succès bornés réduisent l’incertitude sans démontrer la disparition d’une intermittence : mêmes hôte/cache, instrumentation susceptible d’influencer l’ordonnancement et petit échantillon. Même sous hypothèses Bernoulli idéales, 0/3 laisse une borne supérieure unilatérale 95 % d’environ 63 % pour le taux d’échec ; aucune garantie de fiabilité statistique n’est revendiquée. Le propriétaire doit décider si les preuves suffisent pour poursuivre vers une autorisation de publication avec cette réserve, ou demander une investigation/campagne complémentaire. **La présente mission ne choisit pas à sa place.** [Analyse et matrice d’hypothèses](IL-5.11-D2-smtp-incident-analysis.md).
 
-`digest()` conserve SHA256 pour le contenu et les révisions. Le cas Redis peut hacher un credential incorporé à un fichier privé : protections 0700/0600 et comparaison du contenu sont indispensables. Ce résultat ne sert pas de vérificateur de mot de passe. RSA-1024 reste volontairement créé pour vérifier son refus ; changer cette fixture en RSA-2048 invaliderait le test. Les trois diagnostics sont disposés dans [B](IL-5.11-resume-security-assessment.md), avec appels, mesures et tests.
+## Qualification réelle et intégrité
 
-Les cinq Quality candidat réussissent, runs [push 39566123710](https://github.com/drumee/infra-layer/actions/runs/39566123710) et [PR 39566453396](https://github.com/drumee/infra-layer/actions/runs/39566453396), au SHA correctif 299fa3e. [CodeQL 39566450567](https://github.com/drumee/infra-layer/actions/runs/39566450567) exécute les analyses JS/TS et Actions avec succès, mais le check de résultats 119109926219 échoue sur [l’alerte #8](https://github.com/drumee/infra-layer/security/code-scanning/8), génération RSA faible du test négatif. Faux positif technique démontré, état administratif inchangé. Ces résultats se rapportent au SHA C, pas à une prétendue nouvelle analyse de tous les commits documentaires.
+Le [rapport D2](IL-5.11-D2-qualification.md) contient les onze commandes, dates UTC, durées, logs et la matrice de garanties. Les 24 contrats sont inclus dans les 176 tests unitaires, sans double comptage. Package et lint réussissent (0 erreur, 29 avertissements historiques, aucun nouveau). Audits sans vulnérabilité connue au relevé.
 
-Les inventaires globaux Code Scanning et Dependabot restent **HTTP 403** pour le PAT CLI de `somanos`, avec endpoints demandant respectivement `security_events=read` et `vulnerability_alerts=read`. Rôle du compte et grants du jeton restent distincts. Le connecteur donne accès aux refs/checks/PR, sans fournir tout l’inventaire Security. Aucun SARIF candidat téléchargeable n’est inventé : liste d’artefacts vide. Le Sonar main relevé compte 213 OPEN ; les 18 PATH corrigés, 13 dispositions PR #12 et autres résultats pertinents sont traités individuellement. Ces relevés restent datés ; aucun inventaire global vide ou scanner entièrement vert n’est affirmé. Voir [C](IL-5.11-resume-github-security.md).
+Les 87 assertions applicatives ont été réellement rejouées : préparation/activation/observation/arrêt, interruption/reprise, rollback, restauration sans SMTP, refus des ressources étrangères, Nginx externe HTTPS CA/SAN, RPC public accepté/protégé refusé, binding loopback et client LAN indépendant avec route de contrôle prouvée. SMTP/DKIM, STARTTLS/SASL, refus d’open relay, absence de ports mail/dkim publics et préservation des clés/file sont contrôlés. Refus **SMTP_RECOVERY_UNQUALIFIED** maintenu ; délivrabilité Internet non testée. Tous les projets et sous-projets connus ont un readback Docker vide ; aucune ressource étrangère supprimée.
 
-## Tests et SMTP : résultat actuel et historique
-
-| Contrôle D | Résultat |
-| --- | --- |
-| Unitaires / contrats séparés | **176/176 / 24/24 PASS** ; les 24 sont aussi inclus dans les 176 |
-| Gateway réel | **17/17 PASS** |
-| Services initial | **15/17**, timeout SMTP test 15 puis fetch failed test 16 ; arrêt conservé |
-| Services au rejeu demandé | **17/17 PASS**, zéro échec/skip, 40,090 s, même SHA propre, aucun délai/code modifié |
-| Consommateur isolé / types stricts | **8 assertions PASS**, préparation idempotente sans activation |
-| Lifecycle / Application / Package | **NON EXÉCUTÉS** pour clôturer D |
-| Lint du clone D / refus consommateur supplémentaires | **NON EXÉCUTÉS** ; lint C réussi distinctement |
-
-SMTP repose sur Postfix/OpenDKIM réels, Nodemailer et capture locale, CA/SAN vérifiés, STARTTLS/SASL, refus d’open relay, signature DKIM, persistance de file et relais contrôlé. Les tests 13–16 passent au rejeu. Aucune livraison externe n’est qualifiée. La cause du premier timeout reste inconnue ; une cascade depuis la capture arrêtée est possible sans être démontrée. Le succès ultérieur ne prouve pas à lui seul une correction d’intermittence. Nettoyage des ressources possédées confirmé par les preuves des exécutions. Les 87 assertions applicatives et Lifecycle IL-5.11R restent historiques, sans substitution au candidat modifié. Voir [D et les deux logs](IL-5.11-resume-artifact-qualification.md).
-
-## Artefact exact
-
-| Propriété | Valeur recalculée |
+| Artefact npm local | Valeur |
 | --- | --- |
 | Package | `@drumee/infra-layer@0.1.0-alpha.3` |
-| Source de construction | `d19e62ba682dc2d781f5f941c7ba4b37e3a65053` |
-| Membres / taille compressée | **41 / 101778 octets** |
-| SHA256 npm | `c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e` |
-| SRI npm | `sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==` |
-| Reproductibilité | Deux tarballs identiques, empreintes revérifiées à la régénération |
-| Différences depuis IL-5.11R | `lib/validation.js`, `CHANGELOG.md`, `PROVENANCE.md` ; 38 membres identiques |
+| Source de construction | `dbc0be5c20029374c68bdf510dfadd7da079fcf6` |
+| Fichiers / octets compressés | **41 / 101778** |
+| SHA256 | **`c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e`** |
+| SRI SHA512 | **`sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==`** |
+| Identité | Deux tarballs identiques, et identiques au candidat D d19e62b |
 
-Ancien SHA256 IL-5.11R : `f2fd950e1f54634fa97b9e74ccd3ceb8dfdb15cb3e8a08c0c46489704432ac9c` ; ancien SRI : `sha512-BP1hSTOer0C7u118cixNtiJ/yOErtCFfEzQTjqZ6tP7bPTMDbXvWrJ24z8jNdKRjFRCTxjprpHxDZ5BUmWb2/Q==`. Ils ne désignent pas le nouveau candidat. Le [reçu D](evidence/IL-5.11-resume/D-artifact-receipt.json) contient la liste des 41 fichiers et leurs SHA256. Le package n’est pas approuvé pour publication ; la vérification complète test:package reste manquante. L’identité npm et celle d’une archive GitHub sont distinctes.
+[Liste des 41 fichiers et hashes](evidence/IL-5.11-D2/D2-artifact-receipt.json). Les anciennes empreintes IL-5.11R f2fd950e… / sha512-BP1h… restent différentes et historiques ; le ReDoS avait modifié lib/validation.js, CHANGELOG.md et PROVENANCE.md avant D2. Aucun SRI npm n’est substitué à celui d’une archive GitHub.
 
-## Reprise nécessaire et publication
+## Security et préparation npm
 
-Terminer D depuis la source figée : caractériser la fiabilité du parcours SMTP, exécuter Lifecycle, Application, Package, lint et refus supplémentaires du consommateur ; conserver les vérifications réelles HTTPS/CA/SAN, loopback/refus LAN indépendant, RPC, SMTP/DKIM, ownership, rollback et reprise requises par les parcours affectés. Toute modification distribuée impose nouveau reçu et qualification adaptée. Arrêter si un défaut significatif persiste ou exige une rupture de contrat/composant externe.
+Au SHA D2, les cinq jobs Quality réussissent sur push et PR ; analyses CodeQL réussies, check de résultats **119229639079 FAILURE**, une alerte high sur la fixture RSA-1024 de test/unit/secrets.test.js:65. Le commentaire PR est actualisé au SHA D2 ; justification technique conservée, aucun état administratif manipulé. Sonar reste FAILURE ; les HTTP 403 historiques limitent toujours l’inventaire administratif global. [Snapshot D2](evidence/IL-5.11-D2/github-candidate-checks.json), [couverture C](IL-5.11-resume-github-security.md), [évaluation B](IL-5.11-resume-security-assessment.md).
 
-Après contrôle D favorable seulement, effectuer E : existence de alpha.3, dist-tags, compte et droits serveur npm, authentification/2FA, provenance disponible, métadonnées/hooks et secrets. Les droits sont **UNVERIFIED**, pas un refus établi ; BLOCKED_RELEASE_PERMISSIONS s’appliquera si leur vérification est impossible lors de E. Le [plan E](IL-5.11-resume-release-plan.md) prépare le canal **next**, sans déplacer latest, et le téléchargement/comparaison/consommateur post-publication. Publication soumise à une décision distincte du propriétaire. La PR #15 reste en brouillon et ne sera pas fusionnée automatiquement.
+Au relevé E **2026-10-21T13:07:15.802295+00:00**, alpha.3 absente, next=alpha.2, latest=alpha.1. Compte **somanos**, ACL read-write sur le package confirmée par deux lectures serveur, 2FA **auth-and-writes**. Aucun token/OTP enregistré. OIDC local indisponible ; aucune configuration trusted publisher ou attestation npm prétendue vérifiée. La publication CLI authentifiée est préparée avec satisfaction de la 2FA et revalidation des droits/versions au moment autorisé. Aucun BLOCKED_RELEASE_PERMISSIONS démontré par ces lectures. Si une attestation OIDC devient obligatoire, qualifier séparément le mécanisme avant publication. [Plan E et reçus](IL-5.11-resume-release-plan.md).
 
-## Réserves et handoff
+## Handoff et limites restantes
 
-Les limites d’inventaire HTTP 403, le check CodeQL en échec contextuel, Sonar FAILURE et la cause SMTP initiale inconnue restent explicites. Confiance dans root/opérateur/outils et fenêtres stat/exec TOCTOU conservent leurs limites documentées. Les audits sans vulnérabilité connue ne prouvent pas une absence de tout défaut.
+**Aucun feu vert de publication ni acceptation implicite de réserve.** Étapes suivantes : décision propriétaire sur SMTP, revue/intégration éventuelle de PR #15 séparément autorisée, vérification de l’identité des octets/source finalement retenus, puis autorisation de publication distincte et contrôles pré/post npm préparés. Canal prévu **next**, latest à préserver.
 
-**Aucune référence autorisable de publication n’est transférée.** Debian conserve `aa9057f224f4ae5cf80d777e3cb2fad092193fb1` ; réalignement ultérieur seulement après artefact canonique retenu et requalification des images/acceptations. OF-01R attend la distribution qualifiée. Preuves transférables avec leur SHA exact, sans démarrer Oxymotion D0. Aucune publication npm/image, tag, fusion, intervention production ou modification Debian/Server Runtime/Oxy-form.
+Debian reste verrouillé sur `aa9057f224f4ae5cf80d777e3cb2fad092193fb1`. Préparer le futur réalignement uniquement après sélection de l’artefact canonique, avec requalification des images et acceptations ; aucune modification Debian ici. OF-01R attend la distribution qualifiée. Preuves transférables avec leur SHA, sans débuter Oxymotion D0. Les limites de confiance root/opérateur/outils et fenêtres stat/exec TOCTOU documentées restent présentes. Aucune modification Runtime/Oxy-form/production, aucune fusion, publication npm/image ou création de tag.
 
-## Dossier de preuves
+## Livrables
 
-[Évaluation B](IL-5.11-resume-security-assessment.md), [couverture C](IL-5.11-resume-github-security.md), [qualification D](IL-5.11-resume-artifact-qualification.md), [plan E](IL-5.11-resume-release-plan.md), [état courant](IL-5.11-resume-status.md), [snapshot consolidé](evidence/IL-5.11-resume/resume-current-status.json). L’[arrêt initial D](evidence/IL-5.11-resume/D-stop.json) reste historique ; le [reçu du rejeu](evidence/IL-5.11-resume/D-services-rerun-1.json) est la preuve du dernier Services réussi.
+[Incident SMTP D2](IL-5.11-D2-smtp-incident-analysis.md), [qualification complète D2](IL-5.11-D2-qualification.md), [artefact D consolidé](IL-5.11-resume-artifact-qualification.md), [préparation E](IL-5.11-resume-release-plan.md), [état courant](IL-5.11-resume-status.md), [preuves D2](evidence/IL-5.11-D2). L’arrêt et l’échec historiques restent dans `evidence/IL-5.11-resume/D-stop.json` et les logs d’origine ; ils ne constituent plus le résultat du contrôle D2.

@@ -50,6 +50,6 @@ Les CODE_SMELL restants ne sont pas acceptés globalement : les chemins sensible
 
 **PASS** : seul défaut significatif démontré dans le périmètre distribué, ReDoS, corrigé ; 15 tests ciblés réussis dont nouveau timeout anti-régression et refus des quatre types de clés faibles. Première tentative sous sandbox interrompue avant exécution correcte des sous-processus ; rejeu autorisé hors sandbox réussi, aucune suppression de test ou règle. Les limites des inventaires GitHub sont réservées à C. Le code distribué a changé : les anciennes empreintes sont historiques ; les nouvelles empreintes ont été recalculées dans le reçu [D](evidence/IL-5.11-resume/D-artifact-receipt.json), sans que cette identité suffise à clôturer la qualification fonctionnelle D.
 
-## Consolidation après rejeu Services
+## Suite D2
 
-Rapport relu le 2026-10-21T10:27:59+00:00, sans nouveau scan B ni changement de conclusion B. Le dernier Services passe **17/17**, sur le même source propre D ; l’essai initial et sa cause inconnue sont conservés dans [D](IL-5.11-resume-artifact-qualification.md). Cette preuve fonctionnelle ne ferme pas D ni E et ne vaut pas autorisation de publication. [Décision consolidée](IL-5.11-resume-final-decision.md).
+B reste PASS, sans nouvelle mutation d’alerte. D2 a terminé les tests/acceptations sur les mêmes membres npm : **D_QUALIFIED_WITH_RESIDUAL_UNCERTAINTY**, campagne SMTP trois fois réussie sans cause initiale expliquée. E vérifie identité/ACL npm et politique 2FA. La [décision finale](IL-5.11-resume-final-decision.md) reste READY_FOR_OWNER_RISK_DECISION ; aucune autorisation de publication implicite.

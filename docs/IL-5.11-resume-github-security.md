@@ -4,7 +4,7 @@
 
 Base observée : `8f297d8f676706f052a24ce4e875d91b76555b91`. Source corrective analysée : `299fa3ea740f44aa76eaea52115e006464e4a345`. [PR de qualification #15](https://github.com/drumee/infra-layer/pull/15), initialement en brouillon pour permettre les scans avant la construction définitive. Aucun merge automatique.
 
-## Résultats effectivement relus
+## Résultats initiaux C au SHA 299fa3e
 
 | Contrôle | Source / résultat |
 | --- | --- |
@@ -31,7 +31,7 @@ Le plugin GitHub sert à lire les refs, runs/checks, commentaires et artefacts e
 
 Les en-têtes sont les permissions acceptées par ces endpoints, pas l’inventaire des grants du jeton. Aucun changement de grant ni contournement. Les réponses et request IDs sont dans [C-security-access.json](evidence/IL-5.11-resume/C-security-access.json). Le compte peut avoir un rôle repository admin sans que ce jeton dispose de toutes les lectures ; ne pas assimiler le rôle aux scopes API. L’état administratif global, les historiques et les alertes hors analyse accessible restent inconnus.
 
-Cette limite ne laisse pas le risque du package sans caractérisation : absence de dépendances runtime, audits des versions verrouillées, sources et frontières des diagnostics B relues, contrôles du candidat et preuves adversariales. Les qualifications réelles D restent incomplètes. Une future conclusion favorable devrait conserver ces **limitations** ; aucune conclusion de publication ni inventaire global certifié vide ne découle de C seul. Si les contrôles D révèlent un défaut significatif, la conclusion C n’autorise pas à le tolérer.
+Cette limite ne laisse pas le risque du package sans caractérisation : absence de dépendances runtime, audits des versions verrouillées, sources et frontières des diagnostics B relues, contrôles du candidat et preuves adversariales. Les qualifications réelles D ont ensuite été complétées en D2 avec réserve SMTP explicite. Une future conclusion favorable devrait conserver ces **limitations** ; aucune conclusion de publication ni inventaire global certifié vide ne découle de C seul. Si les contrôles D révèlent un défaut significatif, la conclusion C n’autorise pas à le tolérer.
 
 ## Configuration de surveillance
 
@@ -49,6 +49,10 @@ SonarCloud n’est plus l’outil de qualité opérationnel retenu pour IL-5 sel
 
 [Snapshot des résultats et de l’annotation](evidence/IL-5.11-resume/C-github-checks.json), [audit production](evidence/IL-5.11-resume/C-audit-production.json), [audit développement](evidence/IL-5.11-resume/C-audit-development.json), [lint](evidence/IL-5.11-resume/C-lint.txt), [176 tests](evidence/IL-5.11-resume/C-unit.txt).
 
-## Périmètre de cette consolidation
+## Actualisation D2
 
-Rapport relu le 2026-10-21T10:27:59+00:00. Les résultats ci-dessus restent ceux du SHA C et du snapshot référencé ; aucune nouvelle analyse Security ou clôture administrative n’est revendiquée lors de cette régénération. Main a été revérifié à `8f297d8f676706f052a24ce4e875d91b76555b91`, PR #15 ouverte en brouillon et non fusionnée. Dernier Services **17/17 PASS**, qualification D toujours incomplète ; E non exécutée. [Rapport complet et décision](IL-5.11-resume-final-decision.md).
+Au SHA **`dbc0be5c20029374c68bdf510dfadd7da079fcf6`**, les cinq Quality passent sur push et PR, et les deux analyses CodeQL passent. Le check de résultat **119229639079 reste FAILURE**, une nouvelle alerte high sur test/unit/secrets.test.js:65 : le commentaire PR 4334421204 est actualisé au même SHA et renvoie à l’alerte RSA négative #8 déjà caractérisée. SonarCloud demeure FAILURE. [Snapshot exact D2](evidence/IL-5.11-D2/github-candidate-checks.json).
+
+Les deux audits npm ont été rejoués dans le clone propre D2 : zéro vulnérabilité connue, lint 0 erreur/29 avertissements historiques/0 nouveau. Les onze commandes D et l’acceptation réelle réussissent ; [D2](IL-5.11-D2-qualification.md) garde D_QUALIFIED_WITH_RESIDUAL_UNCERTAINTY. Les lectures globales Security HTTP 403 ne sont pas remplacées par un inventaire vide ni prétendues nouvellement autorisées. Aucun SARIF téléchargeable supplémentaire revendiqué, aucune fermeture administrative ou règle modifiée.
+
+E a vérifié les droits npm du compte somanos, distincts des droits GitHub. C reste **PASS_WITH_VISIBILITY_LIMITATIONS**, F **READY_FOR_OWNER_RISK_DECISION** : la réserve SMTP inconnue doit être explicitement décidée par le propriétaire avant publication. Main revérifié à `8f297d8f676706f052a24ce4e875d91b76555b91` ; PR #15 en brouillon et non fusionnée.
