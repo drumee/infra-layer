@@ -257,3 +257,15 @@ source and newly computed npm/source receipts belong to the versioned
 `docs/IL-5.11R-artifact-qualification.md` and evidence, not to a self-referential
 checksum inside this ledger. Do not reuse the earlier alpha.3 SRI or silently
 change Debian's source lock. No publication or release tag is implied.
+
+## IL-5.11 Resume — image validation, unpublished refresh
+
+Integration base: `8f297d8f676706f052a24ce4e875d91b76555b91`.
+The v1 gateway image validator now partitions its pinned reference before
+matching simple components, eliminating quadratic rejection of malformed input.
+Regression coverage includes long input and the negative RSA fixture contract.
+Public types, exports, dependency pins and lifecycle policy are unchanged.
+The package still has 41 members, but its distributed bytes and integrity differ
+from IL-5.11R. The selected executable-source commit and recalculated source/npm
+receipts are recorded in `docs/IL-5.11-resume-artifact-qualification.md`.
+No alpha.3 publication, release tag or consumer realignment is implied.

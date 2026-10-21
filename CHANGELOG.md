@@ -1,5 +1,8 @@
 # 0.1.0-alpha.3 — IL-5 development, unpublished
 
+- Replace ambiguous image-reference backtracking with deterministic validation;
+  preserve pinned SHA256/numeric-suffix formats and reject trailing controls.
+- Qualify the corrected alpha.3 bytes separately from the IL-5.11R candidate.
 - Add an explicitly private application distribution without a managed gateway.
 - Reuse native service, resource, secret and lifecycle contracts; retain legacy profiles.
 - Add application plugin inventory and explicit required secret references.

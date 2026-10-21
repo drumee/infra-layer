@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: pinned image validation preserves the supported reference and numeric suffix grammar
+ok 1 - pinned image validation preserves the supported reference and numeric suffix grammar
+  ---
+  duration_ms: 13.571305
+  type: 'test'
+  ...
+# Subtest: pinned images require the exact SHA256 digest and refuse control characters
+ok 2 - pinned images require the exact SHA256 digest and refuse control characters
+  ---
+  duration_ms: 3.414431
+  type: 'test'
+  ...
+# Subtest: malformed long image references cannot consume unbounded backtracking time
+ok 3 - malformed long image references cannot consume unbounded backtracking time
+  ---
+  duration_ms: 41.807824
+  type: 'test'
+  ...
+# Subtest: long valid image references remain accepted without adding a new size contract
+ok 4 - long valid image references remain accepted without adding a new size contract
+  ---
+  duration_ms: 2.699547
+  type: 'test'
+  ...
+# Subtest: secrets require explicit first-install authorization; repeated execution preserves bytes/fingerprint
+ok 5 - secrets require explicit first-install authorization; repeated execution preserves bytes/fingerprint
+  ---
+  duration_ms: 28.853077
+  type: 'test'
+  ...
+# Subtest: corrupt/missing existing data fails closed and is never regenerated
+ok 6 - corrupt/missing existing data fails closed and is never regenerated
+  ---
+  duration_ms: 5.998374
+  type: 'test'
+  ...
+# Subtest: world-readable secret or store permissions and unrelated ownership are rejected
+ok 7 - world-readable secret or store permissions and unrelated ownership are rejected
+  ---
+  duration_ms: 6.862528
+  type: 'test'
+  ...
+# Subtest: concurrent/interrupted secret creation cannot take over or generate replacement credentials
+ok 8 - concurrent/interrupted secret creation cannot take over or generate replacement credentials
+  ---
+  duration_ms: 1.221632
+  type: 'test'
+  ...
+# Subtest: explicit rotation requires fingerprint CAS and consumer transition; failed rotation retains old state
+ok 9 - explicit rotation requires fingerprint CAS and consumer transition; failed rotation retains old state
+  ---
+  duration_ms: 12.784647
+  type: 'test'
+  ...
+# Subtest: consumer projections are narrow, exclusive and private; path/symlink/hardlink escape fails
+ok 10 - consumer projections are narrow, exclusive and private; path/symlink/hardlink escape fails
+  ---
+  duration_ms: 9.897281
+  type: 'test'
+  ...
+# Subtest: all declared secret types validate; imported relay/DNS credentials are never invented
+ok 11 - all declared secret types validate; imported relay/DNS credentials are never invented
+  ---
+  duration_ms: 446.568365
+  type: 'test'
+  ...
+# Subtest: weak imported keys and accessor references are rejected without executing getters
+ok 12 - weak imported keys and accessor references are rejected without executing getters
+  ---
+  duration_ms: 6.722812
+  type: 'test'
+  ...
+# Subtest: secret projection cannot overwrite a competing destination created after validation
+ok 13 - secret projection cannot overwrite a competing destination created after validation
+  ---
+  duration_ms: 8.038978
+  type: 'test'
+  ...
+# Subtest: weak RSA fixtures cannot enter any key type or replace an existing generation
+ok 14 - weak RSA fixtures cannot enter any key type or replace an existing generation
+  ---
+  duration_ms: 40.306442
+  type: 'test'
+  ...
+# Subtest: two independent secret creators preserve a single committed fingerprint
+ok 15 - two independent secret creators preserve a single committed fingerprint
+  ---
+  duration_ms: 38.462897
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 651.48523

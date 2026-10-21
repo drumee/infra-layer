@@ -1,0 +1,196 @@
+{
+  "cpu_limit_seconds": 2,
+  "wall_timeout_seconds": 3,
+  "js_heap_mib": 64,
+  "network_operations": false,
+  "results": [
+    {
+      "n": 1024,
+      "family": "plain",
+      "input_length": 1097,
+      "ms": 3.3179170000000013,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 4096,
+      "family": "plain",
+      "input_length": 4169,
+      "ms": 19.595551999999998,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 8192,
+      "family": "plain",
+      "input_length": 8265,
+      "ms": 96.145449,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 16384,
+      "family": "plain",
+      "input_length": 16457,
+      "ms": 246.773457,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 32768,
+      "family": "plain",
+      "input_length": 32841,
+      "ms": 871.4453729999999,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 65536,
+      "family": "plain",
+      "limit_or_exit": -9,
+      "source": "baseline"
+    },
+    {
+      "n": 1024,
+      "family": "colon",
+      "input_length": 1098,
+      "ms": 3.364403000000003,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 4096,
+      "family": "colon",
+      "input_length": 4170,
+      "ms": 16.556298999999996,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 8192,
+      "family": "colon",
+      "input_length": 8266,
+      "ms": 55.260645,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 16384,
+      "family": "colon",
+      "input_length": 16458,
+      "ms": 211.722994,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 32768,
+      "family": "colon",
+      "input_length": 32842,
+      "ms": 834.643854,
+      "refused": true,
+      "source": "baseline"
+    },
+    {
+      "n": 65536,
+      "family": "colon",
+      "limit_or_exit": -9,
+      "source": "baseline"
+    },
+    {
+      "n": 1024,
+      "family": "plain",
+      "input_length": 1097,
+      "ms": 2.430954,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 4096,
+      "family": "plain",
+      "input_length": 4169,
+      "ms": 2.5288259999999987,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 8192,
+      "family": "plain",
+      "input_length": 8265,
+      "ms": 2.770277,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 16384,
+      "family": "plain",
+      "input_length": 16457,
+      "ms": 2.494132000000004,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 32768,
+      "family": "plain",
+      "input_length": 32841,
+      "ms": 2.763375,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 65536,
+      "family": "plain",
+      "input_length": 65609,
+      "ms": 2.4781220000000026,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 1024,
+      "family": "colon",
+      "input_length": 1098,
+      "ms": 2.4784509999999997,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 4096,
+      "family": "colon",
+      "input_length": 4170,
+      "ms": 2.478539999999999,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 8192,
+      "family": "colon",
+      "input_length": 8266,
+      "ms": 2.5173379999999987,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 16384,
+      "family": "colon",
+      "input_length": 16458,
+      "ms": 2.479429000000003,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 32768,
+      "family": "colon",
+      "input_length": 32842,
+      "ms": 2.521653999999998,
+      "refused": true,
+      "source": "candidate"
+    },
+    {
+      "n": 65536,
+      "family": "colon",
+      "input_length": 65610,
+      "ms": 2.547054000000003,
+      "refused": true,
+      "source": "candidate"
+    }
+  ]
+}
