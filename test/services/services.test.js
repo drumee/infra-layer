@@ -11,6 +11,7 @@ const { createClient } = require("redis");
 const mariadb = require("mariadb");
 const nodemailer = require("nodemailer");
 const api = require("../../lib");
+const { trace } = require("./trace");
 const dns = require("../../capabilities/dns");
 const db = require("../../capabilities/database");
 const { createFilesystemSecretStore } = require("../../capabilities/secrets");
@@ -20,7 +21,7 @@ let plan = JSON.parse(fs.readFileSync(metadata.plan_file));
 const store = createFilesystemSecretStore(path.join(metadata.fixtures, "secrets"), metadata.project);
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 function command(args, options = {}) { const result = spawnSync(trustedExecutable(args[0]), args.slice(1), { encoding: "utf8", timeout: 120000, maxBuffer: 4 * 1024 * 1024, ...options, env: trustedEnvironment(options.env) }); if (result.status !== 0) throw new Error(`TEST_COMMAND_FAILED ${args[0]} ${args[1]} ${result.status}`); return result.stdout; }
-function compose(...args) { return command(["docker", "compose", "-p", metadata.project, "-f", metadata.compose_file, ...args]); }
+function compose(...args) { const start = process.hrtime.bigint(); trace(metadata.project, "test.compose.begin", { operation: args[0], services: args.filter(value => ["mail", "dkim", "capture"].includes(value)) }); try { return command(["docker", "compose", "-p", metadata.project, "-f", metadata.compose_file, ...args]); } finally { trace(metadata.project, "test.compose.end", { operation: args[0], duration_ms: Number(process.hrtime.bigint() - start) / 1e6 }); } }
 function id(name) { return compose("ps", "-q", name).trim(); }
 function execute(name, ...args) { return command(["docker", "exec", id(name), ...args]); }
 async function wait(check) { for (let attempt = 0; attempt < 80; attempt++) { try { const result = await check(); if (result) return result; } catch { /* Keep the owning test failure; optional cleanup or diagnostic data may be unavailable. */ } await delay(200); } throw new Error("PROTOCOL_READINESS_TIMEOUT"); }
@@ -31,9 +32,22 @@ const database_client = { async query(sql, params = []) {
   const output = rootSQL(rendered + ";\n").trim(); if (sql.startsWith("SELECT VERSION")) return [{ version: output }]; if (sql.startsWith("SELECT User")) return output ? output.split("\n").map((User) => ({ User })) : []; return [];
 } };
 async function redisClient(password = store.read(metadata.keys.redis, "redis").toString()) { const client = createClient({ url: `redis://:${encodeURIComponent(password)}@127.0.0.1:${metadata.ports.redis}`, socket: { reconnectStrategy: false } }); client.on("error", () => {}); try { await client.connect(); } catch (cause) { if (client.isOpen) await client.disconnect(); throw new Error("REDIS_AUTH_REJECTED", { cause }); } return client; }
-function mailClient(auth = true, password) { return nodemailer.createTransport({ host: "127.0.0.1", port: metadata.ports.mail, secure: false, requireTLS: true, connectionTimeout: 5000, greetingTimeout: 5000, socketTimeout: 10000, name: "il2-fixture.example", ...(auth ? { auth: { user: "fixture", pass: password || store.read(metadata.keys.smtp, "mail").toString() } } : {}), tls: { servername: "drumee.lan", ca: fs.readFileSync(path.join(metadata.fixtures, "projections/ca_bundle")), rejectUnauthorized: true } }); }
+let connectionSequence = 0;
+function mailClient(auth = true, password) {
+  const connection = ++connectionSequence;
+  const logger = Object.fromEntries(["trace", "debug", "info", "warn", "error", "fatal"].map(level => [level, (data, format) => {
+    const fields = { connection };
+    if (data.tnx === "client" && typeof format === "string") { const verb = format.split(" ", 1)[0]; if (["EHLO", "HELO", "STARTTLS", "AUTH", "MAIL", "RCPT", "DATA", "QUIT"].includes(verb)) trace(metadata.project, "smtp.command", { ...fields, verb }); }
+    else if (data.tnx === "server" && typeof format === "string" && /^[0-9]{3}/.test(format)) trace(metadata.project, "smtp.response", { ...fields, response_code: Number(format.slice(0, 3)) });
+    else if (data.tnx === "network") trace(metadata.project, format === "Connection closed" ? "smtp.closed" : "smtp.network", fields);
+    else if (["authenticated", "authfail"].includes(data.action)) trace(metadata.project, "smtp." + data.action, fields);
+    else if (format === "Connection upgraded with STARTTLS") trace(metadata.project, "smtp.tls.established", fields);
+    else if (data.err) trace(metadata.project, "smtp.error", { ...fields, code: data.err.code, command: data.err.command?.split(" ", 1)[0] });
+  }]));
+  trace(metadata.project, "smtp.client.created", { connection, auth_requested: auth });
+  return nodemailer.createTransport({ logger, debug: true, host: "127.0.0.1", port: metadata.ports.mail, secure: false, requireTLS: true, connectionTimeout: 5000, greetingTimeout: 5000, socketTimeout: 10000, name: "il2-fixture.example", ...(auth ? { auth: { user: "fixture", pass: password || store.read(metadata.keys.smtp, "mail").toString() } } : {}), tls: { servername: "drumee.lan", ca: fs.readFileSync(path.join(metadata.fixtures, "projections/ca_bundle")), rejectUnauthorized: true } }); }
 const message = (subject) => ({ from: "sender@drumee.lan", to: "recipient@fixture.invalid", subject, text: "Isolated IL-2 protocol fixture. No external delivery." });
-async function capturedCount() { return (await (await fetch(`http://127.0.0.1:${metadata.ports.capture}`)).json()).count; }
+async function capturedCount() { try { const count = (await (await fetch(`http://127.0.0.1:${metadata.ports.capture}`)).json()).count; trace(metadata.project, "capture.count", { count }); return count; } catch (error) { trace(metadata.project, "capture.read.error", { code: error.cause?.code || "FETCH_FAILED" }); throw error; } }
 test("managed descriptors parse native configs, publish only test loopback ports and mount no secret-store root", () => {
   for (const name of ["dns", "database", "redis", "mail", "dkim"]) { const inspected = JSON.parse(command(["docker", "inspect", id(name)]))[0]; assert.equal(inspected.HostConfig.Privileged, false); assert.equal(inspected.HostConfig.NetworkMode === "host", false); assert.equal(inspected.HostConfig.ReadonlyRootfs, true); assert.ok(Object.values(inspected.HostConfig.PortBindings || {}).flat().every((binding) => binding.HostIp === "127.0.0.1")); assert.ok(inspected.Mounts.every((mount) => mount.Source !== path.join(metadata.fixtures, "secrets"))); }
   execute("dns", "named-checkconf", "/config/bind9.conf"); execute("mail", "postfix", "-c", "/run/infra-mail/config", "check"); execute("dkim", "opendkim", "-n", "-x", "/config/opendkim.conf");

@@ -1,0 +1,17 @@
+{
+  "max_runs": 3,
+  "defined_before_runs": true,
+  "order": "sequential complete services suite",
+  "success": "17/17, zero skip, cleanup and scoped Docker readback empty",
+  "stop_on": [
+    "first failure",
+    "cleanup failure",
+    "sensitive material",
+    "security anomaly",
+    "environment unavailable"
+  ],
+  "timeout_changes": false,
+  "silent_retries_added": false,
+  "classification_if_3_pass": "INTERMITTENCE_NOT_REPRODUCED",
+  "statistical_upper_95_one_sided_for_0_of_3": 0.6315968501359612
+}
