@@ -1,6 +1,6 @@
 # IL-5.11 — Handoff de publication expérimentale alpha.3
 
-Dossier du **2026-10-21T15:07:21+00:00**. **Publication INTERDITE ; MERGED_POST_VALIDATION_FAILED.** PR #15 fusionnée, octets et validations locales post-fusion vérifiés ; Quality/CodeQL sur le nouveau main restent indisponibles, déclenchement Quality refusé HTTP403 au PAT CLI somanos. Ce dossier prépare une future décision distincte, sans autoriser npm publish, tag, image, latest ou production.
+Dossier du **2026-10-21T15:07:21+00:00**. **Publication INTERDITE ; MERGED_POST_VALIDATION_FAILED.** PR #15 fusionnée, octets et validations locales post-fusion vérifiés ; Quality et CodeQL post-fusion sont désormais réussis/publiés, mais un défaut confirmé de sorties temporaires dans les helpers Python de preuve empêche la clôture R6. Le refus initial de dispatch reste historique. Ce dossier prépare une future décision distincte, sans autoriser npm publish, tag, image, latest ou production.
 
 ## Références à transférer
 
@@ -23,8 +23,8 @@ D2 : 176 unitaires dont 24 contrats, contrats séparés 24/24 ; Gateway 17/17 ; 
 ## Contrôles et réserves
 
 - Pré-fusion au HEAD final : cinq Quality réussis, analyses natives CodeQL exécutées/publiées ; résultat CodeQL **FAILURE** pour fixture RSA-1024 négative #8, justifiée individuellement, sans fermeture. SonarCloud **FAILURE**, pas d’acceptation globale.
-- Post-fusion : **aucun run/check disponible au SHA canonique**, aucun résultat CodeQL/Sonar nouveau revendiqué. Derniers succès main de l’ancien SHA ne valent pas analyse du nouveau commit.
-- Blocage : PAT CLI de **somanos** refuse le workflow dispatch Quality (HTTP403). Permission d’endpoint Actions:write requise ; restriction exacte du jeton non établie. Aucun contournement d’authentification, scanner ou politique. [Détail R6](IL-5.11-release-review.md).
+- Post-fusion : **Quality cinq jobs SUCCESS**, CodeQL JS/TS et Actions SUCCESS avec upload/traitement complet au SHA canonique. SonarCloud FAILURE ; analyse 236 OPEN, 26 IDs nouveaux, dispositions dans le suivi de sécurité.
+- Blocage actuel : défaut confirmé de racine/journal symlink dans les helpers de preuve sous docs ; autres chemins temporaires à examiner. Absent des 41 membres npm, sans compromission historique démontrée, mais non accepté par la réserve SMTP. [Suivi et reproduction](IL-5.11-postmerge-security-followup.md). Le refus initial de workflow dispatch demeure conservé, sans nouvelle tentative nécessaire ni changement d’authentification.
 - Inventaires globaux GitHub Security restent limités par les HTTP403 documentés. Audits npm fraîchement à zéro vulnérabilité connue, pas une garantie d’absence de tout défaut.
 - Réserve SMTP acceptée uniquement pour alpha.3 expérimentale ; cause initiale non établie. Une nouvelle panne significative, perte, problème TLS/SASL/DKIM ou open relay impose une nouvelle investigation indépendante.
 - Confiance root/opérateur/outils, fenêtres stat/exec TOCTOU et limites de visibilité conservées.
@@ -37,14 +37,14 @@ OIDC local indisponible, configuration serveur trusted publisher non certifiée 
 
 ## Procédure future, non exécutée
 
-1. Clore R6 : obtenir Quality et CodeQL natif au SHA intégré avec accès autorisé, examiner les résultats/diagnostics et l’état Sonar réel. Aucun changement de règle pour fabriquer un succès. Mettre à jour le verdict de release après preuves satisfaisantes.
+1. Clore R6 : corriger/requalifier les écritures des helpers de preuve (racines privées exclusives, ownership/modes/liens et refus des symlinks), examiner les autres chemins et obtenir l’intégration corrective autorisée. Quality/CodeQL sont déjà prouvés au SHA intégré ; conserver Sonar FAILURE et les dispositions individuelles, sans changement de règle pour fabriquer un succès. Recalculer les références source après toute intégration future, même si npm reste identique.
 2. Obtenir une **autorisation distincte de publication npm** ; l’acceptation SMTP et la fusion n’en tiennent pas lieu. Figer le commit effectivement retenu, vérifier que main et les 41 membres n’ont pas changé.
 3. Reconstruire deux tarballs depuis un clone propre ou utiliser les octets post-fusion conservés ; comparer membres, SHA256 et SRI au reçu. Si divergence, arrêter/requalifier. Tarball local vérifié : `/tmp/il511-release-postmerge/pack-1/drumee-infra-layer-0.1.0-alpha.3.tgz`.
 4. Revalider au registre exact version/disponibilité/dist-tags, identité/ACL et authentification/2FA ; version déjà existante ou accès changé : arrêt. Choisir et qualifier le mécanisme de provenance effectivement autorisé.
 5. Seulement après autorisation et conditions satisfaites : publication CLI du tarball exact avec `--registry=https://registry.npmjs.org/ --access public --tag next --ignore-scripts`, 2FA via mécanisme interactif approuvé. Aucun OTP/token dans le rapport ou historique shell, aucun dry-run assimilé à un droit serveur. **Aucune commande de publication exécutée ici.**
 6. Vérifier la version exacte publiée, dist.integrity et dist-tag next ; latest doit rester à sa valeur relevée juste avant publication. Télécharger le tarball du registre dans un répertoire neuf ; comparer SHA256/SRI avec le reçu préautorisé, installer avec scripts désactivés hors checkout, rejouer exports/types/préparation et refus. Enregistrer commit et provenance/attestation réellement publiés. Tout écart bloque la validation de release.
 
-Le [plan E existant](IL-5.11-resume-release-plan.md) reste une préparation antérieure ; le présent handoff fixe la référence intégrée et ajoute le blocage R6. Le chemin de tarball ci-dessus doit encore être vérifié au moment d’usage ; s’il a disparu, reconstruire et comparer, jamais supposer son identité.
+Le [plan E existant](IL-5.11-resume-release-plan.md) reste une préparation antérieure ; le présent handoff fixe la référence intégrée et documente le blocage R6, actualisé par le suivi de sécurité. Le chemin de tarball ci-dessus doit encore être vérifié au moment d’usage ; s’il a disparu, reconstruire et comparer, jamais supposer son identité.
 
 ## Consommateurs et arrêts
 

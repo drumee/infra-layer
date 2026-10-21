@@ -1,0 +1,22 @@
+{
+  "recorded_at_utc": "2026-10-21T16:08:58+00:00",
+  "status": "MERGED_POST_VALIDATION_FAILED",
+  "main_commit": "a02b76e4c421e96e63406d7b10edc2b76a6056c1",
+  "ci_post_merge": "PASS",
+  "quality_run": 39625251359,
+  "codeql_run": 39625521356,
+  "codeql_js_actions_upload_and_processing": "COMPLETE",
+  "sonar": "FAILURE",
+  "sonar_open": 236,
+  "sonar_new_ids_vs_B": 26,
+  "security_blocker": "CONFIRMED_QUALIFICATION_HELPER_OUTPUT_SYMLINK_DEFECT",
+  "scope": "Documentation evidence Python helpers, absent from the 41 npm members",
+  "package_bytes_changed": false,
+  "proof_compromise_observed": false,
+  "historical_dispatch_refusal_retained": true,
+  "new_dispatch_attempted": false,
+  "owner_smtp_decision": "SMTP_RESIDUAL_UNCERTAINTY_ACCEPTED_FOR_ALPHA3",
+  "owner_smtp_acceptance_does_not_cover_this_defect": true,
+  "publication_authorized": false,
+  "code_or_security_rules_modified": false
+}

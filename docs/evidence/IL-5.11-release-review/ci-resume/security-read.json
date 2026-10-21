@@ -1,0 +1,34 @@
+{
+  "recorded_at_utc": "2026-10-21T15:54:21.932929+00:00",
+  "actor": "somanos",
+  "results": [
+    {
+      "endpoint": "repos/drumee/infra-layer/code-scanning/alerts?state=open&ref=refs/heads/main&per_page=100",
+      "exit_code": 1,
+      "headers": [
+        "HTTP/2.0 403 Forbidden",
+        "X-Accepted-Github-Permissions: security_events=read",
+        "X-Github-Request-Id: 8550:1ED851:23DD90D:340CBCF:6AD8E02C"
+      ],
+      "response": {
+        "message": "Resource not accessible by personal access token",
+        "documentation_url": "https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository",
+        "status": "403"
+      }
+    },
+    {
+      "endpoint": "repos/drumee/infra-layer/code-scanning/analyses?ref=refs/heads/main&per_page=100",
+      "exit_code": 1,
+      "headers": [
+        "HTTP/2.0 403 Forbidden",
+        "X-Accepted-Github-Permissions: security_events=read",
+        "X-Github-Request-Id: 8560:1D65C9:2357B1F:335CD0B:6AD8E02D"
+      ],
+      "response": {
+        "message": "Resource not accessible by personal access token",
+        "documentation_url": "https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository",
+        "status": "403"
+      }
+    }
+  ]
+}
