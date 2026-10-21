@@ -1,0 +1,337 @@
+{
+  "pull_request": 17,
+  "analyzed_head": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+  "recorded_utc": "2026-10-21T21:27:37.882612+00:00",
+  "annotations": 29,
+  "rows": [
+    {
+      "id": "AaFgWKi-d7jkqQWKhJ3-",
+      "rule": "json:S6418",
+      "severity": "BLOCKER",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/E-artifact/artifact-receipt.json",
+      "line": 26,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "La valeur signal\u00e9e est exactement le SHA256 recalcul\u00e9 du fichier public capabilities/secrets/index.js ; empreinte de contenu distribu\u00e9e, pas un credential."
+    },
+    {
+      "id": "AaFgWKjFd7jkqQWKhJ4E",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/export-proof.py",
+      "line": 3,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKjFd7jkqQWKhJ4F",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/export-proof.py",
+      "line": 8,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKjFd7jkqQWKhJ4H",
+      "rule": "pythonsecurity:S8707",
+      "severity": "MAJOR",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/export-proof.py",
+      "line": 9,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "CLI locale de l\u2019op\u00e9rateur, pas requ\u00eate HTTP : source ouverte O_DIRECTORY/O_NOFOLLOW, puis EvidenceDirectory exige r\u00e9pertoire UID courant0700 et identit\u00e9 fstat/path. Lectures fd v\u00e9rifi\u00e9es ; aucun code import\u00e9 depuis cette entr\u00e9e. Nom export destin\u00e9 \u00e0 create(), valid\u00e9 par component() ; pas de privil\u00e8ge sup\u00e9rieur ni chemin d\u2019\u00e9criture d\u00e9riv\u00e9 sans contr\u00f4le."
+    },
+    {
+      "id": "AaFgWKjFd7jkqQWKhJ4G",
+      "rule": "python:S9154",
+      "severity": "MINOR",
+      "type": "CODE_SMELL",
+      "path": "docs/evidence/IL-5.11-R6S-D4/export-proof.py",
+      "line": 17,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "justification": "Duplication de litt\u00e9raux constants ou contextes with imbriqu\u00e9s, sans effet sur commande, dur\u00e9e, contr\u00f4le de flux, ressources ni contrat. Aucune modification pour rendre le scanner vert."
+    },
+    {
+      "id": "AaFgWKi9d7jkqQWKhJ39",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/sonar-read.py",
+      "line": 3,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKjDd7jkqQWKhJ4A",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/validate-proof.py",
+      "line": 3,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKjDd7jkqQWKhJ4B",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/validate-proof.py",
+      "line": 7,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKjDd7jkqQWKhJ4C",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/validate-proof.py",
+      "line": 7,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKjDd7jkqQWKhJ4D",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/validate-proof.py",
+      "line": 7,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKgLd7jkqQWKhJ37",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/diagnose.py",
+      "line": 3,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKgLd7jkqQWKhJ38",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/diagnose.py",
+      "line": 11,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKgLd7jkqQWKhJ35",
+      "rule": "python:S1192",
+      "severity": "CRITICAL",
+      "type": "CODE_SMELL",
+      "path": "docs/evidence/IL-5.11-R6S-D4/diagnose.py",
+      "line": 20,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "justification": "Duplication de litt\u00e9raux constants ou contextes with imbriqu\u00e9s, sans effet sur commande, dur\u00e9e, contr\u00f4le de flux, ressources ni contrat. Aucune modification pour rendre le scanner vert."
+    },
+    {
+      "id": "AaFgWKgLd7jkqQWKhJ36",
+      "rule": "python:S1192",
+      "severity": "CRITICAL",
+      "type": "CODE_SMELL",
+      "path": "docs/evidence/IL-5.11-R6S-D4/diagnose.py",
+      "line": 29,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "justification": "Duplication de litt\u00e9raux constants ou contextes with imbriqu\u00e9s, sans effet sur commande, dur\u00e9e, contr\u00f4le de flux, ressources ni contrat. Aucune modification pour rendre le scanner vert."
+    },
+    {
+      "id": "AaFgWKjBd7jkqQWKhJ3_",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S-D4/run-proof.py",
+      "line": 3,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_CHECKED_RECORDED_RUN_ONLY",
+      "justification": "Copie de diagnostic li\u00e9e \u00e0 cette ex\u00e9cution, pas s\u00e9lection automatique de source pour un nouveau runner : le clone /tmp/il511-r6s a \u00e9t\u00e9 s\u00e9lectionn\u00e9 et contr\u00f4l\u00e9 propre/UID1000/non inscriptible par tiers avant utilisation. Les chemins de preuve constants capturent des racines al\u00e9atoires0700 cr\u00e9\u00e9es par cette ex\u00e9cution ; destinations via EvidenceDirectory exclusif. Rejeu sur un autre h\u00f4te exige s\u00e9lection et v\u00e9rification explicites de ces entr\u00e9es ; aucune s\u00fbret\u00e9 promise si un op\u00e9rateur importe un clone non v\u00e9rifi\u00e9 ou absent."
+    },
+    {
+      "id": "AaFgWKlFd7jkqQWKhJ4T",
+      "rule": "python:S5778",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "path": "test/security/evidence_helpers_test.py",
+      "line": 164,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "justification": "D4 s\u00e9lectionne exactement une des deux op\u00e9rations par it\u00e9ration et exige UnsafeEvidencePath avec message UNTRUSTED_OWNER exact ; str-comparaison ne peut le produire. D10 teste les deux op\u00e9rations historiques et v\u00e9rifie les sentinelles apr\u00e8s. Les doubles appels de contexte ne masquent ni acceptation ni \u00e9criture ; les autres tests contr\u00f4lent s\u00e9par\u00e9ment open/read/create."
+    },
+    {
+      "id": "AaFgWKlCd7jkqQWKhJ4S",
+      "rule": "json:S6418",
+      "severity": "BLOCKER",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-R6S/static-distributed-comparison.json",
+      "line": 21,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "La valeur signal\u00e9e est exactement le SHA256 recalcul\u00e9 du fichier public capabilities/secrets/index.js ; empreinte de contenu distribu\u00e9e, pas un credential."
+    },
+    {
+      "id": "AaFgWKlFd7jkqQWKhJ4U",
+      "rule": "python:S5778",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "path": "test/security/evidence_helpers_test.py",
+      "line": 272,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "justification": "D4 s\u00e9lectionne exactement une des deux op\u00e9rations par it\u00e9ration et exige UnsafeEvidencePath avec message UNTRUSTED_OWNER exact ; str-comparaison ne peut le produire. D10 teste les deux op\u00e9rations historiques et v\u00e9rifie les sentinelles apr\u00e8s. Les doubles appels de contexte ne masquent ni acceptation ni \u00e9criture ; les autres tests contr\u00f4lent s\u00e9par\u00e9ment open/read/create."
+    },
+    {
+      "id": "AaFgWKlFd7jkqQWKhJ4V",
+      "rule": "python:S5778",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "path": "test/security/evidence_helpers_test.py",
+      "line": 277,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "justification": "D4 s\u00e9lectionne exactement une des deux op\u00e9rations par it\u00e9ration et exige UnsafeEvidencePath avec message UNTRUSTED_OWNER exact ; str-comparaison ne peut le produire. D10 teste les deux op\u00e9rations historiques et v\u00e9rifie les sentinelles apr\u00e8s. Les doubles appels de contexte ne masquent ni acceptation ni \u00e9criture ; les autres tests contr\u00f4lent s\u00e9par\u00e9ment open/read/create."
+    },
+    {
+      "id": "AaFgWKk5d7jkqQWKhJ4I",
+      "rule": "python:S1192",
+      "severity": "CRITICAL",
+      "type": "CODE_SMELL",
+      "path": "docs/evidence/IL-5.11-D2/qualify.py",
+      "line": 12,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "justification": "Duplication de litt\u00e9raux constants ou contextes with imbriqu\u00e9s, sans effet sur commande, dur\u00e9e, contr\u00f4le de flux, ressources ni contrat. Aucune modification pour rendre le scanner vert."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4K",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 71,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "Le /tmp syst\u00e8me est explicitement v\u00e9rifi\u00e9 (UID syst\u00e8me et sticky) ; mkdir al\u00e9atoire exclusif relatif au parent ouvert sans lien, racine0700/UID courant, fichiers O_EXCL/O_NOFOLLOW0600 via dir_fd/fstat. D1\u2013D10/86assertions et sorties r\u00e9elles r\u00e9ussissent ; aucune r\u00e9utilisation implicite."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4L",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 122,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "Le /tmp syst\u00e8me est explicitement v\u00e9rifi\u00e9 (UID syst\u00e8me et sticky) ; mkdir al\u00e9atoire exclusif relatif au parent ouvert sans lien, racine0700/UID courant, fichiers O_EXCL/O_NOFOLLOW0600 via dir_fd/fstat. D1\u2013D10/86assertions et sorties r\u00e9elles r\u00e9ussissent ; aucune r\u00e9utilisation implicite."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4O",
+      "rule": "pythonsecurity:S8707",
+      "severity": "MAJOR",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 128,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "Le flux passe par component() : nom simple non vide, ni point/double-point, slash ou NUL. Parent absolu sans double-point, composants ouverts sans lien et ownership/modes v\u00e9rifi\u00e9s ; mkdir/open relatifs \u00e0 dir_fd. O_EXCL/O_NOFOLLOW et fstat emp\u00eachent la substitution. L\u2019analyse ne mod\u00e9lise pas ces validations. D3 refuse ../ et D1/D2/D6/D10 les liens/sp\u00e9ciaux."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4Q",
+      "rule": "pythonsecurity:S8707",
+      "severity": "MAJOR",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 129,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "Le flux passe par component() : nom simple non vide, ni point/double-point, slash ou NUL. Parent absolu sans double-point, composants ouverts sans lien et ownership/modes v\u00e9rifi\u00e9s ; mkdir/open relatifs \u00e0 dir_fd. O_EXCL/O_NOFOLLOW et fstat emp\u00eachent la substitution. L\u2019analyse ne mod\u00e9lise pas ces validations. D3 refuse ../ et D1/D2/D6/D10 les liens/sp\u00e9ciaux."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4P",
+      "rule": "pythonsecurity:S8707",
+      "severity": "MAJOR",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 157,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "Le flux passe par component() : nom simple non vide, ni point/double-point, slash ou NUL. Parent absolu sans double-point, composants ouverts sans lien et ownership/modes v\u00e9rifi\u00e9s ; mkdir/open relatifs \u00e0 dir_fd. O_EXCL/O_NOFOLLOW et fstat emp\u00eachent la substitution. L\u2019analyse ne mod\u00e9lise pas ces validations. D3 refuse ../ et D1/D2/D6/D10 les liens/sp\u00e9ciaux."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4R",
+      "rule": "pythonsecurity:S8707",
+      "severity": "MAJOR",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 173,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "Le flux passe par component() : nom simple non vide, ni point/double-point, slash ou NUL. Parent absolu sans double-point, composants ouverts sans lien et ownership/modes v\u00e9rifi\u00e9s ; mkdir/open relatifs \u00e0 dir_fd. O_EXCL/O_NOFOLLOW et fstat emp\u00eachent la substitution. L\u2019analyse ne mod\u00e9lise pas ces validations. D3 refuse ../ et D1/D2/D6/D10 les liens/sp\u00e9ciaux."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4M",
+      "rule": "python:S5443",
+      "severity": "CRITICAL",
+      "type": "VULNERABILITY",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 205,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "justification": "Le /tmp syst\u00e8me est explicitement v\u00e9rifi\u00e9 (UID syst\u00e8me et sticky) ; mkdir al\u00e9atoire exclusif relatif au parent ouvert sans lien, racine0700/UID courant, fichiers O_EXCL/O_NOFOLLOW0600 via dir_fd/fstat. D1\u2013D10/86assertions et sorties r\u00e9elles r\u00e9ussissent ; aucune r\u00e9utilisation implicite."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4J",
+      "rule": "python:S1192",
+      "severity": "CRITICAL",
+      "type": "CODE_SMELL",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 212,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "justification": "Duplication de litt\u00e9raux constants ou contextes with imbriqu\u00e9s, sans effet sur commande, dur\u00e9e, contr\u00f4le de flux, ressources ni contrat. Aucune modification pour rendre le scanner vert."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4N",
+      "rule": "python:S108",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 227,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "justification": "Le bloc cr\u00e9e intentionnellement une configuration npm vide, en ouverture exclusive0600 ; le contexte assure la fermeture. Ne pas h\u00e9riter des configurations utilisateur/globales arbitraires est le comportement voulu."
+    }
+  ],
+  "public_sha256_proof": {
+    "file": "capabilities/secrets/index.js",
+    "sha256": "b872fa5cdd6868d0b89f17038aa445a8c709e675f4e82452fb7283647d48c432",
+    "matched_alerts": [
+      "AaFgWKi-d7jkqQWKhJ3-",
+      "AaFgWKlCd7jkqQWKhJ4S"
+    ]
+  },
+  "states_modified": false,
+  "limitations": "Les snapshots Python de diagnostic exigent un clone s\u00e9lectionn\u00e9/v\u00e9rifi\u00e9 ; ils ne sont pas des lanceurs autonomes de confiance pour un chemin /tmp arbitraire. SameUID/root exclus par contrat."
+}

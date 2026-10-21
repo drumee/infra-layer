@@ -17,3 +17,7 @@ Les deux appels du helper, création de destination et validation d’entrée, p
 Le passage prévu depuis clone propre pour E (18:15:42Z) confirme séparément les mêmes11scénarios/86assertions sans skip : [preuve](evidence/IL-5.11-R6S-D4/E-negative/E-negative.json). Il ne remplace ni ne gomme aucun échec antérieur. Aucune relance jusqu’au premier succès : diagnostic, correction ciblée, D4, D complet puis passage E de contrôle prévus séquentiellement.
 
 Les preuves ont été créées dans des racines EvidenceDirectory privées0700, fichiers exclusifs0600, puis exportées sans remplacement dans des dossiers nouveaux ; chaque export conserve les empreintes des octets originaux. L’environnement rootless/userns non mappé comme celui observé peut faire échouer la précondition UID65532 : il produira D4_SETUP_FAILED, jamais un skip ou PASS artificiel. Aucune capacité DAC/privileged ajoutée ; aucun contrôle d’ownership assoupli.
+
+## Confirmation GitHub
+
+Au HEAD0f8d80ca002dfac08e2d36617aa1031943c4be06 de la PR17, le job Quality packaging119493755178 exécute les mêmes11scénarios/86assertions avec opérateurUID1001 et fixtureUID65532, zéro skip. Il confirme les refus UNTRUSTED_OWNER et les sentinelles intactes sur un second environnement rootful sans remapping. [Journal et empreinte](evidence/IL-5.11-R6S-D4/G-job-logs/ci-logs.json).

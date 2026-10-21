@@ -1,3 +1,51 @@
+# IL-5.11-R6S — Revue des diagnostics de la PR17
+
+**Les29annotations au HEAD0f8d80c ont une disposition technique individuelle. SonarCloud reste FAILURE**, Security Rating E sur nouveau code ; aucun état administratif modifié. Le [relevé intégral](evidence/IL-5.11-R6S-D4/F-sonar-PR17/issues.json) et la [matrice motivée par ID](evidence/IL-5.11-R6S-D4/F-dispositions/dispositions.json) sont conservés.
+
+Dix annotations sont des faux positifs techniquement établis (hashes publics, chemins protégés et contrôle de noms/dir_fd), neuf observations de style n’altèrent pas les résultats. **Dix autres sont caractérisées uniquement dans le contexte des exécutions enregistrées** : copies de diagnostic avec chemins fixés vers le clone et les preuves sélectionnés, contrôlés et possédés. Ce ne sont pas des lanceurs autonomes sûrs pour un chemin arbitraire sur un nouvel hôte. Ne pas reclasser ces dix cas en faux positifs génériques ; toute reprise doit vérifier le clone et les dossiers de preuves avant de les importer/lire. Le contrat des trois helpers corrigés n’utilise plus de checkout implicite ni de cache global prévisible.
+
+Les deux S6418 sont exactement le SHA256 public recalculé de capabilities/secrets/index.js : `b872fa5cdd6868d0b89f17038aa445a8c709e675f4e82452fb7283647d48c432`. Rien ne stocke ou vérifie ici un mot de passe. Les S8707 traversent component()/open_trusted et les opérations fd : noms simples sans slash/point/double-point/NUL, parents absolus vérifiés sans lien, UID/modes et créations exclusives. D4 exige le refus métier et les tests de liens/../primitives historiques réussissent ; ce sont les contrôles effectifs, pas un changement de ligne Sonar, qui fondent la disposition.
+
+Les S5778 ne masquent pas d’erreur : une seule opération est sélectionnée par itération D4, le type et message UNTRUSTED_OWNER sont exigés. Les deux autres contextes vérifient les primitives historiques puis toutes les sentinelles. S108 est un fichier npmrc volontairement vide créé0600/exclusif et fermé par contexte. Les doublons de commandes/with restent de style, sans changer le code pour l’apparence du scanner.
+
+| ID | Règle | Emplacement | Disposition technique |
+| --- | --- | --- | --- |
+| `AaFgWKi-d7jkqQWKhJ3-` | json:S6418 | `IL-5.11-R6S-D4/E-artifact/artifact-receipt.json:26` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKjFd7jkqQWKhJ4E` | python:S5443 | `IL-5.11-R6S-D4/export-proof.py:3` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKjFd7jkqQWKhJ4F` | python:S5443 | `IL-5.11-R6S-D4/export-proof.py:8` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKjFd7jkqQWKhJ4H` | pythonsecurity:S8707 | `IL-5.11-R6S-D4/export-proof.py:9` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKjFd7jkqQWKhJ4G` | python:S9154 | `IL-5.11-R6S-D4/export-proof.py:17` | STYLE_ONLY_CONTEXT_CHECKED |
+| `AaFgWKi9d7jkqQWKhJ39` | python:S5443 | `IL-5.11-R6S-D4/sonar-read.py:3` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKjDd7jkqQWKhJ4A` | python:S5443 | `IL-5.11-R6S-D4/validate-proof.py:3` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKjDd7jkqQWKhJ4B` | python:S5443 | `IL-5.11-R6S-D4/validate-proof.py:7` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKjDd7jkqQWKhJ4C` | python:S5443 | `IL-5.11-R6S-D4/validate-proof.py:7` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKjDd7jkqQWKhJ4D` | python:S5443 | `IL-5.11-R6S-D4/validate-proof.py:7` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKgLd7jkqQWKhJ37` | python:S5443 | `IL-5.11-R6S-D4/diagnose.py:3` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKgLd7jkqQWKhJ38` | python:S5443 | `IL-5.11-R6S-D4/diagnose.py:11` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKgLd7jkqQWKhJ35` | python:S1192 | `IL-5.11-R6S-D4/diagnose.py:20` | STYLE_ONLY_CONTEXT_CHECKED |
+| `AaFgWKgLd7jkqQWKhJ36` | python:S1192 | `IL-5.11-R6S-D4/diagnose.py:29` | STYLE_ONLY_CONTEXT_CHECKED |
+| `AaFgWKjBd7jkqQWKhJ3_` | python:S5443 | `IL-5.11-R6S-D4/run-proof.py:3` | CONTEXT_CHECKED_RECORDED_RUN_ONLY |
+| `AaFgWKlFd7jkqQWKhJ4T` | python:S5778 | `test/security/evidence_helpers_test.py:164` | STYLE_ONLY_CONTEXT_CHECKED |
+| `AaFgWKlCd7jkqQWKhJ4S` | json:S6418 | `IL-5.11-R6S/static-distributed-comparison.json:21` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKlFd7jkqQWKhJ4U` | python:S5778 | `test/security/evidence_helpers_test.py:272` | STYLE_ONLY_CONTEXT_CHECKED |
+| `AaFgWKlFd7jkqQWKhJ4V` | python:S5778 | `test/security/evidence_helpers_test.py:277` | STYLE_ONLY_CONTEXT_CHECKED |
+| `AaFgWKk5d7jkqQWKhJ4I` | python:S1192 | `IL-5.11-D2/qualify.py:12` | STYLE_ONLY_CONTEXT_CHECKED |
+| `AaFgWKk_d7jkqQWKhJ4K` | python:S5443 | `IL-5.11-D2/secure_evidence.py:71` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKk_d7jkqQWKhJ4L` | python:S5443 | `IL-5.11-D2/secure_evidence.py:122` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKk_d7jkqQWKhJ4O` | pythonsecurity:S8707 | `IL-5.11-D2/secure_evidence.py:128` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKk_d7jkqQWKhJ4Q` | pythonsecurity:S8707 | `IL-5.11-D2/secure_evidence.py:129` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKk_d7jkqQWKhJ4P` | pythonsecurity:S8707 | `IL-5.11-D2/secure_evidence.py:157` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKk_d7jkqQWKhJ4R` | pythonsecurity:S8707 | `IL-5.11-D2/secure_evidence.py:173` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKk_d7jkqQWKhJ4M` | python:S5443 | `IL-5.11-D2/secure_evidence.py:205` | FALSE_POSITIVE_TECHNICALLY_CONFIRMED |
+| `AaFgWKk_d7jkqQWKhJ4J` | python:S1192 | `IL-5.11-D2/secure_evidence.py:212` | STYLE_ONLY_CONTEXT_CHECKED |
+| `AaFgWKk_d7jkqQWKhJ4N` | python:S108 | `IL-5.11-D2/secure_evidence.py:227` | STYLE_ONLY_CONTEXT_CHECKED |
+
+Les trois anciens défauts de destination D2 sont techniquement corrigés et qualifiés ; aucun état CLOSED/FIXED Sonar non observé n’est annoncé. La vue PR contient les diagnostics du diff, pas l’inventaire global. CodeQL : analyses JS/TS+Actions et contrôle de résultat SUCCESS, aucune nouvelle alerte dans le code modifié selon ce contrôle ; **aucune couverture Python prétendue**. Inventaires globaux Code Scanning et Dependabot fraîchement HTTP403 avec le PAT ; protection classique HTTP403 avec l’intégration. [Accès observés](evidence/IL-5.11-R6S-D4/G-security-access/access.json). Main protected=false et rulesets incluant parents vides à la lecture, sans changement de politique.
+
+Les limites root/sameUID et de confiance dans le filesystem restent celles du contrat. Aucun risque SMTP supplémentaire accepté ; aucune portée Internet delivery/spool ajoutée. Les copies vulnérables de #16 restent à faire converger avant leur intégration ; cette PR ne les fusionne pas.
+
+## Rapports précédents conservés
+
 # IL-5.11-R6S — Réexamen après qualification D4/E
 
 Les défauts de sorties des trois helpers sont **TECHNICALLY_FIXED_AND_LOCALLY_QUALIFIED** : racines exclusives privées, écritures fd, D1/D2/D10 et D4 réellement réussis. Les anciens chemins NEEDS_INVESTIGATION source/cache/TS sont désormais caractérisés : source explicite vérifiée propre, cache privé par exécution, TS explicite avec contrôle de composants/arbre ; Nginx garde ses protections IL-5.11R. Les exécutions E réelles réussissent sans permissions assouplies ni dépendance ajoutée.
