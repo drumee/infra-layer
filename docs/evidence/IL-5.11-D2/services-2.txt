@@ -1,0 +1,441 @@
+
+> @drumee/infra-layer@0.1.0-alpha.3 test:services
+> node test/services/run.js
+
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"runner.begin","utc":"2026-10-21T10:47:36.431Z","mono_ns":"181770997174500","load":[2.94,2.41,2.14],"free_bytes":19805241344,"total_bytes":33495498752}
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.services
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile.services
+#1 transferring dockerfile: 994B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+#4 DONE 0.0s
+
+#5 [2/2] RUN apt-get update -qq && apt-get install -y --no-install-recommends     bind9=1:9.18.49-1~deb12u2 bind9-utils=1:9.18.49-1~deb12u2 bind9-dnsutils=1:9.18.49-1~deb12u2     postfix=3.7.11-0+deb12u1 libsasl2-modules=2.1.28+dfsg-10 sasl2-bin=2.1.28+dfsg-10     opendkim=2.11.0~beta2-8+deb12u1 opendkim-tools=2.11.0~beta2-8+deb12u1     openssl=3.0.22-1~deb12u1 ca-certificates=20250419~deb12u1 &&     usermod -aG sasl postfix && useradd --uid 1000 --user-group --no-create-home --shell /usr/sbin/nologin infra && mkdir -p /opt/infra &&     cp -a /var/spool/postfix /opt/infra/postfix-queue &&     rm -f /etc/bind/rndc.key /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/certs/ssl-cert-snakeoil.pem &&     rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 exporting to image
+#6 exporting layers done
+#6 writing image sha256:ab93d64939f06c8c8fcbf4181ffddaf081f888d1a3ddbe25bbae4914c50dc0f0 done
+#6 naming to docker.io/library/drumee-il2-services:drumee-il2-test-3789ff27 done
+#6 DONE 0.0s
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"certificate.prepared","utc":"2026-10-21T10:47:37.020Z","mono_ns":"181771586231778"}
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 272B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 27.31MB 0.4s done
+#5 DONE 0.4s
+
+#6 [2/3] COPY node_modules /fixture/node_modules
+#6 CACHED
+
+#7 [3/3] COPY capture.js /fixture/capture.js
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 writing image sha256:ba68d421c7ee3b49b0ab9e77f0618f944c4983d8805df8e8b42fe17723c35954 0.1s done
+#8 naming to docker.io/library/drumee-il2-capture:drumee-il2-test-3789ff27
+#8 naming to docker.io/library/drumee-il2-capture:drumee-il2-test-3789ff27 done
+#8 DONE 0.1s
+{"project":"drumee-il2-test-3789ff27","ports":{"dns":34671,"database":44725,"redis":38851,"mail":38309,"capture":43557},"revision":"4075bb6a052652bae846ed3fb55f1cdc5f53fb8adf682724709cddfb33357c7d","image_id":"sha256:ab93d64939f06c8c8fcbf4181ffddaf081f888d1a3ddbe25bbae4914c50dc0f0"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.begin","utc":"2026-10-21T10:47:40.432Z","mono_ns":"181774997572294","operation":"config"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.end","utc":"2026-10-21T10:47:40.478Z","mono_ns":"181775044152380","operation":"config","duration_ms":46.574606}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.begin","utc":"2026-10-21T10:47:40.478Z","mono_ns":"181775044249088","operation":"run"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.end","utc":"2026-10-21T10:47:41.386Z","mono_ns":"181775951761337","operation":"run","duration_ms":907.497054}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.begin","utc":"2026-10-21T10:47:41.386Z","mono_ns":"181775951999060","operation":"run"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.end","utc":"2026-10-21T10:47:41.847Z","mono_ns":"181776412569261","operation":"run","duration_ms":460.559411}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.begin","utc":"2026-10-21T10:47:41.847Z","mono_ns":"181776412830957","operation":"run"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.end","utc":"2026-10-21T10:47:42.358Z","mono_ns":"181776924078125","operation":"run","duration_ms":511.217785}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.begin","utc":"2026-10-21T10:47:42.358Z","mono_ns":"181776924176186","operation":"up"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.end","utc":"2026-10-21T10:47:48.479Z","mono_ns":"181783044821670","operation":"up","duration_ms":6120.639535}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"services.health.ready","utc":"2026-10-21T10:47:48.479Z","mono_ns":"181783044970676","load":[3.41,2.53,2.18],"free_bytes":18798678016,"total_bytes":33495498752}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"service.state","utc":"2026-10-21T10:47:48.492Z","mono_ns":"181783057898283","service":"mail","state":"\"running\" \"healthy\" false 0"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"service.state","utc":"2026-10-21T10:47:48.503Z","mono_ns":"181783068969801","service":"dkim","state":"\"running\" \"healthy\" false 0"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"service.state","utc":"2026-10-21T10:47:48.514Z","mono_ns":"181783080076131","service":"capture","state":"\"running\" \"healthy\" false 0"}
+TAP version 13
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:48.744Z","mono_ns":"181783310287191","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:48.793Z","mono_ns":"181783359419873","operation":"ps","duration_ms":49.324442}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:48.805Z","mono_ns":"181783370492403","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:48.851Z","mono_ns":"181783416536568","operation":"ps","duration_ms":46.038943}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:48.861Z","mono_ns":"181783426819003","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:48.907Z","mono_ns":"181783473090055","operation":"ps","duration_ms":46.276851}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:48.918Z","mono_ns":"181783483778449","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:48.962Z","mono_ns":"181783527680513","operation":"ps","duration_ms":43.913305}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:48.972Z","mono_ns":"181783538322260","operation":"ps","services":["dkim"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:49.017Z","mono_ns":"181783582714819","operation":"ps","duration_ms":44.382332}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:49.076Z","mono_ns":"181783641772767","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:49.136Z","mono_ns":"181783701824657","operation":"ps","duration_ms":60.057905}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:49.219Z","mono_ns":"181783784997903","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:49.264Z","mono_ns":"181783829797440","operation":"ps","duration_ms":44.81502}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:49.467Z","mono_ns":"181784032610479","operation":"ps","services":["dkim"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:49.510Z","mono_ns":"181784075594178","operation":"ps","duration_ms":42.990497}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:49.581Z","mono_ns":"181784147378965","operation":"ps","services":["dkim"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:49.625Z","mono_ns":"181784191122836","operation":"ps","duration_ms":43.746958}
+# Subtest: managed descriptors parse native configs, publish only test loopback ports and mount no secret-store root
+ok 1 - managed descriptors parse native configs, publish only test loopback ports and mount no secret-store root
+  ---
+  duration_ms: 892.108757
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:49.645Z","mono_ns":"181784211284817","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:49.688Z","mono_ns":"181784254255232","operation":"ps","duration_ms":42.969162}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:49.808Z","mono_ns":"181784374317897","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:49.892Z","mono_ns":"181784457513174","operation":"ps","duration_ms":83.201204}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:49.992Z","mono_ns":"181784557787668","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:50.035Z","mono_ns":"181784601015229","operation":"ps","duration_ms":43.228961}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:50.035Z","mono_ns":"181784601087186","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:50.083Z","mono_ns":"181784649457968","operation":"ps","duration_ms":48.363153}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:50.084Z","mono_ns":"181784649529526","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:50.129Z","mono_ns":"181784695330759","operation":"ps","duration_ms":45.793901}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:50.129Z","mono_ns":"181784695403931","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:50.173Z","mono_ns":"181784738747218","operation":"ps","duration_ms":43.335435}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:50.173Z","mono_ns":"181784738822233","operation":"ps","services":["dkim"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:50.216Z","mono_ns":"181784782383523","operation":"ps","duration_ms":43.553982}
+# Subtest: real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion
+ok 2 - real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion
+  ---
+  duration_ms: 355.240148
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:50.634Z","mono_ns":"181785200476636","operation":"restart","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:51.300Z","mono_ns":"181785865949864","operation":"restart","duration_ms":665.474079}
+# Subtest: real service observer separates protocol success, Docker revision labels and unverified loaded configuration
+ok 3 - real service observer separates protocol success, Docker revision labels and unverified loaded configuration
+  ---
+  duration_ms: 641.524479
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:52.835Z","mono_ns":"181787400726112","operation":"up","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:53.553Z","mono_ns":"181788118571714","operation":"up","duration_ms":717.838406}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:55.907Z","mono_ns":"181790472530876","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:55.962Z","mono_ns":"181790527517847","operation":"ps","duration_ms":54.990078}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:56.060Z","mono_ns":"181790625983361","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:56.105Z","mono_ns":"181790671046990","operation":"ps","duration_ms":45.06454}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:56.203Z","mono_ns":"181790769011744","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:56.249Z","mono_ns":"181790815145520","operation":"ps","duration_ms":46.130833}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:56.352Z","mono_ns":"181790918070755","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:56.396Z","mono_ns":"181790962415613","operation":"ps","duration_ms":44.345961}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:56.505Z","mono_ns":"181791071331302","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:56.553Z","mono_ns":"181791118715561","operation":"ps","duration_ms":47.385683}
+# Subtest: BIND9 restart and recreation preserve zone serial and TSIG fingerprint
+ok 4 - BIND9 restart and recreation preserve zone serial and TSIG fingerprint
+  ---
+  duration_ms: 4403.343886
+  type: 'test'
+  ...
+# Subtest: DNS port conflict and corrupt native configuration are rejected
+ok 5 - DNS port conflict and corrupt native configuration are rejected
+  ---
+  duration_ms: 869.585514
+  type: 'test'
+  ...
+# Subtest: MariaDB fresh initialization creates no kernel/application schema and rejects incompatible engines
+ok 6 - MariaDB fresh initialization creates no kernel/application schema and rejects incompatible engines
+  ---
+  duration_ms: 1307.218498
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:57.223Z","mono_ns":"181791789291173","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:57.271Z","mono_ns":"181791837305853","operation":"ps","duration_ms":48.014063}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:57.380Z","mono_ns":"181791946298522","operation":"restart","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:58.030Z","mono_ns":"181792596256056","operation":"restart","duration_ms":649.959327}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:58.030Z","mono_ns":"181792596405654","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:58.078Z","mono_ns":"181792644131729","operation":"ps","duration_ms":47.720957}
+# Subtest: MariaDB service account connects over TCP, rejects wrong credentials and owns no schema grants
+ok 7 - MariaDB service account connects over TCP, rejects wrong credentials and owns no schema grants
+  ---
+  duration_ms: 9.085162
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:58.358Z","mono_ns":"181792924423783","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:58.408Z","mono_ns":"181792974037898","operation":"ps","duration_ms":49.614723}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:58.684Z","mono_ns":"181793250433488","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:58.734Z","mono_ns":"181793300043139","operation":"ps","duration_ms":49.612925}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:59.005Z","mono_ns":"181793571472013","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:59.060Z","mono_ns":"181793626032296","operation":"ps","duration_ms":54.562735}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:59.333Z","mono_ns":"181793899485551","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:59.387Z","mono_ns":"181793952792803","operation":"ps","duration_ms":53.309197}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:59.640Z","mono_ns":"181794205749081","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:47:59.690Z","mono_ns":"181794256125811","operation":"ps","duration_ms":50.380777}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:47:59.955Z","mono_ns":"181794521339888","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:00.002Z","mono_ns":"181794567635244","operation":"ps","duration_ms":46.298215}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:00.268Z","mono_ns":"181794834469140","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:00.313Z","mono_ns":"181794879228566","operation":"ps","duration_ms":44.760752}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:00.431Z","mono_ns":"181794996796178","operation":"up","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:01.050Z","mono_ns":"181795616453920","operation":"up","duration_ms":619.659517}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:01.051Z","mono_ns":"181795616603816","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:01.100Z","mono_ns":"181795666016111","operation":"ps","duration_ms":49.40469}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:01.374Z","mono_ns":"181795940475184","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:01.426Z","mono_ns":"181795991683708","operation":"ps","duration_ms":51.210682}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:01.694Z","mono_ns":"181796260404003","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:01.757Z","mono_ns":"181796322498638","operation":"ps","duration_ms":62.095581}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:02.038Z","mono_ns":"181796603501118","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:02.084Z","mono_ns":"181796649882951","operation":"ps","duration_ms":46.384785}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:02.365Z","mono_ns":"181796931369505","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:02.410Z","mono_ns":"181796976390687","operation":"ps","duration_ms":45.022312}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:02.677Z","mono_ns":"181797242495848","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:02.721Z","mono_ns":"181797286855119","operation":"ps","duration_ms":44.361482}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:02.997Z","mono_ns":"181797563340095","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:03.043Z","mono_ns":"181797608952534","operation":"ps","duration_ms":45.614072}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:03.329Z","mono_ns":"181797895441578","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:03.374Z","mono_ns":"181797940017132","operation":"ps","duration_ms":44.561908}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:03.653Z","mono_ns":"181798219333837","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:03.701Z","mono_ns":"181798267336207","operation":"ps","duration_ms":48.005651}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:03.969Z","mono_ns":"181798534854295","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:04.015Z","mono_ns":"181798580809372","operation":"ps","duration_ms":45.955056}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:04.281Z","mono_ns":"181798847406178","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:04.329Z","mono_ns":"181798895173092","operation":"ps","duration_ms":47.768984}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:04.601Z","mono_ns":"181799167411583","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:04.649Z","mono_ns":"181799214700172","operation":"ps","duration_ms":47.288771}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:04.922Z","mono_ns":"181799488324116","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:04.981Z","mono_ns":"181799547096447","operation":"ps","duration_ms":58.780163}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:05.249Z","mono_ns":"181799815406403","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:05.296Z","mono_ns":"181799862124238","operation":"ps","duration_ms":46.724724}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:05.557Z","mono_ns":"181800123344063","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:05.621Z","mono_ns":"181800187314039","operation":"ps","duration_ms":63.969887}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:05.692Z","mono_ns":"181800257757513","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:05.740Z","mono_ns":"181800305672982","operation":"ps","duration_ms":47.914205}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:05.870Z","mono_ns":"181800436217938","operation":"ps","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:05.982Z","mono_ns":"181800547759935","operation":"ps","duration_ms":111.539438}
+# Subtest: MariaDB existing-volume restart/recreation preserve data and credentials; repeated account provision does not rotate
+ok 8 - MariaDB existing-volume restart/recreation preserve data and credentials; repeated account provision does not rotate
+  ---
+  duration_ms: 8864.159677
+  type: 'test'
+  ...
+# Subtest: Redis authenticated connection and pub/sub work, unauthenticated/wrong clients reject
+ok 9 - Redis authenticated connection and pub/sub work, unauthenticated/wrong clients reject
+  ---
+  duration_ms: 213.776095
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:06.304Z","mono_ns":"181800870000333","operation":"restart","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:06.842Z","mono_ns":"181801408486107","operation":"restart","duration_ms":538.48578}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:06.845Z","mono_ns":"181801410795503","operation":"up","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:07.438Z","mono_ns":"181802004457761","operation":"up","duration_ms":593.659662}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.client.created","utc":"2026-10-21T10:48:14.435Z","mono_ns":"181809001228456","connection":1,"auth_requested":true}
+# Subtest: Redis AOF survives recreation with the same secret fingerprint and authenticated reconnection
+ok 10 - Redis AOF survives recreation with the same secret fingerprint and authenticated reconnection
+  ---
+  duration_ms: 1140.473269
+  type: 'test'
+  ...
+# Subtest: revision-pinned Essentials RedisStore authenticates via redisUrl including duplicate pub/sub clients
+ok 11 - revision-pinned Essentials RedisStore authenticates via redisUrl including duplicate pub/sub clients
+  ---
+  duration_ms: 198.498466
+  type: 'test'
+  ...
+# Subtest: Redis ephemeral descriptor loses reconstructible state on recreation and rejects malformed configuration
+ok 12 - Redis ephemeral descriptor loses reconstructible state on recreation and rejects malformed configuration
+  ---
+  duration_ms: 6794.787093
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.network","utc":"2026-10-21T10:48:14.444Z","mono_ns":"181809009652701","connection":1}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.478Z","mono_ns":"181809044295328","connection":1,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.479Z","mono_ns":"181809044491183","connection":1,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.479Z","mono_ns":"181809044754678","connection":1,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.479Z","mono_ns":"181809044900748","connection":1,"verb":"STARTTLS"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.479Z","mono_ns":"181809045119872","connection":1,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.tls.established","utc":"2026-10-21T10:48:14.492Z","mono_ns":"181809058454041","connection":1}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.493Z","mono_ns":"181809058532791","connection":1,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.534Z","mono_ns":"181809100282694","connection":1,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.535Z","mono_ns":"181809101155891","connection":1,"verb":"AUTH"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.536Z","mono_ns":"181809101702785","connection":1,"response_code":235}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.authenticated","utc":"2026-10-21T10:48:14.536Z","mono_ns":"181809101841577","connection":1}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.539Z","mono_ns":"181809104815182","connection":1,"verb":"MAIL"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.539Z","mono_ns":"181809104915665","connection":1,"verb":"RCPT"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.539Z","mono_ns":"181809104951039","connection":1,"verb":"DATA"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.546Z","mono_ns":"181809111701113","connection":1,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.546Z","mono_ns":"181809111938494","connection":1,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.546Z","mono_ns":"181809112079121","connection":1,"response_code":354}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.636Z","mono_ns":"181809202330967","connection":1,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"capture.count","utc":"2026-10-21T10:48:14.659Z","mono_ns":"181809225440809","count":0}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"capture.count","utc":"2026-10-21T10:48:14.861Z","mono_ns":"181809427063676","count":1}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.client.created","utc":"2026-10-21T10:48:14.861Z","mono_ns":"181809427131380","connection":2,"auth_requested":false}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.client.created","utc":"2026-10-21T10:48:14.861Z","mono_ns":"181809427270768","connection":3,"auth_requested":true}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.network","utc":"2026-10-21T10:48:14.863Z","mono_ns":"181809429139899","connection":2}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.884Z","mono_ns":"181809450118302","connection":2,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.884Z","mono_ns":"181809450230423","connection":2,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.884Z","mono_ns":"181809450445080","connection":2,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.885Z","mono_ns":"181809450549340","connection":2,"verb":"STARTTLS"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.885Z","mono_ns":"181809450718822","connection":2,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.tls.established","utc":"2026-10-21T10:48:14.887Z","mono_ns":"181809452889153","connection":2}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.887Z","mono_ns":"181809452939094","connection":2,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.930Z","mono_ns":"181809496322448","connection":2,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.931Z","mono_ns":"181809497341524","connection":2,"verb":"MAIL"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.931Z","mono_ns":"181809497381013","connection":2,"verb":"RCPT"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.931Z","mono_ns":"181809497412565","connection":2,"verb":"DATA"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.932Z","mono_ns":"181809498174801","connection":2,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.932Z","mono_ns":"181809498244371","connection":2,"response_code":554}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.933Z","mono_ns":"181809498483885","connection":2,"response_code":554}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.error","utc":"2026-10-21T10:48:14.933Z","mono_ns":"181809498715698","connection":2,"code":"EENVELOPE","command":"RCPT"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.error","utc":"2026-10-21T10:48:14.933Z","mono_ns":"181809498852973","connection":2,"code":"EENVELOPE","command":"RCPT"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.network","utc":"2026-10-21T10:48:14.934Z","mono_ns":"181809499622778","connection":3}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.961Z","mono_ns":"181809527195287","connection":3,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.961Z","mono_ns":"181809527306606","connection":3,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.961Z","mono_ns":"181809527441040","connection":3,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.961Z","mono_ns":"181809527477925","connection":3,"verb":"STARTTLS"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:14.962Z","mono_ns":"181809527579958","connection":3,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.tls.established","utc":"2026-10-21T10:48:14.964Z","mono_ns":"181809529790093","connection":3}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:14.964Z","mono_ns":"181809529834845","connection":3,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:15.006Z","mono_ns":"181809572256374","connection":3,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:15.006Z","mono_ns":"181809572440621","connection":3,"verb":"AUTH"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:15.007Z","mono_ns":"181809572952607","connection":3,"response_code":535}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.authfail","utc":"2026-10-21T10:48:15.007Z","mono_ns":"181809573016230","connection":3}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.error","utc":"2026-10-21T10:48:15.007Z","mono_ns":"181809573164259","connection":3,"code":"EAUTH","command":"AUTH"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:15.009Z","mono_ns":"181809574912318","operation":"restart","services":["dkim"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:20.297Z","mono_ns":"181814862829036","operation":"restart","duration_ms":5287.907712}
+# Subtest: SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails
+ok 13 - SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails
+  ---
+  duration_ms: 572.539135
+  type: 'test'
+  ...
+# Subtest: OpenDKIM signs captured bytes with the persistent key and valid public TXT material
+ok 14 - OpenDKIM signs captured bytes with the persistent key and valid public TXT material
+  ---
+  duration_ms: 5290.375593
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"capture.count","utc":"2026-10-21T10:48:20.301Z","mono_ns":"181814867273804","count":1}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:20.301Z","mono_ns":"181814867331894","operation":"stop","services":["capture"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:20.751Z","mono_ns":"181815317248561","operation":"stop","duration_ms":449.908969}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.client.created","utc":"2026-10-21T10:48:20.751Z","mono_ns":"181815317356223","connection":4,"auth_requested":true}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.network","utc":"2026-10-21T10:48:20.756Z","mono_ns":"181815322238508","connection":4}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:20.825Z","mono_ns":"181815391168469","connection":4,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:20.825Z","mono_ns":"181815391305352","connection":4,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:20.826Z","mono_ns":"181815391492060","connection":4,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:20.826Z","mono_ns":"181815391540984","connection":4,"verb":"STARTTLS"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:20.826Z","mono_ns":"181815391660880","connection":4,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.tls.established","utc":"2026-10-21T10:48:20.828Z","mono_ns":"181815394429024","connection":4}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:20.829Z","mono_ns":"181815394484098","connection":4,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:20.870Z","mono_ns":"181815436371583","connection":4,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:20.871Z","mono_ns":"181815436658991","connection":4,"verb":"AUTH"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:20.871Z","mono_ns":"181815437095661","connection":4,"response_code":235}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.authenticated","utc":"2026-10-21T10:48:20.871Z","mono_ns":"181815437149642","connection":4}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:20.872Z","mono_ns":"181815437812364","connection":4,"verb":"MAIL"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:20.872Z","mono_ns":"181815437859977","connection":4,"verb":"RCPT"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:20.872Z","mono_ns":"181815437892474","connection":4,"verb":"DATA"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:20.873Z","mono_ns":"181815438831299","connection":4,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:20.873Z","mono_ns":"181815438937781","connection":4,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:20.873Z","mono_ns":"181815439005302","connection":4,"response_code":354}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:20.960Z","mono_ns":"181815526104428","connection":4,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:20.960Z","mono_ns":"181815526377952","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:21.004Z","mono_ns":"181815569945901","operation":"ps","duration_ms":43.560143}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:21.079Z","mono_ns":"181815644928954","operation":"up","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:21.879Z","mono_ns":"181816444861408","operation":"up","duration_ms":799.933887}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:21.879Z","mono_ns":"181816444999617","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:21.923Z","mono_ns":"181816489337355","operation":"ps","duration_ms":44.330456}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:23.715Z","mono_ns":"181818281391125","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:23.763Z","mono_ns":"181818329052798","operation":"ps","duration_ms":47.664277}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:23.855Z","mono_ns":"181818420536965","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:23.902Z","mono_ns":"181818467966203","operation":"ps","duration_ms":47.431163}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:23.945Z","mono_ns":"181818510703425","operation":"start","services":["capture"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:24.151Z","mono_ns":"181818717214593","operation":"start","duration_ms":206.512518}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:24.151Z","mono_ns":"181818717378024","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:24.200Z","mono_ns":"181818766205893","operation":"ps","duration_ms":48.820912}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"capture.count","utc":"2026-10-21T10:48:24.284Z","mono_ns":"181818849634011","count":1}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:24.484Z","mono_ns":"181819049496736","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:24.533Z","mono_ns":"181819098622659","operation":"ps","duration_ms":49.127601}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"capture.count","utc":"2026-10-21T10:48:24.607Z","mono_ns":"181819172537904","count":2}
+# Subtest: Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration
+ok 15 - Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration
+  ---
+  duration_ms: 4309.007382
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"capture.count","utc":"2026-10-21T10:48:24.638Z","mono_ns":"181819203593928","count":2}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:24.638Z","mono_ns":"181819203654671","operation":"up","services":["capture","mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:30.051Z","mono_ns":"181824616633169","operation":"up","duration_ms":5412.973636}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.client.created","utc":"2026-10-21T10:48:30.051Z","mono_ns":"181824616724756","connection":5,"auth_requested":true}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.network","utc":"2026-10-21T10:48:30.053Z","mono_ns":"181824618793444","connection":5}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:30.116Z","mono_ns":"181824682170667","connection":5,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:30.116Z","mono_ns":"181824682279909","connection":5,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:30.116Z","mono_ns":"181824682447570","connection":5,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:30.117Z","mono_ns":"181824682498452","connection":5,"verb":"STARTTLS"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:30.117Z","mono_ns":"181824682723101","connection":5,"response_code":220}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.tls.established","utc":"2026-10-21T10:48:30.120Z","mono_ns":"181824685491966","connection":5}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:30.120Z","mono_ns":"181824685554060","connection":5,"verb":"EHLO"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:30.162Z","mono_ns":"181824728269293","connection":5,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:30.162Z","mono_ns":"181824728454482","connection":5,"verb":"AUTH"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:30.163Z","mono_ns":"181824728911817","connection":5,"response_code":235}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.authenticated","utc":"2026-10-21T10:48:30.163Z","mono_ns":"181824728967697","connection":5}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:30.164Z","mono_ns":"181824729544782","connection":5,"verb":"MAIL"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:30.164Z","mono_ns":"181824729589295","connection":5,"verb":"RCPT"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.command","utc":"2026-10-21T10:48:30.164Z","mono_ns":"181824729627408","connection":5,"verb":"DATA"}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:30.170Z","mono_ns":"181824735893677","connection":5,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:30.170Z","mono_ns":"181824736028690","connection":5,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:30.170Z","mono_ns":"181824736108330","connection":5,"response_code":354}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"smtp.response","utc":"2026-10-21T10:48:30.260Z","mono_ns":"181824826274633","connection":5,"response_code":250}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"capture.count","utc":"2026-10-21T10:48:30.262Z","mono_ns":"181824828364538","count":2}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"capture.count","utc":"2026-10-21T10:48:30.464Z","mono_ns":"181825030204507","count":3}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:30.467Z","mono_ns":"181825033061537","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:30.512Z","mono_ns":"181825078437886","operation":"ps","duration_ms":45.378742}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:30.601Z","mono_ns":"181825167420412","operation":"ps","services":["mail"]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:30.648Z","mono_ns":"181825214425282","operation":"ps","duration_ms":47.007945}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.begin","utc":"2026-10-21T10:48:30.740Z","mono_ns":"181825306293795","operation":"up","services":[]}
+# IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"test.compose.end","utc":"2026-10-21T10:48:31.418Z","mono_ns":"181825984268319","operation":"up","duration_ms":677.969772}
+# Subtest: controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias
+ok 16 - controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias
+  ---
+  duration_ms: 6102.987848
+  type: 'test'
+  ...
+# Subtest: BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses
+ok 17 - BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses
+  ---
+  duration_ms: 1957.842762
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 44135.734506
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"service.state","utc":"2026-10-21T10:48:32.691Z","mono_ns":"181827256518363","service":"mail","state":"\"running\" \"healthy\" false 0"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"service.state","utc":"2026-10-21T10:48:32.700Z","mono_ns":"181827266122929","service":"dkim","state":"\"running\" \"healthy\" false 0"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"service.state","utc":"2026-10-21T10:48:32.710Z","mono_ns":"181827276123376","service":"capture","state":"\"running\" \"healthy\" false 0"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"tests.finished","utc":"2026-10-21T10:48:32.710Z","mono_ns":"181827276242202","load":[4.19,2.93,2.34],"free_bytes":19841888256,"total_bytes":33495498752}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.begin","utc":"2026-10-21T10:48:32.710Z","mono_ns":"181827276270267","operation":"logs"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"compose.end","utc":"2026-10-21T10:48:32.756Z","mono_ns":"181827322355415","operation":"logs","duration_ms":46.071066}
+capture-1  | IL2_CAPTURE_TRACE {"event":"smtp.listening","utc":"2026-10-21T10:48:25.515Z","mono_ns":"181820080740771"}
+capture-1  | IL2_CAPTURE_TRACE {"event":"http.listening","utc":"2026-10-21T10:48:25.516Z","mono_ns":"181820082079954"}
+capture-1  | IL2_CAPTURE_TRACE {"event":"connect","session":"adrfmumactgu6rrk","utc":"2026-10-21T10:48:30.371Z","mono_ns":"181824936701977"}
+capture-1  | IL2_CAPTURE_TRACE {"event":"tls.established","session":"adrfmumactgu6rrk","utc":"2026-10-21T10:48:30.376Z","mono_ns":"181824941829817"}
+capture-1  | IL2_CAPTURE_TRACE {"event":"auth.accepted","session":"adrfmumactgu6rrk","utc":"2026-10-21T10:48:30.377Z","mono_ns":"181824943195819"}
+capture-1  | IL2_CAPTURE_TRACE {"event":"message.captured","session":"adrfmumactgu6rrk","utc":"2026-10-21T10:48:30.380Z","mono_ns":"181824945974753"}
+capture-1  | IL2_CAPTURE_TRACE {"event":"close","session":"adrfmumactgu6rrk","utc":"2026-10-21T10:48:30.381Z","mono_ns":"181824947179655"}
+IL2_TRACE {"project":"drumee-il2-test-3789ff27","event":"cleanup.confirmed","utc":"2026-10-21T10:48:36.297Z","mono_ns":"181830863332253","load":[4.1,2.94,2.35],"free_bytes":20245569536,"total_bytes":33495498752}
+IL2 owned resources cleaned: drumee-il2-test-3789ff27

@@ -1,0 +1,67 @@
+
+> @drumee/infra-layer@0.1.0-alpha.3 lint
+> node tooling/lint.cjs
+
+
+/tmp/il511-D2-clean/adapters/docker/nginx.js
+  4:11  warning  'spec' is assigned a value but never used  no-unused-vars
+
+/tmp/il511-D2-clean/capabilities/database/index.js
+  2:7  warning  'S' is assigned a value but never used  no-unused-vars
+
+/tmp/il511-D2-clean/capabilities/dns/index.js
+  22:76  warning  '_' is defined but never used  no-unused-vars
+
+/tmp/il511-D2-clean/capabilities/redis/index.js
+  26:75  warning  '_' is defined but never used  no-unused-vars
+
+/tmp/il511-D2-clean/capabilities/secrets/index.js
+  17:520  warning  '_' is defined but never used                                      no-unused-vars
+  18:14   warning  Unexpected control character(s) in regular expression: \x00, \x1f  no-control-regex
+  70:145  warning  '_' is defined but never used                                      no-unused-vars
+
+/tmp/il511-D2-clean/lib/plan-v2.js
+   3:25   warning  'cidr' is assigned a value but never used  no-unused-vars
+  58:112  warning  '_' is defined but never used              no-unused-vars
+
+/tmp/il511-D2-clean/lib/rendering.js
+  67:64  warning  '_' is defined but never used  no-unused-vars
+
+/tmp/il511-D2-clean/lifecycle/activation.js
+   5:7   warning  'crypto' is assigned a value but never used  no-unused-vars
+  13:65  warning  '_' is defined but never used                no-unused-vars
+
+/tmp/il511-D2-clean/lifecycle/composition.js
+    9:155  warning  Unexpected control character(s) in regular expression: \x00  no-control-regex
+   41:254  warning  Unexpected control character(s) in regular expression: \x00  no-control-regex
+  120:15   warning  'name' is assigned a value but never used                    no-unused-vars
+
+/tmp/il511-D2-clean/lifecycle/external-gateway.js
+  42:96  warning  '_' is defined but never used  no-unused-vars
+  42:99  warning  Empty block statement          no-empty
+
+/tmp/il511-D2-clean/lifecycle/journal.js
+  12:95  warning  '_' is defined but never used  no-unused-vars
+
+/tmp/il511-D2-clean/lifecycle/preparation.js
+  15:90  warning  '_' is defined but never used  no-unused-vars
+  21:82  warning  '_' is defined but never used  no-unused-vars
+
+/tmp/il511-D2-clean/lifecycle/transitions.js
+  12:108  warning  '_' is defined but never used  no-unused-vars
+  15:180  warning  '_' is defined but never used  no-unused-vars
+  54:168  warning  '_' is defined but never used  no-unused-vars
+  84:73   warning  '_' is defined but never used  no-unused-vars
+  89:69   warning  '_' is defined but never used  no-unused-vars
+
+/tmp/il511-D2-clean/test/application/run.js
+   7:7    warning  'api' is assigned a value but never used  no-unused-vars
+  11:535  warning  '_' is defined but never used             no-unused-vars
+  11:538  warning  Empty block statement                     no-empty
+
+/tmp/il511-D2-clean/test/unit/composition.test.js
+  25:41  warning  Expected to return a value in getter 'contract_version'  getter-return
+
+✖ 29 problems (0 errors, 29 warnings)
+
+{"errors":0,"visible_warnings":29,"baseline_entries":65,"new_findings":0}

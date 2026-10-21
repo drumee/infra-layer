@@ -8,6 +8,7 @@ const net = require("node:net");
 const crypto = require("node:crypto");
 const { spawnSync } = require("node:child_process");
 const api = require("../../lib");
+const { trace, runner } = require("./trace");
 const F = require("../../lib/filesystem-safety");
 const { createFilesystemSecretStore } = require("../../capabilities/secrets");
 const tls = require("../../capabilities/tls");
@@ -21,6 +22,7 @@ async function main() {
   command(["docker", "version", "--format", "{{.Server.Version}}"]);
   const project = `drumee-il2-test-${crypto.randomBytes(4).toString("hex")}`;
   assert.equal(command(["docker", "ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim(), "");
+  runner(project, "runner.begin");
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), project + "-")); fs.chmodSync(directory, 0o755);
   const image = `drumee-il2-services:${project}`; const capture_image = `drumee-il2-capture:${project}`;
   const compose_file = path.join(directory, "rendered/test.compose.json"); const images = [];
@@ -38,6 +40,7 @@ async function main() {
     for (const descriptor of value.spec.secrets.resources) { if (descriptor.type === "smtp-relay-credential") store.import(descriptor, Buffer.from("fixture-" + crypto.randomBytes(24).toString("hex")), { authorized: true }); else store.ensure(descriptor, { authorized: true }); }
     for (const descriptor of value.spec.secrets.resources) redactions.push(store.read(descriptor.ref, descriptor.consumers[0]).toString());
     const prepared = tls.prepareLocalCertificate({ owner: project, directory: path.join(fixtures, "tls"), hostname: "drumee.lan", ca_key_ref: value.keys.ca, private_key_ref: value.keys.leaf, leaf_days: 30, renew_before_days: 10 }, store, { authorized: true, create_ca: true });
+    trace(project, "certificate.prepared");
     const projections = path.join(fixtures, "projections"); fs.mkdirSync(projections, { mode: 0o700 });
     for (const [name, consumer] of [["admin", "database"], ["redis", "redis"], ["leaf", "mail"], ["smtp", "mail"], ["dkim", "dkim"], ["tsig", "dns"]]) store.materialize(value.keys[name], consumer, path.join(projections, name));
     F.atomic(path.join(projections, "certificate"), fs.readFileSync(prepared.file)); F.atomic(path.join(projections, "ca_bundle"), prepared.ca_certificate_pem);
@@ -66,20 +69,30 @@ async function main() {
     const runtime_redis = path.join(source, "redis-store.js"); fs.writeFileSync(runtime_redis, command(["git", "-C", source, "show", `${dependency.revision}:sources/server-essentials/lib/redis-store.js`])); fs.cpSync(path.join(root, "node_modules"), path.join(source, "node_modules"), { recursive: true });
     const metadata = { project, directory, fixtures, rendered, ports, revision: plan.revision, compose_file, plan_file, keys: value.keys, relay_ref, runtime_redis };
     const metadata_file = path.join(directory, "metadata.json"); fs.writeFileSync(metadata_file, JSON.stringify(metadata)); console.log(JSON.stringify({ project, ports, revision: plan.revision, image_id }));
-    const docker = (...args) => command(["docker", "compose", "-p", project, "-f", compose_file, ...args]);
+    const snapshot = () => {
+      for (const service of ["mail", "dkim", "capture"]) {
+        const state = command(["docker", "inspect", "--format", '{{json .State.Status}} {{json .State.Health.Status}} {{.State.OOMKilled}} {{.RestartCount}}', `${project}-${service}-1`]).trim();
+        trace(project, "service.state", { service, state });
+      }
+    };
+    const docker = (...args) => { const start = process.hrtime.bigint(); trace(project, "compose.begin", { operation: args[0] }); try { const result = command(["docker", "compose", "-p", project, "-f", compose_file, ...args]); trace(project, "compose.end", { operation: args[0], duration_ms: Number(process.hrtime.bigint() - start) / 1e6 }); return result; } catch (error) { trace(project, "compose.error", { operation: args[0], code: error.code || "COMMAND_FAILED" }); throw error; } };
     docker("config", "-q");
     started = true;
     docker("run", "--rm", "--no-deps", "dns", "named-checkconf", "/config/bind9.conf");
     docker("run", "--rm", "--no-deps", "dns", "named-checkzone", "drumee.lan", `/var/cache/bind/${dns.zoneFile("drumee.lan", value.spec.dns, value.spec.mail.dkim).file}`);
     docker("run", "--rm", "--no-deps", "dkim", "-n", "-x", "/config/opendkim.conf");
     docker("up", "-d", "--wait", "--wait-timeout", "90");
-    const tested = spawnSync(process.execPath, ["--test", path.join(__dirname, "services.test.js")], { stdio: "inherit", timeout: 300000, env: trustedEnvironment({ IL2_METADATA: metadata_file }) }); if (tested.status !== 0) throw new Error("IL2_SERVICE_TESTS_FAILED");
-    const logs = docker("logs", "--no-color"); for (const descriptor of value.spec.secrets.resources) { const bytes = store.read(descriptor.ref, descriptor.consumers[0]).toString(); assert.equal(logs.includes(bytes), false); } assert.doesNotMatch(logs, /BEGIN (?:RSA )?PRIVATE KEY/);
+    runner(project, "services.health.ready"); snapshot();
+    const tested = spawnSync(process.execPath, ["--test", path.join(__dirname, "services.test.js")], { stdio: "inherit", timeout: 300000, env: trustedEnvironment({ IL2_METADATA: metadata_file }) }); snapshot(); if (tested.status !== 0) throw new Error("IL2_SERVICE_TESTS_FAILED");
+    runner(project, "tests.finished");
+    const logs = docker("logs", "--no-color");
+    console.log(logs.split("\n").filter(line => line.includes("IL2_CAPTURE_TRACE ")).join("\n")); for (const descriptor of value.spec.secrets.resources) { const bytes = store.read(descriptor.ref, descriptor.consumers[0]).toString(); assert.equal(logs.includes(bytes), false); } assert.doesNotMatch(logs, /BEGIN (?:RSA )?PRIVATE KEY/);
   } catch (error) {
     let diagnostic = String(error.detail || "");
     if (started) diagnostic += spawnSync(trustedExecutable("docker"), ["inspect", "--format", "{{json .State.Health}}", `${project}-dns-1`], { encoding: "utf8", timeout: 15000 , env: trustedEnvironment()}).stdout || "";
     if (started) diagnostic += spawnSync(trustedExecutable("docker"), ["compose", "-p", project, "-f", compose_file, "logs", "--no-color"], { encoding: "utf8", timeout: 15000, maxBuffer: 1000000 , env: trustedEnvironment()}).stdout || "";
     for (const value of redactions) diagnostic = diagnostic.split(value).join("[redacted]");
+    trace(project, "runner.error", { code: error.code || "IL2_SERVICE_TESTS_FAILED" });
     console.error(diagnostic.slice(-10000)); throw error;
   } finally {
     if (started) command(["docker", "compose", "-p", project, "-f", compose_file, "down"]);
@@ -87,7 +100,7 @@ async function main() {
     for (const image of images.reverse()) command(["docker", "image", "rm", image]);
     // Rootful native service initialization changes only this test's owned dirs.
     command(["docker", "run", "--rm", "--network", "none", "--label", `org.drumee.infra.owner=${project}`, "--mount", `type=bind,source=${directory},target=/cleanup`, "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "node", "-e", "require('fs').rmSync('/cleanup/fixtures',{recursive:true,force:true})"]);
-    fs.rmSync(directory, { recursive: true, force: true }); console.log(`IL2 owned resources cleaned: ${project}`);
+    fs.rmSync(directory, { recursive: true, force: true }); runner(project, "cleanup.confirmed"); console.log(`IL2 owned resources cleaned: ${project}`);
   }
 }
 main().catch((error) => { console.error(error.code || error.message); process.exitCode = 1; });

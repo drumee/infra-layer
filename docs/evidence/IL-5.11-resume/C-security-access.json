@@ -1,0 +1,24 @@
+[
+  {
+    "endpoint": "repos/drumee/infra-layer/code-scanning/alerts?state=open&per_page=100",
+    "exit_code": 1,
+    "headers": [
+      "HTTP/2.0 403 Forbidden",
+      "X-Accepted-Github-Permissions: security_events=read",
+      "X-Github-Request-Id: ACE0:197A0B:3DEF650:5A4BC61:6AD871D2"
+    ],
+    "body": "{\"message\":\"Resource not accessible by personal access token\",\"documentation_url\":\"https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository\",\"status\":\"403\"}",
+    "stderr": "gh: Resource not accessible by personal access token (HTTP 403)"
+  },
+  {
+    "endpoint": "repos/drumee/infra-layer/dependabot/alerts?state=open&per_page=100",
+    "exit_code": 1,
+    "headers": [
+      "HTTP/2.0 403 Forbidden",
+      "X-Accepted-Github-Permissions: vulnerability_alerts=read",
+      "X-Github-Request-Id: ACEA:3B486B:3C098F9:57A1120:6AD871D3"
+    ],
+    "body": "{\"message\":\"Resource not accessible by personal access token\",\"documentation_url\":\"https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository\",\"status\":\"403\"}",
+    "stderr": "gh: Resource not accessible by personal access token (HTTP 403)"
+  }
+]

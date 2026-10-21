@@ -1,0 +1,27 @@
+{
+  "date_utc": "2026-10-21T10:21:20+00:00",
+  "source": "d19e62ba682dc2d781f5f941c7ba4b37e3a65053",
+  "clean_tree": true,
+  "trigger": "explicit owner request: relance le test",
+  "command": "npm run test:services",
+  "code_or_timeout_changes": false,
+  "exit_code": 0,
+  "tests": 17,
+  "pass": 17,
+  "fail": 0,
+  "skipped": 0,
+  "smtp_tests": [
+    13,
+    14,
+    15,
+    16
+  ],
+  "tap_duration_ms": 40090.320362,
+  "owned_project": "drumee-il2-test-bf78037e",
+  "harness_cleanup_confirmed": true,
+  "log_sha256": "05b7ccd32c5f95ae019931d7120e0be484fb1a04db3c21f5a25c7693152c57e7",
+  "previous_failure_retained": "D-services-failed.txt",
+  "root_cause_of_initial_timeout": "not established",
+  "full_D_qualified": false,
+  "other_D_suites_or_E_resumed": false
+}

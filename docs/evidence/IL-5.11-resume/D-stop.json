@@ -1,0 +1,75 @@
+{
+  "status": "FAILED_QUALIFICATION",
+  "stage": "D",
+  "source": "d19e62ba682dc2d781f5f941c7ba4b37e3a65053",
+  "branch": "feat/il511-resume-final-qualification",
+  "pr": 15,
+  "tests": {
+    "unit": {
+      "pass": 176,
+      "fail": 0,
+      "skip": 0
+    },
+    "contracts": {
+      "pass": 24,
+      "fail": 0
+    },
+    "gateway": {
+      "pass": 17,
+      "fail": 0
+    },
+    "services": {
+      "pass": 15,
+      "fail": 2,
+      "skip": 0
+    }
+  },
+  "failures": [
+    {
+      "test": 15,
+      "file": "test/services/services.test.js:137",
+      "name": "Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration",
+      "error": "Greeting never received",
+      "code": "ETIMEDOUT",
+      "duration_ms": 5301.237386
+    },
+    {
+      "test": 16,
+      "file": "test/services/services.test.js:143",
+      "name": "controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias",
+      "error": "fetch failed",
+      "code": "ERR_TEST_FAILURE",
+      "duration_ms": 30.221646
+    }
+  ],
+  "not_executed_after_stop": [
+    "npm run test:lifecycle",
+    "npm run test:application",
+    "npm run test:package",
+    "npm run lint from clean clone",
+    "additional isolated-consumer rejection scenarios",
+    "stage E registry/version/tags/account/ACL/provenance checks"
+  ],
+  "existing_consumer": {
+    "assertions": 8,
+    "types": "strict-NodeNext-passed",
+    "real_preparation": true,
+    "activated": false,
+    "integrity": "sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA=="
+  },
+  "owned_projects": [
+    "drumee-il1-test-5fb3fa7d",
+    "drumee-il2-test-1a3edee9"
+  ],
+  "cleanup_readback": {
+    "containers": [],
+    "networks": [],
+    "scope": "only those two known projects"
+  },
+  "rerun_to_obtain_green": false,
+  "smtp_failure_root_cause": "not established; no claim of relation to image validator change or external canonical defect",
+  "publication_authorized": false,
+  "npm_access_checked": false,
+  "tag_created": false,
+  "merge_performed": false
+}

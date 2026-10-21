@@ -1,0 +1,150 @@
+{
+  "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+  "steps": [
+    {
+      "name": "unit",
+      "command": [
+        "/usr/bin/npm",
+        "test"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:46:17.835184+00:00",
+      "elapsed_s": 3.5211283039825503,
+      "exit_code": 0,
+      "log_sha256": "5146ae7c3cbaae53d01471e0de601044b907e86109e408e042b1005dd9192ce4"
+    },
+    {
+      "name": "contracts",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:contracts"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:46:21.356638+00:00",
+      "elapsed_s": 0.3143849030020647,
+      "exit_code": 0,
+      "log_sha256": "fcb9f0ebd7f9fd1726be53ca2e071cc1e733d7b28329635f1447faec8dbbe01d"
+    },
+    {
+      "name": "gateway",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:gateway"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:46:21.671397+00:00",
+      "elapsed_s": 88.58722996298457,
+      "exit_code": 0,
+      "log_sha256": "d9a1b5565dfed726007ddc8de708c8237cbafc01beaa7d17f392f4277392a96e"
+    },
+    {
+      "name": "services",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:services"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:47:50.258907+00:00",
+      "elapsed_s": 60.0785898459726,
+      "exit_code": 0,
+      "log_sha256": "7c0143950dd4188ae85ba1008726a01b6e0d9d6539dc4765c3e4cdd2f942c942"
+    },
+    {
+      "name": "lifecycle",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:lifecycle"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:48:50.337878+00:00",
+      "elapsed_s": 359.45062509100535,
+      "exit_code": 0,
+      "log_sha256": "dcf4a02d8710c733f6fbf31989da99ad1c0498e6fd3bf57c319093e91294583d"
+    },
+    {
+      "name": "application",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:application"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:54:49.788775+00:00",
+      "elapsed_s": 117.53506906298571,
+      "exit_code": 0,
+      "log_sha256": "5d9ae211d671441861aaac4d84fd5861da01be821356e0b51651fb72d91f2162"
+    },
+    {
+      "name": "package",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:package"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:56:47.324135+00:00",
+      "elapsed_s": 1.0655080050055403,
+      "exit_code": 0,
+      "log_sha256": "8d56bc75da311fddc41cbc06cea8cb26b97e786662a4fddd603b3c7b8619e7ef"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "lint"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:56:48.390052+00:00",
+      "elapsed_s": 1.2158540599921253,
+      "exit_code": 0,
+      "log_sha256": "a00ec870e3ddb0810e85dbd2f820086975a118168b6fce5af27d50906be17c42"
+    },
+    {
+      "name": "audit-production",
+      "command": [
+        "/usr/bin/npm",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:56:49.606234+00:00",
+      "elapsed_s": 0.26422233899938874,
+      "exit_code": 0,
+      "log_sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"
+    },
+    {
+      "name": "audit-development",
+      "command": [
+        "/usr/bin/npm",
+        "audit",
+        "--include=dev",
+        "--json"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:56:49.870779+00:00",
+      "elapsed_s": 1.0157603650004603,
+      "exit_code": 0,
+      "log_sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"
+    },
+    {
+      "name": "consumer",
+      "command": [
+        "/usr/bin/node",
+        "test/application/package-consumer.js"
+      ],
+      "source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+      "started_utc": "2026-10-21T12:56:50.886888+00:00",
+      "elapsed_s": 2.8686955720186234,
+      "exit_code": 0,
+      "log_sha256": "cc7b798c2e8f45dfad1b19780ffc62e1e1868444b15061f21a6654978cf35495"
+    }
+  ],
+  "complete": true,
+  "stopped": false
+}

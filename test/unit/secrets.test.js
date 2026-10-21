@@ -60,6 +60,19 @@ test("secret projection cannot overwrite a competing destination created after v
   const link = fs.linkSync; fs.linkSync = (source, target) => { if (target === destination) fs.writeFileSync(target, "unrelated", { mode: 0o600 }); return link(source, target); };
   try { assert.throws(() => store.materialize(descriptor.ref, "database", destination), { code: "SECRET_DESTINATION_OCCUPIED" }); } finally { fs.linkSync = link; } assert.equal(fs.readFileSync(destination, "utf8"), "unrelated");
 });
+test("weak RSA fixtures cannot enter any key type or replace an existing generation", (t) => {
+  const { root, store } = fixture(t);
+  const weak = Buffer.from(crypto.generateKeyPairSync("rsa", { modulusLength: 1024 }).privateKey.export({ type: "pkcs8", format: "pem" }));
+  for (const type of ["tls-ca-key", "tls-leaf-key", "acme-account-key", "dkim-key"]) {
+    const value = { ref: { resource: "keys", key: type }, type, consumers: ["service"] };
+    assert.throws(() => store.import(value, weak, { authorized: true }), { code: "SECRET_CORRUPTED" });
+    assert.deepEqual(fs.readdirSync(path.join(root, "store/keys", type)), []);
+  }
+  const value = { ref: { resource: "keys", key: "tls-ca-key" }, type: "tls-ca-key", consumers: ["service"] };
+  const initial = store.ensure(value, { authorized: true });
+  assert.throws(() => store.rotate(value, { authorized: true, expected_fingerprint: initial.fingerprint, consumer_transition: "test" }, weak), { code: "SECRET_CORRUPTED" });
+  assert.deepEqual(store.inspect(value.ref), initial);
+});
 test("two independent secret creators preserve a single committed fingerprint", async (t) => {
   const { root, store, descriptor } = fixture(t); const module_file = require.resolve("../../capabilities/secrets");
   const script = `const fs=require("node:fs");const {createFilesystemSecretStore}=require(process.argv[1]);fs.writeFileSync(process.argv[2],"ready");const timer=setInterval(()=>{if(!fs.existsSync(process.argv[3]))return;clearInterval(timer);try{const result=createFilesystemSecretStore(process.argv[4],"instance-a").ensure(JSON.parse(process.argv[5]),{authorized:true});console.log(JSON.stringify({code:"OK",fingerprint:result.fingerprint}));}catch(error){console.log(JSON.stringify({code:error.code}));}},5);`;

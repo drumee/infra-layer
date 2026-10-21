@@ -1,0 +1,299 @@
+
+> @drumee/infra-layer@0.1.0-alpha.3 test:services
+> node test/services/run.js
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.services
+#1 transferring dockerfile: 994B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+#4 DONE 0.0s
+
+#5 [2/2] RUN apt-get update -qq && apt-get install -y --no-install-recommends     bind9=1:9.18.49-1~deb12u2 bind9-utils=1:9.18.49-1~deb12u2 bind9-dnsutils=1:9.18.49-1~deb12u2     postfix=3.7.11-0+deb12u1 libsasl2-modules=2.1.28+dfsg-10 sasl2-bin=2.1.28+dfsg-10     opendkim=2.11.0~beta2-8+deb12u1 opendkim-tools=2.11.0~beta2-8+deb12u1     openssl=3.0.22-1~deb12u1 ca-certificates=20250419~deb12u1 &&     usermod -aG sasl postfix && useradd --uid 1000 --user-group --no-create-home --shell /usr/sbin/nologin infra && mkdir -p /opt/infra &&     cp -a /var/spool/postfix /opt/infra/postfix-queue &&     rm -f /etc/bind/rndc.key /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/certs/ssl-cert-snakeoil.pem &&     rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 exporting to image
+#6 exporting layers done
+#6 writing image sha256:570dc80459eabd8394ef0c0821dfa5c612c68d05a3a0a2003d484bd05028ec6e done
+#6 naming to docker.io/library/drumee-il2-services:drumee-il2-test-1a3edee9 done
+#6 DONE 0.0s
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 272B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 27.31MB 0.4s done
+#5 DONE 0.4s
+
+#4 [1/3] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+#4 CACHED
+
+#6 [2/3] COPY node_modules /fixture/node_modules
+#6 DONE 0.9s
+
+#7 [3/3] COPY capture.js /fixture/capture.js
+#7 DONE 0.0s
+
+#8 exporting to image
+#8 exporting layers
+#8 exporting layers 0.4s done
+#8 writing image sha256:7d2fc4eccf40d3275e1df32bcef094a973685eb2606191f14788fcb548776bab done
+#8 naming to docker.io/library/drumee-il2-capture:drumee-il2-test-1a3edee9 done
+#8 DONE 0.4s
+{"project":"drumee-il2-test-1a3edee9","ports":{"dns":43597,"database":45025,"redis":39819,"mail":46863,"capture":37443},"revision":"c93844383fd03f06da07c30eaea1234e210c870bade0f77afc776d7145bd094f","image_id":"sha256:570dc80459eabd8394ef0c0821dfa5c612c68d05a3a0a2003d484bd05028ec6e"}
+TAP version 13
+# Subtest: managed descriptors parse native configs, publish only test loopback ports and mount no secret-store root
+ok 1 - managed descriptors parse native configs, publish only test loopback ports and mount no secret-store root
+  ---
+  duration_ms: 871.731142
+  type: 'test'
+  ...
+# Subtest: real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion
+ok 2 - real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion
+  ---
+  duration_ms: 281.811533
+  type: 'test'
+  ...
+# Subtest: real service observer separates protocol success, Docker revision labels and unverified loaded configuration
+ok 3 - real service observer separates protocol success, Docker revision labels and unverified loaded configuration
+  ---
+  duration_ms: 572.790295
+  type: 'test'
+  ...
+# Subtest: BIND9 restart and recreation preserve zone serial and TSIG fingerprint
+ok 4 - BIND9 restart and recreation preserve zone serial and TSIG fingerprint
+  ---
+  duration_ms: 4404.689722
+  type: 'test'
+  ...
+# Subtest: DNS port conflict and corrupt native configuration are rejected
+ok 5 - DNS port conflict and corrupt native configuration are rejected
+  ---
+  duration_ms: 974.51062
+  type: 'test'
+  ...
+# Subtest: MariaDB fresh initialization creates no kernel/application schema and rejects incompatible engines
+ok 6 - MariaDB fresh initialization creates no kernel/application schema and rejects incompatible engines
+  ---
+  duration_ms: 1205.961159
+  type: 'test'
+  ...
+# Subtest: MariaDB service account connects over TCP, rejects wrong credentials and owns no schema grants
+ok 7 - MariaDB service account connects over TCP, rejects wrong credentials and owns no schema grants
+  ---
+  duration_ms: 9.980414
+  type: 'test'
+  ...
+# Subtest: MariaDB existing-volume restart/recreation preserve data and credentials; repeated account provision does not rotate
+ok 8 - MariaDB existing-volume restart/recreation preserve data and credentials; repeated account provision does not rotate
+  ---
+  duration_ms: 6377.405939
+  type: 'test'
+  ...
+# Subtest: Redis authenticated connection and pub/sub work, unauthenticated/wrong clients reject
+ok 9 - Redis authenticated connection and pub/sub work, unauthenticated/wrong clients reject
+  ---
+  duration_ms: 218.964407
+  type: 'test'
+  ...
+# Subtest: Redis AOF survives recreation with the same secret fingerprint and authenticated reconnection
+ok 10 - Redis AOF survives recreation with the same secret fingerprint and authenticated reconnection
+  ---
+  duration_ms: 1441.787204
+  type: 'test'
+  ...
+# Subtest: revision-pinned Essentials RedisStore authenticates via redisUrl including duplicate pub/sub clients
+ok 11 - revision-pinned Essentials RedisStore authenticates via redisUrl including duplicate pub/sub clients
+  ---
+  duration_ms: 171.037729
+  type: 'test'
+  ...
+# Subtest: Redis ephemeral descriptor loses reconstructible state on recreation and rejects malformed configuration
+ok 12 - Redis ephemeral descriptor loses reconstructible state on recreation and rejects malformed configuration
+  ---
+  duration_ms: 6758.175647
+  type: 'test'
+  ...
+# Subtest: SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails
+ok 13 - SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails
+  ---
+  duration_ms: 4703.493323
+  type: 'test'
+  ...
+# Subtest: OpenDKIM signs captured bytes with the persistent key and valid public TXT material
+ok 14 - OpenDKIM signs captured bytes with the persistent key and valid public TXT material
+  ---
+  duration_ms: 5256.151547
+  type: 'test'
+  ...
+# Subtest: Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration
+not ok 15 - Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration
+  ---
+  duration_ms: 5301.237386
+  type: 'test'
+  location: '/tmp/il511-resume-clean/test/services/services.test.js:137:1'
+  failureType: 'testCodeFailure'
+  error: 'Greeting never received'
+  code: 'ETIMEDOUT'
+  stack: |-
+    timeoutError (/tmp/il511-resume-clean/node_modules/nodemailer/dist/cjs/smtp-connection/index.js:68:17)
+    SMTPConnection._onConnect (/tmp/il511-resume-clean/node_modules/nodemailer/dist/cjs/smtp-connection/index.js:808:54)
+    Socket.<anonymous> (/tmp/il511-resume-clean/node_modules/nodemailer/dist/cjs/smtp-connection/index.js:391:55)
+    Object.onceWrapper (node:events:633:28)
+    Socket.emit (node:events:519:28)
+    TCPConnectWrap.afterConnect [as oncomplete] (node:net:1622:10)
+  ...
+# Subtest: controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias
+not ok 16 - controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias
+  ---
+  duration_ms: 30.221646
+  type: 'test'
+  location: '/tmp/il511-resume-clean/test/services/services.test.js:143:1'
+  failureType: 'testCodeFailure'
+  error: 'fetch failed'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    node:internal/deps/undici/undici:14902:13
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async capturedCount (/tmp/il511-resume-clean/test/services/services.test.js:36:49)
+    async TestContext.<anonymous> (/tmp/il511-resume-clean/test/services/services.test.js:150:90)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses
+ok 17 - BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses
+  ---
+  duration_ms: 2202.45433
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 15
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 41756.254032
+is running: PID: 1
+dns-1    | 21-Oct-2026 08:56:04.177 BIND 9 is maintained by Internet Systems Consortium,
+dns-1       | 21-Oct-2026 08:56:04.177 Inc. (ISC), a non-profit 501(c)(3) public-benefit
+dns-1       | 21-Oct-2026 08:56:04.177 corporation.  Support and training for BIND 9 are
+dns-1       | 21-Oct-2026 08:56:04.177 available at https://www.isc.org/support
+dns-1       | 21-Oct-2026 08:56:04.177 ----------------------------------------------------
+dns-1       | 21-Oct-2026 08:56:04.177 found 12 CPUs, using 12 worker threads
+dns-1       | 21-Oct-2026 08:56:04.177 using 12 UDP listeners per interface
+dns-1       | 21-Oct-2026 08:56:04.237 DNSSEC algorithms: RSASHA1 NSEC3RSASHA1 RSASHA256 RSASHA512 ECDSAP256SHA256 ECDSAP384SHA384 ED25519 ED448
+dns-1       | 21-Oct-2026 08:56:04.237 DS algorithms: SHA-1 SHA-256 SHA-384
+dns-1       | 21-Oct-2026 08:56:04.237 HMAC algorithms: HMAC-MD5 HMAC-SHA1 HMAC-SHA224 HMAC-SHA256 HMAC-SHA384 HMAC-SHA512
+dns-1       | 21-Oct-2026 08:56:04.237 TKEY mode 2 support (Diffie-Hellman): yes
+dns-1       | 21-Oct-2026 08:56:04.237 TKEY mode 3 support (GSS-API): yes
+dns-1       | 21-Oct-2026 08:56:04.237 the initial working directory is '/'
+dns-1       | 21-Oct-2026 08:56:04.237 loading configuration from '/config/bind9.conf'
+dns-1       | 21-Oct-2026 08:56:04.237 the working directory is now '/var/cache/bind'
+dns-1       | 21-Oct-2026 08:56:04.237 reading built-in trust anchors from file '/etc/bind/bind.keys'
+dns-1       | 21-Oct-2026 08:56:04.237 looking for GeoIP2 databases in '/usr/share/GeoIP'
+dns-1       | 21-Oct-2026 08:56:04.237 using default UDP/IPv4 port range: [32768, 60999]
+dns-1       | 21-Oct-2026 08:56:04.237 using default UDP/IPv6 port range: [32768, 60999]
+dns-1       | 21-Oct-2026 08:56:04.237 listening on IPv4 interface lo, 127.0.0.1#1053
+redis-1     | 1:M 21 Oct 2026 08:55:41.263 * RDB is base AOF
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: innodb_buffer_pool_size_max=8388608m, innodb_buffer_pool_size=128m
+redis-1     | 1:M 21 Oct 2026 08:55:41.263 * Done loading RDB, keys loaded: 0, keys expired: 0.
+mail-1      | Oct 21 08:55:20 drumee postfix/postfix-script[229]: the Postfix mail system is running: PID: 1
+redis-1     | 1:M 21 Oct 2026 08:55:41.263 * DB loaded from base file appendonly.aof.1.base.rdb: 0.000 seconds
+redis-1     | 1:M 21 Oct 2026 08:55:41.263 * DB loaded from incr file appendonly.aof.1.incr.aof: 0.000 seconds
+redis-1     | 1:M 21 Oct 2026 08:55:41.263 * DB loaded from append only file: 0.000 seconds
+redis-1     | 1:M 21 Oct 2026 08:55:41.263 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+redis-1     | 1:M 21 Oct 2026 08:55:41.263 * Ready to accept connections tcp
+mail-1      | Oct 21 08:55:22 drumee postfix/postfix-script[242]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:24 drumee postfix/postfix-script[255]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:27 drumee postfix/postfix-script[350]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:29 drumee postfix/postfix-script[363]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:31 drumee postfix/postfix-script[376]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:33 drumee postfix/postfix-script[389]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:35 drumee postfix/postfix-script[402]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:37 drumee postfix/postfix-script[415]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:39 drumee postfix/postfix-script[428]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:41 drumee postfix/postfix-script[441]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:43 drumee postfix/postfix-script[454]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:45 drumee postfix/postfix-script[467]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:47 drumee postfix/postfix-script[480]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:48 drumee postfix/smtpd[481]: warning: dict_nis_init: NIS domain name not set - NIS lookups disabled
+mail-1      | Oct 21 08:55:48 drumee postfix/smtpd[481]: connect from unknown[172.26.0.1]
+mail-1      | Oct 21 08:55:48 drumee postfix/smtpd[481]: 62FAD142A921: client=unknown[172.26.0.1], sasl_method=PLAIN, sasl_username=fixture@drumee.lan
+mail-1      | Oct 21 08:55:48 drumee postfix/cleanup[486]: 62FAD142A921: message-id=<0f88a1e8-9cd5-d458-2798-7e2c9dc04aa3@drumee.lan>
+mail-1      | Oct 21 08:55:48 drumee postfix/qmgr[202]: 62FAD142A921: from=<sender@drumee.lan>, size=564, nrcpt=1 (queue active)
+mail-1      | Oct 21 08:55:48 drumee postfix/smtpd[481]: disconnect from unknown[172.26.0.1] ehlo=2 starttls=1 auth=1 mail=1 rcpt=1 data=1 commands=7
+mail-1      | Oct 21 08:55:48 drumee postfix/smtp[487]: 62FAD142A921: to=<recipient@fixture.invalid>, relay=capture[172.26.0.4]:2525, delay=0.22, delays=0.11/0/0.1/0, dsn=2.0.0, status=sent (250 Captured locally)
+mail-1      | Oct 21 08:55:48 drumee postfix/qmgr[202]: 62FAD142A921: removed
+mail-1      | Oct 21 08:55:48 drumee postfix/smtpd[481]: connect from unknown[172.26.0.1]
+mail-1      | Oct 21 08:55:48 drumee postfix/smtpd[481]: NOQUEUE: reject: RCPT from unknown[172.26.0.1]: 554 5.7.1 <recipient@fixture.invalid>: Recipient address rejected: Access denied; from=<sender@drumee.lan> to=<recipient@fixture.invalid> proto=ESMTP helo=<il2-fixture.example>
+mail-1      | Oct 21 08:55:48 drumee postfix/smtpd[481]: lost connection after DATA from unknown[172.26.0.1]
+mail-1      | Oct 21 08:55:48 drumee postfix/smtpd[481]: disconnect from unknown[172.26.0.1] ehlo=2 starttls=1 mail=1 rcpt=0/1 data=0/1 commands=4/6
+mail-1      | Oct 21 08:55:49 drumee postfix/postfix-script[500]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:51 drumee postfix/postfix-script[513]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:52 drumee postfix/smtpd[481]: connect from unknown[172.26.0.1]
+mail-1      | Oct 21 08:55:52 drumee postfix/smtpd[481]: warning: SASL authentication failure: Password verification failed
+mail-1      | Oct 21 08:55:52 drumee postfix/smtpd[481]: warning: unknown[172.26.0.1]: SASL PLAIN authentication failed: authentication failure, sasl_username=fixture@drumee.lan
+mail-1      | Oct 21 08:55:52 drumee postfix/smtpd[481]: lost connection after AUTH from unknown[172.26.0.1]
+mail-1      | Oct 21 08:55:52 drumee postfix/smtpd[481]: disconnect from unknown[172.26.0.1] ehlo=2 starttls=1 auth=0/1 commands=3/4
+mail-1      | Oct 21 08:55:54 drumee postfix/postfix-script[526]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:56 drumee postfix/postfix-script[539]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:55:58 drumee postfix/postfix-script[552]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:56:00 drumee postfix/postfix-script[565]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:56:02 drumee postfix/postfix-script[578]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:56:04 drumee postfix/postfix-script[591]: the Postfix mail system is running: PID: 1
+mail-1      | Oct 21 08:56:06 drumee postfix/postfix-script[604]: the Postfix mail system is running: PID: 1
+dns-1       | 21-Oct-2026 08:56:04.277 listening on IPv4 interface eth0, 172.26.0.4#1053
+dns-1       | 21-Oct-2026 08:56:04.277 generating session key for dynamic DNS
+dns-1       | 21-Oct-2026 08:56:04.277 sizing zone task pool based on 1 zones
+dns-1       | 21-Oct-2026 08:56:04.277 set up managed keys zone for view _default, file 'managed-keys.bind'
+dns-1       | 21-Oct-2026 08:56:04.281 not using config file logging statement for logging due to -g option
+dns-1       | 21-Oct-2026 08:56:04.281 managed-keys-zone: loaded serial 0
+dns-1       | 21-Oct-2026 08:56:04.281 zone drumee.lan/IN: loaded serial 2
+dns-1       | 21-Oct-2026 08:56:04.281 all zones loaded
+dns-1       | 21-Oct-2026 08:56:04.281 running
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: Completed initialization of buffer pool
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: End of log at LSN=47867
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: Opened 3 undo tablespaces
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: log sequence number 47867; transaction id 24
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+database-1  | 2026-10-21  8:55:38 0 [Note] Plugin 'FEEDBACK' is disabled.
+database-1  | 2026-10-21  8:55:38 0 [Note] Plugin 'wsrep-provider' is disabled.
+database-1  | 2026-10-21  8:55:38 0 [Note] InnoDB: Buffer pool(s) load completed at 261021  8:55:38
+database-1  | 2026-10-21  8:55:39 0 [Note] Server socket created on IP: '0.0.0.0', port: '3306'.
+mail-1      | Oct 21 08:56:06 drumee postfix/smtpd[481]: connect from unknown[172.26.0.1]
+mail-1      | Oct 21 08:56:06 drumee postfix/smtpd[481]: lost connection after CONNECT from unknown[172.26.0.1]
+mail-1      | Oct 21 08:56:06 drumee postfix/smtpd[481]: disconnect from unknown[172.26.0.1] commands=0/0
+database-1  | 2026-10-21  8:55:39 0 [Note] mariadbd: Event Scheduler: Loaded 0 events
+database-1  | 2026-10-21  8:55:39 0 [Note] mariadbd: ready for connections.
+database-1  | Version: '11.4.13-MariaDB-ubu2404'  socket: '/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+
+IL2 owned resources cleaned: drumee-il2-test-1a3edee9
+IL2_SERVICE_TESTS_FAILED

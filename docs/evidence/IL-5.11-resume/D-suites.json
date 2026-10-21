@@ -1,0 +1,20 @@
+[
+  {
+    "command": "npm run test:contracts",
+    "exit_code": 0,
+    "duration_seconds": 0.36,
+    "log": "/tmp/il511-D-contracts.log"
+  },
+  {
+    "command": "npm run test:gateway",
+    "exit_code": 0,
+    "duration_seconds": 89.88,
+    "log": "/tmp/il511-D-gateway.log"
+  },
+  {
+    "command": "npm run test:services",
+    "exit_code": 1,
+    "duration_seconds": 65.58,
+    "log": "/tmp/il511-D-services.log"
+  }
+]

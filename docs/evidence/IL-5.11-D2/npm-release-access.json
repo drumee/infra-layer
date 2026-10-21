@@ -1,0 +1,129 @@
+{
+  "date_utc": "2026-10-21T13:07:15.802295+00:00",
+  "registry": "https://registry.npmjs.org/",
+  "package": "@drumee/infra-layer",
+  "target_version": "0.1.0-alpha.3",
+  "steps": [
+    {
+      "name": "versions",
+      "command": [
+        "npm",
+        "view",
+        "@drumee/infra-layer",
+        "versions",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json"
+      ],
+      "exit_code": 0,
+      "result": [
+        "0.0.0-stage",
+        "0.1.0-alpha.1",
+        "0.1.0-alpha.2"
+      ]
+    },
+    {
+      "name": "dist-tags",
+      "command": [
+        "npm",
+        "view",
+        "@drumee/infra-layer",
+        "dist-tags",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json"
+      ],
+      "exit_code": 0,
+      "result": {
+        "next": "0.1.0-alpha.2",
+        "latest": "0.1.0-alpha.1"
+      }
+    },
+    {
+      "name": "whoami",
+      "command": [
+        "npm",
+        "whoami",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json"
+      ],
+      "exit_code": 0,
+      "result": "somanos"
+    },
+    {
+      "name": "package-status",
+      "command": [
+        "npm",
+        "access",
+        "get",
+        "status",
+        "@drumee/infra-layer",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json"
+      ],
+      "exit_code": 0,
+      "result": {
+        "@drumee/infra-layer": "public"
+      }
+    },
+    {
+      "name": "collaborator-permission",
+      "command": [
+        "npm",
+        "access",
+        "list",
+        "collaborators",
+        "@drumee/infra-layer",
+        "somanos",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json"
+      ],
+      "exit_code": 0,
+      "result": {
+        "somanos": "read-write"
+      }
+    },
+    {
+      "name": "account-package-permission",
+      "command": [
+        "npm",
+        "access",
+        "list",
+        "packages",
+        "somanos",
+        "@drumee/infra-layer",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json"
+      ],
+      "exit_code": 0,
+      "result": {
+        "@drumee/infra-layer": "read-write"
+      }
+    },
+    {
+      "name": "account-two-factor-policy",
+      "command": [
+        "npm",
+        "profile",
+        "get",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json"
+      ],
+      "exit_code": 0,
+      "result": {
+        "pending": null,
+        "mode": "auth-and-writes"
+      }
+    }
+  ],
+  "publication_attempted": false,
+  "auth_or_permissions_modified": false,
+  "oidc_environment_available": false,
+  "token_values_logged": false,
+  "output_scope": "Only target package and actor retained; unrelated ACL/profile fields intentionally omitted."
+}

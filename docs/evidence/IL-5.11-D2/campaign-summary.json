@@ -1,0 +1,50 @@
+{
+  "source": "90a65bce5ce1de8fd89ff3db9a893770a525561f",
+  "planned_runs": 3,
+  "actual_runs": 3,
+  "all_pass": true,
+  "results": [
+    {
+      "run": 1,
+      "source": "90a65bce5ce1de8fd89ff3db9a893770a525561f",
+      "started_utc": "2026-10-21T10:46:33.513587+00:00",
+      "elapsed_s": 62.78164369301521,
+      "exit_code": 0,
+      "pass": true,
+      "project": "drumee-il2-test-ddbe1031",
+      "cleanup_readback": {
+        "containers": [],
+        "networks": []
+      },
+      "log_sha256": "95fa7f07168ccd40f7ec46974634f4bd34a3f498b39879bf6b2a83902ba94c68"
+    },
+    {
+      "run": 2,
+      "source": "90a65bce5ce1de8fd89ff3db9a893770a525561f",
+      "started_utc": "2026-10-21T10:47:36.295766+00:00",
+      "elapsed_s": 60.02854257100262,
+      "exit_code": 0,
+      "pass": true,
+      "project": "drumee-il2-test-3789ff27",
+      "cleanup_readback": {
+        "containers": [],
+        "networks": []
+      },
+      "log_sha256": "b6a7a4918d5b21eb165a2c28578017ef95efab23a70167e65e387c0626bf06a9"
+    },
+    {
+      "run": 3,
+      "source": "90a65bce5ce1de8fd89ff3db9a893770a525561f",
+      "started_utc": "2026-10-21T10:48:36.324901+00:00",
+      "elapsed_s": 56.99342158998479,
+      "exit_code": 0,
+      "pass": true,
+      "project": "drumee-il2-test-4713ad74",
+      "cleanup_readback": {
+        "containers": [],
+        "networks": []
+      },
+      "log_sha256": "43f04cdf852445bb05aee9f84f9b1304204543a7ea7b26a4aa49d92d1cdce2ec"
+    }
+  ]
+}
