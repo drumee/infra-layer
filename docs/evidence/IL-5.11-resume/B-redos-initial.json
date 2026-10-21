@@ -1,0 +1,52 @@
+{
+  "source": "8f297d8f676706f052a24ce4e875d91b76555b91",
+  "node": "v22.22.0",
+  "heap_mib": 64,
+  "per_process_wall_timeout_seconds": 4,
+  "input_family": "- followed by N zeroes, @sha256:, 63 f characters and !",
+  "scope": "pure isolated child processes, no network/filesystem effects",
+  "measurements": [
+    {
+      "length": 585,
+      "n": 512,
+      "ms": 1.9538810000000026,
+      "result": false
+    },
+    {
+      "length": 1097,
+      "n": 1024,
+      "ms": 1.097691000000001,
+      "result": false
+    },
+    {
+      "length": 2121,
+      "n": 2048,
+      "ms": 3.758686000000001,
+      "result": false
+    },
+    {
+      "length": 4169,
+      "n": 4096,
+      "ms": 13.588667000000001,
+      "result": false
+    },
+    {
+      "length": 8265,
+      "n": 8192,
+      "ms": 52.934610000000006,
+      "result": false
+    },
+    {
+      "length": 16457,
+      "n": 16384,
+      "ms": 211.44911499999998,
+      "result": false
+    },
+    {
+      "length": 32841,
+      "n": 32768,
+      "ms": 835.4677330000001,
+      "result": false
+    }
+  ]
+}
