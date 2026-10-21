@@ -16,7 +16,7 @@ Le [rapport D2 complet](IL-5.11-D2-qualification.md) fait foi pour le contrôle 
 | Audits omit=dev / include=dev | **0 vulnérabilité connue** dans les deux relevés |
 | Consommateur isolé | Préparation/types stricts, 8 assertions initiales + **37 supplémentaires**, PASS |
 | Reproductibilité | **Deux tarballs identiques**, 41 membres, 101778 octets |
-| SMTP | Campagne préfixée 3 × 17/17 puis qualification 17/17 ; **INTERMITTENCE_NOT_REPRODUCED** |
+| SMTP | Campagne bornée 3 × 17/17 puis qualification 17/17 ; **INTERMITTENCE_NOT_REPRODUCED** |
 
 SHA256 npm : `c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e`. SRI npm : `sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==`. [Reçu D2 et liste des 41 fichiers](evidence/IL-5.11-D2/D2-artifact-receipt.json). Empreintes identiques au candidat D précédent, distinctes d’IL-5.11R et d’une archive GitHub. Aucun code distribué changé dans D2.
 
