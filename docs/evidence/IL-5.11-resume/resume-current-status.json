@@ -1,0 +1,48 @@
+{
+  "consolidated_at_utc": "2026-10-21T10:27:59+00:00",
+  "remote_main": "8f297d8f676706f052a24ce4e875d91b76555b91",
+  "pr": 15,
+  "pr_draft": true,
+  "pr_merged": false,
+  "codeql_source": "299fa3ea740f44aa76eaea52115e006464e4a345",
+  "artifact_source": "d19e62ba682dc2d781f5f941c7ba4b37e3a65053",
+  "B": "PASS",
+  "C": "PASS_WITH_VISIBILITY_LIMITATIONS",
+  "D": "INCOMPLETE",
+  "last_completed_D_decision": "FAILED_QUALIFICATION",
+  "services_latest": {
+    "tests": 17,
+    "pass": 17,
+    "fail": 0,
+    "proof": "D-services-rerun-1.json"
+  },
+  "services_initial": {
+    "pass": 15,
+    "fail": 2,
+    "proof": "D-stop.json",
+    "root_cause": "not established"
+  },
+  "D_remaining": [
+    "test:lifecycle",
+    "test:application",
+    "test:package",
+    "lint from D clone",
+    "additional isolated consumer refusal scenarios",
+    "characterize initial SMTP reliability"
+  ],
+  "E": "NOT_EXECUTED",
+  "npm_permissions": "UNVERIFIED",
+  "publication": "BLOCKED",
+  "sha256": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "integrity": "sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==",
+  "members": 41,
+  "packed_bytes": 101778,
+  "report_regeneration_checks": {
+    "both_existing_tarballs_hash_verified": true,
+    "all_41_source_members_hash_verified": true,
+    "rerun_log_hash_verified": true,
+    "qualification_clone_clean_and_source_verified": true,
+    "new_test_suites_executed": false,
+    "new_security_scans_claimed": false
+  }
+}

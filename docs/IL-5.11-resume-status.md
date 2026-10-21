@@ -1,46 +1,31 @@
-# IL-5.11-Resume — reprise de qualification alpha.3 (état initial)
+# IL-5.11-Resume — État consolidé alpha.3
 
-Status courant : **FAILED_QUALIFICATION — NOT_AUTHORIZED_FOR_PUBLICATION**.
+Mise à jour : 2026-10-21T10:27:59+00:00.
 
-Reprise depuis main 8f297d8 sur feat/il511-resume-final-qualification : B PASS (ReDoS corrigé), C PASS_WITH_VISIBILITY_LIMITATIONS, D FAIL (Services 15/17, timeout SMTP puis capture inaccessible), E non exécutée. Voir la [décision finale](IL-5.11-resume-final-decision.md) et les preuves nouvelles. Les sections ci-dessous conservent l’état initial de PR #14 comme historique ; elles ne remplacent pas cette décision.
+**Qualification globale incomplète ; publication BLOQUÉE.** Dernier arrêt formel : `FAILED_QUALIFICATION`. Dernier résultat Services : **17/17 PASS** après le rejeu demandé ; aucun nouveau contrôle D complet ni contrôle E n’a suivi. [Rapport complet et décision](IL-5.11-resume-final-decision.md).
 
-## Références canoniques
+| Étape | État |
+| --- | --- |
+| B | **PASS**, ReDoS corrigé, SHA256/RSA négatif justifiés |
+| C | **PASS_WITH_VISIBILITY_LIMITATIONS**, Quality réussis, analyses CodeQL réussies mais check de résultat FAILURE contextuel, inventaires HTTP 403, Sonar FAILURE |
+| D | **INCOMPLET** ; 176 unitaires, 24 contrats, Gateway 17/17, Services 17/17 au rejeu, consommateur 8 assertions ; Lifecycle/Application/Package/lint D et refus supplémentaires manquants |
+| E | **NON EXÉCUTÉE**, identité/droits npm et version/dist-tags non vérifiés |
+| F | **Publication BLOQUÉE**, READY_FOR_PUBLICATION_AUTHORIZATION non atteint |
 
-- Infra Layer `main` initial: `077258ca3ef9c77d6d6d94f13ba190b7c0314f56` (fusion IL-5.11R, PR #12).
-- Revue de fusion: PR #13, dossier `docs/IL-5.11R-review-final.md`.
-- npm candidat corrigé, *non publié*: `@drumee/infra-layer@0.1.0-alpha.3`, 41 membres, 101242 octets.
-- SHA256 npm historique qualifié: `f2fd950e1f54634fa97b9e74ccd3ceb8dfdb15cb3e8a08c0c46489704432ac9c`.
-- SRI npm historique qualifié: `sha512-BP1hSTOer0C7u118cixNtiJ/yOErtCFfEzQTjqZ6tP7bPTMDbXvWrJ24z8jNdKRjFRCTxjprpHxDZ5BUmWb2/Q==`.
-- Archive source du commit intégré: SRI `sha512-Syt/FYPnvPicSacaPE6rR50DapEXSFWv7Snmq8rONLAiSqLJdpYZkzhDavbtAH8EXnADjucfHub9KU6CVyBbuA==`; ce SRI n'est **pas** le SRI npm.
+## Références actuelles
 
-Ces valeurs sont des références de preuves antérieures, pas le résultat d'une nouvelle reconstruction effectuée par cette reprise.
+- Main distant revérifié : `8f297d8f676706f052a24ce4e875d91b76555b91` (PR #14).
+- PR #12 : `077258ca3ef9c77d6d6d94f13ba190b7c0314f56` ; PR #13 : `729b755e49f22c220b0cd1a42f619261ba9ce260`.
+- Correctif analysé C : `299fa3ea740f44aa76eaea52115e006464e4a345` ; clone propre testé D : `d19e62ba682dc2d781f5f941c7ba4b37e3a65053`.
+- Branche `feat/il511-resume-final-qualification`, [PR #15 en brouillon](https://github.com/drumee/infra-layer/pull/15), non fusionnée. Aucun correctif candidat intégré à main.
+- Candidat local non publié : `@drumee/infra-layer@0.1.0-alpha.3`, **41 membres / 101778 octets**.
+- SHA256 npm : `c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e`.
+- SRI npm : `sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==`.
 
-## B — revue de sécurité : premières constatations
+Les anciennes empreintes f2fd950e… / sha512-BP1h… appartiennent à IL-5.11R. Le correctif ReDoS modifie les octets distribués : elles ne désignent plus ce candidat. Liste exhaustive dans le [reçu D](evidence/IL-5.11-resume/D-artifact-receipt.json). L’état initial de PR #14 reste consultable dans l’historique Git, distinct de cet état consolidé.
 
-- Les 18 anciens diagnostics Sonar PATH sont documentés CLOSED/FIXED au moment de la revue de fusion ; leurs tests adversariaux avaient été qualifiés. Un nouveau relevé global reste nécessaire.
-- Les 13 diagnostics Sonar de la PR #12 ont des dispositions techniques individuelles en PR #13. Leur état administratif reste distinct et SonarCloud est resté FAILURE.
-- Le SARIF CodeQL de `main` recense trois résultats sur fichiers inchangés, **non acceptés par extension**.
-  1. `js/polynomial-redos`, `lib/validation.js:90` : expression régulière de validation d'image Docker à examiner sur chaînes longues/malformées. Nécessite tests de complexité bornés et revue du flux d'entrée.
-  2. `js/insufficient-key-size`, `test/unit/secrets.test.js:55` : RSA-1024 créé intentionnellement dans le test `weak imported keys ... are rejected`, dont l'assertion attend `SECRET_CORRUPTED`. Contexte de test négatif établi par lecture de la source ; vérifier qu'aucune clé faible n'est acceptée ni persistée avant conclusion.
-  3. `js/insufficient-password-hash`, `lib/spec.js:32` : `digest(value)` calcule un SHA-256 de données/JSON canoniques. Il faut vérifier les usages de la fonction et l'absence d'emploi comme dérivation de mot de passe avant de proposer un faux positif.
-- CodeQL et Quality du commit intégré ont été exécutés avec succès ; ce résultat ne signifie pas zéro alerte globale.
+## Reprise
 
-## C — GitHub Security : limitations
+Préserver les deux essais Services (15/17 initial, 17/17 au rejeu) et caractériser la fiabilité du timeout initial dont la cause n’est pas établie. Terminer les contrôles D manquants depuis une source propre figée, puis E et une nouvelle décision F. Aucun succès historique ne remplace une acceptation nécessaire du nouveau candidat.
 
-Inventaires administratifs complets Code Scanning et Dependabot historiquement HTTP 403. Ne pas convertir un inventaire inaccessible en inventaire vide. Les résultats SARIF du run sont des preuves d'analyse, pas de l'état administratif des alertes.
-
-## D — artefact
-
-**NOT_REQUALIFIED_THIS_MISSION** : rebuild double, nouveau npm pack et consommateur isolé avec types doivent être rejoués à la source sélectionnée. Les preuves IL-5.11R sont disponibles mais restent historiques.
-
-## E — préparation npm
-
-**NOT_STARTED** : disponibilité de `0.1.0-alpha.3`, droits du publieur, OIDC/provenance, canal `next` et absence de scripts publiants doivent être vérifiés. Aucune publication, tag ou dist-tag ne doit être déclenché.
-
-## F — décision
-
-**PENDING**. Aucune autorisation de publication implicite. Reprendre B (y compris la caractérisation de `js/polynomial-redos`), C, D, E, puis fournir une matrice de décision et un rapport final avec preuves et réserves.
-
-## Périmètre d'arrêt
-
-Ne modifier ni Debian (toujours épinglé sur `aa9057f`), ni Server Runtime, ni Oxy-form, ni production. Ne pas fusionner cette branche documentaire automatiquement. Ne pas lancer Oxymotion D0.
+Debian reste épinglé sur `aa9057f224f4ae5cf80d777e3cb2fad092193fb1`. Aucune publication, tag, fusion automatique, modification de consommateur/production ni Oxymotion D0.
