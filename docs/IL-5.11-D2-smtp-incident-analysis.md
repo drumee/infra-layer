@@ -52,3 +52,15 @@ L’instrumentation n’ajoute ni sonde de readiness bloquante ni délai : elle 
 ## Preuves liées
 
 [Échec historique](evidence/IL-5.11-resume/D-services-failed.txt), [rejeu historique](evidence/IL-5.11-resume/D-services-rerun-1.txt), [arrêt](evidence/IL-5.11-resume/D-stop.json), [reçu rejeu](evidence/IL-5.11-resume/D-services-rerun-1.json), [plan machine](evidence/IL-5.11-D2/campaign-plan.json).
+
+## Résultats B et décision C
+
+Campagne fixée exécutée intégralement sur le clone propre `90a65bce5ce1de8fd89ff3db9a893770a525561f`, instrumentation uniquement, mêmes 41 membres npm que d19e62b. **3/3 × 17/17 PASS**, zéro skip, aucun retry ajouté, timeouts inchangés. Durées totales : 62,782 s, 60,029 s et 56,993 s (construction/cleanup compris). Chaque projet possède ses nouveaux ports/fixtures ; lecture Docker après chaque essai sans conteneur/réseau du projet.
+
+Classification principale : **INTERMITTENCE_NOT_REPRODUCED**. Le greeting puis STARTTLS/auth et la reprise de file passent dans les trois essais. Aucune cause initiale confirmée, environnementale ou canonique ; aucun correctif distribué justifié par ces seuls succès. La cascade historique reste caractérisée séparément par le flux de contrôle du harnais, sans en faire la cause du timeout. Aucun changement de logique de readiness, de synchronisation, de TLS ou de timeout n’a été appliqué. **C : aucune correction nécessaire démontrée ; réserve SMTP maintenue.**
+
+Les relevés charge/mémoire/PSI et stats Docker, ainsi que les états de service après health, sont conservés par essai. Ils décrivent les exécutions présentes, pas la charge de l’incident initial. Les erreurs EAUTH/EENVELOPE des clients de refus sont attendues et ne sont pas masquées. Les traces de capture collectées au succès peuvent perdre l’ancienne instance lors de sa recréation ; les traces client/Compose gardent les transitions correspondantes. L’instrumentation et l’observation ont un coût d’ordonnancement ; mêmes hôte et caches, aucune garantie d’indépendance statistique.
+
+Le contrôle B permet de poursuivre D sous réserve explicite. Si tous les autres contrôles requis réussissent sans correction causale, la qualification devra rester **D_QUALIFIED_WITH_RESIDUAL_UNCERTAINTY** et une décision du propriétaire sera nécessaire sur cette réserve avant publication ; aucune acceptation implicite.
+
+[Résumé de campagne](evidence/IL-5.11-D2/campaign-summary.json), [durées SMTP/événements](evidence/IL-5.11-D2/smtp-timings.json), reçus et logs `services-1` à `services-3` dans le même dossier. Les empreintes brutes et toute normalisation de fin de ligne réversible sont dans [l’intégrité des logs](evidence/IL-5.11-D2/campaign-log-integrity.json). Le script campagne est conservé ; adapter explicitement le chemin de clone pour le reproduire.

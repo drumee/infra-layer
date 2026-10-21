@@ -1,0 +1,1433 @@
+[
+  {
+    "log": "services-1.txt",
+    "smtp_test_duration_ms": {
+      "13": 639.258157,
+      "14": 5301.918393,
+      "15": 4197.313856,
+      "16": 6100.647671
+    },
+    "connections": [
+      {
+        "connection": 1,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 7.51601
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 85.684197,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 85.876926,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 86.175989,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 86.333136,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 86.548199,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 97.866861
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 97.951259,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 141.692802,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 142.710892,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 143.176817,
+            "response_code": 235
+          },
+          {
+            "event": "smtp.authenticated",
+            "relative_ms": 143.301855
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 146.28387,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 146.377574,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 146.413429,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 153.55973,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 153.823087,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 153.974005,
+            "response_code": 354
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 239.619397,
+            "response_code": 250
+          }
+        ]
+      },
+      {
+        "connection": 2,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 1.876186
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 24.742962,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 24.83696,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 25.093777,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 25.189407,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 25.356955,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 27.520856
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 27.570365,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 71.346152,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 72.491455,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 72.53186,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 72.558573,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 73.132931,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 73.203542,
+            "response_code": 554
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 73.436217,
+            "response_code": 554
+          },
+          {
+            "event": "smtp.error",
+            "relative_ms": 73.664782,
+            "code": "EENVELOPE"
+          },
+          {
+            "event": "smtp.error",
+            "relative_ms": 73.773867,
+            "code": "EENVELOPE"
+          }
+        ]
+      },
+      {
+        "connection": 3,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 74.378304
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 127.354177,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 127.461021,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 127.598752,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 127.63651,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 127.734024,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 129.8231
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 129.860729,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 171.236451,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 171.424958,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 171.969913,
+            "response_code": 535
+          },
+          {
+            "event": "smtp.authfail",
+            "relative_ms": 172.03072
+          },
+          {
+            "event": "smtp.error",
+            "relative_ms": 172.184477,
+            "code": "EAUTH"
+          }
+        ]
+      },
+      {
+        "connection": 4,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 3.10073
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 69.036602,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 69.135075,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 69.350524,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 69.395275,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 69.499789,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 71.675895
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 71.735457,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 115.090627,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 115.319734,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 115.731293,
+            "response_code": 235
+          },
+          {
+            "event": "smtp.authenticated",
+            "relative_ms": 115.77489
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 116.2345,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 116.271184,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 116.295009,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 117.066677,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 117.140262,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 117.192058,
+            "response_code": 354
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 208.591855,
+            "response_code": 250
+          }
+        ]
+      },
+      {
+        "connection": 5,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 2.939509
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 51.813606,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 51.949873,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 52.776965,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 52.851801,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 53.656186,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 58.827355
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 58.911515,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 102.823073,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 103.032655,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 104.13044,
+            "response_code": 235
+          },
+          {
+            "event": "smtp.authenticated",
+            "relative_ms": 104.20057
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 104.922704,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 104.975072,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 105.007226,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 118.642413,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 118.830667,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 118.908884,
+            "response_code": 354
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 213.13302,
+            "response_code": 250
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "log": "services-3.txt",
+    "smtp_test_duration_ms": {
+      "13": 626.845055,
+      "14": 5251.14362,
+      "15": 5239.165125,
+      "16": 6127.946458
+    },
+    "connections": [
+      {
+        "connection": 1,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 8.15852
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 52.117945,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 52.317746,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 52.548936,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 52.693624,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 52.815194,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 63.650131
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 63.72248,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 105.250297,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 106.126341,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 106.517477,
+            "response_code": 235
+          },
+          {
+            "event": "smtp.authenticated",
+            "relative_ms": 106.63802
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 109.742702,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 109.84964,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 109.885977,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 116.714142,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 116.995018,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 117.126224,
+            "response_code": 354
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 203.167955,
+            "response_code": 250
+          }
+        ]
+      },
+      {
+        "connection": 2,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 1.298076
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 17.406341,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 17.503363,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 17.643681,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 17.732527,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 17.895748,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 20.137097
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 20.186786,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 62.801409,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 64.10191,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 64.145704,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 64.17289,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 64.932075,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 65.019173,
+            "response_code": 554
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 65.282219,
+            "response_code": 554
+          },
+          {
+            "event": "smtp.error",
+            "relative_ms": 65.519871,
+            "code": "EENVELOPE"
+          },
+          {
+            "event": "smtp.error",
+            "relative_ms": 65.631525,
+            "code": "EENVELOPE"
+          }
+        ]
+      },
+      {
+        "connection": 3,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 66.330035
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 148.041355,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 148.247656,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 148.401302,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 148.442898,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 148.548111,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 151.074422
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 151.130466,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 194.638207,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 194.864384,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 195.344698,
+            "response_code": 535
+          },
+          {
+            "event": "smtp.authfail",
+            "relative_ms": 195.421445
+          },
+          {
+            "event": "smtp.error",
+            "relative_ms": 195.61232,
+            "code": "EAUTH"
+          }
+        ]
+      },
+      {
+        "connection": 4,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 3.034495
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 109.791509,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 109.887012,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 110.037222,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 110.074562,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 110.172215,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 113.16083
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 113.249852,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 156.603905,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 156.82956,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 157.30789,
+            "response_code": 235
+          },
+          {
+            "event": "smtp.authenticated",
+            "relative_ms": 157.356063
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 157.80271,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 157.838913,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 157.861925,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 158.566378,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 158.635964,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 158.687526,
+            "response_code": 354
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 246.173404,
+            "response_code": 250
+          }
+        ]
+      },
+      {
+        "connection": 5,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 1.62463
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 72.855857,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 72.951395,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 73.14296,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 73.194987,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 73.341235,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 75.978847
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 76.023531,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 119.073147,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 119.20747,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 119.664012,
+            "response_code": 235
+          },
+          {
+            "event": "smtp.authenticated",
+            "relative_ms": 119.70986
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 120.187314,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 120.222944,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 120.245314,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 127.155439,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 127.257751,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 127.316875,
+            "response_code": 354
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 213.079692,
+            "response_code": 250
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "log": "services-2.txt",
+    "smtp_test_duration_ms": {
+      "13": 572.539135,
+      "14": 5290.375593,
+      "15": 4309.007382,
+      "16": 6102.987848
+    },
+    "connections": [
+      {
+        "connection": 1,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 8.424245
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 43.066872,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 43.262727,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 43.526222,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 43.672292,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 43.891416,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 57.225585
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 57.304335,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 99.054238,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 99.927435,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 100.474329,
+            "response_code": 235
+          },
+          {
+            "event": "smtp.authenticated",
+            "relative_ms": 100.613121
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 103.586726,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 103.687209,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 103.722583,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 110.472657,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 110.710038,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 110.850665,
+            "response_code": 354
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 201.102511,
+            "response_code": 250
+          }
+        ]
+      },
+      {
+        "connection": 2,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 2.008519
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 22.986922,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 23.099043,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 23.3137,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 23.41796,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 23.587442,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 25.757773
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 25.807714,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 69.191068,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 70.210144,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 70.249633,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 70.281185,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 71.043421,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 71.112991,
+            "response_code": 554
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 71.352505,
+            "response_code": 554
+          },
+          {
+            "event": "smtp.error",
+            "relative_ms": 71.584318,
+            "code": "EENVELOPE"
+          },
+          {
+            "event": "smtp.error",
+            "relative_ms": 71.721593,
+            "code": "EENVELOPE"
+          }
+        ]
+      },
+      {
+        "connection": 3,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 72.35201
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 99.924519,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 100.035838,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 100.170272,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 100.207157,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 100.30919,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 102.519325
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 102.564077,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 144.985606,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 145.169853,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 145.681839,
+            "response_code": 535
+          },
+          {
+            "event": "smtp.authfail",
+            "relative_ms": 145.745462
+          },
+          {
+            "event": "smtp.error",
+            "relative_ms": 145.893491,
+            "code": "EAUTH"
+          }
+        ]
+      },
+      {
+        "connection": 4,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 4.882285
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 73.812246,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 73.949129,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 74.135837,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 74.184761,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 74.304657,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 77.072801
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 77.127875,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 119.01536,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 119.302768,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 119.739438,
+            "response_code": 235
+          },
+          {
+            "event": "smtp.authenticated",
+            "relative_ms": 119.793419
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 120.456141,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 120.503754,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 120.536251,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 121.475076,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 121.581558,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 121.649079,
+            "response_code": 354
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 208.748205,
+            "response_code": 250
+          }
+        ]
+      },
+      {
+        "connection": 5,
+        "events_ms": [
+          {
+            "event": "smtp.client.created",
+            "relative_ms": 0.0
+          },
+          {
+            "event": "smtp.network",
+            "relative_ms": 2.068688
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 65.445911,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 65.555153,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 65.722814,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 65.773696,
+            "verb": "STARTTLS"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 65.998345,
+            "response_code": 220
+          },
+          {
+            "event": "smtp.tls.established",
+            "relative_ms": 68.76721
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 68.829304,
+            "verb": "EHLO"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 111.544537,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 111.729726,
+            "verb": "AUTH"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 112.187061,
+            "response_code": 235
+          },
+          {
+            "event": "smtp.authenticated",
+            "relative_ms": 112.242941
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 112.820026,
+            "verb": "MAIL"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 112.864539,
+            "verb": "RCPT"
+          },
+          {
+            "event": "smtp.command",
+            "relative_ms": 112.902652,
+            "verb": "DATA"
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 119.168921,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 119.303934,
+            "response_code": 250
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 119.383574,
+            "response_code": 354
+          },
+          {
+            "event": "smtp.response",
+            "relative_ms": 209.549877,
+            "response_code": 250
+          }
+        ]
+      }
+    ]
+  }
+]
