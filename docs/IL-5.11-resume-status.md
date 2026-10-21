@@ -1,6 +1,8 @@
 # IL-5.11-Resume — reprise de qualification alpha.3 (état initial)
 
-Status: **IN_PROGRESS — NOT_AUTHORIZED_FOR_PUBLICATION**.
+Status courant : **FAILED_QUALIFICATION — NOT_AUTHORIZED_FOR_PUBLICATION**.
+
+Reprise depuis main 8f297d8 sur feat/il511-resume-final-qualification : B PASS (ReDoS corrigé), C PASS_WITH_VISIBILITY_LIMITATIONS, D FAIL (Services 15/17, timeout SMTP puis capture inaccessible), E non exécutée. Voir la [décision finale](IL-5.11-resume-final-decision.md) et les preuves nouvelles. Les sections ci-dessous conservent l’état initial de PR #14 comme historique ; elles ne remplacent pas cette décision.
 
 ## Références canoniques
 
