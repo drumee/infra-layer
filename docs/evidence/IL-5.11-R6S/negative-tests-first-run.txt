@@ -1,0 +1,39 @@
+test_D10_historical_two_primitives (evidence_helpers_test.EvidenceTests.test_D10_historical_two_primitives) ... ok
+test_D1_root_symlink (evidence_helpers_test.EvidenceTests.test_D1_root_symlink) ... ok
+test_D2_log_symlink (evidence_helpers_test.EvidenceTests.test_D2_log_symlink) ... ok
+test_D3_existing_root_and_output (evidence_helpers_test.EvidenceTests.test_D3_existing_root_and_output) ... ok
+test_D4_foreign_ownership_real_uid (evidence_helpers_test.EvidenceTests.test_D4_foreign_ownership_real_uid) ... ERROR
+test_D5_untrusted_permissions (evidence_helpers_test.EvidenceTests.test_D5_untrusted_permissions) ... ok
+test_D6_fifo_nonblocking (evidence_helpers_test.EvidenceTests.test_D6_fifo_nonblocking) ... ok
+test_D7_concurrent_processes (evidence_helpers_test.EvidenceTests.test_D7_concurrent_processes) ... ok
+test_D8_close_never_cleans_foreign_resources (evidence_helpers_test.EvidenceTests.test_D8_close_never_cleans_foreign_resources) ... ok
+test_D9_result_identity_and_modes (evidence_helpers_test.EvidenceTests.test_D9_result_identity_and_modes) ... ok
+test_hardlink_and_closed_descriptor_refused (evidence_helpers_test.EvidenceTests.test_hardlink_and_closed_descriptor_refused) ... ok
+
+======================================================================
+ERROR: test_D4_foreign_ownership_real_uid (evidence_helpers_test.EvidenceTests.test_D4_foreign_ownership_real_uid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/il511-r6s/test/security/evidence_helpers_test.py", line 95, in test_D4_foreign_ownership_real_uid
+    self._chown(parent, 65532, 65532)
+  File "/tmp/il511-r6s/test/security/evidence_helpers_test.py", line 81, in _chown
+    subprocess.run([
+  File "/usr/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/bin/docker', 'run', '--rm', '--network', 'none', '--read-only', '--cap-drop=ALL', '--cap-add=CHOWN', '--user', '0:0', '--mount', 'type=bind,source=/tmp/il511-r6s-test-csd9veug,target=/fixture', 'node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392', '/usr/local/bin/node', '-e', 'require("node:fs").chownSync(process.argv[1],+process.argv[2],+process.argv[3])', '/fixture/foreign', '65532', '65532']' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/il511-r6s/test/security/evidence_helpers_test.py", line 102, in test_D4_foreign_ownership_real_uid
+    self._chown(parent, original.st_uid, original.st_gid)
+  File "/tmp/il511-r6s/test/security/evidence_helpers_test.py", line 81, in _chown
+    subprocess.run([
+  File "/usr/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/bin/docker', 'run', '--rm', '--network', 'none', '--read-only', '--cap-drop=ALL', '--cap-add=CHOWN', '--user', '0:0', '--mount', 'type=bind,source=/tmp/il511-r6s-test-csd9veug,target=/fixture', 'node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392', '/usr/local/bin/node', '-e', 'require("node:fs").chownSync(process.argv[1],+process.argv[2],+process.argv[3])', '/fixture/foreign', '1000', '1000']' returned non-zero exit status 1.
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.490s
+
+FAILED (errors=1)
