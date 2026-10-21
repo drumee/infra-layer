@@ -4,6 +4,7 @@ Foreign ownership uses chown directly as root, otherwise a pinned, isolated Dock
 container with only CAP_CHOWN and one process-owned fixture bind mount. No mocks.
 """
 import concurrent.futures
+import datetime
 import importlib.util
 import json
 import os
@@ -12,6 +13,8 @@ import stat
 import subprocess
 import sys
 import tempfile
+import threading
+import functools
 import unittest
 
 sys.dont_write_bytecode = True
@@ -24,7 +27,34 @@ IMAGE = 'node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e
 REFUSED = (UnsafeEvidencePath, OSError)
 
 
+class D4SetupFailed(RuntimeError):
+    """The real ownership fixture could not be established; never a passing refusal."""
+
+
 class EvidenceTests(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._assertion_count = 0
+        self._assertion_lock = threading.Lock()
+        self._assertion_depth = threading.local()
+
+    def __getattribute__(self, name):
+        method = super().__getattribute__(name)
+        if not name.startswith('assert') or not callable(method):
+            return method
+        @functools.wraps(method)
+        def counted(*args, **kwargs):
+            depth = getattr(self._assertion_depth, 'value', 0)
+            if depth == 0:
+                with self._assertion_lock:
+                    self._assertion_count += 1
+            self._assertion_depth.value = depth + 1
+            try:
+                return method(*args, **kwargs)
+            finally:
+                self._assertion_depth.value = depth
+        return counted
+
     def setUp(self):
         self.fixture = tempfile.TemporaryDirectory(prefix='il511-r6s-test-')
         self.base = Path(self.fixture.name)
@@ -36,6 +66,9 @@ class EvidenceTests(unittest.TestCase):
     def tearDown(self):
         self.assertEqual(self.sentinel.read_bytes(), b'KEEP\x00original')
         self.fixture.cleanup()
+        self.assertFalse(self.base.exists())
+        print('R6S_ASSERTIONS ' + json.dumps({'scenario': self._testMethodName,
+                                              'explicit_assertions': self._assertion_count}), flush=True)
 
     def test_D1_root_symlink(self):
         old = self.base / 'il511-D2-results'
@@ -77,30 +110,78 @@ class EvidenceTests(unittest.TestCase):
     def _chown(self, path, uid, gid):
         if os.geteuid() == 0:
             os.chown(path, uid, gid)
+            print('D4_CHOWN ' + json.dumps({'method': 'posix-chown', 'uid': uid,
+                                            'gid': gid, 'path': str(path)}), flush=True)
         else:
-            subprocess.run([
+            # Bind the directory itself. CAP_CHOWN cannot traverse a different
+            # UID's private 0700 parent, and no DAC override is needed here.
+            command = [
                 '/usr/bin/docker', 'run', '--rm', '--network', 'none', '--read-only',
                 '--cap-drop=ALL', '--cap-add=CHOWN', '--user', '0:0',
-                '--mount', 'type=bind,source=' + str(self.base) + ',target=/fixture',
+                '--mount', 'type=bind,source=' + str(path) + ',target=/fixture',
                 IMAGE, '/usr/local/bin/node', '-e',
-                'require("node:fs").chownSync(process.argv[1],+process.argv[2],+process.argv[3])',
-                '/fixture/' + path.name, str(uid), str(gid)], check=True,
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=90)
+                'const fs=require("node:fs");'
+                'console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),'
+                'uid_map:fs.readFileSync("/proc/self/uid_map","utf8"),'
+                'before:fs.statSync("/fixture").uid}));'
+                'fs.chownSync("/fixture",+process.argv[1],+process.argv[2]);'
+                'console.log(JSON.stringify({after:fs.statSync("/fixture").uid}));',
+                str(uid), str(gid)]
+            result = subprocess.run(command, capture_output=True, text=True, timeout=90)
+            diagnostic = {'date': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                          'command': command, 'exit_code': result.returncode,
+                          'stdout': result.stdout, 'stderr': result.stderr}
+            print('D4_CHOWN ' + json.dumps(diagnostic), flush=True)
+            if result.returncode:
+                raise D4SetupFailed('D4_SETUP_FAILED: ' + json.dumps(diagnostic))
 
     def test_D4_foreign_ownership_real_uid(self):
         parent = self.base / 'foreign'
         parent.mkdir(mode=0o755)
+        marker = parent / 'sentinel'
+        marker.write_bytes(b'FOREIGN_FIXTURE_UNCHANGED')
         original = os.stat(parent)
+        changed = False
         try:
             self._chown(parent, 65532, 65532)
-            self.assertNotEqual(os.stat(parent).st_uid, os.geteuid())
-            with self.assertRaises(REFUSED):
-                EvidenceDirectory.create(parent)
-            with self.assertRaises(REFUSED):
-                trusted_input(parent, directory=True)
+            changed = True
+            observed = os.stat(parent, follow_symlinks=False)
+            # Preconditions: real distinct UID, readable/searchable but not writable
+            # by the test operator, no changed contents. Setup failure is distinct.
+            if (observed.st_uid != 65532 or observed.st_uid == os.geteuid()
+                    or observed.st_gid != 65532 or stat.S_IMODE(observed.st_mode) != 0o755
+                    or marker.read_bytes() != b'FOREIGN_FIXTURE_UNCHANGED'
+                    or sorted(p.name for p in parent.iterdir()) != ['sentinel']):
+                raise D4SetupFailed('D4_SETUP_FAILED: foreign UID/mode/sentinel preconditions')
+            print('D4_PRECONDITIONS ' + json.dumps({
+                'operator_uid': os.geteuid(), 'operator_gid': os.getegid(),
+                'fixture_uid': observed.st_uid, 'fixture_gid': observed.st_gid,
+                'fixture_mode': oct(stat.S_IMODE(observed.st_mode)),
+                'intact': True, 'kernel_access_precondition': 'stat/list/read succeeded'}), flush=True)
+            self.assertNotEqual(observed.st_uid, os.geteuid())
+            self.assertEqual(observed.st_uid, 65532)
+            for operation in ('destination', 'trusted-input'):
+                with self.assertRaises(UnsafeEvidencePath) as refused:
+                    if operation == 'destination':
+                        EvidenceDirectory.create(parent)
+                    else:
+                        trusted_input(parent, directory=True)
+                self.assertEqual(str(refused.exception), 'UNTRUSTED_OWNER: ' + str(parent))
+                print('D4_REFUSAL ' + json.dumps({'operation': operation,
+                                                  'error': str(refused.exception)}), flush=True)
+            self.assertEqual(os.stat(parent).st_uid, 65532)
+            self.assertEqual(marker.read_bytes(), b'FOREIGN_FIXTURE_UNCHANGED')
+            self.assertEqual(sorted(p.name for p in parent.iterdir()), ['sentinel'])
+            self.assertEqual(self.sentinel.read_bytes(), b'KEEP\x00original')
         finally:
-            self._chown(parent, original.st_uid, original.st_gid)
-        self.assertEqual(list(parent.iterdir()), [])
+            if changed:
+                self._chown(parent, original.st_uid, original.st_gid)
+        self.assertEqual(os.stat(parent).st_uid, original.st_uid)
+        self.assertEqual(os.stat(parent).st_gid, original.st_gid)
+        self.assertEqual(marker.read_bytes(), b'FOREIGN_FIXTURE_UNCHANGED')
+        print('D4_PASS ' + json.dumps({'foreign_fixture_intact': True,
+                                      'test_owned_uid_restored': True,
+                                      'foreign_resource_deleted': False}), flush=True)
 
     def test_D5_untrusted_permissions(self):
         parent = self.base / 'writable'
