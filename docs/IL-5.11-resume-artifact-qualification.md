@@ -58,3 +58,11 @@ Les trois membres modifiés sont `lib/validation.js`, `CHANGELOG.md`, `PROVENANC
 Les anciennes acceptations applicatives 87 assertions, lifecycle 16/16 et Services 17/17 sont historiques. Elles restent des preuves IL-5.11R, **pas** une compensation de l’échec actuel ni un feu vert du nouveau candidat. La fermeture technique PATH demeure acquise, les tests unitaires de substitution ont été rejoués ; les chemins fonctionnels/SMTP requis doivent néanmoins être requalifiés.
 
 **D FAIL**. Reproductibilité npm et provenance source sont établies ; qualification fonctionnelle/sécurité définitive incomplète et en échec. Aucun SRI d’archive source post-merge nouveau n’est inventé : la PR n’est pas fusionnée. La reprise doit diagnostiquer le timeout initial, revoir l’indépendance/cleanup des tests, puis rejouer les suites nécessaires depuis une source propre explicitement sélectionnée. Toute correction distribuée exige un nouveau reçu. Ne pas poursuivre E comme contrôle réussi.
+
+## Rejeu Services explicitement demandé après l’arrêt
+
+Sur demande du propriétaire (« relance le test »), la même commande a été réexécutée depuis le même clone propre et le même commit `d19e62ba682dc2d781f5f941c7ba4b37e3a65053`, sans modification de code ou de délais. **17/17 PASS, zéro échec/skip**, dont les quatre tests SMTP/DKIM 13–16. Projet jetable `drumee-il2-test-bf78037e`, nettoyage confirmé par le harnais.
+
+Le premier échec 15/17 reste conservé ; ce succès ultérieur ne démontre pas sa cause ni la résolution d’une éventuelle intermittence. La qualification D complète n’est pas validée par ce seul rejeu : les suites suivantes et E n’ont pas été reprises. Les conclusions et dates du premier arrêt ci-dessus restent historiques, sans substitution d’un résultat par l’autre.
+
+[Log du rejeu](evidence/IL-5.11-resume/D-services-rerun-1.txt), [source, résultat et empreinte](evidence/IL-5.11-resume/D-services-rerun-1.json).

@@ -48,3 +48,7 @@ Inventaires globaux Code Scanning/Dependabot HTTP 403 ; le nouveau diagnostic Co
 ## Livrables
 
 [Évaluation B](IL-5.11-resume-security-assessment.md), [couverture C](IL-5.11-resume-github-security.md), [qualification D et arrêt](IL-5.11-resume-artifact-qualification.md), [plan E non exécuté](IL-5.11-resume-release-plan.md), [arrêt structuré](evidence/IL-5.11-resume/D-stop.json), [reçu D](evidence/IL-5.11-resume/D-artifact-receipt.json).
+
+## Preuve complémentaire après la décision d’arrêt
+
+Le propriétaire a demandé un rejeu ciblé de Services. Résultat : **17/17**, même source propre, aucun code/délai modifié, nettoyage confirmé. Voir le [complément D](IL-5.11-resume-artifact-qualification.md#rejeu-services-explicitement-demandé-après-larrêt). L’échec initial demeure documenté et sa cause non établie. Aucune qualification globale D, vérification E ou autorisation de publication n’est déduite de ce seul succès ; la décision d’arrêt ci-dessus n’est pas remplacée par un feu vert.
