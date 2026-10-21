@@ -1,3 +1,15 @@
+# IL-5.11-R6S — Contrôle D qualifié après diagnostic D4
+
+**D_QUALIFIED** au commit `a7f8aae6c8f1de687ff05480115a0cb257ac8aa0` : D4 ciblé PASS, puis onze scénarios/86assertions explicites PASS, zéro erreur/skip. Le passage de vérification depuis clone propre confirme séparément les mêmes résultats. [Diagnostic causal](IL-5.11-R6S-D4-diagnostic.md), [résultat et compteurs](IL-5.11-R6S-D4-result.md), [preuves nouvelles](evidence/IL-5.11-R6S-D4/D-full/D-full.json).
+
+Le seul changement de préparation D4 monte directement le sous-répertoire créé par le test ; aucune capacité ajoutée et aucune permission assouplie. L’assertion exige UnsafeEvidencePath UNTRUSTED_OWNER sur un UID65532 réel et non OSError/EACCES. Les deux sentinelles sont intactes, ownership rendu puis fixture supprimée après vérification. Les assertions incluent teardown et concurrence, sans double compter les appels imbriqués de unittest. Les15assertions du passage ciblé ne sont pas ajoutées aux86 du passage complet.
+
+Les trois helpers ont ensuite été exécutés réellement depuis le clone propre, avec leurs journaux privés et cache neuf. Onze commandes dans l’ordre de qualify, trois Services prévus pour campaign, deux packages pour artifact. La disposition complète figure dans [la qualification](IL-5.11-R6S-qualification.md).
+
+## Historique conservé : arrêt initial au commit6f5c3ef
+
+Le rapport ci-dessous décrit exclusivement l’exécution antérieure. Ses erreurs ne sont ni effacées ni reclassées comme succès.
+
 # IL-5.11-R6S — Tests de sécurité
 
 **FAILED_QUALIFICATION.** Arrêt au premier passage, conformément à la règle d’arrêt §13 du mandat. Aucun rejeu jusqu’au succès, skip ou mock de remplacement.

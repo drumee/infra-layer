@@ -1,3 +1,13 @@
+# IL-5.11-R6S — Reprise D4 et clôture locale
+
+**LOCAL_QUALIFICATION_PASSED — G_PENDING.** La cause de D4 est établie et le harnais corrigé sans nouveau privilège : montage direct de la fixture au lieu de traverser son parent0700 avec CAP_CHOWN seule. D4 exige désormais un refus explicite UNTRUSTED_OWNER après stat de l’UID65532.
+
+D4 ciblé PASS ; contrôle D complet **11scénarios/86assertions, zéro skip**, confirmé depuis clone propre. Les trois helpers sont réellement requalifiés au `a7f8aae6c8f1de687ff05480115a0cb257ac8aa0` : onze commandes canoniques réussies, campagne3×17/17, deux packages identiques aux références. Les41membres npm sont inchangés, SHA256/SRI recalculés. [Qualification complète](IL-5.11-R6S-qualification.md), [résultat D4](IL-5.11-R6S-D4-result.md), [cause et diagnostic](IL-5.11-R6S-D4-diagnostic.md).
+
+Le push et la PR corrective deviennent autorisés par ces résultats locaux ; READY_FOR_SECURITY_REVIEW reste conditionnel à la lecture des résultats GitHub et des nouveaux diagnostics. La PR #16 reste ouverte à1c9d20f et ses copies de helpers doivent converger avant sa fusion. Main reste a02b76e. Aucune fusion ni publication dans ce mandat.
+
+## Historique conservé : rapport d’arrêt initial
+
 # IL-5.11-R6S — Rapport final
 
 **FAILED_QUALIFICATION.** La correction est candidate ; elle n’est pas READY_FOR_SECURITY_REVIEW. Arrêt au premier passage des tests négatifs conformément au §13 du mandat.

@@ -1,3 +1,13 @@
+# IL-5.11-R6S — Réexamen après qualification D4/E
+
+Les défauts de sorties des trois helpers sont **TECHNICALLY_FIXED_AND_LOCALLY_QUALIFIED** : racines exclusives privées, écritures fd, D1/D2/D10 et D4 réellement réussis. Les anciens chemins NEEDS_INVESTIGATION source/cache/TS sont désormais caractérisés : source explicite vérifiée propre, cache privé par exécution, TS explicite avec contrôle de composants/arbre ; Nginx garde ses protections IL-5.11R. Les exécutions E réelles réussissent sans permissions assouplies ni dépendance ajoutée.
+
+La lecture publique Sonar main effectuée pendant cette reprise confirme la même analyse a02b76e :236OPEN, date15:41:23Z. Sonar demeure FAILURE ; aucun état fermé annoncé. [Snapshot frais de lecture, analyse inchangée](evidence/IL-5.11-R6S-D4/F-sonar-main/http-receipts.json). Les résultats PR corrective restent à lire après push.
+
+D4 n’est ni un mock ni une acceptation de risque : le défaut est celui de son montage de préparation, corrigé en conservant CAP_CHOWN seule. Les conditions sameUID/root de l’output-contract restent explicites. Les scripts de diagnostic copiés dans les preuves retracent les commandes effectivement exécutées sur le clone explicitement choisi /tmp/il511-r6s ; ils ne constituent pas un mécanisme de sélection automatique d’un checkout étranger. Toute reproduction sur un autre hôte doit sélectionner/vérifier son checkout et ses préconditions Docker avant exécution. Aucun rootless/userns universel n’est revendiqué ; précondition non satisfaite = D4_SETUP_FAILED.
+
+## Dispositions historiques et résultat administratif distinct
+
 # IL-5.11-R6S — Disposition de sécurité
 
 **Qualification arrêtée en D ; pas de nouvelle analyse SonarCloud/CodeQL à la branche corrective.** Les états administratifs ne sont pas modifiés.

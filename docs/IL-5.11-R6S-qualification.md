@@ -1,3 +1,36 @@
+# IL-5.11-R6S — Requalification locale après D4
+
+**LOCAL_QUALIFICATION_PASSED — G_PENDING.** Les contrôles locaux D/E sont satisfaits ; CI et revue des nouveaux diagnostics à vérifier après push, avant READY_FOR_SECURITY_REVIEW.
+
+| Domaine | Nouvelle preuve exécutée |
+| --- | --- |
+| Source | Clone propre `a7f8aae6c8f1de687ff05480115a0cb257ac8aa0`, main distant a02b76e inchangé |
+| D4 | D4_PASS : UID65532 réel, refus métier UNTRUSTED_OWNER, sentinelles intactes, restauration/cleanup vérifiés |
+| D complet | 11scénarios / 86assertions explicites, aucun skip/échec ; confirmé depuis clone propre |
+| qualify.py | Onze commandes dans l’ordre original, toutes exit0 ; progression complète et stopped=false |
+| Tests JS | Unitaires176/176 dont contrats24 ; contrats séparés24/24 ; Gateway17/17 ; Services17/17 ; Lifecycle16/16 |
+| Application | Parcours réels réussis : Nginx/HTTPS, LAN indépendant, RPC, interruptions/reprise/rollback, restauration sans SMTP, refus SMTP_RECOVERY_UNQUALIFIED, STARTTLS/SASL/DKIM et refus d’open relay |
+| campaign.py | Trois essais prévus exécutés : 3×17/17, zéro skip ; trois readbacks conteneurs/réseaux vides |
+| Consommateur | Huit assertions initiales et37supplémentaires, exports et types stricts NodeNext PASS |
+| Packaging/lint/audits | PASS ; lint0erreur/29avertissements historiques/0nouveau ; audits production et développement zéro vulnérabilité connue au relevé |
+| artifact.py | Deux tarballs identiques,41membres/101778octets ; chaque membre comparé à la source et au reçu D |
+| Intégrité des preuves | Empreintes des11journaux recalculées et identiques aux reçus ; JSON complets et sources/arbre enregistrés |
+| Nettoyage | Readback vide pour chaque projet canonique observé ; aucun nettoyage global. Preuves privées conservées, descripteurs fermés |
+| Scan des journaux | Aucun motif de clé privée/token détecté ; contrôles anti-divulgation des harnais canoniques également réussis. Ce scan n’est pas une preuve universelle d’absence de secret |
+| GitHub | En attente après qualification locale, pas de fusion autorisée |
+
+SHA256 npm **recalculé** : `c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e`.
+SRI npm **recalculé** : `sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==`.
+Aucun export/type/lockfile/dépendance de production changé. Aucune archive source GitHub confondue avec le tarball npm.
+
+[Ordre, dates, commandes et empreintes](evidence/IL-5.11-R6S-D4/E-qualification/qualification-progress.json), [reçu npm exhaustif](evidence/IL-5.11-R6S-D4/E-artifact/artifact-receipt.json), [campagne et cleanup](evidence/IL-5.11-R6S-D4/E-campaign/campaign-summary.json), [validation des journaux](evidence/IL-5.11-R6S-D4/E-validation/validation.json). Tous ces résultats sont nouveaux ; les résultats historiques ne servent pas de remplacement d’exécution.
+
+La protection nouvelle porte sur les destinations Python, leurs journaux/JSON/cache et les sous-répertoires npm. Les outils enfants/harnas canoniques continuent à gérer leurs propres fixtures et sorties externes inchangées ; aucune propriété générale de confinement d’un programme enfant n’est revendiquée. Les tarballs/cache volumineux restent dans les racines privées référencées par les exports ; leurs métadonnées et empreintes sont livrées sans duplication binaire.
+
+Le passage qualifie les conditions de succès réelles de campaign et ses mesures sans erreur d’observateur. Un échec rendrait all_pass=false et exit1, sans retry ; l’intermittence SMTP initiale n’est pas déclarée corrigée. Son acceptation limitée alpha.3 reste distincte.
+
+## Historique conservé : qualification arrêtée avant D4
+
 # IL-5.11-R6S — Qualification
 
 **FAILED_QUALIFICATION**, arrêt au contrôle D. Les conditions de READY_FOR_SECURITY_REVIEW ne sont pas satisfaites.

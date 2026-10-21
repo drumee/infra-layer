@@ -1,0 +1,138 @@
+
+> @drumee/infra-layer@0.1.0-alpha.3 test:lifecycle
+> node test/lifecycle/run.js
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.services
+#1 transferring dockerfile: 994B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [1/2] FROM docker.io/library/debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+#4 DONE 0.0s
+
+#5 [2/2] RUN apt-get update -qq && apt-get install -y --no-install-recommends     bind9=1:9.18.49-1~deb12u2 bind9-utils=1:9.18.49-1~deb12u2 bind9-dnsutils=1:9.18.49-1~deb12u2     postfix=3.7.11-0+deb12u1 libsasl2-modules=2.1.28+dfsg-10 sasl2-bin=2.1.28+dfsg-10     opendkim=2.11.0~beta2-8+deb12u1 opendkim-tools=2.11.0~beta2-8+deb12u1     openssl=3.0.22-1~deb12u1 ca-certificates=20250419~deb12u1 &&     usermod -aG sasl postfix && useradd --uid 1000 --user-group --no-create-home --shell /usr/sbin/nologin infra && mkdir -p /opt/infra &&     cp -a /var/spool/postfix /opt/infra/postfix-queue &&     rm -f /etc/bind/rndc.key /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/certs/ssl-cert-snakeoil.pem &&     rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 exporting to image
+#6 exporting layers done
+#6 writing image sha256:4a59eb6cc9b41c603413bc39cf4f555d7773a5fa2787da9e7fc39cfe9a73b52e done
+#6 naming to docker.io/library/drumee-il3-services:drumee-il3-test-6086eb2f done
+#6 DONE 0.0s
+IL3 preparation begin
+IL3 prepared 646e11407f2c12151ba6bbb3a1855bbeb86034a5e342a21b270eddaf894c9774
+IL3 activation begin {"project":"drumee-il3-test-6086eb2f","address":"127.0.0.1","port":44715}
+TAP version 13
+# Subtest: active configuration has controlled process/functional evidence separate from Docker labels
+ok 1 - active configuration has controlled process/functional evidence separate from Docker labels
+  ---
+  duration_ms: 725.133837
+  type: 'test'
+  ...
+# Subtest: container recreation invalidates attestation until controlled reactivation
+ok 2 - container recreation invalidates attestation until controlled reactivation
+  ---
+  duration_ms: 17868.474521
+  type: 'test'
+  ...
+# Subtest: edited prepared config is rejected before activation with durable resources preserved
+ok 3 - edited prepared config is rejected before activation with durable resources preserved
+  ---
+  duration_ms: 872.72492
+  type: 'test'
+  ...
+# Subtest: new candidate preparation never activates; configuration update preserves persistent keys and CA
+ok 4 - new candidate preparation never activates; configuration update preserves persistent keys and CA
+  ---
+  duration_ms: 19003.322452
+  type: 'test'
+  ...
+# Subtest: cold backup includes SQL/data/files/keys/config; isolated restore preserves rows, bytes, CA and DNS state
+ok 5 - cold backup includes SQL/data/files/keys/config; isolated restore preserves rows, bytes, CA and DNS state
+  ---
+  duration_ms: 42143.0094
+  type: 'test'
+  ...
+# Subtest: failed native boundary preserves data and requires explicit reconciliation
+ok 6 - failed native boundary preserves data and requires explicit reconciliation
+  ---
+  duration_ms: 19203.890308
+  type: 'test'
+  ...
+# Subtest: failed startup boundary preserves data and requires explicit reconciliation
+ok 7 - failed startup boundary preserves data and requires explicit reconciliation
+  ---
+  duration_ms: 30316.08102
+  type: 'test'
+  ...
+# Subtest: failed protocol boundary preserves data and requires explicit reconciliation
+ok 8 - failed protocol boundary preserves data and requires explicit reconciliation
+  ---
+  duration_ms: 33670.839165
+  type: 'test'
+  ...
+# Subtest: interrupted activation is explicit; corruption and raw observer errors fail closed
+ok 9 - interrupted activation is explicit; corruption and raw observer errors fail closed
+  ---
+  duration_ms: 17160.873166
+  type: 'test'
+  ...
+# Subtest: Redis rotation transitions all declared consumers before committing; retains previous generation
+ok 10 - Redis rotation transitions all declared consumers before committing; retains previous generation
+  ---
+  duration_ms: 20780.902539
+  type: 'test'
+  ...
+# Subtest: failed Redis rotation restores previous working consumer generation
+ok 11 - failed Redis rotation restores previous working consumer generation
+  ---
+  duration_ms: 32674.889295
+  type: 'test'
+  ...
+# Subtest: local leaf renewal preserves CA, records scheduler prerequisite and never invents automatic activation
+ok 12 - local leaf renewal preserves CA, records scheduler prerequisite and never invents automatic activation
+  ---
+  duration_ms: 18287.942959
+  type: 'test'
+  ...
+# Subtest: an occupied published port is rejected without touching the listener
+ok 13 - an occupied published port is rejected without touching the listener
+  ---
+  duration_ms: 2907.726006
+  type: 'test'
+  ...
+# Subtest: an existing unowned network is rejected; only the test-created foreign network is removed
+ok 14 - an existing unowned network is rejected; only the test-created foreign network is removed
+  ---
+  duration_ms: 3337.02583
+  type: 'test'
+  ...
+# Subtest: compatible configuration rollback preserves data; schema and credential rollback fail closed
+ok 15 - compatible configuration rollback preserves data; schema and credential rollback fail closed
+  ---
+  duration_ms: 34581.960949
+  type: 'test'
+  ...
+# Subtest: image rebuild requires verified backup and unchanged engine version; tag-only rollback is rejected
+ok 16 - image rebuild requires verified backup and unchanged engine version; tag-only rollback is rejected
+  ---
+  duration_ms: 40811.014977
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 334379.881095
+IL3 cleanup confirmed: drumee-il3-test-6086eb2f

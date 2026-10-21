@@ -1,0 +1,118 @@
+{
+  "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+  "date": "2026-10-21T21:20:36.909658+00:00",
+  "uid": 1000,
+  "gid": 1000,
+  "qualification_complete": true,
+  "stopped": false,
+  "all_log_hashes_match": true,
+  "logs": {
+    "unit": {
+      "sha256": "0954cafa52d1da23eb7c6790885f2f356cc979b8606c1f5d33239babe802a55c",
+      "exit_code": 0,
+      "bytes": 38014
+    },
+    "contracts": {
+      "sha256": "741b60c578d3bdda050c61f35892f2e9daa6be65d947d38efc360e7c9ec5c73e",
+      "exit_code": 0,
+      "bytes": 5536
+    },
+    "gateway": {
+      "sha256": "e587aa95e4df19fcd31eee7ce5c166c03ba5b58eb5254444b8d1717187427406",
+      "exit_code": 0,
+      "bytes": 5887
+    },
+    "services": {
+      "sha256": "795a246512d89117accc0e5319f077ceea3d2479dbf28e01be9785f9fb5e3745",
+      "exit_code": 0,
+      "bytes": 49950
+    },
+    "lifecycle": {
+      "sha256": "d20a62fa402d63bb97e3ce7508c4f779ccf2b5c679114f9606a12631e4ba02cd",
+      "exit_code": 0,
+      "bytes": 5886
+    },
+    "application": {
+      "sha256": "1bed2ffb0a9f64cfcbe1c914764d897c5a046721423a130e9f828bc586082fdc",
+      "exit_code": 0,
+      "bytes": 3543
+    },
+    "package": {
+      "sha256": "8d56bc75da311fddc41cbc06cea8cb26b97e786662a4fddd603b3c7b8619e7ef",
+      "exit_code": 0,
+      "bytes": 1220
+    },
+    "lint": {
+      "sha256": "2a2b1d493cb3f2cde551fc8965184edc0f471efe66a7e6fca7a6b0b9180034d2",
+      "exit_code": 0,
+      "bytes": 3084
+    },
+    "audit-production": {
+      "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300",
+      "exit_code": 0,
+      "bytes": 362
+    },
+    "audit-development": {
+      "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300",
+      "exit_code": 0,
+      "bytes": 362
+    },
+    "consumer": {
+      "sha256": "e5b61355107542de9146959ea2733a314ead3e6e1a377fa5951211ff3ac8d716",
+      "exit_code": 0,
+      "bytes": 663
+    }
+  },
+  "private_key_or_token_pattern_hits": [],
+  "secret_scan_limit": "Pattern scan only, plus existing canonical harness disclosure checks; no universal absence-of-secret guarantee",
+  "owned_cleanup_readback": {
+    "drumee-il1-test-97b18f61": {
+      "containers": [],
+      "networks": []
+    },
+    "drumee-il2-test-54f9da6a": {
+      "containers": [],
+      "networks": []
+    },
+    "drumee-il3-test-6086eb2f": {
+      "containers": [],
+      "networks": []
+    },
+    "drumee-il5-edb9c62c": {
+      "containers": [],
+      "networks": []
+    }
+  },
+  "two_packs_identical": true,
+  "artifact_sha256_recalculated": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "members": 41,
+  "npm_metadata": {
+    "exports": {
+      ".": {
+        "types": "./index.d.ts",
+        "require": "./lib/index.js",
+        "default": "./lib/index.js"
+      },
+      "./package.json": "./package.json",
+      "./lifecycle": {
+        "types": "./lifecycle/index.d.ts",
+        "require": "./lifecycle/index.js",
+        "default": "./lifecycle/index.js"
+      },
+      "./lifecycle/*": "./lifecycle/*.js",
+      "./lib/*": "./lib/*.js",
+      "./adapters/docker/*": "./adapters/docker/*.js",
+      "./capabilities/secrets": "./capabilities/secrets/index.js",
+      "./capabilities/tls": "./capabilities/tls/index.js",
+      "./capabilities/dns": "./capabilities/dns/index.js",
+      "./capabilities/database": "./capabilities/database/index.js",
+      "./capabilities/redis": "./capabilities/redis/index.js",
+      "./capabilities/mail": "./capabilities/mail/index.js",
+      "./capabilities/http/nginx": "./capabilities/http/nginx/index.js",
+      "./capabilities/tls/acme": "./capabilities/tls/acme.js"
+    },
+    "production_dependencies": {}
+  },
+  "clean_tree_after": true,
+  "output_scope": "New helper roots/logs/JSON/cache; canonical test harness private fixtures and external report output are separate unchanged behaviors."
+}

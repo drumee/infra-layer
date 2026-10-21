@@ -1,0 +1,71 @@
+{
+  "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+  "steps": [
+    {
+      "name": "unit",
+      "command": [
+        "/usr/bin/npm",
+        "test"
+      ],
+      "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+      "started_utc": "2026-10-21T18:16:38.321234+00:00",
+      "elapsed_s": 3.6700797389785293,
+      "exit_code": 0,
+      "log_sha256": "0954cafa52d1da23eb7c6790885f2f356cc979b8606c1f5d33239babe802a55c"
+    },
+    {
+      "name": "contracts",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:contracts"
+      ],
+      "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+      "started_utc": "2026-10-21T18:16:41.991632+00:00",
+      "elapsed_s": 0.36433429800672457,
+      "exit_code": 0,
+      "log_sha256": "741b60c578d3bdda050c61f35892f2e9daa6be65d947d38efc360e7c9ec5c73e"
+    },
+    {
+      "name": "gateway",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:gateway"
+      ],
+      "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+      "started_utc": "2026-10-21T18:16:42.356910+00:00",
+      "elapsed_s": 103.25538156999392,
+      "exit_code": 0,
+      "log_sha256": "e587aa95e4df19fcd31eee7ce5c166c03ba5b58eb5254444b8d1717187427406"
+    },
+    {
+      "name": "services",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:services"
+      ],
+      "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+      "started_utc": "2026-10-21T18:18:25.612681+00:00",
+      "elapsed_s": 63.22398124402389,
+      "exit_code": 0,
+      "log_sha256": "795a246512d89117accc0e5319f077ceea3d2479dbf28e01be9785f9fb5e3745"
+    },
+    {
+      "name": "lifecycle",
+      "command": [
+        "/usr/bin/npm",
+        "run",
+        "test:lifecycle"
+      ],
+      "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+      "started_utc": "2026-10-21T18:19:28.837172+00:00",
+      "elapsed_s": 355.5816227289906,
+      "exit_code": 0,
+      "log_sha256": "d20a62fa402d63bb97e3ce7508c4f779ccf2b5c679114f9606a12631e4ba02cd"
+    }
+  ],
+  "complete": false,
+  "stopped": false
+}
