@@ -1,0 +1,401 @@
+{
+  "base_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+  "candidate_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+  "pr": 15,
+  "base_checks": [
+    {
+      "id": 119094488784,
+      "name": "SonarCloud Code Analysis",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "failure",
+      "output": {
+        "title": "Quality Gate failed",
+        "summary": "Failed conditions  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/failed.svg '') [D Reliability Rating on New Code](https://sonarcloud.io/project/issues?id=drumee_infra-layer&branch=main&issueStatuses=OPEN,CONFIRMED&sinceLeakPeriod=true) (required ≥ A)  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/failed.svg '') [E Security Rating on New Code](https://sonarcloud.io/project/issues?id=drumee_infra-layer&branch=main&issueStatuses=OPEN,CONFIRMED&sinceLeakPeriod=true) (required ≥ A)  \n  \n[See analysis details on SonarQube Cloud](https://sonarcloud.io/dashboard?id=drumee_infra-layer&branch=main)\n\n##   \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/light_bulb.svg '') Catch issues before they fail your Quality Gate with our IDE extension ![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/sonarlint.svg '') [SonarQube for IDE](https://www.sonarsource.com/products/sonarlint/features/connected-mode/?referrer=pull-request)\n\n",
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119094488784/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/runs/119094488784"
+    },
+    {
+      "id": 119094238670,
+      "name": "Analyze (actions)",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 1,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119094238670/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39561693774/job/119094238670"
+    },
+    {
+      "id": 119094238416,
+      "name": "Analyze (javascript-typescript)",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 1,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119094238416/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39561693774/job/119094238416"
+    },
+    {
+      "id": 119094235053,
+      "name": "dependencies",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119094235053/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39561694473/job/119094235053"
+    },
+    {
+      "id": 119094235020,
+      "name": "eslint",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 10,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119094235020/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39561694473/job/119094235020"
+    },
+    {
+      "id": 119094235009,
+      "name": "packaging",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119094235009/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39561694473/job/119094235009"
+    },
+    {
+      "id": 119094234999,
+      "name": "unit",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119094234999/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39561694473/job/119094234999"
+    },
+    {
+      "id": 119094234752,
+      "name": "contracts",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119094234752/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39561694473/job/119094234752"
+    }
+  ],
+  "candidate_checks": [
+    {
+      "id": 119110097717,
+      "name": "SonarCloud Code Analysis",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "failure",
+      "output": {
+        "title": "Quality Gate failed",
+        "summary": "Failed conditions  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/failed.svg '') [D Security Rating on New Code](https://sonarcloud.io/project/issues?id=drumee_infra-layer&pullRequest=15&issueStatuses=OPEN,CONFIRMED&sinceLeakPeriod=true) (required ≥ A)  \n  \n[See analysis details on SonarQube Cloud](https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=15)\n\n##   \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/light_bulb.svg '') Catch issues before they fail your Quality Gate with our IDE extension ![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/sonarlint.svg '') [SonarQube for IDE](https://www.sonarsource.com/products/sonarlint/features/connected-mode/?referrer=pull-request)\n\n",
+        "text": null,
+        "annotations_count": 2,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119110097717/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/runs/119110097717"
+    },
+    {
+      "id": 119109926219,
+      "name": "CodeQL",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "failure",
+      "output": {
+        "title": "1 new alert including 1 high severity security vulnerability",
+        "summary": "### New alerts in code changed by this pull request\n\nSecurity Alerts:\n * 1 high\n\n\n_Alerts not introduced by this pull request might have been detected because the code changes were too large._\n\nSee annotations below for details.\n\n[View all branch alerts](/drumee/infra-layer/security/code-scanning?query=pr%3A15+tool%3ACodeQL+is%3Aopen).",
+        "text": null,
+        "annotations_count": 1,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119109926219/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/runs/119109926219"
+    },
+    {
+      "id": 119109786854,
+      "name": "eslint",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 10,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119109786854/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566453396/job/119109786854"
+    },
+    {
+      "id": 119109786263,
+      "name": "unit",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119109786263/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566453396/job/119109786263"
+    },
+    {
+      "id": 119109786148,
+      "name": "dependencies",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119109786148/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566453396/job/119109786148"
+    },
+    {
+      "id": 119109786090,
+      "name": "packaging",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119109786090/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566453396/job/119109786090"
+    },
+    {
+      "id": 119109785770,
+      "name": "contracts",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119109785770/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566453396/job/119109785770"
+    },
+    {
+      "id": 119109781267,
+      "name": "Analyze (actions)",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 1,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119109781267/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566450567/job/119109781267"
+    },
+    {
+      "id": 119109780995,
+      "name": "Analyze (javascript-typescript)",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 1,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119109780995/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566450567/job/119109780995"
+    },
+    {
+      "id": 119108695143,
+      "name": "eslint",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 10,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119108695143/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566123710/job/119108695143"
+    },
+    {
+      "id": 119108695083,
+      "name": "contracts",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119108695083/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566123710/job/119108695083"
+    },
+    {
+      "id": 119108695009,
+      "name": "packaging",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119108695009/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566123710/job/119108695009"
+    },
+    {
+      "id": 119108694934,
+      "name": "unit",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119108694934/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566123710/job/119108694934"
+    },
+    {
+      "id": 119108694746,
+      "name": "dependencies",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119108694746/annotations"
+      },
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566123710/job/119108694746"
+    }
+  ],
+  "base_runs": [
+    {
+      "id": 39561693774,
+      "name": "Push on main",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "dynamic",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39561693774"
+    },
+    {
+      "id": 39561694473,
+      "name": "Quality",
+      "head_sha": "8f297d8f676706f052a24ce4e875d91b76555b91",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39561694473"
+    }
+  ],
+  "candidate_runs": [
+    {
+      "id": 39566453396,
+      "name": "Quality",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566453396"
+    },
+    {
+      "id": 39566450567,
+      "name": "PR #15",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "dynamic",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566450567"
+    },
+    {
+      "id": 39566123710,
+      "name": "Quality",
+      "head_sha": "299fa3ea740f44aa76eaea52115e006464e4a345",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "html_url": "https://github.com/drumee/infra-layer/actions/runs/39566123710"
+    }
+  ],
+  "candidate_codeql_comments": [
+    {
+      "id": 4334421204,
+      "path": "test/unit/secrets.test.js",
+      "line": 65,
+      "body": "## CodeQL / Use of a weak cryptographic key\n\nCreation of an asymmetric RSA key uses 1024 bits, which is below 2048 and considered breakable.\n\n[Show more details](https://github.com/drumee/infra-layer/security/code-scanning/8)"
+    }
+  ],
+  "candidate_artifacts": {
+    "artifacts": []
+  },
+  "coverage": "PASS_WITH_VISIBILITY_LIMITATIONS",
+  "new_codeql_annotation_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: intentional RSA-1024 rejection test, private ephemeral fixtures, no weak secret committed"
+}
