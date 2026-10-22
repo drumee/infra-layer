@@ -1,0 +1,587 @@
+{
+  "base": "09170b9e435b5f9bf564237b9fcae080b56fc932",
+  "head": "faf9c660bfa0312d5dc910cdf8b8938e047e0899",
+  "date_utc": "2026-10-22T12:48:22.977837+00:00",
+  "uid": 1000,
+  "gid": 1000,
+  "files": [
+    {
+      "status": "M",
+      "path": "docs/IL-5.11-R6S-PR16-convergence-inventory.md",
+      "category": "documentation",
+      "sha256": "09ace4b57f5a3c67b2fff0bd1ee198ae457385bce06abb54beb9522fe9afbe17",
+      "bytes": 4622,
+      "mode": "100644"
+    },
+    {
+      "status": "M",
+      "path": "docs/IL-5.11-R6S-PR16-qualification.md",
+      "category": "documentation",
+      "sha256": "d18f817bee0a82fcca9de46eb724b8a99764fbc97888191276e8685d5cf9c631",
+      "bytes": 10265,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/IL-5.11-R6S-postmerge-verification.md",
+      "category": "documentation",
+      "sha256": "8c61ea5af9843d2ca32c540b99a799e3aba06793a2c943d2668e4d485e787b7f",
+      "bytes": 17934,
+      "mode": "100644"
+    },
+    {
+      "status": "M",
+      "path": "docs/IL-5.11-R6S-review.md",
+      "category": "documentation",
+      "sha256": "764ec22b7d1ca7fcb4abc3a632241146cc465d566ebc28f5385e1966d8d5bc75",
+      "bytes": 8874,
+      "mode": "100644"
+    },
+    {
+      "status": "M",
+      "path": "docs/IL-5.11-alpha3-publication-handoff.md",
+      "category": "documentation",
+      "sha256": "3732d94d2b70186c95834db99a144666eafadcdff0438929729b21b11f8b9372",
+      "bytes": 9625,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/archive-run/final-main-source-archive.json",
+      "category": "machine-readable evidence",
+      "sha256": "cb2228a39f25247a19f859555129ece76399e1b3d985049e46595e95ee91e443",
+      "bytes": 820,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/archive-run/final-main-source-archive.txt",
+      "category": "qualification logs",
+      "sha256": "2793961c36684822de78bd2e48db655275896c869e980c6488e0978fffbfab1e",
+      "bytes": 1113,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/archive/provenance.json",
+      "category": "machine-readable evidence",
+      "sha256": "ba7ac22aae42272ce518256cb65cfa9a0ddb871c75724fec6455511ba41617ba",
+      "bytes": 920,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/archive/source-archive-receipt.json",
+      "category": "machine-readable evidence",
+      "sha256": "23457f2a6a2a170125b94069f627eaa2013e130686b66095863f2ab568ecc4f8",
+      "bytes": 946,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/artifact/artifact-receipt.json",
+      "category": "machine-readable evidence",
+      "sha256": "b887ee40172f8f7a3a3f6df41d323f4174b68ac72538662cbd2663d1f59cba22",
+      "bytes": 5490,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/artifact/provenance.json",
+      "category": "machine-readable evidence",
+      "sha256": "290acf83665bbd8c4892b4ee525ddc95655ec8b5bcd4bdddcf0122cba6612ad5",
+      "bytes": 903,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/github/codeql-119788538112-excerpt.txt",
+      "category": "qualification logs",
+      "sha256": "49984a5ff090a9fc70558ef8e1f05a01075709fa4cfd97c84d20c627db1c93c0",
+      "bytes": 448,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/github/codeql-119788538112.json",
+      "category": "machine-readable evidence",
+      "sha256": "80f900bd6b5994382d11400b9f37ecf2c092eced6b1b4016ddbfc0dd7050fb77",
+      "bytes": 260,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/github/codeql-119788538600-excerpt.txt",
+      "category": "qualification logs",
+      "sha256": "049b38e59c99b5892d1fa4f43b3ae11b1545b3590190dc7e868173fab3627106",
+      "bytes": 418,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/github/codeql-119788538600.json",
+      "category": "machine-readable evidence",
+      "sha256": "5a1066c7bf64b18b97fbf58d11e4f9eea742f862dd6412f74aa28980360c966c",
+      "bytes": 259,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/github/codeql-119788538690-excerpt.txt",
+      "category": "qualification logs",
+      "sha256": "0f05cd9d1d996170d791bc1a076c01eabf8049938a77a9ffdf4cfa2346e0999e",
+      "bytes": 412,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/github/codeql-119788538690.json",
+      "category": "machine-readable evidence",
+      "sha256": "36e69e0e14b8f83b555434dee9f4f257c6b126d0d90f73f83a91edd8e0276157",
+      "bytes": 260,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/github/github-postmerge.json",
+      "category": "machine-readable evidence",
+      "sha256": "9fc0af6c517221d0422e31cc26e1db8b8d9da938f33720b45d42ff8e90ad2481",
+      "bytes": 5211,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/github/main-packaging-job.txt",
+      "category": "qualification logs",
+      "sha256": "fc082700e255aa3917e712c752893769833d15ee19abb9bda60011693e364091",
+      "bytes": 34023,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/github/raw-log-location.json",
+      "category": "machine-readable evidence",
+      "sha256": "9024c163413613df081d2a3fd59ff0fdd2357a4ebce72dacf815a67aaa5ed4f0",
+      "bytes": 242,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/independent/independent-artifact-inspection.json",
+      "category": "machine-readable evidence",
+      "sha256": "6ce711a2a318c862d18fc3a1c691debb03db7d5913095a2c2b6bc8ace76778da",
+      "bytes": 4668,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/manifest-final.json",
+      "category": "machine-readable evidence",
+      "sha256": "ab9c30dddca34f885b62bb041bd99dd1392b481590b05cd626d354594436a643",
+      "bytes": 8713,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/negative/final-main-negative.json",
+      "category": "machine-readable evidence",
+      "sha256": "7de7a05c018bb54257ecb0aa4701aa5553d4d12ed0781c552df6a9a8db1a4681",
+      "bytes": 817,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/negative/final-main-negative.txt",
+      "category": "qualification logs",
+      "sha256": "632a0d52664ca26788a478ab38426469af709c4ba98f711bd49edf282c67258d",
+      "bytes": 10839,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/npm-access-summary.json",
+      "category": "machine-readable evidence",
+      "sha256": "13ed12b534312ed9950144ee48ba76501149e7ad392ee25b228e5eb9bb9e24e7",
+      "bytes": 3782,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/premerge/packaging-job.txt",
+      "category": "qualification logs",
+      "sha256": "c18de2fcee39a4f5a91fbcd6f4d90e8b8bcf6dbc529004102528e11391f71e8d",
+      "bytes": 35227,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/premerge/premerge-review.json",
+      "category": "machine-readable evidence",
+      "sha256": "0096f906ed5b26aa88939c6fa0549172a1e4f45aeec726fa8f6be40b072a1b38",
+      "bytes": 8219,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/provenance.json",
+      "category": "machine-readable evidence",
+      "sha256": "85db52b7655f68c1b9defd348b101077d91ae1395e4bdb7da050a88bdc620325",
+      "bytes": 9560,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/security-access/security-access.json",
+      "category": "machine-readable evidence",
+      "sha256": "95a8cc999a6212bde91ea915793ab047782037c09ca4d6f2af1eca98a74e6146",
+      "bytes": 1592,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/sonar-main-individual-dispositions.json",
+      "category": "machine-readable evidence",
+      "sha256": "712b70c00e0d477401e430f360c7e279bf219cf60604b89bc8282b3a3a342de7",
+      "bytes": 3656,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/sonar-main/analysis.json",
+      "category": "machine-readable evidence",
+      "sha256": "8fcb38e9d118a1284ef3e98fe3caced3d8055e47ec7292ad3152ee4ac7441181",
+      "bytes": 350,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/sonar-main/http-receipts.json",
+      "category": "machine-readable evidence",
+      "sha256": "3931bcaa98ccc630c4b5296972cb5ada898253376076b22458495dae6cc678b7",
+      "bytes": 578,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/sonar-main/issues.json",
+      "category": "machine-readable evidence",
+      "sha256": "1825dd5fda9b8eed1d8271cae1ae4bb45488f9295b212e07dbc1a820d64d4dd3",
+      "bytes": 370134,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/sonar-pr16/http-receipts.json",
+      "category": "machine-readable evidence",
+      "sha256": "5499f5ed4215da462787045c3c963675af09195b014e260490eeb4196a2b6247",
+      "bytes": 311,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/sonar-pr16/issues.json",
+      "category": "machine-readable evidence",
+      "sha256": "5aff6462b6864d2be831b9b19a2f0498ba0cffe905a6a2e461ede21e8660f1d9",
+      "bytes": 14160,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier-run/final-main-verifier.json",
+      "category": "machine-readable evidence",
+      "sha256": "419a19bdd91cdaa50ec06b6314fec41095af1ffd8415e09228a75032db50e8dd",
+      "bytes": 807,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier-run/final-main-verifier.txt",
+      "category": "qualification logs",
+      "sha256": "20d2ec15626629ec19af6afd4926539215a1b6af32bce88d987f31e29112c1d9",
+      "bytes": 3154,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/artifact.txt",
+      "category": "qualification logs",
+      "sha256": "82a8b8cd5de7a1488ca3a6b8e0716181e6c0695ca818b29a024c34c3eb30934b",
+      "bytes": 708,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/audit-development.txt",
+      "category": "qualification logs",
+      "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300",
+      "bytes": 362,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/audit-production.txt",
+      "category": "qualification logs",
+      "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300",
+      "bytes": 362,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/consumer.txt",
+      "category": "qualification logs",
+      "sha256": "f5d370303d70a3b23f0267dd87fd40fa1df44df247caeff0a9fd10f22015072d",
+      "bytes": 663,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/contracts.txt",
+      "category": "qualification logs",
+      "sha256": "ad6d50bdde5fde5621c5afc79ca0b9ced66d9e93b63d2050394427147ced2756",
+      "bytes": 5540,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/install.txt",
+      "category": "qualification logs",
+      "sha256": "5cc423130f1ba2414f7c702f439916673a23996478c36fee079e162124bfd9b9",
+      "bytes": 364,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/lint.txt",
+      "category": "qualification logs",
+      "sha256": "2b1e606480a9da04b0315e1db2597deb3ea8a330883e0f326c6167422cb8b30f",
+      "bytes": 3099,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/package.txt",
+      "category": "qualification logs",
+      "sha256": "8d56bc75da311fddc41cbc06cea8cb26b97e786662a4fddd603b3c7b8619e7ef",
+      "bytes": 1220,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/provenance.json",
+      "category": "machine-readable evidence",
+      "sha256": "f192b75cf52ecb30831bcad5abb27ea2e4bc98a6a4f92172ee974167ca3b571d",
+      "bytes": 904,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/receipt.json",
+      "category": "machine-readable evidence",
+      "sha256": "6087f9e5a79c471b9737d0aff00bf5dfd1d45080849904fd7a8e4d2ce0f8788d",
+      "bytes": 8826,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps-01.json",
+      "category": "machine-readable evidence",
+      "sha256": "1e95387bce2bd458128faaae32174947c0e282b059d1b4558f7284f30999631c",
+      "bytes": 293,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps-02.json",
+      "category": "machine-readable evidence",
+      "sha256": "6d26700ae964914309168c5108e75c5319872368098e408fec22540dab6fbd0e",
+      "bytes": 517,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps-03.json",
+      "category": "machine-readable evidence",
+      "sha256": "f8970fa722242c91a13db0495f59d33a374f52ac302d225410643bf538b1b470",
+      "bytes": 770,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps-04.json",
+      "category": "machine-readable evidence",
+      "sha256": "ed98a393be51c8f8d8618bfc90cc8f760b73830f3a4bc5a6512320d5ee0f072e",
+      "bytes": 1028,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps-05.json",
+      "category": "machine-readable evidence",
+      "sha256": "41e005b1236e492ca9a37502b83f6aba2e3f40ba7c99da739518116ea9fe6c35",
+      "bytes": 1276,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps-06.json",
+      "category": "machine-readable evidence",
+      "sha256": "19404b9bb470e60c7f622141af95895e460597272368a8887aed7800b85358c0",
+      "bytes": 1513,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps-07.json",
+      "category": "machine-readable evidence",
+      "sha256": "d48cc5bc0cf4190c16802e146c78dbc95460c5c80d645fff25a09e1ad9dbb39f",
+      "bytes": 1786,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps-08.json",
+      "category": "machine-readable evidence",
+      "sha256": "dbe40827ffaee4ed72f0a81440c3a9c2a040973bf2bd8c4c95ceb7a8bd0d3f13",
+      "bytes": 2063,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps-09.json",
+      "category": "machine-readable evidence",
+      "sha256": "d58dc83c20142ebee2dc956d6523635bbe30f022e98382f16b09fe1a80da6426",
+      "bytes": 2323,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/steps.json",
+      "category": "machine-readable evidence",
+      "sha256": "d58dc83c20142ebee2dc956d6523635bbe30f022e98382f16b09fe1a80da6426",
+      "bytes": 2323,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/system-tools.txt",
+      "category": "qualification logs",
+      "sha256": "9cc84f0bf82d4d81b4705043a313697cd5fc2b01314e3734af8be4bcb1f00c4b",
+      "bytes": 749,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/unit.txt",
+      "category": "qualification logs",
+      "sha256": "5ff705ca4834da90acda3e4507632c5d50d37d3a49d01ae533fd4b35a1f9f7bc",
+      "bytes": 37797,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/packaging-failure/failure.json",
+      "category": "historical evidence",
+      "sha256": "416fa4f65399ed10cf7a96fe37d3476290d789abcb24b6776dcd10467d932adc",
+      "bytes": 3700,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/packaging-failure/packaging-job.txt",
+      "category": "historical evidence",
+      "sha256": "2473ba09a17c77688c87c50d5a31ea5c708cb7833c0412274b793e0c8627b684",
+      "bytes": 36706,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/pr16-head-artifact/artifact-receipt.json",
+      "category": "historical evidence",
+      "sha256": "e314224ba21401f07e80b6e6a030c6201554b6aafda9af0eb5511acc9cdd4784",
+      "bytes": 5490,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/pr16-head-artifact/npm-global.npmrc",
+      "category": "historical evidence",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/pr16-head-artifact/npm-user.npmrc",
+      "category": "historical evidence",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/pr16-head-artifact/provenance.json",
+      "category": "historical evidence",
+      "sha256": "8896523a262743025899ec3088fca8765e028702217dec6c34d7b714d0b9b231",
+      "bytes": 881,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/pr16-head-source/npm-global.npmrc",
+      "category": "historical evidence",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/pr16-head-source/npm-user.npmrc",
+      "category": "historical evidence",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/pr16-head-source/provenance.json",
+      "category": "historical evidence",
+      "sha256": "094413d1271bfd0d1c3e4371cec21904a80762f16c6dc2eb7aaf580118b77be0",
+      "bytes": 920,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/pr16-head-source/source-archive-receipt.json",
+      "category": "historical evidence",
+      "sha256": "e62c01fba7f1f9a8d04ef6fa880c5a6529bfd4991e223d20777dbfc95b2aa895",
+      "bytes": 946,
+      "mode": "100644"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/stop.json",
+      "category": "historical evidence",
+      "sha256": "77d871cd050bf682ce1b06844f5ba1ee91b306f03c78ca89d8c37f37c95b9d38",
+      "bytes": 2215,
+      "mode": "100644"
+    }
+  ],
+  "categories": {
+    "documentation": 5,
+    "machine-readable evidence": 36,
+    "qualification logs": 18,
+    "historical evidence": 11
+  },
+  "executable_changes": [],
+  "npm_member_changes": [],
+  "ci_configuration_changes": [],
+  "checks": [
+    "complete Git name/status and mode inventory",
+    "all changed JSON parseable",
+    "53 final-manifest records verified",
+    "historical runner and nine step log hashes verified",
+    "25 Python methods and86 original explicit assertions confirmed in retained log",
+    "41 member bytes and package metadata/lockfile unchanged",
+    "no known private-key or npm/GitHub-token signatures"
+  ]
+}

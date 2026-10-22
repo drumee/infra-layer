@@ -1,5 +1,11 @@
 # PR #16 convergence qualification
 
+## Final hosted and integrated qualification — 2026-10-22
+
+PR16 HEAD4777137b12cef25a1b4db6f7be265f327b830650 passes Quality39764624430 and CodeQL39764617680, including all25Python methods, no skips. SonarCloud remains FAILURE with ten annotations; the additional keys AaFjMVWpkTmw_53KoHEP and AaFjMVUPkTmw_53KoHEO are independently recalculated public-source SHA256 receipt copies, FALSE_POSITIVE_TECHNICALLY_CONFIRMED. The original eight individual dispositions in the source-specific matrix below remain applicable. Main merge09170b9e435b5f9bf564237b9fcae080b56fc932 passes the new local suite/verifier/two-build artifact check and exact-source Quality39768113212/CodeQL39768112702. Its tree equals the reviewed PR tree. Main Sonar keys and individual dispositions are preserved separately; no alerts were closed.
+
+See [the final post-merge report](IL-5.11-R6S-postmerge-verification.md) and its hashed evidence manifest for the complete current state. The source-specific sections below retain their historical scope.
+
 ## Hosted failure and authorized corrective replay — 2026-10-22
 
 Quality run39753661585 at fea6e0f461c1969addfe504feb12f33fdd0701b4 failed after npm packaging passed: Python ran25methods, with24passes, one ERROR and zero skips. The generic stdout probe assumed /usr/bin/node; the hosted runner installed Node under its toolcache. FileNotFoundError occurred before the probe was executed. This failure remains preserved in the separate stop-report PR #18 and is not reclassified as a pass.

@@ -1,5 +1,11 @@
 # PR #16 executable-documentation convergence inventory
 
+## Integrated inventory confirmation — 2026-10-22
+
+At final canonical main09170b9e435b5f9bf564237b9fcae080b56fc932, verify.py and source-archive.py are the reviewed converged implementations. The bounded historical temp-path-proof.py remains unchanged. The complete25-method post-merge suite and actual verifier/source-archive executions pass. No vulnerable duplicate or additional executable utility was introduced by the final documentation convergence.
+
+See [the final post-merge report](IL-5.11-R6S-postmerge-verification.md) and its hashed evidence manifest for the complete current state. The source-specific sections below retain their historical scope.
+
 ## Baseline
 
 PR #17 merged as `75ac104ddce8700b406ba839cfe1b8bfe6d6f477`. Its integrated tree passed16 regression/maintenance test methods (including the original11 scenarios/86 assertions) and two fresh npm constructions with the unchanged41-member identity. PR #16 started at `1c9d20f1cc315628cfd703199423c6efc873ff13`; its existing branch merged the updated main without conflicts or history rewriting. Root AGENTS.md now governs this work.

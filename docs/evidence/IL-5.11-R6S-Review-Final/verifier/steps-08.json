@@ -1,0 +1,93 @@
+[
+  {
+    "name": "install",
+    "command": [
+      "/usr/bin/npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "exit_code": 0,
+    "seconds": 1.7666511799907312,
+    "sha256": "5cc423130f1ba2414f7c702f439916673a23996478c36fee079e162124bfd9b9"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "/usr/bin/npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "seconds": 3.5277796099544503,
+    "sha256": "5ff705ca4834da90acda3e4507632c5d50d37d3a49d01ae533fd4b35a1f9f7bc"
+  },
+  {
+    "name": "contracts",
+    "command": [
+      "/usr/bin/npm",
+      "run",
+      "test:contracts"
+    ],
+    "exit_code": 0,
+    "seconds": 0.36434199498035014,
+    "sha256": "ad6d50bdde5fde5621c5afc79ca0b9ced66d9e93b63d2050394427147ced2756"
+  },
+  {
+    "name": "system-tools",
+    "command": [
+      "/usr/bin/npm",
+      "run",
+      "test:system-tools"
+    ],
+    "exit_code": 0,
+    "seconds": 0.5144981269841082,
+    "sha256": "9cc84f0bf82d4d81b4705043a313697cd5fc2b01314e3734af8be4bcb1f00c4b"
+  },
+  {
+    "name": "package",
+    "command": [
+      "/usr/bin/npm",
+      "run",
+      "test:package"
+    ],
+    "exit_code": 0,
+    "seconds": 1.1657534699770622,
+    "sha256": "8d56bc75da311fddc41cbc06cea8cb26b97e786662a4fddd603b3c7b8619e7ef"
+  },
+  {
+    "name": "lint",
+    "command": [
+      "/usr/bin/npm",
+      "run",
+      "lint"
+    ],
+    "exit_code": 0,
+    "seconds": 1.3161219289759174,
+    "sha256": "2b1e606480a9da04b0315e1db2597deb3ea8a330883e0f326c6167422cb8b30f"
+  },
+  {
+    "name": "audit-production",
+    "command": [
+      "/usr/bin/npm",
+      "audit",
+      "--omit=dev",
+      "--json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.2641841999720782,
+    "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"
+  },
+  {
+    "name": "audit-development",
+    "command": [
+      "/usr/bin/npm",
+      "audit",
+      "--include=dev",
+      "--json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.8154115439974703,
+    "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"
+  }
+]

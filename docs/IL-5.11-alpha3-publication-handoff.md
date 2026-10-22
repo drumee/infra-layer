@@ -1,52 +1,74 @@
 # Infra Layer alpha.3 publication handoff
 
-## Authorization and current state
+## Decision boundary
 
-**No publication is authorized by this maintenance mission.** The package candidate is `@drumee/infra-layer@0.1.0-alpha.3`; publication, release tags, container image publication, production deployment and moving latest are prohibited. The intended prerelease channel is **next**.
+Maintenance integration status: **MERGED_AND_RELEASE_CANDIDATE_VERIFIED** at canonical main **09170b9e435b5f9bf564237b9fcae080b56fc932**, tree53be7ab7a57d12188dd604893eb60166d94104e3. PR #17 merged as75ac104ddce8700b406ba839cfe1b8bfe6d6f477; converged PR #16 merged as09170b9e435b5f9bf564237b9fcae080b56fc932. GitHub confirms both integrations. The permanent root AGENTS.md policy requires English documentation unless the owner explicitly requests an exception.
 
-PR #17 is integrated at `75ac104ddce8700b406ba839cfe1b8bfe6d6f477`. PR #16 convergence is locally qualified and awaiting current-head GitHub checks and controlled integration. The final canonical source SHA and its separate source-archive receipt must be recorded after both merges; do not treat the intermediate main as the final publication selection. Root AGENTS.md permanently requires English documentation unless the owner explicitly requests a language exception.
+**No npm publication is authorized by this mission.** No release tag, image publication, production deployment or latest movement is authorized. This dossier prepares a separate owner decision; it is not that decision.
 
-## npm artifact
+## Selected source and distinct identities
 
-The executable npm content is unchanged from the qualified alpha.3 candidate. Fresh PR #16 verification built two identical archives from clean source `3740b38cefe15666f266cda933f6e53134cfd958`:
+Distributed executable source remains the qualified D2 content (dbc0be5c20029374c68bdf510dfadd7da079fcf6, with the distributed correction previously selected at d19e62ba682dc2d781f5f941c7ba4b37e3a65053). Maintenance commits change evidence utilities, tests and documentation while preserving every npm member.
 
-- 41 regular package members; compressed size101778bytes.
-- Recalculated npm SHA256: `c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e`.
-- Recalculated npm SRI: `sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==`.
-- No production dependencies or lifecycle publication hooks; exports, public types, package scripts, lockfile and metadata unchanged.
-- License AGPL-3.0-only; repository drumee/infra-layer; package access public.
+| Identity | Newly verified value |
+|---|---|
+| Canonical Git commit | 09170b9e435b5f9bf564237b9fcae080b56fc932 |
+| Git tree | 53be7ab7a57d12188dd604893eb60166d94104e3 |
+| npm package/version | @drumee/infra-layer@0.1.0-alpha.3 |
+| npm archive | 41regular members,101778compressedbytes; two builds identical |
+| npm SHA256 | c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e |
+| npm SRI | sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA== |
+| GitHub source archive | 996226bytes; all642Git blobs verified without extraction |
+| Source archive SHA256 | db9067052f1f92ecb2dc059c27d00683f865f689c10a78adfe209d2edab5cb73 |
+| Source archive SRI | sha512-IIU5Qzlp7UFUmCbheScLl5VE/dkonJTBz/cuyfiDIN3ldO64ZnT7+NwAH1jifdSvdbzPqOzRBQ1jslxPhlWRBw== |
 
-The exhaustive member list and per-file SHA256 values are in the qualified artifact receipts. Final integrated main must be rebuilt twice and compared before publication selection. A source GitHub archive has a different identity and must never replace npm SRI. The intermediate main75ac104 source archive was separately downloaded and verified against all513Git blobs; its historical receipt remains distinct from the final canonical source archive still to be measured.
+The exhaustive npm member list and per-file SHA256 values are in [the final artifact receipt](evidence/IL-5.11-R6S-Review-Final/artifact/artifact-receipt.json). Each member equals selected source bytes and the earlier qualified member map. Exports, public declarations, lockfile, scripts, license and metadata are unchanged. There are no production dependencies or prepublication hooks. License is AGPL-3.0-only; repository is drumee/infra-layer; package access is public. Source-archive SRI must never substitute for npm SRI.
 
-## Qualification and scanners
+A separate independent archive inspection repeats both hashes/member checks and finds no private-key or known npm/GitHub-token signatures. The exact reviewed allowlist and bounded signature scan do not prove absence of every possible secret. Complete binary archives remain in the private roots identified by receipts.
 
-The original11 scenarios/86 assertions and five maintenance regressions passed on integrated PR #17. PR #16 adds nine independent utility methods, including real foreign UID checks, both output writers, symlink/FIFO/permission/concurrency boundaries, real Git archive validation, sentinels and real subprocess result hashes. Twenty-five methods pass without skips. The complete PR #16 verifier separately executes nine real commands; unit176, contracts24, PATH/tool scenarios12, packaging, installed consumer8+37/type checking, lint and both audits pass. Heavy Gateway/Services/Lifecycle/application acceptances are reused only under demonstrated identical executable inputs; no new heavy run is invented.
+## Qualification and current checks
 
-Quality and CodeQL were successful on the reviewed PR #17 and its integrated main. Additional Python analysis is now observable on main as a successful dynamic CodeQL job; no scanner setting was changed by this work. Final PR #16 and post-merge runs must still be inspected. SonarCloud remains **FAILURE**; technical dispositions and administrative states are separate. Global Security inventories have HTTP403 visibility limits; unavailable alerts are not an empty inventory. No alert, rule or branch protection has been disabled or bypassed.
+New final-main executions pass25Python methods without failures/skips, including the original11scenarios/86explicit assertions, five maintenance methods and nine PR16-specific methods. Real foreign UID65532 is rejected by the helper itself, with intact sentinels and verified cleanup boundaries. The corrected stdout probes use the selected Python interpreter; the earlier hosted /usr/bin/node portability failure remains recorded and was not counted as success.
 
-## Registry access and release permissions
+The complete verifier newly executes nine commands: installation;176unit tests;24contracts (also included in176);12system-tool scenarios; package validation; ESLint (zero errors/29historical warnings); production and development audits (zero known vulnerabilities); installed consumer8+37assertions and strict types. It invokes the canonical two-build artifact helper. Heavy Gateway17/17, Services17/17 plus3x17/17campaign, Lifecycle16/16 and application87assertions are reused from D2 only under independently demonstrated identical executable and relevant harness inputs; they are not claimed as newly rerun.
 
-Fresh read-only registry checks on2026-10-22 show alpha.3 absent, `next=0.1.0-alpha.2`, `latest=0.1.0-alpha.1`, and public package status. **Authenticated checks now fail HTTP401**: npm whoami, collaborator/package permissions and profile access cannot be verified with the current session. No login, token change, ACL change or publication attempt was made.
+At exact final main, [Quality39768113212](https://github.com/drumee/infra-layer/actions/runs/39768113212) passes all five jobs, including hosted25Python methods. [CodeQL39768112702](https://github.com/drumee/infra-layer/actions/runs/39768112702) passes JS/TS, Python and Actions; logs confirm scans, SARIF uploads and completed processing. Successful analysis is not proof of an empty global alert inventory.
 
-The2026-10-21 historical assessment observed publisher somanos, read-write permissions and account 2FA mode auth-and-writes. These are historical observations, **not current permission verification**. Current publication preparation is **BLOCKED_RELEASE_PERMISSIONS** until the owner supplies a valid authorized publishing session and permissions/2FA are revalidated. Do not test rights by attempting publication. No OTP, token or extra profile/ACL data is stored in the new evidence. Local OIDC is unavailable; no npm provenance attestation is claimed. If OIDC provenance is required, qualify that publishing environment separately.
+**SonarCloud remains FAILURE.** Its final-main analysis identifies09170b9e;246open/confirmed/reopened findings are returned. Ten PR16-related findings have individual dispositions: seven public source fingerprints, one Git-format SHA1 context and two style findings. Prior R6S dispositions remain separate. No global risk acceptance or administrative closure is claimed. Fresh Code Scanning, Dependabot and Secret Scanning inventory reads returnHTTP403 for GitHub CLI identity somanos; the connector also rejects these endpoint families. Unavailable inventories must not be treated as empty.
 
-## SMTP scope and residual limitations
+## Registry identity, access and provenance
 
-The owner explicitly accepted the residual uncertainty of the original pre-greeting SMTP timeout and its following capture failure for experimental alpha.3 only. Its root cause remains unknown. Successful campaigns do not prove the intermittence has disappeared. The acceptance does not cover message loss, TLS/security defects, open relay, future regressions or production availability. Internet delivery, public DNS/reception/deliverability and SMTP spool restoration remain unqualified. **SMTP_RECOVERY_UNQUALIFIED** remains applicable.
+Fresh read-only checks at2026-10-22T12:04UTC verify **somanos**, server-side **read-write** permissions for @drumee/infra-layer and account2FA **auth-and-writes**. alpha.3 is absent; **next=0.1.0-alpha.2**, **latest=0.1.0-alpha.1**. EarlierHTTP401 observations remain historical; no authentication/ACL change or reason for the session change is attributed to this mission. [Current access summary and raw-receipt fingerprint](evidence/IL-5.11-R6S-Review-Final/npm-access-summary.json).
 
-Evidence output protections assume a trusted selected checkout, ordinary local filesystem, system/root-owned ancestors and an executing UID not already compromised. Root, same-UID attackers, hostile filesystems and compromised child tools remain outside the guarantee. Private outputs are retained; no foreign resource is recursively removed.
+No write was attempted to test rights. No OTP/token is stored. Local OIDC is unavailable and no npm provenance attestation has been produced. Source provenance is established by the exact selected commit/tree, GitHub archive contents, qualified npm member map and reproducible hashes. If registry OIDC provenance is required for publication, qualify that publishing environment separately rather than claiming local attestation.
 
-## Future publication procedure — requires a distinct owner decision
+## Residual SMTP decision and environment limits
 
-1. Select the final integrated source SHA, inspect current checks/dispositions, and independently verify its exact tarball twice in new private directories.
-2. Refresh npm versions/dist-tags, authenticated account, server-side read-write rights and 2FA requirements. Stop if alpha.3 already exists, permissions remain unverified, or latest would change.
-3. Revalidate the chosen provenance mechanism. Require approved interactive 2FA where applicable; never place OTPs or credentials in reports, scripts or command history.
-4. Only after a separate publication authorization, designate the already qualified tarball by explicit path and use the public access/next channel with scripts disabled. This handoff deliberately executes no npm publish command.
-5. Read back the published version, next and unchanged latest; download the registry tarball into a fresh private root, recompute SHA256/SRI and compare every member with the authorized receipt.
-6. Install that registry tarball outside the checkout, with scripts disabled; verify exports, strict types, idempotent preparation and contract refusals. Record actual source commit, registry metadata and provenance evidence, without claiming an attestation that was not produced.
+The owner's exact limited acceptance remains **SMTP_RESIDUAL_UNCERTAINTY_ACCEPTED_FOR_ALPHA3**. The original pre-greeting timeout and following capture failure have unknown root cause. The predefined3x17/17campaign and integrated Services17/17 reduce uncertainty but do not prove permanent disappearance. The acceptance applies only to experimental alpha.3; it does not cover message loss, TLS defects, open relay, new regressions or production availability.
 
-Stop publication preparation on package divergence, missing provenance, unresolved significant findings, failed checks, changed scope of SMTP risk, unavailable rights/2FA, a preexisting alpha.3, unexpected tags or any out-of-scope dependency.
+Internet delivery, public DNS/reception/deliverability and SMTP spool restoration remain unqualified. **SMTP_RECOVERY_UNQUALIFIED** remains applicable. A new significant SMTP failure requires independent investigation and a new decision where necessary.
 
-## Consumer handoff boundaries
+Evidence utilities assume a trusted owned checkout, ordinary local filesystem, approved system ancestors and uncompromised executing UID/tools. Root, same-UID attackers and hostile filesystems are outside their guarantee. Outputs are private/exclusive and retained; foreign resources are not recursively removed.
 
-Debian remains locked at `aa9057f224f4ae5cf80d777e3cb2fad092193fb1`; realignment requires a separate task and new image/integration qualification. Server Runtime and Oxy-form are unchanged. OF-01R remains dependent on a selected qualified distribution. Oxymotion D0 is not started. No production operation is authorized by this document.
+## Future controlled publication — requires distinct authorization
+
+1. Obtain the owner's explicit publication decision for the exact source/package identities above. Refresh main, required checks, scoped dispositions, versions and dist-tags. Stop if alpha.3 exists or selected bytes changed.
+2. Revalidate the authenticated account, target-package write rights and2FA immediately before publishing. Use an approved interactive2FA session; never put OTPs/tokens in reports, scripts or shell history. Stop if permissions or2FA cannot be verified.
+3. Rebuild twice in newly created private directories from the selected clean source and compare all41members, SHA256 and npm SRI. Select the exact qualified tarball by explicit path. Confirm registry provenance requirements and the actual publishing environment.
+4. Only after separate authorization, the prepared command is:
+
+   ```sh
+   npm publish "$QUALIFIED_TARBALL" --access public --tag next --ignore-scripts
+   ```
+
+   QUALIFIED_TARBALL must identify the already verified immutable archive. This command was **not executed**. Use the approved interactive2FA mechanism; add provenance options only when that mechanism has actually been qualified. Do not move latest or create a Git release tag.
+5. Read back the published package/version, next and unchanged latest. Download the registry tarball into a fresh private root, independently recompute SHA256/SRI and compare every member against the authorized receipt.
+6. Install that exact registry tarball outside the source checkout with scripts disabled. Verify exports, strict types, idempotent preparation, plugin selection and contract refusals, including prohibited network exposure and untrusted paths. Record registry metadata, source traceability and any actual attestation; do not invent provenance.
+
+Stop on changed bytes, unexpected members/tags, missing source provenance, unresolved significant new findings, failed mandatory checks, unavailable rights/2FA, changed SMTP risk scope or any required out-of-scope operation.
+
+## Consumer boundaries and evidence
+
+Debian remains locked at aa9057f224f4ae5cf80d777e3cb2fad092193fb1. Its future realignment requires a separate task and new image/integrated acceptance qualification. Runtime and Oxy-form are unchanged; OF-01R depends on selecting and qualifying the distribution. OxymotionD0 is not started.
+
+[Final post-merge report](IL-5.11-R6S-postmerge-verification.md) and [evidence manifest](evidence/IL-5.11-R6S-Review-Final/manifest-final.json) record source, environment, commands, execution dates, results, fingerprints and limits. This handoff is on a separate documentation branch and does not alter canonical main or authorize publication.

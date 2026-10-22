@@ -1,0 +1,87 @@
+{
+  "source": "09170b9e435b5f9bf564237b9fcae080b56fc932",
+  "total_open_inventory": 246,
+  "relevant_reviewed": [
+    {
+      "key": "AaFjSyz7rPG0b49BKgNy",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-PR16-Resume/artifact/artifact-receipt.json",
+      "line": 26,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256; not a credential."
+    },
+    {
+      "key": "AaFjSyzxrPG0b49BKgNx",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-PR16-Resume/verifier/receipt.json",
+      "line": 26,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256; not a credential."
+    },
+    {
+      "key": "AaFjSyxCrPG0b49BKgNq",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-PR16/artifact/artifact-receipt.json",
+      "line": 26,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256; not a credential."
+    },
+    {
+      "key": "AaFjSyynrPG0b49BKgNs",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-PR16/main17-artifact/artifact-receipt.json",
+      "line": 26,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256; not a credential."
+    },
+    {
+      "key": "AaFjSyydrPG0b49BKgNr",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-PR16/verify/receipt.json",
+      "line": 26,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256; not a credential."
+    },
+    {
+      "key": "AaFjSyzWrPG0b49BKgNu",
+      "rule": "python:S1192",
+      "path": "docs/evidence/IL-5.11-release-review/source-archive.py",
+      "line": 22,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE: repeated fixed approved Git path; no user-controlled executable selection."
+    },
+    {
+      "key": "AaFjSyzWrPG0b49BKgNv",
+      "rule": "python:S4790",
+      "path": "docs/evidence/IL-5.11-release-review/source-archive.py",
+      "line": 62,
+      "administrative_status": "OPEN",
+      "technical_disposition": "CONTEXT_JUSTIFIED: Git SHA1 object-format compatibility plus independent exact-content verification and archive SHA256/SHA512."
+    },
+    {
+      "key": "AaFjSy0xrPG0b49BKgNz",
+      "rule": "python:S5778",
+      "path": "test/security/release_utilities_test.py",
+      "line": 183,
+      "administrative_status": "OPEN",
+      "technical_disposition": "STYLE: only archive validation raises the specific expected UnsafeEvidencePath exception; constructor cannot satisfy it."
+    },
+    {
+      "key": "AaFjSyzhrPG0b49BKgNw",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-release-review/postmerge/receipt.json",
+      "line": 29,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256; not a credential."
+    },
+    {
+      "key": "AaFjSyzKrPG0b49BKgNt",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-release-review/premerge/receipt.json",
+      "line": 29,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256; not a credential."
+    }
+  ],
+  "global_risk_acceptance": false
+}
