@@ -199,6 +199,21 @@ class EvidenceDirectory:
         self.close()
 
 
+
+@contextlib.contextmanager
+def private_input(path):
+    """Read an explicitly selected existing private evidence directory, never reuse it as output."""
+    path = Path(path)
+    fd = open_trusted(path, directory=True)
+    try:
+        directory = EvidenceDirectory(fd, path)
+    except BaseException:
+        os.close(fd)
+        raise
+    with directory:
+        yield directory
+
+
 def cli(description):
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--source', required=True, type=Path, help='Explicit clean, trusted checkout')
