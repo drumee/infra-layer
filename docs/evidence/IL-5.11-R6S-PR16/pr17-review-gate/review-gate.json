@@ -1,0 +1,201 @@
+{
+  "date": "2026-10-22T08:14:33.990988+00:00",
+  "head": "029e719feecc6053e6e2251adb6e9b4e4757e008",
+  "base": "a02b76e4c421e96e63406d7b10edc2b76a6056c1",
+  "phase_A": "PASS",
+  "phase_B": "PASS",
+  "quality_five_jobs": "SUCCESS",
+  "codeql_analyses_and_result": "SUCCESS",
+  "sonar": "FAILURE",
+  "sonar_diagnostics": [
+    {
+      "id": "AaFiqotpyLYg0y0cmHTF",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-Review/artifact/artifact-receipt.json",
+      "line": 26,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "Exact recalculated public content SHA256; not a credential."
+    },
+    {
+      "id": "AaFiqorgyLYg0y0cmHTE",
+      "rule": "python:S9154",
+      "path": "docs/evidence/IL-5.11-R6S-D4/validate-proof.py",
+      "line": 76,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    },
+    {
+      "id": "AaFgWKi-d7jkqQWKhJ3-",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-D4/E-artifact/artifact-receipt.json",
+      "line": 26,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "Exact recalculated public content SHA256; not a credential."
+    },
+    {
+      "id": "AaFgWKgLd7jkqQWKhJ35",
+      "rule": "python:S1192",
+      "path": "docs/evidence/IL-5.11-R6S-D4/diagnose.py",
+      "line": 23,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    },
+    {
+      "id": "AaFgWKgLd7jkqQWKhJ36",
+      "rule": "python:S1192",
+      "path": "docs/evidence/IL-5.11-R6S-D4/diagnose.py",
+      "line": 32,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    },
+    {
+      "id": "AaFiqopEyLYg0y0cmHTD",
+      "rule": "python:S1481",
+      "path": "docs/evidence/IL-5.11-R6S-D4/diagnose.py",
+      "line": 33,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    },
+    {
+      "id": "AaFgWKlFd7jkqQWKhJ4T",
+      "rule": "python:S5778",
+      "path": "test/security/evidence_helpers_test.py",
+      "line": 164,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    },
+    {
+      "id": "AaFgWKlCd7jkqQWKhJ4S",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S/static-distributed-comparison.json",
+      "line": 21,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "Exact recalculated public content SHA256; not a credential."
+    },
+    {
+      "id": "AaFgWKlFd7jkqQWKhJ4U",
+      "rule": "python:S5778",
+      "path": "test/security/evidence_helpers_test.py",
+      "line": 272,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    },
+    {
+      "id": "AaFgWKlFd7jkqQWKhJ4V",
+      "rule": "python:S5778",
+      "path": "test/security/evidence_helpers_test.py",
+      "line": 277,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    },
+    {
+      "id": "AaFgWKk5d7jkqQWKhJ4I",
+      "rule": "python:S1192",
+      "path": "docs/evidence/IL-5.11-D2/qualify.py",
+      "line": 12,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4K",
+      "rule": "python:S5443",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 71,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "System sticky tmp is explicitly checked; private exclusive roots, FD-relative operations and ownership/mode checks precede output writes. Original11 scenarios and new private-input regressions pass."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4L",
+      "rule": "python:S5443",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 122,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "System sticky tmp is explicitly checked; private exclusive roots, FD-relative operations and ownership/mode checks precede output writes. Original11 scenarios and new private-input regressions pass."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4O",
+      "rule": "pythonsecurity:S8707",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 128,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "component rejects dot, double-dot, slash and NUL; open_trusted checks literal absolute components, ownership/modes and no links; exclusive FD-relative operations confine writes."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4Q",
+      "rule": "pythonsecurity:S8707",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 129,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "component rejects dot, double-dot, slash and NUL; open_trusted checks literal absolute components, ownership/modes and no links; exclusive FD-relative operations confine writes."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4P",
+      "rule": "pythonsecurity:S8707",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 157,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "component rejects dot, double-dot, slash and NUL; open_trusted checks literal absolute components, ownership/modes and no links; exclusive FD-relative operations confine writes."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4R",
+      "rule": "pythonsecurity:S8707",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 173,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "component rejects dot, double-dot, slash and NUL; open_trusted checks literal absolute components, ownership/modes and no links; exclusive FD-relative operations confine writes."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4M",
+      "rule": "python:S5443",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 220,
+      "administrative_state": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "System sticky tmp is explicitly checked; private exclusive roots, FD-relative operations and ownership/mode checks precede output writes. Original11 scenarios and new private-input regressions pass."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4J",
+      "rule": "python:S1192",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 227,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    },
+    {
+      "id": "AaFgWKk_d7jkqQWKhJ4N",
+      "rule": "python:S108",
+      "path": "docs/evidence/IL-5.11-D2/secure_evidence.py",
+      "line": 242,
+      "administrative_state": "OPEN",
+      "technical_disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+      "reason": "Constant duplication, unused diagnostic return, intentional empty npmrc context, or exception/context layout; no change in execution, success criteria or sentinels."
+    }
+  ],
+  "recalculated_public_sha256": "b872fa5cdd6868d0b89f17038aa445a8c709e675f4e82452fb7283647d48c432",
+  "rulesets_including_parents": [],
+  "classic_branch_policy_observed": {
+    "protected": false,
+    "required_status_checks": "off"
+  },
+  "visibility_limit": "Global Security inventories and detailed protection endpoint historically HTTP403; no empty inventory inferred",
+  "merge_method": "merge",
+  "no_admin_bypass": true
+}

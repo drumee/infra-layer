@@ -1,0 +1,15 @@
+[
+  {
+    "name": "install",
+    "command": [
+      "/usr/bin/npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "exit_code": 0,
+    "seconds": 1.8667969520029146,
+    "sha256": "5cc423130f1ba2414f7c702f439916673a23996478c36fee079e162124bfd9b9"
+  }
+]

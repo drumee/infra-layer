@@ -1,0 +1,22 @@
+{
+  "source": "3740b38cefe15666f266cda933f6e53134cfd958",
+  "tree": "560fdd934fe8552baf7bed801af52c15ef2996f3",
+  "helper": "artifact.py",
+  "helper_sha256": {
+    "artifact.py": "ba57d4dd9da645670a4bf344c976ae373b3401275d8edf83f30a7388daa0b225",
+    "campaign.py": "e6ab3d513b317efd5e4ff05249fd00f7e1e6eef5832497d46f8d8aa62189c14e",
+    "qualify.py": "a30bb05ab473afcceade25189d93c3c13a7f2c6790f13551d438f1e345c50949",
+    "secure_evidence.py": "53e299dfa233dc9fdf802427f70f72186ddd45d583ef40503b1ed9d995bd9547"
+  },
+  "uid": 1000,
+  "started_utc": "2026-10-22T08:25:51.520852+00:00",
+  "python": "3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]",
+  "command": [
+    "/tmp/il511-pr16-clean/docs/evidence/IL-5.11-D2/artifact.py",
+    "--source",
+    "/tmp/il511-pr16-clean"
+  ],
+  "output": "/tmp/il511-evidence-b65f6c3797edd240f1043c73ee90f5de",
+  "clean_source": true,
+  "retained_on_close": true
+}

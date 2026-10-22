@@ -1,0 +1,145 @@
+{
+  "date_utc": "2026-10-22T08:31:40.554543+00:00",
+  "source": "3740b38cefe15666f266cda933f6e53134cfd958",
+  "uid": 1000,
+  "gid": 1000,
+  "registry": "https://registry.npmjs.org/",
+  "steps": [
+    {
+      "name": "versions",
+      "command": [
+        "/usr/bin/npm",
+        "view",
+        "@drumee/infra-layer",
+        "versions",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": [
+        "0.0.0-stage",
+        "0.1.0-alpha.1",
+        "0.1.0-alpha.2"
+      ]
+    },
+    {
+      "name": "dist-tags",
+      "command": [
+        "/usr/bin/npm",
+        "view",
+        "@drumee/infra-layer",
+        "dist-tags",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": {
+        "next": "0.1.0-alpha.2",
+        "latest": "0.1.0-alpha.1"
+      }
+    },
+    {
+      "name": "whoami",
+      "command": [
+        "/usr/bin/npm",
+        "whoami",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache"
+      ],
+      "exit_code": 1,
+      "result": {
+        "error": "npm error code E401\nnpm error 401 Unauthorized - GET https://registry.npmjs.org/-/whoami\nnpm error A complete log of this run can be found in: /tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache/_logs/2026-10-22T08_31_36_603Z-debug-0.log\n"
+      }
+    },
+    {
+      "name": "package-status",
+      "command": [
+        "/usr/bin/npm",
+        "access",
+        "get",
+        "status",
+        "@drumee/infra-layer",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": {
+        "@drumee/infra-layer": "public"
+      }
+    },
+    {
+      "name": "collaborator-permission",
+      "command": [
+        "/usr/bin/npm",
+        "access",
+        "list",
+        "collaborators",
+        "@drumee/infra-layer",
+        "somanos",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache"
+      ],
+      "exit_code": 1,
+      "result": {
+        "error": "npm error code E401\nnpm error Unable to authenticate, your authentication token seems to be invalid.\nnpm error To correct this please try logging in again with:\nnpm error   npm login\nnpm error A complete log of this run can be found in: /tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache/_logs/2026-10-22T08_31_38_343Z-debug-0.log\n"
+      }
+    },
+    {
+      "name": "account-package-permission",
+      "command": [
+        "/usr/bin/npm",
+        "access",
+        "list",
+        "packages",
+        "somanos",
+        "@drumee/infra-layer",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache"
+      ],
+      "exit_code": 1,
+      "result": {
+        "error": "npm error code E401\nnpm error Unable to authenticate, your authentication token seems to be invalid.\nnpm error To correct this please try logging in again with:\nnpm error   npm login\nnpm error A complete log of this run can be found in: /tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache/_logs/2026-10-22T08_31_39_056Z-debug-0.log\n"
+      }
+    },
+    {
+      "name": "account-two-factor-policy",
+      "command": [
+        "/usr/bin/npm",
+        "profile",
+        "get",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache"
+      ],
+      "exit_code": 1,
+      "result": {
+        "error": "npm notice npm tokens that bypass 2FA are being restricted for account changes and direct publishing. Learn how to prepare: https://gh.io/npm-gat-bypass2fa-deprecation\nnpm error code E401\nnpm error Unable to authenticate, your authentication token seems to be invalid.\nnpm error To correct this please try logging in again with:\nnpm error   npm login\nnpm error A complete log of this run can be found in: /tmp/il511-evidence-8fd0aca279f0430db77c0a493e6c366f/npm-cache/_logs/2026-10-22T08_31_39_772Z-debug-0.log\n"
+      }
+    }
+  ],
+  "publication_attempted": false,
+  "auth_or_permissions_modified": false,
+  "token_values_logged": false,
+  "oidc_environment_available": false,
+  "output_scope": "Only target package, actor and 2FA policy retained; profile/ACL extras omitted."
+}

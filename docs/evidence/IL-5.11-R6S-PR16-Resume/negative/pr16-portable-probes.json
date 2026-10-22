@@ -1,0 +1,43 @@
+{
+  "name": "pr16-portable-probes",
+  "source": "e8ac692dd70160736d35cbe227cab37378a55477",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "test/security",
+    "-p",
+    "*_test.py",
+    "-v"
+  ],
+  "cwd": "/tmp/il511-pr16-clean",
+  "date": "2026-10-22T09:59:08.545639+00:00",
+  "elapsed_s": 1.8697823470574804,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "07479c3b2968f76bdee5a2da51b637398f15bcfe2a1c7409d36fd3276abb6d94",
+  "runner_sha256": "05809e9c349216fc9755be8ae8ef5fd9af2fb35c6519513e28616e5960f3c0b3",
+  "output": "/tmp/il511-evidence-45c67e15ea8cb8ffa023212bc776b60b"
+}
