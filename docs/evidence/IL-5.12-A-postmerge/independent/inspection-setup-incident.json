@@ -1,0 +1,27 @@
+{
+  "source": "efc8ca2639f31793124459f28b9979235e28b023",
+  "date_utc": "2026-10-22T12:59:47.079447+00:00",
+  "first_invocation": {
+    "command": "python3 - <<PY; import secure_evidence; assert clean source",
+    "exit_code": 1,
+    "failure": "AssertionError before archive inspection: import created untracked bytecode",
+    "only_untracked_file": "/tmp/il512-a-main/docs/evidence/IL-5.11-D2/__pycache__/secure_evidence.cpython-311.pyc",
+    "bytecode_sha256": "9b593e4cbc3e5ae0dce2cd2ba33701cf9fd58df908042264ab76b3da3030a1ef",
+    "tracked_diff_empty": true
+  },
+  "second_invocation": {
+    "command": "python3 -B - <<PY; same archive inspection from clean /tmp/il512-a-postdocs",
+    "inspection_assertions": "all passed; result JSON written",
+    "process_exit_code": 1,
+    "diagnostic_export_failure": "PRIVATE_DIRECTORY_REQUIRED when the separate diagnostic collector treated a mode0755 bytecode directory as a private evidence root",
+    "security_control": "correctly refused that read API; no insecure write or source modification"
+  },
+  "final_metadata_capture": {
+    "command": "python3 -B -; open_trusted regular bytecode input and private_input result root",
+    "exit_code": 0
+  },
+  "cache_deleted": false,
+  "official_two_build_artifact_check": "PASS on clean merge source before these supplementary invocations",
+  "classification": "supplementary audit invocation/metadata setup errors; no package build, application test, content equality or mandatory CI failure",
+  "historical_results_reclassified": false
+}
