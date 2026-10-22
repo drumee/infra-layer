@@ -1,0 +1,49 @@
+{
+  "status": "FAILED_QUALIFICATION",
+  "recorded_utc": "2026-10-22T09:33:13.195024+00:00",
+  "canonical_main": "75ac104ddce8700b406ba839cfe1b8bfe6d6f477",
+  "PR17_merged": true,
+  "PR16_merged": false,
+  "failed_source": "fea6e0f461c1969addfe504feb12f33fdd0701b4",
+  "failed_job": 119740147424,
+  "quality_run": 39753661585,
+  "reason": "Generic subprocess regression hardcodes /usr/bin/node, absent on the hosted runner; FileNotFoundError before output/hash assertions.",
+  "tests_run": 25,
+  "tests_passed": 24,
+  "errors": 1,
+  "skips": 0,
+  "qualification_stopped": true,
+  "failure_fixed_or_retried": false,
+  "npm_artifact_changed": false,
+  "publication_authentication": "HTTP401; publisher/ACL/2FA currently unverified",
+  "exports": [
+    {
+      "name": "packaging-failure",
+      "original_private_root": "/tmp/il511-evidence-492da205c53af4ec3391cfa9fc823609",
+      "files_sha256": {
+        "failure.json": "416fa4f65399ed10cf7a96fe37d3476290d789abcb24b6776dcd10467d932adc",
+        "packaging-job.txt": "2473ba09a17c77688c87c50d5a31ea5c708cb7833c0412274b793e0c8627b684"
+      }
+    },
+    {
+      "name": "pr16-head-artifact",
+      "original_private_root": "/tmp/il511-evidence-39f4587357d0b93009d4004d871a806b",
+      "files_sha256": {
+        "artifact-receipt.json": "e314224ba21401f07e80b6e6a030c6201554b6aafda9af0eb5511acc9cdd4784",
+        "npm-global.npmrc": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "npm-user.npmrc": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "provenance.json": "8896523a262743025899ec3088fca8765e028702217dec6c34d7b714d0b9b231"
+      }
+    },
+    {
+      "name": "pr16-head-source",
+      "original_private_root": "/tmp/il511-evidence-b03e4a549e24c5a02326f01202ec0805",
+      "files_sha256": {
+        "npm-global.npmrc": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "npm-user.npmrc": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "provenance.json": "094413d1271bfd0d1c3e4371cec21904a80762f16c6dc2eb7aaf580118b77be0",
+        "source-archive-receipt.json": "e62c01fba7f1f9a8d04ef6fa880c5a6529bfd4991e223d20777dbfc95b2aa895"
+      }
+    }
+  ]
+}

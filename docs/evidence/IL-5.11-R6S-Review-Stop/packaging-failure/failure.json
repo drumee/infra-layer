@@ -1,0 +1,98 @@
+{
+  "source": "fea6e0f461c1969addfe504feb12f33fdd0701b4",
+  "main": "75ac104ddce8700b406ba839cfe1b8bfe6d6f477",
+  "job": 119740147424,
+  "checks": [
+    {
+      "id": 119740404011,
+      "name": "CodeQL",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/runs/119740404011"
+    },
+    {
+      "id": 119740365413,
+      "name": "SonarCloud Code Analysis",
+      "status": "completed",
+      "conclusion": "failure",
+      "details_url": "https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=16"
+    },
+    {
+      "id": 119740147579,
+      "name": "eslint",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39753661585/job/119740147579"
+    },
+    {
+      "id": 119740147498,
+      "name": "dependencies",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39753661585/job/119740147498"
+    },
+    {
+      "id": 119740147489,
+      "name": "unit",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39753661585/job/119740147489"
+    },
+    {
+      "id": 119740147441,
+      "name": "contracts",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39753661585/job/119740147441"
+    },
+    {
+      "id": 119740147424,
+      "name": "packaging",
+      "status": "completed",
+      "conclusion": "failure",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39753661585/job/119740147424"
+    },
+    {
+      "id": 119740138743,
+      "name": "Analyze (python)",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39753657192/job/119740138743"
+    },
+    {
+      "id": 119740137517,
+      "name": "Analyze (javascript-typescript)",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39753657192/job/119740137517"
+    },
+    {
+      "id": 119740136933,
+      "name": "Analyze (actions)",
+      "status": "completed",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39753657192/job/119740136933"
+    }
+  ],
+  "failure": {
+    "test": "test_verifier_records_real_command_results_and_original_log_hashes",
+    "location": "test/security/release_utilities_test.py:189",
+    "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/usr/bin/node'",
+    "stage": "subprocess launch before result/hash assertions",
+    "tests_run": 25,
+    "errors": 1,
+    "passed": 24,
+    "skips": 0,
+    "fixture_runner_uid": 1001,
+    "observed_hosted_node_root": "/opt/hostedtoolcache/node/22.22.0/x64",
+    "root_cause": "The new generic command-output regression assumes a Debian-specific Node path absent on the hosted runner."
+  },
+  "suggested_narrow_remediation": "Use the already selected Python interpreter for the generic stdout probe, or an explicitly validated approved Node path if Node behavior is part of that test; then requalify local and hosted checks. No fix/rerun after this stop.",
+  "recorded_utc": "2026-10-22T09:29:55.382138+00:00",
+  "log_sha256": "2473ba09a17c77688c87c50d5a31ea5c708cb7833c0412274b793e0c8627b684",
+  "log_origin": "GitHub connector decoded job log; exact returned text retained",
+  "status": "FAILED_QUALIFICATION",
+  "qualification_stopped": true,
+  "test_rerun_requested": false,
+  "PR16_merge_attempted": false
+}
