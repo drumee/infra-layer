@@ -1,0 +1,314 @@
+{
+  "base": "efc8ca2639f31793124459f28b9979235e28b023",
+  "head": "f8e738c5ca7d1ec3a5ece1cd61e97bb090884082",
+  "date_utc": "2026-10-22T13:25:30.726713+00:00",
+  "uid": 1000,
+  "gid": 1000,
+  "files": [
+    {
+      "status": "M",
+      "path": "docs/IL-5.11-alpha3-publication-handoff.md",
+      "category": "documentation/report",
+      "mode": "100644",
+      "bytes": 10135,
+      "sha256": "c27c40f6e612529cc5a1a71603a978e46e36fe541a14ba0e7d759f6e421a427b"
+    },
+    {
+      "status": "A",
+      "path": "docs/IL-5.12-A-postmerge-verification.md",
+      "category": "documentation/report",
+      "mode": "100644",
+      "bytes": 11957,
+      "sha256": "2bcaf304a5338f76b042839133137bc49cf6fea0f651d7aca02e0a3585e839ca"
+    },
+    {
+      "status": "M",
+      "path": "docs/IL-5.12-A-review.md",
+      "category": "documentation/report",
+      "mode": "100644",
+      "bytes": 10625,
+      "sha256": "b0999f2c916cdcde6bfa2e4ce3fbb98850b0d6c95e8dd2dee095962d1acdc6c2"
+    },
+    {
+      "status": "A",
+      "path": "docs/IL-5.12-alpha3-publication-handoff.md",
+      "category": "documentation/report",
+      "mode": "100644",
+      "bytes": 12138,
+      "sha256": "11a3f574f7bd5f9a460c09512be7b3c92979cb2a37990f054b652240bd3f1511"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/artifact-final-head.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 1804,
+      "sha256": "215ae04b202668e2e312fe3392f054e36c6455c3ce198cbba60fb7a8adc4ba92"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/artifact-postmerge.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 1804,
+      "sha256": "bfbc2d181eb56b574637c5c434c21e1848f25d1969b612681271e53673f0dd32"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/final-head-build/il512-a3-final-head-artifact.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 799,
+      "sha256": "2cdb62245fed8242ede127b3398fae45a54456f6fb2480c2a3f8d14b4e6dfce5"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/final-head-build/il512-a3-final-head-artifact.txt",
+      "category": "generated log",
+      "mode": "100644",
+      "bytes": 708,
+      "sha256": "3a8f192f765306d71fed2941187c0c79f8a90f63c3a66bbaad6b11882f239547"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/codeql-119836321229-excerpt.txt",
+      "category": "generated log",
+      "mode": "100644",
+      "bytes": 412,
+      "sha256": "588daec3f71b4cc7a4e76e006644e0e3c1ea757e36b7a9ced2961abc3675f28f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/codeql-119836321229.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 419,
+      "sha256": "901d5158078a4c2dcfc7eabbeccf32c96cee966123abf92f5bde791265f95c62"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/codeql-119836321507-excerpt.txt",
+      "category": "generated log",
+      "mode": "100644",
+      "bytes": 448,
+      "sha256": "3344c886082a0c19ef13f6b84eb618721f0def03dbdfdf5406a790c323483d46"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/codeql-119836321507.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 419,
+      "sha256": "877dc683de7b3626a01aea1e3f2abd7ddee5335e8a9d2bf0dc67423bf8e03e86"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/codeql-119836321791-excerpt.txt",
+      "category": "generated log",
+      "mode": "100644",
+      "bytes": 418,
+      "sha256": "889b64d26ecabea1e49d92aa40afce48226896f53bff2b51ff938b40c3ecd1be"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/codeql-119836321791.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 419,
+      "sha256": "8040dad2b8abbf106446b3ff71618348093f409c295cb9174924a59a87dfe154"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/github-postmerge.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 3334,
+      "sha256": "0773d9ab5769bdde9616e38c1638235f6b8ae80e8dca0ea52ceede6c852d1782"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/main-packaging-job.txt",
+      "category": "generated log",
+      "mode": "100644",
+      "bytes": 34343,
+      "sha256": "1af111ce23e007d79906c61c0f8f99e011ab85325999990392239c3ce3bc4128"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/main-packaging-log-receipt.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 267,
+      "sha256": "19f2702cb593dc0c96a29cb4188bb662b270032d415a96728a344abe7405d034"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/private-log-location.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 220,
+      "sha256": "2d5227d1732fbe43923e0cd4eaec14dd70522e34b5bdae406e6b185a6f53e546"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/security-access.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 1760,
+      "sha256": "3624d12bec2caa6a50191f179daab2e13ca7e6d83847c2b1b7f779f46ccaea6d"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/github/workflow-runs-final.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 502,
+      "sha256": "c6c2e912e008e39972f3fa0f128bd7d2539d0ebea8ce7992e5c814ab5a80e717"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/independent/inspection-setup-incident.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 1536,
+      "sha256": "eb418320fa8d77e21aaac32794020f17fa0d544a500270e188aaf864e0ec6c48"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/independent/postmerge-independent-inspection.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 1039,
+      "sha256": "9856fb59e76c9e6dbe24680843e15510e16c7736dd8a65c5fc5f44588a319d80"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/manifest.json",
+      "category": "evidence manifest",
+      "mode": "100644",
+      "bytes": 5487,
+      "sha256": "6ce906705e9ac06f3776d0b4fa65f325d2d34931c8642587f97e85db3ba7e67f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/npm-access-summary.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 3751,
+      "sha256": "2acdb1f904a409f605b2d0b2d15098f89b3d12ec8f8bc2ce9206cc3c13c13863"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/postmerge-build/il512-a7-artifact.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 787,
+      "sha256": "34024371dc9082c4a6e89b1c5028209c6fef008c4e0b6c90d91c03496cb7fd5f"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/postmerge-build/il512-a7-artifact.txt",
+      "category": "generated log",
+      "mode": "100644",
+      "bytes": 708,
+      "sha256": "38233702d9e958a7967f30ac28ab86877fd84d438cf39b74b4f573a3c83390e4"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/premerge/pr18-packaging-job.txt",
+      "category": "generated log",
+      "mode": "100644",
+      "bytes": 35234,
+      "sha256": "acadb52c8e57a4f45e3e2756bde43337d6f7aa12b8945ba1d9cd8b5c2558666b"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/premerge/pr18-packaging-log-receipt.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 247,
+      "sha256": "94d4d6562ec79f9b96a96ba7ab07a91e2da6a5973506c2e2153cb3e5fc000e80"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/premerge/premerge-policy-checks.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 3960,
+      "sha256": "3af9847ec736e8edf8ca867942f2f73e43b0b9d8c4dec8c8652988c7868c96b1"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/provenance.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 3441,
+      "sha256": "055396e1c04a1e8f3bf305f93e9c910178066a90f9e93db486bd5064eb944ac1"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/sonar-postmerge-dispositions.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 1796,
+      "sha256": "e7e636b7f4256925904f20f3b187178247f6ea645acdda11aebbf88d962e22f9"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/sonar/analysis.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 350,
+      "sha256": "80175d44059a1891fd4fe10bf7b66b1fdf084f469b9b3a40a302e593382fcff4"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/sonar/http-receipts.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 578,
+      "sha256": "0c8f407c969a643728420769eb2c2e2c3d678e9c5beca4dc27a28321265ee891"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/source-run/il512-a7-source-archive.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 810,
+      "sha256": "d642cf2ef302cc741e6ebe98fbfe937498e87b5fffed65aef0600cf8b909f611"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/source-run/il512-a7-source-archive.txt",
+      "category": "generated log",
+      "mode": "100644",
+      "bytes": 1114,
+      "sha256": "2a580ed9670a5d918376745f9ee8a21ab846a19de47da2298bfd787b5f848fb3"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/source/provenance.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 916,
+      "sha256": "2b28fd0463f004af625708e87f677da5276a324d8f6d0704ec84be1c41429e95"
+    },
+    {
+      "status": "A",
+      "path": "docs/evidence/IL-5.12-A-postmerge/source/source-archive-receipt.json",
+      "category": "provenance/qualification metadata",
+      "mode": "100644",
+      "bytes": 947,
+      "sha256": "12a61ca7ce0ebdab9f20161968a346b6da14730ed98d4e30e9852dfe562e960b"
+    }
+  ],
+  "categories": {
+    "documentation/report": 4,
+    "provenance/qualification metadata": 24,
+    "generated log": 8,
+    "evidence manifest": 1
+  },
+  "executable_changes": [],
+  "package_changes": [],
+  "historical_evidence_changes": []
+}
