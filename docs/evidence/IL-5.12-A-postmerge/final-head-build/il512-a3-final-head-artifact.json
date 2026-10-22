@@ -1,0 +1,38 @@
+{
+  "name": "il512-a3-final-head-artifact",
+  "source": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "docs/evidence/IL-5.11-D2/artifact.py",
+    "--source",
+    "/tmp/il512-a-clean"
+  ],
+  "cwd": "/tmp/il512-a-clean",
+  "date": "2026-10-22T12:52:38.446142+00:00",
+  "elapsed_s": 0.668129020021297,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "3a8f192f765306d71fed2941187c0c79f8a90f63c3a66bbaad6b11882f239547",
+  "runner_sha256": "05809e9c349216fc9755be8ae8ef5fd9af2fb35c6519513e28616e5960f3c0b3",
+  "output": "/tmp/il511-evidence-25f2ee2f1d1174a6e02b1d6151a62f0f"
+}

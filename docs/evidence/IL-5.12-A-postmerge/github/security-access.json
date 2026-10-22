@@ -1,0 +1,57 @@
+[
+  {
+    "command": [
+      "gh",
+      "api",
+      "user"
+    ],
+    "exit_code": 0,
+    "date_utc": "2026-10-22T13:06:02.711359+00:00",
+    "login": "somanos"
+  },
+  {
+    "command": [
+      "gh",
+      "api",
+      "repos/drumee/infra-layer/code-scanning/alerts?state=open&per_page=100"
+    ],
+    "exit_code": 1,
+    "date_utc": "2026-10-22T13:06:03.327258+00:00",
+    "error": {
+      "message": "Resource not accessible by personal access token",
+      "documentation_url": "https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository",
+      "status": "403"
+    },
+    "stderr": "gh: Resource not accessible by personal access token (HTTP 403)\n"
+  },
+  {
+    "command": [
+      "gh",
+      "api",
+      "repos/drumee/infra-layer/dependabot/alerts?state=open&per_page=100"
+    ],
+    "exit_code": 1,
+    "date_utc": "2026-10-22T13:06:04.005460+00:00",
+    "error": {
+      "message": "Resource not accessible by personal access token",
+      "documentation_url": "https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository",
+      "status": "403"
+    },
+    "stderr": "gh: Resource not accessible by personal access token (HTTP 403)\n"
+  },
+  {
+    "command": [
+      "gh",
+      "api",
+      "repos/drumee/infra-layer/secret-scanning/alerts?state=open&per_page=100"
+    ],
+    "exit_code": 1,
+    "date_utc": "2026-10-22T13:06:04.733472+00:00",
+    "error": {
+      "message": "Resource not accessible by personal access token",
+      "documentation_url": "https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository",
+      "status": "403"
+    },
+    "stderr": "gh: Resource not accessible by personal access token (HTTP 403)\n"
+  }
+]

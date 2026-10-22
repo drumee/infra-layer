@@ -78,3 +78,7 @@ For all four, SHA256 of public capabilities/secrets/index.js was independently r
 Only the two report inaccuracies above are corrected; original machine-readable evidence and failure logs are retained byte for byte. New inventory/build/scanner records are created under a distinct exclusive directory. New documentation follows AGENTS.md. A normal commit/push is required, with no history rewrite. Final-head package identity, hosted checks and policy refresh must pass before integration. A6/A7 have not yet occurred at this report's authoring point; their exact merge identity and new observations belong in `docs/IL-5.12-A-postmerge-verification.md` on a separate documentation branch.
 
 The pre-merge review is favorable within these explicit final-head gates. Publication remains prohibited and requires a separate owner decision, current publisher rights/2FA, unchanged package identity and the stop conditions in the publication handoff.
+
+## Integrated completion — 2026-10-22
+
+PR #18 was marked ready and merged normally at reviewed HEADde084c82d21c8149db1e3d6affe7084e4aa2cfca. Canonical merge efc8ca2639f31793124459f28b9979235e28b023 preserves the reviewed tree and unchanged npm bytes. All final-head and post-merge required checks pass. The status is DOCUMENTATION_MERGED_RELEASE_CANDIDATE_VERIFIED; detailed new measurements, actual CI results, supplementary inspection incidents and residual limitations are in [the post-merge report](IL-5.12-A-postmerge-verification.md). Earlier sections retain their authoring-time scope. Publication remains unauthorized.

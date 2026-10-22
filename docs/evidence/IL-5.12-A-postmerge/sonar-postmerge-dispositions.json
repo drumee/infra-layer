@@ -1,0 +1,42 @@
+{
+  "source": "efc8ca2639f31793124459f28b9979235e28b023",
+  "total_returned": 250,
+  "prior_total": 246,
+  "new_findings": [
+    {
+      "key": "AaFjrlqT7lu2rHAZLodF",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/artifact/artifact-receipt.json",
+      "line": 26,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256, not credential"
+    },
+    {
+      "key": "AaFjrlqG7lu2rHAZLodE",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/independent/independent-artifact-inspection.json",
+      "line": 22,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256, not credential"
+    },
+    {
+      "key": "AaFjrloi7lu2rHAZLodD",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Final/verifier/receipt.json",
+      "line": 26,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256, not credential"
+    },
+    {
+      "key": "AaFjrlq67lu2rHAZLodG",
+      "rule": "json:S6418",
+      "path": "docs/evidence/IL-5.11-R6S-Review-Stop/pr16-head-artifact/artifact-receipt.json",
+      "line": 26,
+      "administrative_status": "OPEN",
+      "technical_disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED: independently recalculated public source SHA256, not credential"
+    }
+  ],
+  "global_acceptance": false,
+  "complete_snapshot_private_root": "/tmp/il511-evidence-45b453298d0db222bcde93d349872569",
+  "complete_snapshot_sha256": "c6faf6292edcef7db11bb3afebf3a4ee1da420603615c6ad5e20a74337eb11c6"
+}

@@ -1,0 +1,120 @@
+{
+  "date_utc": "2026-10-22T12:54:22.644Z",
+  "pr": 18,
+  "head": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+  "base": {
+    "sha": "09170b9e435b5f9bf564237b9fcae080b56fc932",
+    "protected": false,
+    "protection": {
+      "enabled": false,
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      }
+    }
+  },
+  "rulesets": [],
+  "reviews": [],
+  "repository": {
+    "permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "triage": true,
+      "pull": true
+    },
+    "allow_merge_commit": true
+  },
+  "checks": [
+    {
+      "id": 119834617049,
+      "name": "CodeQL",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/runs/119834617049"
+    },
+    {
+      "id": 119834552098,
+      "name": "SonarCloud Code Analysis",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=18"
+    },
+    {
+      "id": 119834392533,
+      "name": "eslint",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39781724439/job/119834392533"
+    },
+    {
+      "id": 119834392525,
+      "name": "packaging",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39781724439/job/119834392525"
+    },
+    {
+      "id": 119834392520,
+      "name": "dependencies",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39781724439/job/119834392520"
+    },
+    {
+      "id": 119834392320,
+      "name": "unit",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39781724439/job/119834392320"
+    },
+    {
+      "id": 119834392005,
+      "name": "contracts",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39781724439/job/119834392005"
+    },
+    {
+      "id": 119834377133,
+      "name": "Analyze (python)",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39781718077/job/119834377133"
+    },
+    {
+      "id": 119834376936,
+      "name": "Analyze (javascript-typescript)",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39781718077/job/119834376936"
+    },
+    {
+      "id": 119834376575,
+      "name": "Analyze (actions)",
+      "head_sha": "de084c82d21c8149db1e3d6affe7084e4aa2cfca",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39781718077/job/119834376575"
+    }
+  ],
+  "classic_protection_read": {
+    "error": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"403\"}",
+    "error_code": "FORBIDDEN",
+    "error_data": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+      "status": "403"
+    }
+  }
+}

@@ -1,5 +1,9 @@
 # Infra Layer alpha.3 publication handoff
 
+## IL-5.12 documentation consolidation follow-up
+
+This IL-5.11 dossier records qualification at09170b9e435b5f9bf564237b9fcae080b56fc932. Documentation-only PR #18 subsequently integrated as efc8ca2639f31793124459f28b9979235e28b023 without changing the41npm members. For the selected canonical source, new source-archive fingerprint and publication prerequisites after consolidation, use [the IL-5.12 publication handoff](IL-5.12-alpha3-publication-handoff.md). No publication is authorized by either dossier.
+
 ## Decision boundary
 
 Maintenance integration status: **MERGED_AND_RELEASE_CANDIDATE_VERIFIED** at canonical main **09170b9e435b5f9bf564237b9fcae080b56fc932**, tree53be7ab7a57d12188dd604893eb60166d94104e3. PR #17 merged as75ac104ddce8700b406ba839cfe1b8bfe6d6f477; converged PR #16 merged as09170b9e435b5f9bf564237b9fcae080b56fc932. GitHub confirms both integrations. The permanent root AGENTS.md policy requires English documentation unless the owner explicitly requests an exception.
