@@ -1,0 +1,26 @@
+[
+  {
+    "date": "2026-10-21T21:23:45.508069+00:00",
+    "command": [
+      "gh",
+      "api",
+      "--include",
+      "repos/drumee/infra-layer/code-scanning/alerts?state=open&per_page=100"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "ca691219a662d454f369dec761e56dcf4a65b14aebcc4d06191be311528afed0",
+    "stderr_sha256": "685157c935a04272c2f9e8d1f4d69761d4e1c2d6c8f7c4d76ded2a04fdedf107"
+  },
+  {
+    "date": "2026-10-21T21:23:46.122186+00:00",
+    "command": [
+      "gh",
+      "api",
+      "--include",
+      "repos/drumee/infra-layer/dependabot/alerts?state=open&per_page=100"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "1b82da59005e9f22b3b7d23ab3618c2ca45ac9e0c8e36412b1e1a754d965d9fe",
+    "stderr_sha256": "685157c935a04272c2f9e8d1f4d69761d4e1c2d6c8f7c4d76ded2a04fdedf107"
+  }
+]

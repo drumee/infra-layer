@@ -1,0 +1,724 @@
+Analyze (actions)	Set up job	﻿2026-10-21T21:22:40.0571395Z Current runner version: '2.338.0'
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0590323Z ##[group]Runner Image Provisioner
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0590993Z Hosted Compute Agent
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0591354Z Version: 20261012.601
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0592060Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0592529Z Build Date: 2026-10-12T17:48:21Z
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0592926Z Worker ID: {a29f46ff-8a32-4d1e-835c-855e9fa0969f}
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0593396Z Region: centralus
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0593768Z Cloud: Azure
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0594123Z ##[endgroup]
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0594978Z ##[group]Operating System
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0595372Z Ubuntu
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0595749Z 24.04.5
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0596101Z LTS
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0596441Z ##[endgroup]
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0596790Z ##[group]Runner Image
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0597156Z Image: ubuntu-24.04
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0597855Z Version: 20261012.334.1
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0598509Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0599564Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0600113Z ##[endgroup]
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0601037Z ##[group]GITHUB_TOKEN Permissions
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0602614Z Actions: read
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0603030Z Contents: read
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0603400Z Metadata: read
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0603773Z Packages: read
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0604882Z SecurityEvents: write
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0605234Z ##[endgroup]
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0606734Z Secret source: Actions
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0607288Z Cache mode: write
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0607814Z Prepare workflow directory
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0944429Z Prepare all required actions
+Analyze (actions)	Set up job	2026-10-21T21:22:40.0975537Z Getting action download info
+Analyze (actions)	Set up job	2026-10-21T21:22:40.3146331Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+Analyze (actions)	Set up job	2026-10-21T21:22:40.4282815Z Download action repository 'github/codeql-action@v4' (SHA:9b3254085494b55a0f7c4c2b3d2d52cc712ce370)
+Analyze (actions)	Set up job	2026-10-21T21:22:41.0541037Z Complete job name: Analyze (actions)
+Analyze (actions)	Checkout repository	﻿2026-10-21T21:22:41.0993484Z ##[group]Run actions/checkout@v6
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0993990Z with:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0994345Z   repository: drumee/infra-layer
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0996685Z   token: ***
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0996946Z   ssh-strict: true
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0997215Z   ssh-user: git
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0997489Z   persist-credentials: true
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0997792Z   clean: true
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0998071Z   sparse-checkout-cone-mode: true
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0998392Z   fetch-depth: 1
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0998661Z   fetch-tags: false
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0998942Z   show-progress: true
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0999218Z   lfs: false
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0999475Z   submodules: false
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.0999779Z   set-safe-directory: true
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1000090Z   allow-unsafe-pr-checkout: false
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1000479Z env:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1000745Z   CODE_SCANNING_REF: refs/pull/17/head
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1001111Z   CODE_SCANNING_BASE_BRANCH: main
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1001465Z   CODE_SCANNING_IS_ANALYZING_DEFAULT_BRANCH: false
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1002020Z   CODE_SCANNING_IS_STEADY_STATE_DEFAULT_SETUP: true
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1007377Z   CODE_SCANNING_WORKFLOW_FILE: H4sIAAAAAAAA/+xVXW/bNhR996+48AakfaDzMuxBQIGqjpx4M+zUUtBlQUDQ1JXMWiYVfjhVO//3gaIc22syZ9vrID1Il4fnfvFcSrbGCPpDlePHSb+nnSTB9OO3b1AKu3SLAW5Q2oGQtbNmwFWO1HAmpZAl1U5Sj4fttqdkBHkj2VrwXg/lJuoBDGcXCU2H8XQ6nl7SeTJ6NTEWnvOvDB/iNKEf5vF0ePVapgUzSBeaSb58jnGc0ngaT25/9z8XySi+mWT/0IMwlElWNV+9uxwL5ir79x7TLIkvbmmaxVny5DRNspvrCKx2+N2eT7P5r6PJ7BMdjSfJa+N6VHpVVOqRFqJCn3vvs1oY35YQLvpPAN+/COJggjeee82sFl8GFZOlY6Xf+7aFaicN8X32oEKr9S/pbPqmQ2snJeq33pHH1qjXwhihZOvSmxi37S9oZHln40palPbYWDO+YiUeGw1yp4VtSNsKE8GjFha7RZETq1YoD62eWkiHREmCWisdQcEqExaN1cxi2exiK5ioSMGMPQRBV4kdCEBIXrm8q1x4CezqFO0yPFgF4N6P0k0E50/A53ALJ6qcrFWOEUgldxGEJxQ3grO7vls4aR2pmEVj+/dnL4TymW2Y4VrUltimxvB5MrDTu/5TmMZi3R0H0h284RL5SjkLGmtlhFW66SidQfNU0nPe4d5vfu4dEaRoXQ21Vl8aKJQGjaUwVgvclVfkUVg+4g36OfeSeahI8HJuLNOWtOD3m586/KOwy33D9/SUa8xRWsEqEyRhkGu0ZnA5zq5uPtB5cjlOs/k4Sen1fPbb7U4a/tk36nnBHec4lsK7EV8Rwqg+nYqQwu5z6Oax/wyz5eMkxESvZmnWRe+bM2iTHyhn20nX/tGlMvYw+COC69n8JEGt9MsEw5gOk3k2Ho2HcZacouKMctRWFMIL60XSm/kkPUXldGX2BMdtbkekEYashMxNBL64ZDdav+uiebGNz8nmALo3H4JzrFHmKHlDOONLIcuwKUyBAcqN0EquUVp49w7OwlEmvkuYnx0SPTj0JzWCfh9+gItwN7XWBozbj892WBaijOCPJ4sPo8UT4xW2L41/lC6PDQA+iYr40W0iuHvlHeXL+lDRdhdst3B/QGqXGpltJ6IX2B3Afe9YFteoC6XXnSbCHWaEOS2O7gL8Xx//Wh/7y+PgNO+MsN32/hwAvNPjc1oKAAA=
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1013189Z ##[endgroup]
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1695429Z Syncing repository: drumee/infra-layer
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1697185Z ##[group]Getting Git version info
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1697907Z Working directory is '/home/runner/work/infra-layer/infra-layer'
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1698996Z [command]/usr/bin/git version
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1781908Z git version 2.55.0
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1796632Z ##[endgroup]
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1807112Z Temporarily overriding HOME='/home/runner/work/_temp/b01c3cbe-c1ca-4846-bbf2-ed403837c939' before making global git config changes
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1808631Z Adding repository directory to the temporary git global config as a safe directory
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1812276Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-layer/infra-layer
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1857719Z Deleting the contents of '/home/runner/work/infra-layer/infra-layer'
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1860744Z ##[group]Determining repository object format
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1862220Z ##[endgroup]
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1862921Z ##[group]Initializing the repository
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1865448Z [command]/usr/bin/git init /home/runner/work/infra-layer/infra-layer
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1976525Z hint: Using 'master' as the name for the initial branch. This default branch name
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1979387Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1980937Z hint: to use in all of your new repositories, which will suppress this warning,
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1981778Z hint: call:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1982250Z hint:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1982793Z hint: 	git config --global init.defaultBranch <name>
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1983768Z hint:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1984339Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1985251Z hint: 'development'. The just-created branch can be renamed via this command:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1985978Z hint:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1986389Z hint: 	git branch -m <name>
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1986884Z hint:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1987501Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1988519Z Initialized empty Git repository in /home/runner/work/infra-layer/infra-layer/.git/
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.1990434Z [command]/usr/bin/git remote add origin https://github.com/drumee/infra-layer
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2039929Z ##[endgroup]
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2040817Z ##[group]Disabling automatic garbage collection
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2042170Z [command]/usr/bin/git config --local gc.auto 0
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2074839Z ##[endgroup]
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2075687Z ##[group]Setting up auth
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2076250Z Removing SSH command configuration
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2079870Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2122796Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2424840Z Removing HTTP extra header
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2431084Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2460915Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2636963Z Removing includeIf entries pointing to credentials config files
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2642065Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2672000Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2848302Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2881753Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path /home/runner/work/_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2913972Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.2945152Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.3008757Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.3035392Z ##[endgroup]
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.3036156Z ##[group]Fetching the repository
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.3042376Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0f8d80ca002dfac08e2d36617aa1031943c4be06:refs/remotes/pull/17/head
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.9370683Z From https://github.com/drumee/infra-layer
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.9372188Z  * [new ref]         0f8d80ca002dfac08e2d36617aa1031943c4be06 -> pull/17/head
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.9376691Z ##[endgroup]
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.9377675Z ##[group]Determining the checkout info
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.9378717Z ##[endgroup]
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.9381303Z [command]/usr/bin/git sparse-checkout disable
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.9873762Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.9926545Z ##[group]Checking out the ref
+Analyze (actions)	Checkout repository	2026-10-21T21:22:41.9928796Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/17/head
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0210923Z Note: switching to 'refs/remotes/pull/17/head'.
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0211943Z 
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0212450Z You are in 'detached HEAD' state. You can look around, make experimental
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0213678Z changes and commit them, and you can discard any commits you make in this
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0214879Z state without impacting any branches by switching back to a branch.
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0215643Z 
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0216188Z If you want to create a new branch to retain commits you create, you may
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0217303Z do so (now or later) by using -c with the switch command. Example:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0217932Z 
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0218251Z   git switch -c <new-branch-name>
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0218772Z 
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0219211Z Or undo this operation with:
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0219927Z 
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0220243Z   git switch -
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0220653Z 
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0221315Z Turn off this advice by setting config variable advice.detachedHead to false
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0222304Z 
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0223200Z HEAD is now at 0f8d80c docs(il511): qualify D4 and evidence helpers with real campaigns and unchanged npm bytes
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0226346Z ##[endgroup]
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0259501Z [command]/usr/bin/git log -1 --format=%H
+Analyze (actions)	Checkout repository	2026-10-21T21:22:42.0282299Z 0f8d80ca002dfac08e2d36617aa1031943c4be06
+Analyze (actions)	Setup proxy for registries	﻿2026-10-21T21:22:42.0595587Z ##[group]Run github/codeql-action/start-proxy@v4
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0596410Z with:
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0597007Z   registries_credentials: ***
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0597656Z   language: actions
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0598213Z   registry_secrets: []
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0603919Z   token: ***
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0605073Z   matrix: {
+Analyze (actions)	Setup proxy for registries	  "language": "actions",
+Analyze (actions)	Setup proxy for registries	  "category": "/language:actions",
+Analyze (actions)	Setup proxy for registries	  "build-mode": "none",
+Analyze (actions)	Setup proxy for registries	  "runner": "[\"ubuntu-latest\"]"
+Analyze (actions)	Setup proxy for registries	}
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0606552Z env:
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0607091Z   CODE_SCANNING_REF: refs/pull/17/head
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0607827Z   CODE_SCANNING_BASE_BRANCH: main
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0608577Z   CODE_SCANNING_IS_ANALYZING_DEFAULT_BRANCH: false
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0609462Z   CODE_SCANNING_IS_STEADY_STATE_DEFAULT_SETUP: true
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0622710Z   CODE_SCANNING_WORKFLOW_FILE: H4sIAAAAAAAA/+xVXW/bNhR996+48AakfaDzMuxBQIGqjpx4M+zUUtBlQUDQ1JXMWiYVfjhVO//3gaIc22syZ9vrID1Il4fnfvFcSrbGCPpDlePHSb+nnSTB9OO3b1AKu3SLAW5Q2oGQtbNmwFWO1HAmpZAl1U5Sj4fttqdkBHkj2VrwXg/lJuoBDGcXCU2H8XQ6nl7SeTJ6NTEWnvOvDB/iNKEf5vF0ePVapgUzSBeaSb58jnGc0ngaT25/9z8XySi+mWT/0IMwlElWNV+9uxwL5ir79x7TLIkvbmmaxVny5DRNspvrCKx2+N2eT7P5r6PJ7BMdjSfJa+N6VHpVVOqRFqJCn3vvs1oY35YQLvpPAN+/COJggjeee82sFl8GFZOlY6Xf+7aFaicN8X32oEKr9S/pbPqmQ2snJeq33pHH1qjXwhihZOvSmxi37S9oZHln40palPbYWDO+YiUeGw1yp4VtSNsKE8GjFha7RZETq1YoD62eWkiHREmCWisdQcEqExaN1cxi2exiK5ioSMGMPQRBV4kdCEBIXrm8q1x4CezqFO0yPFgF4N6P0k0E50/A53ALJ6qcrFWOEUgldxGEJxQ3grO7vls4aR2pmEVj+/dnL4TymW2Y4VrUltimxvB5MrDTu/5TmMZi3R0H0h284RL5SjkLGmtlhFW66SidQfNU0nPe4d5vfu4dEaRoXQ21Vl8aKJQGjaUwVgvclVfkUVg+4g36OfeSeahI8HJuLNOWtOD3m586/KOwy33D9/SUa8xRWsEqEyRhkGu0ZnA5zq5uPtB5cjlOs/k4Sen1fPbb7U4a/tk36nnBHec4lsK7EV8Rwqg+nYqQwu5z6Oax/wyz5eMkxESvZmnWRe+bM2iTHyhn20nX/tGlMvYw+COC69n8JEGt9MsEw5gOk3k2Ho2HcZacouKMctRWFMIL60XSm/kkPUXldGX2BMdtbkekEYashMxNBL64ZDdav+uiebGNz8nmALo3H4JzrFHmKHlDOONLIcuwKUyBAcqN0EquUVp49w7OwlEmvkuYnx0SPTj0JzWCfh9+gItwN7XWBozbj892WBaijOCPJ4sPo8UT4xW2L41/lC6PDQA+iYr40W0iuHvlHeXL+lDRdhdst3B/QGqXGpltJ6IX2B3Afe9YFteoC6XXnSbCHWaEOS2O7gL8Xx//Wh/7y+PgNO+MsN32/hwAvNPjc1oKAAA=
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.0635677Z ##[endgroup]
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.2412180Z Job run UUID is 8c68b531-e61a-4811-836c-154ced722cd1.
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.2427928Z Using registries_credentials input.
+Analyze (actions)	Setup proxy for registries	2026-10-21T21:22:42.2428880Z No credentials found, skipping proxy setup.
+Analyze (actions)	Initialize CodeQL	﻿2026-10-21T21:22:42.2750912Z ##[group]Run github/codeql-action/init@v4
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2751813Z with:
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2752329Z   analysis-kinds: code-scanning
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2752950Z   languages: actions
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2753547Z   build-mode: none
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2754090Z   dependency-caching: true
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2754918Z   config: default-setup:
+Analyze (actions)	Initialize CodeQL	  org:
+Analyze (actions)	Initialize CodeQL	    model-packs: [  ]
+Analyze (actions)	Initialize CodeQL	threat-models: [  ]
+Analyze (actions)	Initialize CodeQL	
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2760187Z   token: ***
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2761238Z   matrix: {
+Analyze (actions)	Initialize CodeQL	  "language": "actions",
+Analyze (actions)	Initialize CodeQL	  "category": "/language:actions",
+Analyze (actions)	Initialize CodeQL	  "build-mode": "none",
+Analyze (actions)	Initialize CodeQL	  "runner": "[\"ubuntu-latest\"]"
+Analyze (actions)	Initialize CodeQL	}
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2762576Z   debug: false
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2763101Z   check-run-id: 119493744885
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2763699Z   job-status: success
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2764236Z env:
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2764749Z   CODE_SCANNING_REF: refs/pull/17/head
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2765440Z   CODE_SCANNING_BASE_BRANCH: main
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2766139Z   CODE_SCANNING_IS_ANALYZING_DEFAULT_BRANCH: false
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2766985Z   CODE_SCANNING_IS_STEADY_STATE_DEFAULT_SETUP: true
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2778102Z   CODE_SCANNING_WORKFLOW_FILE: H4sIAAAAAAAA/+xVXW/bNhR996+48AakfaDzMuxBQIGqjpx4M+zUUtBlQUDQ1JXMWiYVfjhVO//3gaIc22syZ9vrID1Il4fnfvFcSrbGCPpDlePHSb+nnSTB9OO3b1AKu3SLAW5Q2oGQtbNmwFWO1HAmpZAl1U5Sj4fttqdkBHkj2VrwXg/lJuoBDGcXCU2H8XQ6nl7SeTJ6NTEWnvOvDB/iNKEf5vF0ePVapgUzSBeaSb58jnGc0ngaT25/9z8XySi+mWT/0IMwlElWNV+9uxwL5ir79x7TLIkvbmmaxVny5DRNspvrCKx2+N2eT7P5r6PJ7BMdjSfJa+N6VHpVVOqRFqJCn3vvs1oY35YQLvpPAN+/COJggjeee82sFl8GFZOlY6Xf+7aFaicN8X32oEKr9S/pbPqmQ2snJeq33pHH1qjXwhihZOvSmxi37S9oZHln40palPbYWDO+YiUeGw1yp4VtSNsKE8GjFha7RZETq1YoD62eWkiHREmCWisdQcEqExaN1cxi2exiK5ioSMGMPQRBV4kdCEBIXrm8q1x4CezqFO0yPFgF4N6P0k0E50/A53ALJ6qcrFWOEUgldxGEJxQ3grO7vls4aR2pmEVj+/dnL4TymW2Y4VrUltimxvB5MrDTu/5TmMZi3R0H0h284RL5SjkLGmtlhFW66SidQfNU0nPe4d5vfu4dEaRoXQ21Vl8aKJQGjaUwVgvclVfkUVg+4g36OfeSeahI8HJuLNOWtOD3m586/KOwy33D9/SUa8xRWsEqEyRhkGu0ZnA5zq5uPtB5cjlOs/k4Sen1fPbb7U4a/tk36nnBHec4lsK7EV8Rwqg+nYqQwu5z6Oax/wyz5eMkxESvZmnWRe+bM2iTHyhn20nX/tGlMvYw+COC69n8JEGt9MsEw5gOk3k2Ho2HcZacouKMctRWFMIL60XSm/kkPUXldGX2BMdtbkekEYashMxNBL64ZDdav+uiebGNz8nmALo3H4JzrFHmKHlDOONLIcuwKUyBAcqN0EquUVp49w7OwlEmvkuYnx0SPTj0JzWCfh9+gItwN7XWBozbj892WBaijOCPJ4sPo8UT4xW2L41/lC6PDQA+iYr40W0iuHvlHeXL+lDRdhdst3B/QGqXGpltJ6IX2B3Afe9YFteoC6XXnSbCHWaEOS2O7gL8Xx//Wh/7y+PgNO+MsN32/hwAvNPjc1oKAAA=
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2789807Z   CODEQL_ACTION_JOB_RUN_UUID: 8c68b531-e61a-4811-836c-154ced722cd1
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2790621Z   CODEQL_PROXY_HOST: 
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2791168Z   CODEQL_PROXY_PORT: 
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2791877Z   CODEQL_PROXY_CA_CERTIFICATE: 
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2792485Z   CODEQL_PROXY_URLS: 
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.2793037Z ##[endgroup]
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:42.4452471Z Existing job run UUID is 8c68b531-e61a-4811-836c-154ced722cd1.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7632751Z ##[group]Setup CodeQL tools
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7668436Z [command]/usr/bin/tar --version
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7707807Z tar (GNU tar) 1.35
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7708298Z Copyright (C) 2023 Free Software Foundation, Inc.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7709125Z License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7709619Z This is free software: you are free to change and redistribute it.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7710013Z There is NO WARRANTY, to the extent permitted by law.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7710225Z 
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7710348Z Written by John Gilmore and Jay Fenlason.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.7715778Z Found gnu tar version 1.35.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.9552394Z No overlay-base databases found in Actions cache.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.9565443Z Did not find CodeQL tools version 2.27.3 in the toolcache.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.9569591Z Selected the per-language CodeQL bundle for 'actions'.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:43.9571034Z Using CodeQL CLI version 2.27.3 sourced from https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.27.3/codeql-bundle-actions-linux64.tar.zst .
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:46.4591361Z Deleted the CodeQL tools at '/opt/hostedtoolcache/CodeQL/2.27.2' from the toolcache to free up disk space.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:46.4597613Z Downloading CodeQL tools from https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.27.3/codeql-bundle-actions-linux64.tar.zst . This may take a while.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:46.4598400Z Streaming the extraction of the CodeQL bundle.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:46.7198679Z [command]tar -x --zstd --ignore-zeros --warning=no-unknown-keyword --overwrite -f - -C /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.3651838Z Finished downloading and extracting CodeQL bundle to /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a (905ms).
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7993034Z {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7993382Z   "productName": "CodeQL",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7993630Z   "vendor": "GitHub",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7993825Z   "version": "2.27.3",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7994060Z   "sha": "d7421f46364160506f767a928cbe5297a02d0bb0",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7994327Z   "branches": [
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7994513Z     "codeql-cli-2.27.3"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7994700Z   ],
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7994912Z   "copyright": "Copyright (C) 2019-2026 GitHub, Inc.",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7995407Z   "unpackedLocation": "/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7995868Z   "configFileLocation": "/home/runner/.config/codeql/config",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7996177Z   "configFileFound": false,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7996393Z   "overlayVersion": 4,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7996585Z   "features": {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7996788Z     "analysisSummaryV2Default": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7997038Z     "buildModeOption": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7997282Z     "bundleSupportsIncludeDiagnostics": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7997556Z     "bundleSupportsIncludeLogs": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7997816Z     "bundleSupportsOverlay": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7998139Z     "databaseInterpretResultsSupportsSarifRunProperty": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7998474Z     "featuresInVersionResult": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7998755Z     "indirectTracingSupportsStaticBinaries": false,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7999068Z     "informsAboutUnsupportedPathFilters": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7999340Z     "supportsPython312": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.7999550Z     "mrvaPackCreate": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8000033Z     "threatModelOption": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8000253Z     "traceCommandUseBuildMode": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8000470Z     "v2ramSizing": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8000613Z     "mrvaPackCreateMultipleQueries": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8000778Z     "setsCodeqlRunnerEnvVar": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8000937Z     "sarifMergeRunsFromEqualCategory": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8001095Z     "forceOverwrite": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8001238Z     "generateSummarySymbolMap": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8001405Z     "pythonDefaultIsToNotExtractStdlib": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8001777Z     "queryServerRunQueries": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8002037Z     "queryServerTrimCacheWithMode": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8002314Z     "builtinExtractorsSpecifyDefaultQueries": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8002591Z     "bqrsDiffResultSets": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8002828Z     "bundleSupportsIncludeOption": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8003102Z     "suppressesMissingFileBaselineWarning": true,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8003378Z     "jsonDataExtensions": true
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8003578Z   }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8003730Z }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8004211Z ##[endgroup]
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8010044Z ##[group]Load language configuration
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:47.8088993Z [command]/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/codeql resolve languages --format=betterjson --extractor-options-verbosity=4 --extractor-include-aliases --filter-to-languages-with-queries
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3853141Z {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3880117Z   "aliases" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3880503Z     "javascript-typescript" : "javascript",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3880887Z     "typescript" : "javascript"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3881114Z   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3881279Z   "extractors" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3881460Z     "actions" : [
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3881756Z       {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3882484Z         "extractor_root" : "/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/actions",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3882757Z         "extractor_options" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3882897Z           "trap" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3883118Z             "title" : "TRAP options",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3883423Z             "description" : "Options about how the extractor handles TRAP files",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3883748Z             "type" : "object",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3883954Z             "visibility" : 3,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3884103Z             "properties" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3884236Z               "cache" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3884381Z                 "title" : "TRAP cache options",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3884605Z                 "description" : "Options about how the extractor handles its TRAP cache",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3884830Z                 "type" : "object",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3884978Z                 "properties" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3885114Z                   "dir" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3885267Z                     "title" : "TRAP cache directory",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3885475Z                     "description" : "The directory of the TRAP cache to use",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3885678Z                     "type" : "string"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3885817Z                   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3885941Z                   "bound" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3886116Z                     "title" : "TRAP cache bound",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3886334Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3886609Z                     "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3886896Z                     "pattern" : "[0-9]+"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3887089Z                   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3887209Z                   "write" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3887360Z                     "title" : "TRAP cache writeable",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3887588Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3887811Z                     "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3887968Z                     "pattern" : "(true|TRUE|false|FALSE)"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3888261Z                   }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3888375Z                 }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3888483Z               }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3888592Z             }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3888697Z           }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3888800Z         }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3888965Z       }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3889113Z     ],
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3889278Z     "javascript" : [
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3889455Z       {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3889787Z         "extractor_root" : "/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/javascript",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3890078Z         "extractor_options" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3890212Z           "trap" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3890341Z             "title" : "TRAP options",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3890543Z             "description" : "Options about how the extractor handles TRAP files",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3890747Z             "type" : "object",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3890887Z             "visibility" : 3,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3891023Z             "properties" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3891161Z               "cache" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3891301Z                 "title" : "TRAP cache options",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3891519Z                 "description" : "Options about how the extractor handles its TRAP cache",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3891969Z                 "type" : "object",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3892185Z                 "properties" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3892387Z                   "dir" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3892595Z                     "title" : "TRAP cache directory",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3892895Z                     "description" : "The directory of the TRAP cache to use",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3893179Z                     "type" : "string"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3893380Z                   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3893551Z                   "bound" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3893756Z                     "title" : "TRAP cache bound",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3894235Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3894561Z                     "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3894780Z                     "pattern" : "[0-9]+"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3894998Z                   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3895171Z                   "write" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3895388Z                     "title" : "TRAP cache writeable",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3895747Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3896086Z                     "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3896328Z                     "pattern" : "(true|TRUE|false|FALSE)"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3896570Z                   }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3896740Z                 }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3896911Z               }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3897075Z             }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3897236Z           },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3897406Z           "skip_types" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3897646Z             "title" : "Skip type extraction for TypeScript",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3898049Z             "description" : "Whether to skip the extraction of types in a TypeScript application",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3898423Z             "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3898631Z             "pattern" : "^(false|true)$"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3898851Z           }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3899009Z         }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3899164Z       }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3899318Z     ]
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3899476Z   }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3899631Z }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.3959902Z Languages from configuration: actions
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.4015204Z Using Git version 2.55.0
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.4018341Z Using overlay database mode: none without caching.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:48.4022193Z Computing PR diff ranges...
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.1942568Z Persisted 107 diff range(s) across 106 file(s).
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.1943106Z [command]/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/codeql resolve languages --format=betterjson --extractor-options-verbosity=4 --extractor-include-aliases
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6943243Z {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6957358Z   "aliases" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6957586Z     "javascript-typescript" : "javascript",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6957898Z     "typescript" : "javascript"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6958097Z   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6958251Z   "extractors" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6958426Z     "javascript" : [
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6958598Z       {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6958821Z         "extractor_root" : "/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/javascript",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6959074Z         "extractor_options" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6959204Z           "trap" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6959329Z             "title" : "TRAP options",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6959528Z             "description" : "Options about how the extractor handles TRAP files",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6959734Z             "type" : "object",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6959866Z             "visibility" : 3,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6960002Z             "properties" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6960138Z               "cache" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6960274Z                 "title" : "TRAP cache options",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6960495Z                 "description" : "Options about how the extractor handles its TRAP cache",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6960709Z                 "type" : "object",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6960846Z                 "properties" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6960977Z                   "dir" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6961119Z                     "title" : "TRAP cache directory",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6961315Z                     "description" : "The directory of the TRAP cache to use",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6961524Z                     "type" : "string"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6961886Z                   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6962083Z                   "bound" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6962281Z                     "title" : "TRAP cache bound",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6962567Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6963067Z                     "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6963279Z                     "pattern" : "[0-9]+"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6963488Z                   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6963661Z                   "write" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6963866Z                     "title" : "TRAP cache writeable",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6964214Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6964554Z                     "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6964792Z                     "pattern" : "(true|TRUE|false|FALSE)"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6965028Z                   }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6965195Z                 }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6965339Z               }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6965447Z             }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6965556Z           },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6965668Z           "skip_types" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6965822Z             "title" : "Skip type extraction for TypeScript",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6966069Z             "description" : "Whether to skip the extraction of types in a TypeScript application",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6966303Z             "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6966439Z             "pattern" : "^(false|true)$"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6966581Z           }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6966682Z         }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6966782Z       }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6966880Z     ],
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6966981Z     "actions" : [
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6967089Z       {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6967290Z         "extractor_root" : "/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/actions",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6967527Z         "extractor_options" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6967658Z           "trap" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6967780Z             "title" : "TRAP options",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6967971Z             "description" : "Options about how the extractor handles TRAP files",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6968165Z             "type" : "object",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6968297Z             "visibility" : 3,
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6968430Z             "properties" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6968556Z               "cache" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6968689Z                 "title" : "TRAP cache options",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6968997Z                 "description" : "Options about how the extractor handles its TRAP cache",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6969209Z                 "type" : "object",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6969346Z                 "properties" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6969477Z                   "dir" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6969615Z                     "title" : "TRAP cache directory",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6969807Z                     "description" : "The directory of the TRAP cache to use",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6969992Z                     "type" : "string"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6970127Z                   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6970245Z                   "bound" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6970382Z                     "title" : "TRAP cache bound",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6970584Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6970787Z                     "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6970931Z                     "pattern" : "[0-9]+"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6971069Z                   },
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6971183Z                   "write" : {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6971322Z                     "title" : "TRAP cache writeable",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6971540Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6971899Z                     "type" : "string",
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6972055Z                     "pattern" : "(true|TRUE|false|FALSE)"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6972205Z                   }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6972312Z                 }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6972416Z               }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6972519Z             }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6972622Z           }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6972725Z         }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6972822Z       }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6972917Z     ],
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6973013Z     "xml" : [
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6973204Z       {
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6973388Z         "extractor_root" : "/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/xml"
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6973611Z       }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6973705Z     ]
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6973800Z   }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.6973896Z }
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.7035440Z Found 1 languages that support TRAP caching
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.7041067Z Looking in Actions cache for TRAP cache with key codeql-trap-1-2.27.3-actions-unknown
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8257087Z No TRAP cache found in Actions cache for actions
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8257950Z ##[endgroup]
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8280609Z While resolving threads, found a cgroup CPUs file with 4 CPUs in /sys/fs/cgroup/cpuset.cpus.effective.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8281858Z Skipping download of dependency cache for actions as we have no caching configuration for it.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8282352Z Writing augmented user configuration file to /home/runner/work/_temp/user-config.yaml
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8282877Z ##[group]Augmented user configuration file contents
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8283156Z default-setup:
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8283324Z   org:
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8283492Z     model-packs: []
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8283692Z threat-models: []
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8283868Z query-filters:
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8284048Z   - exclude:
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8284241Z       tags: exclude-from-incremental
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8284401Z 
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8284597Z ##[endgroup]
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:49.8285860Z [command]/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/codeql database init --force-overwrite --db-cluster /home/runner/work/_temp/codeql_databases --source-root=/home/runner/work/infra-layer/infra-layer --no-calculate-baseline --extractor-include-aliases --language=actions --codescanning-config=/home/runner/work/_temp/user-config.yaml --build-mode=none
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:50.5283547Z Package install location: /home/runner/.codeql/packages
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:50.5288526Z Nothing downloaded.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:50.9225754Z Resolving extractor actions.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:50.9271380Z Successfully loaded extractor GitHub Actions (actions) from /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/actions.
+Analyze (actions)	Initialize CodeQL	2026-10-21T21:22:50.9427235Z Created skeleton CodeQL database at /home/runner/work/_temp/codeql_databases/actions. This in-progress database is ready to be populated by an extractor.
+Analyze (actions)	Perform CodeQL Analysis	﻿2026-10-21T21:22:51.4046170Z ##[group]Run github/codeql-action/analyze@v4
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4046349Z with:
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4046469Z   category: /language:actions
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4046601Z   output: ../results
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4046716Z   upload: always
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4046831Z   skip-queries: false
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4046984Z   checkout_path: /home/runner/work/infra-layer/infra-layer
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4047163Z   upload-database: true
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4047290Z   wait-for-processing: true
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4048592Z   token: ***
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4048833Z   matrix: {
+Analyze (actions)	Perform CodeQL Analysis	  "language": "actions",
+Analyze (actions)	Perform CodeQL Analysis	  "category": "/language:actions",
+Analyze (actions)	Perform CodeQL Analysis	  "build-mode": "none",
+Analyze (actions)	Perform CodeQL Analysis	  "runner": "[\"ubuntu-latest\"]"
+Analyze (actions)	Perform CodeQL Analysis	}
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4049108Z   expect-error: false
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4049225Z env:
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4049353Z   CODE_SCANNING_REF: refs/pull/17/head
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4049501Z   CODE_SCANNING_BASE_BRANCH: main
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4049655Z   CODE_SCANNING_IS_ANALYZING_DEFAULT_BRANCH: false
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4049836Z   CODE_SCANNING_IS_STEADY_STATE_DEFAULT_SETUP: true
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4052808Z   CODE_SCANNING_WORKFLOW_FILE: H4sIAAAAAAAA/+xVXW/bNhR996+48AakfaDzMuxBQIGqjpx4M+zUUtBlQUDQ1JXMWiYVfjhVO//3gaIc22syZ9vrID1Il4fnfvFcSrbGCPpDlePHSb+nnSTB9OO3b1AKu3SLAW5Q2oGQtbNmwFWO1HAmpZAl1U5Sj4fttqdkBHkj2VrwXg/lJuoBDGcXCU2H8XQ6nl7SeTJ6NTEWnvOvDB/iNKEf5vF0ePVapgUzSBeaSb58jnGc0ngaT25/9z8XySi+mWT/0IMwlElWNV+9uxwL5ir79x7TLIkvbmmaxVny5DRNspvrCKx2+N2eT7P5r6PJ7BMdjSfJa+N6VHpVVOqRFqJCn3vvs1oY35YQLvpPAN+/COJggjeee82sFl8GFZOlY6Xf+7aFaicN8X32oEKr9S/pbPqmQ2snJeq33pHH1qjXwhihZOvSmxi37S9oZHln40palPbYWDO+YiUeGw1yp4VtSNsKE8GjFha7RZETq1YoD62eWkiHREmCWisdQcEqExaN1cxi2exiK5ioSMGMPQRBV4kdCEBIXrm8q1x4CezqFO0yPFgF4N6P0k0E50/A53ALJ6qcrFWOEUgldxGEJxQ3grO7vls4aR2pmEVj+/dnL4TymW2Y4VrUltimxvB5MrDTu/5TmMZi3R0H0h284RL5SjkLGmtlhFW66SidQfNU0nPe4d5vfu4dEaRoXQ21Vl8aKJQGjaUwVgvclVfkUVg+4g36OfeSeahI8HJuLNOWtOD3m586/KOwy33D9/SUa8xRWsEqEyRhkGu0ZnA5zq5uPtB5cjlOs/k4Sen1fPbb7U4a/tk36nnBHec4lsK7EV8Rwqg+nYqQwu5z6Oax/wyz5eMkxESvZmnWRe+bM2iTHyhn20nX/tGlMvYw+COC69n8JEGt9MsEw5gOk3k2Ho2HcZacouKMctRWFMIL60XSm/kkPUXldGX2BMdtbkekEYashMxNBL64ZDdav+uiebGNz8nmALo3H4JzrFHmKHlDOONLIcuwKUyBAcqN0EquUVp49w7OwlEmvkuYnx0SPTj0JzWCfh9+gItwN7XWBozbj892WBaijOCPJ4sPo8UT4xW2L41/lC6PDQA+iYr40W0iuHvlHeXL+lDRdhdst3B/QGqXGpltJ6IX2B3Afe9YFteoC6XXnSbCHWaEOS2O7gL8Xx//Wh/7y+PgNO+MsN32/hwAvNPjc1oKAAA=
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4055656Z   CODEQL_ACTION_JOB_RUN_UUID: 8c68b531-e61a-4811-836c-154ced722cd1
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4055854Z   CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4056015Z   CODEQL_ACTION_FEATURE_SANDWICH: false
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4056171Z   CODEQL_ACTION_FEATURE_SARIF_COMBINE: true
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4056329Z   CODEQL_ACTION_FEATURE_WILL_UPLOAD: true
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4056475Z   CODEQL_ACTION_VERSION: 4.39.1
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4056614Z   CODEQL_ACTION_INIT_HAS_RUN: true
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4056805Z   CODEQL_ACTION_ANALYSIS_KEY: dynamic/github-code-scanning/codeql:analyze
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4057030Z   CODEQL_WORKFLOW_STARTED_AT: 2026-10-21T21:22:42.444Z
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4057202Z   CODEQL_ACTION_HAS_SET_UP_CODEQL: true
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4057343Z   CODEQL_RAM: 14575
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4057454Z   CODEQL_THREADS: 4
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4057565Z   CODEQL_PROXY_HOST: 
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4057685Z   CODEQL_PROXY_PORT: 
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4057810Z   CODEQL_PROXY_CA_CERTIFICATE: 
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4057940Z   CODEQL_PROXY_URLS: 
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.4058057Z ##[endgroup]
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:51.5673187Z Existing job run UUID is 8c68b531-e61a-4811-836c-154ced722cd1.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:52.0232326Z While resolving threads, found a cgroup CPUs file with 4 CPUs in /sys/fs/cgroup/cpuset.cpus.effective.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:52.0326142Z ##[group]Generating diff range extension pack
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:52.0376728Z Successfully created diff range extension pack at /home/runner/work/_temp/pr-diff-range.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:52.0377515Z ##[endgroup]
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:52.0413809Z ##[group]Extracting actions
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:52.0416370Z [command]/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/codeql database trace-command --use-build-mode --working-dir /home/runner/work/infra-layer/infra-layer /home/runner/work/_temp/codeql_databases/actions
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:52.5742447Z Running command in /home/runner/work/infra-layer/infra-layer: [/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/actions/tools/autobuild.sh]
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:52.5877252Z [2026-10-21 21:22:52] [build-stdout] LGTM_INDEX_FILTERS not set. Using the default filters, and passing through to the JavaScript extractor.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:53.1175458Z [2026-10-21 21:22:53] [build-stdout] Found JavaScript extractor at '/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/javascript'.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:53.1180925Z [2026-10-21 21:22:53] [build-stdout] Running JavaScript autobuilder at '/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/javascript/tools/autobuild.sh'.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:53.2779540Z [2026-10-21 21:22:53] [build-stdout] Parallel extraction with 4 threads.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:53.3303106Z [2026-10-21 21:22:53] [build-stdout] Extracting /home/runner/work/infra-layer/infra-layer/.github/workflows/quality.yml
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:53.3758909Z [2026-10-21 21:22:53] [build-stdout] Done extracting /home/runner/work/infra-layer/infra-layer/.github/workflows/quality.yml (45 ms)
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:53.3922934Z ##[endgroup]
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:53.3927734Z ##[group]Finalizing actions
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:53.3932756Z [command]/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/codeql database finalize --finalize-dataset --threads=4 --ram=14575 /home/runner/work/_temp/codeql_databases/actions
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:53.9310296Z Running TRAP import for CodeQL database at /home/runner/work/_temp/codeql_databases/actions...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:54.4483215Z Importing TRAP files
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:54.5862508Z Merging relations
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:54.6493629Z Finished writing database (relations: 2.41 KiB; string pool: 2.05 MiB).
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:54.6627350Z TRAP import complete (730ms).
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:54.7911763Z Finished zipping source archive (990.00 B).
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:54.7994339Z ##[endgroup]
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:54.7998610Z ##[group]Running queries for actions
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:54.8000161Z [command]/home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/codeql database run-queries --ram=14575 --threads=4 --expect-discarded-cache --additional-packs=/home/runner/work/_temp/pr-diff-range --extension-packs=codeql-action/pr-diff-range /home/runner/work/_temp/codeql_databases/actions --min-disk-free=1024 -v
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:55.3048745Z Writing logs to /home/runner/work/_temp/codeql_databases/actions/log/database-run-queries-20261021.212255.302.log.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:55.7510064Z Writing logs to /home/runner/work/_temp/codeql_databases/actions/log/execute-queries-20261021.212255.748.log.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:55.9633563Z Recording pack reference codeql/actions-queries at /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:56.0964993Z Resolving data extensions.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:56.5998972Z Finished resolving data extensions.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:56.6627143Z Merging data extensions.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:56.6729768Z Finished merging data extensions.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.0983265Z [1/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-275/MissingActionsPermissions.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.1272921Z [2/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-312/ExcessiveSecretsExposure.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.1603219Z [3/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-312/SecretsInArtifacts.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.1873769Z [4/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-367/UntrustedCheckoutTOCTOUHigh.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.1906170Z [5/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-312/UnmaskedSecretExposure.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.1962722Z [6/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-367/UntrustedCheckoutTOCTOUCritical.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.1992588Z [7/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-094/CodeInjectionCritical.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.2823155Z [8/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-829/UntrustedCheckoutHigh.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.2871478Z [9/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-829/ArtifactPoisoningCritical.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.3228953Z [10/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-829/UntrustedCheckoutCritical.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.3673077Z [11/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-1395/UseOfKnownVulnerableAction.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.3732847Z [12/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-077/EnvVarInjectionCritical.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.4229934Z [13/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-077/EnvPathInjectionCritical.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.4302796Z [14/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-285/ImproperAccessControl.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.4362891Z [15/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Diagnostics/SuccessfullyExtractedFiles.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.4364447Z [16/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-349/CachePoisoningViaCodeInjection.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.4668975Z [17/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-349/CachePoisoningViaDirectCache.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.4843203Z [18/18] Loaded /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-349/CachePoisoningViaPoisonableStep.qlx.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.6796832Z Starting evaluation of codeql/actions-queries/Diagnostics/SuccessfullyExtractedFiles.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.6829256Z Starting evaluation of codeql/actions-queries/Security/CWE-077/EnvPathInjectionCritical.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.6855613Z Starting evaluation of codeql/actions-queries/Security/CWE-077/EnvVarInjectionCritical.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.6912326Z Starting evaluation of codeql/actions-queries/Security/CWE-094/CodeInjectionCritical.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.6913030Z Starting evaluation of codeql/actions-queries/Security/CWE-1395/UseOfKnownVulnerableAction.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.6913611Z Starting evaluation of codeql/actions-queries/Security/CWE-275/MissingActionsPermissions.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.8243102Z [1/18 eval 142ms] Evaluation done; writing results to codeql/actions-queries/Diagnostics/SuccessfullyExtractedFiles.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.8612923Z Starting evaluation of codeql/actions-queries/Security/CWE-285/ImproperAccessControl.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:57.8642549Z Starting evaluation of codeql/actions-queries/Security/CWE-312/ExcessiveSecretsExposure.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2227147Z Starting evaluation of codeql/actions-queries/Security/CWE-312/SecretsInArtifacts.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2287777Z Starting evaluation of codeql/actions-queries/Security/CWE-312/UnmaskedSecretExposure.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2331963Z Starting evaluation of codeql/actions-queries/Security/CWE-349/CachePoisoningViaCodeInjection.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2392361Z Starting evaluation of codeql/actions-queries/Security/CWE-349/CachePoisoningViaDirectCache.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2422286Z Starting evaluation of codeql/actions-queries/Security/CWE-349/CachePoisoningViaPoisonableStep.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2446748Z Starting evaluation of codeql/actions-queries/Security/CWE-367/UntrustedCheckoutTOCTOUCritical.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2512551Z Starting evaluation of codeql/actions-queries/Security/CWE-367/UntrustedCheckoutTOCTOUHigh.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2572316Z Starting evaluation of codeql/actions-queries/Security/CWE-829/ArtifactPoisoningCritical.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2613324Z [2/18 eval 547ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-1395/UseOfKnownVulnerableAction.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2622345Z Starting evaluation of codeql/actions-queries/Security/CWE-829/UntrustedCheckoutCritical.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2652627Z Starting evaluation of codeql/actions-queries/Security/CWE-829/UntrustedCheckoutHigh.ql.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2655897Z [3/18 eval 404ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-312/ExcessiveSecretsExposure.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.2667455Z [4/18 eval 42ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-312/UnmaskedSecretExposure.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.4731232Z [5/18 eval 244ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-349/CachePoisoningViaDirectCache.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.5493200Z [6/18 eval 861ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-275/MissingActionsPermissions.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.5518947Z [7/18 eval 327ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-312/SecretsInArtifacts.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.5613812Z [8/18 eval 332ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-367/UntrustedCheckoutTOCTOUCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.5664599Z [9/18 eval 334ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-367/UntrustedCheckoutTOCTOUHigh.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.5735418Z [10/18 eval 319ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-829/UntrustedCheckoutHigh.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.6055928Z [11/18 eval 350ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-829/UntrustedCheckoutCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.6468177Z [12/18 eval 418ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-349/CachePoisoningViaPoisonableStep.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.6896825Z [13/18 eval 832ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-285/ImproperAccessControl.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.7329873Z [14/18 eval 502ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-829/ArtifactPoisoningCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.7392464Z [15/18 eval 1.1s] Evaluation done; writing results to codeql/actions-queries/Security/CWE-077/EnvVarInjectionCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.7463819Z [16/18 eval 1.1s] Evaluation done; writing results to codeql/actions-queries/Security/CWE-077/EnvPathInjectionCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.7467131Z [17/18 eval 1.1s] Evaluation done; writing results to codeql/actions-queries/Security/CWE-094/CodeInjectionCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.7474610Z [18/18 eval 524ms] Evaluation done; writing results to codeql/actions-queries/Security/CWE-349/CachePoisoningViaCodeInjection.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.7476964Z Shutting down query evaluator.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:58.7877551Z Interpreting code scanning results for actions
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.2450558Z Writing logs to /home/runner/work/_temp/codeql_databases/actions/log/database-interpret-results-20261021.212259.243.log.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.3346317Z Recording pack reference codeql/actions-queries at /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.3548391Z Resolving extensions
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8263671Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-094/CodeInjectionCritical.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8417249Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-094/CodeInjectionCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8540219Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-367/UntrustedCheckoutTOCTOUHigh.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8625639Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-367/UntrustedCheckoutTOCTOUHigh.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8631316Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-367/UntrustedCheckoutTOCTOUCritical.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8706272Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-367/UntrustedCheckoutTOCTOUCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8729617Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-275/MissingActionsPermissions.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8777327Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-275/MissingActionsPermissions.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8784804Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-312/ExcessiveSecretsExposure.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8873116Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-312/ExcessiveSecretsExposure.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8874356Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-312/SecretsInArtifacts.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8914215Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-312/SecretsInArtifacts.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8915641Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-312/UnmaskedSecretExposure.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8969408Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-312/UnmaskedSecretExposure.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.8973888Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-829/UntrustedCheckoutHigh.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9030612Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-829/UntrustedCheckoutHigh.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9035415Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-829/ArtifactPoisoningCritical.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9112948Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-829/ArtifactPoisoningCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9116376Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-829/UntrustedCheckoutCritical.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9160925Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-829/UntrustedCheckoutCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9167777Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-077/EnvVarInjectionCritical.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9213941Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-077/EnvVarInjectionCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9218774Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-077/EnvPathInjectionCritical.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9272931Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-077/EnvPathInjectionCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9298798Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-285/ImproperAccessControl.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9334951Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-285/ImproperAccessControl.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9344035Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-1395/UseOfKnownVulnerableAction.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9403054Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-1395/UseOfKnownVulnerableAction.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9407576Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-349/CachePoisoningViaCodeInjection.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9447050Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-349/CachePoisoningViaCodeInjection.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9463404Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-349/CachePoisoningViaDirectCache.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9502733Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-349/CachePoisoningViaDirectCache.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9514184Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Security/CWE-349/CachePoisoningViaPoisonableStep.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9549675Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-349/CachePoisoningViaPoisonableStep.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9563720Z Interpreting /home/runner/work/_temp/6d807698-57e7-4735-9347-226e12ac7a4a/codeql/qlpacks/codeql/actions-queries/0.6.38/Diagnostics/SuccessfullyExtractedFiles.ql...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:22:59.9614882Z  ... found results file at /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Diagnostics/SuccessfullyExtractedFiles.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0210345Z Interpreted pathproblem query "Code injection" (actions/code-injection/critical) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-094/CodeInjectionCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0223861Z Interpreted problem query "Untrusted Checkout TOCTOU" (actions/untrusted-checkout-toctou/high) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-367/UntrustedCheckoutTOCTOUHigh.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0229315Z Interpreted pathproblem query "Untrusted Checkout TOCTOU" (actions/untrusted-checkout-toctou/critical) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-367/UntrustedCheckoutTOCTOUCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0235278Z Interpreted problem query "Workflow does not contain permissions" (actions/missing-workflow-permissions) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-275/MissingActionsPermissions.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0248665Z Interpreted problem query "Excessive Secrets Exposure" (actions/excessive-secrets-exposure) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-312/ExcessiveSecretsExposure.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0251171Z Interpreted problem query "Storage of sensitive information in GitHub Actions artifact" (actions/secrets-in-artifacts) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-312/SecretsInArtifacts.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0253238Z Interpreted problem query "Unmasked Secret Exposure" (actions/unmasked-secret-exposure) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-312/UnmaskedSecretExposure.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0254996Z Interpreted problem query "Checkout of untrusted code in a privileged context" (actions/untrusted-checkout/high) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-829/UntrustedCheckoutHigh.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0256688Z Interpreted pathproblem query "Artifact poisoning" (actions/artifact-poisoning/critical) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-829/ArtifactPoisoningCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0258398Z Interpreted pathproblem query "Checkout of untrusted code in a privileged context" (actions/untrusted-checkout/critical) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-829/UntrustedCheckoutCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0260244Z Interpreted pathproblem query "Environment variable built from user-controlled sources" (actions/envvar-injection/critical) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-077/EnvVarInjectionCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0262254Z Interpreted pathproblem query "PATH environment variable built from user-controlled sources" (actions/envpath-injection/critical) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-077/EnvPathInjectionCritical.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0264252Z Interpreted problem query "Improper Access Control" (actions/improper-access-control) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-285/ImproperAccessControl.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0276096Z Interpreted problem query "Use of a known vulnerable action" (actions/vulnerable-action) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-1395/UseOfKnownVulnerableAction.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0277974Z Interpreted pathproblem query "Cache Poisoning via code injection" (actions/cache-poisoning/code-injection) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-349/CachePoisoningViaCodeInjection.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0279851Z Interpreted pathproblem query "Cache Poisoning via caching of untrusted files" (actions/cache-poisoning/direct-cache) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-349/CachePoisoningViaDirectCache.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0281937Z Interpreted pathproblem query "Cache Poisoning via execution of untrusted code" (actions/cache-poisoning/poisonable-step) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Security/CWE-349/CachePoisoningViaPoisonableStep.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0283816Z Interpreted diagnostic query "Extracted files" (actions/diagnostics/successfully-extracted-files) at path /home/runner/work/_temp/codeql_databases/actions/results/codeql/actions-queries/Diagnostics/SuccessfullyExtractedFiles.bqrs.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0284968Z Reading source archive /home/runner/work/_temp/codeql_databases/actions/src.zip
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0610609Z Interpreting diagnostic messages...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0852333Z Found 2 raw diagnostic messages.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0920052Z Processed diagnostic messages (removed 0 due to limits, created 0 summary diagnostics for status page).
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.0935594Z Interpreted diagnostic messages (31ms).
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.1573376Z Exporting results to SARIF...
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.2465258Z Exported results to SARIF (88ms).
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.2659323Z ##[endgroup]
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.2659757Z To speed up pull request analysis, file coverage information is only enabled when analyzing the default branch and protected branches.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.2667660Z Post-processing sarif files: ["/home/runner/work/infra-layer/results/actions.sarif"]
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.2678251Z Adding fingerprints to SARIF file. See https://docs.github.com/en/code-security/reference/code-scanning/sarif-support-for-code-scanning#data-for-preventing-duplicated-alerts for more information.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.2679529Z ##[group]Uploading code scanning results
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:00.2747215Z Uploading results
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:01.1146429Z Successfully uploaded results
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:01.1146748Z ##[endgroup]
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:01.1156147Z Skipping upload of dependency cache for actions as we have no caching configuration for it.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:01.1157598Z ##[group]Waiting for processing to finish
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:06.3491835Z Analysis upload status is complete.
+Analyze (actions)	Perform CodeQL Analysis	2026-10-21T21:23:06.3492497Z ##[endgroup]
+Analyze (actions)	Post Perform CodeQL Analysis	﻿2026-10-21T21:23:06.7610099Z Post job cleanup.
+Analyze (actions)	Post Initialize CodeQL	﻿2026-10-21T21:23:06.9348527Z Post job cleanup.
+Analyze (actions)	Post Initialize CodeQL	2026-10-21T21:23:07.0996557Z Existing job run UUID is 8c68b531-e61a-4811-836c-154ced722cd1.
+Analyze (actions)	Post Initialize CodeQL	2026-10-21T21:23:07.1015139Z CodeQL job status was success.
+Analyze (actions)	Post Initialize CodeQL	2026-10-21T21:23:07.1023460Z Sending status report for init-post step.
+Analyze (actions)	Post Initialize CodeQL	2026-10-21T21:23:07.4225803Z Status report sent for init-post step.
+Analyze (actions)	Post Setup proxy for registries	﻿2026-10-21T21:23:07.4519143Z Post job cleanup.
+Analyze (actions)	Post Checkout repository	﻿2026-10-21T21:23:07.6299971Z Post job cleanup.
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.6842628Z [command]/usr/bin/git version
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.6875283Z git version 2.55.0
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.6901305Z Temporarily overriding HOME='/home/runner/work/_temp/197a31fc-13c7-4e05-bc2a-69ac079de30d' before making global git config changes
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.6902405Z Adding repository directory to the temporary git global config as a safe directory
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.6905311Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-layer/infra-layer
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.6932591Z Removing SSH command configuration
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.6937437Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.6966088Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7154164Z Removing HTTP extra header
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7158539Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7192035Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7383362Z Removing includeIf entries pointing to credentials config files
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7390025Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7413975Z includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7414491Z includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7414759Z includeif.gitdir:/github/workspace/.git.path
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7414978Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7421207Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7442460Z /home/runner/work/_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7450261Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path /home/runner/work/_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7480787Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7502287Z /home/runner/work/_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7509802Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7538171Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7557749Z /github/runner_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7563917Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7591568Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7612098Z /github/runner_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7616531Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7644203Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Analyze (actions)	Post Checkout repository	2026-10-21T21:23:07.7808753Z Removing credentials config '/home/runner/work/_temp/git-credentials-b21d9744-7d56-4c9a-8f3c-da0987eb21d3.config'
+Analyze (actions)	Complete job	﻿2026-10-21T21:23:07.7926317Z Cleaning up orphan processes

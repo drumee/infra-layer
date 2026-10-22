@@ -1,0 +1,172 @@
+{
+  "source": "6f5c3efe73dcaf10139ce06d083a69847b95cff8",
+  "date": "2026-10-21T17:18:39.123385+00:00",
+  "operator": {
+    "uid": 1000,
+    "gid": 1000,
+    "groups": [
+      24,
+      25,
+      29,
+      30,
+      33,
+      44,
+      46,
+      100,
+      106,
+      111,
+      113,
+      116,
+      994,
+      1000,
+      1001
+    ]
+  },
+  "environment": {
+    "PATH": "/home/somanos/.local/bin:/home/somanos/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+    "DOCKER_HOST": null,
+    "DOCKER_CONTEXT": null
+  },
+  "script_sha256": "a70edf3b48785594f357158290577530ffc269f182155bbe0230ac7bf108838a",
+  "fixture": {
+    "path": "/tmp/il511-evidence-dd4b445ee734e529c7ee304edcbeacfc/fixture",
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o700"
+  },
+  "foreign_after_failed_setup": {
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o755",
+    "entries": []
+  },
+  "container_id": "61d21589c1e69f8a77bc82ec18644436953d709c272823c821da276e3ac8404f",
+  "commands": [
+    {
+      "name": "docker-version",
+      "command": [
+        "/usr/bin/docker",
+        "version",
+        "--format",
+        "{{json .}}"
+      ],
+      "date": "2026-10-21T17:18:38.687267+00:00",
+      "finished": "2026-10-21T17:18:38.701166+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "679eb62a2857aeeaedb4c8250eb5797f379a353095c45c51e9a252777809fa0f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "compose-version",
+      "command": [
+        "/usr/bin/docker",
+        "compose",
+        "version"
+      ],
+      "date": "2026-10-21T17:18:38.701253+00:00",
+      "finished": "2026-10-21T17:18:38.728964+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "6cae978da143b55667f689374af5bd2e843bdb2aba174746468b125b87fc73c5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "docker-security",
+      "command": [
+        "/usr/bin/docker",
+        "info",
+        "--format",
+        "{{json .SecurityOptions}} {{json .DriverStatus}} {{.DockerRootDir}}"
+      ],
+      "date": "2026-10-21T17:18:38.729018+00:00",
+      "finished": "2026-10-21T17:18:38.759684+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "3238957699e902d68547bb74c8289de54551368f8cf9ae4f2fa95db522c587a3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "filesystem",
+      "command": [
+        "/usr/bin/stat",
+        "-f",
+        "-c",
+        "%T %t",
+        "/tmp/il511-evidence-dd4b445ee734e529c7ee304edcbeacfc"
+      ],
+      "date": "2026-10-21T17:18:38.759740+00:00",
+      "finished": "2026-10-21T17:18:38.761675+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "cd8139784243424a281aa838f0dcaa6ce0e971b2f80720cd89b213b6f2349930",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "historical-chown",
+      "command": [
+        "/usr/bin/docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop=ALL",
+        "--cap-add=CHOWN",
+        "--user",
+        "0:0",
+        "--mount",
+        "type=bind,source=/tmp/il511-evidence-dd4b445ee734e529c7ee304edcbeacfc/fixture,target=/fixture",
+        "--cidfile",
+        "/tmp/il511-evidence-dd4b445ee734e529c7ee304edcbeacfc/original.cid",
+        "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+        "/usr/local/bin/node",
+        "-e",
+        "require(\"node:fs\").chownSync(process.argv[1],+process.argv[2],+process.argv[3])",
+        "/fixture/foreign",
+        "65532",
+        "65532"
+      ],
+      "date": "2026-10-21T17:18:38.761813+00:00",
+      "finished": "2026-10-21T17:18:38.933613+00:00",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b8e5a62a6e5608e4b40cfa8ad77185131674c2a95fb4cd8b2a0feada8cc012b4"
+    },
+    {
+      "name": "historical-container-state",
+      "command": [
+        "/usr/bin/docker",
+        "inspect",
+        "61d21589c1e69f8a77bc82ec18644436953d709c272823c821da276e3ac8404f"
+      ],
+      "date": "2026-10-21T17:18:38.933749+00:00",
+      "finished": "2026-10-21T17:18:38.947711+00:00",
+      "exit_code": 1,
+      "stdout_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "stderr_sha256": "27142ee611d152524884d36d502c29da30d95a1b7b30bfb2200b4456a53209d3"
+    },
+    {
+      "name": "access-diagnostic",
+      "command": [
+        "/usr/bin/docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop=ALL",
+        "--cap-add=CHOWN",
+        "--user",
+        "0:0",
+        "--mount",
+        "type=bind,source=/tmp/il511-evidence-dd4b445ee734e529c7ee304edcbeacfc/fixture,target=/fixture",
+        "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+        "/usr/local/bin/node",
+        "-e",
+        "const fs=require('node:fs');console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),groups:process.getgroups(),namespace:fs.readFileSync('/proc/self/uid_map','utf8'),status:fs.readFileSync('/proc/self/status','utf8').split('\\n').filter(x=>/^(Cap|Seccomp|NoNewPrivs)/.test(x)),root:{uid:fs.statSync('/fixture').uid,gid:fs.statSync('/fixture').gid,mode:(fs.statSync('/fixture').mode&511).toString(8)}}));try{fs.statSync('/fixture/foreign')}catch(e){console.error(JSON.stringify({phase:'access-to-child',code:e.code,syscall:e.syscall,path:e.path}));process.exitCode=1}"
+      ],
+      "date": "2026-10-21T17:18:38.947767+00:00",
+      "finished": "2026-10-21T17:18:39.123311+00:00",
+      "exit_code": 1,
+      "stdout_sha256": "f178e37f36f6549d61be59cbaa94b545afc8c24facfe1b6a2794c9479bff2cd9",
+      "stderr_sha256": "4aab6cd6498b58baa28953253135715dcbf76f51dd660d6a367abf73c9abb196"
+    }
+  ]
+}

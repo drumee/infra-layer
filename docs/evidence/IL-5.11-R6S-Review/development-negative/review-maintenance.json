@@ -1,0 +1,43 @@
+{
+  "name": "review-maintenance",
+  "source": "bd623dd2713813898bbcb27b3cf41afd99292abc",
+  "clean_tree": false,
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "test/security",
+    "-p",
+    "*_test.py",
+    "-v"
+  ],
+  "cwd": "/tmp/il511-r6s",
+  "date": "2026-10-22T08:05:32.648691+00:00",
+  "elapsed_s": 1.0693705409939867,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "0872c394f9e8d4bf94bdf11bb9efbd27ae45f9260fb1ddb2e2aad7e5c0edcaef",
+  "runner_sha256": "de69dd5ca34e7ded94c8937d124c3dc433c93751c9c8e4790d8afccf8c4c79db",
+  "output": "/tmp/il511-evidence-cf944e5498ad919a753a0aee69ab50ac"
+}

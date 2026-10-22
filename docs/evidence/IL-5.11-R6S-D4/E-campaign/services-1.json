@@ -1,0 +1,412 @@
+{
+  "run": 1,
+  "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+  "started_utc": "2026-10-21T21:01:01.826770+00:00",
+  "elapsed_s": 60.65494035699521,
+  "exit_code": 0,
+  "pass": true,
+  "project": "drumee-il2-test-c3e67886",
+  "cleanup_readback": {
+    "containers": [],
+    "networks": []
+  },
+  "log_sha256": "c7c417fcfb207908f9af9d5d909dda8f69c4e8affa76b14f28b79f25b7a3875d",
+  "samples": [
+    {
+      "utc": "2026-10-21T21:01:01.826934+00:00",
+      "elapsed_s": 0.00017202101298607886,
+      "loadavg": "0.16 0.07 0.06 2/1939 194754",
+      "memory": {
+        "MemAvailable": "19176528 kB",
+        "SwapFree": "1000444 kB"
+      },
+      "pressure": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=146500815\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.03 avg60=0.18 avg300=0.06 total=502965943\nfull avg10=0.03 avg60=0.18 avg300=0.06 total=496780144",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=16578\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=16428"
+      }
+    },
+    {
+      "utc": "2026-10-21T21:01:11.827446+00:00",
+      "elapsed_s": 10.000690187996952,
+      "loadavg": "0.60 0.17 0.09 1/2201 196897",
+      "memory": {
+        "MemAvailable": "18637492 kB",
+        "SwapFree": "1000444 kB"
+      },
+      "pressure": {
+        "cpu": "some avg10=0.14 avg60=0.03 avg300=0.00 total=146563497\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=2.01 avg60=0.56 avg300=0.15 total=503273403\nfull avg10=2.01 avg60=0.56 avg300=0.15 total=497079304",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=16578\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=16428"
+      },
+      "docker_stats_exit": 0,
+      "docker_stats": [
+        {
+          "BlockIO": "5.97MB / 21.3MB",
+          "CPUPerc": "97.41%",
+          "Container": "abffcb038856",
+          "ID": "abffcb038856",
+          "MemPerc": "22.93%",
+          "MemUsage": "117.4MiB / 512MiB",
+          "Name": "drumee-il2-test-c3e67886-database-1",
+          "NetIO": "6.71kB / 126B",
+          "PIDs": "10"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "1281702a724f",
+          "ID": "1281702a724f",
+          "MemPerc": "0.05%",
+          "MemUsage": "17.52MiB / 31.2GiB",
+          "Name": "drumee-il2-test-c3e67886-capture-1",
+          "NetIO": "6.66kB / 126B",
+          "PIDs": "7"
+        },
+        {
+          "BlockIO": "0B / 12.3kB",
+          "CPUPerc": "0.27%",
+          "Container": "6ac84b29a072",
+          "ID": "6ac84b29a072",
+          "MemPerc": "3.17%",
+          "MemUsage": "8.117MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-redis-1",
+          "NetIO": "6.62kB / 126B",
+          "PIDs": "6"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "1eb2b995d731",
+          "ID": "1eb2b995d731",
+          "MemPerc": "59.43%",
+          "MemUsage": "152.1MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-dns-1",
+          "NetIO": "6.71kB / 126B",
+          "PIDs": "26"
+        },
+        {
+          "BlockIO": "0B / 12.3kB",
+          "CPUPerc": "0.00%",
+          "Container": "9794f013d3c0",
+          "ID": "9794f013d3c0",
+          "MemPerc": "1.48%",
+          "MemUsage": "3.785MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-mail-1",
+          "NetIO": "13kB / 252B",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.79%",
+          "Container": "5b6a281fd913",
+          "ID": "5b6a281fd913",
+          "MemPerc": "0.86%",
+          "MemUsage": "2.199MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-dkim-1",
+          "NetIO": "6.58kB / 126B",
+          "PIDs": "6"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-21T21:01:23.877695+00:00",
+      "elapsed_s": 22.05093931700685,
+      "loadavg": "0.75 0.21 0.11 1/2169 199431",
+      "memory": {
+        "MemAvailable": "18588672 kB",
+        "SwapFree": "1000444 kB"
+      },
+      "pressure": {
+        "cpu": "some avg10=0.04 avg60=0.02 avg300=0.00 total=146589164\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.68 avg60=0.49 avg300=0.14 total=503306032\nfull avg10=0.60 avg60=0.46 avg300=0.14 total=497111390",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=16578\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=16428"
+      },
+      "docker_stats_exit": 0,
+      "docker_stats": [
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.11%",
+          "Container": "223c249dd11f",
+          "ID": "223c249dd11f",
+          "MemPerc": "58.01%",
+          "MemUsage": "148.5MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-dns-1",
+          "NetIO": "2.15kB / 386B",
+          "PIDs": "26"
+        },
+        {
+          "BlockIO": "5.97MB / 21.5MB",
+          "CPUPerc": "23.12%",
+          "Container": "abffcb038856",
+          "ID": "abffcb038856",
+          "MemPerc": "23.46%",
+          "MemUsage": "120.1MiB / 512MiB",
+          "Name": "drumee-il2-test-c3e67886-database-1",
+          "NetIO": "7.76kB / 126B",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.01%",
+          "Container": "1281702a724f",
+          "ID": "1281702a724f",
+          "MemPerc": "0.05%",
+          "MemUsage": "15.98MiB / 31.2GiB",
+          "Name": "drumee-il2-test-c3e67886-capture-1",
+          "NetIO": "7.91kB / 126B",
+          "PIDs": "7"
+        },
+        {
+          "BlockIO": "0B / 12.3kB",
+          "CPUPerc": "0.30%",
+          "Container": "6ac84b29a072",
+          "ID": "6ac84b29a072",
+          "MemPerc": "3.17%",
+          "MemUsage": "8.117MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-redis-1",
+          "NetIO": "7.67kB / 126B",
+          "PIDs": "6"
+        },
+        {
+          "BlockIO": "0B / 12.3kB",
+          "CPUPerc": "0.00%",
+          "Container": "9794f013d3c0",
+          "ID": "9794f013d3c0",
+          "MemPerc": "1.47%",
+          "MemUsage": "3.77MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-mail-1",
+          "NetIO": "14.8kB / 252B",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.28%",
+          "Container": "5b6a281fd913",
+          "ID": "5b6a281fd913",
+          "MemPerc": "0.86%",
+          "MemUsage": "2.199MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-dkim-1",
+          "NetIO": "7.62kB / 126B",
+          "PIDs": "6"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-21T21:01:35.911430+00:00",
+      "elapsed_s": 34.08467703399947,
+      "loadavg": "1.10 0.31 0.14 3/2212 203163",
+      "memory": {
+        "MemAvailable": "18600260 kB",
+        "SwapFree": "1000444 kB"
+      },
+      "pressure": {
+        "cpu": "some avg10=0.01 avg60=0.01 avg300=0.00 total=146635532\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.20 avg60=0.40 avg300=0.14 total=503348509\nfull avg10=0.18 avg60=0.37 avg300=0.13 total=497152098",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=16578\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=16428"
+      },
+      "docker_stats_exit": 0,
+      "docker_stats": [
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.28%",
+          "Container": "c95c3758d112",
+          "ID": "c95c3758d112",
+          "MemPerc": "3.17%",
+          "MemUsage": "8.113MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-redis-1",
+          "NetIO": "3.17kB / 672B",
+          "PIDs": "6"
+        },
+        {
+          "BlockIO": "3.1MB / 28.7kB",
+          "CPUPerc": "2.95%",
+          "Container": "987b71053919",
+          "ID": "987b71053919",
+          "MemPerc": "23.55%",
+          "MemUsage": "120.6MiB / 512MiB",
+          "Name": "drumee-il2-test-c3e67886-database-1",
+          "NetIO": "3kB / 126B",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "223c249dd11f",
+          "ID": "223c249dd11f",
+          "MemPerc": "58.06%",
+          "MemUsage": "148.6MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-dns-1",
+          "NetIO": "3.88kB / 428B",
+          "PIDs": "26"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "7.97%",
+          "Container": "1281702a724f",
+          "ID": "1281702a724f",
+          "MemPerc": "0.05%",
+          "MemUsage": "16.26MiB / 31.2GiB",
+          "Name": "drumee-il2-test-c3e67886-capture-1",
+          "NetIO": "8.92kB / 126B",
+          "PIDs": "7"
+        },
+        {
+          "BlockIO": "0B / 12.3kB",
+          "CPUPerc": "3.48%",
+          "Container": "9794f013d3c0",
+          "ID": "9794f013d3c0",
+          "MemPerc": "1.47%",
+          "MemUsage": "3.773MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-mail-1",
+          "NetIO": "15.8kB / 252B",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "5b6a281fd913",
+          "ID": "5b6a281fd913",
+          "MemPerc": "0.86%",
+          "MemUsage": "2.199MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-dkim-1",
+          "NetIO": "7.62kB / 126B",
+          "PIDs": "6"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-21T21:01:48.010778+00:00",
+      "elapsed_s": 46.184022102999734,
+      "loadavg": "0.93 0.30 0.14 1/2157 205260",
+      "memory": {
+        "MemAvailable": "18667612 kB",
+        "SwapFree": "1000444 kB"
+      },
+      "pressure": {
+        "cpu": "some avg10=0.00 avg60=0.01 avg300=0.00 total=146668622\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.06 avg60=0.32 avg300=0.13 total=503386273\nfull avg10=0.05 avg60=0.30 avg300=0.13 total=497188325",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=16578\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=16428"
+      },
+      "docker_stats_exit": 0,
+      "docker_stats": [
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "41.88%",
+          "Container": "8b5e60ad6a4f",
+          "ID": "8b5e60ad6a4f",
+          "MemPerc": "1.52%",
+          "MemUsage": "3.902MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-mail-1",
+          "NetIO": "3.02kB / 252B",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.24%",
+          "Container": "c95c3758d112",
+          "ID": "c95c3758d112",
+          "MemPerc": "3.17%",
+          "MemUsage": "8.113MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-redis-1",
+          "NetIO": "4.26kB / 714B",
+          "PIDs": "6"
+        },
+        {
+          "BlockIO": "3.1MB / 28.7kB",
+          "CPUPerc": "3.00%",
+          "Container": "987b71053919",
+          "ID": "987b71053919",
+          "MemPerc": "23.55%",
+          "MemUsage": "120.6MiB / 512MiB",
+          "Name": "drumee-il2-test-c3e67886-database-1",
+          "NetIO": "3.78kB / 126B",
+          "PIDs": "12"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.86%",
+          "Container": "223c249dd11f",
+          "ID": "223c249dd11f",
+          "MemPerc": "60.42%",
+          "MemUsage": "154.7MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-dns-1",
+          "NetIO": "4.58kB / 428B",
+          "PIDs": "26"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "5b6a281fd913",
+          "ID": "5b6a281fd913",
+          "MemPerc": "1.17%",
+          "MemUsage": "3.004MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-dkim-1",
+          "NetIO": "5.47kB / 2.23kB",
+          "PIDs": "6"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-21T21:02:00.040935+00:00",
+      "elapsed_s": 58.21417778599425,
+      "loadavg": "0.94 0.33 0.15 1/2030 207949",
+      "memory": {
+        "MemAvailable": "19060256 kB",
+        "SwapFree": "1000444 kB"
+      },
+      "pressure": {
+        "cpu": "some avg10=0.00 avg60=0.01 avg300=0.00 total=146711117\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.01 avg60=0.26 avg300=0.12 total=503420237\nfull avg10=0.01 avg60=0.25 avg300=0.12 total=497220322",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=16578\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=16428"
+      },
+      "docker_stats_exit": 0,
+      "docker_stats": [
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "07b997d68068",
+          "ID": "07b997d68068",
+          "MemPerc": "0.00%",
+          "MemUsage": "0B / 0B",
+          "Name": "drumee-il2-test-c3e67886-mail-1",
+          "NetIO": "0B / 0B",
+          "PIDs": "0"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "c95c3758d112",
+          "ID": "c95c3758d112",
+          "MemPerc": "0.00%",
+          "MemUsage": "0B / 0B",
+          "Name": "drumee-il2-test-c3e67886-redis-1",
+          "NetIO": "0B / 0B",
+          "PIDs": "0"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "987b71053919",
+          "ID": "987b71053919",
+          "MemPerc": "0.00%",
+          "MemUsage": "0B / 0B",
+          "Name": "drumee-il2-test-c3e67886-database-1",
+          "NetIO": "0B / 0B",
+          "PIDs": "0"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.23%",
+          "Container": "5b6a281fd913",
+          "ID": "5b6a281fd913",
+          "MemPerc": "1.30%",
+          "MemUsage": "3.336MiB / 256MiB",
+          "Name": "drumee-il2-test-c3e67886-dkim-1",
+          "NetIO": "10kB / 4.34kB",
+          "PIDs": "6"
+        }
+      ]
+    }
+  ]
+}

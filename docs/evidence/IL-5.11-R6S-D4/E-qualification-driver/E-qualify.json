@@ -1,0 +1,38 @@
+{
+  "name": "E-qualify",
+  "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "docs/evidence/IL-5.11-D2/qualify.py",
+    "--source",
+    "/tmp/il511-r6s-clean"
+  ],
+  "cwd": "/tmp/il511-r6s-clean",
+  "date": "2026-10-21T18:16:38.282750+00:00",
+  "elapsed_s": 688.5989761129895,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "ed52bcac250b42d05f47db36ada3f0868e0a28c4ac94fcb9db071e5b23665dcb",
+  "runner_sha256": "de69dd5ca34e7ded94c8937d124c3dc433c93751c9c8e4790d8afccf8c4c79db",
+  "output": "/tmp/il511-evidence-3d7d6f33fbf1379d8e65f76c628a758c"
+}

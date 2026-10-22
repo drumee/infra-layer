@@ -1,0 +1,105 @@
+{
+  "recorded_utc": "2026-10-21T21:02:48.650380+00:00",
+  "results": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "url": "https://github.com/drumee/infra-layer/pull/16",
+          "number": 16,
+          "state": "open",
+          "merged": false,
+          "mergeable": true,
+          "draft": false,
+          "body": "**MERGED_POST_VALIDATION_FAILED maintenu pour un nouveau motif.** PR #15 est fusionn\u00e9e, main a02b76e4c421e96e63406d7b10edc2b76a6056c1 inchang\u00e9. L\u2019acceptation SMTP limit\u00e9e est enregistr\u00e9e ; publication toujours interdite.\n\nLe premier blocage CI est lev\u00e9 : Quality 39625251359 cinq jobs SUCCESS ; CodeQL 39625521356 JS/TS et Actions SUCCESS, checkout exact, upload/traitement complete. Les deux annotations natives sont des notices ubuntu-latest. Le refus initial de dispatch HTTP403 est conserv\u00e9 comme historique ; aucun nouveau dispatch tent\u00e9 ni jeton chang\u00e9. Les lectures administratives des alertes/analyses CodeQL restent HTTP403.\n\nSonarCloud demeure FAILURE ; l\u2019analyse au SHA exact recense 236 OPEN, dont 26 IDs nouveaux vs B. La matrice les dispose individuellement. Reproduction priv\u00e9e confirm\u00e9e du d\u00e9faut de sorties pr\u00e9visibles /tmp des helpers D2 : un lien pr\u00e9plant\u00e9 redirige l\u2019\u00e9criture d\u2019un journal vers un autre fichier de la fixture. Trois annotations correspondent \u00e0 ce m\u00e9canisme ; sept autres chemins temporaires requi\u00e8rent une investigation. Les hashes S6418 sont publics recalcul\u00e9s, les deux alertes d\u2019archive/travers\u00e9e ont une justification distincte, sans neutraliser le vrai d\u00e9faut de sortie.\n\nAucun membre npm chang\u00e9, aucune vuln\u00e9rabilit\u00e9 npm nouvelle signal\u00e9e par cet ensemble ; aucun compromis des preuves historiques d\u00e9montr\u00e9. Le d\u00e9faut des helpers ne peut pas \u00eatre couvert par l\u2019acceptation SMTP ni par l\u2019absence de ces scripts de npm. Aucun correctif de helper ou changement de r\u00e8gle int\u00e9gr\u00e9 ici ; rapports, preuve born\u00e9e et dispositions sont pr\u00eats pour revue.\n\nLivrables : docs/IL-5.11-release-review.md, docs/IL-5.11-postmerge-security-followup.md, handoff et \u00e9tat courant. La correction/requalification de l\u2019outillage et une int\u00e9gration corrective autoris\u00e9e sont n\u00e9cessaires avant cl\u00f4ture R6. Aucun merge de cette PR, publication npm/image, tag, latest, consommateur canonique, production ou D0.",
+          "title": "docs(il511): verify main CI and document evidence-helper security defect",
+          "base": "main",
+          "base_sha": "a02b76e4c421e96e63406d7b10edc2b76a6056c1",
+          "head": "docs/il511-release-review-a02b76e",
+          "head_sha": "1c9d20f1cc315628cfd703199423c6efc873ff13",
+          "head_repo_id": 1417095613,
+          "head_repo_full_name": "drumee/infra-layer",
+          "merge_commit_sha": "358254a4a7fd0ade5434cb6373362ff6b23fe112",
+          "user": {
+            "login": "somanos",
+            "name": "somanos",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/177176074?v=4",
+            "id": 177176074
+          },
+          "requested_reviewers": null,
+          "requested_team_reviewers": null,
+          "diff": null,
+          "comments": null,
+          "created_at": "2026-10-21T15:10:35Z",
+          "updated_at": "2026-10-21T16:25:13Z",
+          "closed_at": null,
+          "merged_at": null,
+          "commits": 2,
+          "changed_files": 46,
+          "additions": 7464,
+          "deletions": 54,
+          "display_url": "https://github.com/drumee/infra-layer/pull/16",
+          "display_title": "docs(il511): verify main CI and document evidence-helper security defect"
+        },
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "content": "{\"name\":\"main\",\"commit\":{\"sha\":\"a02b76e4c421e96e63406d7b10edc2b76a6056c1\",\"node_id\":\"C_kwDOVHcpvdoAKGEwMmI3NmU0YzQyMWU5NmU2MzQwNmQ3YjEwZWRjMmI3NmE2MDU2YzE\",\"commit\":{\"author\":{\"name\":\"Somanos Sar\",\"email\":\"somanossar@gmail.com\",\"date\":\"2026-10-21T14:52:17Z\"},\"committer\":{\"name\":\"GitHub\",\"email\":\"noreply@github.com\",\"date\":\"2026-10-21T14:52:17Z\"},\"message\":\"Merge pull request #15 from drumee/feat/il511-resume-final-qualification\\n\\nIntegrate the qualified alpha.3 candidate and bounded image validation.\\n\\nSMTP residual uncertainty accepted explicitly for experimental alpha.3 in docs/IL-5.11-owner-risk-decision.md. Qualification D2 preserved; no npm publication, tag or production operation authorized.\",\"tree\":{\"sha\":\"06198f583c37e9d79d00689823fc4cb01ef441c2\",\"url\":\"https://api.github.com/repos/drumee/infra-layer/git/trees/06198f583c37e9d79d00689823fc4cb01ef441c2\"},\"url\":\"https://api.github.com/repos/drumee/infra-layer/git/commits/a02b76e4c421e96e63406d7b10edc2b76a6056c1\",\"comment_count\":0,\"verification\":{\"verified\":true,\"reason\":\"valid\",\"signature\":\"-----BEGIN PGP SIGNATURE-----\\n\\nwsFcBAABCAAQBQJq2NGhCRC1aQ7uu5UhlAAADfMQAK4foqExzzHSAJQp4Cd+IoAv\\nV+3S5rp5+UEt8VAhPIBdJbVP0mmQTB5c+8BHUSfLXQranuigDqvfPEvsJ8g6W6Iy\\nJgMYOaQMlSutN6+GO2v4LoZvgQmV7r+USHnDRvIZXKdmyNI7wu22WZLEGJkPs0VX\\nLDRsXshXLA+viMk1L7Cnqfe7QIhLGE0hlHDK0ZUlWzKooR79bqm7CNsaSAhhEkoX\\nzHUJ6Dp5Qgq3jnc6cXxAtb6J6sPumU920fLRjrJMZ4oCJjnNxVlFmGypMdS+JOqa\\n1GbljO6aPHpYpBp5GVtv7UbLoAOL1ti8BKu3OXigwlZ+1kxUKuQoP2YKCfNnf9Ff\\naeD7lNcwChBCn8SDSasOEmehM/srRQndirZoTjSDZRPxK+tSJ0B9BiXxugj6DEcF\\nIjshoY+WSxFtQJzWV9whjwmybyiRxW20N1WdqMd3PjZH/WYtHH64kfLuxDxspIdw\\nq4eg7R73wvWvoG3c+z44JzBwiXgyHrAv1gkW8yhLzvQutqNA3Ei8jZumBq5pQVld\\nHaoNrj7titswp9ZA7wq+uqooPsY3gS9L6C0SI60MlbktUJ6HNQ1MmjtMS6xlTvdw\\nLhbN8foJE6HGejk+HRcK4lTuqcckVQjt0iuAJ510V1JkSewCCXPjNBqeZsNEwwzz\\nwR3oppXcRnF1iKasunp5\\n=hNMt\\n-----END PGP SIGNATURE-----\\n\",\"payload\":\"tree 06198f583c37e9d79d00689823fc4cb01ef441c2\\nparent 8f297d8f676706f052a24ce4e875d91b76555b91\\nparent bf14ab25c1963d623db4b7646b923f5c6b53b0b0\\nauthor Somanos Sar <somanossar@gmail.com> 1792594337 +0200\\ncommitter GitHub <noreply@github.com> 1792594337 +0200\\n\\nMerge pull request #15 from drumee/feat/il511-resume-final-qualification\\n\\nIntegrate the qualified alpha.3 candidate and bounded image validation.\\n\\nSMTP residual uncertainty accepted explicitly for experimental alpha.3 in docs/IL-5.11-owner-risk-decision.md. Qualification D2 preserved; no npm publication, tag or production operation authorized.\",\"verified_at\":\"2026-10-21T14:52:18Z\"}},\"url\":\"https://api.github.com/repos/drumee/infra-layer/commits/a02b76e4c421e96e63406d7b10edc2b76a6056c1\",\"html_url\":\"https://github.com/drumee/infra-layer/commit/a02b76e4c421e96e63406d7b10edc2b76a6056c1\",\"comments_url\":\"https://api.github.com/repos/drumee/infra-layer/commits/a02b76e4c421e96e63406d7b10edc2b76a6056c1/comments\",\"author\":{\"login\":\"somanos\",\"id\":177176074,\"node_id\":\"U_kgDOCo9-Cg\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/177176074?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/somanos\",\"html_url\":\"https://github.com/somanos\",\"followers_url\":\"https://api.github.com/users/somanos/followers\",\"following_url\":\"https://api.github.com/users/somanos/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/somanos/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/somanos/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/somanos/subscriptions\",\"organizations_url\":\"https://api.github.com/users/somanos/orgs\",\"repos_url\":\"https://api.github.com/users/somanos/repos\",\"events_url\":\"https://api.github.com/users/somanos/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/somanos/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"committer\":{\"login\":\"web-flow\",\"id\":19864447,\"node_id\":\"MDQ6VXNlcjE5ODY0NDQ3\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/19864447?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/web-flow\",\"html_url\":\"https://github.com/web-flow\",\"followers_url\":\"https://api.github.com/users/web-flow/followers\",\"following_url\":\"https://api.github.com/users/web-flow/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/web-flow/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/web-flow/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/web-flow/subscriptions\",\"organizations_url\":\"https://api.github.com/users/web-flow/orgs\",\"repos_url\":\"https://api.github.com/users/web-flow/repos\",\"events_url\":\"https://api.github.com/users/web-flow/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/web-flow/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"parents\":[{\"sha\":\"8f297d8f676706f052a24ce4e875d91b76555b91\",\"url\":\"https://api.github.com/repos/drumee/infra-layer/commits/8f297d8f676706f052a24ce4e875d91b76555b91\",\"html_url\":\"https://github.com/drumee/infra-layer/commit/8f297d8f676706f052a24ce4e875d91b76555b91\"},{\"sha\":\"bf14ab25c1963d623db4b7646b923f5c6b53b0b0\",\"url\":\"https://api.github.com/repos/drumee/infra-layer/commits/bf14ab25c1963d623db4b7646b923f5c6b53b0b0\",\"html_url\":\"https://github.com/drumee/infra-layer/commit/bf14ab25c1963d623db4b7646b923f5c6b53b0b0\"}]},\"_links\":{\"self\":\"https://api.github.com/repos/drumee/infra-layer/branches/main\",\"html\":\"https://github.com/drumee/infra-layer/tree/main\"},\"protected\":false,\"protection\":{\"enabled\":false,\"required_status_checks\":{\"enforcement_level\":\"off\",\"contexts\":[],\"checks\":[]}},\"protection_url\":\"https://api.github.com/repos/drumee/infra-layer/branches/main/protection\"}",
+          "title": "main",
+          "modified_date": null,
+          "url": "https://api.github.com/repos/drumee/infra-layer/branches/main",
+          "display_url": "https://api.github.com/repos/drumee/infra-layer/branches/main",
+          "display_title": "main",
+          "structuredContent": {
+            "title": "main",
+            "content": "{\"name\":\"main\",\"commit\":{\"sha\":\"a02b76e4c421e96e63406d7b10edc2b76a6056c1\",\"node_id\":\"C_kwDOVHcpvdoAKGEwMmI3NmU0YzQyMWU5NmU2MzQwNmQ3YjEwZWRjMmI3NmE2MDU2YzE\",\"commit\":{\"author\":{\"name\":\"Somanos Sar\",\"email\":\"somanossar@gmail.com\",\"date\":\"2026-10-21T14:52:17Z\"},\"committer\":{\"name\":\"GitHub\",\"email\":\"noreply@github.com\",\"date\":\"2026-10-21T14:52:17Z\"},\"message\":\"Merge pull request #15 from drumee/feat/il511-resume-final-qualification\\n\\nIntegrate the qualified alpha.3 candidate and bounded image validation.\\n\\nSMTP residual uncertainty accepted explicitly for experimental alpha.3 in docs/IL-5.11-owner-risk-decision.md. Qualification D2 preserved; no npm publication, tag or production operation authorized.\",\"tree\":{\"sha\":\"06198f583c37e9d79d00689823fc4cb01ef441c2\",\"url\":\"https://api.github.com/repos/drumee/infra-layer/git/trees/06198f583c37e9d79d00689823fc4cb01ef441c2\"},\"url\":\"https://api.github.com/repos/drumee/infra-layer/git/commits/a02b76e4c421e96e63406d7b10edc2b76a6056c1\",\"comment_count\":0,\"verification\":{\"verified\":true,\"reason\":\"valid\",\"signature\":\"-----BEGIN PGP SIGNATURE-----\\n\\nwsFcBAABCAAQBQJq2NGhCRC1aQ7uu5UhlAAADfMQAK4foqExzzHSAJQp4Cd+IoAv\\nV+3S5rp5+UEt8VAhPIBdJbVP0mmQTB5c+8BHUSfLXQranuigDqvfPEvsJ8g6W6Iy\\nJgMYOaQMlSutN6+GO2v4LoZvgQmV7r+USHnDRvIZXKdmyNI7wu22WZLEGJkPs0VX\\nLDRsXshXLA+viMk1L7Cnqfe7QIhLGE0hlHDK0ZUlWzKooR79bqm7CNsaSAhhEkoX\\nzHUJ6Dp5Qgq3jnc6cXxAtb6J6sPumU920fLRjrJMZ4oCJjnNxVlFmGypMdS+JOqa\\n1GbljO6aPHpYpBp5GVtv7UbLoAOL1ti8BKu3OXigwlZ+1kxUKuQoP2YKCfNnf9Ff\\naeD7lNcwChBCn8SDSasOEmehM/srRQndirZoTjSDZRPxK+tSJ0B9BiXxugj6DEcF\\nIjshoY+WSxFtQJzWV9whjwmybyiRxW20N1WdqMd3PjZH/WYtHH64kfLuxDxspIdw\\nq4eg7R73wvWvoG3c+z44JzBwiXgyHrAv1gkW8yhLzvQutqNA3Ei8jZumBq5pQVld\\nHaoNrj7titswp9ZA7wq+uqooPsY3gS9L6C0SI60MlbktUJ6HNQ1MmjtMS6xlTvdw\\nLhbN8foJE6HGejk+HRcK4lTuqcckVQjt0iuAJ510V1JkSewCCXPjNBqeZsNEwwzz\\nwR3oppXcRnF1iKasunp5\\n=hNMt\\n-----END PGP SIGNATURE-----\\n\",\"payload\":\"tree 06198f583c37e9d79d00689823fc4cb01ef441c2\\nparent 8f297d8f676706f052a24ce4e875d91b76555b91\\nparent bf14ab25c1963d623db4b7646b923f5c6b53b0b0\\nauthor Somanos Sar <somanossar@gmail.com> 1792594337 +0200\\ncommitter GitHub <noreply@github.com> 1792594337 +0200\\n\\nMerge pull request #15 from drumee/feat/il511-resume-final-qualification\\n\\nIntegrate the qualified alpha.3 candidate and bounded image validation.\\n\\nSMTP residual uncertainty accepted explicitly for experimental alpha.3 in docs/IL-5.11-owner-risk-decision.md. Qualification D2 preserved; no npm publication, tag or production operation authorized.\",\"verified_at\":\"2026-10-21T14:52:18Z\"}},\"url\":\"https://api.github.com/repos/drumee/infra-layer/commits/a02b76e4c421e96e63406d7b10edc2b76a6056c1\",\"html_url\":\"https://github.com/drumee/infra-layer/commit/a02b76e4c421e96e63406d7b10edc2b76a6056c1\",\"comments_url\":\"https://api.github.com/repos/drumee/infra-layer/commits/a02b76e4c421e96e63406d7b10edc2b76a6056c1/comments\",\"author\":{\"login\":\"somanos\",\"id\":177176074,\"node_id\":\"U_kgDOCo9-Cg\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/177176074?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/somanos\",\"html_url\":\"https://github.com/somanos\",\"followers_url\":\"https://api.github.com/users/somanos/followers\",\"following_url\":\"https://api.github.com/users/somanos/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/somanos/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/somanos/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/somanos/subscriptions\",\"organizations_url\":\"https://api.github.com/users/somanos/orgs\",\"repos_url\":\"https://api.github.com/users/somanos/repos\",\"events_url\":\"https://api.github.com/users/somanos/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/somanos/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"committer\":{\"login\":\"web-flow\",\"id\":19864447,\"node_id\":\"MDQ6VXNlcjE5ODY0NDQ3\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/19864447?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/web-flow\",\"html_url\":\"https://github.com/web-flow\",\"followers_url\":\"https://api.github.com/users/web-flow/followers\",\"following_url\":\"https://api.github.com/users/web-flow/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/web-flow/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/web-flow/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/web-flow/subscriptions\",\"organizations_url\":\"https://api.github.com/users/web-flow/orgs\",\"repos_url\":\"https://api.github.com/users/web-flow/repos\",\"events_url\":\"https://api.github.com/users/web-flow/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/web-flow/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"parents\":[{\"sha\":\"8f297d8f676706f052a24ce4e875d91b76555b91\",\"url\":\"https://api.github.com/repos/drumee/infra-layer/commits/8f297d8f676706f052a24ce4e875d91b76555b91\",\"html_url\":\"https://github.com/drumee/infra-layer/commit/8f297d8f676706f052a24ce4e875d91b76555b91\"},{\"sha\":\"bf14ab25c1963d623db4b7646b923f5c6b53b0b0\",\"url\":\"https://api.github.com/repos/drumee/infra-layer/commits/bf14ab25c1963d623db4b7646b923f5c6b53b0b0\",\"html_url\":\"https://github.com/drumee/infra-layer/commit/bf14ab25c1963d623db4b7646b923f5c6b53b0b0\"}]},\"_links\":{\"self\":\"https://api.github.com/repos/drumee/infra-layer/branches/main\",\"html\":\"https://github.com/drumee/infra-layer/tree/main\"},\"protected\":false,\"protection\":{\"enabled\":false,\"required_status_checks\":{\"enforcement_level\":\"off\",\"contexts\":[],\"checks\":[]}},\"protection_url\":\"https://api.github.com/repos/drumee/infra-layer/branches/main/protection\"}",
+            "display_url": "https://api.github.com/repos/drumee/infra-layer/branches/main"
+          }
+        },
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Action completed."
+          }
+        ],
+        "structuredContent": {
+          "content": "[]",
+          "title": "rulesets",
+          "modified_date": null,
+          "url": "https://api.github.com/repos/drumee/infra-layer/rulesets?includes_parents=true",
+          "display_url": "https://api.github.com/repos/drumee/infra-layer/rulesets?includes_parents=true",
+          "display_title": "rulesets",
+          "structuredContent": {
+            "title": "rulesets",
+            "content": "[]",
+            "display_url": "https://api.github.com/repos/drumee/infra-layer/rulesets?includes_parents=true"
+          }
+        },
+        "isError": false
+      }
+    }
+  ]
+}
