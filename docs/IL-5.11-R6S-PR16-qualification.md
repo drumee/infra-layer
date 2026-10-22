@@ -1,5 +1,32 @@
 # PR #16 convergence qualification
 
+## Hosted failure and authorized corrective replay — 2026-10-22
+
+Quality run39753661585 at fea6e0f461c1969addfe504feb12f33fdd0701b4 failed after npm packaging passed: Python ran25methods, with24passes, one ERROR and zero skips. The generic stdout probe assumed /usr/bin/node; the hosted runner installed Node under its toolcache. FileNotFoundError occurred before the probe was executed. This failure remains preserved in the separate stop-report PR #18 and is not reclassified as a pass.
+
+At owner-authorized resumption, commit e8ac692dd70160736d35cbe227cab37378a55477 changes only three generic test probes to sys.executable with a Python print command. It changes no qualification-tool resolution, timeout, security assertion, helper implementation or npm member. A clean clone passed all25methods without skips, including real foreign UID65532 and explicit UNTRUSTED_OWNER rejection. The original11scenarios retain86explicit assertions; those86are not a count of all assertions in the extended suite.
+
+The complete verifier was newly executed at e8ac692: all nine commands returned zero, unit176, contracts24, system-tool scenarios12, package, lint, both audits and installed consumer passed. Two newly built archives match:41members,101778bytes, SHA256 c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e and npm SRI sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==. The verifier explicitly retains the distinction between these executions and heavy D2 acceptance reused by unchanged executable/test-input identity.
+
+[New raw logs, source/date/UID/GID receipts, command results and journal hashes](evidence/IL-5.11-R6S-PR16-Resume/provenance.json) preserve each independent private execution root. Current-head hosted checks remain a mandatory pending gate before integration.
+
+### Individual SonarCloud review
+
+The read-only snapshot contains eight OPEN diagnostics; SonarCloud remains FAILURE. No alert is closed or suppressed. The five S6418 values were independently checked against SHA256 of public capabilities/secrets/index.js: b872fa5cdd6868d0b89f17038aa445a8c709e675f4e82452fb7283647d48c432. These fields record member-content fingerprints, contain no password/key, and confer no authentication capability.
+
+| Issue key | Rule / location | Technical disposition |
+|---|---|---|
+| AaFi4toII_cSiCZiojSy | S6418 PR16/artifact receipt line26 | FALSE_POSITIVE_TECHNICALLY_CONFIRMED: public source fingerprint recalculated above. |
+| AaFi4tqhI_cSiCZiojS0 | S6418 PR16/main17-artifact receipt line26 | FALSE_POSITIVE_TECHNICALLY_CONFIRMED: same independently recalculated public member. |
+| AaFi4tqeI_cSiCZiojSz | S6418 PR16/verify receipt line26 | FALSE_POSITIVE_TECHNICALLY_CONFIRMED: same public member fingerprint. |
+| AaFfE62PcoUp91riuV1B | S6418 release-review/postmerge receipt line29 | FALSE_POSITIVE_TECHNICALLY_CONFIRMED: same public member fingerprint; historical record retained. |
+| AaFfE6yzcoUp91riuV0s | S6418 release-review/premerge receipt line29 | FALSE_POSITIVE_TECHNICALLY_CONFIRMED: same public member fingerprint; historical record retained. |
+| AaFi4tqoI_cSiCZiojS1 | S1192 source-archive.py line22 | STYLE: repeated approved absolute Git executable; no data-dependent dispatch or control-flow ambiguity. No unrelated refactor. |
+| AaFi4tqoI_cSiCZiojS2 | S4790 source-archive.py line62 | CONTEXT_JUSTIFIED: SHA1 reproduces Git blob IDs, not password hashing or sole security verification. Complete archive member contents are also compared byte for byte with the selected Git objects, and archive SHA256/SHA512 are recorded separately. |
+| AaFi4tqsI_cSiCZiojS3 | S5778 release_utilities_test.py line183 | STYLE: archive-construction and validation share an assertRaises scope, but construction raises no UnsafeEvidencePath; only validation can satisfy the expected exception. Each malformed variant has its own subtest. No false acceptance was identified. |
+
+This review does not accept unrelated historical alerts globally. The snapshot and HTTP receipt are retained with the new evidence. New-head analysis will be checked for changes before merging.
+
 ## Source and execution scope
 
 The first clean qualification source is `3740b38cefe15666f266cda933f6e53134cfd958`, built on integrated main `75ac104ddce8700b406ba839cfe1b8bfe6d6f477`. PR #16's original branch and history are preserved. All new documentation is English under the committed AGENTS.md policy. Historical machine-readable evidence and logs are unchanged.

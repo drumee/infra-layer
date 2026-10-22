@@ -1,0 +1,36 @@
+[
+  {
+    "name": "install",
+    "command": [
+      "/usr/bin/npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "exit_code": 0,
+    "seconds": 1.716647233988624,
+    "sha256": "5cc423130f1ba2414f7c702f439916673a23996478c36fee079e162124bfd9b9"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "/usr/bin/npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "seconds": 3.5329308820073493,
+    "sha256": "9280f25a2c4cb69d6729cb9b4275d73d789366b4274b6402a11fea619760e8c2"
+  },
+  {
+    "name": "contracts",
+    "command": [
+      "/usr/bin/npm",
+      "run",
+      "test:contracts"
+    ],
+    "exit_code": 0,
+    "seconds": 0.3142326779779978,
+    "sha256": "7d04654a0fbfa140bcc02302a0c72dbe95d2c6b83c5b3f149b38c91ff395b9cc"
+  }
+]

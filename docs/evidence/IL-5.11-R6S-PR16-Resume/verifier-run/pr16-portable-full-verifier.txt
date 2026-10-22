@@ -1,0 +1,37 @@
+{"output": "/tmp/il511-evidence-77011c128b4ed910f7013da47450174d", "source": "e8ac692dd70160736d35cbe227cab37378a55477", "helper": "release-review/verify.py"}
+{"name": "install", "command": ["/usr/bin/npm", "ci", "--ignore-scripts", "--no-audit", "--no-fund"], "exit_code": 0, "seconds": 1.716647233988624, "sha256": "5cc423130f1ba2414f7c702f439916673a23996478c36fee079e162124bfd9b9"}
+{"name": "unit", "command": ["/usr/bin/npm", "test"], "exit_code": 0, "seconds": 3.5329308820073493, "sha256": "9280f25a2c4cb69d6729cb9b4275d73d789366b4274b6402a11fea619760e8c2"}
+{"name": "contracts", "command": ["/usr/bin/npm", "run", "test:contracts"], "exit_code": 0, "seconds": 0.3142326779779978, "sha256": "7d04654a0fbfa140bcc02302a0c72dbe95d2c6b83c5b3f149b38c91ff395b9cc"}
+{"name": "system-tools", "command": ["/usr/bin/npm", "run", "test:system-tools"], "exit_code": 0, "seconds": 0.46449655399192125, "sha256": "9cc84f0bf82d4d81b4705043a313697cd5fc2b01314e3734af8be4bcb1f00c4b"}
+{"name": "package", "command": ["/usr/bin/npm", "run", "test:package"], "exit_code": 0, "seconds": 1.065342337009497, "sha256": "8d56bc75da311fddc41cbc06cea8cb26b97e786662a4fddd603b3c7b8619e7ef"}
+{"name": "lint", "command": ["/usr/bin/npm", "run", "lint"], "exit_code": 0, "seconds": 1.2662100219749846, "sha256": "c4b8ad2edfe3dd177f687f06b205e9018717a72784ebbe6a62343e3662b0d42c"}
+{"name": "audit-production", "command": ["/usr/bin/npm", "audit", "--omit=dev", "--json"], "exit_code": 0, "seconds": 0.21409995801514015, "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"}
+{"name": "audit-development", "command": ["/usr/bin/npm", "audit", "--include=dev", "--json"], "exit_code": 0, "seconds": 0.6649266800377518, "sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"}
+{"name": "consumer", "command": ["/usr/bin/node", "test/application/package-consumer.js"], "exit_code": 0, "seconds": 2.8684985379804857, "sha256": "f84d5a61d1e0a551d115aa4cc91a4377c9d13423bedd0097697972c7553b9352"}
+{
+  "source": "e8ac692dd70160736d35cbe227cab37378a55477",
+  "prior_executable_source": "d19e62ba682dc2d781f5f941c7ba4b37e3a65053",
+  "clean_tree": true,
+  "two_packs_identical": true,
+  "members": 41,
+  "packed_bytes": 101778,
+  "sha256": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "integrity": "sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==",
+  "identical_to_previous_D_candidate": true,
+  "version": "0.1.0-alpha.3",
+  "production_dependencies": {},
+  "prepublication_scripts": {},
+  "date_utc": "2026-10-22T09:59:37.906684+00:00",
+  "tree": "1489f14022f5c27edc0f0f789cdaca7277dd1408",
+  "D2_source": "dbc0be5c20029374c68bdf510dfadd7da079fcf6",
+  "clean_tree_before_after": true,
+  "package_lock_sha256": "ebb960fbeb9ee738fadbae0ab952585f7ccd6577a8cc740ac9c71bdb6130569a",
+  "artifact_evidence_root": "/tmp/il511-evidence-1f95a440870a6e8eaa58e11f0e4442ea",
+  "installation_network": "registry-explicit",
+  "heavy_tests_reused_by_identity": [
+    "gateway 17/17",
+    "services 17/17 and campaign 3x17/17",
+    "lifecycle 16/16",
+    "application 87 assertions"
+  ]
+}
