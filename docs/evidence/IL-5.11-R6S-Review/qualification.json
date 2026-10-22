@@ -1,0 +1,70 @@
+{
+  "tool_source": "bd23bbac1fcaf88a86882f0fe5a2da33f57cd4a7",
+  "selected_historical_evidence_source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+  "date": "2026-10-22T08:11:12.018433+00:00",
+  "uid": 1000,
+  "gid": 1000,
+  "results": {
+    "original_scenarios": 11,
+    "original_explicit_assertions": 86,
+    "additional_maintenance_tests": 5,
+    "total_test_methods": 16,
+    "failures": 0,
+    "skips": 0,
+    "private_input_validator_functional_replay": "PASS on original logs/archives, no canonical suite rerun claimed",
+    "export_functional_replay": "PASS, original bytes and hashes preserved",
+    "two_packages": "PASS, 41 members and reference npm identities recalculated"
+  },
+  "receipts": [
+    {
+      "name": "development-negative",
+      "private_source": "/tmp/il511-evidence-cf944e5498ad919a753a0aee69ab50ac",
+      "files_sha256": {
+        "review-maintenance.json": "a1e57270e86703a8802eff1a9f577d8e48d0c3a8db81be013255d51ad5dafa5d",
+        "review-maintenance.txt": "0872c394f9e8d4bf94bdf11bb9efbd27ae45f9260fb1ddb2e2aad7e5c0edcaef"
+      }
+    },
+    {
+      "name": "clean-negative",
+      "private_source": "/tmp/il511-evidence-b541d9d1951b0a1ba48d84b490ba918a",
+      "files_sha256": {
+        "review-negative.json": "59b333d471805032e6a48b795267cc0ee41dd0b92db169f79b4c8d947c31373f",
+        "review-negative.txt": "24dfb45958316d6fe443bd28b0e8247370e7746f1ea4de45374bf34267564ee6"
+      }
+    },
+    {
+      "name": "validation",
+      "private_source": "/tmp/il511-evidence-d5a8ffbb45685e48f50c381907ba982b",
+      "files_sha256": {
+        "validation.json": "8c245662e791a182c2800c9a6ecf7e0a5253c90f1a967c267d051beb7ac43c83"
+      }
+    },
+    {
+      "name": "artifact-driver",
+      "private_source": "/tmp/il511-evidence-53992da75bb2fcb95c37fc909d700154",
+      "files_sha256": {
+        "review-artifact.json": "ef9b3b1a523d78527708e5b810cf8fcdd17800194a3140ac16c453931419ce2b",
+        "review-artifact.txt": "f3e2389a5f9bf3812b64b715d09f60faf51979fdbca17a440e267ed73a9a51f0"
+      }
+    },
+    {
+      "name": "artifact",
+      "private_source": "/tmp/il511-evidence-49f3b32350143f223b0c4cd7f0ac3d51",
+      "files_sha256": {
+        "artifact-receipt.json": "6701a0b600c8ae22d63a77137eaccd331a3b5f2c490f13d4cccaeaeb717734f9",
+        "npm-global.npmrc": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "npm-user.npmrc": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "provenance.json": "b81ed6bda5b440be04f0426a243cd3901649ce6ab83ef81c3057be79f3827169"
+      }
+    },
+    {
+      "name": "functional-export",
+      "private_source": "/tmp/il511-review-clean/docs/evidence/IL-5.11-R6S-D4/review-functional-export-bd23bba",
+      "files_sha256": {
+        "export.json": "aee8d6f42b000daf7e62f987ea5328e3232c7fa290dd926e3eb955fdbc8edd56",
+        "review-negative.json": "59b333d471805032e6a48b795267cc0ee41dd0b92db169f79b4c8d947c31373f",
+        "review-negative.txt": "24dfb45958316d6fe443bd28b0e8247370e7746f1ea4de45374bf34267564ee6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{"output": "/tmp/il511-evidence-64d1c6d4a4eb9e42eea1d429e626c445", "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "helper": "qualify.py"}
+BEGIN unit
+{"name": "unit", "command": ["/usr/bin/npm", "test"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:16:38.321234+00:00", "elapsed_s": 3.6700797389785293, "exit_code": 0, "log_sha256": "0954cafa52d1da23eb7c6790885f2f356cc979b8606c1f5d33239babe802a55c"}
+BEGIN contracts
+{"name": "contracts", "command": ["/usr/bin/npm", "run", "test:contracts"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:16:41.991632+00:00", "elapsed_s": 0.36433429800672457, "exit_code": 0, "log_sha256": "741b60c578d3bdda050c61f35892f2e9daa6be65d947d38efc360e7c9ec5c73e"}
+BEGIN gateway
+{"name": "gateway", "command": ["/usr/bin/npm", "run", "test:gateway"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:16:42.356910+00:00", "elapsed_s": 103.25538156999392, "exit_code": 0, "log_sha256": "e587aa95e4df19fcd31eee7ce5c166c03ba5b58eb5254444b8d1717187427406"}
+BEGIN services
+{"name": "services", "command": ["/usr/bin/npm", "run", "test:services"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:18:25.612681+00:00", "elapsed_s": 63.22398124402389, "exit_code": 0, "log_sha256": "795a246512d89117accc0e5319f077ceea3d2479dbf28e01be9785f9fb5e3745"}
+BEGIN lifecycle
+{"name": "lifecycle", "command": ["/usr/bin/npm", "run", "test:lifecycle"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:19:28.837172+00:00", "elapsed_s": 355.5816227289906, "exit_code": 0, "log_sha256": "d20a62fa402d63bb97e3ce7508c4f779ccf2b5c679114f9606a12631e4ba02cd"}
+BEGIN application
+{"name": "application", "command": ["/usr/bin/npm", "run", "test:application"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:25:24.419073+00:00", "elapsed_s": 156.29857392498525, "exit_code": 0, "log_sha256": "1bed2ffb0a9f64cfcbe1c914764d897c5a046721423a130e9f828bc586082fdc"}
+BEGIN package
+{"name": "package", "command": ["/usr/bin/npm", "run", "test:package"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:28:00.717935+00:00", "elapsed_s": 1.065613023005426, "exit_code": 0, "log_sha256": "8d56bc75da311fddc41cbc06cea8cb26b97e786662a4fddd603b3c7b8619e7ef"}
+BEGIN lint
+{"name": "lint", "command": ["/usr/bin/npm", "run", "lint"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:28:01.783838+00:00", "elapsed_s": 1.215776832017582, "exit_code": 0, "log_sha256": "2a2b1d493cb3f2cde551fc8965184edc0f471efe66a7e6fca7a6b0b9180034d2"}
+BEGIN audit-production
+{"name": "audit-production", "command": ["/usr/bin/npm", "audit", "--omit=dev", "--json"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:28:03.000050+00:00", "elapsed_s": 0.21409460599534214, "exit_code": 0, "log_sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"}
+BEGIN audit-development
+{"name": "audit-development", "command": ["/usr/bin/npm", "audit", "--include=dev", "--json"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:28:03.214620+00:00", "elapsed_s": 0.8152515070105437, "exit_code": 0, "log_sha256": "85eba492d3c478d17c3a0a79101ce7bf573fd41934d7a570bb7f31300ce04300"}
+BEGIN consumer
+{"name": "consumer", "command": ["/usr/bin/node", "test/application/package-consumer.js"], "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0", "started_utc": "2026-10-21T18:28:04.030183+00:00", "elapsed_s": 2.8186437190161087, "exit_code": 0, "log_sha256": "e5b61355107542de9146959ea2733a314ead3e6e1a377fa5951211ff3ac8d716"}

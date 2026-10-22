@@ -1,0 +1,263 @@
+packaging	Set up job	﻿2026-10-21T21:22:42.1361014Z Current runner version: '2.338.0'
+packaging	Set up job	2026-10-21T21:22:42.1388357Z ##[group]Runner Image Provisioner
+packaging	Set up job	2026-10-21T21:22:42.1389357Z Hosted Compute Agent
+packaging	Set up job	2026-10-21T21:22:42.1389976Z Version: 20261012.601
+packaging	Set up job	2026-10-21T21:22:42.1390616Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+packaging	Set up job	2026-10-21T21:22:42.1391477Z Build Date: 2026-10-12T17:48:21Z
+packaging	Set up job	2026-10-21T21:22:42.1392366Z Worker ID: {a5dd19cd-fb20-4fb3-8def-9211eb69ad7d}
+packaging	Set up job	2026-10-21T21:22:42.1393131Z Region: westus
+packaging	Set up job	2026-10-21T21:22:42.1393723Z Cloud: Azure
+packaging	Set up job	2026-10-21T21:22:42.1394310Z ##[endgroup]
+packaging	Set up job	2026-10-21T21:22:42.1396113Z ##[group]Operating System
+packaging	Set up job	2026-10-21T21:22:42.1396777Z Ubuntu
+packaging	Set up job	2026-10-21T21:22:42.1397390Z 24.04.5
+packaging	Set up job	2026-10-21T21:22:42.1397942Z LTS
+packaging	Set up job	2026-10-21T21:22:42.1398483Z ##[endgroup]
+packaging	Set up job	2026-10-21T21:22:42.1399142Z ##[group]Runner Image
+packaging	Set up job	2026-10-21T21:22:42.1399777Z Image: ubuntu-24.04
+packaging	Set up job	2026-10-21T21:22:42.1400345Z Version: 20261012.334.1
+packaging	Set up job	2026-10-21T21:22:42.1401501Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+packaging	Set up job	2026-10-21T21:22:42.1403560Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+packaging	Set up job	2026-10-21T21:22:42.1404553Z ##[endgroup]
+packaging	Set up job	2026-10-21T21:22:42.1405788Z ##[group]GITHUB_TOKEN Permissions
+packaging	Set up job	2026-10-21T21:22:42.1407691Z Contents: read
+packaging	Set up job	2026-10-21T21:22:42.1408471Z Metadata: read
+packaging	Set up job	2026-10-21T21:22:42.1409063Z ##[endgroup]
+packaging	Set up job	2026-10-21T21:22:42.1411224Z Secret source: Actions
+packaging	Set up job	2026-10-21T21:22:42.1412473Z Cache mode: write
+packaging	Set up job	2026-10-21T21:22:42.1413210Z Prepare workflow directory
+packaging	Set up job	2026-10-21T21:22:42.1811278Z Prepare all required actions
+packaging	Set up job	2026-10-21T21:22:42.1862282Z Getting action download info
+packaging	Set up job	2026-10-21T21:22:42.5388350Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+packaging	Set up job	2026-10-21T21:22:42.6524773Z Download action repository 'actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+packaging	Set up job	2026-10-21T21:22:42.8463902Z Complete job name: packaging
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	﻿2026-10-21T21:22:42.9418196Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9419270Z with:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9419730Z   persist-credentials: false
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9420252Z   repository: drumee/infra-layer
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9424683Z   token: ***
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9425129Z   ssh-strict: true
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9425660Z   ssh-user: git
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9426078Z   clean: true
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9426524Z   sparse-checkout-cone-mode: true
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9427059Z   fetch-depth: 1
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9427494Z   fetch-tags: false
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9427936Z   show-progress: true
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9428441Z   lfs: false
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9429055Z   submodules: false
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9429724Z   set-safe-directory: true
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9430489Z   allow-unsafe-pr-checkout: false
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:42.9431531Z ##[endgroup]
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0535021Z Syncing repository: drumee/infra-layer
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0537395Z ##[group]Getting Git version info
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0538685Z Working directory is '/home/runner/work/infra-layer/infra-layer'
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0540348Z [command]/usr/bin/git version
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0586805Z git version 2.55.0
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0612172Z ##[endgroup]
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0630148Z Temporarily overriding HOME='/home/runner/work/_temp/c4e43183-9d33-46d2-a195-ecdf7a2f62ae' before making global git config changes
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0633224Z Adding repository directory to the temporary git global config as a safe directory
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0637049Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-layer/infra-layer
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0697781Z Deleting the contents of '/home/runner/work/infra-layer/infra-layer'
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0704138Z ##[group]Determining repository object format
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0706455Z ##[endgroup]
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0707463Z ##[group]Initializing the repository
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0713096Z [command]/usr/bin/git init /home/runner/work/infra-layer/infra-layer
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0801505Z hint: Using 'master' as the name for the initial branch. This default branch name
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0803476Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0804891Z hint: to use in all of your new repositories, which will suppress this warning,
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0806021Z hint: call:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0806660Z hint:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0807466Z hint: 	git config --global init.defaultBranch <name>
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0808420Z hint:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0809303Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0810694Z hint: 'development'. The just-created branch can be renamed via this command:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0812090Z hint:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0812779Z hint: 	git branch -m <name>
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0813534Z hint:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0814572Z hint: Disable this message with "git config set advice.defaultBranchName false"
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0816184Z Initialized empty Git repository in /home/runner/work/infra-layer/infra-layer/.git/
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0818950Z [command]/usr/bin/git remote add origin https://github.com/drumee/infra-layer
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0869166Z ##[endgroup]
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0870396Z ##[group]Disabling automatic garbage collection
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0874429Z [command]/usr/bin/git config --local gc.auto 0
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0911472Z ##[endgroup]
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0913353Z ##[group]Setting up auth
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0914220Z Removing SSH command configuration
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0920529Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.0968018Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.1354232Z Removing HTTP extra header
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.1363538Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.1405306Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.1657152Z Removing includeIf entries pointing to credentials config files
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.1665085Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.1711166Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.1980367Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.2038862Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path /home/runner/work/_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.2085798Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.2135519Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.2193922Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.2236115Z ##[endgroup]
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.2236952Z ##[group]Fetching the repository
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.2250192Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +09b75b40553396d7ddfa47800efd07aa110913c9:refs/remotes/pull/17/merge
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.7893989Z From https://github.com/drumee/infra-layer
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.7896228Z  * [new ref]         09b75b40553396d7ddfa47800efd07aa110913c9 -> pull/17/merge
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.7900864Z ##[endgroup]
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.7902480Z ##[group]Determining the checkout info
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.7904025Z ##[endgroup]
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.7909109Z [command]/usr/bin/git sparse-checkout disable
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.7969482Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8005897Z ##[group]Checking out the ref
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8009174Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/17/merge
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8361008Z Note: switching to 'refs/remotes/pull/17/merge'.
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8362213Z 
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8362822Z You are in 'detached HEAD' state. You can look around, make experimental
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8364308Z changes and commit them, and you can discard any commits you make in this
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8365782Z state without impacting any branches by switching back to a branch.
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8366755Z 
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8367449Z If you want to create a new branch to retain commits you create, you may
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8368677Z do so (now or later) by using -c with the switch command. Example:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8369187Z 
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8369438Z   git switch -c <new-branch-name>
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8369806Z 
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8370051Z Or undo this operation with:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8370399Z 
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8370619Z   git switch -
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8370954Z 
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8371392Z Turn off this advice by setting config variable advice.detachedHead to false
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8372456Z 
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8373516Z HEAD is now at 09b75b4 Merge 0f8d80ca002dfac08e2d36617aa1031943c4be06 into a02b76e4c421e96e63406d7b10edc2b76a6056c1
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8376737Z ##[endgroup]
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8424199Z [command]/usr/bin/git log -1 --format=%H
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8455200Z 09b75b40553396d7ddfa47800efd07aa110913c9
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8465432Z ##[group]Removing auth
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8466457Z Removing SSH command configuration
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8469576Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8507526Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8760719Z Removing HTTP extra header
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8765098Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.8805314Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9063252Z Removing includeIf entries pointing to credentials config files
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9068276Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9107783Z includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9109511Z includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9111267Z includeif.gitdir:/github/workspace/.git.path
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9112935Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9218345Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9221658Z /home/runner/work/_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9230662Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path /home/runner/work/_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9236114Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9265497Z /home/runner/work/_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9276712Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9320758Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9351185Z /github/runner_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9363439Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9433150Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9465279Z /github/runner_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9473511Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9514931Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9766557Z Removing credentials config '/home/runner/work/_temp/git-credentials-9bcb655c-41e9-472b-a18c-c11eeeae7aa6.config'
+packaging	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:22:43.9775371Z ##[endgroup]
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	﻿2026-10-21T21:22:44.0088621Z ##[group]Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:44.0089614Z with:
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:44.0090088Z   node-version: 22.22.0
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:44.0090617Z   cache: npm
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:44.0091098Z   check-latest: false
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:44.0096517Z   token: ***
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:44.0097033Z   package-manager-cache: true
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:44.0097631Z ##[endgroup]
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:44.1503985Z Attempting to download 22.22.0...
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:44.8940314Z Acquiring 22.22.0 - x64 from https://github.com/actions/node-versions/releases/download/22.22.0-20981702931/node-22.22.0-linux-x64.tar.gz
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:45.4214984Z Extracting ...
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:45.4343342Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/cdab3b12-f67b-4376-8a0d-3b8e5af232e8 -f /home/runner/work/_temp/d9966dd9-a7e2-4fd3-9c8f-70342dee318e
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:46.7530215Z Adding to the cache ...
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:48.5012423Z ##[group]Environment details
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:48.7266808Z node: v22.22.0
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:48.7267997Z npm: 10.9.4
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:48.7268327Z yarn: 1.22.22
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:48.7269125Z ##[endgroup]
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:48.7286968Z [command]/opt/hostedtoolcache/node/22.22.0/x64/bin/npm config get cache
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:48.8255177Z /home/runner/.npm
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:49.1134442Z Cache hit for: node-cache-Linux-x64-npm-99d6cd44cc175c6ffc21fe352e3a5ab57632125160f3886cc04c736b3886bfd5
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:50.4142545Z Received 0 of 5972368 (0.0%), 0.0 MBs/sec
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:50.6906064Z Received 5972368 of 5972368 (100.0%), 4.5 MBs/sec
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:50.6906864Z Cache Size: ~6 MB (5972368 B)
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:50.6937924Z [command]/usr/bin/tar -xf /home/runner/work/_temp/2ac8ee03-c46f-46ff-9370-1df515252169/cache.tzst -P -C /home/runner/work/infra-layer/infra-layer --use-compress-program unzstd
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:50.7323456Z Cache restored successfully
+packaging	Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:22:50.7333749Z Cache restored from key: node-cache-Linux-x64-npm-99d6cd44cc175c6ffc21fe352e3a5ab57632125160f3886cc04c736b3886bfd5
+packaging	Protect the installed Node toolchain on the disposable hosted runner	﻿2026-10-21T21:22:50.7536641Z ##[group]Run node tooling/prepare-hosted-node.cjs --execute
+packaging	Protect the installed Node toolchain on the disposable hosted runner	2026-10-21T21:22:50.7537322Z [36;1mnode tooling/prepare-hosted-node.cjs --execute[0m
+packaging	Protect the installed Node toolchain on the disposable hosted runner	2026-10-21T21:22:50.7778805Z shell: /usr/bin/bash -e {0}
+packaging	Protect the installed Node toolchain on the disposable hosted runner	2026-10-21T21:22:50.7779194Z ##[endgroup]
+packaging	Protect the installed Node toolchain on the disposable hosted runner	2026-10-21T21:22:51.5618667Z {"prepared":true,"node_root":"/opt/hostedtoolcache/node/22.22.0/x64","ancestor_metadata_before":[{"path":"/opt","uid":0,"mode":"777"},{"path":"/opt/hostedtoolcache","uid":1001,"mode":"777"},{"path":"/opt/hostedtoolcache/node","uid":1001,"mode":"777"},{"path":"/opt/hostedtoolcache/node/22.22.0","uid":1001,"mode":"777"},{"path":"/opt/hostedtoolcache/node/22.22.0/x64","uid":1001,"mode":"777"}],"content_sha256_before":"dcc8fbda14cc2f6b755d7394d7e2a6409c0bf9e672a9b32a40942e328934fcb2","content_sha256_after":"dcc8fbda14cc2f6b755d7394d7e2a6409c0bf9e672a9b32a40942e328934fcb2","binary_bytes_changed":false}
+packaging	Run npm ci --ignore-scripts --no-audit --no-fund	﻿2026-10-21T21:22:51.5692343Z ##[group]Run npm ci --ignore-scripts --no-audit --no-fund
+packaging	Run npm ci --ignore-scripts --no-audit --no-fund	2026-10-21T21:22:51.5692829Z [36;1mnpm ci --ignore-scripts --no-audit --no-fund[0m
+packaging	Run npm ci --ignore-scripts --no-audit --no-fund	2026-10-21T21:22:51.5764464Z shell: /usr/bin/bash -e {0}
+packaging	Run npm ci --ignore-scripts --no-audit --no-fund	2026-10-21T21:22:51.5764810Z ##[endgroup]
+packaging	Run npm ci --ignore-scripts --no-audit --no-fund	2026-10-21T21:22:52.3857923Z npm warn deprecated yaeti@0.0.6: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+packaging	Run npm ci --ignore-scripts --no-audit --no-fund	2026-10-21T21:22:52.9635587Z 
+packaging	Run npm ci --ignore-scripts --no-audit --no-fund	2026-10-21T21:22:52.9636509Z added 127 packages in 1s
+packaging	Run npm run test:package	﻿2026-10-21T21:22:53.0175286Z ##[group]Run npm run test:package
+packaging	Run npm run test:package	2026-10-21T21:22:53.0175683Z [36;1mnpm run test:package[0m
+packaging	Run npm run test:package	2026-10-21T21:22:53.0243929Z shell: /usr/bin/bash -e {0}
+packaging	Run npm run test:package	2026-10-21T21:22:53.0244247Z ##[endgroup]
+packaging	Run npm run test:package	2026-10-21T21:22:53.1266850Z 
+packaging	Run npm run test:package	2026-10-21T21:22:53.1267908Z > @drumee/infra-layer@0.1.0-alpha.3 test:package
+packaging	Run npm run test:package	2026-10-21T21:22:53.1268449Z > node test/package-audit.js
+packaging	Run npm run test:package	2026-10-21T21:22:53.1268635Z 
+packaging	Run npm run test:package	2026-10-21T21:22:53.5761048Z {"files":["CHANGELOG.md","LICENSE","PROVENANCE.md","README.md","adapters/docker/nginx.js","adapters/docker/resources.js","adapters/docker/services.js","capabilities/database/index.js","capabilities/dns/index.js","capabilities/docker/Dockerfile.services","capabilities/http/nginx/index.js","capabilities/http/nginx/routes.js","capabilities/mail/index.js","capabilities/redis/index.js","capabilities/secrets/index.js","capabilities/tls/acme.js","capabilities/tls/index.js","index.d.ts","internal/system-tools.js","lib/contracts-v2.js","lib/diagnostics.js","lib/filesystem-safety.js","lib/index.js","lib/plan-v2.js","lib/plan.js","lib/rendering.js","lib/spec.js","lib/state-v2.js","lib/state.js","lib/validation.js","lifecycle/activation.js","lifecycle/composition.js","lifecycle/docker.js","lifecycle/external-gateway.js","lifecycle/index.d.ts","lifecycle/index.js","lifecycle/journal.js","lifecycle/preparation.js","lifecycle/recovery.js","lifecycle/transitions.js","package.json"],"production_dependencies":[],"integrity":"sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA=="}
+packaging	Run npm run test:package	2026-10-21T21:22:54.3685250Z PACKED_CONSUMER_OK
+packaging	Secure evidence destinations (real filesystem and foreign UID)	﻿2026-10-21T21:22:54.3900879Z ##[group]Run python3 -B -m unittest discover -s test/security -p '*_test.py' -v
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.3901487Z [36;1mpython3 -B -m unittest discover -s test/security -p '*_test.py' -v[0m
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.3971361Z shell: /usr/bin/bash -e {0}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.3971675Z ##[endgroup]
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.5049421Z test_D10_historical_two_primitives (evidence_helpers_test.EvidenceTests.test_D10_historical_two_primitives) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.5050444Z R6S_ASSERTIONS {"scenario": "test_D10_historical_two_primitives", "explicit_assertions": 5}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.5059928Z test_D1_root_symlink (evidence_helpers_test.EvidenceTests.test_D1_root_symlink) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.5060652Z R6S_ASSERTIONS {"scenario": "test_D1_root_symlink", "explicit_assertions": 6}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.5067778Z test_D2_log_symlink (evidence_helpers_test.EvidenceTests.test_D2_log_symlink) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.5068424Z R6S_ASSERTIONS {"scenario": "test_D2_log_symlink", "explicit_assertions": 4}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.5079210Z test_D3_existing_root_and_output (evidence_helpers_test.EvidenceTests.test_D3_existing_root_and_output) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:54.5080045Z R6S_ASSERTIONS {"scenario": "test_D3_existing_root_and_output", "explicit_assertions": 7}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.5173548Z D4_CHOWN {"date": "2026-10-21T21:22:59.516239+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-r6s-test-55ynt3hc/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "65532", "65532"], "exit_code": 0, "stdout": "{\"uid\":0,\"gid\":0,\"uid_map\":\"         0          0 4294967295\\n\",\"before\":1001}\n{\"after\":65532}\n", "stderr": "Unable to find image 'node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392' locally\ndocker.io/library/node@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392: Pulling from library/node\n7fd1ebe418b5: Pulling fs layer\nf0400f4b55b0: Pulling fs layer\nd22c69a95cf4: Pulling fs layer\n2cfab517365c: Pulling fs layer\na8de9fa05220: Pulling fs layer\n2cfab517365c: Waiting\na8de9fa05220: Waiting\nf0400f4b55b0: Verifying Checksum\nf0400f4b55b0: Download complete\n7fd1ebe418b5: Verifying Checksum\n7fd1ebe418b5: Download complete\nd22c69a95cf4: Verifying Checksum\nd22c69a95cf4: Download complete\n2cfab517365c: Verifying Checksum\n2cfab517365c: Download complete\na8de9fa05220: Verifying Checksum\na8de9fa05220: Download complete\n7fd1ebe418b5: Pull complete\nf0400f4b55b0: Pull complete\nd22c69a95cf4: Pull complete\n2cfab517365c: Pull complete\na8de9fa05220: Pull complete\nDigest: sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392\nStatus: Downloaded newer image for node@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392\n"}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.5182608Z D4_PRECONDITIONS {"operator_uid": 1001, "operator_gid": 1001, "fixture_uid": 65532, "fixture_gid": 65532, "fixture_mode": "0o755", "intact": true, "kernel_access_precondition": "stat/list/read succeeded"}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.5183703Z D4_REFUSAL {"operation": "destination", "error": "UNTRUSTED_OWNER: /tmp/il511-r6s-test-55ynt3hc/foreign"}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.5184480Z D4_REFUSAL {"operation": "trusted-input", "error": "UNTRUSTED_OWNER: /tmp/il511-r6s-test-55ynt3hc/foreign"}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.6812872Z D4_CHOWN {"date": "2026-10-21T21:22:59.680667+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-r6s-test-55ynt3hc/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "1001", "1001"], "exit_code": 0, "stdout": "{\"uid\":0,\"gid\":0,\"uid_map\":\"         0          0 4294967295\\n\",\"before\":65532}\n{\"after\":1001}\n", "stderr": ""}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.6817787Z D4_PASS {"foreign_fixture_intact": true, "test_owned_uid_restored": true, "foreign_resource_deleted": false}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.6818971Z R6S_ASSERTIONS {"scenario": "test_D4_foreign_ownership_real_uid", "explicit_assertions": 15}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.6823757Z test_D4_foreign_ownership_real_uid (evidence_helpers_test.EvidenceTests.test_D4_foreign_ownership_real_uid) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.6828712Z R6S_ASSERTIONS {"scenario": "test_D5_untrusted_permissions", "explicit_assertions": 5}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.6829944Z test_D5_untrusted_permissions (evidence_helpers_test.EvidenceTests.test_D5_untrusted_permissions) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.6839377Z R6S_ASSERTIONS {"scenario": "test_D6_fifo_nonblocking", "explicit_assertions": 5}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.6840942Z test_D6_fifo_nonblocking (evidence_helpers_test.EvidenceTests.test_D6_fifo_nonblocking) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9683799Z R6S_ASSERTIONS {"scenario": "test_D7_concurrent_processes", "explicit_assertions": 20}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9685210Z test_D7_concurrent_processes (evidence_helpers_test.EvidenceTests.test_D7_concurrent_processes) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9693596Z R6S_ASSERTIONS {"scenario": "test_D8_close_never_cleans_foreign_resources", "explicit_assertions": 6}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9695265Z test_D8_close_never_cleans_foreign_resources (evidence_helpers_test.EvidenceTests.test_D8_close_never_cleans_foreign_resources) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9719210Z R6S_ASSERTIONS {"scenario": "test_D9_result_identity_and_modes", "explicit_assertions": 9}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9720519Z test_D9_result_identity_and_modes (evidence_helpers_test.EvidenceTests.test_D9_result_identity_and_modes) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9727161Z R6S_ASSERTIONS {"scenario": "test_hardlink_and_closed_descriptor_refused", "explicit_assertions": 4}
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9728652Z test_hardlink_and_closed_descriptor_refused (evidence_helpers_test.EvidenceTests.test_hardlink_and_closed_descriptor_refused) ... ok
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9729159Z 
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9729399Z ----------------------------------------------------------------------
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9729821Z Ran 11 tests in 5.469s
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9729974Z 
+packaging	Secure evidence destinations (real filesystem and foreign UID)	2026-10-21T21:22:59.9730075Z OK
+packaging	Post Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	﻿2026-10-21T21:22:59.9945950Z Post job cleanup.
+packaging	Post Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38	2026-10-21T21:23:00.1172811Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-99d6cd44cc175c6ffc21fe352e3a5ab57632125160f3886cc04c736b3886bfd5, not saving cache.
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	﻿2026-10-21T21:23:00.1336172Z Post job cleanup.
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2263077Z [command]/usr/bin/git version
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2313106Z git version 2.55.0
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2360748Z Temporarily overriding HOME='/home/runner/work/_temp/d0478a6c-9e38-4565-be30-36c2a0e6e166' before making global git config changes
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2362677Z Adding repository directory to the temporary git global config as a safe directory
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2367677Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-layer/infra-layer
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2410472Z Removing SSH command configuration
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2419683Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2466837Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2736192Z Removing HTTP extra header
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2743660Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.2797108Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.3095389Z Removing includeIf entries pointing to credentials config files
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.3102145Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+packaging	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-21T21:23:00.3173250Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+packaging	Complete job	﻿2026-10-21T21:23:00.3592215Z Cleaning up orphan processes

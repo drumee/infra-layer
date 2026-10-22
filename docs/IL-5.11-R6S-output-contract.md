@@ -1,0 +1,15 @@
+# IL-5.11-R6S — Contrat interne des sorties
+
+Linux avec openat/dir_fd, O_NOFOLLOW, O_DIRECTORY, O_EXCL et procfs disponible. Échec explicite si une primitive requise manque ; aucun fallback sur une ouverture ordinaire.
+
+Une nouvelle exécution reçoit une source explicite propre et un parent approuvé (défaut /tmp système sticky). Le helper ouvre chaque composant du parent sans suivre de lien. Les propriétaires admis des ancêtres sont l’UID exécutant et l’UID système ancré sur `/` ; aucun composant group/world writable, sauf /tmp système avec sticky bit. Le parent final doit être possédé sans écriture tierce, ou précisément ce /tmp système sticky. Un sous-répertoire partagé arbitraire ne devient pas approuvé par sa seule présence dans /tmp.
+
+La racine est créée avec un nom aléatoire 128 bits et mkdir exclusif relatif au parent vérifié (équivalent mkdirat de mkdtemp), puis ouverte sans lien et vérifiée par fstat : répertoire, UID courant, mode0700, identité entrée/descripteur identique. Une racine explicitement nommée pour un test ou un export doit être nouvelle ; toute entrée existante, même saine, est refusée. Aucun effacement/remplacement/réemploi.
+
+Les enfants sont créés de même via dir_fd. Les fichiers nouveaux sont des noms simples, ouverts O_CREAT|O_EXCL|O_NOFOLLOW|O_NONBLOCK, mode0600. fstat exige fichier régulier, lien unique, UID courant et permissions restrictives. Une FIFO, un lien ou un fichier existant est refusé sans blocage ni troncature. Lectures des sorties par descripteur avec O_NOFOLLOW et contrôle de type/ownership/modes. Les tarballs créés par npm dans un enfant0700 peuvent être0644, sans écriture tierce et lien unique ; ils sont vérifiés avant lecture. Les chemins transmis aux programmes enfants restent sous cette racine privée.
+
+Aucune réécriture de preuve : snapshots de progression numérotés exclusifs et reçu final qualification-progress.json créé une seule fois. JSON, logs et conventions métier conservés ; stdout annonce le chemin choisi. Un manifest de provenance enregistre source/arbre, UID, horodatage, commande et empreinte des helpers. Chaque exécution utilise son cache npm privé. Les reçus historiques sont uniquement lus.
+
+La fermeture des contextes ferme les descripteurs ; elle ne supprime aucun résultat. Pas d’API de nettoyage récursif du helper, donc aucune racine fournie par un tiers n’est effacée. Les ressources Docker restent nettoyées par les harnais canoniques existants et contrôlées par projet, sans suppression globale.
+
+Les descripteurs épinglent les destinations lors des opérations Python ; les chemins transmis à npm/cwd supposent que l’UID exécutant ne modifie pas ses propres répertoires pendant l’exécution. La barrière concerne les autres UID locaux sans privilège. Un acteur du même UID, root, un filesystem hostile ou un outil enfant compromis restent hors garantie ; ils peuvent modifier la mémoire, les entrées ou les fichiers possédés. La sélection de source et l’installation par lockfile restent des responsabilités explicites. Aucun mécanisme ne prétend rendre sûr du code source hostile. Les outils système et les contrôles IL-5.11R restent inchangés.

@@ -1,0 +1,43 @@
+{
+  "recorded_utc": "2026-10-21T16:45:30.132065+00:00",
+  "command": [
+    "docker",
+    "info",
+    "--format",
+    "{{json .SecurityOptions}}"
+  ],
+  "sandboxed": {
+    "exit_code": 1,
+    "stdout": "null",
+    "stderr": "permission denied while trying to connect to the docker API at unix:///var/run/docker.sock"
+  },
+  "escalated": {
+    "exit_code": 0,
+    "security_options": [
+      "name=apparmor",
+      "name=seccomp,profile=builtin",
+      "name=cgroupns"
+    ]
+  },
+  "escalated_python_identity": {
+    "uid": 1000,
+    "groups": [
+      24,
+      25,
+      29,
+      30,
+      33,
+      44,
+      46,
+      100,
+      106,
+      111,
+      113,
+      116,
+      994,
+      1000,
+      1001
+    ]
+  },
+  "limitation": "Docker info read succeeds with escalation; this does not explain the earlier chown container exit 1, whose stderr was not retained. No rerun of negative test."
+}

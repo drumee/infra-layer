@@ -1,0 +1,43 @@
+{
+  "name": "E-negative",
+  "source": "a7f8aae6c8f1de687ff05480115a0cb257ac8aa0",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "test/security",
+    "-p",
+    "*_test.py",
+    "-v"
+  ],
+  "cwd": "/tmp/il511-r6s-clean",
+  "date": "2026-10-21T18:15:42.114869+00:00",
+  "elapsed_s": 0.6183047499798704,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "5eda34b760dd33c21186f8c177c9d7b9992df3995afad599973ac3c75d907cee",
+  "runner_sha256": "de69dd5ca34e7ded94c8937d124c3dc433c93751c9c8e4790d8afccf8c4c79db",
+  "output": "/tmp/il511-evidence-3167eba7e802c35b231a35053b259f5d"
+}

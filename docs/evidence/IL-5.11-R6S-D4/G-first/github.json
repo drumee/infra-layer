@@ -1,0 +1,165 @@
+{
+  "recorded_utc": "2026-10-21T21:24:09.840825+00:00",
+  "results": [
+    {
+      "name": "checks",
+      "normalized": true,
+      "body": [
+        {
+          "id": 119493755263,
+          "name": "contracts",
+          "head_sha": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+          "status": "in_progress",
+          "conclusion": null,
+          "details_url": "https://github.com/drumee/infra-layer/actions/runs/39678278136/job/119493755263",
+          "output": {
+            "title": null,
+            "summary": null,
+            "text": null,
+            "annotations_count": 0,
+            "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119493755263/annotations"
+          }
+        },
+        {
+          "id": 119493755257,
+          "name": "eslint",
+          "head_sha": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+          "status": "completed",
+          "conclusion": "success",
+          "details_url": "https://github.com/drumee/infra-layer/actions/runs/39678278136/job/119493755257",
+          "output": {
+            "title": null,
+            "summary": null,
+            "text": null,
+            "annotations_count": 0,
+            "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119493755257/annotations"
+          }
+        },
+        {
+          "id": 119493755184,
+          "name": "dependencies",
+          "head_sha": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+          "status": "in_progress",
+          "conclusion": null,
+          "details_url": "https://github.com/drumee/infra-layer/actions/runs/39678278136/job/119493755184",
+          "output": {
+            "title": null,
+            "summary": null,
+            "text": null,
+            "annotations_count": 0,
+            "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119493755184/annotations"
+          }
+        },
+        {
+          "id": 119493755178,
+          "name": "packaging",
+          "head_sha": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+          "status": "in_progress",
+          "conclusion": null,
+          "details_url": "https://github.com/drumee/infra-layer/actions/runs/39678278136/job/119493755178",
+          "output": {
+            "title": null,
+            "summary": null,
+            "text": null,
+            "annotations_count": 0,
+            "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119493755178/annotations"
+          }
+        },
+        {
+          "id": 119493754806,
+          "name": "unit",
+          "head_sha": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+          "status": "in_progress",
+          "conclusion": null,
+          "details_url": "https://github.com/drumee/infra-layer/actions/runs/39678278136/job/119493754806",
+          "output": {
+            "title": null,
+            "summary": null,
+            "text": null,
+            "annotations_count": 0,
+            "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119493754806/annotations"
+          }
+        },
+        {
+          "id": 119493745285,
+          "name": "Analyze (javascript-typescript)",
+          "head_sha": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+          "status": "in_progress",
+          "conclusion": null,
+          "details_url": "https://github.com/drumee/infra-layer/actions/runs/39678273529/job/119493745285",
+          "output": {
+            "title": null,
+            "summary": null,
+            "text": null,
+            "annotations_count": 0,
+            "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119493745285/annotations"
+          }
+        },
+        {
+          "id": 119493744885,
+          "name": "Analyze (actions)",
+          "head_sha": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+          "status": "in_progress",
+          "conclusion": null,
+          "details_url": "https://github.com/drumee/infra-layer/actions/runs/39678273529/job/119493744885",
+          "output": {
+            "title": null,
+            "summary": null,
+            "text": null,
+            "annotations_count": 0,
+            "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119493744885/annotations"
+          }
+        }
+      ]
+    },
+    {
+      "name": "runs",
+      "normalized": true,
+      "body": [
+        {
+          "id": 39678278136,
+          "name": "Quality",
+          "status": "in_progress",
+          "conclusion": null,
+          "head_sha": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+          "event": "pull_request",
+          "html_url": "https://github.com/drumee/infra-layer/actions/runs/39678278136"
+        },
+        {
+          "id": 39678273529,
+          "name": "PR #17",
+          "status": "in_progress",
+          "conclusion": null,
+          "head_sha": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+          "event": "dynamic",
+          "html_url": "https://github.com/drumee/infra-layer/actions/runs/39678273529"
+        }
+      ]
+    },
+    {
+      "name": "protection",
+      "normalized": true,
+      "body": {
+        "error": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"403\"}",
+        "error_code": "FORBIDDEN",
+        "error_data": {
+          "message": "Resource not accessible by integration",
+          "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+          "status": "403"
+        }
+      }
+    },
+    {
+      "name": "pr17",
+      "normalized": true,
+      "body": {
+        "number": 17,
+        "head": "0f8d80ca002dfac08e2d36617aa1031943c4be06",
+        "base": "a02b76e4c421e96e63406d7b10edc2b76a6056c1",
+        "mergeable": true,
+        "mergeable_state": "unstable",
+        "merged": false
+      }
+    }
+  ]
+}
