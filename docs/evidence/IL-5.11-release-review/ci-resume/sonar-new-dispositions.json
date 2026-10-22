@@ -1,0 +1,472 @@
+[
+  {
+    "key": "AaFfIGkaiVCHHK7y-ruR",
+    "rule": "json:S6418",
+    "type": "VULNERABILITY",
+    "severity": "BLOCKER",
+    "file": "docs/evidence/IL-5.11-D2/D2-artifact-receipt.json",
+    "line": 26,
+    "textRange": {
+      "startLine": 26,
+      "endLine": 26,
+      "startOffset": 37,
+      "endOffset": 103
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+    "reason": "Exact SHA256 of public capabilities/secrets/index.js, recalculated; source fingerprint, not a credential.",
+    "public_sha256": "b872fa5cdd6868d0b89f17038aa445a8c709e675f4e82452fb7283647d48c432"
+  },
+  {
+    "key": "AaFfIGkFiVCHHK7y-ruE",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/artifact.py",
+    "line": 3,
+    "textRange": {
+      "startLine": 3,
+      "endLine": 3,
+      "startOffset": 7,
+      "endOffset": 28
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "NEEDS_INVESTIGATION",
+    "reason": "Fixed source/cache/TypeScript paths require a trusted local preparation contract. Existing runs selected known inputs, but safe replay under untrusted precreation has not been established individually. Not accepted as a group; no new exploit of this individual path claimed."
+  },
+  {
+    "key": "AaFfIGkFiVCHHK7y-ruF",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/artifact.py",
+    "line": 3,
+    "textRange": {
+      "startLine": 3,
+      "endLine": 3,
+      "startOffset": 39,
+      "endOffset": 62
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "CONFIRMED_DEFECT",
+    "reason": "Predictable /tmp output directory and normal open/write follow preplanted symlinks. Same primitive reproduced within owned fixtures. Local untrusted precreation can redirect writes when the helper is replayed; no root ownership/no-follow/exclusive private output check."
+  },
+  {
+    "key": "AaFfIGkFiVCHHK7y-ruG",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/artifact.py",
+    "line": 5,
+    "textRange": {
+      "startLine": 5,
+      "endLine": 5,
+      "startOffset": 37,
+      "endOffset": 67
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "NEEDS_INVESTIGATION",
+    "reason": "Fixed source/cache/TypeScript paths require a trusted local preparation contract. Existing runs selected known inputs, but safe replay under untrusted precreation has not been established individually. Not accepted as a group; no new exploit of this individual path claimed."
+  },
+  {
+    "key": "AaFfIGkFiVCHHK7y-ruI",
+    "rule": "pythonsecurity:S6096",
+    "type": "VULNERABILITY",
+    "severity": "BLOCKER",
+    "file": "docs/evidence/IL-5.11-D2/artifact.py",
+    "line": 14,
+    "textRange": {
+      "startLine": 14,
+      "endLine": 14,
+      "startOffset": 55,
+      "endOffset": 76
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+    "reason": "extractfile reads archive bytes; no extraction to filesystem. Only regular package/ members, no absolute or .. path, compared with source/receipt. The separate output-directory flaw remains confirmed."
+  },
+  {
+    "key": "AaFfIGkFiVCHHK7y-ruH",
+    "rule": "pythonsecurity:S2083",
+    "type": "VULNERABILITY",
+    "severity": "BLOCKER",
+    "file": "docs/evidence/IL-5.11-D2/artifact.py",
+    "line": 18,
+    "textRange": {
+      "startLine": 18,
+      "endLine": 18,
+      "startOffset": 0,
+      "endOffset": 75
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+    "reason": "Output path is constant out/artifact-receipt.json; archive contents are serialized data, not a filename. Separate output symlink flaw remains confirmed under S5443."
+  },
+  {
+    "key": "AaFfIGj5iVCHHK7y-rt-",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/qualify.py",
+    "line": 2,
+    "textRange": {
+      "startLine": 2,
+      "endLine": 2,
+      "startOffset": 17,
+      "endOffset": 38
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "NEEDS_INVESTIGATION",
+    "reason": "Fixed source/cache/TypeScript paths require a trusted local preparation contract. Existing runs selected known inputs, but safe replay under untrusted precreation has not been established individually. Not accepted as a group; no new exploit of this individual path claimed."
+  },
+  {
+    "key": "AaFfIGj5iVCHHK7y-rt_",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/qualify.py",
+    "line": 2,
+    "textRange": {
+      "startLine": 2,
+      "endLine": 2,
+      "startOffset": 57,
+      "endOffset": 80
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "CONFIRMED_DEFECT",
+    "reason": "Predictable /tmp output directory and normal open/write follow preplanted symlinks. Same primitive reproduced within owned fixtures. Local untrusted precreation can redirect writes when the helper is replayed; no root ownership/no-follow/exclusive private output check."
+  },
+  {
+    "key": "AaFfIGj5iVCHHK7y-ruA",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/qualify.py",
+    "line": 2,
+    "textRange": {
+      "startLine": 2,
+      "endLine": 2,
+      "startOffset": 119,
+      "endOffset": 149
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "NEEDS_INVESTIGATION",
+    "reason": "Fixed source/cache/TypeScript paths require a trusted local preparation contract. Existing runs selected known inputs, but safe replay under untrusted precreation has not been established individually. Not accepted as a group; no new exploit of this individual path claimed."
+  },
+  {
+    "key": "AaFfIGj5iVCHHK7y-ruB",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/qualify.py",
+    "line": 2,
+    "textRange": {
+      "startLine": 2,
+      "endLine": 2,
+      "startOffset": 204,
+      "endOffset": 255
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+    "reason": "The Nginx executable is checked by trustedExecutable at execution: every parent/link/target owner and writable mode is verified; no PATH fallback."
+  },
+  {
+    "key": "AaFfIGj5iVCHHK7y-ruC",
+    "rule": "python:S1313",
+    "type": "CODE_SMELL",
+    "severity": "MINOR",
+    "file": "docs/evidence/IL-5.11-D2/qualify.py",
+    "line": 2,
+    "textRange": {
+      "startLine": 2,
+      "endLine": 2,
+      "startOffset": 301,
+      "endOffset": 316
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "TEST_CONFIGURATION_CONTEXT_CHECKED",
+    "reason": "Explicit local qualification LAN address, or deliberately refused address in installed consumer; not a credential, public listener or implicit production dependency."
+  },
+  {
+    "key": "AaFfIGj5iVCHHK7y-ruD",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/qualify.py",
+    "line": 2,
+    "textRange": {
+      "startLine": 2,
+      "endLine": 2,
+      "startOffset": 325,
+      "endOffset": 382
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "NEEDS_INVESTIGATION",
+    "reason": "Fixed source/cache/TypeScript paths require a trusted local preparation contract. Existing runs selected known inputs, but safe replay under untrusted precreation has not been established individually. Not accepted as a group; no new exploit of this individual path claimed."
+  },
+  {
+    "key": "AaFfIGj5iVCHHK7y-rt9",
+    "rule": "python:S1192",
+    "type": "CODE_SMELL",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/qualify.py",
+    "line": 5,
+    "textRange": {
+      "startLine": 5,
+      "endLine": 5,
+      "startOffset": 16,
+      "endOffset": 30
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+    "reason": "Literal factoring or [0-9] vs JavaScript \\d readability preference; no flow/security/format change required."
+  },
+  {
+    "key": "AaFfIGkPiVCHHK7y-ruK",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/campaign.py",
+    "line": 2,
+    "textRange": {
+      "startLine": 2,
+      "endLine": 2,
+      "startOffset": 17,
+      "endOffset": 38
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "NEEDS_INVESTIGATION",
+    "reason": "Fixed source/cache/TypeScript paths require a trusted local preparation contract. Existing runs selected known inputs, but safe replay under untrusted precreation has not been established individually. Not accepted as a group; no new exploit of this individual path claimed."
+  },
+  {
+    "key": "AaFfIGkPiVCHHK7y-ruL",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/campaign.py",
+    "line": 2,
+    "textRange": {
+      "startLine": 2,
+      "endLine": 2,
+      "startOffset": 58,
+      "endOffset": 81
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "CONFIRMED_DEFECT",
+    "reason": "Predictable /tmp output directory and normal open/write follow preplanted symlinks. Same primitive reproduced within owned fixtures. Local untrusted precreation can redirect writes when the helper is replayed; no root ownership/no-follow/exclusive private output check."
+  },
+  {
+    "key": "AaFfIGkPiVCHHK7y-ruM",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/campaign.py",
+    "line": 5,
+    "textRange": {
+      "startLine": 5,
+      "endLine": 5,
+      "startOffset": 37,
+      "endOffset": 67
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "NEEDS_INVESTIGATION",
+    "reason": "Fixed source/cache/TypeScript paths require a trusted local preparation contract. Existing runs selected known inputs, but safe replay under untrusted precreation has not been established individually. Not accepted as a group; no new exploit of this individual path claimed."
+  },
+  {
+    "key": "AaFfIGkPiVCHHK7y-ruP",
+    "rule": "python:S1515",
+    "type": "CODE_SMELL",
+    "severity": "MAJOR",
+    "file": "docs/evidence/IL-5.11-D2/campaign.py",
+    "line": 10,
+    "textRange": {
+      "startLine": 10,
+      "endLine": 10,
+      "startOffset": 12,
+      "endOffset": 16
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+    "reason": "Observer thread is joined before the loop advances/rebinds captured variables; no live callback spans the next iteration. No flow correction required by the observed warning."
+  },
+  {
+    "key": "AaFfIGkPiVCHHK7y-ruQ",
+    "rule": "python:S1515",
+    "type": "CODE_SMELL",
+    "severity": "MAJOR",
+    "file": "docs/evidence/IL-5.11-D2/campaign.py",
+    "line": 11,
+    "textRange": {
+      "startLine": 11,
+      "endLine": 11,
+      "startOffset": 103,
+      "endOffset": 108
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+    "reason": "Observer thread is joined before the loop advances/rebinds captured variables; no live callback spans the next iteration. No flow correction required by the observed warning."
+  },
+  {
+    "key": "AaFfIGkPiVCHHK7y-ruO",
+    "rule": "python:S1515",
+    "type": "CODE_SMELL",
+    "severity": "MAJOR",
+    "file": "docs/evidence/IL-5.11-D2/campaign.py",
+    "line": 12,
+    "textRange": {
+      "startLine": 12,
+      "endLine": 12,
+      "startOffset": 6,
+      "endOffset": 13
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+    "reason": "Observer thread is joined before the loop advances/rebinds captured variables; no live callback spans the next iteration. No flow correction required by the observed warning."
+  },
+  {
+    "key": "AaFfIGkPiVCHHK7y-ruJ",
+    "rule": "python:S1192",
+    "type": "CODE_SMELL",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-D2/campaign.py",
+    "line": 13,
+    "textRange": {
+      "startLine": 13,
+      "endLine": 13,
+      "startOffset": 33,
+      "endOffset": 50
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+    "reason": "Literal factoring or [0-9] vs JavaScript \\d readability preference; no flow/security/format change required."
+  },
+  {
+    "key": "AaFfIGkPiVCHHK7y-ruN",
+    "rule": "python:S1515",
+    "type": "CODE_SMELL",
+    "severity": "MAJOR",
+    "file": "docs/evidence/IL-5.11-D2/campaign.py",
+    "line": 17,
+    "textRange": {
+      "startLine": 17,
+      "endLine": 17,
+      "startOffset": 3,
+      "endOffset": 10
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+    "reason": "Observer thread is joined before the loop advances/rebinds captured variables; no live callback spans the next iteration. No flow correction required by the observed warning."
+  },
+  {
+    "key": "AaFfIGjkiVCHHK7y-rt8",
+    "rule": "javascript:S1313",
+    "type": "CODE_SMELL",
+    "severity": "MINOR",
+    "file": "test/application/consumer-refusals.cjs",
+    "line": 18,
+    "textRange": {
+      "startLine": 18,
+      "endLine": 18,
+      "startOffset": 42,
+      "endOffset": 57
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "TEST_CONFIGURATION_CONTEXT_CHECKED",
+    "reason": "Explicit local qualification LAN address, or deliberately refused address in installed consumer; not a credential, public listener or implicit production dependency."
+  },
+  {
+    "key": "AaFfIGjdiVCHHK7y-rt7",
+    "rule": "javascript:S2681",
+    "type": "CODE_SMELL",
+    "severity": "MAJOR",
+    "file": "test/services/capture.js",
+    "line": 15,
+    "textRange": {
+      "startLine": 15,
+      "endLine": 15,
+      "startOffset": 275,
+      "endOffset": 370
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+    "reason": "Size guard returns before write/callback on overflow; following statements intentionally handle allowed size. Same-line layout is ambiguous to readers, no conditional bypass observed; actual SMTP tests passed."
+  },
+  {
+    "key": "AaFfIGk8iVCHHK7y-ruT",
+    "rule": "json:S6418",
+    "type": "VULNERABILITY",
+    "severity": "BLOCKER",
+    "file": "docs/evidence/IL-5.11-resume/D-artifact-receipt.json",
+    "line": 28,
+    "textRange": {
+      "startLine": 28,
+      "endLine": 28,
+      "startOffset": 37,
+      "endOffset": 103
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+    "reason": "Exact SHA256 of public capabilities/secrets/index.js, recalculated; source fingerprint, not a credential.",
+    "public_sha256": "b872fa5cdd6868d0b89f17038aa445a8c709e675f4e82452fb7283647d48c432"
+  },
+  {
+    "key": "AaFfIGksiVCHHK7y-ruS",
+    "rule": "python:S5443",
+    "type": "VULNERABILITY",
+    "severity": "CRITICAL",
+    "file": "docs/evidence/IL-5.11-resume/image-validation-cost.py",
+    "line": 22,
+    "textRange": {
+      "startLine": 22,
+      "endLine": 22,
+      "startOffset": 223,
+      "endOffset": 229
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": false,
+    "disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+    "reason": "cwd=/tmp only; no temporary file creation or relative executable/import lookup. Fixed /usr/bin/node, minimal environment and absolute caller-verified source trees."
+  },
+  {
+    "key": "AaFfIGiWiVCHHK7y-rt6",
+    "rule": "javascript:S6353",
+    "type": "CODE_SMELL",
+    "severity": "MINOR",
+    "file": "lib/validation.js",
+    "line": 95,
+    "textRange": {
+      "startLine": 95,
+      "endLine": 95,
+      "startOffset": 9,
+      "endOffset": 14
+    },
+    "administrative_status_observed": "OPEN",
+    "in_npm": true,
+    "disposition": "STYLE_ONLY_CONTEXT_CHECKED",
+    "reason": "Literal factoring or [0-9] vs JavaScript \\d readability preference; no flow/security/format change required."
+  }
+]

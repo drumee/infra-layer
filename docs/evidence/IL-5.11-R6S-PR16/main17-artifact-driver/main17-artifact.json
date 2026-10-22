@@ -1,0 +1,38 @@
+{
+  "name": "main17-artifact",
+  "source": "75ac104ddce8700b406ba839cfe1b8bfe6d6f477",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "docs/evidence/IL-5.11-D2/artifact.py",
+    "--source",
+    "/tmp/il511-review-main"
+  ],
+  "cwd": "/tmp/il511-review-main",
+  "date": "2026-10-22T08:18:04.131800+00:00",
+  "elapsed_s": 0.6676479439774994,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "030b0febbd8a82fb2953d768535c7d4b0a101adaa590ad17ad8113a32d8d2fd4",
+  "runner_sha256": "05809e9c349216fc9755be8ae8ef5fd9af2fb35c6519513e28616e5960f3c0b3",
+  "output": "/tmp/il511-evidence-ce291902d93d40ef06a7414b92315692"
+}

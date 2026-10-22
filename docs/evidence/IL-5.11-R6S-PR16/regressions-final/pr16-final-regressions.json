@@ -1,0 +1,43 @@
+{
+  "name": "pr16-final-regressions",
+  "source": "4da3bf3bce5776eeec38128b8e8c6ec9aeec6471",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "test/security",
+    "-p",
+    "*_test.py",
+    "-v"
+  ],
+  "cwd": "/tmp/il511-pr16-clean",
+  "date": "2026-10-22T09:09:55.977401+00:00",
+  "elapsed_s": 1.869771662983112,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "ab31868f2f0697939f5a1c8f0e49d343b2b4efa64516f36e43972a195154e469",
+  "runner_sha256": "05809e9c349216fc9755be8ae8ef5fd9af2fb35c6519513e28616e5960f3c0b3",
+  "output": "/tmp/il511-evidence-c5a65eeeef88424a8ab321021ff29d8e"
+}

@@ -1,0 +1,209 @@
+{
+  "date": "2026-10-22T11:06:25.894Z",
+  "pr_head": "4777137b12cef25a1b4db6f7be265f327b830650",
+  "branch": {
+    "sha": "75ac104ddce8700b406ba839cfe1b8bfe6d6f477",
+    "protected": false,
+    "protection": {
+      "enabled": false,
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      }
+    }
+  },
+  "rules": [],
+  "checks": [
+    {
+      "name": "CodeQL",
+      "id": 119777108375,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "success",
+      "status": "completed",
+      "output": {
+        "title": "No new alerts in code changed by this pull request",
+        "summary": "[View all branch alerts](/drumee/infra-layer/security/code-scanning?query=pr%3A16+tool%3ACodeQL+is%3Aopen).",
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119777108375/annotations"
+      },
+      "details_url": "https://github.com/drumee/infra-layer/runs/119777108375"
+    },
+    {
+      "name": "SonarCloud Code Analysis",
+      "id": 119777072719,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "failure",
+      "status": "completed",
+      "output": {
+        "title": "Quality Gate failed",
+        "summary": "Failed conditions  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/failed.svg '') [E Security Rating on New Code](https://sonarcloud.io/project/issues?id=drumee_infra-layer&pullRequest=16&issueStatuses=OPEN,CONFIRMED&sinceLeakPeriod=true) (required \u2265 A)  \n  \n[See analysis details on SonarQube Cloud](https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=16)\n\n##   \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/light_bulb.svg '') Catch issues before they fail your Quality Gate with our IDE extension ![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/sonarlint.svg '') [SonarQube for IDE](https://www.sonarsource.com/products/sonarlint/features/connected-mode/?referrer=pull-request)\n\n",
+        "text": null,
+        "annotations_count": 10,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119777072719/annotations"
+      },
+      "details_url": "https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=16"
+    },
+    {
+      "name": "eslint",
+      "id": 119776893645,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "success",
+      "status": "completed",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 10,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119776893645/annotations"
+      },
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39764624430/job/119776893645"
+    },
+    {
+      "name": "dependencies",
+      "id": 119776893506,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "success",
+      "status": "completed",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119776893506/annotations"
+      },
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39764624430/job/119776893506"
+    },
+    {
+      "name": "unit",
+      "id": 119776893265,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "success",
+      "status": "completed",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119776893265/annotations"
+      },
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39764624430/job/119776893265"
+    },
+    {
+      "name": "contracts",
+      "id": 119776893175,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "success",
+      "status": "completed",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119776893175/annotations"
+      },
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39764624430/job/119776893175"
+    },
+    {
+      "name": "packaging",
+      "id": 119776893017,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "success",
+      "status": "completed",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 0,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119776893017/annotations"
+      },
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39764624430/job/119776893017"
+    },
+    {
+      "name": "Analyze (javascript-typescript)",
+      "id": 119776877332,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "success",
+      "status": "completed",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 1,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119776877332/annotations"
+      },
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39764617680/job/119776877332"
+    },
+    {
+      "name": "Analyze (actions)",
+      "id": 119776876800,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "success",
+      "status": "completed",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 1,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119776876800/annotations"
+      },
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39764617680/job/119776876800"
+    },
+    {
+      "name": "Analyze (python)",
+      "id": 119776876381,
+      "head_sha": "4777137b12cef25a1b4db6f7be265f327b830650",
+      "conclusion": "success",
+      "status": "completed",
+      "output": {
+        "title": null,
+        "summary": null,
+        "text": null,
+        "annotations_count": 1,
+        "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/119776876381/annotations"
+      },
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39764617680/job/119776876381"
+    }
+  ],
+  "permissions": {
+    "permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "triage": true,
+      "pull": true
+    },
+    "allow_merge_commit": true
+  },
+  "classic_protection": {
+    "content": [
+      {
+        "type": "text",
+        "text": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"403\"}"
+      }
+    ],
+    "structuredContent": {
+      "error": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"403\"}",
+      "error_code": "FORBIDDEN",
+      "error_data": {
+        "message": "Resource not accessible by integration",
+        "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+        "status": "403"
+      }
+    },
+    "isError": true
+  },
+  "sonar_additional_dispositions": [
+    {
+      "key": "AaFjMVWpkTmw_53KoHEP",
+      "disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "Public capabilities/secrets/index.js SHA256 in artifact receipt, recalculated; no credential"
+    },
+    {
+      "key": "AaFjMVUPkTmw_53KoHEO",
+      "disposition": "FALSE_POSITIVE_TECHNICALLY_CONFIRMED",
+      "reason": "Same public source SHA256 in verifier receipt, recalculated; no credential"
+    }
+  ]
+}

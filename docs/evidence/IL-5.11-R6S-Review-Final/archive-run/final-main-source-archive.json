@@ -1,0 +1,38 @@
+{
+  "name": "final-main-source-archive",
+  "source": "09170b9e435b5f9bf564237b9fcae080b56fc932",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "docs/evidence/IL-5.11-release-review/source-archive.py",
+    "--source",
+    "/tmp/il511-final-main"
+  ],
+  "cwd": "/tmp/il511-final-main",
+  "date": "2026-10-22T11:59:56.053313+00:00",
+  "elapsed_s": 4.524402540002484,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "2793961c36684822de78bd2e48db655275896c869e980c6488e0978fffbfab1e",
+  "runner_sha256": "05809e9c349216fc9755be8ae8ef5fd9af2fb35c6519513e28616e5960f3c0b3",
+  "output": "/tmp/il511-evidence-bd74c82ffe495a3c5391ff51640c94a9"
+}

@@ -1,5 +1,11 @@
 # IL-5.11-R6S corrective maintenance review
 
+## Final integrated conclusion — 2026-10-22
+
+Both PRs are merged and verified: PR17=75ac104ddce8700b406ba839cfe1b8bfe6d6f477; PR16/final main=09170b9e435b5f9bf564237b9fcae080b56fc932. Status MERGED_AND_RELEASE_CANDIDATE_VERIFIED applies to this exact source. The final25Python methods, complete verifier, reproducible npm archive and exact-source CI pass. SonarCloud remains FAILURE and global Security inventories remain HTTP403-limited. Fresh npm access now verifies somanos/read-write/auth-and-writes; earlier401observations remain historical. Publication still requires a distinct owner authorization.
+
+See [the final post-merge report](IL-5.11-R6S-postmerge-verification.md) and its hashed evidence manifest for the complete current state. The source-specific sections below retain their historical scope.
+
 ## Scope and references
 
 The review started from PR #17 at `cdbf50939087b2d70c687dba7b4531ffbb8daa41`, PR #16 at `1c9d20f1cc315628cfd703199423c6efc873ff13`, and canonical main at `a02b76e4c421e96e63406d7b10edc2b76a6056c1`. All three remote references were checked. Both PRs were open and unmerged. The original workspace remained unchanged; maintenance is isolated in `/tmp/il511-r6s`.
@@ -38,6 +44,8 @@ The updated validator was executed against explicitly selected original private 
 
 Phase A local review and Phase B are favorable. Phase C still requires fresh GitHub checks on the pushed head and an immediate refresh of PR/base/policy before merging. The historical Sonar dispositions for fixed-path imports are superseded by repository-local imports in the maintained utilities, without administrative alert closure. The initial source versions remain retrievable at cdbf509; historical JSON/log evidence has not been rewritten.
 
-## Final mission outcome
+## Controlled integration outcome
 
-**FAILED_QUALIFICATION.** PR #17 is merged and verified as75ac104ddce8700b406ba839cfe1b8bfe6d6f477; the permanent English documentation rule is in canonical main. PR #16 remains open atfea6e0f461c1969addfe504feb12f33fdd0701b4. Its hosted packaging job119740147424 failed because the added generic command-output regression assumes /usr/bin/node, absent on that runner. Twenty-four of25methods passed; the failing probe never launched. No fix, skip, retry or merge followed the stop. [Actionable evidence and recovery scope](IL-5.11-R6S-postmerge-verification.md). The intended final merged candidate status is not achieved.
+PR #17 passed review at029e719feecc6053e6e2251adb6e9b4e4757e008. Five Quality jobs and both CodeQL analyses/result passed; packaging actually executed16methods with the original86assertions retained. Sonar remained FAILURE with20individually reviewed diagnostics: public content hashes, validated shared-temp/name operations and stylistic observations. No significant unresolved defect or mandatory policy violation was found. Main was protected=false, required checks off in the branch response, rulesets including parents empty; no bypass was requested. The standard merge endpoint with expected HEAD produced `75ac104ddce8700b406ba839cfe1b8bfe6d6f477`, parents a02b76e and029e719. GitHub confirmed merged=true.
+
+The integrated main passed16methods and two fresh canonical artifact constructions with41members and the unchanged npm identity. Quality39746297796 succeeded at that exact merge SHA. Native JS/TS and Actions runs succeeded; another dynamic CodeQL39746318757 additionally scanned12Pythonfiles and succeeded. That additional execution is observed, not a scanner setting changed by this mission. Global Security inventories remain visibility-limited; successful analyses do not prove absence of every alert.

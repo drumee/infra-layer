@@ -1,0 +1,38 @@
+{
+  "name": "pr16-final-source-archive",
+  "source": "4da3bf3bce5776eeec38128b8e8c6ec9aeec6471",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "docs/evidence/IL-5.11-release-review/source-archive.py",
+    "--source",
+    "/tmp/il511-review-main"
+  ],
+  "cwd": "/tmp/il511-pr16-clean",
+  "date": "2026-10-22T09:10:31.857667+00:00",
+  "elapsed_s": 2.971736984036397,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "ce4623019cbea856d5cce9fa4eee610a6d1abca83f3bd8e394b8c8a24929f439",
+  "runner_sha256": "05809e9c349216fc9755be8ae8ef5fd9af2fb35c6519513e28616e5960f3c0b3",
+  "output": "/tmp/il511-evidence-226f4d3144d7e4d17eadd14fb6bd52f8"
+}

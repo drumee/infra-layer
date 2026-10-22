@@ -1,12 +1,10 @@
-# Current review outcome: qualification stopped
-
-**FAILED_QUALIFICATION.** PR #17 is integrated at75ac104ddce8700b406ba839cfe1b8bfe6d6f477. PR #16 remains open atfea6e0f461c1969addfe504feb12f33fdd0701b4 because hosted packaging failed in a generic subprocess probe that assumes /usr/bin/node. Local successes remain valid observations, but do not close the hosted gate. No fix or rerun followed this stop. See [the complete stop and recovery report](IL-5.11-R6S-postmerge-verification.md). Publication also requires a valid separately authorized npm session; current authenticated reads returnHTTP401.
-
-## Proposed PR #16 document retained for review
-
-The following text describes the unmerged convergence branch and its actual local evidence. Its pending gates remain pending; it does not establish final integrated qualification or authorize publication.
-
 # PR #16 executable-documentation convergence inventory
+
+## Integrated inventory confirmation — 2026-10-22
+
+At final canonical main09170b9e435b5f9bf564237b9fcae080b56fc932, verify.py and source-archive.py are the reviewed converged implementations. The bounded historical temp-path-proof.py remains unchanged. The complete25-method post-merge suite and actual verifier/source-archive executions pass. No vulnerable duplicate or additional executable utility was introduced by the final documentation convergence.
+
+See [the final post-merge report](IL-5.11-R6S-postmerge-verification.md) and its hashed evidence manifest for the complete current state. The source-specific sections below retain their historical scope.
 
 ## Baseline
 

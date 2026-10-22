@@ -1,0 +1,147 @@
+{
+  "date_utc": "2026-10-22T12:04:04.713136+00:00",
+  "source": "09170b9e435b5f9bf564237b9fcae080b56fc932",
+  "uid": 1000,
+  "gid": 1000,
+  "registry": "https://registry.npmjs.org/",
+  "steps": [
+    {
+      "name": "versions",
+      "command": [
+        "/usr/bin/npm",
+        "view",
+        "@drumee/infra-layer",
+        "versions",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-77798029447b4c5a9f8e9d1c301acd2f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": [
+        "0.0.0-stage",
+        "0.1.0-alpha.1",
+        "0.1.0-alpha.2"
+      ]
+    },
+    {
+      "name": "dist-tags",
+      "command": [
+        "/usr/bin/npm",
+        "view",
+        "@drumee/infra-layer",
+        "dist-tags",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-77798029447b4c5a9f8e9d1c301acd2f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": {
+        "next": "0.1.0-alpha.2",
+        "latest": "0.1.0-alpha.1"
+      }
+    },
+    {
+      "name": "whoami",
+      "command": [
+        "/usr/bin/npm",
+        "whoami",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-77798029447b4c5a9f8e9d1c301acd2f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": "somanos"
+    },
+    {
+      "name": "package-status",
+      "command": [
+        "/usr/bin/npm",
+        "access",
+        "get",
+        "status",
+        "@drumee/infra-layer",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-77798029447b4c5a9f8e9d1c301acd2f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": {
+        "@drumee/infra-layer": "public"
+      }
+    },
+    {
+      "name": "collaborator-permission",
+      "command": [
+        "/usr/bin/npm",
+        "access",
+        "list",
+        "collaborators",
+        "@drumee/infra-layer",
+        "somanos",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-77798029447b4c5a9f8e9d1c301acd2f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": {
+        "somanos": "read-write"
+      }
+    },
+    {
+      "name": "account-package-permission",
+      "command": [
+        "/usr/bin/npm",
+        "access",
+        "list",
+        "packages",
+        "somanos",
+        "@drumee/infra-layer",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-77798029447b4c5a9f8e9d1c301acd2f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": {
+        "@drumee/infra-layer": "read-write"
+      }
+    },
+    {
+      "name": "account-two-factor-policy",
+      "command": [
+        "/usr/bin/npm",
+        "profile",
+        "get",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-77798029447b4c5a9f8e9d1c301acd2f/npm-cache"
+      ],
+      "exit_code": 0,
+      "result": {
+        "mode": "auth-and-writes",
+        "pending": null
+      }
+    }
+  ],
+  "publication_attempted": false,
+  "auth_or_permissions_modified": false,
+  "token_values_logged": false,
+  "oidc_environment_available": false,
+  "output_scope": "Only target package, actor and 2FA policy retained; profile/ACL extras omitted.",
+  "raw_receipt_sha256": "c206012c9229fa55e0c5cbf10d9c3eac2af90d9202db2985c8ec3fb53b31c590",
+  "raw_private_root": "/tmp/il511-evidence-77798029447b4c5a9f8e9d1c301acd2f",
+  "export_note": "Only target publishing actor retained from collaborator response; original raw read-only receipt remains intact privately."
+}

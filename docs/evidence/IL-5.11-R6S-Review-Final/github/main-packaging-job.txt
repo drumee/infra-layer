@@ -1,0 +1,269 @@
+﻿2026-10-22T11:06:40.8019537Z Current runner version: '2.338.0'
+2026-10-22T11:06:40.8042139Z ##[group]Runner Image Provisioner
+2026-10-22T11:06:40.8043337Z Hosted Compute Agent
+2026-10-22T11:06:40.8043875Z Version: 20261012.601
+2026-10-22T11:06:40.8044511Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-22T11:06:40.8045211Z Build Date: 2026-10-12T17:48:21Z
+2026-10-22T11:06:40.8045799Z Worker ID: {758d45e8-fead-4d44-b1c8-ba1460e32511}
+2026-10-22T11:06:40.8046467Z Region: westus3
+2026-10-22T11:06:40.8046951Z Cloud: Azure
+2026-10-22T11:06:40.8047457Z ##[endgroup]
+2026-10-22T11:06:40.8048816Z ##[group]Operating System
+2026-10-22T11:06:40.8049378Z Ubuntu
+2026-10-22T11:06:40.8049892Z 24.04.5
+2026-10-22T11:06:40.8050360Z LTS
+2026-10-22T11:06:40.8050832Z ##[endgroup]
+2026-10-22T11:06:40.8051383Z ##[group]Runner Image
+2026-10-22T11:06:40.8051924Z Image: ubuntu-24.04
+2026-10-22T11:06:40.8052673Z Version: 20261012.334.1
+2026-10-22T11:06:40.8053941Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-22T11:06:40.8055335Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-22T11:06:40.8056184Z ##[endgroup]
+2026-10-22T11:06:40.8057181Z ##[group]GITHUB_TOKEN Permissions
+2026-10-22T11:06:40.8059083Z Contents: read
+2026-10-22T11:06:40.8059655Z Metadata: read
+2026-10-22T11:06:40.8060152Z ##[endgroup]
+2026-10-22T11:06:40.8062037Z Secret source: Actions
+2026-10-22T11:06:40.8063233Z Cache mode: write
+2026-10-22T11:06:40.8063856Z Prepare workflow directory
+2026-10-22T11:06:40.8375894Z Prepare all required actions
+2026-10-22T11:06:40.8422645Z Getting action download info
+2026-10-22T11:06:41.1711245Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-22T11:06:41.4883028Z Download action repository 'actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+2026-10-22T11:06:41.6916328Z Complete job name: packaging
+2026-10-22T11:06:41.7740688Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+2026-10-22T11:06:41.7742343Z with:
+2026-10-22T11:06:41.7743268Z   persist-credentials: false
+2026-10-22T11:06:41.7744123Z   repository: drumee/infra-layer
+2026-10-22T11:06:41.7751186Z   token: ***
+2026-10-22T11:06:41.7751926Z   ssh-strict: true
+2026-10-22T11:06:41.7753184Z   ssh-user: git
+2026-10-22T11:06:41.7753900Z   clean: true
+2026-10-22T11:06:41.7754597Z   sparse-checkout-cone-mode: true
+2026-10-22T11:06:41.7755351Z   fetch-depth: 1
+2026-10-22T11:06:41.7756017Z   fetch-tags: false
+2026-10-22T11:06:41.7756738Z   show-progress: true
+2026-10-22T11:06:41.7757468Z   lfs: false
+2026-10-22T11:06:41.7758166Z   submodules: false
+2026-10-22T11:06:41.7758880Z   set-safe-directory: true
+2026-10-22T11:06:41.7759692Z   allow-unsafe-pr-checkout: false
+2026-10-22T11:06:41.7760857Z ##[endgroup]
+2026-10-22T11:06:41.8808447Z Syncing repository: drumee/infra-layer
+2026-10-22T11:06:41.8810249Z ##[group]Getting Git version info
+2026-10-22T11:06:41.8810953Z Working directory is '/home/runner/work/infra-layer/infra-layer'
+2026-10-22T11:06:41.8811945Z [command]/usr/bin/git version
+2026-10-22T11:06:41.9717463Z git version 2.55.0
+2026-10-22T11:06:41.9738998Z ##[endgroup]
+2026-10-22T11:06:41.9754507Z Temporarily overriding HOME='/home/runner/work/_temp/33ba507c-541c-441a-ac2e-c1e612c9e35c' before making global git config changes
+2026-10-22T11:06:41.9757548Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T11:06:41.9761200Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-layer/infra-layer
+2026-10-22T11:06:41.9989699Z Deleting the contents of '/home/runner/work/infra-layer/infra-layer'
+2026-10-22T11:06:41.9995267Z ##[group]Determining repository object format
+2026-10-22T11:06:41.9997956Z ##[endgroup]
+2026-10-22T11:06:41.9999247Z ##[group]Initializing the repository
+2026-10-22T11:06:42.0003536Z [command]/usr/bin/git init /home/runner/work/infra-layer/infra-layer
+2026-10-22T11:06:42.0376265Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-22T11:06:42.0377268Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-22T11:06:42.0378429Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-22T11:06:42.0379447Z hint: call:
+2026-10-22T11:06:42.0379813Z hint:
+2026-10-22T11:06:42.0380288Z hint: 	git config --global init.defaultBranch <name>
+2026-10-22T11:06:42.0380830Z hint:
+2026-10-22T11:06:42.0381341Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-22T11:06:42.0382890Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-22T11:06:42.0383759Z hint:
+2026-10-22T11:06:42.0384132Z hint: 	git branch -m <name>
+2026-10-22T11:06:42.0384554Z hint:
+2026-10-22T11:06:42.0385110Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-22T11:06:42.0386075Z Initialized empty Git repository in /home/runner/work/infra-layer/infra-layer/.git/
+2026-10-22T11:06:42.0389216Z [command]/usr/bin/git remote add origin https://github.com/drumee/infra-layer
+2026-10-22T11:06:42.0600731Z ##[endgroup]
+2026-10-22T11:06:42.0602150Z ##[group]Disabling automatic garbage collection
+2026-10-22T11:06:42.0605240Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-22T11:06:42.0634421Z ##[endgroup]
+2026-10-22T11:06:42.0635901Z ##[group]Setting up auth
+2026-10-22T11:06:42.0636754Z Removing SSH command configuration
+2026-10-22T11:06:42.0642843Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T11:06:42.0671821Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T11:06:42.2245537Z Removing HTTP extra header
+2026-10-22T11:06:42.2249209Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T11:06:42.2277114Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T11:06:42.2439807Z Removing includeIf entries pointing to credentials config files
+2026-10-22T11:06:42.2446986Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T11:06:42.2477050Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T11:06:42.2647386Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-22T11:06:42.2678338Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path /home/runner/work/_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:42.2704985Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:42.2734865Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:42.2763591Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:42.2786420Z ##[endgroup]
+2026-10-22T11:06:42.2787611Z ##[group]Fetching the repository
+2026-10-22T11:06:42.2795681Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +09170b9e435b5f9bf564237b9fcae080b56fc932:refs/remotes/origin/main
+2026-10-22T11:06:43.2620628Z From https://github.com/drumee/infra-layer
+2026-10-22T11:06:43.2622881Z  * [new ref]         09170b9e435b5f9bf564237b9fcae080b56fc932 -> origin/main
+2026-10-22T11:06:43.2632434Z [command]/usr/bin/git branch --list --remote origin/main
+2026-10-22T11:06:43.2653911Z   origin/main
+2026-10-22T11:06:43.2663393Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-10-22T11:06:43.2684494Z 09170b9e435b5f9bf564237b9fcae080b56fc932
+2026-10-22T11:06:43.2695107Z ##[endgroup]
+2026-10-22T11:06:43.2696389Z ##[group]Determining the checkout info
+2026-10-22T11:06:43.2697909Z ##[endgroup]
+2026-10-22T11:06:43.2698787Z [command]/usr/bin/git sparse-checkout disable
+2026-10-22T11:06:43.2857294Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-22T11:06:43.2880956Z ##[group]Checking out the ref
+2026-10-22T11:06:43.2885593Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-22T11:06:43.3199174Z Switched to a new branch 'main'
+2026-10-22T11:06:43.3203866Z branch 'main' set up to track 'origin/main'.
+2026-10-22T11:06:43.3209237Z ##[endgroup]
+2026-10-22T11:06:43.3242328Z [command]/usr/bin/git log -1 --format=%H
+2026-10-22T11:06:43.3261348Z 09170b9e435b5f9bf564237b9fcae080b56fc932
+2026-10-22T11:06:43.3273262Z ##[group]Removing auth
+2026-10-22T11:06:43.3274258Z Removing SSH command configuration
+2026-10-22T11:06:43.3275912Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T11:06:43.3301608Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T11:06:43.3472812Z Removing HTTP extra header
+2026-10-22T11:06:43.3478687Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T11:06:43.3506700Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T11:06:43.3672206Z Removing includeIf entries pointing to credentials config files
+2026-10-22T11:06:43.3675230Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T11:06:43.3699401Z includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path
+2026-10-22T11:06:43.3701555Z includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path
+2026-10-22T11:06:43.3703101Z includeif.gitdir:/github/workspace/.git.path
+2026-10-22T11:06:43.3703947Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-22T11:06:43.3709039Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path
+2026-10-22T11:06:43.3728122Z /home/runner/work/_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:43.3740641Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git.path /home/runner/work/_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:43.3774701Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path
+2026-10-22T11:06:43.3794922Z /home/runner/work/_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:43.3806340Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/infra-layer/infra-layer/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:43.3846906Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-22T11:06:43.3897980Z /github/runner_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:43.3904766Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:43.3929436Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-22T11:06:43.3947179Z /github/runner_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:43.3956738Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config
+2026-10-22T11:06:43.3983627Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T11:06:43.4147322Z Removing credentials config '/home/runner/work/_temp/git-credentials-c2092abf-e460-454d-ad7e-6cb7e8b36946.config'
+2026-10-22T11:06:43.4153571Z ##[endgroup]
+2026-10-22T11:06:43.4429114Z ##[group]Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+2026-10-22T11:06:43.4430152Z with:
+2026-10-22T11:06:43.4430593Z   node-version: 22.22.0
+2026-10-22T11:06:43.4431110Z   cache: npm
+2026-10-22T11:06:43.4431546Z   check-latest: false
+2026-10-22T11:06:43.4440043Z   token: ***
+2026-10-22T11:06:43.4440527Z   package-manager-cache: true
+2026-10-22T11:06:43.4441121Z ##[endgroup]
+2026-10-22T11:06:43.5745262Z Attempting to download 22.22.0...
+2026-10-22T11:06:44.6555932Z Acquiring 22.22.0 - x64 from https://github.com/actions/node-versions/releases/download/22.22.0-20981702931/node-22.22.0-linux-x64.tar.gz
+2026-10-22T11:06:45.1954494Z Extracting ...
+2026-10-22T11:06:45.2055218Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/d6d32c5b-4104-4393-857f-351d8eb3d7b0 -f /home/runner/work/_temp/0cb07169-70d0-4437-8f75-435f54c8ef52
+2026-10-22T11:06:46.3558756Z Adding to the cache ...
+2026-10-22T11:06:47.7433617Z ##[group]Environment details
+2026-10-22T11:06:48.0351645Z node: v22.22.0
+2026-10-22T11:06:48.0352020Z npm: 10.9.4
+2026-10-22T11:06:48.0352253Z yarn: 1.22.22
+2026-10-22T11:06:48.0353141Z ##[endgroup]
+2026-10-22T11:06:48.0376155Z [command]/opt/hostedtoolcache/node/22.22.0/x64/bin/npm config get cache
+2026-10-22T11:06:48.1200123Z /home/runner/.npm
+2026-10-22T11:06:48.3505768Z Cache hit for: node-cache-Linux-x64-npm-99d6cd44cc175c6ffc21fe352e3a5ab57632125160f3886cc04c736b3886bfd5
+2026-10-22T11:06:49.5018934Z Received 5972368 of 5972368 (100.0%), 6.2 MBs/sec
+2026-10-22T11:06:49.5019510Z Cache Size: ~6 MB (5972368 B)
+2026-10-22T11:06:49.5041891Z [command]/usr/bin/tar -xf /home/runner/work/_temp/629093c1-73db-4425-a3fb-8d54d6edc7a6/cache.tzst -P -C /home/runner/work/infra-layer/infra-layer --use-compress-program unzstd
+2026-10-22T11:06:49.5440243Z Cache restored successfully
+2026-10-22T11:06:49.5447237Z Cache restored from key: node-cache-Linux-x64-npm-99d6cd44cc175c6ffc21fe352e3a5ab57632125160f3886cc04c736b3886bfd5
+2026-10-22T11:06:49.5590117Z ##[group]Run node tooling/prepare-hosted-node.cjs --execute
+2026-10-22T11:06:49.5590612Z [36;1mnode tooling/prepare-hosted-node.cjs --execute[0m
+2026-10-22T11:06:49.6378493Z shell: /usr/bin/bash -e {0}
+2026-10-22T11:06:49.6378798Z ##[endgroup]
+2026-10-22T11:06:50.3087734Z {"prepared":true,"node_root":"/opt/hostedtoolcache/node/22.22.0/x64","ancestor_metadata_before":[{"path":"/opt","uid":0,"mode":"777"},{"path":"/opt/hostedtoolcache","uid":1001,"mode":"777"},{"path":"/opt/hostedtoolcache/node","uid":1001,"mode":"777"},{"path":"/opt/hostedtoolcache/node/22.22.0","uid":1001,"mode":"777"},{"path":"/opt/hostedtoolcache/node/22.22.0/x64","uid":1001,"mode":"777"}],"content_sha256_before":"dcc8fbda14cc2f6b755d7394d7e2a6409c0bf9e672a9b32a40942e328934fcb2","content_sha256_after":"dcc8fbda14cc2f6b755d7394d7e2a6409c0bf9e672a9b32a40942e328934fcb2","binary_bytes_changed":false}
+2026-10-22T11:06:50.3146953Z ##[group]Run npm ci --ignore-scripts --no-audit --no-fund
+2026-10-22T11:06:50.3147482Z [36;1mnpm ci --ignore-scripts --no-audit --no-fund[0m
+2026-10-22T11:06:50.3189786Z shell: /usr/bin/bash -e {0}
+2026-10-22T11:06:50.3190094Z ##[endgroup]
+2026-10-22T11:06:50.9922109Z npm warn deprecated yaeti@0.0.6: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2026-10-22T11:06:51.4645557Z 
+2026-10-22T11:06:51.4646175Z added 127 packages in 1s
+2026-10-22T11:06:51.4928787Z ##[group]Run npm run test:package
+2026-10-22T11:06:51.4929106Z [36;1mnpm run test:package[0m
+2026-10-22T11:06:51.4965407Z shell: /usr/bin/bash -e {0}
+2026-10-22T11:06:51.4965693Z ##[endgroup]
+2026-10-22T11:06:51.5797955Z 
+2026-10-22T11:06:51.5798681Z > @drumee/infra-layer@0.1.0-alpha.3 test:package
+2026-10-22T11:06:51.5799345Z > node test/package-audit.js
+2026-10-22T11:06:51.5799642Z 
+2026-10-22T11:06:51.9561620Z {"files":["CHANGELOG.md","LICENSE","PROVENANCE.md","README.md","adapters/docker/nginx.js","adapters/docker/resources.js","adapters/docker/services.js","capabilities/database/index.js","capabilities/dns/index.js","capabilities/docker/Dockerfile.services","capabilities/http/nginx/index.js","capabilities/http/nginx/routes.js","capabilities/mail/index.js","capabilities/redis/index.js","capabilities/secrets/index.js","capabilities/tls/acme.js","capabilities/tls/index.js","index.d.ts","internal/system-tools.js","lib/contracts-v2.js","lib/diagnostics.js","lib/filesystem-safety.js","lib/index.js","lib/plan-v2.js","lib/plan.js","lib/rendering.js","lib/spec.js","lib/state-v2.js","lib/state.js","lib/validation.js","lifecycle/activation.js","lifecycle/composition.js","lifecycle/docker.js","lifecycle/external-gateway.js","lifecycle/index.d.ts","lifecycle/index.js","lifecycle/journal.js","lifecycle/preparation.js","lifecycle/recovery.js","lifecycle/transitions.js","package.json"],"production_dependencies":[],"integrity":"sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA=="}
+2026-10-22T11:06:52.6069645Z PACKED_CONSUMER_OK
+2026-10-22T11:06:52.6191748Z ##[group]Run python3 -B -m unittest discover -s test/security -p '*_test.py' -v
+2026-10-22T11:06:52.6192292Z [36;1mpython3 -B -m unittest discover -s test/security -p '*_test.py' -v[0m
+2026-10-22T11:06:52.6230011Z shell: /usr/bin/bash -e {0}
+2026-10-22T11:06:52.6230309Z ##[endgroup]
+2026-10-22T11:06:52.7343763Z test_D10_historical_two_primitives (evidence_helpers_test.EvidenceTests.test_D10_historical_two_primitives) ... ok
+2026-10-22T11:06:52.7344772Z R6S_ASSERTIONS {"scenario": "test_D10_historical_two_primitives", "explicit_assertions": 5}
+2026-10-22T11:06:52.7352035Z R6S_ASSERTIONS {"scenario": "test_D1_root_symlink", "explicit_assertions": 6}
+2026-10-22T11:06:52.7353158Z test_D1_root_symlink (evidence_helpers_test.EvidenceTests.test_D1_root_symlink) ... ok
+2026-10-22T11:06:52.7357959Z R6S_ASSERTIONS {"scenario": "test_D2_log_symlink", "explicit_assertions": 4}
+2026-10-22T11:06:52.7358692Z test_D2_log_symlink (evidence_helpers_test.EvidenceTests.test_D2_log_symlink) ... ok
+2026-10-22T11:06:52.7366344Z R6S_ASSERTIONS {"scenario": "test_D3_existing_root_and_output", "explicit_assertions": 7}
+2026-10-22T11:06:52.7367257Z test_D3_existing_root_and_output (evidence_helpers_test.EvidenceTests.test_D3_existing_root_and_output) ... ok
+2026-10-22T11:06:58.2638972Z D4_CHOWN {"date": "2026-10-22T11:06:58.262727+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-r6s-test-c_vkjw7u/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "65532", "65532"], "exit_code": 0, "stdout": "{\"uid\":0,\"gid\":0,\"uid_map\":\"         0          0 4294967295\\n\",\"before\":1001}\n{\"after\":65532}\n", "stderr": "Unable to find image 'node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392' locally\ndocker.io/library/node@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392: Pulling from library/node\n7fd1ebe418b5: Pulling fs layer\nf0400f4b55b0: Pulling fs layer\nd22c69a95cf4: Pulling fs layer\n2cfab517365c: Pulling fs layer\na8de9fa05220: Pulling fs layer\n2cfab517365c: Waiting\na8de9fa05220: Waiting\nf0400f4b55b0: Verifying Checksum\nf0400f4b55b0: Download complete\n7fd1ebe418b5: Verifying Checksum\n7fd1ebe418b5: Download complete\n2cfab517365c: Verifying Checksum\n2cfab517365c: Download complete\nd22c69a95cf4: Verifying Checksum\nd22c69a95cf4: Download complete\na8de9fa05220: Verifying Checksum\na8de9fa05220: Download complete\n7fd1ebe418b5: Pull complete\nf0400f4b55b0: Pull complete\nd22c69a95cf4: Pull complete\n2cfab517365c: Pull complete\na8de9fa05220: Pull complete\nDigest: sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392\nStatus: Downloaded newer image for node@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392\n"}
+2026-10-22T11:06:58.2724971Z D4_PRECONDITIONS {"operator_uid": 1001, "operator_gid": 1001, "fixture_uid": 65532, "fixture_gid": 65532, "fixture_mode": "0o755", "intact": true, "kernel_access_precondition": "stat/list/read succeeded"}
+2026-10-22T11:06:58.2726000Z D4_REFUSAL {"operation": "destination", "error": "UNTRUSTED_OWNER: /tmp/il511-r6s-test-c_vkjw7u/foreign"}
+2026-10-22T11:06:58.2726758Z D4_REFUSAL {"operation": "trusted-input", "error": "UNTRUSTED_OWNER: /tmp/il511-r6s-test-c_vkjw7u/foreign"}
+2026-10-22T11:06:58.4114324Z D4_CHOWN {"date": "2026-10-22T11:06:58.410853+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-r6s-test-c_vkjw7u/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "1001", "1001"], "exit_code": 0, "stdout": "{\"uid\":0,\"gid\":0,\"uid_map\":\"         0          0 4294967295\\n\",\"before\":65532}\n{\"after\":1001}\n", "stderr": ""}
+2026-10-22T11:06:58.4117842Z test_D4_foreign_ownership_real_uid (evidence_helpers_test.EvidenceTests.test_D4_foreign_ownership_real_uid) ... ok
+2026-10-22T11:06:58.4118675Z D4_PASS {"foreign_fixture_intact": true, "test_owned_uid_restored": true, "foreign_resource_deleted": false}
+2026-10-22T11:06:58.4119397Z R6S_ASSERTIONS {"scenario": "test_D4_foreign_ownership_real_uid", "explicit_assertions": 15}
+2026-10-22T11:06:58.4124552Z R6S_ASSERTIONS {"scenario": "test_D5_untrusted_permissions", "explicit_assertions": 5}
+2026-10-22T11:06:58.4125359Z test_D5_untrusted_permissions (evidence_helpers_test.EvidenceTests.test_D5_untrusted_permissions) ... ok
+2026-10-22T11:06:58.4131319Z R6S_ASSERTIONS {"scenario": "test_D6_fifo_nonblocking", "explicit_assertions": 5}
+2026-10-22T11:06:58.4132097Z test_D6_fifo_nonblocking (evidence_helpers_test.EvidenceTests.test_D6_fifo_nonblocking) ... ok
+2026-10-22T11:06:58.6683549Z test_D7_concurrent_processes (evidence_helpers_test.EvidenceTests.test_D7_concurrent_processes) ... ok
+2026-10-22T11:06:58.6684533Z R6S_ASSERTIONS {"scenario": "test_D7_concurrent_processes", "explicit_assertions": 20}
+2026-10-22T11:06:58.6691002Z test_D8_close_never_cleans_foreign_resources (evidence_helpers_test.EvidenceTests.test_D8_close_never_cleans_foreign_resources) ... ok
+2026-10-22T11:06:58.6692193Z R6S_ASSERTIONS {"scenario": "test_D8_close_never_cleans_foreign_resources", "explicit_assertions": 6}
+2026-10-22T11:06:58.6714364Z test_D9_result_identity_and_modes (evidence_helpers_test.EvidenceTests.test_D9_result_identity_and_modes) ... ok
+2026-10-22T11:06:58.6715682Z R6S_ASSERTIONS {"scenario": "test_D9_result_identity_and_modes", "explicit_assertions": 9}
+2026-10-22T11:06:58.6717494Z test_hardlink_and_closed_descriptor_refused (evidence_helpers_test.EvidenceTests.test_hardlink_and_closed_descriptor_refused) ... ok
+2026-10-22T11:06:58.6719557Z R6S_ASSERTIONS {"scenario": "test_hardlink_and_closed_descriptor_refused", "explicit_assertions": 4}
+2026-10-22T11:06:58.6761553Z test_bootstrap_uses_selected_repository_and_import_has_no_side_effects (evidence_utilities_test.EvidenceUtilityTests.test_bootstrap_uses_selected_repository_and_import_has_no_side_effects) ... ok
+2026-10-22T11:06:58.6775519Z test_export_does_not_follow_output_or_input_symlinks (evidence_utilities_test.EvidenceUtilityTests.test_export_does_not_follow_output_or_input_symlinks) ... ok
+2026-10-22T11:06:58.6786996Z test_export_preserves_bytes_and_hashes (evidence_utilities_test.EvidenceUtilityTests.test_export_preserves_bytes_and_hashes) ... ok
+2026-10-22T11:06:58.8111886Z D4_CHOWN {"date": "2026-10-22T11:06:58.810446+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-evidence-905c077b262e18a32f91238501cfb8e5/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "65532", "65532"], "exit_code": 0, "stdout": "{\"uid\":0,\"gid\":0,\"uid_map\":\"         0          0 4294967295\\n\",\"before\":1001}\n{\"after\":65532}\n", "stderr": ""}
+2026-10-22T11:06:58.9415813Z D4_CHOWN {"date": "2026-10-22T11:06:58.940970+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-evidence-905c077b262e18a32f91238501cfb8e5/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "1001", "1001"], "exit_code": 0, "stdout": "{\"uid\":0,\"gid\":0,\"uid_map\":\"         0          0 4294967295\\n\",\"before\":65532}\n{\"after\":1001}\n", "stderr": ""}
+2026-10-22T11:06:58.9422994Z test_private_input_foreign_uid_is_rejected_by_helper (evidence_utilities_test.EvidenceUtilityTests.test_private_input_foreign_uid_is_rejected_by_helper) ... ok
+2026-10-22T11:06:58.9425243Z test_private_input_refuses_links_and_writable_directories (evidence_utilities_test.EvidenceUtilityTests.test_private_input_refuses_links_and_writable_directories) ... ok
+2026-10-22T11:06:58.9649821Z test_concurrent_exclusive_creation_and_retained_cleanup_boundary (release_utilities_test.ReleaseUtilityTests.test_concurrent_exclusive_creation_and_retained_cleanup_boundary) ... ok
+2026-10-22T11:06:59.2047801Z test_excessive_permissions_are_rejected_before_output (release_utilities_test.ReleaseUtilityTests.test_excessive_permissions_are_rejected_before_output) ... ok
+2026-10-22T11:06:59.3466795Z D4_CHOWN {"date": "2026-10-22T11:06:59.346054+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-evidence-2e9e964a5e963071470fe9614324a19b/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "65532", "65532"], "exit_code": 0, "stdout": "{\"uid\":0,\"gid\":0,\"uid_map\":\"         0          0 4294967295\\n\",\"before\":1001}\n{\"after\":65532}\n", "stderr": ""}
+2026-10-22T11:06:59.8987041Z D4_CHOWN {"date": "2026-10-22T11:06:59.898134+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-evidence-2e9e964a5e963071470fe9614324a19b/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "1001", "1001"], "exit_code": 0, "stdout": "{\"uid\":0,\"gid\":0,\"uid_map\":\"         0          0 4294967295\\n\",\"before\":65532}\n{\"after\":1001}\n", "stderr": ""}
+2026-10-22T11:06:59.9002620Z test_foreign_uid_rejected_for_output_and_checkout (release_utilities_test.ReleaseUtilityTests.test_foreign_uid_rejected_for_output_and_checkout) ... ok
+2026-10-22T11:06:59.9104101Z test_output_file_symlinks_are_refused_by_both_actual_writers (release_utilities_test.ReleaseUtilityTests.test_output_file_symlinks_are_refused_by_both_actual_writers) ... ok
+2026-10-22T11:07:00.1222954Z test_root_symlink_and_existing_output_parents (release_utilities_test.ReleaseUtilityTests.test_root_symlink_and_existing_output_parents) ... ok
+2026-10-22T11:07:00.1380751Z test_source_archive_validates_real_git_objects_and_rejects_invalid_members (release_utilities_test.ReleaseUtilityTests.test_source_archive_validates_real_git_objects_and_rejects_invalid_members) ... ok
+2026-10-22T11:07:00.1474324Z test_special_output_files_are_refused_without_blocking (release_utilities_test.ReleaseUtilityTests.test_special_output_files_are_refused_without_blocking) ... ok
+2026-10-22T11:07:00.3586291Z test_untrusted_checkout_links_are_rejected (release_utilities_test.ReleaseUtilityTests.test_untrusted_checkout_links_are_rejected) ... ok
+2026-10-22T11:07:00.3833267Z {"name": "probe", "command": ["/usr/bin/python3", "-c", "print(\"functional-probe\")"], "exit_code": 0, "seconds": 0.015659136000010676, "sha256": "5c5802c7774322dc983921dc18a5484bc5ebcd3fb6aa9252c3449c23836f2e5f"}
+2026-10-22T11:07:00.3854302Z test_verifier_records_real_command_results_and_original_log_hashes (release_utilities_test.ReleaseUtilityTests.test_verifier_records_real_command_results_and_original_log_hashes) ... ok
+2026-10-22T11:07:00.3856583Z 
+2026-10-22T11:07:00.3857295Z ----------------------------------------------------------------------
+2026-10-22T11:07:00.3858319Z Ran 25 tests in 7.652s
+2026-10-22T11:07:00.3858723Z 
+2026-10-22T11:07:00.3859143Z OK
+2026-10-22T11:07:00.4061709Z Post job cleanup.
+2026-10-22T11:07:00.5169001Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-99d6cd44cc175c6ffc21fe352e3a5ab57632125160f3886cc04c736b3886bfd5, not saving cache.
+2026-10-22T11:07:00.5288265Z Post job cleanup.
+2026-10-22T11:07:00.6069495Z [command]/usr/bin/git version
+2026-10-22T11:07:00.6112866Z git version 2.55.0
+2026-10-22T11:07:00.6158253Z Temporarily overriding HOME='/home/runner/work/_temp/5f2701ba-7cc4-4e9c-b2ac-4f91b5ee89ab' before making global git config changes
+2026-10-22T11:07:00.6159067Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T11:07:00.6164796Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-layer/infra-layer
+2026-10-22T11:07:00.6192729Z Removing SSH command configuration
+2026-10-22T11:07:00.6200191Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T11:07:00.6229951Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T11:07:00.6414142Z Removing HTTP extra header
+2026-10-22T11:07:00.6420361Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T11:07:00.6448833Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T11:07:00.6635671Z Removing includeIf entries pointing to credentials config files
+2026-10-22T11:07:00.6644261Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T11:07:00.6669234Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T11:07:00.6988549Z Cleaning up orphan processes

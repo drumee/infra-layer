@@ -1,0 +1,38 @@
+{
+  "name": "pr16-portable-full-verifier",
+  "source": "e8ac692dd70160736d35cbe227cab37378a55477",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "docs/evidence/IL-5.11-release-review/verify.py",
+    "--source",
+    "/tmp/il511-pr16-clean"
+  ],
+  "cwd": "/tmp/il511-pr16-clean",
+  "date": "2026-10-22T09:59:25.032018+00:00",
+  "elapsed_s": 12.890197229979094,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "e5fe705d3d129a9b3daf9fe68b891ed78237aaf3e20dec9ef498b7402162938f",
+  "runner_sha256": "05809e9c349216fc9755be8ae8ef5fd9af2fb35c6519513e28616e5960f3c0b3",
+  "output": "/tmp/il511-evidence-f946d5812c0c4b5205579347b1929e30"
+}
