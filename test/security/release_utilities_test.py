@@ -80,7 +80,7 @@ class ReleaseUtilityTests(unittest.TestCase):
             (out.path / 'probe.txt').symlink_to(self.base.path / 'sentinel')
             with self.assertRaises(FileExistsError):
                 VERIFY.run_steps(self.repo.path, out, dict(os.environ),
-                                 [('probe', ['/usr/bin/node', '-e', 'console.log("real")'])])
+                                 [('probe', [sys.executable, '-c', 'print("real")'])])
         with self.base.child('archive-output') as out:
             (out.path / 'infra-layer-source.tar.gz').symlink_to(self.base.path / 'sentinel')
             with self.assertRaises(FileExistsError):
@@ -124,7 +124,7 @@ class ReleaseUtilityTests(unittest.TestCase):
             os.mkfifo(out.path / 'probe.txt', 0o600)
             with self.assertRaises(FileExistsError):
                 VERIFY.run_steps(self.repo.path, out, dict(os.environ),
-                                 [('probe', ['/usr/bin/node', '-e', 'console.log("real")'])])
+                                 [('probe', [sys.executable, '-c', 'print("real")'])])
         with self.base.child('special-archive') as out:
             os.mkfifo(out.path / 'infra-layer-source.tar.gz', 0o600)
             with self.assertRaises(FileExistsError):
@@ -186,7 +186,7 @@ class ReleaseUtilityTests(unittest.TestCase):
     def test_verifier_records_real_command_results_and_original_log_hashes(self):
         with self.base.child('functional-output') as out:
             results, code = VERIFY.run_steps(self.repo.path, out, dict(os.environ), [
-                ('probe', ['/usr/bin/node', '-e', 'console.log("functional-probe")'])])
+                ('probe', [sys.executable, '-c', 'print("functional-probe")'])])
             self.assertEqual(code, 0)
             self.assertEqual(results[0]['sha256'], hashlib.sha256(out.read_bytes('probe.txt')).hexdigest())
             self.assertEqual(out.read_bytes('probe.txt'), b'functional-probe\n')
