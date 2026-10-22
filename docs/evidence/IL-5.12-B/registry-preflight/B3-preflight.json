@@ -1,0 +1,252 @@
+{
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "date_utc": "2026-10-22T14:23:53.254691+00:00",
+  "uid": 1000,
+  "gid": 1000,
+  "registry": "https://registry.npmjs.org/",
+  "steps": [
+    {
+      "name": "registry",
+      "date_utc": "2026-10-22T14:23:47.404760+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "config",
+        "get",
+        "registry",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": "https://registry.npmjs.org/"
+    },
+    {
+      "name": "scope-registry",
+      "date_utc": "2026-10-22T14:23:47.517581+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "config",
+        "get",
+        "@drumee:registry",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": "undefined"
+    },
+    {
+      "name": "auth-type",
+      "date_utc": "2026-10-22T14:23:47.599638+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "config",
+        "get",
+        "auth-type",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": "web"
+    },
+    {
+      "name": "versions",
+      "date_utc": "2026-10-22T14:23:48.642149+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "view",
+        "@drumee/infra-layer",
+        "versions",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": [
+        "0.0.0-stage",
+        "0.1.0-alpha.1",
+        "0.1.0-alpha.2"
+      ]
+    },
+    {
+      "name": "dist-tags",
+      "date_utc": "2026-10-22T14:23:49.144111+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "view",
+        "@drumee/infra-layer",
+        "dist-tags",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "next": "0.1.0-alpha.2",
+        "latest": "0.1.0-alpha.1"
+      }
+    },
+    {
+      "name": "exact-version",
+      "date_utc": "2026-10-22T14:23:49.672461+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "view",
+        "@drumee/infra-layer@0.1.0-alpha.3",
+        "version",
+        "dist",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 1,
+      "result": {
+        "error": "E404",
+        "http404_absent": true
+      }
+    },
+    {
+      "name": "whoami",
+      "date_utc": "2026-10-22T14:23:50.286224+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "whoami",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": "somanos"
+    },
+    {
+      "name": "package-status",
+      "date_utc": "2026-10-22T14:23:51.105558+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "access",
+        "get",
+        "status",
+        "@drumee/infra-layer",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "@drumee/infra-layer": "public"
+      }
+    },
+    {
+      "name": "package-permission",
+      "date_utc": "2026-10-22T14:23:51.611062+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "access",
+        "list",
+        "packages",
+        "somanos",
+        "@drumee/infra-layer",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "@drumee/infra-layer": "read-write"
+      }
+    },
+    {
+      "name": "collaborator-permission",
+      "date_utc": "2026-10-22T14:23:52.328251+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "access",
+        "list",
+        "collaborators",
+        "@drumee/infra-layer",
+        "somanos",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "somanos": "read-write"
+      }
+    },
+    {
+      "name": "account-two-factor-policy",
+      "date_utc": "2026-10-22T14:23:53.250377+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "profile",
+        "get",
+        "--registry",
+        "https://registry.npmjs.org/",
+        "--json",
+        "--cache",
+        "/tmp/il511-evidence-4c8594f923b46ac821592fa0dd8d202b/npm-cache",
+        "--logs-max=0",
+        "--fetch-retries=0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "mode": "auth-and-writes",
+        "pending": null
+      }
+    }
+  ],
+  "version_exists": false,
+  "tags_before": {
+    "next": "0.1.0-alpha.2",
+    "latest": "0.1.0-alpha.1"
+  },
+  "publisher": "somanos",
+  "publication_attempted": false,
+  "authentication_modified": false,
+  "otp_or_token_retained": false,
+  "local_oidc_available": false,
+  "result": "PASS",
+  "auth_interaction": "Installed npm supports browser/classicOTP only with interactive terminal; use configured credentials and stop for owner intervention if server requires unavailable interactive authentication."
+}

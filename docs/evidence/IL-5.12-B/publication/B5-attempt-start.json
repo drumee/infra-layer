@@ -1,0 +1,25 @@
+{
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "date_utc": "2026-10-22T14:39:56.773910+00:00",
+  "command": [
+    "/usr/bin/npm",
+    "publish",
+    "/tmp/il511-evidence-8c96ce1e572eeba71c7122ee9828da52/pack-1/drumee-infra-layer-0.1.0-alpha.3.tgz",
+    "--registry=https://registry.npmjs.org/",
+    "--tag=next",
+    "--access=public",
+    "--ignore-scripts",
+    "--provenance=false",
+    "--workspaces=false",
+    "--fetch-retries=0",
+    "--fetch-timeout=60000",
+    "--json",
+    "--logs-max=0",
+    "--cache",
+    "/tmp/il511-evidence-0218e29b92a3580146a5c6ac7d899ad6/publication-cache"
+  ],
+  "cwd": "/tmp/il511-evidence-0218e29b92a3580146a5c6ac7d899ad6/publication-working",
+  "attempt_number": 1,
+  "gate": "PUBLICATION_GATE_PASS",
+  "secrets_or_otp_recorded": false
+}

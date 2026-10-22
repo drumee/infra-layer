@@ -1,0 +1,61 @@
+{
+  "status": "PUBLICATION_GATE_PASS",
+  "date_utc": "2026-10-22T14:33:59.533906+00:00",
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "name": "@drumee/infra-layer",
+  "version": "0.1.0-alpha.3",
+  "tarball": "/tmp/il511-evidence-8c96ce1e572eeba71c7122ee9828da52/pack-1/drumee-infra-layer-0.1.0-alpha.3.tgz",
+  "sha256": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "integrity": "sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==",
+  "members": 41,
+  "compressed_bytes": 101778,
+  "publisher": "somanos",
+  "registry": "https://registry.npmjs.org/",
+  "tag": "next",
+  "tags_before": {
+    "next": "0.1.0-alpha.2",
+    "latest": "0.1.0-alpha.1"
+  },
+  "B1": "PASS",
+  "B2": "PASS",
+  "B3": "PASS",
+  "command": [
+    "/usr/bin/npm",
+    "publish",
+    "/tmp/il511-evidence-8c96ce1e572eeba71c7122ee9828da52/pack-1/drumee-infra-layer-0.1.0-alpha.3.tgz",
+    "--registry=https://registry.npmjs.org/",
+    "--tag=next",
+    "--access=public",
+    "--ignore-scripts",
+    "--provenance=false",
+    "--workspaces=false",
+    "--fetch-retries=0",
+    "--fetch-timeout=60000",
+    "--json",
+    "--logs-max=0",
+    "--cache",
+    "/tmp/il511-evidence-0218e29b92a3580146a5c6ac7d899ad6/publication-cache"
+  ],
+  "cwd": "/tmp/il511-evidence-0218e29b92a3580146a5c6ac7d899ad6/publication-working",
+  "one_publish_invocation_only": true,
+  "configured_authentication": "existing npm credentials; account2FA auth-and-writes verified; no credentials/OTP copied or recorded; stop if an owner-controlled interactive challenge is unavailable",
+  "provenance": "source commit/member provenance verified; local OIDC unavailable, no registry attestation requested",
+  "ci": {
+    "Quality": "39788182851, five jobs PASS at exact source",
+    "CodeQL": "39788194649, JS/TS Python Actions PASS and SARIF processing complete",
+    "SonarCloud": "FAILURE on main,250recorded findings; owner acknowledged, no publication hook/workflow enforces this as a registry-write gate"
+  },
+  "publication_policy": "No prepublication hooks; no repository publication workflow; explicit IL5.12-B authorization supersedes historical NOT_AUTHORIZED only for this exact package/version/bytes/next attempt",
+  "residuals": [
+    "GitHub Security global inventoriesHTTP403-limited; not assumed empty",
+    "Historical SMTP uncertainty accepted only for experimental alpha3; root cause unknown; future regressions excluded",
+    "SMTP_RECOVERY_UNQUALIFIED; Internet mail deliverability not qualified"
+  ],
+  "consumer_ready": {
+    "strict_typescript": "Version 5.9.3",
+    "typescript_path": "/tmp/drumee-il510-types/node_modules/typescript/bin/tsc",
+    "immutable_image": "sha256:d44327e37d37c612257822684a870d05d7f90fdae649b2dcbfb8e9f0566e7955",
+    "activation_or_deployment_required": false
+  },
+  "post_publication": "Query exact registry version and alltags; download registry archive; compare byte-for-byte and41members; isolated install/public exports/strict types/idempotent preparation/contract refusals; no destructive remediation"
+}

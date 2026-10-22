@@ -1,0 +1,89 @@
+{
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "date_utc": "2026-10-22T14:22:30.010184+00:00",
+  "uid": 1000,
+  "gid": 1000,
+  "clean_before_after": true,
+  "name": "@drumee/infra-layer",
+  "version": "0.1.0-alpha.3",
+  "members": 41,
+  "compressed_bytes": 101778,
+  "sha256": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "integrity": "sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==",
+  "two_identical": true,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./lifecycle": {
+      "types": "./lifecycle/index.d.ts",
+      "require": "./lifecycle/index.js",
+      "default": "./lifecycle/index.js"
+    },
+    "./lifecycle/*": "./lifecycle/*.js",
+    "./lib/*": "./lib/*.js",
+    "./adapters/docker/*": "./adapters/docker/*.js",
+    "./capabilities/secrets": "./capabilities/secrets/index.js",
+    "./capabilities/tls": "./capabilities/tls/index.js",
+    "./capabilities/dns": "./capabilities/dns/index.js",
+    "./capabilities/database": "./capabilities/database/index.js",
+    "./capabilities/redis": "./capabilities/redis/index.js",
+    "./capabilities/mail": "./capabilities/mail/index.js",
+    "./capabilities/http/nginx": "./capabilities/http/nginx/index.js",
+    "./capabilities/tls/acme": "./capabilities/tls/acme.js"
+  },
+  "types": "index.d.ts",
+  "production_dependencies": {},
+  "publication_hooks": {},
+  "publish_config": {
+    "access": "public",
+    "tag": "next"
+  },
+  "lockfile_sha256": "ebb960fbeb9ee738fadbae0ab952585f7ccd6577a8cc740ac9c71bdb6130569a",
+  "credential_key_signature_matches": [],
+  "secret_check_limit": "Known signatures plus exact reviewed source/member map; not a universal secret detector.",
+  "packaging_network": "explicit --offline; scripts disabled; fresh private cache",
+  "selected_tarball": "/tmp/il511-evidence-8c96ce1e572eeba71c7122ee9828da52/pack-1/drumee-infra-layer-0.1.0-alpha.3.tgz",
+  "selected_file_mode": "0400",
+  "steps": [
+    {
+      "source": "c218811effc83da25cf71a914e27accc96101329",
+      "date_utc": "2026-10-22T14:22:29.414089+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "pack",
+        "--offline",
+        "--ignore-scripts",
+        "--json",
+        "--pack-destination",
+        "/tmp/il511-evidence-8c96ce1e572eeba71c7122ee9828da52/pack-1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "265f1f18fea3e1c6b66f12f672fa0fc686fa05d5512f2e64e0dd76d0b75990fb",
+      "archive": "/tmp/il511-evidence-8c96ce1e572eeba71c7122ee9828da52/pack-1/drumee-infra-layer-0.1.0-alpha.3.tgz"
+    },
+    {
+      "source": "c218811effc83da25cf71a914e27accc96101329",
+      "date_utc": "2026-10-22T14:22:29.710116+00:00",
+      "command": [
+        "/usr/bin/npm",
+        "pack",
+        "--offline",
+        "--ignore-scripts",
+        "--json",
+        "--pack-destination",
+        "/tmp/il511-evidence-8c96ce1e572eeba71c7122ee9828da52/pack-2"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "265f1f18fea3e1c6b66f12f672fa0fc686fa05d5512f2e64e0dd76d0b75990fb",
+      "archive": "/tmp/il511-evidence-8c96ce1e572eeba71c7122ee9828da52/pack-2/drumee-infra-layer-0.1.0-alpha.3.tgz"
+    }
+  ],
+  "result": "PASS",
+  "complete_receipt_sha256": "de66b52e5db23f5864a03eb04d9640b478fdb0a43f94914e6db3715a6f59f1a3",
+  "complete_private_root": "/tmp/il511-evidence-8c96ce1e572eeba71c7122ee9828da52",
+  "member_map_reference": "docs/evidence/IL-5.11-D2/D2-artifact-receipt.json: files, all41members independently checked against actual tarballs and selected source"
+}

@@ -1,0 +1,37 @@
+{
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "date_utc": "2026-10-22T15:01:06.502287+00:00",
+  "http": [
+    {
+      "name": "packument",
+      "url": "https://registry.npmjs.org/@drumee%2finfra-layer",
+      "http_status": 200,
+      "date_utc": "2026-10-22T15:01:05.893451+00:00"
+    },
+    {
+      "name": "exact_version",
+      "url": "https://registry.npmjs.org/@drumee%2finfra-layer/0.1.0-alpha.3",
+      "http_status": 404,
+      "date_utc": "2026-10-22T15:01:06.497646+00:00"
+    }
+  ],
+  "version_exists": false,
+  "tags_before": {
+    "next": "0.1.0-alpha.2",
+    "latest": "0.1.0-alpha.1"
+  },
+  "tags_after": {
+    "next": "0.1.0-alpha.2",
+    "latest": "0.1.0-alpha.1"
+  },
+  "all_tags_unchanged": true,
+  "publication_accepted": false,
+  "npm_error_code": "EOTP",
+  "publication_commands_invoked": 1,
+  "retry_performed": false,
+  "registry_tarball_url": null,
+  "registry_tarball_downloaded": false,
+  "isolated_registry_consumer": "NOT_RUN: no published alpha3 archive exists",
+  "status": "PUBLICATION_REQUIRES_OWNER_AUTHENTICATION",
+  "owner_intervention": "Complete publication authentication through an owner-controlled npm interactive terminal/browser; never send OTPs/tokens through this conversation. No second agent publication command authorized/performed in this run."
+}
