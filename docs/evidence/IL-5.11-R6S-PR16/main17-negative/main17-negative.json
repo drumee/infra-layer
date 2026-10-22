@@ -1,0 +1,43 @@
+{
+  "name": "main17-negative",
+  "source": "75ac104ddce8700b406ba839cfe1b8bfe6d6f477",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "test/security",
+    "-p",
+    "*_test.py",
+    "-v"
+  ],
+  "cwd": "/tmp/il511-review-main",
+  "date": "2026-10-22T08:17:53.787542+00:00",
+  "elapsed_s": 1.0179318180016708,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "de911f21bcc8734809cbc39d92f1270b0fbf9f6ded2446a15f2b69a9bd2e9895",
+  "runner_sha256": "05809e9c349216fc9755be8ae8ef5fd9af2fb35c6519513e28616e5960f3c0b3",
+  "output": "/tmp/il511-evidence-bc494f743fc9845b6c198d54354f51a7"
+}

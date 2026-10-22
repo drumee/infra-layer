@@ -1,0 +1,38 @@
+{
+  "name": "pr16-functional",
+  "source": "3740b38cefe15666f266cda933f6e53134cfd958",
+  "clean_tree": true,
+  "command": [
+    "python3",
+    "-B",
+    "docs/evidence/IL-5.11-release-review/verify.py",
+    "--source",
+    "/tmp/il511-pr16-clean"
+  ],
+  "cwd": "/tmp/il511-pr16-clean",
+  "date": "2026-10-22T08:25:39.142577+00:00",
+  "elapsed_s": 13.191580105019966,
+  "exit_code": 0,
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    33,
+    44,
+    46,
+    100,
+    106,
+    111,
+    113,
+    116,
+    994,
+    1000,
+    1001
+  ],
+  "log_sha256": "db21e2da2284377f5253a16a6e0e96b431fac5dbeef95f013d07e6ce51468183",
+  "runner_sha256": "05809e9c349216fc9755be8ae8ef5fd9af2fb35c6519513e28616e5960f3c0b3",
+  "output": "/tmp/il511-evidence-8b16c82c8c36c26ea7a2cdf94c920fdc"
+}

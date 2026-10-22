@@ -1,0 +1,25 @@
+[
+  {
+    "name": "install",
+    "command": [
+      "/usr/bin/npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "exit_code": 0,
+    "seconds": 1.8667969520029146,
+    "sha256": "5cc423130f1ba2414f7c702f439916673a23996478c36fee079e162124bfd9b9"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "/usr/bin/npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "seconds": 3.521952859009616,
+    "sha256": "b1008c36d732b8b4e14aa25d469fd2026a5cc7decb78ce547492d41c3a1fcb8e"
+  }
+]

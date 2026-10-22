@@ -21,3 +21,9 @@ Review also retains the original exact-content comparison against Git objects, i
 Every new execution has its own private root, command, source commit, date, UID/GID and journal hash. Exported raw logs and receipts will be linked below once collected. Historical heavy acceptance is reused only under unchanged executable/test-input identity; this verifier does not newly execute Gateway, Services, Lifecycle or the application acceptance suite. Its actually executed commands remain explicit.
 
 Local convergence is favorable. Final current-head Quality, CodeQL, SonarCloud dispositions, package identity and conflict/policy refresh remain mandatory before merging PR #16. No scan or protection has been changed, and no administrative alert closure is claimed. Final post-merge verification is still a separate gate.
+
+## Final local confirmation
+
+Final utility source `4da3bf3` passes all25 methods again with the exact Git-content comparison retained. Its source-archive helper was re-executed against remotely available main75ac104, verified513blobs byte for byte as well as by Git object ID, and recalculated the same separate source fingerprint. [Complete commands, dates, UID/GID, raw logs and hashes](evidence/IL-5.11-R6S-PR16/provenance.json). The verifier implementation is byte-identical between3740b38 and4da3bf3; its complete nine-command execution is reused by that demonstrated identity, not claimed as re-executed.
+
+Current npm publication access reads fail HTTP401. This does not establish a package-integrity defect or authorize authentication changes. The publication handoff explicitly marks account/ACL/2FA as currently unverified and publication blocked until a separate authorized publishing session is available. No npm write was attempted.

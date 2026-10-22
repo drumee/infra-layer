@@ -1,0 +1,69 @@
+[
+  {
+    "name": "install",
+    "command": [
+      "/usr/bin/npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "exit_code": 0,
+    "seconds": 1.8667969520029146,
+    "sha256": "5cc423130f1ba2414f7c702f439916673a23996478c36fee079e162124bfd9b9"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "/usr/bin/npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "seconds": 3.521952859009616,
+    "sha256": "b1008c36d732b8b4e14aa25d469fd2026a5cc7decb78ce547492d41c3a1fcb8e"
+  },
+  {
+    "name": "contracts",
+    "command": [
+      "/usr/bin/npm",
+      "run",
+      "test:contracts"
+    ],
+    "exit_code": 0,
+    "seconds": 0.3143574860005174,
+    "sha256": "1d8cbfdbbb896b88d3c274b4d1d26142afadc9d47d986d164499fe1dc0bd53ad"
+  },
+  {
+    "name": "system-tools",
+    "command": [
+      "/usr/bin/npm",
+      "run",
+      "test:system-tools"
+    ],
+    "exit_code": 0,
+    "seconds": 0.4645522689970676,
+    "sha256": "9cc84f0bf82d4d81b4705043a313697cd5fc2b01314e3734af8be4bcb1f00c4b"
+  },
+  {
+    "name": "package",
+    "command": [
+      "/usr/bin/npm",
+      "run",
+      "test:package"
+    ],
+    "exit_code": 0,
+    "seconds": 1.0156643619993702,
+    "sha256": "8d56bc75da311fddc41cbc06cea8cb26b97e786662a4fddd603b3c7b8619e7ef"
+  },
+  {
+    "name": "lint",
+    "command": [
+      "/usr/bin/npm",
+      "run",
+      "lint"
+    ],
+    "exit_code": 0,
+    "seconds": 1.2660317220143043,
+    "sha256": "c4b8ad2edfe3dd177f687f06b205e9018717a72784ebbe6a62343e3662b0d42c"
+  }
+]
