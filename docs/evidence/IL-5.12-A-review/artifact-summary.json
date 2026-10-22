@@ -1,0 +1,41 @@
+{
+  "source": "faf9c660bfa0312d5dc910cdf8b8938e047e0899",
+  "prior_executable_source": "d19e62ba682dc2d781f5f941c7ba4b37e3a65053",
+  "clean_tree": true,
+  "two_packs_identical": true,
+  "members": 41,
+  "packed_bytes": 101778,
+  "sha256": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "integrity": "sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==",
+  "identical_to_previous_D_candidate": true,
+  "version": "0.1.0-alpha.3",
+  "production_dependencies": {},
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./lifecycle": {
+      "types": "./lifecycle/index.d.ts",
+      "require": "./lifecycle/index.js",
+      "default": "./lifecycle/index.js"
+    },
+    "./lifecycle/*": "./lifecycle/*.js",
+    "./lib/*": "./lib/*.js",
+    "./adapters/docker/*": "./adapters/docker/*.js",
+    "./capabilities/secrets": "./capabilities/secrets/index.js",
+    "./capabilities/tls": "./capabilities/tls/index.js",
+    "./capabilities/dns": "./capabilities/dns/index.js",
+    "./capabilities/database": "./capabilities/database/index.js",
+    "./capabilities/redis": "./capabilities/redis/index.js",
+    "./capabilities/mail": "./capabilities/mail/index.js",
+    "./capabilities/http/nginx": "./capabilities/http/nginx/index.js",
+    "./capabilities/tls/acme": "./capabilities/tls/acme.js"
+  },
+  "prepublication_scripts": {},
+  "complete_raw_receipt_sha256": "541a3591b0fb878698dd142585984dff12cc9a264d4aef14129f60cb765365b0",
+  "complete_raw_private_root": "/tmp/il511-evidence-9c6b60b043999b3091e934a01799757f",
+  "member_map_reference": "docs/evidence/IL-5.11-D2/D2-artifact-receipt.json: files, byte-for-byte confirmed unchanged"
+}
