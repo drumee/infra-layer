@@ -1,5 +1,17 @@
 # IL-5.12 alpha.3 publication handoff
 
+## Final PR #19 integration — 2026-10-22
+
+Status: **FINAL_DOCUMENTATION_MERGED_AND_RELEASE_CANDIDATE_VERIFIED**. Selected canonical main is **c218811effc83da25cf71a914e27accc96101329**, tree **a67e5fc553db4d22b8ef55f9ed45fe556ac2f1e9**. PR #19 merged from reviewed HEAD 023a0f7011d1f16a2d4bf6599227725b22e99755. The 41 npm members and 101778-byte archive are unchanged; new builds independently recalculate npm SHA256: c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e and SRI: sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==.
+
+The **new separate source archive** is 1146163 bytes with 757 Git blobs; SHA256: 6870e1219ed09680dab7d065b9c0ab3e939986a81ff90cc1e05f17c9bbadac95 and SRI: sha512-UNEKi14isLPyqZXF4TxNccQiMxLSfOvePIxB1wIRe7YCv3hs+izcc4Ija0K9bt6AJl/+YIcAhR5WLkMbY6WRyA==. The previous efc8ca26archive below remains historical, not the final-source fingerprint.
+
+At the new exact SHA, Quality39788182851 passes all five jobs, including25 Python methods; CodeQL39788194649 JS/TS, Python and Actions pass with confirmed result upload/processing. PR SonarCloud SUCCESS and main SonarCloud FAILURE are separate observed scopes; main's 250 finding keys are unchanged. Security inventories remain HTTP 403-limited. Fresh npm reads at2026-10-22T13:36:29.686100+00:00verify somanos/read-write/account 2FA auth-and-writes; alpha.3 absent, next=alpha.2, latest=alpha.1. SMTP uncertainty acceptance, unknown root cause, Internet-delivery limits and SMTP_RECOVERY_UNQUALIFIED are unchanged.
+
+**Publication: NOT_AUTHORIZED.** Existing separate-authorization, 2FA, next/latest, provenance, post-publication verification and stop requirements below continue to apply. [Final verification/readiness report](IL-5.12-A-final-verification.md) supplies new commands, dates, environment, results, fingerprints and limitations. This addendum is on a separate final-record branch; no new PR is opened just to repeat the unchanged procedure.
+
+## Earlier IL-5.12-A dossier — source-specific historical scope
+
 ## Decision and source selection
 
 Documentation consolidation status: **DOCUMENTATION_MERGED_RELEASE_CANDIDATE_VERIFIED**. PR #18 is merged and GitHub confirms canonical main **efc8ca2639f31793124459f28b9979235e28b023**, tree **82014b917003d36159b59524233bc4e22c971529**. Its parents are the previously qualified main09170b9e435b5f9bf564237b9fcae080b56fc932 and reviewed documentation HEADde084c82d21c8149db1e3d6affe7084e4aa2cfca. The merge tree equals the reviewed HEAD tree and commit verification is valid.

@@ -1,0 +1,119 @@
+{
+  "date_utc": "2026-10-22T13:35:21.563Z",
+  "head": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+  "base": {
+    "sha": "efc8ca2639f31793124459f28b9979235e28b023",
+    "protected": false,
+    "protection": {
+      "enabled": false,
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      }
+    }
+  },
+  "rulesets": [],
+  "reviews": [],
+  "repository": {
+    "permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "triage": true,
+      "pull": true
+    },
+    "allow_merge_commit": true
+  },
+  "classic_protection": {
+    "error": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"403\"}",
+    "error_code": "FORBIDDEN",
+    "error_data": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+      "status": "403"
+    }
+  },
+  "checks": [
+    {
+      "id": 119852114122,
+      "name": "CodeQL",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/runs/119852114122"
+    },
+    {
+      "id": 119852073917,
+      "name": "SonarCloud Code Analysis",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=19"
+    },
+    {
+      "id": 119851803461,
+      "name": "unit",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39786729531/job/119851803461"
+    },
+    {
+      "id": 119851803440,
+      "name": "eslint",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39786729531/job/119851803440"
+    },
+    {
+      "id": 119851803363,
+      "name": "dependencies",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39786729531/job/119851803363"
+    },
+    {
+      "id": 119851803318,
+      "name": "packaging",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39786729531/job/119851803318"
+    },
+    {
+      "id": 119851802904,
+      "name": "contracts",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39786729531/job/119851802904"
+    },
+    {
+      "id": 119851794198,
+      "name": "Analyze (javascript-typescript)",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39786724537/job/119851794198"
+    },
+    {
+      "id": 119851794083,
+      "name": "Analyze (actions)",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39786724537/job/119851794083"
+    },
+    {
+      "id": 119851793740,
+      "name": "Analyze (python)",
+      "head_sha": "023a0f7011d1f16a2d4bf6599227725b22e99755",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39786724537/job/119851793740"
+    }
+  ]
+}

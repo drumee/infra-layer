@@ -1,0 +1,22 @@
+{
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "tree": "a67e5fc553db4d22b8ef55f9ed45fe556ac2f1e9",
+  "helper": "release-review/source-archive.py",
+  "helper_sha256": {
+    "artifact.py": "ba57d4dd9da645670a4bf344c976ae373b3401275d8edf83f30a7388daa0b225",
+    "campaign.py": "e6ab3d513b317efd5e4ff05249fd00f7e1e6eef5832497d46f8d8aa62189c14e",
+    "qualify.py": "a30bb05ab473afcceade25189d93c3c13a7f2c6790f13551d438f1e345c50949",
+    "secure_evidence.py": "53e299dfa233dc9fdf802427f70f72186ddd45d583ef40503b1ed9d995bd9547"
+  },
+  "uid": 1000,
+  "started_utc": "2026-10-22T13:36:19.547645+00:00",
+  "python": "3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]",
+  "command": [
+    "docs/evidence/IL-5.11-release-review/source-archive.py",
+    "--source",
+    "/tmp/il512-final-main"
+  ],
+  "output": "/tmp/il511-evidence-17ede6b35f2383a41fe362331495b715",
+  "clean_source": true,
+  "retained_on_close": true
+}

@@ -1,0 +1,107 @@
+{
+  "date_utc": "2026-10-22T13:39:20.987Z",
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "tree": "a67e5fc553db4d22b8ef55f9ed45fe556ac2f1e9",
+  "parents": [
+    "efc8ca2639f31793124459f28b9979235e28b023",
+    "023a0f7011d1f16a2d4bf6599227725b22e99755"
+  ],
+  "verification": "valid",
+  "merge": {
+    "sha": "c218811effc83da25cf71a914e27accc96101329",
+    "merged": true,
+    "message": "Pull Request successfully merged"
+  },
+  "checks": [
+    {
+      "id": 119857387403,
+      "name": "SonarCloud Code Analysis",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://sonarcloud.io/dashboard?id=drumee_infra-layer&branch=main"
+    },
+    {
+      "id": 119856855066,
+      "name": "Analyze (actions)",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788194649/job/119856855066"
+    },
+    {
+      "id": 119856854898,
+      "name": "Analyze (python)",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788194649/job/119856854898"
+    },
+    {
+      "id": 119856853970,
+      "name": "Analyze (javascript-typescript)",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788194649/job/119856853970"
+    },
+    {
+      "id": 119856803570,
+      "name": "eslint",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788182851/job/119856803570"
+    },
+    {
+      "id": 119856803496,
+      "name": "dependencies",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788182851/job/119856803496"
+    },
+    {
+      "id": 119856803233,
+      "name": "contracts",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788182851/job/119856803233"
+    },
+    {
+      "id": 119856803228,
+      "name": "packaging",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788182851/job/119856803228"
+    },
+    {
+      "id": 119856802857,
+      "name": "unit",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788182851/job/119856802857"
+    }
+  ],
+  "runs": [
+    {
+      "id": 39788194649,
+      "name": "Push on main",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788194649"
+    },
+    {
+      "id": 39788182851,
+      "name": "Quality",
+      "head_sha": "c218811effc83da25cf71a914e27accc96101329",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/drumee/infra-layer/actions/runs/39788182851"
+    }
+  ]
+}
