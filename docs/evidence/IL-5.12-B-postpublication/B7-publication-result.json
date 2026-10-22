@@ -1,0 +1,40 @@
+{
+  "status": "ALPHA3_PUBLISHED_AND_VERIFIED",
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "date_utc": "2026-10-22T16:27:00.794162+00:00",
+  "registry_publication_utc": "2026-10-22T16:01:12.742Z",
+  "publisher": "somanos",
+  "publication_attribution": "Owner reported completion after the agent EOTP stop; registry confirms publication. No further agent publication command was issued.",
+  "name": "@drumee/infra-layer",
+  "version": "0.1.0-alpha.3",
+  "tags_before": {
+    "next": "0.1.0-alpha.2",
+    "latest": "0.1.0-alpha.1"
+  },
+  "tags_after": {
+    "latest": "0.1.0-alpha.1",
+    "next": "0.1.0-alpha.3"
+  },
+  "sha256": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "integrity": "sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==",
+  "compressed_bytes": 101778,
+  "members": 41,
+  "isolated_consumer": {
+    "base_assertions": 8,
+    "additional_assertions": 37,
+    "strict_types": "PASS",
+    "cleanup": "PASS"
+  },
+  "provenance_attestation": null,
+  "registry_signatures_present": true,
+  "canonical_checkout_clean": true,
+  "prior_evidence_preserved": true,
+  "limitations": [
+    "SonarCloud FAILURE: 250 recorded findings on canonical main",
+    "Global GitHub Security inventory HTTP 403 visibility limitations",
+    "Historical SMTP uncertainty accepted for experimental alpha.3 only; original cause unknown",
+    "SMTP_RECOVERY_UNQUALIFIED; Internet delivery not qualified",
+    "Owner authentication/publish terminal session not observed; registry publication and delivered bytes verified",
+    "No OIDC registry provenance attestation advertised"
+  ]
+}

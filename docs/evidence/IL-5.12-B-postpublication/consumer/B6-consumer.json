@@ -1,0 +1,50 @@
+{
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "started_utc": "2026-10-22T16:25:49.303122+00:00",
+  "completed_utc": "2026-10-22T16:25:52.118013+00:00",
+  "command": [
+    "/usr/bin/node",
+    "/tmp/il511-evidence-748e8e933d04235bb96145e1df61febb/registry-consumer.js"
+  ],
+  "environment": {
+    "kernel": "6.1.0-41-amd64",
+    "uid": 1000,
+    "gid": 1000,
+    "usr_uid": 0,
+    "node": "22.22.0",
+    "typescript": "5.9.3",
+    "network": "offline installation from actual registry tarball",
+    "activated": false
+  },
+  "earlier_sandbox_setup_failure": "/tmp/il511-evidence-748e8e933d04235bb96145e1df61febb/B6-consumer.json",
+  "setup_correction": "Run identical verification driver outside filesystem sandbox; sandbox mapped /usr UID to 65534. No executable trust checks were weakened.",
+  "driver_sha256": "1abf916ecf98b3d2a98694bb24bfac20072b3f4e5acd8cc3fe3a5d554570d856",
+  "exit_code": 0,
+  "base_consumer": {
+    "status": "passed",
+    "assertions": 8,
+    "real_preparation": true,
+    "activated": false,
+    "revision": "22bc2e9c3e676487ecd15f37d0634bf5f66427ac88695e31a20b4193aeead0a9",
+    "package": "@drumee/infra-layer",
+    "version": "0.1.0-alpha.3",
+    "integrity": "sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==",
+    "files": 41,
+    "production_dependencies": [],
+    "types": "strict-NodeNext-passed",
+    "source_revision": "c218811effc83da25cf71a914e27accc96101329"
+  },
+  "additional_consumer": {
+    "additional_consumer_assertions": 37,
+    "exports_resolve_inside_consumer": true,
+    "plugins_checked": true,
+    "network_refusals": true,
+    "untrusted_paths_and_foreign_resources_refused": true,
+    "production_dependencies": []
+  },
+  "cleanup": {
+    "owned_workspace_cleaned": true
+  },
+  "log_sha256": "15cd27c724b1adca8ecb25b9ee7d61ecd9549a12dce32e9ba16551e79b34d545",
+  "result": "PASS"
+}

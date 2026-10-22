@@ -1,5 +1,66 @@
 # IL-5.12-B alpha.3 publication report
 
+**Current status: ALPHA3_PUBLISHED_AND_VERIFIED.** The official npm registry confirms publication of `@drumee/infra-layer@0.1.0-alpha.3` by `somanos` at **2026-10-22T16:01:12.742Z**. The owner reported completing publication after the authentication stop below. The agent did not issue another publication command. Registry delivery, exact artifact identity, distribution tags and an isolated installed consumer have now been independently verified.
+
+## Final publication and verification record
+
+| Property | Verified result |
+|---|---|
+| Authorized source | `c218811effc83da25cf71a914e27accc96101329` |
+| Registry | `https://registry.npmjs.org/` |
+| Package/version | `@drumee/infra-layer@0.1.0-alpha.3` |
+| Registry publication UTC | `2026-10-22T16:01:12.742Z` |
+| Registry publisher | `somanos` |
+| Archive | [Registry-provided tarball](https://registry.npmjs.org/@drumee/infra-layer/-/infra-layer-0.1.0-alpha.3.tgz) |
+| Download verification UTC | `2026-10-22T16:16:32.207249+00:00` |
+| Isolated consumer completion UTC | `2026-10-22T16:25:52.118013+00:00` |
+| Members / compressed bytes | **41 / 101778** |
+| SHA256, independently measured from registry download | `c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e` |
+| SHA512 SRI, independently measured from registry download | `sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==` |
+| Archive comparison | Byte-identical to the qualified local archive; every member matches canonical source bytes |
+| Consumer | **8 baseline + 37 additional assertions PASS**, strict TypeScript NodeNext PASS |
+| Cleanup | Owned isolated consumer workspace removed; source checkout remains clean |
+
+| Dist-tag | Before publication | After publication |
+|---|---|---|
+| `latest` | `0.1.0-alpha.1` | `0.1.0-alpha.1` — unchanged |
+| `next` | `0.1.0-alpha.2` | `0.1.0-alpha.3` |
+
+All observed dist-tags were compared, and only `next` advanced. Exact-version and package endpoints returned HTTP 200. The published metadata matches the canonical manifest for name, version, exports, typings, production dependencies, license and publication configuration. These are registry results, not an inference from local packaging.
+
+### B6 — Actual registry archive and isolated consumer
+
+[Registry receipt](evidence/IL-5.12-B-postpublication/registry/B6-registry-artifact.json) records exact URLs, HTTP responses, retrieval times, response hashes, publisher, publication time, metadata comparison and measured archive fingerprints. [Per-member receipt](evidence/IL-5.12-B-postpublication/registry-members.json) records all 41 member names, sizes and SHA256 values, independently compared with the selected clean source. No source-archive fingerprint is substituted for npm SRI.
+
+The consumer uses the **downloaded registry archive**, not a newly packed local directory. A temporary driver derives from `test/application/package-consumer.js` at the authorized commit. Its local `npm pack` step is replaced by copying the previously verified registry tarball; canonical input/refusal fixtures remain unchanged. The private output location, explicit empty npm configuration files and command diagnostics are also recorded in [driver provenance](evidence/IL-5.12-B-postpublication/sandbox-setup/driver-provenance.json). The original and derived driver hashes and exact substitutions make this adaptation reproducible. No repository helper or package member was changed.
+
+Commands, UTC timestamps, exit codes and durations are in the [consumer log](evidence/IL-5.12-B-postpublication/consumer/consumer.log), whose SHA256 is `15cd27c724b1adca8ecb25b9ee7d61ecd9549a12dce32e9ba16551e79b34d545`. The driver invokes an offline, script-disabled npm installation from the registry tarball, TypeScript `--strict --noEmit --module NodeNext --moduleResolution NodeNext --target ES2022 check.ts`, and `node check.js`. The [consumer receipt](evidence/IL-5.12-B-postpublication/consumer/B6-consumer.json) records source, full driver command, Linux 6.1.0-41-amd64, UID/GID 1000:1000, Node 22.22.0, TypeScript 5.9.3 and exit 0.
+
+The 8 baseline assertions cover public API, validation, planning, composition, real nonactivated preparation and idempotence. The 37 additional assertions cover installed public-export resolution, plugin selection and refusal contracts, forbidden network bindings, unsafe paths, foreign resources, sentinel integrity and absence of production dependencies. Public package imports resolve inside the isolated consumer's `node_modules`; no neighboring checkout is required. The canonical factory is used only outside the installed consumer to serialize JSON inputs. No activation, container launch, deployment or renewed SMTP acceptance campaign occurred.
+
+An initial setup attempt stopped **before installation or application assertions** because the filesystem sandbox exposed `/usr` as UID 65534, causing `UNSAFE_QUALIFICATION_EXECUTABLE`. Its [receipt and log](evidence/IL-5.12-B-postpublication/sandbox-setup/B6-consumer.json) are preserved as a setup failure, not counted as passing assertions. The identical driver then ran outside that sandbox with `/usr` UID 0 and passed. No trusted-executable, ownership or application check was weakened. The derived driver SHA256 is `1abf916ecf98b3d2a98694bb24bfac20072b3f4e5acd8cc3fe3a5d554570d856` in both runs.
+
+### Publication attribution, authentication and provenance
+
+The sole agent publication invocation returned EOTP at 14:39 UTC; alpha.3 remained absent at the subsequent 15:01 UTC read. Those original records remain intact below and in the original evidence directory. The later successful owner-side terminal/authentication session was not observed by the agent, so its terminal output or exact interactive command is not claimed. Publication is independently established by the registry version, publisher and timestamp, followed by actual delivered-byte verification.
+
+Pre-publication read-only checks verified `somanos`, package write access and account 2FA `auth-and-writes`. No credential, OTP or authentication challenge URL is stored here. Source provenance is the authorized Git commit and exact member identity. The registry advertises signing signatures but **no npm provenance attestation** (`dist.attestations` is absent); signature presence is not presented as an OIDC attestation or as a separate cryptographic signature-verification result.
+
+### Qualification references and continuing limitations
+
+The earlier exact-source [Quality run 39788182851](https://github.com/drumee/infra-layer/actions/runs/39788182851) has five successful jobs, including 25 Python test methods. [CodeQL run 39788194649](https://github.com/drumee/infra-layer/actions/runs/39788194649) has successful JavaScript/TypeScript, Python and Actions analyses and result upload/processing. These are reused exact-source results, not newly executed publication tests. Fresh registry delivery and consumer checks above are separately dated.
+
+SonarCloud remains **FAILURE on canonical main, with 250 recorded findings**; no scanner success, alert closure or global risk acceptance is implied. Global GitHub Security inventory HTTP 403 limitations remain. The owner-accepted historical SMTP uncertainty applies only to experimental alpha.3; its original root cause remains unknown and the decision covers no future regression, message loss, TLS defect or open relay. Internet mail delivery remains unqualified and **SMTP_RECOVERY_UNQUALIFIED** remains applicable.
+
+The existing documentation reporting branch is reused without a new PR or direct main commit. [Final result](evidence/IL-5.12-B-postpublication/B7-publication-result.json) and [new hashed manifest](evidence/IL-5.12-B-postpublication/manifest.json) reference all new proof records separately from the preserved pre-publication evidence. The registry tarball is retained privately rather than duplicated in Git. Canonical `main` remains the authorized source; no Git tag, GitHub release, image publication, production operation or downstream repository change was performed. Debian, Server Runtime, Oxy-form and Oxymotion D0 remain outside this mission.
+
+## Historical pre-publication authentication stop
+
+The following record describes the earlier stop and is superseded only as the current publication status by the independently verified completion above. Its raw evidence files and original manifest are unchanged.
+
+<details>
+<summary>Preserved EOTP stop report and pre-publication qualification</summary>
+
 **Status: PUBLICATION_REQUIRES_OWNER_AUTHENTICATION.** The release gate passed and one authorized publication command returned **EOTP**. The registry subsequently confirms **no alpha.3 version and unchanged dist-tags**. No publication is claimed, and no second publication command was attempted.
 
 ## Authorization and exact selection
@@ -81,3 +142,5 @@ Global GitHub Code Scanning/Dependabot/Secret Scanning inventory HTTP 403 visibi
 Source provenance is the exact selected Git commit/tree and verified member map. No registry OIDC provenance attestation was requested or produced; local OIDC is unavailable. If an attestation is required for a later publishing environment, qualify that mechanism separately rather than claiming one from a local interactive flow.
 
 The canonical repository and package remain unchanged. Debian retains aa9057f224f4ae5cf80d777e3cb2fad092193fb1; Runtime and Oxy-form are untouched, no image/Git tag/GitHub release/production deployment occurred, and Oxymotion D0 was not started. [Hashed evidence manifest](evidence/IL-5.12-B/manifest.json) preserves the new records on the existing authorized reporting branch, without another documentation PR or direct main commit.
+
+</details>

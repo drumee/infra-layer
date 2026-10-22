@@ -1,0 +1,46 @@
+{
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "original_driver_sha256": "e2a1fdcd015fdc8d0efdb10ef1379ca32582b138ca760edc142968eca13fd48d",
+  "derived_driver_sha256": "1abf916ecf98b3d2a98694bb24bfac20072b3f4e5acd8cc3fe3a5d554570d856",
+  "changes": [
+    {
+      "original": "require(\"../support/trusted-process\")",
+      "replacement": "require(\"/tmp/il512-b-source/test/support/trusted-process\")"
+    },
+    {
+      "original": "path.resolve(__dirname, \"../..\")",
+      "replacement": "\"/tmp/il512-b-source\""
+    },
+    {
+      "original": "path.join(os.tmpdir(), \"drumee-il5-packed-consumer-\")",
+      "replacement": "path.join(\"/tmp/il511-evidence-748e8e933d04235bb96145e1df61febb\", \"consumer-work-\")"
+    },
+    {
+      "original": "const packed = JSON.parse(command(\"npm\", [\"pack\", \"--json\", \"--pack-destination\", base], { cwd: source }))[0];",
+      "replacement": "const packed = {\"name\": \"@drumee/infra-layer\", \"version\": \"0.1.0-alpha.3\", \"integrity\": \"sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==\", \"filename\": \"registry-alpha3.tgz\", \"files\": [\"LICENSE\", \"capabilities/tls/acme.js\", \"lifecycle/activation.js\", \"lifecycle/composition.js\", \"lib/contracts-v2.js\", \"lib/diagnostics.js\", \"lifecycle/docker.js\", \"lifecycle/external-gateway.js\", \"lib/filesystem-safety.js\", \"capabilities/database/index.js\", \"capabilities/dns/index.js\", \"capabilities/http/nginx/index.js\", \"capabilities/mail/index.js\", \"capabilities/redis/index.js\", \"capabilities/secrets/index.js\", \"capabilities/tls/index.js\", \"lib/index.js\", \"lifecycle/index.js\", \"lifecycle/journal.js\", \"adapters/docker/nginx.js\", \"lib/plan-v2.js\", \"lib/plan.js\", \"lifecycle/preparation.js\", \"lifecycle/recovery.js\", \"lib/rendering.js\", \"adapters/docker/resources.js\", \"capabilities/http/nginx/routes.js\", \"adapters/docker/services.js\", \"lib/spec.js\", \"lib/state-v2.js\", \"lib/state.js\", \"internal/system-tools.js\", \"lifecycle/transitions.js\", \"lib/validation.js\", \"package.json\", \"CHANGELOG.md\", \"PROVENANCE.md\", \"README.md\", \"capabilities/docker/Dockerfile.services\", \"index.d.ts\", \"lifecycle/index.d.ts\"]}; fs.copyFileSync(\"/tmp/il511-evidence-fb4088d6ed625666a577ca5974b11a22/registry-alpha3.tgz\", path.join(base, packed.filename));"
+    },
+    {
+      "original": "require(\"../support/application-inputs\")",
+      "replacement": "require(\"/tmp/il512-b-source/test/support/application-inputs\")"
+    },
+    {
+      "original": "path.join(__dirname, \"consumer-refusals.cjs\")",
+      "replacement": "\"/tmp/il512-b-source/test/application/consumer-refusals.cjs\""
+    },
+    {
+      "original": "[\"install\", \"--offline\", \"--ignore-scripts\", \"--no-audit\", \"--no-fund\", path.join(base, packed.filename)]",
+      "replacement": "[\"install\", \"--offline\", \"--ignore-scripts\", \"--no-audit\", \"--no-fund\", \"--logs-max=0\", \"--userconfig\", \"/tmp/il511-evidence-748e8e933d04235bb96145e1df61febb/npm-user.npmrc\", \"--globalconfig\", \"/tmp/il511-evidence-748e8e933d04235bb96145e1df61febb/npm-global.npmrc\", path.join(base, packed.filename)]"
+    },
+    {
+      "original": "const command = (file, args, options = {}) => execFileSync(trustedExecutable(file), args, { encoding: \"utf8\", stdio: \"pipe\", ...options, env: trustedEnvironment(options.env) });",
+      "replacement": "const command = (file, args, options = {}) => { const executable=trustedExecutable(file), start=process.hrtime.bigint(); console.log(JSON.stringify({command:executable,args,cwd:options.cwd,started_utc:new Date().toISOString()})); const result=execFileSync(executable,args,{encoding:\"utf8\",stdio:\"pipe\",...options,env:trustedEnvironment(options.env)}); console.log(JSON.stringify({command_completed:executable,exit_code:0,duration_ms:Number(process.hrtime.bigint()-start)/1e6})); return result; };"
+    },
+    {
+      "original": "} finally { fs.rmSync(base, { recursive: true, force: true }); }",
+      "replacement": "} finally { fs.rmSync(base, { recursive: true, force: true }); console.log(JSON.stringify({owned_workspace_cleaned:!fs.existsSync(base)})); }"
+    }
+  ],
+  "registry_tarball": "/tmp/il511-evidence-fb4088d6ed625666a577ca5974b11a22/registry-alpha3.tgz",
+  "registry_tarball_sha256": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "source_fixture_only": "Canonical factory produces serialized JSON; installed check.js and consumer-refusals.cjs import only installed public exports and Node built-ins."
+}

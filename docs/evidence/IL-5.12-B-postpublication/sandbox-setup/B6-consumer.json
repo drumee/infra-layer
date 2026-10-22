@@ -1,0 +1,28 @@
+{
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "started_utc": "2026-10-22T16:19:50.919033+00:00",
+  "completed_utc": "2026-10-22T16:19:50.944430+00:00",
+  "environment": {
+    "kernel": "6.1.0-41-amd64",
+    "uid": 1000,
+    "gid": 1000,
+    "node": "/usr/bin/node",
+    "typescript": "/tmp/drumee-il510-types/node_modules/typescript/bin/tsc",
+    "image": "sha256:d44327e37d37c612257822684a870d05d7f90fdae649b2dcbfb8e9f0566e7955",
+    "network": "npm install offline from actual downloaded registry archive",
+    "activation": false
+  },
+  "command": [
+    "/usr/bin/node",
+    "/tmp/il511-evidence-748e8e933d04235bb96145e1df61febb/registry-consumer.js"
+  ],
+  "exit_code": 1,
+  "registry_tarball_sha256": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "base_consumer": null,
+  "additional_consumer": null,
+  "cleanup": {
+    "owned_workspace_cleaned": true
+  },
+  "log_sha256": "e546deabea840b95e8f092968c02c721b44dd05619ded02466d7191f66768918",
+  "result": "FAIL"
+}

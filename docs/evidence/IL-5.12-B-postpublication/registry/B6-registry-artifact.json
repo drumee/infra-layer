@@ -1,0 +1,52 @@
+{
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "verified_utc": "2026-10-22T16:16:32.207249+00:00",
+  "publication_time_registry": "2026-10-22T16:01:12.742Z",
+  "registry_publisher": "somanos",
+  "name": "@drumee/infra-layer",
+  "version": "0.1.0-alpha.3",
+  "registry": "https://registry.npmjs.org/",
+  "tarball_url": "https://registry.npmjs.org/@drumee/infra-layer/-/infra-layer-0.1.0-alpha.3.tgz",
+  "tarball_path": "/tmp/il511-evidence-fb4088d6ed625666a577ca5974b11a22/registry-alpha3.tgz",
+  "tags_before": {
+    "next": "0.1.0-alpha.2",
+    "latest": "0.1.0-alpha.1"
+  },
+  "tags_after": {
+    "latest": "0.1.0-alpha.1",
+    "next": "0.1.0-alpha.3"
+  },
+  "only_next_advanced": true,
+  "latest_unchanged": true,
+  "sha256": "c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e",
+  "integrity": "sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==",
+  "compressed_bytes": 101778,
+  "members": 41,
+  "all_member_bytes_match": true,
+  "archive_bytes_equal_qualified": true,
+  "registry_metadata_matches_source": true,
+  "provenance_attestation": null,
+  "registry_signatures_present": true,
+  "requests": [
+    {
+      "url": "https://registry.npmjs.org/@drumee%2finfra-layer/0.1.0-alpha.3",
+      "http_status": 200,
+      "date_utc": "2026-10-22T16:16:31.091098+00:00",
+      "body_sha256": "c47a822efa05fc48e412fd89060162fe55a50e00e31f294c5ccba0da8a65e6c9"
+    },
+    {
+      "url": "https://registry.npmjs.org/@drumee%2finfra-layer",
+      "http_status": 200,
+      "date_utc": "2026-10-22T16:16:31.697997+00:00",
+      "body_sha256": "c51c8433f6f54a8471469f74ecf68d8d31ecfa664d4db1fc88bbe4520449d421"
+    },
+    {
+      "url": "https://registry.npmjs.org/@drumee/infra-layer/-/infra-layer-0.1.0-alpha.3.tgz",
+      "http_status": 200,
+      "resolved_url": "https://registry.npmjs.org/@drumee/infra-layer/-/infra-layer-0.1.0-alpha.3.tgz",
+      "date_utc": "2026-10-22T16:16:32.195712+00:00"
+    }
+  ],
+  "additional_agent_publish_commands": 0,
+  "result": "REGISTRY_ARTIFACT_VERIFIED_CONSUMER_PENDING"
+}
