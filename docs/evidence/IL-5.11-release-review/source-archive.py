@@ -28,7 +28,9 @@ def git_inventory(root):
         mode, kind, blob = header.decode().split()
         require(kind == 'blob' and mode in ('100644', '100755'), 'UNSUPPORTED_SOURCE_GIT_TYPE')
         size = int(subprocess.check_output(['/usr/bin/git', 'cat-file', '-s', blob], cwd=root))
-        expected[name.decode()] = {'mode': mode, 'blob': blob, 'size': size}
+        content = subprocess.check_output(['/usr/bin/git', 'cat-file', 'blob', blob], cwd=root)
+        require(len(content) == size, 'SOURCE_GIT_OBJECT_SIZE_MISMATCH')
+        expected[name.decode()] = {'mode': mode, 'blob': blob, 'size': size, 'content': content}
     return expected
 
 
@@ -56,6 +58,7 @@ def verify_archive(data, commit, expected):
             with archive.extractfile(member) as stream:
                 content = stream.read(item['size'] + 1)
             require(len(content) == item['size'], 'SOURCE_MEMBER_SIZE_MISMATCH')
+            require(content == item['content'], 'SOURCE_GIT_CONTENT_MISMATCH')
             blob = hashlib.sha1(b'blob ' + str(len(content)).encode() + b'\0' + content).hexdigest()
             require(blob == item['blob'], 'SOURCE_GIT_BLOB_MISMATCH')
             seen[name] = hashlib.sha256(content).hexdigest()
