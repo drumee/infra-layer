@@ -1,0 +1,23 @@
+{
+  "status": "NODEMAILER_SECURITY_QUALIFIED",
+  "timestamp": "2026-10-25T15:59:43.871317+00:00",
+  "executable_source": "e914db67e7b0fec97df89ad1875c18cc984efcd8",
+  "dependency_source": "9e8eb7c",
+  "lock_sha256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+  "version": "10.1.7",
+  "smtp_server": "3.19.24",
+  "nested_nodemailer": "10.1.4",
+  "audits_zero": true,
+  "focused_tests": 4,
+  "unit_tests": 180,
+  "services_tests": 17,
+  "application_groups": 11,
+  "application_assertions": 87,
+  "integrity_negative": "EINTEGRITY/status1",
+  "identical_installed_entries": 5209,
+  "remaining_limitations": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED"
+  ],
+  "publication": false
+}

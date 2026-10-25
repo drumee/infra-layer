@@ -1,0 +1,34 @@
+{
+  "version": "3.19.24",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "nodemailer": "10.1.4",
+    "punycode.js": "2.3.1",
+    "ipv6-normalize": "1.0.1"
+  },
+  "dist": {
+    "shasum": "844b5b1219485cec848c74479e1cc0fc83d3e372",
+    "tarball": "https://registry.npmjs.org/smtp-server/-/smtp-server-3.19.24.tgz",
+    "fileCount": 49,
+    "integrity": "sha512-alzRmwDr5ywR8xo6F2AXqTMWSEjhjC+qB/yHD+zcn2PSEpsJTJ/5O7QdDT4pGVvNNwE+1jhA1ax+hMwleTceWw==",
+    "signatures": [
+      {
+        "sig": "MEYCIQDh4W373glwvMFrqdLf+/JY0nAElM1NDureqCVyGDwglgIhAJrcW+1NDxRZuRw3e+iAv3U4ulRKBAoFEGY4vAQfntq6",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      },
+      {
+        "sig": "MEUCIQDuj/pSCQ2mG3XX1sfYtAYt/t5ambJ9lEPj9dIBcyAb6gIgKmY+SJkz0/vOL6iGLjnh4MpdM4hpZ+9u3AKBHBCnktc=",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      }
+    ],
+    "attestations": {
+      "url": "https://registry.npmjs.org/-/npm/v1/attestations/smtp-server@3.19.24",
+      "provenance": {
+        "predicateType": "https://slsa.dev/provenance/v1"
+      }
+    },
+    "unpackedSize": 485476
+  }
+}

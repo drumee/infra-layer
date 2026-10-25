@@ -1,0 +1,11 @@
+# IL-5.14-C1-S1 version decision
+
+Gate S1-B: PASS. Select exact **nodemailer10.1.7** for the root development client and private application acceptance fixture. Select exact **smtp-server3.19.24**,the smallest evaluated patch whose exact transitive Nodemailer10.1.4 resolves the three advisories. smtp-server3.19.23 still pins vulnerable10.1.2;there is no need to advance to3.21.1 or Nodemailer10.2.x.
+
+Official npm metadata confirms10.1.7,Node>=20,zero declared package dependencies,official registry tarball and SRI `sha512-OQa6FDln5fLttmqSbjDiRYvFDOFNrBqfiOwHPlEbURil3b+vPB1v8xpi+Sp46drzNDlsTnNsS502vthmz56r4w==`. Its independently downloaded archive SHA256 is `b9163453a4bf2643f0f7fe398daeb39c4492e548c55c56b2517aec616d2a64cb`;computed SHA512 matches registry and lock. Node22.22.0 satisfies the engine. smtp-server3.19.24 and nested Nodemailer10.1.4 also require Node>=20 and retain official SHA512 integrity references.
+
+The [official10.1.7 release](https://github.com/nodemailer/nodemailer/releases/tag/v10.1.7) and archived changelog show the relevant intervening work:bounded per-message processing/authentication endpoint restrictions in10.1.2,reference/stream handling in10.1.3,address parser correctness/depth bounds in10.1.4,parser allocation/group handling in10.1.5–6 and MIME encoded-word parameter handling in10.1.7. Transport and SMTP contract compatibility must therefore be demonstrated,not assumed from the patch version.
+
+Focused tests cover all three recipient examples,MIME/envelope generation,DKIM signing,real STARTTLS with strict CA/hostname verification,authentication and refusal,pooled connection reuse,partial/all-recipient failures,greeting timeout and connection cleanup. Existing real Postfix/OpenDKIM/service and application scenarios remain mandatory before S1-E can pass. No address validation,TLS/auth/relay restriction is relaxed.
+
+Root lock changes are limited to the root pins,nodemailer,smtp-server and its newly nested Nodemailer10.1.4. All other package records are unchanged. The private fixture changes only its Nodemailer pin/resolution. The published Infra runtime still has no production dependency graph change. No override,audit exception,floating version or force-fix is introduced.
