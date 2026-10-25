@@ -1,5 +1,5 @@
 "use strict";
-const strict = require("node:assert/strict"), crypto = require("node:crypto"), path = require("node:path"), { spawnSync, execFileSync } = require("node:child_process");
+const strict = require("node:assert/strict"), crypto = require("node:crypto"), { spawnSync, execFileSync } = require("node:child_process");
 const diagnostic = require("../support/qualification-diagnostic.cjs").createDiagnostics({ scenario: "optional-container-health" }); diagnostic.observeDocker();
 const D = require("../../lifecycle/docker"), T = require("../../internal/system-tools"), Q = require("../support/trusted-process");
 let assertions = 0; const assert = new Proxy(strict, { get(target, key) { const value = target[key]; return typeof value === "function" ? (...args) => { assertions++; return value(...args); } : value; } });
