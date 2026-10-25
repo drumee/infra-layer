@@ -1,0 +1,769 @@
+{
+  "sourceRevision": "d4be9edadc60cb70ea8d4236297dedd5052ccb0d",
+  "current": [
+    {
+      "file": "adapters/docker/nginx.js",
+      "line": 4,
+      "column": 11,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'spec' is assigned a value but never used."
+    },
+    {
+      "file": "capabilities/database/index.js",
+      "line": 2,
+      "column": 7,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'S' is assigned a value but never used."
+    },
+    {
+      "file": "capabilities/dns/index.js",
+      "line": 22,
+      "column": 76,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/redis/index.js",
+      "line": 26,
+      "column": 75,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/secrets/index.js",
+      "line": 17,
+      "column": 520,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/secrets/index.js",
+      "line": 18,
+      "column": 14,
+      "rule": "no-control-regex",
+      "severity": 1,
+      "message": "Unexpected control character(s) in regular expression: \\x00, \\x1f."
+    },
+    {
+      "file": "capabilities/secrets/index.js",
+      "line": 70,
+      "column": 145,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lib/plan-v2.js",
+      "line": 3,
+      "column": 25,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'cidr' is assigned a value but never used."
+    },
+    {
+      "file": "lib/plan-v2.js",
+      "line": 58,
+      "column": 112,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lib/rendering.js",
+      "line": 67,
+      "column": 64,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/activation.js",
+      "line": 5,
+      "column": 7,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'crypto' is assigned a value but never used."
+    },
+    {
+      "file": "lifecycle/activation.js",
+      "line": 26,
+      "column": 65,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/composition.js",
+      "line": 9,
+      "column": 155,
+      "rule": "no-control-regex",
+      "severity": 1,
+      "message": "Unexpected control character(s) in regular expression: \\x00."
+    },
+    {
+      "file": "lifecycle/composition.js",
+      "line": 41,
+      "column": 254,
+      "rule": "no-control-regex",
+      "severity": 1,
+      "message": "Unexpected control character(s) in regular expression: \\x00."
+    },
+    {
+      "file": "lifecycle/composition.js",
+      "line": 120,
+      "column": 15,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'name' is assigned a value but never used."
+    },
+    {
+      "file": "lifecycle/external-gateway.js",
+      "line": 42,
+      "column": 96,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/external-gateway.js",
+      "line": 42,
+      "column": 99,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "lifecycle/journal.js",
+      "line": 12,
+      "column": 95,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/preparation.js",
+      "line": 15,
+      "column": 90,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/preparation.js",
+      "line": 21,
+      "column": 82,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 12,
+      "column": 108,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 15,
+      "column": 180,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 54,
+      "column": 168,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 84,
+      "column": 73,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 89,
+      "column": 69,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/application/run.js",
+      "line": 7,
+      "column": 7,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'api' is assigned a value but never used."
+    },
+    {
+      "file": "test/application/run.js",
+      "line": 11,
+      "column": 535,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/application/run.js",
+      "line": 11,
+      "column": 538,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "test/unit/composition.test.js",
+      "line": 25,
+      "column": 41,
+      "rule": "getter-return",
+      "severity": 1,
+      "message": "Expected to return a value in getter 'contract_version'."
+    }
+  ],
+  "newFindings": [
+    {
+      "file": "lifecycle/activation.js",
+      "line": 26,
+      "column": 65,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    }
+  ],
+  "baseline": [
+    {
+      "file": "adapters/docker/nginx.js",
+      "line": 4,
+      "column": 11,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'spec' is assigned a value but never used."
+    },
+    {
+      "file": "adapters/docker/nginx.js",
+      "line": 75,
+      "column": 14,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "adapters/docker/services.js",
+      "line": 22,
+      "column": 14,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "adapters/docker/services.js",
+      "line": 28,
+      "column": 118,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "adapters/docker/services.js",
+      "line": 55,
+      "column": 14,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/database/index.js",
+      "line": 2,
+      "column": 7,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'S' is assigned a value but never used."
+    },
+    {
+      "file": "capabilities/dns/index.js",
+      "line": 22,
+      "column": 76,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/redis/index.js",
+      "line": 26,
+      "column": 75,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/secrets/index.js",
+      "line": 17,
+      "column": 520,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/secrets/index.js",
+      "line": 18,
+      "column": 14,
+      "rule": "no-control-regex",
+      "severity": 1,
+      "message": "Unexpected control character(s) in regular expression: \\x00, \\x1f."
+    },
+    {
+      "file": "capabilities/secrets/index.js",
+      "line": 70,
+      "column": 145,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/acme.js",
+      "line": 15,
+      "column": 143,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/acme.js",
+      "line": 22,
+      "column": 150,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/acme.js",
+      "line": 37,
+      "column": 360,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/acme.js",
+      "line": 50,
+      "column": 73,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/acme.js",
+      "line": 52,
+      "column": 79,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/acme.js",
+      "line": 63,
+      "column": 219,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/index.js",
+      "line": 9,
+      "column": 146,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/index.js",
+      "line": 14,
+      "column": 106,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/index.js",
+      "line": 18,
+      "column": 90,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/index.js",
+      "line": 19,
+      "column": 250,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/index.js",
+      "line": 30,
+      "column": 72,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/index.js",
+      "line": 60,
+      "column": 76,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/index.js",
+      "line": 62,
+      "column": 63,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/tls/index.js",
+      "line": 88,
+      "column": 108,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lib/plan-v2.js",
+      "line": 3,
+      "column": 25,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'cidr' is assigned a value but never used."
+    },
+    {
+      "file": "lib/plan-v2.js",
+      "line": 58,
+      "column": 112,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lib/rendering.js",
+      "line": 67,
+      "column": 64,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/activation.js",
+      "line": 5,
+      "column": 7,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'crypto' is assigned a value but never used."
+    },
+    {
+      "file": "lifecycle/activation.js",
+      "line": 13,
+      "column": 65,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/composition.js",
+      "line": 9,
+      "column": 155,
+      "rule": "no-control-regex",
+      "severity": 1,
+      "message": "Unexpected control character(s) in regular expression: \\x00."
+    },
+    {
+      "file": "lifecycle/composition.js",
+      "line": 41,
+      "column": 254,
+      "rule": "no-control-regex",
+      "severity": 1,
+      "message": "Unexpected control character(s) in regular expression: \\x00."
+    },
+    {
+      "file": "lifecycle/composition.js",
+      "line": 120,
+      "column": 15,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'name' is assigned a value but never used."
+    },
+    {
+      "file": "lifecycle/docker.js",
+      "line": 9,
+      "column": 10,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/docker.js",
+      "line": 34,
+      "column": 163,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/docker.js",
+      "line": 49,
+      "column": 129,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/external-gateway.js",
+      "line": 42,
+      "column": 96,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/external-gateway.js",
+      "line": 42,
+      "column": 99,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "lifecycle/journal.js",
+      "line": 12,
+      "column": 95,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/preparation.js",
+      "line": 15,
+      "column": 90,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/preparation.js",
+      "line": 21,
+      "column": 82,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/recovery.js",
+      "line": 69,
+      "column": 100,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 12,
+      "column": 108,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 15,
+      "column": 180,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 54,
+      "column": 168,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 84,
+      "column": 73,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 89,
+      "column": 69,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/application/run.js",
+      "line": 7,
+      "column": 7,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'api' is assigned a value but never used."
+    },
+    {
+      "file": "test/application/run.js",
+      "line": 11,
+      "column": 535,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/application/run.js",
+      "line": 11,
+      "column": 538,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "test/integration/gateway.test.js",
+      "line": 231,
+      "column": 129,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/integration/gateway.test.js",
+      "line": 231,
+      "column": 132,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "test/integration/gateway.test.js",
+      "line": 235,
+      "column": 129,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/integration/gateway.test.js",
+      "line": 235,
+      "column": 132,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "test/lifecycle/run.js",
+      "line": 43,
+      "column": 100,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/lifecycle/run.js",
+      "line": 43,
+      "column": 103,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "test/lifecycle/run.js",
+      "line": 44,
+      "column": 375,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/lifecycle/run.js",
+      "line": 44,
+      "column": 378,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "test/lifecycle/tracing-driver.js",
+      "line": 7,
+      "column": 405,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/lifecycle/tracing-driver.js",
+      "line": 7,
+      "column": 407,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "test/services/services.test.js",
+      "line": 25,
+      "column": 151,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/services/services.test.js",
+      "line": 25,
+      "column": 154,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "test/services/services.test.js",
+      "line": 32,
+      "column": 317,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/services/services.test.js",
+      "line": 32,
+      "column": 368,
+      "rule": "preserve-caught-error",
+      "severity": 1,
+      "message": "There is no `cause` attached to the symptom error being thrown."
+    },
+    {
+      "file": "test/unit/composition.test.js",
+      "line": 25,
+      "column": 41,
+      "rule": "getter-return",
+      "severity": 1,
+      "message": "Expected to return a value in getter 'contract_version'."
+    }
+  ]
+}
