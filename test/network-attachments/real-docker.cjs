@@ -21,10 +21,12 @@ async function validate(composition, pending) {
   });
 }
 async function start(id) {
+  diagnostic.event("docker-spawn-start", { command: ["/usr/bin/docker", "--host", "unix:///var/run/docker.sock", "start", id] });
   const result = await new Promise((resolve, reject) => {
     const child = spawn(T.resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", "start", id], { env: T.systemEnvironment("docker"), stdio: ["ignore", "pipe", "pipe"] });
-    let stderr = ""; child.stdout.resume(); child.stderr.on("data", bytes => { stderr += bytes; }); child.on("error", reject); child.on("exit", (status, signal) => resolve({ status, signal, stderr }));
+    let stdout = "", stderr = ""; child.stdout.on("data", bytes => { stdout = (stdout + bytes).slice(-4096); }); child.stderr.on("data", bytes => { stderr += bytes; }); child.on("error", reject); child.on("exit", (status, signal) => resolve({ status, signal, stdout, stderr }));
   });
+  diagnostic.event("docker-spawn-result", { command: ["start", id], ...result });
   records.push({ args: ["start", id], exit_status: result.status, signal: result.signal }); assert.equal(result.status, 0, result.stderr); assert.equal(result.signal, null);
 }
 diagnostic.run(async () => {
