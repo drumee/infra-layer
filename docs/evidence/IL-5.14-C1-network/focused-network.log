@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+ok 1 - E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+  ---
+  duration_ms: 9.735639
+  type: 'test'
+  ...
+# Subtest: E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+ok 2 - E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+  ---
+  duration_ms: 2.363122
+  type: 'test'
+  ...
+# Subtest: E3 missing referenced container remains a failure with original nonzero status
+ok 3 - E3 missing referenced container remains a failure with original nonzero status
+  ---
+  duration_ms: 2.128277
+  type: 'test'
+  ...
+# Subtest: E4 endpoint outside the declared namespace is explicitly unexpected
+ok 4 - E4 endpoint outside the declared namespace is explicitly unexpected
+  ---
+  duration_ms: 2.20146
+  type: 'test'
+  ...
+# Subtest: E5 unsettled endpoint cannot mask a foreign container or network
+ok 5 - E5 unsettled endpoint cannot mask a foreign container or network
+  ---
+  duration_ms: 2.511163
+  type: 'test'
+  ...
+# Subtest: E6 malformed endpoint metadata and inconsistent keys fail explicitly
+ok 6 - E6 malformed endpoint metadata and inconsistent keys fail explicitly
+  ---
+  duration_ms: 6.181212
+  type: 'test'
+  ...
+# Subtest: E7 genuine Docker failure escapes once without exposing raw diagnostics
+ok 7 - E7 genuine Docker failure escapes once without exposing raw diagnostics
+  ---
+  duration_ms: 1.581123
+  type: 'test'
+  ...
+# Subtest: E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+ok 8 - E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+  ---
+  duration_ms: 1.224513
+  type: 'test'
+  ...
+# Subtest: network object identity, isolation and actual membership cannot be substituted
+ok 9 - network object identity, isolation and actual membership cannot be substituted
+  ---
+  duration_ms: 9.15538
+  type: 'test'
+  ...
+# Subtest: E12 stale container identity and invalid object keys are rejected without fallback
+ok 10 - E12 stale container identity and invalid object keys are rejected without fallback
+  ---
+  duration_ms: 3.308693
+  type: 'test'
+  ...
+# Subtest: E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+ok 11 - E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+  ---
+  duration_ms: 7.564236
+  type: 'test'
+  ...
+# Subtest: unsettled deadline refuses permanently unresolved attachment and retains metadata
+ok 12 - unsettled deadline refuses permanently unresolved attachment and retains metadata
+  ---
+  duration_ms: 1.292655
+  type: 'test'
+  ...
+# Subtest: readiness never retries command failures, missing objects or ownership refusals
+ok 13 - readiness never retries command failures, missing objects or ownership refusals
+  ---
+  duration_ms: 3.940208
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 102.933306
