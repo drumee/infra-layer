@@ -53,7 +53,7 @@ function createDiagnostics({ directory = process.env.IL514_DIAGNOSTIC_DIR, scena
       if (Array.isArray(value)) { const items = value.slice(0, 24).map(item => visit(item, depth + 1)); if (value.length > 24) items.push({ omitted_items: value.length - 24 }); return items; }
       const names = value instanceof Error ? ["name", "code", "message", "operator", "stack", "exitCode", "exit_status", "signal", "actual", "expected", "cause", "command", "stdout", "stderr"] : Object.keys(value).slice(0, 24);
       const result = {};
-      for (const name of names) { const item = property(value, name); if (item !== undefined) result[text(name)] = visit(item, depth + 1, name); }
+      for (const name of names) { const item = property(value, name); if (item !== undefined || Object.hasOwn(value, name)) result[text(name)] = visit(item, depth + 1, name); }
       return result;
     }
     try { return visit(input); } catch { return "[Unserializable]"; }
@@ -123,6 +123,7 @@ function createDiagnostics({ directory = process.env.IL514_DIAGNOSTIC_DIR, scena
     const stack = property(error, "stack");
     primary.assertion = typeof stack === "string" ? stack.split("\n").find(line => /^\s*at /.test(line) && !line.includes("node:internal")) : undefined;
     const report = { timestamp: new Date().toISOString(), scenario: identity, step, assertion: primary.assertion, sourceRevision, execution: { cwd: process.cwd(), uid: process.getuid(), gid: process.getgid(), node: process.version }, name: property(error, "name"), code: property(error, "code"), error, recentCommands: [...recent].reverse(), context, traceRecords: Math.min(traceCount, 512), traceTruncated: traceCount > 512 };
+    if (report.code === undefined) delete report.code;
     try { primary.file = write("failure.json", report); }
     catch (diagnosticError) { primary.artifactError = text(property(diagnosticError, "code") || property(diagnosticError, "message")); }
   }
