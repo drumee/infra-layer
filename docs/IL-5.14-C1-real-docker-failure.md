@@ -1,3 +1,9 @@
+# D1 follow-up (2026-10-25)
+
+The original failure below is preserved. The authorized single instrumented reproduction captured an optional Health-field template failure, and the minimal correction subsequently passed two independent real cycles. Final parent qualification stopped at lint. [D1 reproduction and correction](IL-5.14-C1-D1-docker-reproduction.md), [current decision](IL-5.14-C1-final-decision.md).
+
+---
+
 # IL-5.14-C1 real Docker qualification stop
 
 **FAILED_QUALIFICATION. S1 remains NODEMAILER_SECURITY_QUALIFIED.** The first real network qualification attempt exits1 with ERR_ASSERTION. It is not retried. No full parent regression, package qualification, final audit, push or PR follows.

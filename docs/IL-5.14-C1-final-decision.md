@@ -1,3 +1,71 @@
+# IL-5.14-C1-D1 current canonical decision
+
+**FAILED_QUALIFICATION. CANONICAL_FIX_READY_FOR_REVIEW is not reached.** Assertion diagnostics and the captured functional defect are corrected; focused real Docker qualification passes. The remaining mandatory parent qualification stops at the canonical lint gate. No branch push, PR, publication, tag, merge or deployment occurred.
+
+## Source and environment
+
+Preserved checkpoint: `703b637425487286632e741045a1b96591e90c62`. Branch: `fix/il514-c1-network-attachment-identity`. Diagnostic source for the single instrumented reproduction: `62fbaec7e4a60a1f55ce5a61989e67fb79e1bcd6`. Functional correction and successful real Docker source: `eefc58803ad02823927c229ed2d49f91a5fb726f`. Final executable source: `d4be9edadc60cb70ea8d4236297dedd5052ccb0d`; subsequent commits contain documentation/evidence only. No unrelated working-tree changes existed or were overwritten.
+
+Debian 12 amd64, normal UID/GID 1000:1000, Node 22.22.0, npm 11.18.0, Docker client/server 29.2.0, fixed socket unix:///var/run/docker.sock. Every command receipt preserves /etc/docker snapshots unchanged. [Execution ledger with exact commands, UTC timestamps, exit codes and hashes](evidence/IL-5.14-C1-D1/execution.jsonl), [evidence manifest](evidence/IL-5.14-C1-D1/files-sha256.json).
+
+## Verified correction and impact
+
+The original terminal catch printed ERR_ASSERTION and discarded message, actual/expected and stack. The test-only reporter now captures the first error before cleanup, handles non-enumerable Error fields and nested causes, bounds output, redacts secrets and retains failed process status. Controlled tests exercise the actual reporting path, not only a formatter. [Diagnostic forensics](IL-5.14-C1-D1-error-propagation-diagnostic.md), [contract](IL-5.14-C1-D1-diagnostic-contract.md), [13-test qualification](IL-5.14-C1-D1-diagnostic-regressions.md).
+
+The single authorized reproduction fails with complete diagnostics at the unchanged foreign-resource assertion: expected NETWORK_OWNERSHIP_MISMATCH, actual DOCKER_LIFECYCLE_COMMAND_FAILED. A container without HEALTHCHECK lacks State.Health; the shared Docker template's `.State.Health` guard itself fails before ownership labels are read. Docker's stderr identifies the exact missing map key. Commit eefc588 uses `index .State "Health"` as the optional-field guard, retaining the existing unknown result and all ownership/refusal assertions. A real before/after control proves the old template fails and the new template preserves unknown plus ownership refusal. [Causal evidence and successful acceptance](IL-5.14-C1-D1-docker-reproduction.md).
+
+The common inspection template affects inspectProject and checkNetworks, so services/lifecycle/application requalification is mandatory. Successful focused network acceptance is not substituted for those suites. Commit d4be9ed removes the existing --no-sandbox flag from the canonical gateway browser test and removes one unused import in the supplemental regression. This does not alter the successful network scenario or production source; the changed gateway launch has not yet been exercised and remains unqualified. No production dependency, public export, declaration or published artifact changed in D1.
+
+## Mandatory lint blocker
+
+`npm run lint` at d4be9ed, 2026-10-25T23:12:37.739016–23:12:39.736585 UTC, exit 1. Exact scanner result: **0 errors, 29 visible warnings, 65 baseline entries, 1 new finding**. The diagnostic is `lifecycle/activation.js:26:65`, no-unused-vars: `'_' is defined but never used.`
+
+The baseline already contains the same message/rule/column at line 13. The network correction inserted readiness code above this catch, moving it to line 26. The scanner compares file/line/column as well as rule/message, so this pre-existing warning is now an unmatched entry. This explains the gate failure; it does not authorize relabeling it PASS or weakening the scanner. The baseline, rule configuration, file scope and command remain unchanged. [Complete mandatory output](evidence/IL-5.14-C1-D1/final-lint.log), [current/baseline machine inventory](evidence/IL-5.14-C1-D1/lint-diagnostic-inventory.json).
+
+Actionable next prerequisite: resolve the unused catch binding directly under its existing interpreter/behavior contract, then explicitly resume canonical lint and the unexecuted parent suites. Do not add an ignore, suppress the warning or merely remove it from the analyzed scope. No correction or retry was made after the mandatory stop.
+
+## Qualification matrix
+
+| Gate/area | Status | Source, actual command/results and evidence |
+|---|---|---|
+| S1 dependency security | PASS, historical | e914db67 / ea22f46; Nodemailer 10.1.7, smtp-server 3.19.24 with nested Nodemailer 10.1.4; original full/production/fixture audits zero findings; 180 unit, 17 services, 87 application assertions; [S1 decision](IL-5.14-C1-S1-final-decision.md) |
+| C1 original identity diagnosis | PASS | c218811 / ad3fd8c; original endpoint-as-container defect reproduced; network contract and correction preserved |
+| D1-A diagnostic forensics | PASS | 703b637 baseline, historical raw log SHA retained; code-only terminal reporting loss established |
+| D1-B diagnostic contract | PASS | 939fc5b through 62fbaec; explicit bounded, secret-safe Error/AssertionError reporting |
+| D1-C harness correction | PASS | 62fbaec; same assertions, commands/order, status, cleanup and timeouts; actual-source AST comparison passes |
+| D1-D diagnostic regressions | PASS | 62fbaec, `node --test test/unit/qualification-diagnostic.test.js`, exit 0, 13 tests; also included in final 206 unit tests |
+| D1-E single reproduction | PASS for causal evidence | 62fbaec, original real scenario exit 1 intentionally retained, assertion and Docker stderr captured; one uncorrected attempt only |
+| D1-F causal correction | PASS for implementation/focused proof | eefc588, `node test/network-attachments/container-health.cjs`, exit 0, 15 assertions, historical-template failure plus corrected behavior and refusal |
+| D1-G network regressions | PASS | eefc588, `node --test test/unit/network-attachments.test.js`, exit 0, all 13 tests, no skips |
+| D1-G real Docker | PASS | eefc588, `node test/network-attachments/real-docker.cjs`, exit 0, 2 complete independent cycles, 40 counted assertions plus direct startup checks, Redis recovery/refusal/cleanup PASS; explicit command records 240 |
+| D1-H unit | PASS | d4be9ed, `npm test`, exit 0, 206 passed, zero failed/skipped; [log](evidence/IL-5.14-C1-D1/final-unit.log) |
+| D1-H contracts | PASS | d4be9ed, `npm run test:contracts`, exit 0, 24 passed, zero failed/skipped; [log](evidence/IL-5.14-C1-D1/final-contracts.log) |
+| D1-H canonical lint | FAIL | d4be9ed, `npm run lint`, exit 1, 0 errors/29 warnings/1 exact-baseline mismatch |
+| D1-H services/gateway/full lifecycle/application | NOT_EXECUTED against final source | Mandatory stop; S1 real service/application passes do not qualify modified production inspection code |
+| D1-H trusted-tools/security/filesystem checks | NOT_EXECUTED against final source | Full security qualification remains open; focused ownership and genuine Docker error controls passed but do not replace these suites |
+| D1-H final dependency audits | NOT_EXECUTED | Historical S1 zero-finding audits retained; no current-date audit PASS claimed |
+| D1-H package/consumer/types/candidate | NOT_EXECUTED | No corrected archive built, no new version selected or published |
+| D1-H overall parent qualification | FAIL | Mandatory local lint gate fails and other required suites remain unexecuted |
+| D1-I final decision | FAIL | Review-readiness requirements unmet; this evidence-based stopped decision is complete |
+| Hosted CI | NOT_EXECUTED | No push/PR; no hosted PASS claim |
+| Reviewable PR | NOT_EXECUTED | All required local gates must pass first |
+
+## Artifact identities and remaining limits
+
+Published alpha.3 remains immutable: source `c218811effc83da25cf71a914e27accc96101329`, 41 members, 101778 bytes, SHA256 `c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e`, SRI `sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==`. No tarball replacement or publication occurred.
+
+Root package-lock SHA256 remains `29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3`; installed dependency readback matches the qualified S1 5209-entry identity. Real Redis image: `redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf`, actual linux/amd64 image ID `sha256:5509c0097c6064aa8a3b1df58f1d950e67090fffa6678ae8f3f1dc2385f12deb`. No packaging input changed.
+
+The successful bounded diagnostic trace reaches its 512-record cap during cycle 2; complete success stdout separately retains both cycle outcomes, identities, cleanup and 240 explicit harness commands. No complete unbounded command trace is claimed. The failed reproduction trace and focused causal trace are complete. Sandbox-less timing remains daemon-dependent; the deterministic source fixtures exercise the typed endpoint refusal, and the real runs qualify ordinary lifecycle behavior.
+
+[Final readback](evidence/IL-5.14-C1-D1/final-readback.json) finds no remaining D1 network/health resources and confirms protected Docker configuration unchanged. Cleanup only removes independently marked mission-owned fixtures. Debian, Server Runtime and Oxy-form remain untouched.
+
+Historical C1 ERR_ASSERTION evidence and the permanently failed Debian H3 campaign are preserved. The D1 causal condition is not equated with the separate H1 incident. **H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED** and **SMTP_RECOVERY_UNQUALIFIED** remain. Internet mail delivery or spool recovery is not qualified.
+
+---
+
+## Previous C1/S1 decisions (preserved verbatim)
+
 # IL-5.14-C1 resumed decision evidence
 
 **Overall FAILED_QUALIFICATION. Intermediate NODEMAILER_SECURITY_QUALIFIED remains valid.** No CANONICAL_FIX_READY_FOR_REVIEW status, push or PR is claimed.

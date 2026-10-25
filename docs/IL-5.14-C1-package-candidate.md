@@ -1,3 +1,9 @@
+# D1 package disposition (2026-10-25)
+
+NOT_EXECUTED. D1 real network acceptance passes, but canonical lint then fails. Package qualification, consumer/type checks and candidate version selection were not executed after that mandatory stop. No package was published or alpha.3 artifact changed. [Current evidence matrix](IL-5.14-C1-final-decision.md).
+
+---
+
 # IL-5.14-C1 resumed package disposition
 
 **Package candidate qualification: NOT_EXECUTED after the required real Docker failure.** S1 is qualified and the canonical network correction exists locally, but its real acceptance failed; therefore no candidate pack, consumer install, type/export compatibility test or release-version selection follows.
