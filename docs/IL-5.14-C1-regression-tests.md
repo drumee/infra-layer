@@ -1,3 +1,17 @@
+# IL-5.14-C1 resumed regression disposition
+
+**FAILED_QUALIFICATION at real Docker acceptance.** S1 is NODEMAILER_SECURITY_QUALIFIED. The original alpha.3 reproduction was reconfirmed after S1, then the canonical correction was implemented at ad3fd8c7ef765f3718e6e06154b9fdd44786ed22.
+
+`node --test test/unit/network-attachments.test.js` passes 13 focused tests, exit 0/no skips. Actual-code fixtures cover normal identity/membership, unsettled endpoint metadata without container inspection, missing objects, foreign ownership, invalid data, Docker nonzero diagnostics, required-vs-creation network absence, stale identities, bounded resolution/deadline and immediate refusal without retry. The original reproduction remains unchanged and continues loading historical c218811 source directly.
+
+The next required command,`node test/network-attachments/real-docker.cjs`, exits1 on its first attempt at source de5e260ed69fd875d12e7782e8a7335879f239b7. Its log retains only ERR_ASSERTION; the exact assertion and total count were not persisted. No real cycle is counted PASS. The second planned cycle and later canonical suites are NOT_EXECUTED. No retry follows. Readback confirms owned cleanup and protected Docker state is unchanged.
+
+S1's 180 unit tests, 17 real services and 11 application groups/87 assertions qualify the dependency update at e914db67, not the materially changed network behavior. Full current lifecycle, application, trusted-tool, package and lint qualification remains outstanding. [Detailed failure](IL-5.14-C1-real-docker-failure.md), [focused results](evidence/IL-5.14-C1-network/focused-network.log), [execution ledger](evidence/IL-5.14-C1-network/execution.jsonl).
+
+---
+
+## Original pre-S1 disposition (preserved verbatim)
+
 # IL-5.14-C1 regression disposition
 
 **Gate E: NOT_EXECUTED. No corrected implementation is qualified.**

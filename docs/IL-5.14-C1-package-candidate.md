@@ -1,3 +1,15 @@
+# IL-5.14-C1 resumed package disposition
+
+**Package candidate qualification: NOT_EXECUTED after the required real Docker failure.** S1 is qualified and the canonical network correction exists locally, but its real acceptance failed; therefore no candidate pack, consumer install, type/export compatibility test or release-version selection follows.
+
+The repository version remains0.1.0-alpha.3. No existing alpha.3 archive is overwritten, modified or republished. No prerelease availability/approval is assumed. Production APIs/type files and package files allowlist remain unchanged in source; this is not a claim that current package/API qualification ran. The root development mail graph and private application acceptance fixture are changed and qualified by S1. Runtime and Oxy-form are untouched.
+
+[Current failure and prerequisites](IL-5.14-C1-real-docker-failure.md), [S1 immutable graph/identity evidence](IL-5.14-C1-S1-final-decision.md), [overall final decision](IL-5.14-C1-final-decision.md).
+
+---
+
+## Original pre-S1 disposition (preserved verbatim)
+
 # IL-5.14-C1 package candidate disposition
 
 **Gate H: NOT_EXECUTED. No corrected local package candidate was built.**
