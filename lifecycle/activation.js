@@ -23,7 +23,7 @@ async function networksReady(composition, driver, require_existing) {
 }
 function readActive(root) {
   const file = path.join(root, "active.json"); if (!fs.existsSync(file)) return null;
-  let active; try { active = JSON.parse(F.read(file)); } catch (_) { F.fail("ACTIVE_STATE_CORRUPTED"); }
+  let active; try { active = JSON.parse(F.read(file)); } catch { F.fail("ACTIVE_STATE_CORRUPTED"); }
   if (!S.plainTree(active) || !/^[a-f0-9]{64}$/.test(active.revision || "") || active.attestation_digest !== S.digest(active.attestation)) F.fail("ACTIVE_STATE_CORRUPTED");
   const event = J.readJournal(root).find((value) => value.sequence === active.journal_sequence);
   if (!event || event.phase !== "active" || event.revision !== active.revision || event.details.attestation_digest !== active.attestation_digest) F.fail("ACTIVE_STATE_UNATTESTED"); return active;
