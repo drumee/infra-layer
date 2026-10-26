@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-10-25T11:40:47.429125+00:00",
+  "status": "BLOCKED_SECURITY",
+  "reproduction_commit": "3da56c9",
+  "source": "c218811effc83da25cf71a914e27accc96101329",
+  "mandatory_audit_exit": 1,
+  "vulnerable_package_entries": 2,
+  "distinct_advisories": 3,
+  "severity": "moderate",
+  "high": 0,
+  "critical": 0,
+  "scope": "development dependency graph; no production dependencies declared",
+  "production_changes": false,
+  "lock_changes": false,
+  "real_docker_executions": 0,
+  "push": false,
+  "pull_request": false,
+  "debian_modified": false
+}

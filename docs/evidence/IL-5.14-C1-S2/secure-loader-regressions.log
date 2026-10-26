@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+ok 1 - E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+  ---
+  duration_ms: 9.436049
+  type: 'test'
+  ...
+# Subtest: E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+ok 2 - E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+  ---
+  duration_ms: 2.490109
+  type: 'test'
+  ...
+# Subtest: E3 missing referenced container remains a failure with original nonzero status
+ok 3 - E3 missing referenced container remains a failure with original nonzero status
+  ---
+  duration_ms: 1.393798
+  type: 'test'
+  ...
+# Subtest: E4 endpoint outside the declared namespace is explicitly unexpected
+ok 4 - E4 endpoint outside the declared namespace is explicitly unexpected
+  ---
+  duration_ms: 1.768044
+  type: 'test'
+  ...
+# Subtest: E5 unsettled endpoint cannot mask a foreign container or network
+ok 5 - E5 unsettled endpoint cannot mask a foreign container or network
+  ---
+  duration_ms: 1.924953
+  type: 'test'
+  ...
+# Subtest: E6 malformed endpoint metadata and inconsistent keys fail explicitly
+ok 6 - E6 malformed endpoint metadata and inconsistent keys fail explicitly
+  ---
+  duration_ms: 4.337524
+  type: 'test'
+  ...
+# Subtest: E7 genuine Docker failure escapes once without exposing raw diagnostics
+ok 7 - E7 genuine Docker failure escapes once without exposing raw diagnostics
+  ---
+  duration_ms: 1.288665
+  type: 'test'
+  ...
+# Subtest: E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+ok 8 - E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+  ---
+  duration_ms: 0.935153
+  type: 'test'
+  ...
+# Subtest: network object identity, isolation and actual membership cannot be substituted
+ok 9 - network object identity, isolation and actual membership cannot be substituted
+  ---
+  duration_ms: 5.856563
+  type: 'test'
+  ...
+# Subtest: E12 stale container identity and invalid object keys are rejected without fallback
+ok 10 - E12 stale container identity and invalid object keys are rejected without fallback
+  ---
+  duration_ms: 1.884302
+  type: 'test'
+  ...
+# Subtest: E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+ok 11 - E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+  ---
+  duration_ms: 3.719239
+  type: 'test'
+  ...
+# Subtest: unsettled deadline refuses permanently unresolved attachment and retains metadata
+ok 12 - unsettled deadline refuses permanently unresolved attachment and retains metadata
+  ---
+  duration_ms: 0.613485
+  type: 'test'
+  ...
+# Subtest: readiness never retries command failures, missing objects or ownership refusals
+ok 13 - readiness never retries command failures, missing objects or ownership refusals
+  ---
+  duration_ms: 0.349398
+  type: 'test'
+  ...
+# Subtest: secure loader loads only the actual canonical module and restores builtin/cache state
+ok 14 - secure loader loads only the actual canonical module and restores builtin/cache state
+  ---
+  duration_ms: 5.102709
+  type: 'test'
+  ...
+# Subtest: source strings, filenames, alternate source and invalid executors fail before substitution
+ok 15 - source strings, filenames, alternate source and invalid executors fail before substitution
+  ---
+  duration_ms: 0.436474
+  type: 'test'
+  ...
+# Subtest: separate module instances retain only their own command fixture and never fall back
+ok 16 - separate module instances retain only their own command fixture and never fall back
+  ---
+  duration_ms: 2.425221
+  type: 'test'
+  ...
+# Subtest: historical regression pins real alpha.3 source and fixture without executing either
+ok 17 - historical regression pins real alpha.3 source and fixture without executing either
+  ---
+  duration_ms: 30.574723
+  type: 'test'
+  ...
+# Subtest: historical source/fixture bytes and metadata reject substitution before parsing
+ok 18 - historical source/fixture bytes and metadata reject substitution before parsing
+  ---
+  duration_ms: 2.892315
+  type: 'test'
+  ...
+# Subtest: historical CLI preserves the invalid-object negative proof and rejects extra input nonzero
+ok 19 - historical CLI preserves the invalid-object negative proof and rejects extra input nonzero
+  ---
+  duration_ms: 104.979924
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 200.514656

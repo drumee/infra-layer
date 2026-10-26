@@ -1,0 +1,78 @@
+
+> @drumee/infra-layer@0.1.0-alpha.3 test:application
+> node test/application/run.js
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 272B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/5] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 3.65MB 0.1s done
+#5 DONE 0.1s
+
+#6 [3/5] COPY node_modules ./node_modules
+#6 CACHED
+
+#7 [4/5] COPY host.js health.js ./
+#7 CACHED
+
+#8 [2/5] WORKDIR /app
+#8 CACHED
+
+#9 [5/5] COPY plugins ./plugins
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers done
+#10 writing image sha256:803a5c5f872236e46229bd185a27999ff4bb0a1c25fa4ea4947c71bd42f4ae45 0.0s done
+#10 naming to docker.io/library/drumee-il5-application:drumee-il5-28f1fb86 done
+#10 DONE 0.0s
+IL5_APPLICATION_OK prepare-is-persistent-private-and-does-not-start-application
+IL5_APPLICATION_OK real-runtime-public-rpc-and-canonical-authorization-denial
+IL5_APPLICATION_OK actual-loopback-publication-and-separate-lan-client-denial
+IL5_APPLICATION_OK external-host-nginx-https-and-unchanged-native-rpc-prefix
+IL5_APPLICATION_OK stop-start-preserves-resource-and-secret-generations
+IL5_APPLICATION_OK controlled-configuration-update-and-canonical-rollback
+IL5_APPLICATION_OK failed-startup-does-not-reset-owned-application-state
+IL5_APPLICATION_OK real-process-interruption-requires-explicit-recovery
+IL5_APPLICATION_OK unknown-resource-and-prepared-tampering-are-refused
+IL5_APPLICATION_OK complete-no-smtp-backup-and-isolated-restore
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.services
+#1 transferring dockerfile: 994B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+#4 DONE 0.0s
+
+#5 [2/2] RUN apt-get update -qq && apt-get install -y --no-install-recommends     bind9=1:9.18.49-1~deb12u2 bind9-utils=1:9.18.49-1~deb12u2 bind9-dnsutils=1:9.18.49-1~deb12u2     postfix=3.7.11-0+deb12u1 libsasl2-modules=2.1.28+dfsg-10 sasl2-bin=2.1.28+dfsg-10     opendkim=2.11.0~beta2-8+deb12u1 opendkim-tools=2.11.0~beta2-8+deb12u1     openssl=3.0.22-1~deb12u1 ca-certificates=20250419~deb12u1 &&     usermod -aG sasl postfix && useradd --uid 1000 --user-group --no-create-home --shell /usr/sbin/nologin infra && mkdir -p /opt/infra &&     cp -a /var/spool/postfix /opt/infra/postfix-queue &&     rm -f /etc/bind/rndc.key /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/certs/ssl-cert-snakeoil.pem &&     rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 exporting to image
+#6 exporting layers done
+#6 writing image sha256:a6132a3742680ae8a969332fc82b75414e4dc92913460ee117b25e07e1f713a5 done
+#6 naming to docker.io/library/drumee-il5-services:drumee-il5-28f1fb86 done
+#6 DONE 0.0s
+IL5_APPLICATION_OK smtp-dkim-composition-starttls-and-actual-relay-denial
+IL5_APPLICATION_REPORT /tmp/drumee-il5-28f1fb86-report.json
+IL5_OWNED_RESOURCES_CLEANED drumee-il5-28f1fb86

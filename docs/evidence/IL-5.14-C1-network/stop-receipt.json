@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-10-25T16:16:40.022042+00:00",
+  "status": "FAILED_QUALIFICATION",
+  "security_status": "NODEMAILER_SECURITY_QUALIFIED",
+  "dependency_source": "e914db67e7b0fec97df89ad1875c18cc984efcd8",
+  "network_implementation_source": "ad3fd8c7ef765f3718e6e06154b9fdd44786ed22",
+  "failed_real_test_source": "de5e260ed69fd875d12e7782e8a7335879f239b7",
+  "focused_tests": 13,
+  "focused_exit": 0,
+  "real_test_exit": 1,
+  "real_test_diagnostic": "ERR_ASSERTION only; exact message,stack,expected/actual and phase were not persisted",
+  "real_attempts": 1,
+  "completed_independent_real_cycles": 0,
+  "planned_real_cycles": 2,
+  "retries": 0,
+  "diagnosis": "Unresolved assertion after first mission intruder fixture creation; no causal claim about production ownership validation or the harness",
+  "resource_cleanup": "PASS readback",
+  "protected_docker_unchanged": true,
+  "full_parent_regressions": "NOT_EXECUTED after stop",
+  "package_candidate": "NOT_EXECUTED",
+  "final_parent_audits": "NOT_EXECUTED after stop",
+  "push": false,
+  "pull_request": false,
+  "publication": false,
+  "residuals": [
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "SMTP_RECOVERY_UNQUALIFIED"
+  ]
+}

@@ -1,0 +1,821 @@
+[
+  {
+    "id": "nodemailer@10.1.7",
+    "name": "nodemailer",
+    "version": "10.1.7",
+    "size": 387636,
+    "unpackedSize": 1723639,
+    "shasum": "a8bcee12c75ccaaa8298ee5a8426c9bf30bb80b9",
+    "integrity": "sha512-OQa6FDln5fLttmqSbjDiRYvFDOFNrBqfiOwHPlEbURil3b+vPB1v8xpi+Sp46drzNDlsTnNsS502vthmz56r4w==",
+    "filename": "nodemailer-10.1.7.tgz",
+    "files": [
+      {
+        "path": "CHANGELOG.md",
+        "size": 69096,
+        "mode": 420
+      },
+      {
+        "path": "LICENSE",
+        "size": 935,
+        "mode": 420
+      },
+      {
+        "path": "README.md",
+        "size": 6815,
+        "mode": 420
+      },
+      {
+        "path": "SECURITY.md",
+        "size": 6668,
+        "mode": 420
+      },
+      {
+        "path": "SECURITY.txt",
+        "size": 1044,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/addressparser/index.d.ts",
+        "size": 1719,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/addressparser/index.js",
+        "size": 52199,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/base64/index.d.ts",
+        "size": 1324,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/base64/index.js",
+        "size": 5527,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/dkim/index.d.ts",
+        "size": 2368,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/dkim/index.js",
+        "size": 9064,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/dkim/message-parser.d.ts",
+        "size": 1809,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/dkim/message-parser.js",
+        "size": 7123,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/dkim/relaxed-body.d.ts",
+        "size": 1486,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/dkim/relaxed-body.js",
+        "size": 5690,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/dkim/sign.d.ts",
+        "size": 2227,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/dkim/sign.js",
+        "size": 6848,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/errors.d.ts",
+        "size": 5190,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/errors.js",
+        "size": 3555,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/fetch/cookies.d.ts",
+        "size": 3287,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/fetch/cookies.js",
+        "size": 10836,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/fetch/index.d.ts",
+        "size": 3183,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/fetch/index.js",
+        "size": 18034,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/json-transport/index.d.ts",
+        "size": 2808,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/json-transport/index.js",
+        "size": 3964,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mail-composer/index.d.ts",
+        "size": 8470,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mail-composer/index.js",
+        "size": 24942,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mailer/index.d.ts",
+        "size": 11896,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mailer/index.js",
+        "size": 19010,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mailer/mail-message.d.ts",
+        "size": 5108,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mailer/mail-message.js",
+        "size": 17542,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-funcs/index.d.ts",
+        "size": 6832,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-funcs/index.js",
+        "size": 34395,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-funcs/mime-types.d.ts",
+        "size": 151,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-funcs/mime-types.js",
+        "size": 90272,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-node/index.d.ts",
+        "size": 12983,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-node/index.js",
+        "size": 69500,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-node/last-newline.d.ts",
+        "size": 145,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-node/last-newline.js",
+        "size": 950,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-node/le-unix.d.ts",
+        "size": 252,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-node/le-unix.js",
+        "size": 1123,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-node/le-windows.d.ts",
+        "size": 300,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/mime-node/le-windows.js",
+        "size": 1461,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/nodemailer.d.ts",
+        "size": 6852,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/nodemailer.js",
+        "size": 8901,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/package-info.d.ts",
+        "size": 142,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/package-info.js",
+        "size": 313,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/package.json",
+        "size": 27,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/punycode/index.d.ts",
+        "size": 2724,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/punycode/index.js",
+        "size": 15253,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/qp/index.d.ts",
+        "size": 1286,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/qp/index.js",
+        "size": 10683,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/sendmail-transport/index.d.ts",
+        "size": 2795,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/sendmail-transport/index.js",
+        "size": 10504,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/ses-transport/index.d.ts",
+        "size": 4590,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/ses-transport/index.js",
+        "size": 10519,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/shared/index.d.ts",
+        "size": 11476,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/shared/index.js",
+        "size": 28788,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/shared/objects.d.ts",
+        "size": 1175,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/shared/objects.js",
+        "size": 1912,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/shared/url.d.ts",
+        "size": 746,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/shared/url.js",
+        "size": 12954,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-connection/data-stream.d.ts",
+        "size": 527,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-connection/data-stream.js",
+        "size": 3683,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-connection/http-proxy-client.d.ts",
+        "size": 2255,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-connection/http-proxy-client.js",
+        "size": 8783,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-connection/index.d.ts",
+        "size": 18236,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-connection/index.js",
+        "size": 90217,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-pool/index.d.ts",
+        "size": 5242,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-pool/index.js",
+        "size": 22013,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-pool/pool-resource.d.ts",
+        "size": 2004,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-pool/pool-resource.js",
+        "size": 14028,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-transport/index.d.ts",
+        "size": 6890,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/smtp-transport/index.js",
+        "size": 16248,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/stream-transport/index.d.ts",
+        "size": 2637,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/stream-transport/index.js",
+        "size": 5922,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/well-known/index.d.ts",
+        "size": 1398,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/well-known/index.js",
+        "size": 1521,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/well-known/services.d.ts",
+        "size": 137,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/well-known/services.js",
+        "size": 17261,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/xoauth2/index.d.ts",
+        "size": 8974,
+        "mode": 420
+      },
+      {
+        "path": "dist/cjs/xoauth2/index.js",
+        "size": 18805,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/addressparser/index.d.ts",
+        "size": 1719,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/addressparser/index.js",
+        "size": 51952,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/base64/index.d.ts",
+        "size": 1324,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/base64/index.js",
+        "size": 5353,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/dkim/index.d.ts",
+        "size": 2368,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/dkim/index.js",
+        "size": 8291,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/dkim/message-parser.d.ts",
+        "size": 1809,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/dkim/message-parser.js",
+        "size": 6857,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/dkim/relaxed-body.d.ts",
+        "size": 1486,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/dkim/relaxed-body.js",
+        "size": 5241,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/dkim/sign.d.ts",
+        "size": 2227,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/dkim/sign.js",
+        "size": 5017,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/errors.d.ts",
+        "size": 5190,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/errors.js",
+        "size": 3035,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/fetch/cookies.d.ts",
+        "size": 3287,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/fetch/cookies.js",
+        "size": 9033,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/fetch/index.d.ts",
+        "size": 3183,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/fetch/index.js",
+        "size": 15980,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/json-transport/index.d.ts",
+        "size": 2808,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/json-transport/index.js",
+        "size": 2330,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mail-composer/index.d.ts",
+        "size": 8470,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mail-composer/index.js",
+        "size": 23075,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mailer/index.d.ts",
+        "size": 11896,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mailer/index.js",
+        "size": 16830,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mailer/mail-message.d.ts",
+        "size": 5108,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mailer/mail-message.js",
+        "size": 15722,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-funcs/index.d.ts",
+        "size": 6832,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-funcs/index.js",
+        "size": 32394,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-funcs/mime-types.d.ts",
+        "size": 151,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-funcs/mime-types.js",
+        "size": 89942,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-node/index.d.ts",
+        "size": 12983,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-node/index.js",
+        "size": 67112,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-node/last-newline.d.ts",
+        "size": 145,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-node/last-newline.js",
+        "size": 671,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-node/le-unix.d.ts",
+        "size": 252,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-node/le-unix.js",
+        "size": 849,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-node/le-windows.d.ts",
+        "size": 300,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/mime-node/le-windows.js",
+        "size": 1184,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/nodemailer.d.ts",
+        "size": 6852,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/nodemailer.js",
+        "size": 6820,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/package-info.d.ts",
+        "size": 142,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/package-info.js",
+        "size": 191,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/package.json",
+        "size": 25,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/punycode/index.d.ts",
+        "size": 2724,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/punycode/index.js",
+        "size": 15012,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/qp/index.d.ts",
+        "size": 1286,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/qp/index.js",
+        "size": 10509,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/sendmail-transport/index.d.ts",
+        "size": 2795,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/sendmail-transport/index.js",
+        "size": 8571,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/ses-transport/index.d.ts",
+        "size": 4590,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/ses-transport/index.js",
+        "size": 8624,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/shared/index.d.ts",
+        "size": 11476,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/shared/index.js",
+        "size": 25504,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/shared/objects.d.ts",
+        "size": 1175,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/shared/objects.js",
+        "size": 1717,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/shared/url.d.ts",
+        "size": 746,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/shared/url.js",
+        "size": 11181,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-connection/data-stream.d.ts",
+        "size": 527,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-connection/data-stream.js",
+        "size": 3405,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-connection/http-proxy-client.d.ts",
+        "size": 2255,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-connection/http-proxy-client.js",
+        "size": 6877,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-connection/index.d.ts",
+        "size": 18236,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-connection/index.js",
+        "size": 88052,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-pool/index.d.ts",
+        "size": 5242,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-pool/index.js",
+        "size": 20095,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-pool/pool-resource.d.ts",
+        "size": 2004,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-pool/pool-resource.js",
+        "size": 12160,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-transport/index.d.ts",
+        "size": 6890,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/smtp-transport/index.js",
+        "size": 14346,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/stream-transport/index.d.ts",
+        "size": 2637,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/stream-transport/index.js",
+        "size": 4065,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/well-known/index.d.ts",
+        "size": 1398,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/well-known/index.js",
+        "size": 1229,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/well-known/services.d.ts",
+        "size": 137,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/well-known/services.js",
+        "size": 17162,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/xoauth2/index.d.ts",
+        "size": 8974,
+        "mode": 420
+      },
+      {
+        "path": "dist/esm/xoauth2/index.js",
+        "size": 16925,
+        "mode": 420
+      },
+      {
+        "path": "dist/well-known/services.json",
+        "size": 15824,
+        "mode": 420
+      },
+      {
+        "path": "package.json",
+        "size": 6301,
+        "mode": 420
+      }
+    ],
+    "entryCount": 161,
+    "bundled": []
+  }
+]

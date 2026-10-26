@@ -1,0 +1,181 @@
+{
+  "sourceRevision": "f54a6ea3c1d170ee543ef98a890b38f0dd449a55",
+  "members": 42,
+  "size": 103349,
+  "sha256": "3f6bdc655180ffa8b2a2f0746583b02b377fcbf3da2fc473761d3cbeae56e54b",
+  "integrity": "sha512-sQF88I/AJUt2kHEoEQawYlLj9okhwvT/tmOMecB6Jfsvv5icxSsFUQxovw1Wue59SBuGJrcufst5LRU0mqM7IQ==",
+  "previousL1SHA256": "cb1fed84867a2f0f52c95dcd3649e7e1a6193e4334614b824a4112816273297d",
+  "byteChanges": "Private production readiness helper added; activation imports it. Public exports/types/manifests unchanged. Test helpers excluded.",
+  "unpublished": true,
+  "releaseVersionAssigned": false,
+  "membersSHA256": [
+    {
+      "path": "LICENSE",
+      "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+    },
+    {
+      "path": "capabilities/tls/acme.js",
+      "sha256": "5dc9ac5ffe58409db5614bbb2cab52e4db6b80c2e70540abe2de1623da959fc6"
+    },
+    {
+      "path": "lifecycle/activation.js",
+      "sha256": "09bd15d0a9bc6bb53907acc0a38598a3b19586589eed9b86b832814442b1e965"
+    },
+    {
+      "path": "lifecycle/composition.js",
+      "sha256": "2d5bfcb3d93c2c675a281e470f5afd44d5fef3ac198d9c85f462b19537fbd9b8"
+    },
+    {
+      "path": "lib/contracts-v2.js",
+      "sha256": "2dd11b15e4ce8d56c107651f2d9a6db0bcad393c5ab96706f4bb3c8d35cafe70"
+    },
+    {
+      "path": "lib/diagnostics.js",
+      "sha256": "902ac905c2f5cd33a10b51e454affdd9749de148d758be063d1c16d149da908e"
+    },
+    {
+      "path": "lifecycle/docker.js",
+      "sha256": "99fe06b55c110d80480c0cb5a62cf7b86f558c4940bfee448f91d4d664212b97"
+    },
+    {
+      "path": "lifecycle/external-gateway.js",
+      "sha256": "ec5239586f65289584d1a4d1b11e40aa8de48103f1b9162a4b5163383f00b6e5"
+    },
+    {
+      "path": "lib/filesystem-safety.js",
+      "sha256": "ace4ad1c9bc8031a9fd2ad9b8d6a9bb6c3687bc22f78e626648534780fd35f03"
+    },
+    {
+      "path": "capabilities/database/index.js",
+      "sha256": "8787cae326c6449c115cbf5e8ec1cd2d48005254df5c903f545f777d3db3e8b5"
+    },
+    {
+      "path": "capabilities/dns/index.js",
+      "sha256": "a42c4f892fc68f66e2e9e0d15c42e314424641f0e0201013dbb089152e68d269"
+    },
+    {
+      "path": "capabilities/http/nginx/index.js",
+      "sha256": "38cb9406d19d5aaaf9650be4348a4c33547fe636ad30dcb54001e55f64a973ad"
+    },
+    {
+      "path": "capabilities/mail/index.js",
+      "sha256": "0d0ea6bed521f3549e214f2d120a3465136e86e9222e26688dd2910f05efed0d"
+    },
+    {
+      "path": "capabilities/redis/index.js",
+      "sha256": "93db0bceca084bbc3af4660204914e4cc43e161a1cca1985587c93a163aa8631"
+    },
+    {
+      "path": "capabilities/secrets/index.js",
+      "sha256": "b872fa5cdd6868d0b89f17038aa445a8c709e675f4e82452fb7283647d48c432"
+    },
+    {
+      "path": "capabilities/tls/index.js",
+      "sha256": "06da31cc1d5ca925753304d7172bfc9275ba5e0be1a16ed44b1fbda6c18ad12c"
+    },
+    {
+      "path": "lib/index.js",
+      "sha256": "423baec15372da4bff1ff94c89524796b176702402f990dabe792cf75942fe40"
+    },
+    {
+      "path": "lifecycle/index.js",
+      "sha256": "a929808d4ac234eae398b3c13ad7a00f37dd6c873147e1cb3f73f5fd090f6e74"
+    },
+    {
+      "path": "lifecycle/journal.js",
+      "sha256": "93d712a626e5f3deb91804518640bcef5267d139871d0fa509ce4d57d186cd0a"
+    },
+    {
+      "path": "internal/network-readiness.js",
+      "sha256": "cabb4f7279454bb61f1f5ed4254a3a99b875657408165d6d3e19a57af89945ee"
+    },
+    {
+      "path": "adapters/docker/nginx.js",
+      "sha256": "b9b4d70bb5747a2805cd318bbd12cf7afa83647d3268b1c775f913a92fabcfd8"
+    },
+    {
+      "path": "lib/plan-v2.js",
+      "sha256": "069acac18ab76a4a03334c7cb9d06e95c9a9c9d8af7384070508df15a48e7cd1"
+    },
+    {
+      "path": "lib/plan.js",
+      "sha256": "2cb7526564bf26b2a1debc114828c46a2e16e7c959a70b279e2bf10e086e35b2"
+    },
+    {
+      "path": "lifecycle/preparation.js",
+      "sha256": "544df65762ae735762fb49f5091a87826ba09178948bcb4701f25e94b38d1cfd"
+    },
+    {
+      "path": "lifecycle/recovery.js",
+      "sha256": "f1b43df0b1c710715cf3f7fbae2834725702d01a85058f5801379366249538bc"
+    },
+    {
+      "path": "lib/rendering.js",
+      "sha256": "945bf6abfa44f4b1ad5844eefb21a7dac78372d527a83700fa8ca5605bb8d840"
+    },
+    {
+      "path": "adapters/docker/resources.js",
+      "sha256": "a7c9f2a2521524850bfb3ccc9c999e3531ffd909c2284d33f000a3b997784efa"
+    },
+    {
+      "path": "capabilities/http/nginx/routes.js",
+      "sha256": "00eabe7a099cd48a4da43994b9437b93e5ab5e01501c372bfc22328a6c717dc2"
+    },
+    {
+      "path": "adapters/docker/services.js",
+      "sha256": "83193f603c84172d2ea7287d8ef641d01fc02fff42b1427d7da02df1381d1cfc"
+    },
+    {
+      "path": "lib/spec.js",
+      "sha256": "0205c3b982856f37eec4a2888b9eb839d38e69b9687823d4d7d9dadc835e1020"
+    },
+    {
+      "path": "lib/state-v2.js",
+      "sha256": "0df56ab6f5fb4c862da98f468549fff615d1e9a09f952e291336cbb76caf7c38"
+    },
+    {
+      "path": "lib/state.js",
+      "sha256": "9f8e23a2287599a9614ddf5a181725696cdebabe0132eb72502f5d70218735ef"
+    },
+    {
+      "path": "internal/system-tools.js",
+      "sha256": "bc0daa8709e7b0ebd768c3ba03bd5e3d097846d891f2f588cdb166bcf0d114e4"
+    },
+    {
+      "path": "lifecycle/transitions.js",
+      "sha256": "5759269e9fe511fb69d5f5b31fbd52cc3fe53e2c8c5f810c6c08d2cf27caf764"
+    },
+    {
+      "path": "lib/validation.js",
+      "sha256": "f71a90005e1a742c7dde024cc67b0eb1a1436bfaa991bfb2fea633ebe6cee1cd"
+    },
+    {
+      "path": "package.json",
+      "sha256": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "ad07ea1893e0e112d002e305c2c5df837e8ea914b3fb6d90b6e2514949986bb4"
+    },
+    {
+      "path": "PROVENANCE.md",
+      "sha256": "20198d6be61a60f7e2737f4276887d5dcf4b0e3f4c768a781de46f83aae8bb5b"
+    },
+    {
+      "path": "README.md",
+      "sha256": "c4f218bebfec31c5f070e6aa4c023cd5ac9760fef2f507b66c86e875b2e4201b"
+    },
+    {
+      "path": "capabilities/docker/Dockerfile.services",
+      "sha256": "b95c76db96cc0f050235e48dafa05ce69bc00e846132f43d2a4c1cb5afdb811a"
+    },
+    {
+      "path": "index.d.ts",
+      "sha256": "5aa3c8e77fe018686406bdbbb52a76ebb14f455342006b8cce7f6f380c31a6bf"
+    },
+    {
+      "path": "lifecycle/index.d.ts",
+      "sha256": "eb19c680376d062a5c67ef8e33dd84deb9db2a9d68a8d040308a452243ad915b"
+    }
+  ]
+}

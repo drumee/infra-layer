@@ -1,0 +1,116 @@
+{
+  "timestamp": "2026-10-26T09:35:36.388814+00:00",
+  "pullRequest": {
+    "baseRefName": "main",
+    "headRefName": "fix/il514-c1-network-attachment-identity",
+    "headRefOid": "9ed26cb3aaf1b98a1aafc34f3b5d077ca7b51f5f",
+    "isDraft": false,
+    "mergeable": "MERGEABLE",
+    "number": 20,
+    "state": "OPEN",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-26T09:35:30Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/drumee/infra-layer/actions/runs/40300637800/job/121497369375",
+        "name": "Analyze (actions)",
+        "startedAt": "2026-10-26T09:34:47Z",
+        "status": "COMPLETED",
+        "workflowName": "CodeQL"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-26T09:35:05Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/drumee/infra-layer/actions/runs/40300640320/job/121497369982",
+        "name": "unit",
+        "startedAt": "2026-10-26T09:34:47Z",
+        "status": "COMPLETED",
+        "workflowName": "Quality"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/drumee/infra-layer/actions/runs/40300637800/job/121497369618",
+        "name": "Analyze (javascript-typescript)",
+        "startedAt": "2026-10-26T09:34:48Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "CodeQL"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-26T09:35:03Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/drumee/infra-layer/actions/runs/40300640320/job/121497370047",
+        "name": "contracts",
+        "startedAt": "2026-10-26T09:34:47Z",
+        "status": "COMPLETED",
+        "workflowName": "Quality"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-26T09:35:32Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/drumee/infra-layer/actions/runs/40300637800/job/121497369731",
+        "name": "Analyze (python)",
+        "startedAt": "2026-10-26T09:34:47Z",
+        "status": "COMPLETED",
+        "workflowName": "CodeQL"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-26T09:35:02Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/drumee/infra-layer/actions/runs/40300640320/job/121497370082",
+        "name": "eslint",
+        "startedAt": "2026-10-26T09:34:47Z",
+        "status": "COMPLETED",
+        "workflowName": "Quality"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-26T09:35:06Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/drumee/infra-layer/actions/runs/40300640320/job/121497369734",
+        "name": "dependencies",
+        "startedAt": "2026-10-26T09:34:47Z",
+        "status": "COMPLETED",
+        "workflowName": "Quality"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-26T09:35:09Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/drumee/infra-layer/actions/runs/40300640320/job/121497369998",
+        "name": "packaging",
+        "startedAt": "2026-10-26T09:34:46Z",
+        "status": "COMPLETED",
+        "workflowName": "Quality"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-26T09:35:21Z",
+        "conclusion": "FAILURE",
+        "detailsUrl": "https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=20",
+        "name": "SonarCloud Code Analysis",
+        "startedAt": "2026-10-26T09:34:47Z",
+        "status": "COMPLETED",
+        "workflowName": ""
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-26T09:35:22Z",
+        "conclusion": "NEUTRAL",
+        "detailsUrl": "https://github.com/drumee/infra-layer/runs/121497618577",
+        "name": "CodeQL",
+        "startedAt": "2026-10-26T09:35:20Z",
+        "status": "COMPLETED",
+        "workflowName": ""
+      }
+    ],
+    "url": "https://github.com/drumee/infra-layer/pull/20"
+  },
+  "delivery": "Qualified branch pushed without force; reviewable non-draft PR open against verified main. No merge/publication/tag/deployment."
+}

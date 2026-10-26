@@ -1,0 +1,28 @@
+{
+  "sourceRevision": "ce1ba500d3775d1a7f6ac0156d26b60a4c6ccc4c",
+  "origin_main": "c218811effc83da25cf71a914e27accc96101329",
+  "hashes": {
+    "tooling/eslint-baseline.json": "4ed3ffda318796bda37b65deda058240d0d8926b866ffc46c7bd678b68cfbfb2",
+    "tooling/lint.cjs": "0351b4a54251320eba9faf79fa4989b298bd4cbbb848ff2be3a01bf6dbe9deb9",
+    "eslint.config.cjs": "18c4871f01cde503be9c99bdc9cfcaf67c2682a74f939f8a32186808d0eeb0cd",
+    "package.json": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd",
+    "package-lock.json": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+    "lifecycle/docker.js": "99fe06b55c110d80480c0cb5a62cf7b86f558c4940bfee448f91d4d664212b97",
+    "lifecycle/activation.js": "feb321e8e5de8dff73bdc79a27991fd51e3e39920841f7f75e877241e54645cf",
+    "test/integration/gateway.test.js": "ab92739a4c2d73711820edd018f2fc9c6664f2ff688c69e8dd7c47b2c431b152",
+    "index.d.ts": "5aa3c8e77fe018686406bdbbb52a76ebb14f455342006b8cce7f6f380c31a6bf",
+    "lifecycle/index.d.ts": "eb19c680376d062a5c67ef8e33dd84deb9db2a9d68a8d040308a452243ad915b"
+  },
+  "unchangedFromCheckpoint": {
+    "tooling/eslint-baseline.json": true,
+    "tooling/lint.cjs": true,
+    "eslint.config.cjs": true,
+    "package.json": true,
+    "package-lock.json": true,
+    "lifecycle/docker.js": true,
+    "lifecycle/activation.js": false,
+    "test/integration/gateway.test.js": true,
+    "index.d.ts": true,
+    "lifecycle/index.d.ts": true
+  }
+}

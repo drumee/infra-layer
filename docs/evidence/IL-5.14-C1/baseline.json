@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-10-25T11:36:44.054Z",
+  "branch": "fix/il514-c1-network-attachment-identity",
+  "source_commit": "c218811effc83da25cf71a914e27accc96101329",
+  "canonical_target": "origin/main",
+  "node": "v22.22.0",
+  "npm": "11.18.0",
+  "uid": 1000,
+  "gid": 1000,
+  "baseline_docker_js_sha256": "c2e56482823bb6f69754ebd48fa4cdc609c609f0db58e6537bf9ef6b3e86d445",
+  "current_docker_js_sha256": "c2e56482823bb6f69754ebd48fa4cdc609c609f0db58e6537bf9ef6b3e86d445",
+  "package_lock_sha256": "ebb960fbeb9ee738fadbae0ab952585f7ccd6577a8cc740ac9c71bdb6130569a",
+  "installed_nodemailer": "10.1.1",
+  "installed_smtp_server": "3.19.22",
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund",
+      "exit_code": 0
+    },
+    {
+      "command": "node test/network-attachments/reproduce-alpha3.cjs",
+      "exit_code": 0
+    },
+    {
+      "command": "npm audit --include=dev --json --registry=https://registry.npmjs.org",
+      "exit_code": 1
+    }
+  ],
+  "status": "BLOCKED_SECURITY",
+  "production_implementation_changed": false
+}

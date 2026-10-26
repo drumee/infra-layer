@@ -1,0 +1,56 @@
+{
+  "project": "drumee-il514-health-78d98ecd",
+  "image": "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+  "original_reference": "703b637425487286632e741045a1b96591e90c62",
+  "original_format": "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if .State.Health}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}}}",
+  "state_keys": [
+    "Status",
+    "Running",
+    "Paused",
+    "Restarting",
+    "OOMKilled",
+    "Dead",
+    "Pid",
+    "ExitCode",
+    "Error",
+    "StartedAt",
+    "FinishedAt"
+  ],
+  "before": {
+    "exitCode": 1,
+    "stdout": "\n",
+    "stderr": "template parsing error: template: :1:207: executing \"\" at <.State.Health>: map has no entry for key \"Health\"\n"
+  },
+  "after": [
+    {
+      "id": "57c2e8c0da5085010d59f7608b630f9643b47b52132e61e634f9a3718a985400",
+      "image_id": "sha256:5509c0097c6064aa8a3b1df58f1d950e67090fffa6678ae8f3f1dc2385f12deb",
+      "image": "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+      "started_at": "0001-01-01T00:00:00Z",
+      "running": false,
+      "exit_code": 0,
+      "health": "unknown",
+      "owner": "drumee-il514-health-78d98ecd",
+      "project": "drumee-il514-health-78d98ecd",
+      "service": "redis",
+      "revision": null,
+      "ports": {},
+      "mounts": [
+        {
+          "Destination": "/data",
+          "Driver": "local",
+          "Mode": "",
+          "Name": "f3c0f0894c40c8897f0da1473406aa239254245ba6d92bf7201d0abd896cd405",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/f3c0f0894c40c8897f0da1473406aa239254245ba6d92bf7201d0abd896cd405/_data",
+          "Type": "volume"
+        }
+      ]
+    }
+  ],
+  "refusal": "DEPLOYMENT_OWNERSHIP_MISMATCH",
+  "cleanup": "PASS",
+  "assertions": 15,
+  "status": "PASS"
+}

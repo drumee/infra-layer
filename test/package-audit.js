@@ -8,7 +8,7 @@ const { execFileSync } = require("node:child_process");
 const root = path.resolve(__dirname, "..");
 const packed = JSON.parse(execFileSync(trustedExecutable("npm"), ["pack", "--dry-run", "--json"], { cwd: root, encoding: "utf8" , env: trustedEnvironment()}))[0];
 const allowed = [
-  /^internal\/system-tools\.js$/,
+  /^internal\/(?:system-tools|network-readiness)\.js$/,
   /^lib\/[a-z0-9-]+\.js$/,
   /^lifecycle\/[a-z-]+\.js$/,
   /^lifecycle\/index\.d\.ts$/,

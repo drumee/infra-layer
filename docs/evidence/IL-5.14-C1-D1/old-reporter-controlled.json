@@ -1,0 +1,20 @@
+{
+  "controlled_not_historical": true,
+  "exit_status": 1,
+  "stdout": "",
+  "stderr": "ERR_ASSERTION\n",
+  "original": {
+    "name": "AssertionError",
+    "code": "ERR_ASSERTION",
+    "message": "controlled original format\n\n1 !== 2\n",
+    "operator": "strictEqual",
+    "actual": 1,
+    "expected": 2,
+    "stack_present": true
+  },
+  "non_enumerable_fields": [
+    "stack",
+    "message",
+    "name"
+  ]
+}

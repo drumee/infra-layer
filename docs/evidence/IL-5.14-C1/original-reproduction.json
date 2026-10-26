@@ -1,0 +1,24 @@
+{
+  "reference": "c218811effc83da25cf71a914e27accc96101329",
+  "fixture_provenance": {
+    "producer": "https://github.com/moby/moby/blob/9c623849a9e6ce2add344fa1453c454dce75340f/daemon/network.go#L747-L763",
+    "meaning": "Attachments with a sandbox use its container ID; an endpoint without a sandbox is keyed by ep- plus EndpointID."
+  },
+  "original_command": {
+    "program": "/usr/bin/docker",
+    "args": [
+      "--host",
+      "unix:///var/run/docker.sock",
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if .State.Health}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}}}",
+      "ep-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    ]
+  },
+  "expected_type": "container",
+  "actual_type": "sandbox-less endpoint-map key",
+  "simulated_docker_status": 1,
+  "simulated_docker_stderr": "error: no such object",
+  "propagated_code": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+  "reproduced": true
+}

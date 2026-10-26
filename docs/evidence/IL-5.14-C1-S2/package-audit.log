@@ -1,0 +1,6 @@
+
+> @drumee/infra-layer@0.1.0-alpha.3 test:package
+> node test/package-audit.js
+
+{"files":["CHANGELOG.md","LICENSE","PROVENANCE.md","README.md","adapters/docker/nginx.js","adapters/docker/resources.js","adapters/docker/services.js","capabilities/database/index.js","capabilities/dns/index.js","capabilities/docker/Dockerfile.services","capabilities/http/nginx/index.js","capabilities/http/nginx/routes.js","capabilities/mail/index.js","capabilities/redis/index.js","capabilities/secrets/index.js","capabilities/tls/acme.js","capabilities/tls/index.js","index.d.ts","internal/network-readiness.js","internal/system-tools.js","lib/contracts-v2.js","lib/diagnostics.js","lib/filesystem-safety.js","lib/index.js","lib/plan-v2.js","lib/plan.js","lib/rendering.js","lib/spec.js","lib/state-v2.js","lib/state.js","lib/validation.js","lifecycle/activation.js","lifecycle/composition.js","lifecycle/docker.js","lifecycle/external-gateway.js","lifecycle/index.d.ts","lifecycle/index.js","lifecycle/journal.js","lifecycle/preparation.js","lifecycle/recovery.js","lifecycle/transitions.js","package.json"],"production_dependencies":[],"integrity":"sha512-sQF88I/AJUt2kHEoEQawYlLj9okhwvT/tmOMecB6Jfsvv5icxSsFUQxovw1Wue59SBuGJrcufst5LRU0mqM7IQ=="}
+PACKED_CONSUMER_OK
