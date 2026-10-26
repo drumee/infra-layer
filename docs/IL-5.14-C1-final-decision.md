@@ -1,6 +1,6 @@
 # IL-5.14-C1-L1 final canonical qualification
 
-All mandatory pre-PR local gates: **PASS**. Delivery is not yet executed until the qualified branch is pushed and the reviewable PR exists. CANONICAL_FIX_READY_FOR_REVIEW is not asserted before that delivery step. Hosted checks remain separately pending. No publication, merge, release tag, deployment or downstream Debian change is authorized by this decision.
+**CANONICAL_FIX_READY_FOR_REVIEW.** All mandatory pre-PR local gates pass. The qualified branch is pushed and [reviewable PR #20](https://github.com/drumee/infra-layer/pull/20) is open against main. Hosted checks remain separately pending until actually completed. No publication, merge, release tag, deployment or downstream Debian change is authorized by this decision.
 
 ## Source, scope and artifacts
 
@@ -39,10 +39,10 @@ All commands below exit0 unless identified as the preserved failing baseline. Ru
 | L1-G security | PASS locally | Full dev, production and private fixture npm audits all0 findings; test:system-tools12 scenarios; installed consumer4 real trusted-tool/port/TLS refusal scenarios; all protected Docker snapshots unchanged |
 | L1-H package | PASS | npm run test:package:41 members, no production deps/unexpected files/secrets, offline consumer smoke; actual packed application consumer8+37 assertions, strict NodeNext types, ownership-verified image cleanup |
 | L1-H CI equivalents | PASS locally | npm ci in isolated clean prefix matches5209 entries; unit207/contracts24/lint/audits/packaging and Python filesystem-security25 tests all pass; CI history prerequisite and its workflow assertion pass |
-| L1-I final evidence | PASS locally | Complete source/artifact/command matrix and preserved failures; review delivery still required |
+| L1-I final evidence | PASS | Complete source/artifact/command matrix and preserved failures; reviewable PR #20 open |
 | Hosted Quality/security checks | PENDING_HOSTED_CI | Not represented as local or hosted PASS before actual PR execution |
 | Branch protection policy details | BLOCKED read access | API HTTP403; details unverified, no protection change/bypass; review/merge policy must be checked by an authorized maintainer |
-| PR delivery | NOT_EXECUTED at this pre-PR record | Authorized only after the local gates above pass |
+| PR delivery | PASS | Qualified branch pushed without force; [PR #20](https://github.com/drumee/infra-layer/pull/20) is open, non-draft, against verified main; [delivery receipt](evidence/IL-5.14-C1-L1/pr-delivery.json) |
 
 ## Limitations and handoff
 
