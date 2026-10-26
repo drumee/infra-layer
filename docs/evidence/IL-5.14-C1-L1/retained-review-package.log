@@ -1,0 +1,221 @@
+[
+  {
+    "id": "@drumee/infra-layer@0.1.0-alpha.3",
+    "name": "@drumee/infra-layer",
+    "version": "0.1.0-alpha.3",
+    "size": 103207,
+    "unpackedSize": 367594,
+    "shasum": "71abb8fd9f5c8bc7b87fd070edb60059a06554fa",
+    "integrity": "sha512-u3CY36JNQXeLlrLHvxK+2wS5Q+T3L3wd/xCB4yNzcE0FJHCcpTYzKz/cd2+CHAxiwlLPag+uLWJrVBsJvjzKaA==",
+    "filename": "drumee-infra-layer-0.1.0-alpha.3.tgz",
+    "files": [
+      {
+        "path": "CHANGELOG.md",
+        "size": 3758,
+        "mode": 420
+      },
+      {
+        "path": "LICENSE",
+        "size": 34523,
+        "mode": 420
+      },
+      {
+        "path": "PROVENANCE.md",
+        "size": 19338,
+        "mode": 420
+      },
+      {
+        "path": "README.md",
+        "size": 30761,
+        "mode": 420
+      },
+      {
+        "path": "adapters/docker/nginx.js",
+        "size": 7002,
+        "mode": 420
+      },
+      {
+        "path": "adapters/docker/resources.js",
+        "size": 1972,
+        "mode": 420
+      },
+      {
+        "path": "adapters/docker/services.js",
+        "size": 8293,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/database/index.js",
+        "size": 3793,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/dns/index.js",
+        "size": 6214,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/docker/Dockerfile.services",
+        "size": 946,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/http/nginx/index.js",
+        "size": 3390,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/http/nginx/routes.js",
+        "size": 3438,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/mail/index.js",
+        "size": 9316,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/redis/index.js",
+        "size": 4026,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/secrets/index.js",
+        "size": 7510,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/tls/acme.js",
+        "size": 7571,
+        "mode": 420
+      },
+      {
+        "path": "capabilities/tls/index.js",
+        "size": 11439,
+        "mode": 420
+      },
+      {
+        "path": "index.d.ts",
+        "size": 10673,
+        "mode": 420
+      },
+      {
+        "path": "internal/system-tools.js",
+        "size": 3417,
+        "mode": 420
+      },
+      {
+        "path": "lib/contracts-v2.js",
+        "size": 16245,
+        "mode": 420
+      },
+      {
+        "path": "lib/diagnostics.js",
+        "size": 571,
+        "mode": 420
+      },
+      {
+        "path": "lib/filesystem-safety.js",
+        "size": 4062,
+        "mode": 420
+      },
+      {
+        "path": "lib/index.js",
+        "size": 334,
+        "mode": 420
+      },
+      {
+        "path": "lib/plan-v2.js",
+        "size": 13706,
+        "mode": 420
+      },
+      {
+        "path": "lib/plan.js",
+        "size": 4713,
+        "mode": 420
+      },
+      {
+        "path": "lib/rendering.js",
+        "size": 6467,
+        "mode": 420
+      },
+      {
+        "path": "lib/spec.js",
+        "size": 3105,
+        "mode": 420
+      },
+      {
+        "path": "lib/state-v2.js",
+        "size": 6284,
+        "mode": 420
+      },
+      {
+        "path": "lib/state.js",
+        "size": 4224,
+        "mode": 420
+      },
+      {
+        "path": "lib/validation.js",
+        "size": 15181,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/activation.js",
+        "size": 25828,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/composition.js",
+        "size": 15165,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/docker.js",
+        "size": 12920,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/external-gateway.js",
+        "size": 4081,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/index.d.ts",
+        "size": 6454,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/index.js",
+        "size": 1046,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/journal.js",
+        "size": 2467,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/preparation.js",
+        "size": 17014,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/recovery.js",
+        "size": 15937,
+        "mode": 420
+      },
+      {
+        "path": "lifecycle/transitions.js",
+        "size": 11564,
+        "mode": 420
+      },
+      {
+        "path": "package.json",
+        "size": 2846,
+        "mode": 420
+      }
+    ],
+    "entryCount": 41,
+    "bundled": []
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "project": "drumee-il5-26864ca6",
+  "image": "sha256:448b983d3beda93ec3acf176d704637e098ad01d7da3c4ef547fa94169f1b4be",
+  "tag": "drumee-il5-application:drumee-il5-26864ca6",
+  "sourceRevision": "ce1ba500d3775d1a7f6ac0156d26b60a4c6ccc4c",
+  "typescript": "5.9.3",
+  "packageLock": {
+    "version": "5.9.3",
+    "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+    "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+    "license": "Apache-2.0",
+    "bin": {
+      "tsc": "bin/tsc",
+      "tsserver": "bin/tsserver"
+    },
+    "engines": {
+      "node": ">=14.17"
+    }
+  }
+}

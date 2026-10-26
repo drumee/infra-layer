@@ -1,0 +1,20 @@
+{
+  "sourceRevision": "03e63e114278ee24561847d3a7c88e910f293a08",
+  "runtimeAndPackageRevision": "ce1ba500d3775d1a7f6ac0156d26b60a4c6ccc4c",
+  "onlyLaterChanges": [
+    ".github/workflows/quality.yml fetch-depth=0",
+    "test/unit/security-tooling.test.js asserts fetch-depth=0"
+  ],
+  "officialActionSource": "https://raw.githubusercontent.com/actions/checkout/d23441a48e516b6c34aea4fa41551a30e30af803/README.md",
+  "defaultFetchDepth": 1,
+  "requiredHistoricalCommit": "703b637425487286632e741045a1b96591e90c62",
+  "why": "The actual assertion-preservation unit test reads the historical harness via git show. Full history preserves that mandatory assertion, instead of skipping it in a shallow hosted checkout.",
+  "securityUnchanged": [
+    "permissions contents:read",
+    "persist-credentials:false",
+    "pinned actions",
+    "no allow-failure or scanner change"
+  ],
+  "everyPackageMemberStillByteIdentical": true,
+  "timestamp": "2026-10-26T09:27:42.978933+00:00"
+}
