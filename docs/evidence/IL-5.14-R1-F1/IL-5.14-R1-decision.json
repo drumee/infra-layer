@@ -1,0 +1,138 @@
+{
+  "decision": "CHANGES_REQUESTED",
+  "reviewType": "Independent integration review, no implementation/release",
+  "timestamp": "2026-10-26T18:46:43.933881+00:00",
+  "repository": "drumee/infra-layer",
+  "pullRequest": 20,
+  "head": "cd9b8322bd7eef3b4094710ec4ea26be94f08922",
+  "base": "c218811effc83da25cf71a914e27accc96101329",
+  "mergeBase": "c218811effc83da25cf71a914e27accc96101329",
+  "qualifiedExecutable": "f54a6ea3c1d170ee543ef98a890b38f0dd449a55",
+  "environment": {
+    "recorded": "2026-10-26T18:42:53.629531+00:00",
+    "uid": 1000,
+    "gid": 1000,
+    "platform": "Linux-6.1.0-41-amd64-x86_64-with-glibc2.36",
+    "node": "v22.22.0",
+    "npm": "11.18.0",
+    "eslint": "10.13.0",
+    "docker": "29.2.0 / 29.2.0"
+  },
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "detail": "Exact open PR20/main/cd9b832 identity, canonical merge base and qualified ancestor verified; branch-protection details unavailable, recorded explicitly."
+    },
+    "B": {
+      "status": "PASS",
+      "detail": "232-file complete Git diff matches paginated GitHub file list;25 non-doc files plus4 identical evidence runners reviewed; file-by-file matrix complete."
+    },
+    "C": {
+      "status": "FAIL",
+      "detail": "Synthetic endpoint handling and optional Health fix are sound, but independently reproduced undeclared-network acceptance leaves R1-001 unresolved."
+    },
+    "D": {
+      "status": "PASS",
+      "detail": "Fixed actual-source module, non-executing historical hashes/AST, scoped mocking, Promise rejection, cause/redaction/bounds/nonzero controls reviewed and independently unit-tested."
+    },
+    "E": {
+      "status": "PASS",
+      "detail": "Qualified exact mail graph and lock consistency; fresh full-development and production audits zero; no unqualified CI privilege or supply-chain change."
+    },
+    "F": {
+      "status": "PASS",
+      "detail": "Fresh42-member103349-byte archive exactly matches recorded SHA/SRI and every member at head/f54a6ea; exports/types unchanged, offline consumer evidence credible."
+    },
+    "G": {
+      "status": "FAIL",
+      "detail": "Historical evidence/217 fresh unit tests are credible, but required negative isolation coverage does not exercise R1-001; independent counterexample violates proposed security assurance."
+    },
+    "H": {
+      "status": "PASS",
+      "detail": "All10 exact-head checks succeed; Sonar API matches cd9b832 with A/A/A,0.6% duplication,100% hotspots,6 original issues FIXED; no inference from earlier heads."
+    },
+    "I": {
+      "status": "FAIL",
+      "detail": "One unresolved MAJOR requires correction or explicit technical disposition before merge consideration."
+    },
+    "J": {
+      "status": "PASS",
+      "detail": "Review-only report and machine decision produced outside repository; no source/branch/release mutation."
+    }
+  },
+  "findings": [
+    {
+      "id": "R1-001",
+      "severity": "MAJOR",
+      "title": "Network membership validation accepts an undeclared additional network on an authorized container",
+      "locations": [
+        {
+          "file": "lifecycle/docker.js",
+          "line": 111
+        },
+        {
+          "file": "lifecycle/activation.js",
+          "line": 120
+        },
+        {
+          "file": "test/unit/network-attachments.test.js",
+          "line": 68
+        }
+      ],
+      "evidence": "network-exposure-probe.json",
+      "expected": "An undeclared additional runtime network is refused under a closed declared-network isolation contract, or an explicit exception is documented and technically approved.",
+      "actual": {
+        "nominal": "ACCEPTED",
+        "negative": "ACCEPTED",
+        "declared": [
+          "drumee-r1-net-e54dab72db99-kernel"
+        ],
+        "actual": [
+          "drumee-r1-net-e54dab72db99-external",
+          "drumee-r1-net-e54dab72db99-kernel"
+        ],
+        "container": "9aac3ad0d5a7da69081a3aa295dc4fa5e4096b3f03d19e4cc189c147ab9b053d"
+      },
+      "impact": "The validator checks the selected declared NetworkID/EndpointID but ignores other actual NetworkSettings.Networks entries. An unintended cross-network connection is invisible to this isolation check. No unauthenticated access or exploit is claimed.",
+      "provenance": "Pre-existing permissiveness is visible in the alpha.3 baseline; this is not asserted to be a regression introduced by the ep-key correction or the cause of H1. It remains an undispositioned material gap in the touched network-security assurance.",
+      "requiredDisposition": "Reject undeclared actual attachments with lifecycle-aware rules and add actual-source plus real-Docker negative coverage, or obtain an explicit documented technical/security disposition before merge authorization. Do not delete or authorize foreign resources automatically.",
+      "reviewAction": "No implementation attempted; positive qualification stopped and report is CHANGES_REQUESTED."
+    }
+  ],
+  "counts": {
+    "BLOCKER": 0,
+    "MAJOR": 1,
+    "MINOR": 0,
+    "INFORMATIONAL": 4
+  },
+  "branchProtection": "BRANCH_PROTECTION_UNVERIFIED",
+  "package": {
+    "candidateSHA256": "3f6bdc655180ffa8b2a2f0746583b02b377fcbf3da2fc473761d3cbeae56e54b",
+    "compressedSize": 103349,
+    "integrity": "sha512-sQF88I/AJUt2kHEoEQawYlLj9okhwvT/tmOMecB6Jfsvv5icxSsFUQxovw1Wue59SBuGJrcufst5LRU0mqM7IQ==",
+    "allMemberBytesMatchHeadAndQualifiedRevision": true,
+    "declarationsUnchanged": true
+  },
+  "scopeMatrix": "scope-matrix.json",
+  "residualLimitations": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "Debian H3 campaign remains failed; no downstream qualification claim"
+  ],
+  "mergeAuthorized": false,
+  "sourceModified": false,
+  "qualifiedBranchAltered": false,
+  "publicationPerformed": false,
+  "finalIdentityVerification": {
+    "timestamp": "2026-10-26T18:49:05.081583+00:00",
+    "head": "cd9b8322bd7eef3b4094710ec4ea26be94f08922",
+    "base": "c218811effc83da25cf71a914e27accc96101329",
+    "prState": "open",
+    "workingTreeClean": true,
+    "qualifiedBranchUnchanged": true,
+    "reviewFixtureContainersAbsent": true,
+    "reviewFixtureNetworksAbsent": true,
+    "githubReviewSubmitted": false,
+    "prMetadataModified": false
+  }
+}

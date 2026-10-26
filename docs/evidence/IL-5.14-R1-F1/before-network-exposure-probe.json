@@ -1,0 +1,223 @@
+{
+  "hypothesis": "Network isolation should reject an undeclared additional network on an otherwise authorized container",
+  "project": "drumee-r1-net-a8a9614f562d",
+  "image": "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+  "expected": "nominal accepted; extra undeclared attachment refused",
+  "sourceRevision": "cd9b8322bd7eef3b4094710ec4ea26be94f08922",
+  "nominal": "ACCEPTED",
+  "container": {
+    "id": "0157d9f0fcdf80e946b7d8d15be8240fb1368c09242e13840f458ca2ccdf91bf",
+    "owner": "drumee-r1-net-a8a9614f562d",
+    "service": "redis",
+    "actualNetworks": [
+      "drumee-r1-net-a8a9614f562d-external",
+      "drumee-r1-net-a8a9614f562d-kernel"
+    ],
+    "declaredNetworks": [
+      "drumee-r1-net-a8a9614f562d-kernel"
+    ]
+  },
+  "extraNetwork": "ACCEPTED",
+  "unexpectedAcceptance": true,
+  "cleanup": "OWNED_RESOURCES_REMOVED",
+  "commands": [
+    {
+      "args": [
+        "ps",
+        "-aq",
+        "--filter",
+        "name=^/drumee-r1-net-a8a9614f562d"
+      ],
+      "started": "2026-10-26T22:08:25.139Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "name=^drumee-r1-net-a8a9614f562d-kernel$"
+      ],
+      "started": "2026-10-26T22:08:25.151Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "network",
+        "create",
+        "--label",
+        "org.drumee.qualification=drumee-r1-net-a8a9614f562d",
+        "--label",
+        "org.drumee.infra.owner=drumee-r1-net-a8a9614f562d",
+        "--label",
+        "com.docker.compose.project=drumee-r1-net-a8a9614f562d",
+        "drumee-r1-net-a8a9614f562d-kernel"
+      ],
+      "started": "2026-10-26T22:08:25.161Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "name=^drumee-r1-net-a8a9614f562d-external$"
+      ],
+      "started": "2026-10-26T22:08:25.190Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "network",
+        "create",
+        "--label",
+        "org.drumee.qualification=drumee-r1-net-a8a9614f562d",
+        "--label",
+        "org.drumee.infra.owner=external-network-fixture",
+        "--label",
+        "com.docker.compose.project=drumee-r1-net-a8a9614f562d",
+        "drumee-r1-net-a8a9614f562d-external"
+      ],
+      "started": "2026-10-26T22:08:25.234Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "run",
+        "-d",
+        "--name",
+        "drumee-r1-net-a8a9614f562d-redis-1",
+        "--label",
+        "org.drumee.qualification=drumee-r1-net-a8a9614f562d",
+        "--label",
+        "org.drumee.infra.owner=drumee-r1-net-a8a9614f562d",
+        "--label",
+        "com.docker.compose.project=drumee-r1-net-a8a9614f562d",
+        "--label",
+        "com.docker.compose.service=redis",
+        "--user",
+        "1000:1000",
+        "--network",
+        "drumee-r1-net-a8a9614f562d-kernel",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "32",
+        "--memory",
+        "64m",
+        "--entrypoint",
+        "/bin/sh",
+        "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+        "-c",
+        "sleep 120"
+      ],
+      "started": "2026-10-26T22:08:25.263Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "network",
+        "connect",
+        "drumee-r1-net-a8a9614f562d-external",
+        "0157d9f0fcdf80e946b7d8d15be8240fb1368c09242e13840f458ca2ccdf91bf"
+      ],
+      "started": "2026-10-26T22:08:25.767Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "0157d9f0fcdf80e946b7d8d15be8240fb1368c09242e13840f458ca2ccdf91bf"
+      ],
+      "started": "2026-10-26T22:08:25.821Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "0157d9f0fcdf80e946b7d8d15be8240fb1368c09242e13840f458ca2ccdf91bf"
+      ],
+      "started": "2026-10-26T22:08:25.862Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "stop",
+        "--time",
+        "2",
+        "0157d9f0fcdf80e946b7d8d15be8240fb1368c09242e13840f458ca2ccdf91bf"
+      ],
+      "started": "2026-10-26T22:08:25.872Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "rm",
+        "0157d9f0fcdf80e946b7d8d15be8240fb1368c09242e13840f458ca2ccdf91bf"
+      ],
+      "started": "2026-10-26T22:08:28.258Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "f40ea7eeea6231aceb1d1b42577860b882a8aaadc0957ee8ce6a19f5ecc327c2"
+      ],
+      "started": "2026-10-26T22:08:28.271Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "network",
+        "rm",
+        "f40ea7eeea6231aceb1d1b42577860b882a8aaadc0957ee8ce6a19f5ecc327c2"
+      ],
+      "started": "2026-10-26T22:08:28.282Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "dab2af174af88e0450fdcf59f82140dd32f13e7bb04d77d9a8d6a6ad38300a16"
+      ],
+      "started": "2026-10-26T22:08:28.630Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "network",
+        "rm",
+        "dab2af174af88e0450fdcf59f82140dd32f13e7bb04d77d9a8d6a6ad38300a16"
+      ],
+      "started": "2026-10-26T22:08:28.640Z",
+      "exitCode": 0
+    },
+    {
+      "args": [
+        "ps",
+        "-aq",
+        "--filter",
+        "name=^/drumee-r1-net-a8a9614f562d"
+      ],
+      "started": "2026-10-26T22:08:28.875Z",
+      "exitCode": 0
+    }
+  ]
+}

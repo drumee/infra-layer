@@ -302,3 +302,8 @@ Debian was not modified. Its H3 campaign remains permanently failed:run1 six pat
 No Server Runtime, Oxy-form, foreign Docker resource, protected Docker configuration, ownership assertion, trusted executable rule or production host is modified. No source correction, PR, push, merge, npm/image publication, tag or deployment occurs.
 
 Required continuation:resolve the failed development graph under the existing audit policy and qualify its compatibility, then resume the canonical network identity correction from the preserved reproduction. Real Docker/lifecycle, full regression, package/API/type/consumer and security qualification remain mandatory before any review-ready status. A corrected published artifact and Debian realignment/requalification require their separate later decisions; this mission does not start Debian H4.
+
+
+## F1 local checkpoint — 2026-10-26 UTC
+
+Current local status: **FAILED_QUALIFICATION**. The first F1 focused-regression execution returned34 PASS/1 FAIL due to an error-code compatibility mismatch. No F1 push or hosted qualification followed. Earlier results above remain historical for their exact source and do not qualify the modified local runtime. The independent R1 MAJOR finding is still OPEN. See [F1 decision](IL-5.14-R1-F1-final-decision.md).

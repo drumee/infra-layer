@@ -81,39 +81,77 @@ function attachment(value) {
   }
   return result;
 }
+function serviceNetworks(composition, service) {
+  const selected = composition.compose.services[service].networks;
+  const roles = Array.isArray(selected) ? selected : selected && typeof selected === "object" ? Object.keys(selected) : [];
+  if (!roles.length || new Set(roles).size !== roles.length || roles.some(role => !Object.hasOwn(composition.compose.networks, role))) F.fail("INVALID_NETWORK_ATTACHMENT");
+  const names = roles.map(role => composition.compose.networks[role].name);
+  if (new Set(names).size !== names.length) F.fail("INVALID_NETWORK_ATTACHMENT");
+  return names;
+}
+function serviceName(project, service, name) {
+  const prefix = project + "-" + service + "-";
+  return typeof name === "string" && name.startsWith(prefix) && /^(?:[1-9][0-9]*|run-[a-f0-9]{12,64})$/.test(name.slice(prefix.length));
+}
+function observedNetwork(composition, role, network) {
+  const observed = networkObject(["network", "inspect", "--format", '{"id":{{json .Id}},"name":{{json .Name}},"owner":{{json (index .Labels "org.drumee.infra.owner")}},"project":{{json (index .Labels "com.docker.compose.project")}},"driver":{{json .Driver}},"internal":{{json .Internal}},"containers":{{json .Containers}}}', network.name], "REQUIRED_NETWORK_MISSING");
+  if (!observed || !/^[a-f0-9]{64}$/.test(observed.id || "") || observed.name !== network.name || observed.containers !== null && (typeof observed.containers !== "object" || Array.isArray(observed.containers))) F.fail("INVALID_NETWORK_ATTACHMENT");
+  if (observed.owner !== composition.project || observed.project !== composition.project || observed.driver !== "bridge" || observed.internal !== (role === "mail-control")) F.fail("NETWORK_OWNERSHIP_MISMATCH");
+  return observed;
+}
+function containerNetworks(composition, id, networks) {
+  if (!/^[a-f0-9]{64}$/.test(id)) F.fail("INVALID_DOCKER_OBJECT_IDENTITY");
+  const resource = networkObject(["container", "inspect", "--format", format.slice(0, -1) + ',"name":{{json .Name}},"networks":{{json .NetworkSettings.Networks}}}', id], "REQUIRED_CONTAINER_MISSING");
+  if (!resource || typeof resource !== "object" || Array.isArray(resource)) F.fail("INVALID_NETWORK_ATTACHMENT");
+  if (resource.owner !== composition.project || resource.project !== composition.project || !Object.hasOwn(composition.compose.services, resource.service)) F.fail("NETWORK_OWNERSHIP_MISMATCH");
+  if (resource.id !== id || typeof resource.name !== "string" || !serviceName(composition.project, resource.service, resource.name?.slice(1)) || resource.name[0] !== "/" || typeof resource.running !== "boolean") F.fail("INVALID_NETWORK_ATTACHMENT");
+  const expected = serviceNetworks(composition, resource.service), actual = resource.networks;
+  if (!actual || typeof actual !== "object" || Array.isArray(actual)) F.fail("INVALID_NETWORK_ATTACHMENT");
+  // Ownership does not authorize connectivity: compare the entire set, including
+  // containers absent from every declared network's attachment map.
+  if (Object.keys(actual).length !== expected.length || Object.keys(actual).some(name => !expected.includes(name))) F.fail("NETWORK_ATTACHMENT_MISMATCH");
+  for (const [name, network] of networks) {
+    if (network.containers?.[id] && !expected.includes(name)) F.fail("NETWORK_ATTACHMENT_MISMATCH");
+  }
+  for (const name of expected) {
+    const membership = actual[name], network = networks.get(name), endpoint = network?.containers?.[id];
+    if (!network || !membership || membership.NetworkID !== network.id) F.fail("NETWORK_ATTACHMENT_MISMATCH");
+    // Created/stopped containers retain configured networks but no active endpoint.
+    if (!resource.running && membership.EndpointID === "" && !endpoint) continue;
+    const pending = Object.entries(network.containers || {}).find(([key, value]) => key === "ep-" + value.EndpointID && value.Name === resource.name.slice(1) && (membership.EndpointID === "" || membership.EndpointID === value.EndpointID));
+    // The complete configured set/IDs have passed; this is still refused as
+    // unsettled below, never accepted or allowed to mask extra connectivity.
+    if (!endpoint && pending) continue;
+    if (!/^[a-f0-9]{64}$/.test(membership.EndpointID || "") || !endpoint) F.fail("NETWORK_ATTACHMENT_MISMATCH");
+    const metadata = attachment(endpoint);
+    if (membership.EndpointID !== metadata.EndpointID || resource.name !== "/" + metadata.Name) F.fail("NETWORK_ATTACHMENT_MISMATCH");
+  }
+}
+function networkMembers(composition, network, ids, unsettled) {
+  for (const [id, value] of Object.entries(network.containers || {})) {
+    const endpoint = attachment(value);
+    if (!id.startsWith("ep-")) { ids.add(id); continue; }
+    if (id !== "ep-" + endpoint.EndpointID) F.fail("INVALID_NETWORK_ATTACHMENT");
+    if (!Object.keys(composition.compose.services).some(service => serviceName(composition.project, service, endpoint.Name))) F.fail("UNEXPECTED_NETWORK_ATTACHMENT");
+    unsettled.push({ network: network.name, key: id, ...endpoint });
+  }
+}
 function checkNetworks(composition, { require_existing = false } = {}) {
   if (!S.identifier(composition.project)) F.fail("INVALID_DEPLOYMENT_IDENTITY");
   if (typeof require_existing !== "boolean") F.fail("INVALID_NETWORK_ATTACHMENT");
   const names = docker(["network", "ls", "--format", "{{.Name}}"] ).trim().split("\n");
-  const unsettled = [];
+  const networks = new Map(), ids = new Set(), unsettled = [];
   for (const [role, network] of Object.entries(composition.compose.networks)) {
+    if (networks.has(network.name)) F.fail("INVALID_NETWORK_ATTACHMENT");
     if (!names.includes(network.name)) { if (require_existing) F.fail("REQUIRED_NETWORK_MISSING"); continue; }
-    const observed = networkObject(["network", "inspect", "--format", '{"id":{{json .Id}},"name":{{json .Name}},"owner":{{json (index .Labels "org.drumee.infra.owner")}},"project":{{json (index .Labels "com.docker.compose.project")}},"driver":{{json .Driver}},"internal":{{json .Internal}},"containers":{{json .Containers}}}', network.name], "REQUIRED_NETWORK_MISSING");
-    if (!observed || !/^[a-f0-9]{64}$/.test(observed.id || "") || observed.name !== network.name || observed.containers !== null && (typeof observed.containers !== "object" || Array.isArray(observed.containers))) F.fail("INVALID_NETWORK_ATTACHMENT");
-    if (observed.owner !== composition.project || observed.project !== composition.project || observed.driver !== "bridge" || observed.internal !== (role === "mail-control")) F.fail("NETWORK_OWNERSHIP_MISMATCH");
-    for (const [id, value] of Object.entries(observed.containers || {})) {
-      const endpoint = attachment(value);
-      if (id.startsWith("ep-")) {
-        if (id !== "ep-" + endpoint.EndpointID) F.fail("INVALID_NETWORK_ATTACHMENT");
-        const expected_name = Object.keys(composition.compose.services).some(service => {
-          const prefix = composition.project + "-" + service + "-";
-          return endpoint.Name.startsWith(prefix) && /^(?:[1-9][0-9]*|run-[a-f0-9]{12,64})$/.test(endpoint.Name.slice(prefix.length));
-        });
-        if (!expected_name) F.fail("UNEXPECTED_NETWORK_ATTACHMENT");
-        unsettled.push({ network: network.name, key: id, ...endpoint });
-        continue; // Still a refusal below, never authorization or readiness.
-      }
-      if (!/^[a-f0-9]{64}$/.test(id)) F.fail("INVALID_DOCKER_OBJECT_IDENTITY");
-      const resource = networkObject(["container", "inspect", "--format", format.slice(0, -1) + ',"name":{{json .Name}},"networks":{{json .NetworkSettings.Networks}}}', id], "REQUIRED_CONTAINER_MISSING");
-      if (!resource || typeof resource !== "object" || Array.isArray(resource)) F.fail("INVALID_NETWORK_ATTACHMENT");
-      if (resource.owner !== composition.project || resource.project !== composition.project || !composition.compose.services[resource.service]) F.fail("NETWORK_OWNERSHIP_MISMATCH");
-      if (resource.id !== id || resource.name !== "/" + endpoint.Name) F.fail("INVALID_NETWORK_ATTACHMENT");
-      const membership = resource.networks?.[network.name], selected = composition.compose.services[resource.service].networks;
-      if (!membership || membership.NetworkID !== observed.id || membership.EndpointID !== endpoint.EndpointID || !(Array.isArray(selected) ? selected.includes(role) : selected && Object.hasOwn(selected, role))) F.fail("NETWORK_ATTACHMENT_MISMATCH");
-    }
+    const observed = observedNetwork(composition, role, network);
+    if ([...networks.values()].some(value => value.id === observed.id)) F.fail("INVALID_NETWORK_ATTACHMENT");
+    networks.set(network.name, observed); networkMembers(composition, observed, ids, unsettled);
   }
-  // Validate every ordinary member/network first so an unsettled endpoint cannot
-  // mask a foreign attachment. Metadata is retained, but not treated as owned.
+  const inventory = docker(["ps", "-a", "--no-trunc", "--filter", `label=com.docker.compose.project=${composition.project}`, "--format", "{{.ID}}"] ).trim().split("\n").filter(Boolean);
+  for (const id of inventory) ids.add(id);
+  for (const id of ids) containerNetworks(composition, id, networks);
+  // Unsettled metadata never masks an ownership, membership or command failure.
   if (unsettled.length) throw Object.assign(new Error("NETWORK_ATTACHMENT_UNSETTLED"), { code: "NETWORK_ATTACHMENT_UNSETTLED", attachments: unsettled });
 }
 function checkPorts(composition, owned = []) {

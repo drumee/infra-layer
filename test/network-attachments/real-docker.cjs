@@ -64,7 +64,7 @@ diagnostic.run(async () => {
       diagnostic.step("container-restart");
       docker(["restart", id]); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy"); check(redis(["GET", "qualification-key"]), "persisted");
       diagnostic.step("network-detachment");
-      docker(["network", "disconnect", netname, id]); await validate(composition, pending); check(network(netname).Containers[id], undefined);
+      docker(["network", "disconnect", netname, id]); assertions++; assert.throws(() => D.checkNetworks(composition, { require_existing: true }), { code: "NETWORK_ATTACHMENT_MISMATCH" }); check(network(netname).Containers[id], undefined);
       diagnostic.step("network-reconnection");
       docker(["network", "connect", netname, id]); await validate(composition, pending);
       diagnostic.step("foreign-fixture-creation");
@@ -75,7 +75,7 @@ diagnostic.run(async () => {
       docker(["stop", foreign]); docker(["rm", foreign]); containers.pop(); await validate(composition, pending);
       diagnostic.step("missing-network-refusal");
       const missing = structuredClone(composition); missing.compose.networks.kernel.name += "-missing";
-      assertions++; assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: "REQUIRED_NETWORK_MISSING" }); check(D.checkNetworks(missing), undefined);
+      assertions++; assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: "REQUIRED_NETWORK_MISSING" }); assertions++; assert.throws(() => D.checkNetworks(missing), { code: "NETWORK_ATTACHMENT_MISMATCH" });
       diagnostic.step("service-shutdown");
       docker(["stop", id]); await validate(composition, pending); report.stopped_attachments = network(netname).Containers; report.status = "PASS";
     } catch (error) {

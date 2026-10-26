@@ -4,12 +4,13 @@ const { load } = require("../network-attachments/load.cjs");
 function fixture() {
   const input = structuredClone(require("../network-attachments/fixture.json")), cid = "c".repeat(64), eid = "d".repeat(64), calls = [];
   input.composition.compose.services.redis.networks = ["kernel"]; input.composition.compose.services.provisioner.networks = ["kernel"];
-  const resource = { id: cid, name: "/" + input.network.containers[cid].Name, owner: input.composition.project, project: input.composition.project, service: "redis", networks: { [input.network.name]: { NetworkID: input.network.id, EndpointID: eid } } };
+  const resource = { running: true, id: cid, name: "/" + input.network.containers[cid].Name, owner: input.composition.project, project: input.composition.project, service: "redis", networks: { [input.network.name]: { NetworkID: input.network.id, EndpointID: eid } } };
   const state = { ...input, listed: [input.network.name], resources: { [cid]: resource }, calls, cid, ep: "ep-" + "b".repeat(64) };
   const D = load((program, args) => {
     assert.equal(program, "/usr/bin/docker"); assert.deepEqual(Array.from(args.slice(0, 2)), ["--host", "unix:///var/run/docker.sock"]);
     const selected = Array.from(args.slice(2)); calls.push(selected);
     if (state.failure && selected[0] === "network" && selected[1] === "inspect") throw state.failure;
+    if (selected[0] === "ps") return "";
     if (selected[0] === "network" && selected[1] === "ls") return state.listed.join("\n");
     if (selected[0] === "network" && selected[1] === "inspect") return JSON.stringify(state.network);
     if (selected[0] === "container" && selected[1] === "inspect") {
@@ -48,7 +49,7 @@ test("E5 unsettled endpoint cannot mask a foreign container or network", () => {
   assert.throws(() => f.D.checkNetworks(f.composition), { code: "NETWORK_OWNERSHIP_MISMATCH" });
   f.resources[f.cid].owner = f.composition.project; f.network.owner = "foreign";
   assert.throws(() => f.D.checkNetworks(f.composition), { code: "NETWORK_OWNERSHIP_MISMATCH" });
-  assert.ok(f.calls.every(c => ["network", "container"].includes(c[0])));
+  assert.ok(f.calls.every(c => ["network", "container", "ps"].includes(c[0])));
 });
 test("E6 malformed endpoint metadata and inconsistent keys fail explicitly", () => {
   for (const mutate of [f => { f.network.containers[f.ep].EndpointID = "a".repeat(64); }, f => { f.network.containers[f.ep].Name = "bad\nname"; }, f => { f.network.containers[f.ep].IPv4Address = null; }, f => { f.network.containers = []; }]) {

@@ -1,0 +1,63 @@
+{
+  "status": "FAILED_QUALIFICATION",
+  "baseline": "cd9b8322bd7eef3b4094710ec4ea26be94f08922",
+  "sourceIdentity": "docs/evidence/IL-5.14-R1-F1/tested-source-identity.json",
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "detail": "Original insecure extra-network acceptance reproduced with real owned Docker resources; cleanup verified."
+    },
+    "B": {
+      "status": "PASS",
+      "detail": "Proposed complete-membership/lifecycle contract documented; real compatibility still requires qualification."
+    },
+    "C": {
+      "status": "NOT_EXECUTED",
+      "detail": "Correction implemented, not qualified: error taxonomy incompatibility found by D."
+    },
+    "D": {
+      "status": "FAIL",
+      "detail": "First focused execution exit1,34/35 pass; unknown service network role returns INVALID instead of MISMATCH."
+    },
+    "E": {
+      "status": "NOT_EXECUTED",
+      "detail": "Stopped before corrected real Docker security acceptance."
+    },
+    "F": {
+      "status": "NOT_EXECUTED",
+      "detail": "Full canonical regression stopped."
+    },
+    "G": {
+      "status": "NOT_EXECUTED",
+      "detail": "Security/audit/package qualification stopped."
+    },
+    "H": {
+      "status": "NOT_EXECUTED",
+      "detail": "No push; no new hosted head."
+    },
+    "I": {
+      "status": "NOT_EXECUTED",
+      "detail": "Independent finding review not eligible; MAJOR remains unresolved."
+    },
+    "J": {
+      "status": "PASS",
+      "detail": "Failure decision and original evidence preserved locally."
+    }
+  },
+  "testCounts": {
+    "tests": 35,
+    "pass": 34,
+    "fail": 1,
+    "skip": 0
+  },
+  "nextRequiredDisposition": "Reconcile established NETWORK_ATTACHMENT_MISMATCH semantics for unknown service role without weakening refusal; preserve first failed run. Resume only under an explicit follow-up disposition, then execute all unexecuted gates.",
+  "independentFinding": "OPEN",
+  "residualLimitations": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "Debian H3 failed; downstream qualification not executed"
+  ],
+  "pushed": false,
+  "merged": false,
+  "published": false
+}
