@@ -1,3 +1,28 @@
+# IL-5.14-C1-S2 pre-hosted decision
+
+**PENDING_HOSTED_CI.** Loader security and Promise ownership are remediated, and every mandatory local S2 qualification passes. The original hosted failures remain historical evidence, not a current-head success claim. PR20 is reused; final readiness requires actual Quality,CodeQL and SonarCloud A/A results on the corrected exact PR head.
+
+Executable source: f54a6ea3c1d170ee543ef98a890b38f0dd449a55, with fixed-module/historical-AST loader correction c2320fd9f8b69a166211ae40f400ab7b1d4522f0. All later commits at this stage contain reports/evidence only.
+
+| S2 gate | Status | Actual evidence |
+|---|---|---|
+| A current baseline | PASS | Clean5852b1b, same open PR20/main;6 blocking findings and data flows preserved |
+| B secure design | PASS | Fixed CommonJS module, scoped Node mocks, pinned non-executing historical proof; private shared readiness implementation |
+| C loader security | PASS locally | 6 new tests plus13 preserved network regressions; invalid source/metadata rejected, no generic source evaluation |
+| D Promise ownership | PASS locally | 17 diagnostics tests, actual child failure outcomes, original cause, cleanup/write/close failures; explicit terminal catches |
+| E local regression | PASS | Unit217/contracts24, lint0 errors/0 new findings/28 historical warnings, real Docker2 cycles plus15 health assertions, integration17+17+16+4, application87 assertions |
+| F dependency/security/package | PASS | Required audits0 findings, qualified mail graph/5209 entries unchanged, security12+4+25, package42 members/consumer8+37 assertions/strict types |
+| G hosted exact-head qualification | PENDING_HOSTED_CI | Corrected source not yet qualified by hosted checks; require unchanged gate A/A |
+| H final decision | PENDING_HOSTED_CI | No canonical review-ready claim until all mandatory final-head results pass |
+
+[Loader design](IL-5.14-C1-S2-loader-design.md), [loader security](IL-5.14-C1-S2-loader-security-qualification.md), [Promise qualification](IL-5.14-C1-S2-promise-qualification.md), [complete local commands and artifact identities](IL-5.14-C1-S2-regression-qualification.md), [hosted protocol](IL-5.14-C1-S2-hosted-ci.md).
+
+The local archive is unpublished,42 members/103349 bytes, SHA2563f6bdc655180ffa8b2a2f0746583b02b377fcbf3da2fc473761d3cbeae56e54b. No public API/manifest/lock change or alpha.3 artifact modification occurs. Published SHA256 remainsc503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e. No Debian,Server Runtime,Oxy-form,foreign Docker resource,scanner setting or host protection is modified. SMTP_RECOVERY_UNQUALIFIED and H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED remain.
+
+---
+
+## Historical L1 and earlier decisions (preserved verbatim)
+
 # Current decision after hosted CI — IL-5.14-C1-L1
 
 **BLOCKED_SECURITY.** The lint blocker is resolved and all required local qualification passes. [PR #20](https://github.com/drumee/infra-layer/pull/20) is open against main, but SonarCloud's mandatory hosted quality gate fails. CANONICAL_FIX_READY_FOR_REVIEW is not the current status. The PR remains open for review; no merge, publication or deployment is authorized or performed.

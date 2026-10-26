@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: D1 assertion fields, non-enumerable message/stack and source survive the actual failed process
+ok 1 - D1 assertion fields, non-enumerable message/stack and source survive the actual failed process
+  ---
+  duration_ms: 41.469878
+  type: 'test'
+  ...
+# Subtest: D2 failure remains nonzero with concise human summary and restrictive artifact mode
+ok 2 - D2 failure remains nonzero with concise human summary and restrictive artifact mode
+  ---
+  duration_ms: 35.514905
+  type: 'test'
+  ...
+# Subtest: D3 nested cause retains original assertion
+ok 3 - D3 nested cause retains original assertion
+  ---
+  duration_ms: 32.10634
+  type: 'test'
+  ...
+# Subtest: D4 child assertion remains identifiable through parent reporting
+ok 4 - D4 child assertion remains identifiable through parent reporting
+  ---
+  duration_ms: 64.700358
+  type: 'test'
+  ...
+# Subtest: D5 asynchronous assertion is captured rather than swallowed
+ok 5 - D5 asynchronous assertion is captured rather than swallowed
+  ---
+  duration_ms: 32.367433
+  type: 'test'
+  ...
+# Subtest: D6 real trusted Docker failure remains distinct with command, nonzero status and stderr
+ok 6 - D6 real trusted Docker failure remains distinct with command, nonzero status and stderr
+  ---
+  duration_ms: 50.294272
+  type: 'test'
+  ...
+# Subtest: D7 redaction covers nested values, causes, stack, command/output and protected contexts
+ok 7 - D7 redaction covers nested values, causes, stack, command/output and protected contexts
+  ---
+  duration_ms: 36.134326
+  type: 'test'
+  ...
+# Subtest: D8 circular values, bigint, symbol, Buffer, Map, Set and undefined are safe
+ok 8 - D8 circular values, bigint, symbol, Buffer, Map, Set and undefined are safe
+  ---
+  duration_ms: 35.221444
+  type: 'test'
+  ...
+# Subtest: D9 large diagnostics remain bounded valid JSON with explicit truncation
+ok 9 - D9 large diagnostics remain bounded valid JSON with explicit truncation
+  ---
+  duration_ms: 502.459817
+  type: 'test'
+  ...
+# Subtest: D10 successful execution creates no failure artifact or artificial error
+ok 10 - D10 successful execution creates no failure artifact or artificial error
+  ---
+  duration_ms: 28.746425
+  type: 'test'
+  ...
+# Subtest: observer preserves original argv/options/receiver/stdin/timeout/return/error identity and executes once
+ok 11 - observer preserves original argv/options/receiver/stdin/timeout/return/error identity and executes once
+  ---
+  duration_ms: 33.178941
+  type: 'test'
+  ...
+# Subtest: real harness preserves all original assertion and Docker/spawn expressions in order
+ok 12 - real harness preserves all original assertion and Docker/spawn expressions in order
+  ---
+  duration_ms: 45.670931
+  type: 'test'
+  ...
+# Subtest: artifact directory ownership/permissions and exclusive trace prevent unsafe reuse
+ok 13 - artifact directory ownership/permissions and exclusive trace prevent unsafe reuse
+  ---
+  duration_ms: 3.958277
+  type: 'test'
+  ...
+# Subtest: S2 entry point observes the original rejected Promise and preserves its cause
+ok 14 - S2 entry point observes the original rejected Promise and preserves its cause
+  ---
+  duration_ms: 41.001704
+  type: 'test'
+  ...
+# Subtest: S2 cleanup rejection finishes cleanup and retains the original primary assertion
+ok 15 - S2 cleanup rejection finishes cleanup and retains the original primary assertion
+  ---
+  duration_ms: 40.87286
+  type: 'test'
+  ...
+# Subtest: S2 diagnostic-write refusal cannot overwrite evidence or turn failure into success
+ok 16 - S2 diagnostic-write refusal cannot overwrite evidence or turn failure into success
+  ---
+  duration_ms: 38.897063
+  type: 'test'
+  ...
+# Subtest: S2 failure while closing diagnostic state is captured as a nonzero owned rejection
+ok 17 - S2 failure while closing diagnostic state is captured as a nonzero owned rejection
+  ---
+  duration_ms: 38.557287
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1209.28993
