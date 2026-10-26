@@ -1,3 +1,9 @@
+# Post-PR hosted disposition
+
+**BLOCKED_SECURITY:** local results below remain PASS, but the subsequently executed SonarCloud gate fails. Hosted Quality and CodeQL passed on observed e0beb70; later-head checks are not assumed. [Current hosted failure and required follow-up](IL-5.14-C1-L1-hosted-ci-stop.md).
+
+---
+
 # IL-5.14-C1-L1 package and local CI qualification
 
 Gate H: PASS for mandatory local checks. Runtime/package source ce1ba500d3775d1a7f6ac0156d26b60a4c6ccc4c. CI-only final source 03e63e114278ee24561847d3a7c88e910f293a08; every packaged member remains byte-identical. Documentation/evidence commits after these do not change the qualified inputs.

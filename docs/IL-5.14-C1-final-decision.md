@@ -1,3 +1,28 @@
+# Current decision after hosted CI — IL-5.14-C1-L1
+
+**BLOCKED_SECURITY.** The lint blocker is resolved and all required local qualification passes. [PR #20](https://github.com/drumee/infra-layer/pull/20) is open against main, but SonarCloud's mandatory hosted quality gate fails. CANONICAL_FIX_READY_FOR_REVIEW is not the current status. The PR remains open for review; no merge, publication or deployment is authorized or performed.
+
+Hosted results actually observed on documentation-only head e0beb70c65a103dce74b636601f777646c12829f: Quality unit/contracts/eslint/dependencies/packaging all SUCCESS, CodeQL actions/javascript-typescript/python and combined check SUCCESS, SonarCloud FAILURE. The next documentation-only commit records this stop; its own hosted executions must not be inferred from this snapshot.
+
+| Current area | Status | Evidence/disposition |
+|---|---|---|
+| L1-A through E lint/impact | PASS | Source ce1ba50, one unused catch binding removed; baseline/rules/scope unchanged; lint0 errors/0 new findings/28 historical warnings |
+| L1-F runtime regressions | PASS | Runtime ce1ba50; final CI-only03e63e1 leaves all package bytes identical; unit207/contracts24, real Docker2 cycles, integration gateway17/services17/lifecycle16/HTTPS jobs4, application87 assertions |
+| Local dependency/security/package/CI gates | PASS | Current audits0 findings, clean graph5209 entries, trusted tools12/installed security4/filesystem25, package41 members and strict consumer8+37 assertions |
+| Hosted Quality | PASS at observed e0beb70 | All five actual jobs passed; no future-head result is inferred |
+| Hosted CodeQL | PASS at observed e0beb70 | Actual actions/javascript-typescript/python analyses and combined check passed |
+| Hosted SonarCloud | FAIL | New reliability C and security D, required A; 2 unresolved scanner VULNERABILITY findings at fixture loader load.cjs:15, including one CRITICAL; full machine evidence retained |
+| Final canonical decision | BLOCKED | Security scanner findings require assessment/correction; no exception, suppression, retry or automatic relabeling |
+| PR delivery | PASS | PR20 open, non-draft, correct main target; reviewable work preserved despite hosted blocker |
+
+[Complete hosted stop, exact issue IDs/source locations and failed conditions](IL-5.14-C1-L1-hosted-ci-stop.md), [raw hosted readback](evidence/IL-5.14-C1-L1/hosted/current-head-checks.json). Scanner findings have not been classified as confirmed exploitable production defects or false positives. No runtime source is modified after the stop. All historical failures, artifact identities, commands and local evidence in the following reports remain preserved.
+
+**SMTP_RECOVERY_UNQUALIFIED** and **H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED** remain. Published alpha.3, Debian, Server Runtime and Oxy-form are unchanged. Branch protection details remain unverified after API403; no policy was modified or bypassed.
+
+---
+
+## Earlier local qualification and delivery record (superseded by hosted failure)
+
 # IL-5.14-C1-L1 final canonical qualification
 
 **CANONICAL_FIX_READY_FOR_REVIEW.** All mandatory pre-PR local gates pass. The qualified branch is pushed and [reviewable PR #20](https://github.com/drumee/infra-layer/pull/20) is open against main. Hosted checks remain separately pending until actually completed. No publication, merge, release tag, deployment or downstream Debian change is authorized by this decision.
