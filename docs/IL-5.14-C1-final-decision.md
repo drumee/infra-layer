@@ -1,3 +1,32 @@
+# IL-5.14-C1-S2 final decision and source freeze
+
+**Decision: CANONICAL_FIX_READY_FOR_REVIEW, effective only after the final documentation head is independently verified.** Every mandatory local gate and every hosted check passes on 9564b527362ce2d7bbc6b6618ae9915053c4db39. This report/evidence update contains no executable or packaged change; its resulting current PR head must also pass before the owner-facing final confirmation. Until then, that new head remains PENDING_HOSTED_CI. The final exact SHA and check URLs are recorded in PR20's description and final-head readback, without borrowing results from an earlier commit.
+
+PR: https://github.com/drumee/infra-layer/pull/20, existing branch fix/il514-c1-network-attachment-identity, target main. Runtime/package revision f54a6ea3c1d170ee543ef98a890b38f0dd449a55; loader implementation ancestor c2320fd9f8b69a166211ae40f400ab7b1d4522f0. Later commits are evidence/report-only. Published alpha.3 remains immutable and no version/publication is assigned.
+
+| S2 gate | Status | Exact qualification |
+|---|---|---|
+| A baseline | PASS |5852b1b, same open PR20/main; original issue IDs/flows and failed conditions preserved |
+| B loader design | PASS | Fixed current CommonJS module/scoped builtin mock; pinned non-executing historical AST proof; actual private readiness algorithm shared by production/tests |
+| C loader security | PASS |6 new security cases plus all13 network regressions; no arbitrary JS evaluator/source-path option or privileged host fallback |
+| D Promise reliability | PASS |17 actual diagnostic/child-process tests; explicit ownership, original rejected error/cause, nonzero cleanup/write/close failures and no false PASS |
+| E local regressions | PASS |Unit217/contracts24/lint0 errors+0 new findings, real Docker2 cycles and15 health assertions, gateway17/services17/lifecycle16/HTTPS jobs4/application87 assertions |
+| F dependency/security/package | PASS |3 required audits0 findings, unchanged qualified mail graph/5209 entries, trusted tools12/installed security4/filesystem25,42-member package and consumer8+37 assertions/strict types |
+| G first hosted head | PASS |9564b527362ce2d7bbc6b6618ae9915053c4db39; all5 Quality jobs, CodeQL and SonarCloud actual success; APIs match PR20 SHA; security A/reliability A/maintainability A/duplication0.6%/hotspots100% |
+| Original scanner findings | PASS |All6 original issues CLOSED/FIXED, unresolved S1523/S8704/S9383 total0; current bugs0/vulnerabilities0,49 nonblocking code smells retained |
+| Final documentation head | PENDING_HOSTED_CI until actual readback |Must be independently checked after this documentation-only commit; final PR metadata supplies its exact successful SHA/URLs |
+| H final review handoff | Conditional on final-head PASS |Existing PR20 updated, no competing PR/merge/publication; no further commit after final verified head |
+
+[Hosted proof and workflow URLs](IL-5.14-C1-S2-hosted-ci.md), [full local qualification, toolchain and artifact identities](IL-5.14-C1-S2-regression-qualification.md), [loader controls](IL-5.14-C1-S2-loader-security-qualification.md), [Promise outcomes](IL-5.14-C1-S2-promise-qualification.md), [hashed evidence](evidence/IL-5.14-C1-S2/files-sha256.json).
+
+The new unpublished archive has42 members/103349 bytes, SHA2563f6bdc655180ffa8b2a2f0746583b02b377fcbf3da2fc473761d3cbeae56e54b and SRI sha512-sQF88I/AJUt2kHEoEQawYlLj9okhwvT/tmOMecB6Jfsvv5icxSsFUQxovw1Wue59SBuGJrcufst5LRU0mqM7IQ==. It adds only the private production readiness helper; tests/mocks/privileged loaders are not published. Public exports/types and manifests/locks remain unchanged. Root lock SHA256 remains29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3; Nodemailer10.1.7/smtp-server3.19.24/nested10.1.4 stay qualified. Published alpha.3 SHA256 remainsc503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e.
+
+Residual limitations remain SMTP_RECOVERY_UNQUALIFIED and H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED. The permanently failed H3 campaign, original dependency/security/diagnostic failures and their corrective history are preserved below. No Internet mail/spool-recovery/downstream Debian stability qualification is claimed. Only mission-owned resources are cleaned up; protected Docker configuration, Debian, Server Runtime and Oxy-form are unchanged. Branch-protection details previously returned403; no policy is changed or bypassed. Review readiness is not merge, publication or production approval.
+
+---
+
+## Earlier decisions and intermediate states (preserved verbatim)
+
 # IL-5.14-C1-S2 pre-hosted decision
 
 **PENDING_HOSTED_CI.** Loader security and Promise ownership are remediated, and every mandatory local S2 qualification passes. The original hosted failures remain historical evidence, not a current-head success claim. PR20 is reused; final readiness requires actual Quality,CodeQL and SonarCloud A/A results on the corrected exact PR head.
