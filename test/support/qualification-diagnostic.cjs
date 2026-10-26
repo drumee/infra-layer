@@ -127,16 +127,34 @@ function createDiagnostics({ directory = process.env.IL514_DIAGNOSTIC_DIR, scena
     try { primary.file = write("failure.json", report); }
     catch (diagnosticError) { primary.artifactError = text(property(diagnosticError, "code") || property(diagnosticError, "message")); }
   }
+  function secondary(error) {
+    try { primary.secondaryFile = write("secondary-failure.json", { timestamp: new Date().toISOString(), scenario: identity, step, sourceRevision, error }); }
+    catch (diagnosticError) { primary.secondaryArtifactError = text(property(diagnosticError, "code") || property(diagnosticError, "message")); }
+    try { event("secondary-failure", { error }); }
+    catch (diagnosticError) { primary.secondaryArtifactError = text(property(diagnosticError, "code") || property(diagnosticError, "message")); }
+  }
   async function run(task) {
     try { await task(); }
     catch (error) {
       capture(error);
-      const original = primary.error;
-      console.error("QUALIFICATION_FAILED " + text(JSON.stringify({ scenario: text(primary.scenario), step: text(primary.step), code: text(property(original, "code")), message: text(property(original, "message")).slice(0, 240), assertion: text(primary.assertion), artifact: primary.file, artifactError: primary.artifactError })));
-      if (error !== original) event("secondary-failure", { error });
+      if (error !== primary.error) secondary(error);
+    }
+    try { fs.closeSync(trace); }
+    catch (error) {
+      if (primary) secondary(error);
+      else capture(error);
+    }
+    if (primary) {
       process.exitCode = 1;
-    } finally { fs.closeSync(trace); }
+      throw primary.error;
+    }
   }
-  return { directory, run, capture, observeDocker, event, step(name) { step = name; }, scenario(name) { identity = name; }, secret(value) { if (typeof value !== "string" || value.length < 8) throw Error("DIAGNOSTIC_SECRET_INVALID"); secrets.add(value); } };
+  function fail(error) {
+    process.exitCode = 1;
+    capture(error);
+    const original = primary.error;
+    console.error("QUALIFICATION_FAILED " + text(JSON.stringify({ scenario: text(primary.scenario), step: text(primary.step), code: text(property(original, "code")), message: text(property(original, "message")).slice(0, 240), assertion: text(primary.assertion), artifact: primary.file, artifactError: primary.artifactError, secondaryArtifact: primary.secondaryFile, secondaryArtifactError: primary.secondaryArtifactError })));
+  }
+  return { directory, run, fail, capture, observeDocker, event, step(name) { step = name; }, scenario(name) { identity = name; }, secret(value) { if (typeof value !== "string" || value.length < 8) throw Error("DIAGNOSTIC_SECRET_INVALID"); secrets.add(value); } };
 }
 module.exports = { createDiagnostics, MAX_BYTES };

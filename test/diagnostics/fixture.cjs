@@ -3,17 +3,31 @@ const assert = require("node:assert/strict"), fs = require("node:fs"), path = re
 const { createDiagnostics } = require("../support/qualification-diagnostic.cjs");
 const [mode, directory] = process.argv.slice(2), diagnostic = createDiagnostics({ directory, scenario: "diagnostic-" + mode });
 const secret = "il514-fixture-sensitive-material"; diagnostic.secret(secret); diagnostic.step("controlled-" + mode);
-if (mode === "passthrough") {
+if (mode === "owned-rejection") {
+  const failure = new Error("controlled owned rejection", { cause: new Error("original cause") });
+  diagnostic.run(async () => { throw failure; }).catch(error => { assert.strictEqual(error, failure); diagnostic.fail(error); });
+} else if (mode === "passthrough") {
   const output = Buffer.from("same bytes"), failure = Object.assign(Error("same exception"), { status: 37, signal: "SIGTERM", stderr: "controlled failure" });
   const args = ["--host", "unix:///var/run/docker.sock", "test"], options = { input: Buffer.from(secret), env: { DO_NOT_RECORD: secret }, timeout: 1234, uid: process.getuid(), gid: process.getgid(), shell: false, stdio: "pipe" }, receiver = {};
   let calls = 0;
   child.execFileSync = function(...values) { calls++; assert.strictEqual(this, receiver); assert.strictEqual(values[1], args); assert.strictEqual(values[2], options); if (calls === 2) throw failure; return output; };
   diagnostic.observeDocker();
-  diagnostic.run(async () => { assert.strictEqual(child.execFileSync.call(receiver, "/usr/bin/docker", args, options), output); assert.throws(() => child.execFileSync.call(receiver, "/usr/bin/docker", args, options), error => error === failure); assert.equal(calls, 2); });
+  diagnostic.run(async () => { assert.strictEqual(child.execFileSync.call(receiver, "/usr/bin/docker", args, options), output); assert.throws(() => child.execFileSync.call(receiver, "/usr/bin/docker", args, options), error => error === failure); assert.equal(calls, 2); }).catch(diagnostic.fail);
 } else {
   diagnostic.observeDocker();
   diagnostic.run(async () => {
     if (mode === "success") { assert.equal(2 + 2, 4); return; }
+    if (mode === "cleanup") {
+      diagnostic.capture(new assert.AssertionError({ actual: 1, expected: 2, operator: "strictEqual", message: "original before cleanup" }));
+      await new Promise(resolve => setTimeout(resolve, 5)); diagnostic.event("controlled-cleanup-completed");
+      throw Object.assign(new Error("controlled cleanup rejection"), { code: "CONTROLLED_CLEANUP_FAILED" });
+    }
+    if (mode === "write-failure") { fs.writeFileSync(path.join(directory, "failure.json"), JSON.stringify({ protectedFixture: "unchanged" })); assert.equal(1, 2, "original despite diagnostic write failure"); }
+    if (mode === "trace-close") {
+      const close = fs.closeSync; let first = true;
+      fs.closeSync = descriptor => { if (first) { first = false; throw Object.assign(new Error("controlled trace close failure"), { code: "CONTROLLED_TRACE_CLOSE_FAILED" }); } return close(descriptor); };
+      return;
+    }
     if (mode === "assertion") assert.deepEqual({ answer: 41 }, { answer: 42 }, "controlled assertion mismatch");
     if (mode === "async") { await Promise.resolve(); assert.equal(3, 4, "controlled asynchronous mismatch"); }
     if (mode === "cause") {
@@ -37,5 +51,5 @@ if (mode === "passthrough") {
       throw new assert.AssertionError({ actual, expected: "expected", operator: "deepStrictEqual", message: "complex values" });
     }
     if (mode === "large") throw new assert.AssertionError({ actual: Array.from({ length: 5000 }, () => "X".repeat(10000)), expected: { value: "different" }, operator: "deepStrictEqual", message: "M".repeat(100000) });
-  });
+  }).catch(diagnostic.fail);
 }

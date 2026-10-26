@@ -69,3 +69,19 @@ test("artifact directory ownership/permissions and exclusive trace prevent unsaf
   fs.chmodSync(directory, 0o700); fs.writeFileSync(path.join(directory, "trace.jsonl"), "owned sentinel");
   assert.throws(() => createDiagnostics({ directory }), { code: "EEXIST" }); assert.equal(fs.readFileSync(path.join(directory, "trace.jsonl"), "utf8"), "owned sentinel");
 });
+test("S2 entry point observes the original rejected Promise and preserves its cause", t => {
+  const f = run(t, "owned-rejection"); assert.equal(f.result.status, 1); assert.equal(f.result.signal, null); assert.match(f.report.error.message, /controlled owned rejection/); assert.equal(f.report.error.cause.message, "original cause");
+  assert.equal((f.result.stderr.match(/QUALIFICATION_FAILED/g) || []).length, 1); assert.doesNotMatch(f.result.stderr, /UnhandledPromiseRejection|triggerUncaughtException/);
+});
+test("S2 cleanup rejection finishes cleanup and retains the original primary assertion", t => {
+  const f = run(t, "cleanup"); assert.equal(f.result.status, 1); assert.equal(f.report.error.code, "ERR_ASSERTION"); assert.equal(f.report.error.actual, 1); assert.equal(f.report.error.expected, 2); assert.match(f.report.error.message, /original before cleanup/);
+  assert.match(f.trace, /controlled-cleanup-completed/); const secondary = JSON.parse(fs.readFileSync(path.join(f.directory, "secondary-failure.json"))); assert.equal(secondary.error.code, "CONTROLLED_CLEANUP_FAILED");
+  assert.equal((f.result.stderr.match(/QUALIFICATION_FAILED/g) || []).length, 1); assert.doesNotMatch(f.result.stderr, /UnhandledPromiseRejection|triggerUncaughtException/);
+});
+test("S2 diagnostic-write refusal cannot overwrite evidence or turn failure into success", t => {
+  const f = run(t, "write-failure"); assert.equal(f.result.status, 1); assert.deepEqual(f.report, { protectedFixture: "unchanged" }); assert.match(f.result.stderr, /EEXIST/); assert.match(f.result.stderr, /original despite diagnostic write failure/);
+  assert.equal((f.result.stderr.match(/QUALIFICATION_FAILED/g) || []).length, 1); assert.doesNotMatch(f.result.stderr, /UnhandledPromiseRejection|triggerUncaughtException/);
+});
+test("S2 failure while closing diagnostic state is captured as a nonzero owned rejection", t => {
+  const f = run(t, "trace-close"); assert.equal(f.result.status, 1); assert.equal(f.report.error.code, "CONTROLLED_TRACE_CLOSE_FAILED"); assert.match(f.result.stderr, /QUALIFICATION_FAILED/); assert.doesNotMatch(f.result.stderr, /UnhandledPromiseRejection|triggerUncaughtException/);
+});

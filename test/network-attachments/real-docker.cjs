@@ -99,4 +99,4 @@ diagnostic.run(async () => {
   diagnostic.step("independent-cycle-identities");
   check(new Set(runs.map(r => r.network_id)).size, 2); check(new Set(runs.map(r => r.container_id)).size, 2);
   console.log(JSON.stringify({ status: "PASS", versions, image, assertions, runs, commands: records, note: "Sandbox-less timing is daemon-dependent; deterministic typed metadata/refusal/deadline cases are separately covered by actual-code fixtures. No failed lifecycle operation is retried." }, null, 2));
-});
+}).catch(diagnostic.fail);

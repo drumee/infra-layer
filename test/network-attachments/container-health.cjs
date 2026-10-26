@@ -34,4 +34,4 @@ diagnostic.run(async () => {
     report.cleanup = "PASS"; diagnostic.event("cleanup-complete", { project });
   }
   report.assertions = assertions; report.status = "PASS"; console.log(JSON.stringify(report, null, 2));
-});
+}).catch(diagnostic.fail);
