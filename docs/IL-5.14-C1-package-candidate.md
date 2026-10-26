@@ -1,3 +1,9 @@
+# L1 current package qualification
+
+PASS for the unpublished review archive and installed consumers at ce1ba50, with unchanged packaged bytes at final CI-only03e63e1. This does not assign a release version or authorize replacement/publication of alpha.3. [Current package, integrity, strict types and CI evidence](IL-5.14-C1-L1-package-and-ci.md).
+
+---
+
 # D1 package disposition (2026-10-25)
 
 NOT_EXECUTED. D1 real network acceptance passes, but canonical lint then fails. Package qualification, consumer/type checks and candidate version selection were not executed after that mandatory stop. No package was published or alpha.3 artifact changed. [Current evidence matrix](IL-5.14-C1-final-decision.md).

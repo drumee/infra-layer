@@ -1,3 +1,61 @@
+# IL-5.14-C1-L1 final canonical qualification
+
+All mandatory pre-PR local gates: **PASS**. Delivery is not yet executed until the qualified branch is pushed and the reviewable PR exists. CANONICAL_FIX_READY_FOR_REVIEW is not asserted before that delivery step. Hosted checks remain separately pending. No publication, merge, release tag, deployment or downstream Debian change is authorized by this decision.
+
+## Source, scope and artifacts
+
+Resume checkpoint dac28dbae8febabecfea5e0cdef7afb968487efd is preserved. Branch: fix/il514-c1-network-attachment-identity. Verified canonical/default target: main, c218811effc83da25cf71a914e27accc96101329, ancestor of this branch. Production and package revision tested: **ce1ba500d3775d1a7f6ac0156d26b60a4c6ccc4c**. Final CI/test revision: **03e63e114278ee24561847d3a7c88e910f293a08**. That later commit changes only checkout history availability and its workflow regression assertion; every packaged member remains byte-identical to ce1ba50. Documentation/evidence-only commits follow.
+
+Environment: Debian 12 amd64, UID/GID1000:1000, Node22.22.0/npm11.18.0, ESLint10.13.0, Docker29.2.0. Production uses the trusted Docker executable and fixed local socket; protected /etc/docker snapshots are unchanged. Exact per-command source, UTC timestamps, exits, environment and hashes are in [the L1 ledger](evidence/IL-5.14-C1-L1/execution.jsonl). [All evidence hashes](evidence/IL-5.14-C1-L1/files-sha256.json).
+
+Published alpha.3 is independently verified unchanged: source c218811effc83da25cf71a914e27accc96101329, 41 members, 101778 compressed bytes, SHA256 **c503d31c44f6da34ccce7702b20fb82b462c82596cfb7677f10945ccd7cd6f4e**, SRI **sha512-R3Y1X1Cw6lFddrets7hDFAcWRhHUYPw/XAYtLxnHZcXvataHcgjrrlh04lqk4Esxfx5fkcKMvvvhqcsTqpe2MA==**. The separately qualified local review archive has 41 members/103207 bytes, SHA256 **cb1fed84867a2f0f52c95dcd3649e7e1a6193e4334614b824a4112816273297d**, SRI **sha512-u3CY36JNQXeLlrLHvxK+2wS5Q+T3L3wd/xCB4yNzcE0FJHCcpTYzKz/cd2+CHAxiwlLPag+uLWJrVBsJvjzKaA==**. It is unpublished and retains development manifest metadata; it is not an alpha.3 registry replacement. Recommend alpha.4 only for a separately approved next prerelease; no version, tag or dist-tag is assigned here.
+
+Nodemailer remains exactly10.1.7, smtp-server3.19.24 and nested Nodemailer10.1.4. Root lock SHA256 **29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3** is unchanged. Clean installation reproduces all5209 qualified file/link entries; all current required audits report zero findings. [Security qualification](IL-5.14-C1-L1-security-qualification.md).
+
+## Corrections and causal scope
+
+The original network defect passed a sandbox-less Docker attachment key to container inspection. The canonical correction distinguishes network/container/endpoint/attachment/ownership identities, retains endpoint metadata, refuses unexpected or unauthorized attachments and reconciles only bounded successful unsettled metadata states. It never retries or hides a Docker nonzero result. The Moby source explains why the network Containers map can contain a non-container key. [Identity contract](IL-5.14-C1-network-identity-contract.md).
+
+D1 preserves AssertionError fields before cleanup and identifies a separate real failure: the optional State.Health template guard failed when the field was absent, before ownership checking. The corrected index lookup preserves unknown health and the original foreign-resource refusal. D1's single failing instrumented reproduction, old raw ERR_ASSERTION and corrected two-cycle acceptance remain historical evidence. L1 re-executes the complete real scenario on the final runtime source.
+
+L1 reproduces the lint failure, classifies the same unused catch binding moved from line13 to26, and removes only its unused parameter. The entire remaining production file is byte-identical to the checkpoint. No baseline change, suppression, scanner exclusion, threshold change or unrelated cleanup occurs. Lint now has **0 errors, 0 new findings, 28 visible historical warnings**. The workflow additionally fetches full history so the mandatory D1 source-preservation test can run in hosted CI; its assertions are retained.
+
+## Final qualification matrix
+
+All commands below exit0 unless identified as the preserved failing baseline. Runtime tests use ce1ba50; final unit/lint use03e63e1. Exact full revisions, tool versions and UTC receipts accompany each log.
+
+| Gate | Status | Actual qualification/evidence |
+|---|---|---|
+| S1 security remediation | PASS | Historical e914db67/ea22f46 deterministic install/integrity and mail qualification retained; current audits and clean-install comparison independently reconfirm the unchanged graph |
+| C1 identity diagnosis/correction | PASS | Historical reproduction retained; typed identity/refusal implementation plus all13 focused network tests pass on ce1ba50 |
+| D1 diagnostics and causal fix | PASS | 13 actual-reporting-path tests retained and included in final207 tests; complete causal capture/optional Health correction independently proved; original failures preserved |
+| L1-A lint diagnosis | PASS | npm run lint at dac28db exits1 as required baseline; 0 errors/29 warnings/1 moved catch-binding mismatch; source/baseline comparison documented |
+| L1-B/C correction | PASS | One optional catch-binding edit, syntax checks0, unchanged refusal and explicit malformed-pointer regression; [decision](IL-5.14-C1-L1-remediation-decision.md) |
+| L1-D lint | PASS | npm run lint at ce1ba50 and final03e63e1, exit0, 0 errors/28 visible warnings/0 new findings; baseline still65 entries |
+| L1-E impacted controls | PASS | 38 focused tests, syntax,24 contracts and final207 unit tests; [impact analysis](IL-5.14-C1-L1-requalification-impact.md) |
+| L1-F real Docker | PASS | node test/network-attachments/real-docker.cjs, 2 independent complete cycles,40 counted assertions plus direct startup checks; Redis recovery/restart, ownership/missing-object refusals and cleanup |
+| L1-F canonical integration | PASS | npm run test:integration sequentially passes gateway17, services17, lifecycle16 and HTTPS/job fixture4; actual Chromium sandbox retained; [regression report](IL-5.14-C1-L1-regression-qualification.md) |
+| L1-F real application | PASS | npm run test:application with explicit testbox/LAN/host Nginx environment,11 groups/87 assertions, actual alpha.4 Runtime, HTTPS, RPC, LAN denial, backup/restore, interruption/recovery and SMTP/DKIM/refusals |
+| L1-G security | PASS locally | Full dev, production and private fixture npm audits all0 findings; test:system-tools12 scenarios; installed consumer4 real trusted-tool/port/TLS refusal scenarios; all protected Docker snapshots unchanged |
+| L1-H package | PASS | npm run test:package:41 members, no production deps/unexpected files/secrets, offline consumer smoke; actual packed application consumer8+37 assertions, strict NodeNext types, ownership-verified image cleanup |
+| L1-H CI equivalents | PASS locally | npm ci in isolated clean prefix matches5209 entries; unit207/contracts24/lint/audits/packaging and Python filesystem-security25 tests all pass; CI history prerequisite and its workflow assertion pass |
+| L1-I final evidence | PASS locally | Complete source/artifact/command matrix and preserved failures; review delivery still required |
+| Hosted Quality/security checks | PENDING_HOSTED_CI | Not represented as local or hosted PASS before actual PR execution |
+| Branch protection policy details | BLOCKED read access | API HTTP403; details unverified, no protection change/bypass; review/merge policy must be checked by an authorized maintainer |
+| PR delivery | NOT_EXECUTED at this pre-PR record | Authorized only after the local gates above pass |
+
+## Limitations and handoff
+
+**SMTP_RECOVERY_UNQUALIFIED** remains. Local SMTP submission/capture, DKIM, STARTTLS/SASL, relay restriction and explicit recovery refusal are tested; Internet delivery and spool recovery are not qualified. **H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED** remains. Neither the H3 endpoint defect nor the D1 optional-health failure is asserted as H1's cause. The failed H3 five-run campaign remains failed. No Debian H4 campaign, dependency realignment or downstream change occurs in this mission.
+
+Real Docker endpoint timing is daemon-dependent; deterministic typed metadata fixtures complement the actual lifecycle runs rather than claiming each run forced a sandbox-less endpoint. Bounded diagnostic traces are not a complete unbounded audit. API/declarations and package inputs retain compatibility, and strict installed-consumer checks pass. Required hosted checks and inaccessible protection policy details are distinct from mandatory local qualification. This decision authorizes integration review only, not merger/publication/production use.
+
+No foreign Docker resources, global npm installation, protected Docker configuration, Debian, Server Runtime or Oxy-form were modified. Final mission namespace cleanup is verified. [Readback](evidence/IL-5.14-C1-L1/final-readback.json), [package and CI report](IL-5.14-C1-L1-package-and-ci.md).
+
+---
+
+## Previous D1/C1 decisions (preserved verbatim)
+
 # IL-5.14-C1-D1 current canonical decision
 
 **FAILED_QUALIFICATION. CANONICAL_FIX_READY_FOR_REVIEW is not reached.** Assertion diagnostics and the captured functional defect are corrected; focused real Docker qualification passes. The remaining mandatory parent qualification stops at the canonical lint gate. No branch push, PR, publication, tag, merge or deployment occurred.

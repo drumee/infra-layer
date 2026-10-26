@@ -1,3 +1,9 @@
+# L1 final regression qualification
+
+The final runtime source passes13 network regressions, two complete real Docker cycles,207 unit tests,24 contracts, canonical gateway/services/lifecycle/HTTPS integration and87 real application assertions. Historical failures below are preserved. [Current results and exact sources](IL-5.14-C1-L1-regression-qualification.md).
+
+---
+
 # IL-5.14-C1 resumed regression disposition
 
 **FAILED_QUALIFICATION at real Docker acceptance.** S1 is NODEMAILER_SECURITY_QUALIFIED. The original alpha.3 reproduction was reconfirmed after S1, then the canonical correction was implemented at ad3fd8c7ef765f3718e6e06154b9fdd44786ed22.
