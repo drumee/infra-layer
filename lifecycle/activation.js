@@ -8,19 +8,7 @@ const F = require("../lib/filesystem-safety");
 const P = require("./preparation");
 const D = require("./docker");
 const J = require("./journal");
-const { performance } = require("node:perf_hooks");
-async function networksReady(composition, driver, require_existing) {
-  const deadline = performance.now() + 5000;
-  for (;;) {
-    try { return driver.checkNetworks(composition, { require_existing }); }
-    catch (error) {
-      // Successful metadata reads can expose a join/leave transition. Never
-      // retry a Docker failure, foreign member, missing object or invalid data.
-      if (error.code !== "NETWORK_ATTACHMENT_UNSETTLED" || performance.now() >= deadline) throw error;
-      await new Promise(resolve => setTimeout(resolve, 50));
-    }
-  }
-}
+const networksReady = require("../internal/network-readiness").createNetworkReadiness();
 function readActive(root) {
   const file = path.join(root, "active.json"); if (!fs.existsSync(file)) return null;
   let active; try { active = JSON.parse(F.read(file)); } catch { F.fail("ACTIVE_STATE_CORRUPTED"); }

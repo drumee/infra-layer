@@ -1,5 +1,5 @@
 "use strict";
-const test = require("node:test"), assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path"), vm = require("node:vm"), { createRequire } = require("node:module");
+const test = require("node:test"), assert = require("node:assert/strict");
 const { load } = require("../network-attachments/load.cjs");
 function fixture() {
   const input = structuredClone(require("../network-attachments/fixture.json")), cid = "c".repeat(64), eid = "d".repeat(64), calls = [];
@@ -82,9 +82,8 @@ test("E12 stale container identity and invalid object keys are rejected without 
   assert.throws(() => f.D.checkNetworks(f.composition), { code: "INVALID_DOCKER_OBJECT_IDENTITY" });
 });
 function readiness() {
-  const filename = path.resolve(__dirname, "../../lifecycle/activation.js"), realRequire = createRequire(filename), module = { exports: {} }; let elapsed = 0;
-  vm.runInNewContext(fs.readFileSync(filename, "utf8") + "\nmodule.exports.privateNetworksReady=networksReady;", { module, exports: module.exports, require(name) { return name === "node:perf_hooks" ? { performance: { now: () => elapsed } } : realRequire(name); }, setTimeout(callback, delay) { elapsed += delay; callback(); } }, { filename });
-  return module.exports.privateNetworksReady;
+  let elapsed = 0;
+  return require("../../internal/network-readiness").createNetworkReadiness({ now: () => elapsed, delay: async milliseconds => { elapsed += milliseconds; } });
 }
 test("E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution", async () => {
   const run = readiness(), f = fixture(); let calls = 0;

@@ -1,18 +1,16 @@
 "use strict";
-const fs = require("node:fs"), path = require("node:path"), vm = require("node:vm");
-const { createRequire } = require("node:module");
-const filename = path.resolve(__dirname, "../../lifecycle/docker.js"), realRequire = createRequire(filename);
-function load(execute, source = fs.readFileSync(filename, "utf8")) {
-  const module = { exports: {} }; let elapsed = 0;
-  const context = { module, exports: module.exports, Buffer, process, console, SharedArrayBuffer, Int32Array,
-    Atomics: { wait() { elapsed += 1000; } },
-    require(name) {
-      if (name === "node:child_process") return { execFileSync: execute };
-      if (name === "node:perf_hooks") return { performance: { now: () => elapsed } };
-      return realRequire(name);
-    }
-  };
-  vm.runInNewContext(source, context, { filename });
-  return module.exports;
+const child = require("node:child_process"), { mock } = require("node:test");
+const filename = require.resolve("../../lifecycle/docker");
+function load(execute) {
+  if (arguments.length !== 1 || typeof execute !== "function") throw new Error("FIXED_CANONICAL_MODULE_REQUIRED");
+  const previous = require.cache[filename], substitute = mock.method(child, "execFileSync", execute);
+  try {
+    delete require.cache[filename];
+    return require("../../lifecycle/docker");
+  } finally {
+    substitute.mock.restore();
+    if (previous) require.cache[filename] = previous;
+    else delete require.cache[filename];
+  }
 }
 module.exports = { load };
