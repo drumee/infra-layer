@@ -39,3 +39,21 @@ test("F1-D13 stopped configured membership and Redis-style fresh endpoint recove
 test("F1-D14 disconnect is invalid and reconnection restores exact membership", () => { const f = fixture(); f.resource.networks = {}; f.networks.kernel.containers = {}; mismatch(f); f.attach("kernel"); assert.equal(f.check(), undefined); });
 test("F1-D15 service-specific declarations cannot use the project-wide union", () => { const f = fixture(); f.attach("front"); mismatch(f); });
 test("F1-D16 aliases, duplicate identities and inconsistent reverse attachments fail closed", () => { const f = fixture(); f.resource.networks.alias = f.resource.networks[f.networks.kernel.name]; mismatch(f); delete f.resource.networks.alias; f.networks.front.containers[f.cid] = f.networks.kernel.containers[f.cid]; mismatch(f); delete f.networks.front.containers[f.cid]; f.networks.front.id = f.networks.kernel.id; assert.throws(f.check, { code: "INVALID_NETWORK_ATTACHMENT" }); });
+
+test("E1-D1 historical unknown service role is an interpretable membership mismatch", () => { const f = fixture(); f.composition.compose.services.redis.networks = ["other"]; mismatch(f); });
+test("E1-D2 malformed declaration or attachment remains invalid data", () => {
+  for (const selected of [null, [], [null], [123], ["bad role"], ["kernel", "kernel"]]) { const f = fixture(); f.composition.compose.services.redis.networks = selected; assert.throws(f.check, { code: "INVALID_NETWORK_ATTACHMENT" }); }
+  const f = fixture(); f.networks.kernel.containers[f.cid].IPv4Address = null; assert.throws(f.check, { code: "INVALID_NETWORK_ATTACHMENT" });
+});
+test("E1-D3 structurally valid wrong network identity remains a mismatch", () => { const f = fixture(); f.resource.networks[f.networks.kernel.name].NetworkID = "f".repeat(64); mismatch(f); });
+test("E1-D4 structurally valid wrong endpoint identity remains a mismatch", () => { const f = fixture(); f.resource.networks[f.networks.kernel.name].EndpointID = "f".repeat(64); mismatch(f); });
+test("E1-D5 undeclared connectivity stays non-transient", () => { const f = fixture(); f.resource.networks.extra = { NetworkID: "f".repeat(64), EndpointID: "e".repeat(64) }; mismatch(f); });
+test("E1-D6 missing required membership stays non-transient", () => { const f = fixture(); f.resource.networks = {}; f.networks.kernel.containers = {}; mismatch(f); });
+test("E1-D7 exact declared multihoming remains valid", () => { const f = fixture(); f.composition.compose.services.redis.networks = { kernel: {}, front: {} }; f.attach("front"); assert.equal(f.check(), undefined); });
+test("E1-D8 synthetic endpoint cannot become an accepted container", () => { const f = fixture(), id = "e".repeat(64); f.inventory = []; f.networks.kernel.containers = { ["ep-" + id]: { ...f.networks.kernel.containers[f.cid], EndpointID: id } }; assert.throws(f.check, { code: "NETWORK_ATTACHMENT_UNSETTLED" }); assert.ok(f.calls.every(c => c[0] !== "container")); });
+test("E1-D9 ownership remains distinct from membership mismatch", () => { const f = fixture(); f.resource.owner = "foreign"; f.resource.networks.extra = {}; assert.throws(f.check, { code: "NETWORK_OWNERSHIP_MISMATCH" }); });
+test("E1-D10 Docker failures are never remapped as validation errors", () => { const f = fixture(); f.fail = true; assert.throws(f.check, e => e.code === "DOCKER_LIFECYCLE_COMMAND_FAILED" && e.exit_status === 125); });
+test("E1-D11 mixed malformed attachment and wrong membership use deterministic metadata-first precedence", () => {
+  for (const reverse of [false, true]) { const f = fixture(); f.networks.kernel.containers[f.cid].IPv4Address = null; f.resource.networks[f.networks.kernel.name].NetworkID = "f".repeat(64); if (reverse) f.composition.compose.networks = Object.fromEntries(Object.entries(f.composition.compose.networks).reverse()); assert.throws(f.check, { code: "INVALID_NETWORK_ATTACHMENT" }); }
+});
+test("E1-D12 valid ordinary lifecycle observation preserves success", () => { const f = fixture(); assert.equal(f.check(), undefined); f.resource.running = false; delete f.networks.kernel.containers[f.cid]; f.resource.networks[f.networks.kernel.name].EndpointID = ""; assert.equal(f.check(), undefined); });

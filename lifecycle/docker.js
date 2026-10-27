@@ -84,7 +84,9 @@ function attachment(value) {
 function serviceNetworks(composition, service) {
   const selected = composition.compose.services[service].networks;
   const roles = Array.isArray(selected) ? selected : selected && typeof selected === "object" ? Object.keys(selected) : [];
-  if (!roles.length || new Set(roles).size !== roles.length || roles.some(role => !Object.hasOwn(composition.compose.networks, role))) F.fail("INVALID_NETWORK_ATTACHMENT");
+  if (!roles.length || new Set(roles).size !== roles.length || roles.some(role => typeof role !== "string" || !S.identifier(role))) F.fail("INVALID_NETWORK_ATTACHMENT");
+  // A valid role absent from the declaration is a contract mismatch, not bad data.
+  if (roles.some(role => !Object.hasOwn(composition.compose.networks, role))) F.fail("NETWORK_ATTACHMENT_MISMATCH");
   const names = roles.map(role => composition.compose.networks[role].name);
   if (new Set(names).size !== names.length) F.fail("INVALID_NETWORK_ATTACHMENT");
   return names;
@@ -128,7 +130,7 @@ function containerNetworks(composition, id, networks) {
   }
 }
 function networkMembers(composition, network, ids, unsettled) {
-  for (const [id, value] of Object.entries(network.containers || {})) {
+  for (const [id, value] of Object.entries(network.containers || {}).sort(([a], [b]) => a.localeCompare(b))) {
     const endpoint = attachment(value);
     if (!id.startsWith("ep-")) { ids.add(id); continue; }
     if (id !== "ep-" + endpoint.EndpointID) F.fail("INVALID_NETWORK_ATTACHMENT");
@@ -141,7 +143,7 @@ function checkNetworks(composition, { require_existing = false } = {}) {
   if (typeof require_existing !== "boolean") F.fail("INVALID_NETWORK_ATTACHMENT");
   const names = docker(["network", "ls", "--format", "{{.Name}}"] ).trim().split("\n");
   const networks = new Map(), ids = new Set(), unsettled = [];
-  for (const [role, network] of Object.entries(composition.compose.networks)) {
+  for (const [role, network] of Object.entries(composition.compose.networks).sort(([a], [b]) => a.localeCompare(b))) {
     if (networks.has(network.name)) F.fail("INVALID_NETWORK_ATTACHMENT");
     if (!names.includes(network.name)) { if (require_existing) F.fail("REQUIRED_NETWORK_MISSING"); continue; }
     const observed = observedNetwork(composition, role, network);
@@ -150,7 +152,7 @@ function checkNetworks(composition, { require_existing = false } = {}) {
   }
   const inventory = docker(["ps", "-a", "--no-trunc", "--filter", `label=com.docker.compose.project=${composition.project}`, "--format", "{{.ID}}"] ).trim().split("\n").filter(Boolean);
   for (const id of inventory) ids.add(id);
-  for (const id of ids) containerNetworks(composition, id, networks);
+  for (const id of [...ids].sort()) containerNetworks(composition, id, networks);
   // Unsettled metadata never masks an ownership, membership or command failure.
   if (unsettled.length) throw Object.assign(new Error("NETWORK_ATTACHMENT_UNSETTLED"), { code: "NETWORK_ATTACHMENT_UNSETTLED", attachments: unsettled });
 }
