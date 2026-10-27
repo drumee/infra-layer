@@ -1,0 +1,67 @@
+{
+  "decision": "CHANGES_REQUESTED_QUALIFICATION_BLOCKED",
+  "reviewedLocalHead": "04a4fc9f1196ef42aec9428144609735e00ceb4a",
+  "newIndependentMajorOrBlockerFinding": false,
+  "mandatoryStopApplied": true,
+  "blockingObservedIntegrationFailure": {
+    "source": "parent-run canonical application acceptance, independently read raw log/report",
+    "sourceRevision": "04a4fc9f1196ef42aec9428144609735e00ceb4a",
+    "status": "failed",
+    "code": "NETWORK_ATTACHMENT_MISMATCH",
+    "completedGroups": 6,
+    "assertions": 36,
+    "afterGroup": "controlled-configuration-update-and-canonical-rollback",
+    "rootCause": "UNDETERMINED",
+    "evidence": [
+      "blocking-application.log",
+      "blocking-application-report.json"
+    ]
+  },
+  "findingDispositions": {
+    "A1-IR-001": {
+      "disposition": "CORRECTION_INDEPENDENTLY_VERIFIED_AT_LOCAL_SOURCE_ONLY",
+      "formalFinalHeadClosure": false,
+      "evidence": "guard-probe.json",
+      "reason": "Closed complete-program AST frame rejects independently recreated evaluation suppression; final pushed head/hosted qualification not reached."
+    },
+    "R1-001": {
+      "disposition": "CORRECTION_SUPPORTED_BY_INDEPENDENT_SOURCE_FIXTURES_AND_REAL_DOCKER; FINAL_CLOSURE_WITHHELD",
+      "formalFinalHeadClosure": false,
+      "reason": "Original undeclared-network counterexample now refused and valid declared multihoming accepted; mandatory application integration failed, so complete lifecycle qualification is not established.",
+      "evidence": [
+        "network-fixture-probe.json",
+        "real-network-probe.json",
+        "blocking-application-report.json"
+      ]
+    }
+  },
+  "independentChecks": {
+    "guardChecks": 50,
+    "guardNegativeMutationsRefused": 46,
+    "actualSourceFixtureCases": 21,
+    "realDockerCases": 13,
+    "focusedTests": 54,
+    "fullUnitTests": 299,
+    "packageMembers": 42,
+    "packageBytes": 104123,
+    "packageSHA256": "e17068d0abbf98ecd143075fe916264df2c066110744af5831a9aa2c20065d6a",
+    "freshPackageReproduced": true,
+    "membersEqualCurrentAndE2Source": true
+  },
+  "dockerCleanup": {
+    "project": "drumee-a2-ir-735bec51dec2",
+    "result": "OWNED_RESOURCES_REMOVED",
+    "foreignResourcesMutated": false
+  },
+  "generatedMutationJavaScriptExecuted": false,
+  "repositoryEditedByReviewer": false,
+  "committedPushedOrChangedPR": false,
+  "mergePublishTagDeployDownstreamAction": false,
+  "finalPushedHeadAndHostedQualificationVerified": false,
+  "overallReady": false,
+  "residualLimitations": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "Historical Debian H3 failed; no downstream qualification"
+  ]
+}

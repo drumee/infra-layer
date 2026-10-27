@@ -1,0 +1,23 @@
+{
+  "version": "0.1.0-alpha.3",
+  "name": "@drumee/infra-layer",
+  "dependencies": {
+    "nodemailer": {
+      "version": "10.1.7",
+      "resolved": "https://registry.npmjs.org/nodemailer/-/nodemailer-10.1.7.tgz",
+      "overridden": false
+    },
+    "smtp-server": {
+      "version": "3.19.24",
+      "resolved": "https://registry.npmjs.org/smtp-server/-/smtp-server-3.19.24.tgz",
+      "overridden": false,
+      "dependencies": {
+        "nodemailer": {
+          "version": "10.1.4",
+          "resolved": "https://registry.npmjs.org/nodemailer/-/nodemailer-10.1.4.tgz",
+          "overridden": false
+        }
+      }
+    }
+  }
+}

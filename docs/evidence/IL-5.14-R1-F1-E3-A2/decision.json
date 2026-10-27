@@ -1,0 +1,98 @@
+{
+  "status": "FAILED_QUALIFICATION",
+  "source": "04a4fc9f1196ef42aec9428144609735e00ceb4a",
+  "lastRemoteHead": "cd9b8322bd7eef3b4094710ec4ea26be94f08922",
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "detail": "Old A1 false&& bypass reproduced3/3 with nonexecuted static mutations."
+    },
+    "B": {
+      "status": "PASS",
+      "detail": "Restricted execution-context/source-integrity contract, not a general reachability proof."
+    },
+    "C": {
+      "status": "PASS",
+      "detail": "Pinned complete AST plus original protected sequence and unchanged one-replacement authorization."
+    },
+    "D": {
+      "status": "PASS",
+      "detail": "48 combined mutation tests pass;26 new reachability tests include24 mandatory categories."
+    },
+    "E": {
+      "status": "PASS",
+      "detail": "6 actual-module effectiveness cases;12 unsafe-success/unrelated child controls fail as intended."
+    },
+    "F": {
+      "status": "PASS",
+      "detail": "Independent reproducer1,diag17,unit299,contracts24 pass without mandatory skips."
+    },
+    "G": {
+      "status": "PASS",
+      "detail": "DOCKER_E2_EVIDENCE_PRESERVED via exact runtime/acceptance/diagnostic bytes."
+    },
+    "H": {
+      "status": "FAIL",
+      "detail": "Canonical application exit1 NETWORK_ATTACHMENT_MISMATCH; services16/17 with fetch failed; no retries."
+    },
+    "I": {
+      "status": "BLOCKED",
+      "detail": "Package/audit/security-specific positives recorded, but full lifecycle/application compatibility not qualified."
+    },
+    "J": {
+      "status": "NOT_EXECUTED",
+      "detail": "No push/new hosted checks."
+    },
+    "K": {
+      "status": "BLOCKED",
+      "detail": "Independent local guard/network evidence favorable; formal final-head findings closure withheld due failed integration."
+    },
+    "L": {
+      "status": "PASS",
+      "detail": "Evidence-based failed decision and original raw failures preserved."
+    }
+  },
+  "failures": [
+    {
+      "suite": "application",
+      "exitCode": 1,
+      "code": "NETWORK_ATTACHMENT_MISMATCH",
+      "groupsCompleted": 6,
+      "assertions": 36,
+      "nextUncompletedGroup": "failed-startup-does-not-reset-owned-application-state",
+      "rootCause": "UNDETERMINED"
+    },
+    {
+      "suite": "services within integration",
+      "exitCode": 1,
+      "tests": 17,
+      "passed": 16,
+      "failed": 1,
+      "case": 15,
+      "diagnostic": "TypeError fetch failed; UND_ERR_SOCKET at capturedCount",
+      "rootCause": "UNDETERMINED"
+    }
+  ],
+  "unit": {
+    "tests": 299,
+    "pass": 299,
+    "fail": 0,
+    "skip": 0
+  },
+  "package": {
+    "members": 42,
+    "bytes": 104123,
+    "sha256": "e17068d0abbf98ecd143075fe916264df2c066110744af5831a9aa2c20065d6a",
+    "sri": "sha512-4QahcHIO6t04bnC4W1LNclBffwSSakVq+d+bMDfN/78dPAxRYp6kCH5aTXkupakSDptD18S5R1pyxhap3ztQ4A=="
+  },
+  "independentReview": "Local guard correction verified; R1 supported; final findings closure withheld due mandatory app failure. No new MAJOR/BLOCKER in guard.",
+  "pushed": false,
+  "retryPerformed": false,
+  "processSignalsSent": false,
+  "cleanup": "All author mission namespaces empty; reviewer own cleanup verified separately",
+  "residuals": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "Historical Debian H3 failed; no downstream qualification"
+  ]
+}

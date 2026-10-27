@@ -1,0 +1,873 @@
+{
+  "historical": "703b637425487286632e741045a1b96591e90c62",
+  "historicalSHA256": "67672bb516d08281f8dbdba8e8fe1b1a8f9f15d86667a3b7f74f2229cc9d107c",
+  "executionFrame": "2ec85bcd16219f592ee40836728493584bbd170a",
+  "executionFrameSHA256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+  "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a",
+  "guardResult": {
+    "historicalExpressions": 52,
+    "currentExpressions": 54,
+    "replacements": 1,
+    "additions": 1
+  },
+  "entries": [
+    {
+      "text": "assert.deepEqual(actual, expected)",
+      "context": [
+        "function:check(actual,expected)"
+      ],
+      "phase": "initialization",
+      "nodeType": "CallExpression",
+      "range": [
+        664,
+        698
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "D.docker(args)",
+      "context": [
+        "function:docker(args)",
+        "TryStatement:block"
+      ],
+      "phase": "initialization",
+      "nodeType": "CallExpression",
+      "range": [
+        778,
+        792
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"container\", \"inspect\", \"--format\", '{{json .}}', id])",
+      "context": [
+        "function:inspect(id)"
+      ],
+      "phase": "initialization",
+      "nodeType": "CallExpression",
+      "range": [
+        1033,
+        1095
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"network\", \"inspect\", \"--format\", '{{json .}}', name])",
+      "context": [
+        "function:network(name)"
+      ],
+      "phase": "initialization",
+      "nodeType": "CallExpression",
+      "range": [
+        1133,
+        1195
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "D.checkNetworks(composition, { require_existing: true })",
+      "context": [
+        "function:validate(composition,pending)",
+        "function:callback:wait:0()",
+        "TryStatement:block"
+      ],
+      "phase": "initialization",
+      "nodeType": "CallExpression",
+      "range": [
+        1533,
+        1589
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "spawn(T.resolveTrustedExecutable(\"docker\"), [\"--host\", \"unix:///var/run/docker.sock\", \"start\", id], { env: T.systemEnvironment(\"docker\"), stdio: [\"ignore\", \"pipe\", \"pipe\"] })",
+      "context": [
+        "function:start(id)",
+        "function:anonymous:NewExpression(resolve,reject)"
+      ],
+      "phase": "initialization",
+      "nodeType": "CallExpression",
+      "range": [
+        1980,
+        2154
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "assert.equal(result.status, 0, result.stderr)",
+      "context": [
+        "function:start(id)"
+      ],
+      "phase": "initialization",
+      "nodeType": "CallExpression",
+      "range": [
+        2615,
+        2660
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "assert.equal(result.signal, null)",
+      "context": [
+        "function:start(id)"
+      ],
+      "phase": "initialization",
+      "nodeType": "CallExpression",
+      "range": [
+        2662,
+        2695
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"version\", \"--format\", \"{{json .}}\"])",
+      "context": [
+        "function:acceptance-main()"
+      ],
+      "phase": "initialization",
+      "nodeType": "CallExpression",
+      "range": [
+        2758,
+        2803
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project]), \"\")",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "initial-state",
+      "nodeType": "CallExpression",
+      "range": [
+        3706,
+        3785
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "initial-state",
+      "nodeType": "CallExpression",
+      "range": [
+        3712,
+        3780
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"]), \"\")",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "initial-state",
+      "nodeType": "CallExpression",
+      "range": [
+        3793,
+        3873
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "initial-state",
+      "nodeType": "CallExpression",
+      "range": [
+        3799,
+        3868
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"network\", \"create\", ...labels, netname])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "network-creation",
+      "nodeType": "CallExpression",
+      "range": [
+        3936,
+        3985
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"create\", \"--name\", project + \"-redis-1\", ...labels, \"--label\", \"com.docker.compose.service=redis\", \"--user\", process.getuid() + \":\" + process.getgid(), \"--network\", netname, \"--read-only\", \"--cap-drop\", \"ALL\", \"--security-opt\", \"no-new-privileges:true\", \"--pids-limit\", \"64\", \"--memory\", \"128m\", \"--mount\", \"type=bind,source=\" + directory + \"/redis.conf,target=/config/redis.conf,readonly\", \"--mount\", \"type=bind,source=\" + data + \",target=/data\", \"--health-cmd\", health, \"--health-interval\", \"1s\", \"--health-timeout\", \"1s\", \"--health-retries\", \"10\", image, \"redis-server\", \"/config/redis.conf\"])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "redis-creation",
+      "nodeType": "CallExpression",
+      "range": [
+        4686,
+        5291
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"exec\", id, \"/bin/sh\", \"-c\", auth, \"redis-cli\", ...args])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block",
+        "function:redis(args)"
+      ],
+      "phase": "startup-and-readiness",
+      "nodeType": "CallExpression",
+      "range": [
+        5516,
+        5581
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(redis([\"PING\"]), \"PONG\")",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "authenticated-persistence",
+      "nodeType": "CallExpression",
+      "range": [
+        5641,
+        5671
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(redis([\"SET\", \"qualification-key\", \"persisted\"]), \"OK\")",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "authenticated-persistence",
+      "nodeType": "CallExpression",
+      "range": [
+        5673,
+        5734
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(inspect(id).NetworkSettings.Networks[netname].NetworkID, nid)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "authenticated-persistence",
+      "nodeType": "CallExpression",
+      "range": [
+        5882,
+        5949
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(initial.Containers[id].EndpointID, inspect(id).NetworkSettings.Networks[netname].EndpointID)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "authenticated-persistence",
+      "nodeType": "CallExpression",
+      "range": [
+        5951,
+        6049
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"kill\", \"--signal\", \"KILL\", id])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "redis-interruption-recovery",
+      "nodeType": "CallExpression",
+      "range": [
+        6111,
+        6151
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(redis([\"GET\", \"qualification-key\"]), \"persisted\")",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "redis-interruption-recovery",
+      "nodeType": "CallExpression",
+      "range": [
+        6334,
+        6389
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "assert.notEqual(report.recovered_attachments[id].EndpointID, initial.Containers[id].EndpointID)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "redis-interruption-recovery",
+      "nodeType": "CallExpression",
+      "range": [
+        6509,
+        6604
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"restart\", id])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "container-restart",
+      "nodeType": "CallExpression",
+      "range": [
+        6656,
+        6679
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(redis([\"GET\", \"qualification-key\"]), \"persisted\")",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "container-restart",
+      "nodeType": "CallExpression",
+      "range": [
+        6784,
+        6839
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"network\", \"disconnect\", netname, id])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "network-detachment",
+      "nodeType": "CallExpression",
+      "range": [
+        6892,
+        6938
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "assert.throws(() => D.checkNetworks(composition, { require_existing: true }), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "network-detachment",
+      "nodeType": "CallExpression",
+      "range": [
+        6954,
+        7072
+      ],
+      "category": "APPROVED_F1_ADDITION",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "D.checkNetworks(composition, { require_existing: true })",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block",
+        "function:callback:assert.throws:0()"
+      ],
+      "phase": "network-detachment",
+      "nodeType": "CallExpression",
+      "range": [
+        6974,
+        7030
+      ],
+      "category": "APPROVED_F1_ADDITION",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(network(netname).Containers[id], undefined)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "network-detachment",
+      "nodeType": "CallExpression",
+      "range": [
+        7074,
+        7123
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"network\", \"connect\", netname, id])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "network-reconnection",
+      "nodeType": "CallExpression",
+      "range": [
+        7178,
+        7221
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"run\", \"-d\", \"--name\", project + \"-intruder-1\", \"--label\", marker + \"=\" + project, \"--label\", \"org.drumee.infra.owner=unauthorized-fixture\", \"--label\", \"com.docker.compose.project=\" + project, \"--label\", \"com.docker.compose.service=redis\", \"--user\", process.getuid() + \":\" + process.getgid(), \"--network\", netname, \"--read-only\", \"--cap-drop\", \"ALL\", \"--security-opt\", \"no-new-privileges:true\", \"--entrypoint\", \"/bin/sh\", image, \"-c\", \"sleep 600\"])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "foreign-fixture-creation",
+      "nodeType": "CallExpression",
+      "range": [
+        7334,
+        7790
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "assert.throws(() => D.checkNetworks(composition), { code: \"NETWORK_OWNERSHIP_MISMATCH\" })",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "foreign-resource-refusal",
+      "nodeType": "CallExpression",
+      "range": [
+        7889,
+        7978
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "D.checkNetworks(composition)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block",
+        "function:callback:assert.throws:0()"
+      ],
+      "phase": "foreign-resource-refusal",
+      "nodeType": "CallExpression",
+      "range": [
+        7909,
+        7937
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(inspect(foreign).State.Running, true)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "foreign-resource-refusal",
+      "nodeType": "CallExpression",
+      "range": [
+        7980,
+        8023
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"stop\", foreign])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "foreign-fixture-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        8081,
+        8106
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"rm\", foreign])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "foreign-fixture-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        8108,
+        8131
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: \"REQUIRED_NETWORK_MISSING\" })",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "missing-network-refusal",
+      "nodeType": "CallExpression",
+      "range": [
+        8363,
+        8474
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "D.checkNetworks(missing, { require_existing: true })",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block",
+        "function:callback:assert.throws:0()"
+      ],
+      "phase": "missing-network-refusal",
+      "nodeType": "CallExpression",
+      "range": [
+        8383,
+        8435
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "assert.throws(() => D.checkNetworks(missing), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "missing-network-refusal",
+      "nodeType": "CallExpression",
+      "range": [
+        8490,
+        8576
+      ],
+      "category": "APPROVED_REPLACEMENT",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "D.checkNetworks(missing)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block",
+        "function:callback:assert.throws:0()"
+      ],
+      "phase": "missing-network-refusal",
+      "nodeType": "CallExpression",
+      "range": [
+        8510,
+        8534
+      ],
+      "category": "APPROVED_REPLACEMENT",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"stop\", id])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:block"
+      ],
+      "phase": "service-shutdown",
+      "nodeType": "CallExpression",
+      "range": [
+        8627,
+        8647
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(value.Config.Labels[marker], project)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:finalizer",
+        "ForOfStatement:const id;containers.reverse()"
+      ],
+      "phase": "owned-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        9064,
+        9107
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"stop\", id])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:finalizer",
+        "ForOfStatement:const id;containers.reverse()",
+        "IfStatement:value.State.Running"
+      ],
+      "phase": "owned-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        9142,
+        9162
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"rm\", id])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:finalizer",
+        "ForOfStatement:const id;containers.reverse()"
+      ],
+      "phase": "owned-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        9164,
+        9182
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(network(netname).Labels[marker], project)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:finalizer",
+        "IfStatement:created",
+        "IfStatement:consequent"
+      ],
+      "phase": "owned-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        9213,
+        9260
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"network\", \"rm\", netname])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:finalizer",
+        "IfStatement:created",
+        "IfStatement:consequent"
+      ],
+      "phase": "owned-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        9262,
+        9296
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project]), \"\")",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:finalizer"
+      ],
+      "phase": "owned-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        9368,
+        9447
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:finalizer"
+      ],
+      "phase": "owned-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        9374,
+        9442
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"]), \"\")",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:finalizer"
+      ],
+      "phase": "owned-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        9449,
+        9529
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "TryStatement:finalizer"
+      ],
+      "phase": "owned-cleanup",
+      "nodeType": "CallExpression",
+      "range": [
+        9455,
+        9524
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "assert.throws(() => D.docker([\"container\", \"inspect\", report.container_id]), error => error.code === \"DOCKER_LIFECYCLE_COMMAND_FAILED\" && error.exit_status === 1 && error.object_missing === true)",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++"
+      ],
+      "phase": "removed-container-refusal",
+      "nodeType": "CallExpression",
+      "range": [
+        9712,
+        9907
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "D.docker([\"container\", \"inspect\", report.container_id])",
+      "context": [
+        "function:acceptance-main()",
+        "ForStatement:let cycle = 1;cycle <= 2;cycle++",
+        "function:callback:assert.throws:0()"
+      ],
+      "phase": "removed-container-refusal",
+      "nodeType": "CallExpression",
+      "range": [
+        9732,
+        9787
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(new Set(runs.map(r => r.network_id)).size, 2)",
+      "context": [
+        "function:acceptance-main()"
+      ],
+      "phase": "independent-cycle-identities",
+      "nodeType": "CallExpression",
+      "range": [
+        10028,
+        10079
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    },
+    {
+      "text": "check(new Set(runs.map(r => r.container_id)).size, 2)",
+      "context": [
+        "function:acceptance-main()"
+      ],
+      "phase": "independent-cycle-identities",
+      "nodeType": "CallExpression",
+      "range": [
+        10081,
+        10134
+      ],
+      "category": "UNCHANGED_HISTORICAL",
+      "programFingerprint": "22df1d6b7711e3e033f4d9b4abb2d01b2cf081e9fb3347d414f66d4ce7caa99a"
+    }
+  ]
+}

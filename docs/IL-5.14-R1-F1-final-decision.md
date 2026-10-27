@@ -44,3 +44,8 @@ CHANGES_REQUESTED. Exact inventory disproves the insertion-only hypothesis: one 
 ## E3-A1 independent stop — 2026-10-27
 
 CHANGES_REQUESTED. Owner-authorized exact replacement and designed22 guard cases/full267 unit tests pass, but independent reviewer demonstrates3 accepted false&& assertion-suppression mutations. MAJOR A1-IR-001 prevents preservation qualification. Integration was cancelled with owned cleanup after the finding; no push or independent R1 closure occurred. See [A1 final decision](IL-5.14-R1-F1-E3-A1-final-decision.md). Historical reports above remain unchanged.
+
+
+## E3-A2 qualification stop — 2026-10-27
+
+FAILED_QUALIFICATION. Guard hardening passes299 unit/24 contracts and favorable independent local review, but canonical application fails NETWORK_ATTACHMENT_MISMATCH (36 assertions,6 completed groups), and concurrent services has a fetch-failed case (16/17). No retries, post-failure source fix, push, hosted qualification or formal independent final-head closure occurred. Both owning cleanups are verified. See [A2 final decision](IL-5.14-R1-F1-E3-A2-final-decision.md). Prior historical failures remain unchanged.
