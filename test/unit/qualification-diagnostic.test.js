@@ -46,21 +46,11 @@ test("D10 successful execution creates no failure artifact or artificial error",
 test("observer preserves original argv/options/receiver/stdin/timeout/return/error identity and executes once", t => {
   const f = run(t, "passthrough"); assert.equal(f.result.status, 0, f.result.stderr); assert.equal(f.report, null); assert.equal(f.trace.includes("DO_NOT_RECORD"), false); assert.equal(f.trace.includes("il514-fixture-sensitive-material"), false);
 });
-function expressions(source) {
-  const ast = require("espree").parse(source, { ecmaVersion: 2022, sourceType: "script", range: true }), found = [];
-  function visit(node) {
-    if (!node || typeof node !== "object") return;
-    if (node.type === "CallExpression") {
-      const callee = node.callee, root = callee.type === "MemberExpression" && callee.object.name;
-      if (callee.name === "check" || callee.name === "docker" || callee.name === "spawn" || ["assert", "D"].includes(root)) found.push(source.slice(...node.range));
-    }
-    for (const [key, value] of Object.entries(node)) if (key !== "range") { if (Array.isArray(value)) value.forEach(visit); else if (value && typeof value === "object") visit(value); }
-  }
-  visit(ast); return found;
-}
-test("real harness preserves all original assertion and Docker/spawn expressions in order", () => {
-  const before = execFileSync("/usr/bin/git", ["show", "703b637:test/network-attachments/real-docker.cjs"], { cwd: path.resolve(__dirname, "../.."), encoding: "utf8" });
-  const after = fs.readFileSync(path.join(__dirname, "../network-attachments/real-docker.cjs"), "utf8"); assert.deepEqual(expressions(after), expressions(before));
+test("real harness preserves all original assertions except the one owner-authorized F1 replacement", () => {
+  const guard = require("../support/harness-preservation.cjs");
+  const before = execFileSync("/usr/bin/git", ["show", guard.reference + ":test/network-attachments/real-docker.cjs"], { cwd: path.resolve(__dirname, "../.."), encoding: "utf8" });
+  const after = fs.readFileSync(path.join(__dirname, "../network-attachments/real-docker.cjs"), "utf8");
+  assert.deepEqual(guard.verify(before, after), { historicalExpressions: 52, currentExpressions: 54, replacements: 1, additions: 1 });
 });
 test("artifact directory ownership/permissions and exclusive trace prevent unsafe reuse", t => {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), "infra-il514-d1-owner-")); t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
