@@ -1,0 +1,9 @@
+# Local regression qualification — FAIL
+
+Gate F FAIL. First `npm test` execution returned245 tests,244 PASS,1 FAIL,0 skipped/cancelled,exit1. No retry or post-failure executable change followed. Concurrent independent checks had already been started and their actual outcomes are retained: `npm run test:contracts`24 PASS/exit0; `npm run lint`0 errors,0 new findings,28 historical warnings/exit0; `npm run test:package`42 members and PACKED_CONSUMER_OK/exit0. No scanner baseline or assertion was changed.
+
+Failure is `real harness preserves all original assertion and Docker/spawn expressions in order`, test/unit/qualification-diagnostic.test.js:61, comparison63. The AST extractor compares all current Docker/assert/check/spawn calls with pinned `703b637:test/network-attachments/real-docker.cjs`. F1 intentionally replaced successful validation after full disconnection with explicit NETWORK_ATTACHMENT_MISMATCH refusal, and replaced `check(D.checkNetworks(missing), undefined)` with mismatch refusal for an existing container. The earlier exact-expression invariance test has no disposition for those security-contract changes. Full expected/actual arrays/stack are preserved in [unit TAP](evidence/IL-5.14-R1-F1-E2/unit.log).
+
+This is a mandatory preservation-test failure despite passing actual Docker acceptance. Do not silence/remove it or replace its reference indiscriminately. Follow-up must independently justify a narrowly specified allowance for only the documented F1 stronger refusals while continuing to catch removed/weakened assertions and changed command ordering. No correction was attempted in E2 after observing failure.
+
+Gateway/services/full lifecycle/application, trusted-tool/fs suites, new audits, strict package/type consumers: NOT_EXECUTED after the stop. E1 targeted47/47 and E2 actual Docker results remain source-specific evidence; they do not establish full qualification.

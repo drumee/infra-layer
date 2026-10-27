@@ -1,0 +1,9 @@
+# New E2 real Docker acceptance
+
+Gate E PASS, one new prepared acceptance set; no failed scenario was retried. Source `2ec85bcd16219f592ee40836728493584bbd170a` (executable `740d01f77b20358cee8b3cad4cb501b830bd0ce8`), Node22.22.0/npm11.18.0/Docker29.2.0, UID/GID1000. Each exact command, timestamps and exit0 are preserved in [ledger](evidence/IL-5.14-R1-F1-E2/execution.jsonl).
+
+- membership-real.cjs:21 assertions, PASS; nominal single network, same-owner undeclared connection refusal, no validator mutation, restored acceptance, legitimate declared multihoming, third-network refusal, partial/full disconnection refusal, stopped configuration and required-network absence.
+- real-docker.cjs:2 independent Redis lifecycle cycles,42 assertions, PASS; authenticated persistence, kill/recovery, restart, new endpoint identities, full-detachment refusal and reconnection, foreign fixture refusal, required-network absence, shutdown, removed-object nonzero failure.
+- container-health.cjs:15 assertions, PASS; historical missing Health template fails, actual optional handling gives unknown; foreign ownership remains refused.
+
+All four unique fixture project namespaces were read back empty after verified cleanup: [cleanup readback](evidence/IL-5.14-R1-F1-E2/cleanup-readback.json). Full commands/network IDs/membership maps are in logs and structured traces. Traces deliberately retain their established512-event bound; final console command/state reports are retained as well. Genuine missing-object failures are asserted negative cases, not unexpected acceptance failures. No arbitrary command failure is swallowed. Metadata/identity mismatch, malformed, synthetic endpoint and historical error contracts also retain their deterministic E1 fixture coverage; daemon-dependent synthetic timing is not falsely claimed from real execution.

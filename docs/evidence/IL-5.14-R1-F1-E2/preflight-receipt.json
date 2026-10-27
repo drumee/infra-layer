@@ -1,0 +1,154 @@
+{
+  "timestamp": "2026-10-27T08:50:52.571651+00:00",
+  "versions": {
+    "node": "v22.22.0",
+    "uid": 1000,
+    "gid": 1000,
+    "dockerExecutable": "/usr/bin/docker",
+    "docker": {
+      "Client": {
+        "Platform": {
+          "Name": "Docker Engine - Community"
+        },
+        "Version": "29.2.0",
+        "ApiVersion": "1.53",
+        "DefaultAPIVersion": "1.53",
+        "GitCommit": "0b9d198",
+        "GoVersion": "go1.25.6",
+        "Os": "linux",
+        "Arch": "amd64",
+        "BuildTime": "Mon Jan 26 19:26:07 2026",
+        "Context": "default"
+      },
+      "Server": {
+        "Platform": {
+          "Name": "Docker Engine - Community"
+        },
+        "Version": "29.2.0",
+        "ApiVersion": "1.53",
+        "MinAPIVersion": "1.44",
+        "Os": "linux",
+        "Arch": "amd64",
+        "Components": [
+          {
+            "Name": "Engine",
+            "Version": "29.2.0",
+            "Details": {
+              "ApiVersion": "1.53",
+              "Arch": "amd64",
+              "BuildTime": "Mon Jan 26 19:26:07 2026",
+              "Experimental": "false",
+              "GitCommit": "9c62384",
+              "GoVersion": "go1.25.6",
+              "KernelVersion": "6.1.0-41-amd64",
+              "MinAPIVersion": "1.44",
+              "Os": "linux"
+            }
+          },
+          {
+            "Name": "containerd",
+            "Version": "v2.2.1",
+            "Details": {
+              "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+            }
+          },
+          {
+            "Name": "runc",
+            "Version": "1.3.4",
+            "Details": {
+              "GitCommit": "v1.3.4-0-gd6d73eb8"
+            }
+          },
+          {
+            "Name": "docker-init",
+            "Version": "0.19.0",
+            "Details": {
+              "GitCommit": "de40ad0"
+            }
+          }
+        ],
+        "GitCommit": "9c62384",
+        "GoVersion": "go1.25.6",
+        "KernelVersion": "6.1.0-41-amd64",
+        "BuildTime": "2026-01-26T19:26:07.000000000+00:00"
+      }
+    },
+    "containers": "",
+    "networks": ""
+  },
+  "npm": "11.18.0",
+  "focusedE1HashesUnchanged": true,
+  "directories": [
+    {
+      "path": "/tmp/drumee-il514-r1-f1-e2-jef250tq/membership",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "freeBytes": 1119802101760,
+      "empty": true,
+      "exclusiveWrite": true,
+      "safeParents": true,
+      "attempt": "drumee-il514-r1-f1-e2-jef250tq-membership",
+      "script": "test/network-attachments/membership-real.cjs",
+      "command": [
+        "env",
+        "IL514_DIAGNOSTIC_DIR=/tmp/drumee-il514-r1-f1-e2-jef250tq/membership",
+        "node",
+        "test/network-attachments/membership-real.cjs"
+      ],
+      "source": "2ec85bcd16219f592ee40836728493584bbd170a",
+      "executableRevision": "740d01f77b20358cee8b3cad4cb501b830bd0ce8",
+      "resourcePrefix": "drumee-e1-membership-"
+    },
+    {
+      "path": "/tmp/drumee-il514-r1-f1-e2-jef250tq/redis",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "freeBytes": 1119802097664,
+      "empty": true,
+      "exclusiveWrite": true,
+      "safeParents": true,
+      "attempt": "drumee-il514-r1-f1-e2-jef250tq-redis",
+      "script": "test/network-attachments/real-docker.cjs",
+      "command": [
+        "env",
+        "IL514_DIAGNOSTIC_DIR=/tmp/drumee-il514-r1-f1-e2-jef250tq/redis",
+        "node",
+        "test/network-attachments/real-docker.cjs"
+      ],
+      "source": "2ec85bcd16219f592ee40836728493584bbd170a",
+      "executableRevision": "740d01f77b20358cee8b3cad4cb501b830bd0ce8",
+      "resourcePrefix": "drumee-il514-net-"
+    },
+    {
+      "path": "/tmp/drumee-il514-r1-f1-e2-jef250tq/health",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "freeBytes": 1119802093568,
+      "empty": true,
+      "exclusiveWrite": true,
+      "safeParents": true,
+      "attempt": "drumee-il514-r1-f1-e2-jef250tq-health",
+      "script": "test/network-attachments/container-health.cjs",
+      "command": [
+        "env",
+        "IL514_DIAGNOSTIC_DIR=/tmp/drumee-il514-r1-f1-e2-jef250tq/health",
+        "node",
+        "test/network-attachments/container-health.cjs"
+      ],
+      "source": "2ec85bcd16219f592ee40836728493584bbd170a",
+      "executableRevision": "740d01f77b20358cee8b3cad4cb501b830bd0ce8",
+      "resourcePrefix": "drumee-il514-health-"
+    }
+  ],
+  "preflightTests": {
+    "cases": 6,
+    "pass": 6,
+    "DockerCommands": 0,
+    "ownershipTest": "safe expected-UID simulation"
+  },
+  "harnessChanged": false,
+  "productionChanged": false
+}

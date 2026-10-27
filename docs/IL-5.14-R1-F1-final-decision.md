@@ -29,3 +29,8 @@ Residual limitations: `SMTP_RECOVERY_UNQUALIFIED`; `H1_DOCKER_LIFECYCLE_ROOT_CAU
 ## E1 continuation — 2026-10-27
 
 Historical F1 result above is unchanged. E1 restores error classification and passes47 focused tests but stops on a missing diagnostic-directory launch prerequisite before any Docker scenario. Current local status remains FAILED_QUALIFICATION. See [E1 decision](IL-5.14-R1-F1-E1-final-decision.md). No push or independent finding closure occurred.
+
+
+## E2 continuation — 2026-10-27
+
+Secure diagnostic preflight and new real Docker acceptance pass (21 membership,42 Redis over2 cycles,15 optional Health assertions). Mandatory full unit run fails244/245 due to pre-F1 exact-expression preservation test versus F1 stronger security refusals. Current status FAILED_QUALIFICATION; no retry, code correction, push or independent closure. Historical sections above remain unchanged. See [E2 decision](IL-5.14-R1-F1-E2-final-decision.md).
