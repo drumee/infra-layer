@@ -1,0 +1,36 @@
+{
+  "reviewedHead": "3c54d0fc5f15d7d6be52bd0201d93acdc3797a02",
+  "executableRevision": "740d01f77b20358cee8b3cad4cb501b830bd0ce8",
+  "historicalReference": "703b637425487286632e741045a1b96591e90c62",
+  "historicalHarnessSHA256": "67672bb516d08281f8dbdba8e8fe1b1a8f9f15d86667a3b7f74f2229cc9d107c",
+  "currentHarnessSHA256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+  "node": "v22.22.0",
+  "espree": "11.2.0",
+  "timestamp": "2026-10-27T13:50:40.605630+00:00",
+  "files": {
+    "lifecycle/docker.js": {
+      "sha256": "2a72f5bca8d8494141eca7b597d52a820643cb0dcf04c9c2dd9bfd2b01ca2650",
+      "equalsE2TestedSource": true
+    },
+    "test/network-attachments/real-docker.cjs": {
+      "sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+      "equalsE2TestedSource": true
+    },
+    "test/network-attachments/membership-real.cjs": {
+      "sha256": "adb7847262cfa1e4856c0fd16c42628f46853b08543ac40a20ebe996c3e7986f",
+      "equalsE2TestedSource": true
+    },
+    "test/network-attachments/container-health.cjs": {
+      "sha256": "1dda911ca1505a53194920cb257022385c0aca095867f9eeebb6f5dc20d768c4",
+      "equalsE2TestedSource": true
+    },
+    "internal/network-readiness.js": {
+      "sha256": "cabb4f7279454bb61f1f5ed4254a3a99b875657408165d6d3e19a57af89945ee",
+      "equalsE2TestedSource": true
+    },
+    "test/support/qualification-diagnostic.cjs": {
+      "sha256": "547700a45f94d42c2d0221f887cbabac063e8ca70108c8dea13eb3a469610b97",
+      "equalsE2TestedSource": true
+    }
+  }
+}

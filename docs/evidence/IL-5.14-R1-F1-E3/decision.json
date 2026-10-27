@@ -1,0 +1,70 @@
+{
+  "status": "CHANGES_REQUESTED",
+  "reviewedLocalHead": "3c54d0fc5f15d7d6be52bd0201d93acdc3797a02",
+  "lastRemoteHead": "cd9b8322bd7eef3b4094710ec4ea26be94f08922",
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "detail": "Complete static inventory/classification; pure-addition hypothesis false: one historical assertion replaced."
+    },
+    "B": {
+      "status": "BLOCKED",
+      "detail": "Strict unchanged-history requirement conflicts with actual F1 documented contract replacement; explicit disposition required."
+    },
+    "C": {
+      "status": "NOT_EXECUTED",
+      "detail": "Mandatory stop before guard implementation."
+    },
+    "D": {
+      "status": "NOT_EXECUTED",
+      "detail": "No guard mutation tests."
+    },
+    "E": {
+      "status": "NOT_EXECUTED",
+      "detail": "No unit rerun."
+    },
+    "F": {
+      "status": "PASS",
+      "detail": "PASS_PREVIOUS_VERIFIED_SOURCE: E2 runtime/acceptance hashes unchanged; no Docker rerun."
+    },
+    "G": {
+      "status": "NOT_EXECUTED",
+      "detail": "Remaining integration/lint/audit/consumer checks not started."
+    },
+    "H": {
+      "status": "NOT_EXECUTED",
+      "detail": "No new complete package/security qualification."
+    },
+    "I": {
+      "status": "NOT_EXECUTED",
+      "detail": "No push/new hosted head."
+    },
+    "J": {
+      "status": "NOT_EXECUTED",
+      "detail": "R1 finding remains open; independent closure not performed."
+    },
+    "K": {
+      "status": "PASS",
+      "detail": "Source-specific stop decision and evidence recorded."
+    }
+  },
+  "counts": {
+    "historical": 52,
+    "current": 54,
+    "exactTextOrderedMatches": 51,
+    "unmatchedHistorical": 1,
+    "unmatchedCurrent": 3
+  },
+  "materialIssue": "MODIFIED_HISTORICAL: expected-success check was replaced with mismatch refusal; addition-only reconciliation cannot preserve it unchanged.",
+  "requiredDisposition": "Explicitly authorize the exact historical contract replacement before developing a strict replacement-aware guard; do not restore unsafe success or silently whitelist replacement.",
+  "newTestsExecuted": 0,
+  "dockerReexecuted": false,
+  "codeModified": false,
+  "pushed": false,
+  "independentFinding": "OPEN",
+  "residualLimitations": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "Historical Debian H3 failed; downstream not qualified"
+  ]
+}

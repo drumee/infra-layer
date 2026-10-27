@@ -1,0 +1,4523 @@
+{
+  "historicalReference": "703b637425487286632e741045a1b96591e90c62",
+  "historicalSHA256": "67672bb516d08281f8dbdba8e8fe1b1a8f9f15d86667a3b7f74f2229cc9d107c",
+  "currentSHA256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+  "counts": {
+    "historical": 52,
+    "current": 54,
+    "exactTextOrderedMatches": 51,
+    "unmatchedHistorical": 1,
+    "unmatchedCurrent": 3
+  },
+  "historical": [
+    {
+      "index": 0,
+      "text": "assert.deepEqual(actual, expected)",
+      "sha256": "95e3f04685b1413b312d82fcaa0dd313c7c5ad20a3a45fde227426c9a4c28e41",
+      "nodeType": "CallExpression",
+      "range": [
+        510,
+        544
+      ],
+      "start": {
+        "line": 6,
+        "column": 52
+      },
+      "end": {
+        "line": 6,
+        "column": 86
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 6
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 1,
+      "text": "D.docker(args)",
+      "sha256": "9ea7bde68f2080d9b0bb22c835458b3ff487a84851000765d3ffeabf76035ab3",
+      "nodeType": "CallExpression",
+      "range": [
+        624,
+        638
+      ],
+      "start": {
+        "line": 9,
+        "column": 23
+      },
+      "end": {
+        "line": 9,
+        "column": 37
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "docker",
+            "line": 7
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 2,
+      "text": "docker([\"container\", \"inspect\", \"--format\", '{{json .}}', id])",
+      "sha256": "f2e49c1b2f2e483944cc6a78a23fb4be94ba7a873a7161a6ac4f0e928b01e4e8",
+      "nodeType": "CallExpression",
+      "range": [
+        879,
+        941
+      ],
+      "start": {
+        "line": 12,
+        "column": 33
+      },
+      "end": {
+        "line": 12,
+        "column": 95
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 12
+          }
+        ],
+        "enclosingCalls": [
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 3,
+      "text": "docker([\"network\", \"inspect\", \"--format\", '{{json .}}', name])",
+      "sha256": "9680faa1a3fb5f6b657058a1c86e8dca03724a4e1a189c7eb85b7cfcd2c2e5b8",
+      "nodeType": "CallExpression",
+      "range": [
+        979,
+        1041
+      ],
+      "start": {
+        "line": 13,
+        "column": 35
+      },
+      "end": {
+        "line": 13,
+        "column": 97
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 13
+          }
+        ],
+        "enclosingCalls": [
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 4,
+      "text": "D.checkNetworks(composition, { require_existing: true })",
+      "sha256": "f3185bb67b8e61580c496952d2ab4c304885b01b5d93773c32e398ea237d7aec",
+      "nodeType": "CallExpression",
+      "range": [
+        1379,
+        1435
+      ],
+      "start": {
+        "line": 17,
+        "column": 10
+      },
+      "end": {
+        "line": 17,
+        "column": 66
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "validate",
+            "line": 15
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 16
+          }
+        ],
+        "enclosingCalls": [
+          "wait"
+        ],
+        "blocks": [
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 5,
+      "text": "spawn(T.resolveTrustedExecutable(\"docker\"), [\"--host\", \"unix:///var/run/docker.sock\", \"start\", id], { env: T.systemEnvironment(\"docker\"), stdio: [\"ignore\", \"pipe\", \"pipe\"] })",
+      "sha256": "312b2fc444977b079dc5a85062be85a70a6ad52a671f57e1b00943889ccf86c7",
+      "nodeType": "CallExpression",
+      "range": [
+        1696,
+        1870
+      ],
+      "start": {
+        "line": 23,
+        "column": 18
+      },
+      "end": {
+        "line": 23,
+        "column": 192
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 21
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 22
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 6,
+      "text": "assert.equal(result.status, 0, result.stderr)",
+      "sha256": "b20be507129d2c45af32aa01ac5a815f670bbc341665052a7a5da082f27eab74",
+      "nodeType": "CallExpression",
+      "range": [
+        2172,
+        2217
+      ],
+      "start": {
+        "line": 26,
+        "column": 92
+      },
+      "end": {
+        "line": 26,
+        "column": 137
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 21
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 7,
+      "text": "assert.equal(result.signal, null)",
+      "sha256": "52c49e658f26e71e77a366a1573b68257e3b759ba89b6a115ee1b0004df2e137",
+      "nodeType": "CallExpression",
+      "range": [
+        2219,
+        2252
+      ],
+      "start": {
+        "line": 26,
+        "column": 139
+      },
+      "end": {
+        "line": 26,
+        "column": 172
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 21
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 8,
+      "text": "docker([\"version\", \"--format\", \"{{json .}}\"])",
+      "sha256": "2e90974887b00684448f925b49248d26172adc67a99d34cf9c0fe81bfb90ba49",
+      "nodeType": "CallExpression",
+      "range": [
+        2301,
+        2346
+      ],
+      "start": {
+        "line": 29,
+        "column": 30
+      },
+      "end": {
+        "line": 29,
+        "column": 75
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 9,
+      "text": "check(docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project]), \"\")",
+      "sha256": "a821e3cfc881814bd9f566b0f15652d204e6d50cc570c2ffcfaa9ff0ccea2564",
+      "nodeType": "CallExpression",
+      "range": [
+        3181,
+        3260
+      ],
+      "start": {
+        "line": 36,
+        "column": 6
+      },
+      "end": {
+        "line": 36,
+        "column": 85
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 10,
+      "text": "docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project])",
+      "sha256": "1ebed48cb114464ac69801994c4a012ebd7df4f14d4513e067a2916fe82c8d18",
+      "nodeType": "CallExpression",
+      "range": [
+        3187,
+        3255
+      ],
+      "start": {
+        "line": 36,
+        "column": 12
+      },
+      "end": {
+        "line": 36,
+        "column": 80
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 11,
+      "text": "check(docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"]), \"\")",
+      "sha256": "60921e4ca397d6223f021bb9df9164152d052a3e15c8d2e2b0774284a8cc2dd2",
+      "nodeType": "CallExpression",
+      "range": [
+        3268,
+        3348
+      ],
+      "start": {
+        "line": 37,
+        "column": 6
+      },
+      "end": {
+        "line": 37,
+        "column": 86
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 12,
+      "text": "docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"])",
+      "sha256": "dd45beef166532272d663d4d538bd1a00257b58a193a4962608b907bf36d29f4",
+      "nodeType": "CallExpression",
+      "range": [
+        3274,
+        3343
+      ],
+      "start": {
+        "line": 37,
+        "column": 12
+      },
+      "end": {
+        "line": 37,
+        "column": 81
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 13,
+      "text": "docker([\"network\", \"create\", ...labels, netname])",
+      "sha256": "8f1333cae18b5dbd6d353bba23169bd35e792383373034154f3e7e5576af1d07",
+      "nodeType": "CallExpression",
+      "range": [
+        3368,
+        3417
+      ],
+      "start": {
+        "line": 38,
+        "column": 18
+      },
+      "end": {
+        "line": 38,
+        "column": 67
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 14,
+      "text": "docker([\"create\", \"--name\", project + \"-redis-1\", ...labels, \"--label\", \"com.docker.compose.service=redis\", \"--user\", process.getuid() + \":\" + process.getgid(), \"--network\", netname, \"--read-only\", \"--cap-drop\", \"ALL\", \"--security-opt\", \"no-new-privileges:true\", \"--pids-limit\", \"64\", \"--memory\", \"128m\", \"--mount\", \"type=bind,source=\" + directory + \"/redis.conf,target=/config/redis.conf,readonly\", \"--mount\", \"type=bind,source=\" + data + \",target=/data\", \"--health-cmd\", health, \"--health-interval\", \"1s\", \"--health-timeout\", \"1s\", \"--health-retries\", \"10\", image, \"redis-server\", \"/config/redis.conf\"])",
+      "sha256": "0c7b44d44f256486b39fd44662b16f764ce61a1eb74a89ce866e1877046bef53",
+      "nodeType": "CallExpression",
+      "range": [
+        4042,
+        4647
+      ],
+      "start": {
+        "line": 43,
+        "column": 17
+      },
+      "end": {
+        "line": 43,
+        "column": 622
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 15,
+      "text": "docker([\"exec\", id, \"/bin/sh\", \"-c\", auth, \"redis-cli\", ...args])",
+      "sha256": "c73a8553e7c834ad3415d5af3cb7114975534a132f8312bdc53212838ec184f0",
+      "nodeType": "CallExpression",
+      "range": [
+        4824,
+        4889
+      ],
+      "start": {
+        "line": 45,
+        "column": 28
+      },
+      "end": {
+        "line": 45,
+        "column": 93
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 45
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 16,
+      "text": "check(redis([\"PING\"]), \"PONG\")",
+      "sha256": "c9265db0d73bc88df5d8aa8f0135f4e4d9e448961c7221a89cdb16ef5047edca",
+      "nodeType": "CallExpression",
+      "range": [
+        4897,
+        4927
+      ],
+      "start": {
+        "line": 46,
+        "column": 6
+      },
+      "end": {
+        "line": 46,
+        "column": 36
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 17,
+      "text": "check(redis([\"SET\", \"qualification-key\", \"persisted\"]), \"OK\")",
+      "sha256": "de8726a34a17eaa8b565f7d0d021bd9533dc268e6508a92026a32d2a6f566a11",
+      "nodeType": "CallExpression",
+      "range": [
+        4929,
+        4990
+      ],
+      "start": {
+        "line": 46,
+        "column": 38
+      },
+      "end": {
+        "line": 46,
+        "column": 99
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 18,
+      "text": "check(inspect(id).NetworkSettings.Networks[netname].NetworkID, nid)",
+      "sha256": "868c461bffb10ef9a620b20cd11ca3b2d6974854c84ffcc1582e16e95ec4f99e",
+      "nodeType": "CallExpression",
+      "range": [
+        5138,
+        5205
+      ],
+      "start": {
+        "line": 48,
+        "column": 6
+      },
+      "end": {
+        "line": 48,
+        "column": 73
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 19,
+      "text": "check(initial.Containers[id].EndpointID, inspect(id).NetworkSettings.Networks[netname].EndpointID)",
+      "sha256": "4a6a792de6e968aa15ae1cbe9b4e17ffeb8e80b29ef3a3c526d36526bddf5d8a",
+      "nodeType": "CallExpression",
+      "range": [
+        5207,
+        5305
+      ],
+      "start": {
+        "line": 48,
+        "column": 75
+      },
+      "end": {
+        "line": 48,
+        "column": 173
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 20,
+      "text": "docker([\"kill\", \"--signal\", \"KILL\", id])",
+      "sha256": "dc9394f1695cf44c2b790b20bf95aec06bbcf13bfab5e3b1b4d91e2d064275a4",
+      "nodeType": "CallExpression",
+      "range": [
+        5313,
+        5353
+      ],
+      "start": {
+        "line": 49,
+        "column": 6
+      },
+      "end": {
+        "line": 49,
+        "column": 46
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 21,
+      "text": "check(redis([\"GET\", \"qualification-key\"]), \"persisted\")",
+      "sha256": "09ca102bcefa509aa91c7f5ba37023e68f8bc8d59dc72f5fa04b2c7401fcab8a",
+      "nodeType": "CallExpression",
+      "range": [
+        5536,
+        5591
+      ],
+      "start": {
+        "line": 50,
+        "column": 126
+      },
+      "end": {
+        "line": 50,
+        "column": 181
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 22,
+      "text": "assert.notEqual(report.recovered_attachments[id].EndpointID, initial.Containers[id].EndpointID)",
+      "sha256": "fd6782db9f4458d5374f858f5d30de4bd4eb29c2a56352d0ba93f7345bdee330",
+      "nodeType": "CallExpression",
+      "range": [
+        5711,
+        5806
+      ],
+      "start": {
+        "line": 52,
+        "column": 20
+      },
+      "end": {
+        "line": 52,
+        "column": 115
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 23,
+      "text": "docker([\"restart\", id])",
+      "sha256": "f0c8dd2830ea3ad3415e9b3f5b75003e56c654cd0e83c47026721f4f83bf1e05",
+      "nodeType": "CallExpression",
+      "range": [
+        5814,
+        5837
+      ],
+      "start": {
+        "line": 53,
+        "column": 6
+      },
+      "end": {
+        "line": 53,
+        "column": 29
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 24,
+      "text": "check(redis([\"GET\", \"qualification-key\"]), \"persisted\")",
+      "sha256": "09ca102bcefa509aa91c7f5ba37023e68f8bc8d59dc72f5fa04b2c7401fcab8a",
+      "nodeType": "CallExpression",
+      "range": [
+        5942,
+        5997
+      ],
+      "start": {
+        "line": 53,
+        "column": 134
+      },
+      "end": {
+        "line": 53,
+        "column": 189
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 25,
+      "text": "docker([\"network\", \"disconnect\", netname, id])",
+      "sha256": "d8a44d7ef94e5bd9243ae01535ed2a25deee2c212bdd2eef4aea841cb5036d32",
+      "nodeType": "CallExpression",
+      "range": [
+        6005,
+        6051
+      ],
+      "start": {
+        "line": 54,
+        "column": 6
+      },
+      "end": {
+        "line": 54,
+        "column": 52
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 26,
+      "text": "check(network(netname).Containers[id], undefined)",
+      "sha256": "6299feaa5866f0855bd8ea512534ae456cdc7885aa6f5aa01ece303cc23be28f",
+      "nodeType": "CallExpression",
+      "range": [
+        6091,
+        6140
+      ],
+      "start": {
+        "line": 54,
+        "column": 92
+      },
+      "end": {
+        "line": 54,
+        "column": 141
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 27,
+      "text": "docker([\"network\", \"connect\", netname, id])",
+      "sha256": "6e29d84884c17796d007d42f43a4185e20b84e729f74a1c539b5934b9930aeb5",
+      "nodeType": "CallExpression",
+      "range": [
+        6148,
+        6191
+      ],
+      "start": {
+        "line": 55,
+        "column": 6
+      },
+      "end": {
+        "line": 55,
+        "column": 49
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 28,
+      "text": "docker([\"run\", \"-d\", \"--name\", project + \"-intruder-1\", \"--label\", marker + \"=\" + project, \"--label\", \"org.drumee.infra.owner=unauthorized-fixture\", \"--label\", \"com.docker.compose.project=\" + project, \"--label\", \"com.docker.compose.service=redis\", \"--user\", process.getuid() + \":\" + process.getgid(), \"--network\", netname, \"--read-only\", \"--cap-drop\", \"ALL\", \"--security-opt\", \"no-new-privileges:true\", \"--entrypoint\", \"/bin/sh\", image, \"-c\", \"sleep 600\"])",
+      "sha256": "792d41fb4722fb4ac6e2546e0b343abcd8a1e25d691407260f5e337a8b3ed2b5",
+      "nodeType": "CallExpression",
+      "range": [
+        6253,
+        6709
+      ],
+      "start": {
+        "line": 56,
+        "column": 22
+      },
+      "end": {
+        "line": 56,
+        "column": 478
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 29,
+      "text": "assert.throws(() => D.checkNetworks(composition), { code: \"NETWORK_OWNERSHIP_MISMATCH\" })",
+      "sha256": "68301e7fc7d95aeeaac36034dedd1057f3468c55446b3ae325ea4050bd87f34f",
+      "nodeType": "CallExpression",
+      "range": [
+        6757,
+        6846
+      ],
+      "start": {
+        "line": 57,
+        "column": 20
+      },
+      "end": {
+        "line": 57,
+        "column": 109
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 30,
+      "text": "D.checkNetworks(composition)",
+      "sha256": "e3e66168b6ed4bb75f07b0c0630685609c436c547e7d3db441e23475cd267348",
+      "nodeType": "CallExpression",
+      "range": [
+        6777,
+        6805
+      ],
+      "start": {
+        "line": 57,
+        "column": 40
+      },
+      "end": {
+        "line": 57,
+        "column": 68
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 57
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 31,
+      "text": "check(inspect(foreign).State.Running, true)",
+      "sha256": "9be1685b31a825268788aabf87f836f4c14d5fd8769f45402d361d62d32f9bad",
+      "nodeType": "CallExpression",
+      "range": [
+        6848,
+        6891
+      ],
+      "start": {
+        "line": 57,
+        "column": 111
+      },
+      "end": {
+        "line": 57,
+        "column": 154
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 32,
+      "text": "docker([\"stop\", foreign])",
+      "sha256": "a153ab2a16f45505d47e01df470a38cc98be9dd45f488d5f5d4ca33916184963",
+      "nodeType": "CallExpression",
+      "range": [
+        6899,
+        6924
+      ],
+      "start": {
+        "line": 58,
+        "column": 6
+      },
+      "end": {
+        "line": 58,
+        "column": 31
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 33,
+      "text": "docker([\"rm\", foreign])",
+      "sha256": "a649bf4e0c770021e6fee2b1f90871b32419749f240142baa1241471833140f8",
+      "nodeType": "CallExpression",
+      "range": [
+        6926,
+        6949
+      ],
+      "start": {
+        "line": 58,
+        "column": 33
+      },
+      "end": {
+        "line": 58,
+        "column": 56
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 34,
+      "text": "assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: \"REQUIRED_NETWORK_MISSING\" })",
+      "sha256": "f8a4d95ab2766ba189bb40eadf0e41d20a56d94826577f12ea8f0602b9fe20b5",
+      "nodeType": "CallExpression",
+      "range": [
+        7131,
+        7242
+      ],
+      "start": {
+        "line": 60,
+        "column": 20
+      },
+      "end": {
+        "line": 60,
+        "column": 131
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 35,
+      "text": "D.checkNetworks(missing, { require_existing: true })",
+      "sha256": "ee9e1e33ed699a919392c2fae57152e64d5f892f177983eaaaf236342691baa0",
+      "nodeType": "CallExpression",
+      "range": [
+        7151,
+        7203
+      ],
+      "start": {
+        "line": 60,
+        "column": 40
+      },
+      "end": {
+        "line": 60,
+        "column": 92
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 60
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 36,
+      "text": "check(D.checkNetworks(missing), undefined)",
+      "sha256": "6de1aa22774f07c1a19bbbbbbc9073c46dce3de16db1c3d7efc4b88fca1a1f08",
+      "nodeType": "CallExpression",
+      "range": [
+        7244,
+        7286
+      ],
+      "start": {
+        "line": 60,
+        "column": 133
+      },
+      "end": {
+        "line": 60,
+        "column": 175
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 37,
+      "text": "D.checkNetworks(missing)",
+      "sha256": "f483ddc55645ef8410797f8c635b236b3b21ad4b3c22b482645efcb14e325ebb",
+      "nodeType": "CallExpression",
+      "range": [
+        7250,
+        7274
+      ],
+      "start": {
+        "line": 60,
+        "column": 139
+      },
+      "end": {
+        "line": 60,
+        "column": 163
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 38,
+      "text": "docker([\"stop\", id])",
+      "sha256": "4eaa3a44a53dd4bf3a4d167fe10af4e0a7d2f88f3ff2878940a2844103c24df2",
+      "nodeType": "CallExpression",
+      "range": [
+        7294,
+        7314
+      ],
+      "start": {
+        "line": 61,
+        "column": 6
+      },
+      "end": {
+        "line": 61,
+        "column": 26
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 39,
+      "text": "check(value.Config.Labels[marker], project)",
+      "sha256": "a0199260b0665b2d1c61d0d4f89a8c4ea7f08fab0b481f6be437abbc93b99570",
+      "nodeType": "CallExpression",
+      "range": [
+        7534,
+        7577
+      ],
+      "start": {
+        "line": 64,
+        "column": 35
+      },
+      "end": {
+        "line": 64,
+        "column": 78
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 40,
+      "text": "docker([\"stop\", id])",
+      "sha256": "4eaa3a44a53dd4bf3a4d167fe10af4e0a7d2f88f3ff2878940a2844103c24df2",
+      "nodeType": "CallExpression",
+      "range": [
+        7612,
+        7632
+      ],
+      "start": {
+        "line": 65,
+        "column": 33
+      },
+      "end": {
+        "line": 65,
+        "column": 53
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement",
+          "IfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 41,
+      "text": "docker([\"rm\", id])",
+      "sha256": "75f2c2b84ae5c7e396feb3a8105ff52fc077ae95bf1229982a6b72ef0fdd3a1c",
+      "nodeType": "CallExpression",
+      "range": [
+        7634,
+        7652
+      ],
+      "start": {
+        "line": 65,
+        "column": 55
+      },
+      "end": {
+        "line": 65,
+        "column": 73
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 42,
+      "text": "check(network(netname).Labels[marker], project)",
+      "sha256": "b6fbb85510ef341cd9b507bd2afbdfe52434e2481b2647bfe2dc1417b193d4bf",
+      "nodeType": "CallExpression",
+      "range": [
+        7683,
+        7730
+      ],
+      "start": {
+        "line": 67,
+        "column": 21
+      },
+      "end": {
+        "line": 67,
+        "column": 68
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "IfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 43,
+      "text": "docker([\"network\", \"rm\", netname])",
+      "sha256": "6823fc161517e74032e16e5b556c81e7a1b9453f2eec89725a3114cd18208603",
+      "nodeType": "CallExpression",
+      "range": [
+        7732,
+        7766
+      ],
+      "start": {
+        "line": 67,
+        "column": 70
+      },
+      "end": {
+        "line": 67,
+        "column": 104
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "IfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 44,
+      "text": "check(docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project]), \"\")",
+      "sha256": "a821e3cfc881814bd9f566b0f15652d204e6d50cc570c2ffcfaa9ff0ccea2564",
+      "nodeType": "CallExpression",
+      "range": [
+        7838,
+        7917
+      ],
+      "start": {
+        "line": 69,
+        "column": 6
+      },
+      "end": {
+        "line": 69,
+        "column": 85
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 45,
+      "text": "docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project])",
+      "sha256": "1ebed48cb114464ac69801994c4a012ebd7df4f14d4513e067a2916fe82c8d18",
+      "nodeType": "CallExpression",
+      "range": [
+        7844,
+        7912
+      ],
+      "start": {
+        "line": 69,
+        "column": 12
+      },
+      "end": {
+        "line": 69,
+        "column": 80
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 46,
+      "text": "check(docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"]), \"\")",
+      "sha256": "60921e4ca397d6223f021bb9df9164152d052a3e15c8d2e2b0774284a8cc2dd2",
+      "nodeType": "CallExpression",
+      "range": [
+        7919,
+        7999
+      ],
+      "start": {
+        "line": 69,
+        "column": 87
+      },
+      "end": {
+        "line": 69,
+        "column": 167
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 47,
+      "text": "docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"])",
+      "sha256": "dd45beef166532272d663d4d538bd1a00257b58a193a4962608b907bf36d29f4",
+      "nodeType": "CallExpression",
+      "range": [
+        7925,
+        7994
+      ],
+      "start": {
+        "line": 69,
+        "column": 93
+      },
+      "end": {
+        "line": 69,
+        "column": 162
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 48,
+      "text": "assert.throws(() => D.docker([\"container\", \"inspect\", report.container_id]), error => error.code === \"DOCKER_LIFECYCLE_COMMAND_FAILED\" && error.exit_status === 1 && error.object_missing === true)",
+      "sha256": "361f7d79743d2531b17f6e56c2964c49ca38ade2b2b160542b9c9e42343a1273",
+      "nodeType": "CallExpression",
+      "range": [
+        8056,
+        8251
+      ],
+      "start": {
+        "line": 72,
+        "column": 18
+      },
+      "end": {
+        "line": 72,
+        "column": 213
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 49,
+      "text": "D.docker([\"container\", \"inspect\", report.container_id])",
+      "sha256": "149fc29bd8db7686a5a3271f0bc2132f2b3cdc6b54ac87ca9883423c51f1700d",
+      "nodeType": "CallExpression",
+      "range": [
+        8076,
+        8131
+      ],
+      "start": {
+        "line": 72,
+        "column": 38
+      },
+      "end": {
+        "line": 72,
+        "column": 93
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 72
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 50,
+      "text": "check(new Set(runs.map(r => r.network_id)).size, 2)",
+      "sha256": "1a259b60f13ce5c890773b844121d095c14c22c2fd1b400f8c1368c369f09f86",
+      "nodeType": "CallExpression",
+      "range": [
+        8321,
+        8372
+      ],
+      "start": {
+        "line": 75,
+        "column": 2
+      },
+      "end": {
+        "line": 75,
+        "column": 53
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 51,
+      "text": "check(new Set(runs.map(r => r.container_id)).size, 2)",
+      "sha256": "6c35020c0ff0b12a9cef58f9c659b125b4bc2cf5bf307a123ff1d92a83bcc11a",
+      "nodeType": "CallExpression",
+      "range": [
+        8374,
+        8427
+      ],
+      "start": {
+        "line": 75,
+        "column": 55
+      },
+      "end": {
+        "line": 75,
+        "column": 108
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    }
+  ],
+  "current": [
+    {
+      "index": 0,
+      "text": "assert.deepEqual(actual, expected)",
+      "sha256": "95e3f04685b1413b312d82fcaa0dd313c7c5ad20a3a45fde227426c9a4c28e41",
+      "nodeType": "CallExpression",
+      "range": [
+        664,
+        698
+      ],
+      "start": {
+        "line": 8,
+        "column": 52
+      },
+      "end": {
+        "line": 8,
+        "column": 86
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 8
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 1,
+      "text": "D.docker(args)",
+      "sha256": "9ea7bde68f2080d9b0bb22c835458b3ff487a84851000765d3ffeabf76035ab3",
+      "nodeType": "CallExpression",
+      "range": [
+        778,
+        792
+      ],
+      "start": {
+        "line": 11,
+        "column": 23
+      },
+      "end": {
+        "line": 11,
+        "column": 37
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "docker",
+            "line": 9
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 2,
+      "text": "docker([\"container\", \"inspect\", \"--format\", '{{json .}}', id])",
+      "sha256": "f2e49c1b2f2e483944cc6a78a23fb4be94ba7a873a7161a6ac4f0e928b01e4e8",
+      "nodeType": "CallExpression",
+      "range": [
+        1033,
+        1095
+      ],
+      "start": {
+        "line": 14,
+        "column": 33
+      },
+      "end": {
+        "line": 14,
+        "column": 95
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 14
+          }
+        ],
+        "enclosingCalls": [
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 3,
+      "text": "docker([\"network\", \"inspect\", \"--format\", '{{json .}}', name])",
+      "sha256": "9680faa1a3fb5f6b657058a1c86e8dca03724a4e1a189c7eb85b7cfcd2c2e5b8",
+      "nodeType": "CallExpression",
+      "range": [
+        1133,
+        1195
+      ],
+      "start": {
+        "line": 15,
+        "column": 35
+      },
+      "end": {
+        "line": 15,
+        "column": 97
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 15
+          }
+        ],
+        "enclosingCalls": [
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 4,
+      "text": "D.checkNetworks(composition, { require_existing: true })",
+      "sha256": "f3185bb67b8e61580c496952d2ab4c304885b01b5d93773c32e398ea237d7aec",
+      "nodeType": "CallExpression",
+      "range": [
+        1533,
+        1589
+      ],
+      "start": {
+        "line": 19,
+        "column": 10
+      },
+      "end": {
+        "line": 19,
+        "column": 66
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "validate",
+            "line": 17
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 18
+          }
+        ],
+        "enclosingCalls": [
+          "wait"
+        ],
+        "blocks": [
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 5,
+      "text": "spawn(T.resolveTrustedExecutable(\"docker\"), [\"--host\", \"unix:///var/run/docker.sock\", \"start\", id], { env: T.systemEnvironment(\"docker\"), stdio: [\"ignore\", \"pipe\", \"pipe\"] })",
+      "sha256": "312b2fc444977b079dc5a85062be85a70a6ad52a671f57e1b00943889ccf86c7",
+      "nodeType": "CallExpression",
+      "range": [
+        1980,
+        2154
+      ],
+      "start": {
+        "line": 26,
+        "column": 18
+      },
+      "end": {
+        "line": 26,
+        "column": 192
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 23
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 25
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 6,
+      "text": "assert.equal(result.status, 0, result.stderr)",
+      "sha256": "b20be507129d2c45af32aa01ac5a815f670bbc341665052a7a5da082f27eab74",
+      "nodeType": "CallExpression",
+      "range": [
+        2615,
+        2660
+      ],
+      "start": {
+        "line": 30,
+        "column": 92
+      },
+      "end": {
+        "line": 30,
+        "column": 137
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 23
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 7,
+      "text": "assert.equal(result.signal, null)",
+      "sha256": "52c49e658f26e71e77a366a1573b68257e3b759ba89b6a115ee1b0004df2e137",
+      "nodeType": "CallExpression",
+      "range": [
+        2662,
+        2695
+      ],
+      "start": {
+        "line": 30,
+        "column": 139
+      },
+      "end": {
+        "line": 30,
+        "column": 172
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 23
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 8,
+      "text": "docker([\"version\", \"--format\", \"{{json .}}\"])",
+      "sha256": "2e90974887b00684448f925b49248d26172adc67a99d34cf9c0fe81bfb90ba49",
+      "nodeType": "CallExpression",
+      "range": [
+        2758,
+        2803
+      ],
+      "start": {
+        "line": 33,
+        "column": 30
+      },
+      "end": {
+        "line": 33,
+        "column": 75
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 9,
+      "text": "check(docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project]), \"\")",
+      "sha256": "a821e3cfc881814bd9f566b0f15652d204e6d50cc570c2ffcfaa9ff0ccea2564",
+      "nodeType": "CallExpression",
+      "range": [
+        3706,
+        3785
+      ],
+      "start": {
+        "line": 41,
+        "column": 6
+      },
+      "end": {
+        "line": 41,
+        "column": 85
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initial-state"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 10,
+      "text": "docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project])",
+      "sha256": "1ebed48cb114464ac69801994c4a012ebd7df4f14d4513e067a2916fe82c8d18",
+      "nodeType": "CallExpression",
+      "range": [
+        3712,
+        3780
+      ],
+      "start": {
+        "line": 41,
+        "column": 12
+      },
+      "end": {
+        "line": 41,
+        "column": 80
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initial-state"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 11,
+      "text": "check(docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"]), \"\")",
+      "sha256": "60921e4ca397d6223f021bb9df9164152d052a3e15c8d2e2b0774284a8cc2dd2",
+      "nodeType": "CallExpression",
+      "range": [
+        3793,
+        3873
+      ],
+      "start": {
+        "line": 42,
+        "column": 6
+      },
+      "end": {
+        "line": 42,
+        "column": 86
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initial-state"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 12,
+      "text": "docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"])",
+      "sha256": "dd45beef166532272d663d4d538bd1a00257b58a193a4962608b907bf36d29f4",
+      "nodeType": "CallExpression",
+      "range": [
+        3799,
+        3868
+      ],
+      "start": {
+        "line": 42,
+        "column": 12
+      },
+      "end": {
+        "line": 42,
+        "column": 81
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initial-state"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 13,
+      "text": "docker([\"network\", \"create\", ...labels, netname])",
+      "sha256": "8f1333cae18b5dbd6d353bba23169bd35e792383373034154f3e7e5576af1d07",
+      "nodeType": "CallExpression",
+      "range": [
+        3936,
+        3985
+      ],
+      "start": {
+        "line": 44,
+        "column": 18
+      },
+      "end": {
+        "line": 44,
+        "column": 67
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-creation"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 14,
+      "text": "docker([\"create\", \"--name\", project + \"-redis-1\", ...labels, \"--label\", \"com.docker.compose.service=redis\", \"--user\", process.getuid() + \":\" + process.getgid(), \"--network\", netname, \"--read-only\", \"--cap-drop\", \"ALL\", \"--security-opt\", \"no-new-privileges:true\", \"--pids-limit\", \"64\", \"--memory\", \"128m\", \"--mount\", \"type=bind,source=\" + directory + \"/redis.conf,target=/config/redis.conf,readonly\", \"--mount\", \"type=bind,source=\" + data + \",target=/data\", \"--health-cmd\", health, \"--health-interval\", \"1s\", \"--health-timeout\", \"1s\", \"--health-retries\", \"10\", image, \"redis-server\", \"/config/redis.conf\"])",
+      "sha256": "0c7b44d44f256486b39fd44662b16f764ce61a1eb74a89ce866e1877046bef53",
+      "nodeType": "CallExpression",
+      "range": [
+        4686,
+        5291
+      ],
+      "start": {
+        "line": 51,
+        "column": 17
+      },
+      "end": {
+        "line": 51,
+        "column": 622
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "redis-creation"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 15,
+      "text": "docker([\"exec\", id, \"/bin/sh\", \"-c\", auth, \"redis-cli\", ...args])",
+      "sha256": "c73a8553e7c834ad3415d5af3cb7114975534a132f8312bdc53212838ec184f0",
+      "nodeType": "CallExpression",
+      "range": [
+        5516,
+        5581
+      ],
+      "start": {
+        "line": 54,
+        "column": 28
+      },
+      "end": {
+        "line": 54,
+        "column": 93
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 54
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "startup-and-readiness"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 16,
+      "text": "check(redis([\"PING\"]), \"PONG\")",
+      "sha256": "c9265db0d73bc88df5d8aa8f0135f4e4d9e448961c7221a89cdb16ef5047edca",
+      "nodeType": "CallExpression",
+      "range": [
+        5641,
+        5671
+      ],
+      "start": {
+        "line": 56,
+        "column": 6
+      },
+      "end": {
+        "line": 56,
+        "column": 36
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "authenticated-persistence"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 17,
+      "text": "check(redis([\"SET\", \"qualification-key\", \"persisted\"]), \"OK\")",
+      "sha256": "de8726a34a17eaa8b565f7d0d021bd9533dc268e6508a92026a32d2a6f566a11",
+      "nodeType": "CallExpression",
+      "range": [
+        5673,
+        5734
+      ],
+      "start": {
+        "line": 56,
+        "column": 38
+      },
+      "end": {
+        "line": 56,
+        "column": 99
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "authenticated-persistence"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 18,
+      "text": "check(inspect(id).NetworkSettings.Networks[netname].NetworkID, nid)",
+      "sha256": "868c461bffb10ef9a620b20cd11ca3b2d6974854c84ffcc1582e16e95ec4f99e",
+      "nodeType": "CallExpression",
+      "range": [
+        5882,
+        5949
+      ],
+      "start": {
+        "line": 58,
+        "column": 6
+      },
+      "end": {
+        "line": 58,
+        "column": 73
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "authenticated-persistence"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 19,
+      "text": "check(initial.Containers[id].EndpointID, inspect(id).NetworkSettings.Networks[netname].EndpointID)",
+      "sha256": "4a6a792de6e968aa15ae1cbe9b4e17ffeb8e80b29ef3a3c526d36526bddf5d8a",
+      "nodeType": "CallExpression",
+      "range": [
+        5951,
+        6049
+      ],
+      "start": {
+        "line": 58,
+        "column": 75
+      },
+      "end": {
+        "line": 58,
+        "column": 173
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "authenticated-persistence"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 20,
+      "text": "docker([\"kill\", \"--signal\", \"KILL\", id])",
+      "sha256": "dc9394f1695cf44c2b790b20bf95aec06bbcf13bfab5e3b1b4d91e2d064275a4",
+      "nodeType": "CallExpression",
+      "range": [
+        6111,
+        6151
+      ],
+      "start": {
+        "line": 60,
+        "column": 6
+      },
+      "end": {
+        "line": 60,
+        "column": 46
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "redis-interruption-recovery"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 21,
+      "text": "check(redis([\"GET\", \"qualification-key\"]), \"persisted\")",
+      "sha256": "09ca102bcefa509aa91c7f5ba37023e68f8bc8d59dc72f5fa04b2c7401fcab8a",
+      "nodeType": "CallExpression",
+      "range": [
+        6334,
+        6389
+      ],
+      "start": {
+        "line": 61,
+        "column": 126
+      },
+      "end": {
+        "line": 61,
+        "column": 181
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "redis-interruption-recovery"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 22,
+      "text": "assert.notEqual(report.recovered_attachments[id].EndpointID, initial.Containers[id].EndpointID)",
+      "sha256": "fd6782db9f4458d5374f858f5d30de4bd4eb29c2a56352d0ba93f7345bdee330",
+      "nodeType": "CallExpression",
+      "range": [
+        6509,
+        6604
+      ],
+      "start": {
+        "line": 63,
+        "column": 20
+      },
+      "end": {
+        "line": 63,
+        "column": 115
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "redis-interruption-recovery"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 23,
+      "text": "docker([\"restart\", id])",
+      "sha256": "f0c8dd2830ea3ad3415e9b3f5b75003e56c654cd0e83c47026721f4f83bf1e05",
+      "nodeType": "CallExpression",
+      "range": [
+        6656,
+        6679
+      ],
+      "start": {
+        "line": 65,
+        "column": 6
+      },
+      "end": {
+        "line": 65,
+        "column": 29
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "container-restart"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 24,
+      "text": "check(redis([\"GET\", \"qualification-key\"]), \"persisted\")",
+      "sha256": "09ca102bcefa509aa91c7f5ba37023e68f8bc8d59dc72f5fa04b2c7401fcab8a",
+      "nodeType": "CallExpression",
+      "range": [
+        6784,
+        6839
+      ],
+      "start": {
+        "line": 65,
+        "column": 134
+      },
+      "end": {
+        "line": 65,
+        "column": 189
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "container-restart"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 25,
+      "text": "docker([\"network\", \"disconnect\", netname, id])",
+      "sha256": "d8a44d7ef94e5bd9243ae01535ed2a25deee2c212bdd2eef4aea841cb5036d32",
+      "nodeType": "CallExpression",
+      "range": [
+        6892,
+        6938
+      ],
+      "start": {
+        "line": 67,
+        "column": 6
+      },
+      "end": {
+        "line": 67,
+        "column": 52
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 26,
+      "text": "assert.throws(() => D.checkNetworks(composition, { require_existing: true }), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "sha256": "ab440568241017d8cb8e53f4f2295530f9d700080dd5c2d5a15fdda044e3ee1b",
+      "nodeType": "CallExpression",
+      "range": [
+        6954,
+        7072
+      ],
+      "start": {
+        "line": 67,
+        "column": 68
+      },
+      "end": {
+        "line": 67,
+        "column": 186
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 27,
+      "text": "D.checkNetworks(composition, { require_existing: true })",
+      "sha256": "f3185bb67b8e61580c496952d2ab4c304885b01b5d93773c32e398ea237d7aec",
+      "nodeType": "CallExpression",
+      "range": [
+        6974,
+        7030
+      ],
+      "start": {
+        "line": 67,
+        "column": 88
+      },
+      "end": {
+        "line": 67,
+        "column": 144
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 67
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 28,
+      "text": "check(network(netname).Containers[id], undefined)",
+      "sha256": "6299feaa5866f0855bd8ea512534ae456cdc7885aa6f5aa01ece303cc23be28f",
+      "nodeType": "CallExpression",
+      "range": [
+        7074,
+        7123
+      ],
+      "start": {
+        "line": 67,
+        "column": 188
+      },
+      "end": {
+        "line": 67,
+        "column": 237
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 29,
+      "text": "docker([\"network\", \"connect\", netname, id])",
+      "sha256": "6e29d84884c17796d007d42f43a4185e20b84e729f74a1c539b5934b9930aeb5",
+      "nodeType": "CallExpression",
+      "range": [
+        7178,
+        7221
+      ],
+      "start": {
+        "line": 69,
+        "column": 6
+      },
+      "end": {
+        "line": 69,
+        "column": 49
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-reconnection"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 30,
+      "text": "docker([\"run\", \"-d\", \"--name\", project + \"-intruder-1\", \"--label\", marker + \"=\" + project, \"--label\", \"org.drumee.infra.owner=unauthorized-fixture\", \"--label\", \"com.docker.compose.project=\" + project, \"--label\", \"com.docker.compose.service=redis\", \"--user\", process.getuid() + \":\" + process.getgid(), \"--network\", netname, \"--read-only\", \"--cap-drop\", \"ALL\", \"--security-opt\", \"no-new-privileges:true\", \"--entrypoint\", \"/bin/sh\", image, \"-c\", \"sleep 600\"])",
+      "sha256": "792d41fb4722fb4ac6e2546e0b343abcd8a1e25d691407260f5e337a8b3ed2b5",
+      "nodeType": "CallExpression",
+      "range": [
+        7334,
+        7790
+      ],
+      "start": {
+        "line": 71,
+        "column": 22
+      },
+      "end": {
+        "line": 71,
+        "column": 478
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-fixture-creation"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 31,
+      "text": "assert.throws(() => D.checkNetworks(composition), { code: \"NETWORK_OWNERSHIP_MISMATCH\" })",
+      "sha256": "68301e7fc7d95aeeaac36034dedd1057f3468c55446b3ae325ea4050bd87f34f",
+      "nodeType": "CallExpression",
+      "range": [
+        7889,
+        7978
+      ],
+      "start": {
+        "line": 73,
+        "column": 20
+      },
+      "end": {
+        "line": 73,
+        "column": 109
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-resource-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 32,
+      "text": "D.checkNetworks(composition)",
+      "sha256": "e3e66168b6ed4bb75f07b0c0630685609c436c547e7d3db441e23475cd267348",
+      "nodeType": "CallExpression",
+      "range": [
+        7909,
+        7937
+      ],
+      "start": {
+        "line": 73,
+        "column": 40
+      },
+      "end": {
+        "line": 73,
+        "column": 68
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 73
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-resource-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 33,
+      "text": "check(inspect(foreign).State.Running, true)",
+      "sha256": "9be1685b31a825268788aabf87f836f4c14d5fd8769f45402d361d62d32f9bad",
+      "nodeType": "CallExpression",
+      "range": [
+        7980,
+        8023
+      ],
+      "start": {
+        "line": 73,
+        "column": 111
+      },
+      "end": {
+        "line": 73,
+        "column": 154
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-resource-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 34,
+      "text": "docker([\"stop\", foreign])",
+      "sha256": "a153ab2a16f45505d47e01df470a38cc98be9dd45f488d5f5d4ca33916184963",
+      "nodeType": "CallExpression",
+      "range": [
+        8081,
+        8106
+      ],
+      "start": {
+        "line": 75,
+        "column": 6
+      },
+      "end": {
+        "line": 75,
+        "column": 31
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-fixture-cleanup"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 35,
+      "text": "docker([\"rm\", foreign])",
+      "sha256": "a649bf4e0c770021e6fee2b1f90871b32419749f240142baa1241471833140f8",
+      "nodeType": "CallExpression",
+      "range": [
+        8108,
+        8131
+      ],
+      "start": {
+        "line": 75,
+        "column": 33
+      },
+      "end": {
+        "line": 75,
+        "column": 56
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-fixture-cleanup"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 36,
+      "text": "assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: \"REQUIRED_NETWORK_MISSING\" })",
+      "sha256": "f8a4d95ab2766ba189bb40eadf0e41d20a56d94826577f12ea8f0602b9fe20b5",
+      "nodeType": "CallExpression",
+      "range": [
+        8363,
+        8474
+      ],
+      "start": {
+        "line": 78,
+        "column": 20
+      },
+      "end": {
+        "line": 78,
+        "column": 131
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "missing-network-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 37,
+      "text": "D.checkNetworks(missing, { require_existing: true })",
+      "sha256": "ee9e1e33ed699a919392c2fae57152e64d5f892f177983eaaaf236342691baa0",
+      "nodeType": "CallExpression",
+      "range": [
+        8383,
+        8435
+      ],
+      "start": {
+        "line": 78,
+        "column": 40
+      },
+      "end": {
+        "line": 78,
+        "column": 92
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 78
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "missing-network-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 38,
+      "text": "assert.throws(() => D.checkNetworks(missing), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "sha256": "8614fe61e3ba9f242b166890f3843167ef33a824bca2783a5bb5c9b5e06690bf",
+      "nodeType": "CallExpression",
+      "range": [
+        8490,
+        8576
+      ],
+      "start": {
+        "line": 78,
+        "column": 147
+      },
+      "end": {
+        "line": 78,
+        "column": 233
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "missing-network-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 39,
+      "text": "D.checkNetworks(missing)",
+      "sha256": "f483ddc55645ef8410797f8c635b236b3b21ad4b3c22b482645efcb14e325ebb",
+      "nodeType": "CallExpression",
+      "range": [
+        8510,
+        8534
+      ],
+      "start": {
+        "line": 78,
+        "column": 167
+      },
+      "end": {
+        "line": 78,
+        "column": 191
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 78
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "missing-network-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 40,
+      "text": "docker([\"stop\", id])",
+      "sha256": "4eaa3a44a53dd4bf3a4d167fe10af4e0a7d2f88f3ff2878940a2844103c24df2",
+      "nodeType": "CallExpression",
+      "range": [
+        8627,
+        8647
+      ],
+      "start": {
+        "line": 80,
+        "column": 6
+      },
+      "end": {
+        "line": 80,
+        "column": 26
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "service-shutdown"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 1
+    },
+    {
+      "index": 41,
+      "text": "check(value.Config.Labels[marker], project)",
+      "sha256": "a0199260b0665b2d1c61d0d4f89a8c4ea7f08fab0b481f6be437abbc93b99570",
+      "nodeType": "CallExpression",
+      "range": [
+        9064,
+        9107
+      ],
+      "start": {
+        "line": 87,
+        "column": 35
+      },
+      "end": {
+        "line": 87,
+        "column": 78
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 42,
+      "text": "docker([\"stop\", id])",
+      "sha256": "4eaa3a44a53dd4bf3a4d167fe10af4e0a7d2f88f3ff2878940a2844103c24df2",
+      "nodeType": "CallExpression",
+      "range": [
+        9142,
+        9162
+      ],
+      "start": {
+        "line": 88,
+        "column": 33
+      },
+      "end": {
+        "line": 88,
+        "column": 53
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement",
+          "IfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 43,
+      "text": "docker([\"rm\", id])",
+      "sha256": "75f2c2b84ae5c7e396feb3a8105ff52fc077ae95bf1229982a6b72ef0fdd3a1c",
+      "nodeType": "CallExpression",
+      "range": [
+        9164,
+        9182
+      ],
+      "start": {
+        "line": 88,
+        "column": 55
+      },
+      "end": {
+        "line": 88,
+        "column": 73
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 44,
+      "text": "check(network(netname).Labels[marker], project)",
+      "sha256": "b6fbb85510ef341cd9b507bd2afbdfe52434e2481b2647bfe2dc1417b193d4bf",
+      "nodeType": "CallExpression",
+      "range": [
+        9213,
+        9260
+      ],
+      "start": {
+        "line": 90,
+        "column": 21
+      },
+      "end": {
+        "line": 90,
+        "column": 68
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "IfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 45,
+      "text": "docker([\"network\", \"rm\", netname])",
+      "sha256": "6823fc161517e74032e16e5b556c81e7a1b9453f2eec89725a3114cd18208603",
+      "nodeType": "CallExpression",
+      "range": [
+        9262,
+        9296
+      ],
+      "start": {
+        "line": 90,
+        "column": 70
+      },
+      "end": {
+        "line": 90,
+        "column": 104
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "IfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 46,
+      "text": "check(docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project]), \"\")",
+      "sha256": "a821e3cfc881814bd9f566b0f15652d204e6d50cc570c2ffcfaa9ff0ccea2564",
+      "nodeType": "CallExpression",
+      "range": [
+        9368,
+        9447
+      ],
+      "start": {
+        "line": 92,
+        "column": 6
+      },
+      "end": {
+        "line": 92,
+        "column": 85
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 47,
+      "text": "docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project])",
+      "sha256": "1ebed48cb114464ac69801994c4a012ebd7df4f14d4513e067a2916fe82c8d18",
+      "nodeType": "CallExpression",
+      "range": [
+        9374,
+        9442
+      ],
+      "start": {
+        "line": 92,
+        "column": 12
+      },
+      "end": {
+        "line": 92,
+        "column": 80
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 48,
+      "text": "check(docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"]), \"\")",
+      "sha256": "60921e4ca397d6223f021bb9df9164152d052a3e15c8d2e2b0774284a8cc2dd2",
+      "nodeType": "CallExpression",
+      "range": [
+        9449,
+        9529
+      ],
+      "start": {
+        "line": 92,
+        "column": 87
+      },
+      "end": {
+        "line": 92,
+        "column": 167
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 49,
+      "text": "docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"])",
+      "sha256": "dd45beef166532272d663d4d538bd1a00257b58a193a4962608b907bf36d29f4",
+      "nodeType": "CallExpression",
+      "range": [
+        9455,
+        9524
+      ],
+      "start": {
+        "line": 92,
+        "column": 93
+      },
+      "end": {
+        "line": 92,
+        "column": 162
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 50,
+      "text": "assert.throws(() => D.docker([\"container\", \"inspect\", report.container_id]), error => error.code === \"DOCKER_LIFECYCLE_COMMAND_FAILED\" && error.exit_status === 1 && error.object_missing === true)",
+      "sha256": "361f7d79743d2531b17f6e56c2964c49ca38ade2b2b160542b9c9e42343a1273",
+      "nodeType": "CallExpression",
+      "range": [
+        9712,
+        9907
+      ],
+      "start": {
+        "line": 96,
+        "column": 18
+      },
+      "end": {
+        "line": 96,
+        "column": 213
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement"
+        ],
+        "phase": "removed-container-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 51,
+      "text": "D.docker([\"container\", \"inspect\", report.container_id])",
+      "sha256": "149fc29bd8db7686a5a3271f0bc2132f2b3cdc6b54ac87ca9883423c51f1700d",
+      "nodeType": "CallExpression",
+      "range": [
+        9732,
+        9787
+      ],
+      "start": {
+        "line": 96,
+        "column": 38
+      },
+      "end": {
+        "line": 96,
+        "column": 93
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 96
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement"
+        ],
+        "phase": "removed-container-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 52,
+      "text": "check(new Set(runs.map(r => r.network_id)).size, 2)",
+      "sha256": "1a259b60f13ce5c890773b844121d095c14c22c2fd1b400f8c1368c369f09f86",
+      "nodeType": "CallExpression",
+      "range": [
+        10028,
+        10079
+      ],
+      "start": {
+        "line": 100,
+        "column": 2
+      },
+      "end": {
+        "line": 100,
+        "column": 53
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [],
+        "phase": "independent-cycle-identities"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 53,
+      "text": "check(new Set(runs.map(r => r.container_id)).size, 2)",
+      "sha256": "6c35020c0ff0b12a9cef58f9c659b125b4bc2cf5bf307a123ff1d92a83bcc11a",
+      "nodeType": "CallExpression",
+      "range": [
+        10081,
+        10134
+      ],
+      "start": {
+        "line": 100,
+        "column": 55
+      },
+      "end": {
+        "line": 100,
+        "column": 108
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [],
+        "phase": "independent-cycle-identities"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    }
+  ],
+  "exactTextAlignment": [
+    {
+      "historical": 0,
+      "current": 0,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 1,
+      "current": 1,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 2,
+      "current": 2,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 3,
+      "current": 3,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 4,
+      "current": 4,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 5,
+      "current": 5,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 6,
+      "current": 6,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 7,
+      "current": 7,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 8,
+      "current": 8,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 9,
+      "current": 9,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 10,
+      "current": 10,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 11,
+      "current": 11,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 12,
+      "current": 12,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 13,
+      "current": 13,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 14,
+      "current": 14,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 15,
+      "current": 15,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 16,
+      "current": 16,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 17,
+      "current": 17,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 18,
+      "current": 18,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 19,
+      "current": 19,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 20,
+      "current": 20,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 21,
+      "current": 21,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 22,
+      "current": 22,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 23,
+      "current": 23,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 24,
+      "current": 24,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 25,
+      "current": 25,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 26,
+      "current": 28,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 27,
+      "current": 29,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 28,
+      "current": 30,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 29,
+      "current": 31,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 30,
+      "current": 32,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 31,
+      "current": 33,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 32,
+      "current": 34,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 33,
+      "current": 35,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 34,
+      "current": 36,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 35,
+      "current": 37,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 37,
+      "current": 39,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 38,
+      "current": 40,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 39,
+      "current": 41,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 40,
+      "current": 42,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 41,
+      "current": 43,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 42,
+      "current": 44,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 43,
+      "current": 45,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 44,
+      "current": 46,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 45,
+      "current": 47,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 46,
+      "current": 48,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 47,
+      "current": 49,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 48,
+      "current": 50,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 49,
+      "current": 51,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 50,
+      "current": 52,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    },
+    {
+      "historical": 51,
+      "current": 53,
+      "classification": "UNCHANGED_HISTORICAL",
+      "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+    }
+  ],
+  "unmatchedHistorical": [
+    {
+      "index": 36,
+      "text": "check(D.checkNetworks(missing), undefined)",
+      "sha256": "6de1aa22774f07c1a19bbbbbbc9073c46dce3de16db1c3d7efc4b88fca1a1f08",
+      "nodeType": "CallExpression",
+      "range": [
+        7244,
+        7286
+      ],
+      "start": {
+        "line": 60,
+        "column": 133
+      },
+      "end": {
+        "line": 60,
+        "column": 175
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    }
+  ],
+  "unmatchedCurrent": [
+    {
+      "index": 26,
+      "text": "assert.throws(() => D.checkNetworks(composition, { require_existing: true }), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "sha256": "ab440568241017d8cb8e53f4f2295530f9d700080dd5c2d5a15fdda044e3ee1b",
+      "nodeType": "CallExpression",
+      "range": [
+        6954,
+        7072
+      ],
+      "start": {
+        "line": 67,
+        "column": 68
+      },
+      "end": {
+        "line": 67,
+        "column": 186
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    },
+    {
+      "index": 27,
+      "text": "D.checkNetworks(composition, { require_existing: true })",
+      "sha256": "f3185bb67b8e61580c496952d2ab4c304885b01b5d93773c32e398ea237d7aec",
+      "nodeType": "CallExpression",
+      "range": [
+        6974,
+        7030
+      ],
+      "start": {
+        "line": 67,
+        "column": 88
+      },
+      "end": {
+        "line": 67,
+        "column": 144
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 67
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "duplicateTotal": 2,
+      "occurrence": 2
+    },
+    {
+      "index": 38,
+      "text": "assert.throws(() => D.checkNetworks(missing), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "sha256": "8614fe61e3ba9f242b166890f3843167ef33a824bca2783a5bb5c9b5e06690bf",
+      "nodeType": "CallExpression",
+      "range": [
+        8490,
+        8576
+      ],
+      "start": {
+        "line": 78,
+        "column": 147
+      },
+      "end": {
+        "line": 78,
+        "column": 233
+      },
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "missing-network-refusal"
+      },
+      "duplicateTotal": 1,
+      "occurrence": 1
+    }
+  ],
+  "firstAlignmentDivergence": {
+    "historical": 26,
+    "current": 28,
+    "classification": "UNCHANGED_HISTORICAL",
+    "note": "Exact-text alignment only; enclosing context independently recorded, not normalized"
+  }
+}

@@ -34,3 +34,8 @@ Historical F1 result above is unchanged. E1 restores error classification and pa
 ## E2 continuation — 2026-10-27
 
 Secure diagnostic preflight and new real Docker acceptance pass (21 membership,42 Redis over2 cycles,15 optional Health assertions). Mandatory full unit run fails244/245 due to pre-F1 exact-expression preservation test versus F1 stronger security refusals. Current status FAILED_QUALIFICATION; no retry, code correction, push or independent closure. Historical sections above remain unchanged. See [E2 decision](IL-5.14-R1-F1-E2-final-decision.md).
+
+
+## E3 static disposition — 2026-10-27
+
+CHANGES_REQUESTED. Exact inventory disproves the insertion-only hypothesis: one historical success assertion was replaced with a F1 membership refusal. E3 requires unchanged historical assertions and stops on replacement, so no guard or test source was modified and no qualification rerun occurred. E2 real Docker evidence remains applicable by exact byte comparison. Explicit narrow contract disposition is required; see [E3 final decision](IL-5.14-R1-F1-E3-final-decision.md). Earlier reports remain preserved.

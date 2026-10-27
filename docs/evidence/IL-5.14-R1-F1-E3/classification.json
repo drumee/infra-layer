@@ -1,0 +1,2305 @@
+{
+  "counts": {
+    "historical": 52,
+    "current": 54,
+    "exactTextOrderedMatches": 51,
+    "unmatchedHistorical": 1,
+    "unmatchedCurrent": 3
+  },
+  "classification": [
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 0,
+      "current": 0,
+      "text": "assert.deepEqual(actual, expected)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 6
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 8
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 1,
+      "current": 1,
+      "text": "D.docker(args)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "docker",
+            "line": 7
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "docker",
+            "line": 9
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 2,
+      "current": 2,
+      "text": "docker([\"container\", \"inspect\", \"--format\", '{{json .}}', id])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 12
+          }
+        ],
+        "enclosingCalls": [
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 14
+          }
+        ],
+        "enclosingCalls": [
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 3,
+      "current": 3,
+      "text": "docker([\"network\", \"inspect\", \"--format\", '{{json .}}', name])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 13
+          }
+        ],
+        "enclosingCalls": [
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 15
+          }
+        ],
+        "enclosingCalls": [
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 4,
+      "current": 4,
+      "text": "D.checkNetworks(composition, { require_existing: true })",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "validate",
+            "line": 15
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 16
+          }
+        ],
+        "enclosingCalls": [
+          "wait"
+        ],
+        "blocks": [
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "validate",
+            "line": 17
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 18
+          }
+        ],
+        "enclosingCalls": [
+          "wait"
+        ],
+        "blocks": [
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 5,
+      "current": 5,
+      "text": "spawn(T.resolveTrustedExecutable(\"docker\"), [\"--host\", \"unix:///var/run/docker.sock\", \"start\", id], { env: T.systemEnvironment(\"docker\"), stdio: [\"ignore\", \"pipe\", \"pipe\"] })",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 21
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 22
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 23
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 25
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 6,
+      "current": 6,
+      "text": "assert.equal(result.status, 0, result.stderr)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 21
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 23
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 7,
+      "current": 7,
+      "text": "assert.equal(result.signal, null)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 21
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "FunctionDeclaration",
+            "name": "start",
+            "line": 23
+          }
+        ],
+        "enclosingCalls": [],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 8,
+      "current": 8,
+      "text": "docker([\"version\", \"--format\", \"{{json .}}\"])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "JSON.parse"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 9,
+      "current": 9,
+      "text": "check(docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project]), \"\")",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initial-state"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 10,
+      "current": 10,
+      "text": "docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initial-state"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 11,
+      "current": 11,
+      "text": "check(docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"]), \"\")",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initial-state"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 12,
+      "current": 12,
+      "text": "docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initial-state"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 13,
+      "current": 13,
+      "text": "docker([\"network\", \"create\", ...labels, netname])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-creation"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 14,
+      "current": 14,
+      "text": "docker([\"create\", \"--name\", project + \"-redis-1\", ...labels, \"--label\", \"com.docker.compose.service=redis\", \"--user\", process.getuid() + \":\" + process.getgid(), \"--network\", netname, \"--read-only\", \"--cap-drop\", \"ALL\", \"--security-opt\", \"no-new-privileges:true\", \"--pids-limit\", \"64\", \"--memory\", \"128m\", \"--mount\", \"type=bind,source=\" + directory + \"/redis.conf,target=/config/redis.conf,readonly\", \"--mount\", \"type=bind,source=\" + data + \",target=/data\", \"--health-cmd\", health, \"--health-interval\", \"1s\", \"--health-timeout\", \"1s\", \"--health-retries\", \"10\", image, \"redis-server\", \"/config/redis.conf\"])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "redis-creation"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 15,
+      "current": 15,
+      "text": "docker([\"exec\", id, \"/bin/sh\", \"-c\", auth, \"redis-cli\", ...args])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 45
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 54
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "startup-and-readiness"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 16,
+      "current": 16,
+      "text": "check(redis([\"PING\"]), \"PONG\")",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "authenticated-persistence"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 17,
+      "current": 17,
+      "text": "check(redis([\"SET\", \"qualification-key\", \"persisted\"]), \"OK\")",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "authenticated-persistence"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 18,
+      "current": 18,
+      "text": "check(inspect(id).NetworkSettings.Networks[netname].NetworkID, nid)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "authenticated-persistence"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 19,
+      "current": 19,
+      "text": "check(initial.Containers[id].EndpointID, inspect(id).NetworkSettings.Networks[netname].EndpointID)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "authenticated-persistence"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 20,
+      "current": 20,
+      "text": "docker([\"kill\", \"--signal\", \"KILL\", id])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "redis-interruption-recovery"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 21,
+      "current": 21,
+      "text": "check(redis([\"GET\", \"qualification-key\"]), \"persisted\")",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "redis-interruption-recovery"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 22,
+      "current": 22,
+      "text": "assert.notEqual(report.recovered_attachments[id].EndpointID, initial.Containers[id].EndpointID)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "redis-interruption-recovery"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 23,
+      "current": 23,
+      "text": "docker([\"restart\", id])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "container-restart"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 24,
+      "current": 24,
+      "text": "check(redis([\"GET\", \"qualification-key\"]), \"persisted\")",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "container-restart"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 25,
+      "current": 25,
+      "text": "docker([\"network\", \"disconnect\", netname, id])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 26,
+      "current": 28,
+      "text": "check(network(netname).Containers[id], undefined)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 27,
+      "current": 29,
+      "text": "docker([\"network\", \"connect\", netname, id])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-reconnection"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 28,
+      "current": 30,
+      "text": "docker([\"run\", \"-d\", \"--name\", project + \"-intruder-1\", \"--label\", marker + \"=\" + project, \"--label\", \"org.drumee.infra.owner=unauthorized-fixture\", \"--label\", \"com.docker.compose.project=\" + project, \"--label\", \"com.docker.compose.service=redis\", \"--user\", process.getuid() + \":\" + process.getgid(), \"--network\", netname, \"--read-only\", \"--cap-drop\", \"ALL\", \"--security-opt\", \"no-new-privileges:true\", \"--entrypoint\", \"/bin/sh\", image, \"-c\", \"sleep 600\"])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-fixture-creation"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 29,
+      "current": 31,
+      "text": "assert.throws(() => D.checkNetworks(composition), { code: \"NETWORK_OWNERSHIP_MISMATCH\" })",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-resource-refusal"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 30,
+      "current": 32,
+      "text": "D.checkNetworks(composition)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 57
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 73
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-resource-refusal"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 31,
+      "current": 33,
+      "text": "check(inspect(foreign).State.Running, true)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-resource-refusal"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 32,
+      "current": 34,
+      "text": "docker([\"stop\", foreign])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-fixture-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 33,
+      "current": 35,
+      "text": "docker([\"rm\", foreign])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "foreign-fixture-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 34,
+      "current": 36,
+      "text": "assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: \"REQUIRED_NETWORK_MISSING\" })",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "missing-network-refusal"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 35,
+      "current": 37,
+      "text": "D.checkNetworks(missing, { require_existing: true })",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 60
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 78
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "missing-network-refusal"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "MODIFIED_HISTORICAL",
+      "historical": 37,
+      "current": 39,
+      "text": "D.checkNetworks(missing)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 78
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "missing-network-refusal"
+      },
+      "reason": "Exact nested call text remains but invocation moved from success check argument into rejection callback; outcome and enclosing assertion changed."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 38,
+      "current": 40,
+      "text": "docker([\"stop\", id])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "service-shutdown"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 39,
+      "current": 41,
+      "text": "check(value.Config.Labels[marker], project)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 40,
+      "current": 42,
+      "text": "docker([\"stop\", id])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement",
+          "IfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement",
+          "IfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 41,
+      "current": 43,
+      "text": "docker([\"rm\", id])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "ForOfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 42,
+      "current": 44,
+      "text": "check(network(netname).Labels[marker], project)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "IfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "IfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 43,
+      "current": 45,
+      "text": "docker([\"network\", \"rm\", netname])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "IfStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement",
+          "IfStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 44,
+      "current": 46,
+      "text": "check(docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project]), \"\")",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 45,
+      "current": 47,
+      "text": "docker([\"ps\", \"-aq\", \"--filter\", \"label=\" + marker + \"=\" + project])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 46,
+      "current": 48,
+      "text": "check(docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"]), \"\")",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 47,
+      "current": 49,
+      "text": "docker([\"network\", \"ls\", \"-q\", \"--filter\", \"name=^\" + netname + \"$\"])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "check"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "owned-cleanup"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 48,
+      "current": 50,
+      "text": "assert.throws(() => D.docker([\"container\", \"inspect\", report.container_id]), error => error.code === \"DOCKER_LIFECYCLE_COMMAND_FAILED\" && error.exit_status === 1 && error.object_missing === true)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [
+          "ForStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement"
+        ],
+        "phase": "removed-container-refusal"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 49,
+      "current": 51,
+      "text": "D.docker([\"container\", \"inspect\", report.container_id])",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 72
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement"
+        ],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 96
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement"
+        ],
+        "phase": "removed-container-refusal"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 50,
+      "current": 52,
+      "text": "check(new Set(runs.map(r => r.network_id)).size, 2)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [],
+        "phase": "independent-cycle-identities"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "UNCHANGED_HISTORICAL",
+      "historical": 51,
+      "current": 53,
+      "text": "check(new Set(runs.map(r => r.container_id)).size, 2)",
+      "historicalContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 28
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "IIFE"
+        ],
+        "blocks": [],
+        "phase": "initialization"
+      },
+      "currentContext": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [],
+        "phase": "independent-cycle-identities"
+      },
+      "reason": "Exact protected expression retained with multiplicity and relative ordered occurrence; existing S2 diagnostic wrapper changes are independently recorded, not erased."
+    },
+    {
+      "classification": "MODIFIED_HISTORICAL",
+      "historical": 36,
+      "currentReplacement": 38,
+      "text": "check(D.checkNetworks(missing), undefined)",
+      "reason": "Original success assertion is absent; replaced with mismatch refusal. Not an approved mere addition under E3."
+    },
+    {
+      "classification": "APPROVED_F1_ADDITION",
+      "current": 26,
+      "text": "assert.throws(() => D.checkNetworks(composition, { require_existing: true }), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "sha256": "ab440568241017d8cb8e53f4f2295530f9d700080dd5c2d5a15fdda044e3ee1b",
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "expectedOccurrences": 1,
+      "nodeType": "CallExpression",
+      "purpose": "Explicit complete-detachment refusal, including protected nested call",
+      "requirement": "F1 required membership completeness; E2 real Docker42 assertion proof"
+    },
+    {
+      "classification": "APPROVED_F1_ADDITION",
+      "current": 27,
+      "text": "D.checkNetworks(composition, { require_existing: true })",
+      "sha256": "f3185bb67b8e61580c496952d2ab4c304885b01b5d93773c32e398ea237d7aec",
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 67
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run",
+          "assert.throws"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "network-detachment"
+      },
+      "expectedOccurrences": 1,
+      "nodeType": "CallExpression",
+      "purpose": "Explicit complete-detachment refusal, including protected nested call",
+      "requirement": "F1 required membership completeness; E2 real Docker42 assertion proof"
+    },
+    {
+      "classification": "MODIFIED_HISTORICAL",
+      "current": 38,
+      "text": "assert.throws(() => D.checkNetworks(missing), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "sha256": "8614fe61e3ba9f242b166890f3843167ef33a824bca2783a5bb5c9b5e06690bf",
+      "context": {
+        "functions": [
+          {
+            "type": "ArrowFunctionExpression",
+            "name": "anonymous",
+            "line": 32
+          }
+        ],
+        "enclosingCalls": [
+          "<call>.catch",
+          "diagnostic.run"
+        ],
+        "blocks": [
+          "ForStatement",
+          "TryStatement"
+        ],
+        "phase": "missing-network-refusal"
+      },
+      "expectedOccurrences": 1,
+      "nodeType": "CallExpression",
+      "purpose": "Replacement of historical success assertion; explicit owner disposition required",
+      "requirement": "F1 required membership completeness; E2 real Docker42 assertion proof"
+    }
+  ],
+  "removedHistoricalOuterAssertions": 1,
+  "pureAdditionHypothesis": false,
+  "historicalDockerOrSpawnRemovals": 0,
+  "historicalProtectedReorderObserved": false,
+  "unexplainedProtectedAdditions": 0,
+  "guardImplemented": false,
+  "stopReason": "MODIFIED_HISTORICAL violates explicit E3 unchanged-preservation invariant; no silent replacement allowed"
+}
