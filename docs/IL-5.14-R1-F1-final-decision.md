@@ -24,3 +24,8 @@ The new unit cases are encouraging but are insufficient to establish real Docker
 Next required work is a separately dispositioned continuation to preserve the established error code, followed by focused tests, complete real Docker scenarios, full regression/audit/package qualification, exact-head hosted checks and separate independent re-review. No merge/publication/tag/deployment was performed.
 
 Residual limitations: `SMTP_RECOVERY_UNQUALIFIED`; `H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED`; historical Debian H3 remains failed; no downstream Debian qualification.
+
+
+## E1 continuation — 2026-10-27
+
+Historical F1 result above is unchanged. E1 restores error classification and passes47 focused tests but stops on a missing diagnostic-directory launch prerequisite before any Docker scenario. Current local status remains FAILED_QUALIFICATION. See [E1 decision](IL-5.14-R1-F1-E1-final-decision.md). No push or independent finding closure occurred.
