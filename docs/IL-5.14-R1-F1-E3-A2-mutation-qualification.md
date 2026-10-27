@@ -1,0 +1,5 @@
+# Mutation qualification
+
+Original independent bypass first reproduced against unchanged2b08fe1:3 accepted false&& mutations; that historical evidence is retained. After the correction, the exact independent three-case reproducer test passes by asserting EXECUTION_CONTEXT_CHANGED for each. Full new reachability suite26 PASS,0 FAIL/skip; complete A1+A2 mutation suite48 PASS,0 FAIL/skip. No parser failure substitutes for a guard refusal: each negative checks its expected bounded error code.
+
+Coverage includes historical/addition/replacement positives; false&&; true||; dead if; ternary; early return/throw; unused function/callback; discarded async invocation; deletion/change/order; unauthorized replacement/assertion/Docker; duplicate masking; condition change; removed function invocation; moved approved addition; nonsemantic formatting; actual canonical harness; dependency-import and Promise ownership changes. Mutations remain in memory and are parsed only. A1's full22 tests still pass. Normal current harness is read from its real source path, not substituted. No canonical file is mutated on disk.
