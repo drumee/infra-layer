@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: R4-01 valid operational attachment remains accepted
+ok 1 - R4-01 valid operational attachment remains accepted
+  ---
+  duration_ms: 8.955282
+  type: 'test'
+  ...
+# Subtest: R4-02 exact restarting target admits only pre-recreation authorization
+ok 2 - R4-02 exact restarting target admits only pre-recreation authorization
+  ---
+  duration_ms: 1.560658
+  type: 'test'
+  ...
+# Subtest: R4-03 authorized restarting target is never operationally ready
+ok 3 - R4-03 authorized restarting target is never operationally ready
+  ---
+  duration_ms: 3.755684
+  type: 'test'
+  ...
+# Subtest: R4-04 complete replacement is operationally valid
+ok 4 - R4-04 complete replacement is operationally valid
+  ---
+  duration_ms: 2.50604
+  type: 'test'
+  ...
+# Subtest: R4-05 undeclared extra network is never authorized for recovery
+ok 5 - R4-05 undeclared extra network is never authorized for recovery
+  ---
+  duration_ms: 1.504882
+  type: 'test'
+  ...
+# Subtest: R4-06 foreign owner is refused
+ok 6 - R4-06 foreign owner is refused
+  ---
+  duration_ms: 1.569966
+  type: 'test'
+  ...
+# Subtest: R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+ok 7 - R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+  ---
+  duration_ms: 5.825386
+  type: 'test'
+  ...
+# Subtest: R4-08 wrong service is refused
+ok 8 - R4-08 wrong service is refused
+  ---
+  duration_ms: 1.518404
+  type: 'test'
+  ...
+# Subtest: R4-09 wrong project is refused
+ok 9 - R4-09 wrong project is refused
+  ---
+  duration_ms: 1.188583
+  type: 'test'
+  ...
+# Subtest: R4-10 Docker command failure is fatal
+ok 10 - R4-10 Docker command failure is fatal
+  ---
+  duration_ms: 0.804227
+  type: 'test'
+  ...
+# Subtest: R4-11 disappearance/substitution and duplicate authorization fail
+ok 11 - R4-11 disappearance/substitution and duplicate authorization fail
+  ---
+  duration_ms: 0.901577
+  type: 'test'
+  ...
+# Subtest: R4-12 final missing required membership refuses readiness and authorization
+ok 12 - R4-12 final missing required membership refuses readiness and authorization
+  ---
+  duration_ms: 1.704097
+  type: 'test'
+  ...
+# Subtest: R4-13 final extra membership refuses readiness
+ok 13 - R4-13 final extra membership refuses readiness
+  ---
+  duration_ms: 1.194546
+  type: 'test'
+  ...
+# Subtest: R4-14 duplicate role resolving to same network is not multihoming
+ok 14 - R4-14 duplicate role resolving to same network is not multihoming
+  ---
+  duration_ms: 8.609002
+  type: 'test'
+  ...
+# Subtest: R4-15 recovery cannot select a one-off job or omit an inventoried resource
+ok 15 - R4-15 recovery cannot select a one-off job or omit an inventoried resource
+  ---
+  duration_ms: 1.566417
+  type: 'test'
+  ...
+# Subtest: R4-16 ordinary pre-creation behavior remains compatible
+ok 16 - R4-16 ordinary pre-creation behavior remains compatible
+  ---
+  duration_ms: 0.696382
+  type: 'test'
+  ...
+# Subtest: R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+ok 17 - R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+  ---
+  duration_ms: 1.497655
+  type: 'test'
+  ...
+# Subtest: R4 rollback authorization requires verified failed/active candidate identity before network admission
+ok 18 - R4 rollback authorization requires verified failed/active candidate identity before network admission
+  ---
+  duration_ms: 8.74561
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 108.208934

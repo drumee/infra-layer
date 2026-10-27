@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_QUALIFICATION",
+  "blocking_gate": "R5",
+  "recovery": "NOT_QUALIFIED",
+  "postfix": "NOT_EXECUTED; original ROOT_CAUSE_UNDETERMINED",
+  "push": false,
+  "unit": {
+    "pass": 317,
+    "fail": 0,
+    "skip": 0
+  },
+  "contracts": {
+    "pass": 24,
+    "fail": 0,
+    "skip": 0
+  },
+  "focused": {
+    "pass": 100,
+    "fail": 0,
+    "skip": 0
+  },
+  "docker_attempt": {
+    "id": "A4-R5-RECOVERY-1",
+    "exit": 1,
+    "code": "NETWORK_ATTACHMENT_MISMATCH",
+    "cleanup": "PASS"
+  },
+  "package": null,
+  "hosted": "NOT_EXECUTED",
+  "independent": "NOT_EXECUTED"
+}

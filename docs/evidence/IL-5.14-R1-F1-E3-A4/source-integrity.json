@@ -1,0 +1,61 @@
+{
+  "a3_manifest": {
+    "cleanup-readback.json": true,
+    "http-server-state.json": true,
+    "baseline-failures.json": true,
+    "http-diagnostic.json": true,
+    "services-diagnostic.json": true,
+    "http-container-diagnostic.json": true,
+    "services-focused-diagnostic.log": true,
+    "services-diagnostic-protocol.md": true,
+    "decision.json": true,
+    "http-container-server.cjs": true,
+    "run.py": true,
+    "application-diagnostic.log": true,
+    "services-observer.cjs": true,
+    "http-diagnostic.cjs": true,
+    "services-socket-observation.jsonl": true,
+    "application-diagnostic.cjs": true,
+    "http-diagnostic.log": true,
+    "health-server.cjs": true,
+    "http-container-diagnostic.cjs": true,
+    "http-container-diagnostic.log": true,
+    "source-identity.json": true,
+    "http-container-wait.cjs": true,
+    "execution.jsonl": true,
+    "services-diagnostic.cjs": true,
+    "application-diagnostic.json": true,
+    "wait-close.cjs": true,
+    "docker-http-state-ure9yq/state.json": true
+  },
+  "historical_evidence": {
+    "docs/IL-5.14-R1-F1-E3-A2-final-decision.md": {
+      "exists": true,
+      "sha256": "e1c1bcfa40a121f2f252dc57a7d427549808882af63be07def24ca6d9c4d5ce1"
+    },
+    "docs/IL-5.14-R1-F1-E2-final-decision.md": {
+      "exists": true,
+      "sha256": "1568ac8942098dbc65cc56a1b7bc5f35240228a834357457a7182a573cc6e466"
+    },
+    "docs/evidence/IL-5.14-R1-F1-E3-A2/independent-review": {
+      "exists": true,
+      "sha256": null
+    },
+    "/tmp/drumee-il514-a2-independent-review-_w8ohvql/": {
+      "exists": true,
+      "sha256": null
+    },
+    "/tmp/drumee-il514-r1-f1-e2-jef250tq/": {
+      "exists": true,
+      "sha256": null
+    }
+  },
+  "a4_runtime_hashes": {
+    "lifecycle/activation.js": "e2ed425d1df485866189be14ff6c581aa53557123d53483fc30f0b22d27ba4cd",
+    "lifecycle/recovery.js": "67525625672a792b0e14b6bb7738a2688ff3bfb64bc632e0b0c76ea135a4589b",
+    "lifecycle/docker.js": "b2ddc523aef50100f30dd7f20fb93e43715be36df88fe8cf671a1b88c13b41b6",
+    "internal/rollback-authorization.js": "b29778657161e981acea8eef597c935a2a2ddc95b951b8c8e9a3f6659c3053ee",
+    "test/network-attachments/rollback-real.cjs": "5b18e531d0b44fda3c103ff0e747400fa8e1776fb0176aa5116cb112470ce076",
+    "test/unit/rollback-authorization.test.js": "a95c36e84bf330091b26d223c7e640390323a4a8f651ccdb52bc1f9f06ff25d4"
+  }
+}

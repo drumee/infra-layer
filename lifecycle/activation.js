@@ -151,7 +151,8 @@ async function inspectDeployment(root, context) {
 }
 const diagnostic_codes = new Set(["INVALID_DOCKER_OBJECT_IDENTITY", "INVALID_NETWORK_ATTACHMENT", "NETWORK_ATTACHMENT_MISMATCH", "NETWORK_ATTACHMENT_UNSETTLED", "REQUIRED_CONTAINER_MISSING", "REQUIRED_NETWORK_MISSING", "UNEXPECTED_NETWORK_ATTACHMENT", "APPLICATION_PROTOCOL_FAILED", "SMTP_RECOVERY_UNQUALIFIED", "DOCKER_LIFECYCLE_COMMAND_FAILED", "DEPLOYMENT_OWNERSHIP_MISMATCH", "NETWORK_OWNERSHIP_MISMATCH", "DUPLICATE_SERVICE_IDENTITY", "REFERENCED_IMAGE_UNAVAILABLE", "IMAGE_DIGEST_MISMATCH", "CONFLICTING_PORT_BINDING", "PORT_OBSERVATION_UNAVAILABLE", "PREPARED_CONFIGURATION_CHANGED", "PREPARED_DEPLOYMENT_TAMPERED", "RUNTIME_IDENTITY_MISMATCH", "UNEXPECTED_SERVICE_EXPOSURE", "RUNTIME_MOUNT_MISMATCH", "ACTIVE_RESOURCE_MISSING", "RUNTIME_ATTESTATION_INVALIDATED", "ACTIVATION_RECOVERY_REQUIRED", "SECRET_ROTATION_RECOVERY_REQUIRED", "SECRET_GENERATION_AGREEMENT_UNVERIFIED", "SECRET_TRANSITION_NOT_AUTHORIZED", "NATIVE_VALIDATION_FAILED", "SERVICE_STARTUP_FAILED", "FUNCTIONAL_READINESS_FAILED", "DNS_PROTOCOL_FAILED", "DATABASE_ENGINE_INCOMPATIBLE", "DATABASE_CREDENTIAL_LOGGING_UNSAFE", "DATABASE_SERVICE_AUTHENTICATION_FAILED", "REDIS_PROTOCOL_FAILED", "SMTP_PROTOCOL_FAILED", "HTTPS_PROTOCOL_FAILED", "INCOMPATIBLE_DEPLOYMENT_CHANGE", "VERIFIED_BACKUP_REQUIRED", "IMAGE_UPGRADE_COMPATIBILITY_UNVERIFIED", "ENGINE_VERSION_UPGRADE_REVIEW_REQUIRED", "LIFECYCLE_JOURNAL_CORRUPTED", "ACTIVE_STATE_CORRUPTED", "ACTIVE_STATE_UNATTESTED", "UNSAFE_RESOURCE_PATH", "RESOURCE_PERMISSIONS_UNSAFE", "RESOURCE_OWNERSHIP_MISMATCH", "RESOURCE_MISSING", "BACKUP_CHECKSUM_MISMATCH", "BACKUP_RESOURCE_MISSING", "BACKUP_MANIFEST_CORRUPTED", "BACKUP_QUIESCENCE_NOT_OBSERVED", "DATABASE_EVENT_QUIESCENCE_REQUIRED", "CONSISTENT_DATABASE_DUMP_FAILED", "TLS_CERTIFICATE_EXPIRED", "TLS_CHAIN_INVALID", "TLS_KEY_MISMATCH", "TLS_SAN_MISMATCH", "TLS_CERTIFICATE_INVALID"]);
 function safeCode(error) { return diagnostic_codes.has(error?.code) ? error.code : "LIFECYCLE_OBSERVATION_FAILED"; }
-async function activateDeployment(prepared, context) {
+const rollbackOperation = Symbol("authorized-rollback");
+async function activateDeployment(prepared, context, operation) {
   const driver = context.driver || D; P.verifyPrepared(prepared, context, driver);
   return F.lockAsync(prepared.root, async () => {
     const entries = J.readJournal(prepared.root); const pending = entries.filter((value) => ["activation-intent", "active", "activation-failed", "recovery-required"].includes(value.phase)).at(-1);
@@ -159,7 +160,10 @@ async function activateDeployment(prepared, context) {
     if (pending?.phase === "activation-intent" && context.recover !== true) F.fail("ACTIVATION_RECOVERY_REQUIRED");
     const prior = readActive(prepared.root); const change = classifyChanges(prior, prepared);
     if (!change.compatible) { if (change.categories.length === 1 && change.categories[0] === "secret-rotation") require("./transitions").allowTransition(prior, prepared, context); else F.fail("INCOMPATIBLE_DEPLOYMENT_CHANGE"); }
-    const observed = driver.inspectProject(prepared.project, Object.keys(prepared.compose.services)); driver.checkPorts(prepared.composition, observed); await networksReady(prepared.composition, driver, observed.length > 0); const images = driver.checkImages(prepared.composition);
+    const observed = driver.inspectProject(prepared.project, Object.keys(prepared.compose.services)); driver.checkPorts(prepared.composition, observed);
+    if (operation === rollbackOperation && pending?.phase === "recovery-required" && observed.some(value => value.restarting === true)) require("../internal/rollback-authorization").authorizeRollback(prepared, observed, prior, pending, context, driver, checkObserved);
+    else await networksReady(prepared.composition, driver, observed.length > 0);
+    const images = driver.checkImages(prepared.composition);
     if (change.categories.includes("image-upgrade")) { require("./recovery").validateBackupEvidence(context.backup_evidence, prior, context); verifyImageUpgrade(prior.prepared, prepared, driver); }
     if (prior?.revision === prepared.revision) { const state = await inspectDeployment(prepared.root, context); if (state.ready) return { ...state, effect: "no-op" }; }
     J.append(prepared.root, "activation-intent", prepared.revision, prior ? { prior_revision: prior.revision } : {});
@@ -201,4 +205,8 @@ async function activateDeployment(prepared, context) {
   });
 }
 function diagnoseDeployment(state) { return { ready: state?.ready === true, diagnostic_codes: Array.isArray(state?.diagnostic_codes) ? state.diagnostic_codes : ["INVALID_DEPLOYMENT_STATE"], acceptance: state?.acceptance || "unverified" }; }
-module.exports = { activateDeployment, inspectDeployment, diagnoseDeployment, classifyChanges, readActive, nativeCheck, protocolCheck, safeCode, httpsCheck, checkObserved };
+function activateRollback(prepared, context) {
+  if (context?.authorized !== true) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
+  return activateDeployment(prepared, context, rollbackOperation);
+}
+module.exports = { activateDeployment, activateRollback, inspectDeployment, diagnoseDeployment, classifyChanges, readActive, nativeCheck, protocolCheck, safeCode, httpsCheck, checkObserved };

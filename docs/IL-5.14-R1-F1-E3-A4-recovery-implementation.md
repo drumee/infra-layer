@@ -1,0 +1,13 @@
+# Candidate implementation — not qualified
+
+R3 BLOCKED pending successful real recovery qualification; R5 failed. No further correction after the first mandatory failure.
+
+Changes confined to activation.js, recovery.js, docker.js, one internal rollback-authorization module, and direct tests. Ordinary checkNetworks keeps its default complete configured-set/ID/endpoint/ownership policy. Docker observation additionally records name, role and Restarting. The internal network walker is shared with a separate authorizeRecoveryNetworks function; exact inventoried ID set and snapshot fields must match, canonical Compose name must be project-service-1. Only restarting+running with exactly empty EndpointID and no corresponding normal/synthetic endpoint is eligible for pre-recreation accommodation. Network names/IDs, service-specific configured set and ownership still apply before it.
+
+rollbackDeployment calls an internal activation wrapper carrying a private Symbol marker. Only that marker plus latest recovery-required journal state plus an observed restarting container selects the authorization helper. The helper verifies immutable failed/active prepared candidates, owner/project/name/service/image/revision/role/ports/mounts before rechecking network identity. Ordinary recover:true does not enable the new path. Final network/protocol validation and active-attestation writes are unchanged.
+
+This is a candidate design, not evidence of successful rollback. The actual R5 failure stack selects activation.js:165's ordinary networksReady branch; the new authorization path did not admit the observed case. The capture lacks the exact internal pending-event and inspectProject snapshot at that branch, so no particular false conjunct or race is asserted as proven. Docker state can change between external observation and the preflight; a later investigation must distinguish that possibility from journal/call-path selection using safe observation. No broad retry or fallback was added after failure.
+
+A further candidate limitation for review: checkObserved compares live port publication to expected publication, while the captured restarting resource has ports={}. The attempted authorization may need a validated configuration-versus-live-state distinction if reached. That branch was not reached in this failure and no causal claim or relaxation is made. Any subsequent correction must retain authoritative configured ports, image/revision/mount identity and strict final readiness.
+
+Do not deliver or use this candidate as qualified. The complete changed-byte inventory is archived; no production fix is claimed.

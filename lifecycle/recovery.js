@@ -109,7 +109,7 @@ async function rollbackDeployment(root, revision, context) {
   const change = A.classifyChanges(current, prior); if (!change.compatible || change.categories.includes("image-upgrade")) F.fail("INCOMPATIBLE_ROLLBACK");
   // Schema equality and matching secret generations are mandatory. This API
   // never pretends an image/config switch rolls back a migrated database.
-  return A.activateDeployment(prior, { ...context, recover: true });
+  return A.activateRollback(prior, { ...context, recover: true });
 }
 function validateBackupEvidence(evidence, active, context) {
   if (!S.plainTree(evidence) || !S.record(evidence) || Object.keys(evidence).some((key) => !["directory", "manifest_digest"].includes(key)) || !S.resourcePath(evidence.directory)) F.fail("VERIFIED_BACKUP_REQUIRED");

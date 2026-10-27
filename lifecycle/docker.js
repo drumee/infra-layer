@@ -39,7 +39,7 @@ function helper(composition, directory, script, args = [], writable = false) {
   return docker(["run", "--rm", "--network", "none", "--read-only", "--cap-drop", "ALL", "--cap-add", "DAC_OVERRIDE", ...(writable ? ["--cap-add", "CHOWN", "--cap-add", "FOWNER"] : []), "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "128m", "--label", `org.drumee.infra.owner=${composition.project}`, "--label", "org.drumee.infra.role=lifecycle-helper", "--mount", `type=bind,source=${directory},target=/work${writable ? "" : ",readonly"}`, composition.distribution.helper_image, "node", "-e", script, ...args]);
 }
 function compose(prepared, args, options) { return docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args], options); }
-const format = '{"id":{{json .Id}},"image_id":{{json .Image}},"image":{{json .Config.Image}},"started_at":{{json .State.StartedAt}},"running":{{json .State.Running}},"exit_code":{{json .State.ExitCode}},"health":{{if index .State "Health"}}{{json .State.Health.Status}}{{else}}"unknown"{{end}},"owner":{{json (index .Config.Labels "org.drumee.infra.owner")}},"project":{{json (index .Config.Labels "com.docker.compose.project")}},"service":{{json (index .Config.Labels "com.docker.compose.service")}},"revision":{{json (index .Config.Labels "org.drumee.infra.revision")}},"ports":{{json .NetworkSettings.Ports}},"mounts":{{json .Mounts}}}';
+const format = '{"id":{{json .Id}},"image_id":{{json .Image}},"image":{{json .Config.Image}},"started_at":{{json .State.StartedAt}},"running":{{json .State.Running}},"restarting":{{json .State.Restarting}},"name":{{json .Name}},"exit_code":{{json .State.ExitCode}},"health":{{if index .State "Health"}}{{json .State.Health.Status}}{{else}}"unknown"{{end}},"owner":{{json (index .Config.Labels "org.drumee.infra.owner")}},"role":{{json (index .Config.Labels "org.drumee.infra.role")}},"project":{{json (index .Config.Labels "com.docker.compose.project")}},"service":{{json (index .Config.Labels "com.docker.compose.service")}},"revision":{{json (index .Config.Labels "org.drumee.infra.revision")}},"ports":{{json .NetworkSettings.Ports}},"mounts":{{json .Mounts}}}';
 function inspectProject(project, allowed_services) {
   if (!S.identifier(project)) F.fail("INVALID_DEPLOYMENT_IDENTITY");
   const ids = docker(["ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim().split("\n").filter(Boolean);
@@ -101,12 +101,16 @@ function observedNetwork(composition, role, network) {
   if (observed.owner !== composition.project || observed.project !== composition.project || observed.driver !== "bridge" || observed.internal !== (role === "mail-control")) F.fail("NETWORK_OWNERSHIP_MISMATCH");
   return observed;
 }
-function containerNetworks(composition, id, networks) {
+function containerNetworks(composition, id, networks, recovery) {
   if (!/^[a-f0-9]{64}$/.test(id)) F.fail("INVALID_DOCKER_OBJECT_IDENTITY");
-  const resource = networkObject(["container", "inspect", "--format", format.slice(0, -1) + ',"name":{{json .Name}},"networks":{{json .NetworkSettings.Networks}}}', id], "REQUIRED_CONTAINER_MISSING");
+  const resource = networkObject(["container", "inspect", "--format", format.slice(0, -1) + ',"networks":{{json .NetworkSettings.Networks}}}', id], "REQUIRED_CONTAINER_MISSING");
   if (!resource || typeof resource !== "object" || Array.isArray(resource)) F.fail("INVALID_NETWORK_ATTACHMENT");
   if (resource.owner !== composition.project || resource.project !== composition.project || !Object.hasOwn(composition.compose.services, resource.service)) F.fail("NETWORK_OWNERSHIP_MISMATCH");
   if (resource.id !== id || typeof resource.name !== "string" || !serviceName(composition.project, resource.service, resource.name?.slice(1)) || resource.name[0] !== "/" || typeof resource.running !== "boolean") F.fail("INVALID_NETWORK_ATTACHMENT");
+  if (recovery) {
+    const target = recovery.get(id);
+    if (!target || ["id", "name", "service", "revision", "image", "image_id", "role", "running", "restarting"].some(key => resource[key] !== target[key]) || resource.name !== `/${composition.project}-${resource.service}-1`) F.fail("RUNTIME_IDENTITY_MISMATCH");
+  }
   const expected = serviceNetworks(composition, resource.service), actual = resource.networks;
   if (!actual || typeof actual !== "object" || Array.isArray(actual)) F.fail("INVALID_NETWORK_ATTACHMENT");
   // Ownership does not authorize connectivity: compare the entire set, including
@@ -120,6 +124,9 @@ function containerNetworks(composition, id, networks) {
     if (!network || !membership || membership.NetworkID !== network.id) F.fail("NETWORK_ATTACHMENT_MISMATCH");
     // Created/stopped containers retain configured networks but no active endpoint.
     if (!resource.running && membership.EndpointID === "" && !endpoint) continue;
+    // Rollback authorization is not readiness. Only an exact rechecked target
+    // in restart backoff may lack an endpoint before controlled recreation.
+    if (recovery && resource.running === true && resource.restarting === true && membership.EndpointID === "" && !endpoint && !Object.values(network.containers || {}).some(value => value.Name === resource.name.slice(1))) continue;
     const pending = Object.entries(network.containers || {}).find(([key, value]) => key === "ep-" + value.EndpointID && value.Name === resource.name.slice(1) && (membership.EndpointID === "" || membership.EndpointID === value.EndpointID));
     // The complete configured set/IDs have passed; this is still refused as
     // unsettled below, never accepted or allowed to mask extra connectivity.
@@ -138,7 +145,7 @@ function networkMembers(composition, network, ids, unsettled) {
     unsettled.push({ network: network.name, key: id, ...endpoint });
   }
 }
-function checkNetworks(composition, { require_existing = false } = {}) {
+function validateNetworks(composition, require_existing, recovery) {
   if (!S.identifier(composition.project)) F.fail("INVALID_DEPLOYMENT_IDENTITY");
   if (typeof require_existing !== "boolean") F.fail("INVALID_NETWORK_ATTACHMENT");
   const names = docker(["network", "ls", "--format", "{{.Name}}"] ).trim().split("\n");
@@ -152,9 +159,15 @@ function checkNetworks(composition, { require_existing = false } = {}) {
   }
   const inventory = docker(["ps", "-a", "--no-trunc", "--filter", `label=com.docker.compose.project=${composition.project}`, "--format", "{{.ID}}"] ).trim().split("\n").filter(Boolean);
   for (const id of inventory) ids.add(id);
-  for (const id of [...ids].sort()) containerNetworks(composition, id, networks);
+  if (recovery && (ids.size !== recovery.size || [...recovery.keys()].some(id => !ids.has(id)))) F.fail("RUNTIME_IDENTITY_MISMATCH");
+  for (const id of [...ids].sort()) containerNetworks(composition, id, networks, recovery);
   // Unsettled metadata never masks an ownership, membership or command failure.
   if (unsettled.length) throw Object.assign(new Error("NETWORK_ATTACHMENT_UNSETTLED"), { code: "NETWORK_ATTACHMENT_UNSETTLED", attachments: unsettled });
+}
+function checkNetworks(composition, { require_existing = false } = {}) { return validateNetworks(composition, require_existing); }
+function authorizeRecoveryNetworks(composition, targets) {
+  if (!Array.isArray(targets) || !targets.length || targets.some(value => !/^[a-f0-9]{64}$/.test(value.id || "")) || new Set(targets.map(value => value.id)).size !== targets.length) F.fail("RUNTIME_IDENTITY_MISMATCH");
+  return validateNetworks(composition, true, new Map(targets.map(value => [value.id, value])));
 }
 function checkPorts(composition, owned = []) {
   let output; try { output = execFileSync(resolveTrustedExecutable("ss"), ["-H", "-lntu"], { encoding: "utf8", stdio: "pipe", timeout: 10000, env: systemEnvironment("ss") }); } catch { F.fail("PORT_OBSERVATION_UNAVAILABLE"); }
@@ -178,4 +191,4 @@ function inventory(composition, directory) {
   const script = `const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');const records=[];function scan(p){for(const name of fs.readdirSync(p).sort()){const file=path.join(p,name),s=fs.lstatSync(file),rel=path.relative('/work',file);if(s.isSymbolicLink()||(!s.isDirectory()&&!s.isFile())||s.isFile()&&s.nlink!==1)throw Error('unsafe');if(s.isDirectory()){records.push({path:rel,type:'directory',uid:s.uid,gid:s.gid,mode:s.mode&4095});scan(file);}else{const fd=fs.openSync(file,fs.constants.O_RDONLY|fs.constants.O_NOFOLLOW),h=crypto.createHash('sha256'),b=Buffer.alloc(65536);let n;while(n=fs.readSync(fd,b,0,b.length,null))h.update(b.subarray(0,n));fs.closeSync(fd);records.push({path:rel,type:'file',size:s.size,uid:s.uid,gid:s.gid,mode:s.mode&4095,digest:h.digest('hex')});}}}scan('/work');console.log(JSON.stringify(records));`;
   return JSON.parse(helper(composition, directory, script));
 }
-module.exports = { docker, helper, compose, inspectProject, checkImages, checkNetworks, checkPorts, prepareOwnership, inventory };
+module.exports = { docker, helper, compose, inspectProject, checkImages, checkNetworks, authorizeRecoveryNetworks, checkPorts, prepareOwnership, inventory };

@@ -54,3 +54,8 @@ FAILED_QUALIFICATION. Guard hardening passes299 unit/24 contracts and favorable 
 ## E3-A3 root-cause stop — 2026-10-27
 
 BLOCKED_EVIDENCE. Application restart-backoff endpoint validation mechanism reproduced with actual canonical image/policy; Postfix HTTP cause remains unverified. Idle-close diagnostics do not reproduce UND_ERR_SOCKET and one focused actual-source3-case observation passes without a cause. No fix is inferred; production/canonical tests remain unchanged, no full qualification/push. See [A3 final decision](IL-5.14-R1-F1-E3-A3-final-decision.md). Original A2 failure evidence remains preserved.
+
+
+## A4 preservation checkpoint
+
+A4 FAILED_QUALIFICATION: one actual restarting-container rollback attempt failed NETWORK_ATTACHMENT_MISMATCH before recreation.317unit/24contracts/100focused passed; cleanup verified. Candidate remains unqualified locally. Workstream P and downstream gates NOT_EXECUTED, no retry or push. See [A4 final decision](IL-5.14-R1-F1-E3-A4-final-decision.md). Earlier failures and evidence remain unchanged.
