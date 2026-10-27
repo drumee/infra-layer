@@ -1,0 +1,95 @@
+{
+  "status": "CHANGES_REQUESTED",
+  "source": "8bf02d5407ee9dbb06c4c7f86d04d3fc533ac4d7",
+  "lastRemoteHead": "cd9b8322bd7eef3b4094710ec4ea26be94f08922",
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "detail": "Exact authorized existing-container missing-membership replacement verified."
+    },
+    "B": {
+      "status": "PASS",
+      "detail": "One replacement subtree plus one explicit detachment addition inventoried; no other historical change authorized."
+    },
+    "C": {
+      "status": "FAIL",
+      "detail": "Independent A1-IR-001: evaluation context incomplete; false&& can disable protected assertions."
+    },
+    "D": {
+      "status": "FAIL",
+      "detail": "Designed22 cases pass, but independent3 suppression cases are falsely accepted; guard guarantee not established."
+    },
+    "E": {
+      "status": "PASS",
+      "detail": "Original case1, diagnostics17, full unit267,contracts24 pass with zero mandatory skips."
+    },
+    "F": {
+      "status": "PASS",
+      "detail": "DOCKER_E2_EVIDENCE_PRESERVED: unchanged runtime/harness bytes, historical21/42/15 acceptance; no redundant rerun."
+    },
+    "G": {
+      "status": "BLOCKED",
+      "detail": "Audits/lint/tools/fs checks pass; integration cancelled by independent stop, remaining application/lifecycle-gateway not executed."
+    },
+    "H": {
+      "status": "FAIL",
+      "detail": "42-member package/strict consumer checks pass, but security qualification blocked by MAJOR preservation defect."
+    },
+    "I": {
+      "status": "NOT_EXECUTED",
+      "detail": "No push/PR update/new hosted checks."
+    },
+    "J": {
+      "status": "FAIL",
+      "detail": "Separately scoped reviewer returns CHANGES_REQUESTED at local source8bf02d5; R1 remains open."
+    },
+    "K": {
+      "status": "PASS",
+      "detail": "Precise source-specific decision, independent proof and cancellation/cleanup evidence preserved."
+    }
+  },
+  "findings": [
+    {
+      "id": "A1-IR-001",
+      "severity": "MAJOR",
+      "description": "LogicalExpression evaluation context is omitted; false&& suppression leaves extracted protected text/context unchanged and is accepted.",
+      "independentProbes": 3,
+      "expected": "REFUSE",
+      "actual": "ACCEPT",
+      "mutatedSourceExecuted": false,
+      "requiredDisposition": "Retain expression evaluation/parent context and cover suppression of historical/replacement/addition assertions; do not expand authorization."
+    }
+  ],
+  "tests": {
+    "unit": 267,
+    "contracts": 24,
+    "designedGuard": 22,
+    "diagnostics": 17,
+    "gatewayIntegration": 17,
+    "servicesIntegration": 17,
+    "filesystem": 25,
+    "trustedToolScenarios": 12,
+    "installedSecurityScenarios": 4,
+    "strictConsumerPreparationAssertions": 8,
+    "strictConsumerRefusalAssertions": 37
+  },
+  "integrationAggregation": {
+    "exit": 143,
+    "status": "CONTROLLED_CANCELLATION_FOR_INDEPENDENT_MAJOR",
+    "cleanup": "PASS"
+  },
+  "package": {
+    "members": 42,
+    "size": 104123,
+    "sha256": "e17068d0abbf98ecd143075fe916264df2c066110744af5831a9aa2c20065d6a",
+    "sri": "sha512-4QahcHIO6t04bnC4W1LNclBffwSSakVq+d+bMDfN/78dPAxRYp6kCH5aTXkupakSDptD18S5R1pyxhap3ztQ4A=="
+  },
+  "pushed": false,
+  "independentDisposition": "CHANGES_REQUESTED",
+  "originalR1Finding": "OPEN",
+  "residuals": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "Historical Debian H3 failed; downstream qualification incomplete"
+  ]
+}

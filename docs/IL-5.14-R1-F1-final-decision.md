@@ -39,3 +39,8 @@ Secure diagnostic preflight and new real Docker acceptance pass (21 membership,4
 ## E3 static disposition — 2026-10-27
 
 CHANGES_REQUESTED. Exact inventory disproves the insertion-only hypothesis: one historical success assertion was replaced with a F1 membership refusal. E3 requires unchanged historical assertions and stops on replacement, so no guard or test source was modified and no qualification rerun occurred. E2 real Docker evidence remains applicable by exact byte comparison. Explicit narrow contract disposition is required; see [E3 final decision](IL-5.14-R1-F1-E3-final-decision.md). Earlier reports remain preserved.
+
+
+## E3-A1 independent stop — 2026-10-27
+
+CHANGES_REQUESTED. Owner-authorized exact replacement and designed22 guard cases/full267 unit tests pass, but independent reviewer demonstrates3 accepted false&& assertion-suppression mutations. MAJOR A1-IR-001 prevents preservation qualification. Integration was cancelled with owned cleanup after the finding; no push or independent R1 closure occurred. See [A1 final decision](IL-5.14-R1-F1-E3-A1-final-decision.md). Historical reports above remain unchanged.

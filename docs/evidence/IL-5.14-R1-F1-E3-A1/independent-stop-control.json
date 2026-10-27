@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-10-27T14:31:17.329061+00:00",
+  "reason": "Independent MAJOR A1-IR-001 requires stopping progression",
+  "aggregationPid": 1008294,
+  "action": "SIGSTOP only parent aggregator; active lifecycle child allowed to complete existing cleanup, no next gateway suite can start",
+  "activeChildPid": 1027717,
+  "activeTestStop": {
+    "pid": 1033153,
+    "signal": "SIGTERM",
+    "timestamp": "2026-10-27T14:33:43.516865+00:00",
+    "reason": "Stop active test subprocess after independent MAJOR; owning lifecycle runner remains alive to execute its catch/finally resource cleanup. This is controlled cancellation, not a measured runtime regression."
+  },
+  "forcedTestStop": {
+    "timestamp": "2026-10-27T14:34:41.222572+00:00",
+    "target": 1033153,
+    "descendants": [
+      1093413,
+      1093390
+    ],
+    "signal": "SIGKILL",
+    "reason": "SIGTERM did not stop Node test continuation; freeze/terminate owned test and its command descendants so owning runner can execute cleanup without new tests."
+  },
+  "finalAggregationStop": {
+    "timestamp": "2026-10-27T14:34:55.848210+00:00",
+    "action": "SIGTERM pending then SIGCONT after lifecycle cleanup confirmed; prevent gateway lifecycle suite launch",
+    "lifecycleCleanupConfirmed": true,
+    "nextSuiteExecuted": false
+  }
+}

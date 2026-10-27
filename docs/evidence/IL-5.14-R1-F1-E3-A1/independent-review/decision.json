@@ -1,0 +1,14 @@
+{
+  "decision": "CHANGES_REQUESTED",
+  "reviewedHead": "8bf02d5407ee9dbb06c4c7f86d04d3fc533ac4d7",
+  "finding": { "id": "A1-IR-001", "severity": "MAJOR", "title": "Preservation guard accepts disabled historical and authorized assertions", "evidence": "guard-short-circuit-probe.json", "independentMutationsAccepted": 3 },
+  "mandatoryStopApplied": true,
+  "originalR1Finding": "OPEN_PENDING_INDEPENDENT_CLOSURE",
+  "generatedJavaScriptExecuted": false,
+  "repositoryModified": false,
+  "dockerUsed": false,
+  "mergeAuthorized": false,
+  "packageIdentityVerified": false,
+  "finalHeadAndCIVerified": false,
+  "residualLimitations": ["SMTP_RECOVERY_UNQUALIFIED", "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED", "Historical Debian H3 failed; downstream not qualified"]
+}

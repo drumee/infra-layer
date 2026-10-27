@@ -1,0 +1,54 @@
+{
+  "sourceHead": "8bf02d5407ee9dbb06c4c7f86d04d3fc533ac4d7",
+  "original": {
+    "historicalExpressions": 52,
+    "currentExpressions": 54,
+    "replacements": 1,
+    "additions": 1
+  },
+  "generatedJavaScriptExecuted": false,
+  "outcomes": [
+    {
+      "name": "historical-assertion-short-circuit",
+      "transformation": {
+        "from": "check(redis([\"PING\"]), \"PONG\")",
+        "to": "false && check(redis([\"PING\"]), \"PONG\")"
+      },
+      "accepted": true,
+      "counts": {
+        "historicalExpressions": 52,
+        "currentExpressions": 54,
+        "replacements": 1,
+        "additions": 1
+      }
+    },
+    {
+      "name": "replacement-short-circuit",
+      "transformation": {
+        "from": "assert.throws(() => D.checkNetworks(missing), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+        "to": "false && assert.throws(() => D.checkNetworks(missing), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })"
+      },
+      "accepted": true,
+      "counts": {
+        "historicalExpressions": 52,
+        "currentExpressions": 54,
+        "replacements": 1,
+        "additions": 1
+      }
+    },
+    {
+      "name": "approved-detachment-addition-short-circuit",
+      "transformation": {
+        "from": "assert.throws(() => D.checkNetworks(composition, { require_existing: true }), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+        "to": "false && assert.throws(() => D.checkNetworks(composition, { require_existing: true }), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })"
+      },
+      "accepted": true,
+      "counts": {
+        "historicalExpressions": 52,
+        "currentExpressions": 54,
+        "replacements": 1,
+        "additions": 1
+      }
+    }
+  ]
+}
