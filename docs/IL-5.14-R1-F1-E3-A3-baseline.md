@@ -1,0 +1,9 @@
+# A3 investigation baseline
+
+Gate A PASS. Repository drumee/infra-layer, branch fix/il514-c1-network-attachment-identity, clean initial HEAD964e3a4a09be14f7951246d65dcc936bc29ab1c3. PR20 remains open at cd9b8322bd7eef3b4094710ec4ea26be94f08922/main. Original A2 failure logs are read in place and their ledger hashes verified; no original evidence rewritten. Source for both failures is04a4fc9f1196ef42aec9428144609735e00ceb4a. Subsequent source until A3 is reports only. [Two separate failure records](evidence/IL-5.14-R1-F1-E3-A3/baseline-failures.json).
+
+A2_APPLICATION_INTEGRATION_FAILURE: canonical application command with IL5_NETWORK_CLIENT=testbox, LAN192.168.5.201, approved local nginx path, exit1 NETWORK_ATTACHMENT_MISMATCH;36 assertions/six completed groups, last controlled configuration update/canonical rollback. Original report has no container ID, failing stack, membership map or exact unhandled call. Expected next group intentionally crashes application then attempts rollback; original cleanup is verified.
+
+A2_POSTFIX_SERVICES_FAILURE: aggregate npm run test:integration, exit1; gateway17/17, services16/17. Case15 first capturedCount HTTP GET targets127.0.0.1:44221, mapped to capture container8025 (not SMTP). Last success16:16:25.992Z count1; dkim restart16:16:26.317–33.450Z blocks client event loop7133ms; socket failure16:16:33.454Z, UND_ERR_SOCKET, stack capturedCount services.test.js:50 and case152. Original tuple/bytes/HTTP close reason/container ID/daemon events are not captured. Capture stop and test15 SMTP client creation have not yet occurred. Services later report running/healthy, OOMfalse/restarts0; cleanup confirmed. This is insufficient to identify the first causal socket event.
+
+No immediate integration rerun occurred. Read-only analysis first generated specific application-restart and HTTP-pooling hypotheses; diagnostic attempts were uniquely identified and preserved separately.

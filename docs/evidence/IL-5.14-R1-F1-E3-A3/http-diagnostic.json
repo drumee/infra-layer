@@ -1,0 +1,56 @@
+{
+  "attempt": "A3-HTTP-DIAGNOSTIC-1",
+  "node": "v22.22.0",
+  "clientPid": 1249612,
+  "retry": false,
+  "server": {
+    "pid": 1249619,
+    "node": "v22.22.0",
+    "port": 37493,
+    "keepAliveTimeout": 5000,
+    "keepAliveTimeoutBuffer": 1000
+  },
+  "endpoint": {
+    "url": "http://127.0.0.1:37493",
+    "method": "GET",
+    "protocol": "HTTP control JSON, not SMTP"
+  },
+  "first": {
+    "status": 200,
+    "connection": "keep-alive",
+    "keepAlive": "timeout=5",
+    "body": {
+      "count": 1
+    }
+  },
+  "remoteClose": {
+    "firstConnectionClosed": true,
+    "server": {
+      "pid": 1249619,
+      "node": "v22.22.0",
+      "port": 37493,
+      "keepAliveTimeout": 5000,
+      "keepAliveTimeoutBuffer": 1000
+    },
+    "connection": {
+      "id": 1,
+      "localAddress": "127.0.0.1",
+      "localPort": 37493,
+      "remoteAddress": "127.0.0.1",
+      "remotePort": 35482,
+      "opened": "2026-10-27T16:51:07.657Z",
+      "closed": true,
+      "closedAt": "2026-10-27T16:51:13.670Z",
+      "bytesRead": 170,
+      "bytesWritten": 184
+    }
+  },
+  "clientEventLoopBlockedMs": 6015.041192,
+  "second": {
+    "result": "SUCCESS",
+    "body": {
+      "count": 1
+    }
+  },
+  "cleanup": "HTTP_CHILD_STOPPED"
+}

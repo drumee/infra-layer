@@ -1,0 +1,276 @@
+{
+  "attempt": "A3-APP-DIAGNOSTIC-1",
+  "project": "drumee-il5-50c04ef7",
+  "source": "964e3a4a09be14f7951246d65dcc936bc29ab1c3",
+  "commands": [
+    {
+      "args": [
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.drumee.qualification=drumee-il5-50c04ef7"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "create",
+        "--label",
+        "org.drumee.qualification=drumee-il5-50c04ef7",
+        "--label",
+        "org.drumee.infra.owner=drumee-il5-50c04ef7",
+        "--label",
+        "com.docker.compose.project=drumee-il5-50c04ef7",
+        "drumee-il5-50c04ef7-application"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "run",
+        "-d",
+        "--name",
+        "drumee-il5-50c04ef7-application-1",
+        "--network",
+        "drumee-il5-50c04ef7-application",
+        "--restart",
+        "unless-stopped",
+        "--label",
+        "org.drumee.qualification=drumee-il5-50c04ef7",
+        "--label",
+        "org.drumee.infra.owner=drumee-il5-50c04ef7",
+        "--label",
+        "com.docker.compose.project=drumee-il5-50c04ef7",
+        "--label",
+        "com.docker.compose.service=application",
+        "--env",
+        "APP_CRASH=1",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "128m",
+        "sha256:41a4bde5cd8907e277f0ba2796622d6a3a309f787ffb2410789681e53e267fe6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "stop",
+        "--time",
+        "2",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "rm",
+        "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "76932d174c0d219abe020c37f2a1369a4e5475a4f212c3c66d7124a040630dc6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "rm",
+        "76932d174c0d219abe020c37f2a1369a4e5475a4f212c3c66d7124a040630dc6"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "image",
+        "inspect",
+        "drumee-il5-application:drumee-il5-50c04ef7",
+        "--format",
+        "{{index .Config.Labels \"org.drumee.infra.owner\"}}"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "image",
+        "rm",
+        "drumee-il5-application:drumee-il5-50c04ef7"
+      ],
+      "exit": 0
+    }
+  ],
+  "canonicalNetworks": {
+    "kernel": {
+      "labels": {
+        "org.drumee.infra.owner": "drumee-il5-50c04ef7"
+      },
+      "name": "drumee-il5-50c04ef7-application"
+    }
+  },
+  "canonicalService": {
+    "networks": [
+      "kernel"
+    ],
+    "restart": "unless-stopped",
+    "environment": {
+      "APP_CRASH": "1"
+    }
+  },
+  "observation": {
+    "id": "1d6783b5a9caff677eaf57a9f021c1a1d5a9dcb6c136d6007d98abe254b96ce6",
+    "name": "/drumee-il5-50c04ef7-application-1",
+    "labels": {
+      "com.docker.compose.project": "drumee-il5-50c04ef7",
+      "com.docker.compose.service": "application",
+      "org.drumee.infra.owner": "drumee-il5-50c04ef7",
+      "org.drumee.qualification": "drumee-il5-50c04ef7"
+    },
+    "state": {
+      "Status": "restarting",
+      "Running": true,
+      "Paused": false,
+      "Restarting": true,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 1,
+      "Error": "",
+      "StartedAt": "2026-10-27T16:50:13.037111833Z",
+      "FinishedAt": "2026-10-27T16:50:13.635313798Z"
+    },
+    "observedNetworks": {
+      "drumee-il5-50c04ef7-application": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "76932d174c0d219abe020c37f2a1369a4e5475a4f212c3c66d7124a040630dc6",
+        "EndpointID": "",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": [
+          "drumee-il5-50c04ef7-application-1",
+          "1d6783b5a9ca"
+        ]
+      }
+    },
+    "expectedNetworkID": "76932d174c0d219abe020c37f2a1369a4e5475a4f212c3c66d7124a040630dc6",
+    "require_existing": true
+  },
+  "validation": {
+    "result": "REFUSED",
+    "code": "NETWORK_ATTACHMENT_MISMATCH",
+    "stack": "Error: NETWORK_ATTACHMENT_MISMATCH\n    at Object.fail (/home/somanos/github/infra-layer/lib/filesystem-safety.js:5:43)\n    at containerNetworks (/home/somanos/github/infra-layer/lifecycle/docker.js:127:77)\n    at Object.checkNetworks (/home/somanos/github/infra-layer/lifecycle/docker.js:155:37)\n    at main (/tmp/drumee-il514-r1-f1-e3-a3-pw32_qs8/application-diagnostic.cjs:20:11)"
+  },
+  "diagnostic": "REPRODUCED_WITH_CANONICAL_CRASH_AND_RESTART_POLICY",
+  "cleanup": "PASS"
+}

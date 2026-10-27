@@ -1,0 +1,188 @@
+{
+  "attempt": "A3-HTTP-DIAGNOSTIC-2-DOCKER-PUBLISHED",
+  "project": "drumee-a3-http-55b8515a",
+  "image": "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+  "commands": [
+    {
+      "args": [
+        "network",
+        "create",
+        "--label",
+        "org.drumee.qualification=drumee-a3-http-55b8515a",
+        "drumee-a3-http-55b8515a"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "run",
+        "-d",
+        "--name",
+        "drumee-a3-http-55b8515a",
+        "--label",
+        "org.drumee.qualification=drumee-a3-http-55b8515a",
+        "--label",
+        "org.drumee.infra.owner=drumee-a3-http-55b8515a",
+        "--network",
+        "drumee-a3-http-55b8515a",
+        "--user",
+        "1000:1000",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "32",
+        "--memory",
+        "64m",
+        "--publish",
+        "127.0.0.1:45597:8025",
+        "--mount",
+        "type=bind,source=/tmp/drumee-il514-r1-f1-e3-a3-pw32_qs8/http-container-server.cjs,target=/server.cjs,readonly",
+        "--mount",
+        "type=bind,source=/tmp/drumee-il514-r1-f1-e3-a3-pw32_qs8/http-container-wait.cjs,target=/wait.cjs,readonly",
+        "--mount",
+        "type=bind,source=/tmp/drumee-il514-r1-f1-e3-a3-pw32_qs8/docker-http-state-ure9yq,target=/state",
+        "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+        "node",
+        "/server.cjs"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "exec",
+        "ad50ddb4e564618cbfae44aa83c2f6600b97b9e33b7c125b6d7b6bf31a1cc941",
+        "node",
+        "/wait.cjs"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "inspect",
+        "--format",
+        "{{json .Config.Labels}}",
+        "ad50ddb4e564618cbfae44aa83c2f6600b97b9e33b7c125b6d7b6bf31a1cc941"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "stop",
+        "--time",
+        "2",
+        "ad50ddb4e564618cbfae44aa83c2f6600b97b9e33b7c125b6d7b6bf31a1cc941"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "rm",
+        "ad50ddb4e564618cbfae44aa83c2f6600b97b9e33b7c125b6d7b6bf31a1cc941"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .Labels}}",
+        "b620a4893bc7273556e056ea95122690da16cb522c45b5dc8f52fa902cdf4ef7"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "rm",
+        "b620a4893bc7273556e056ea95122690da16cb522c45b5dc8f52fa902cdf4ef7"
+      ],
+      "exit": 0
+    }
+  ],
+  "integrationRerun": false,
+  "stateDirectory": "/tmp/drumee-il514-r1-f1-e3-a3-pw32_qs8/docker-http-state-ure9yq",
+  "endpoint": {
+    "url": "http://127.0.0.1:45597",
+    "method": "GET"
+  },
+  "container": "ad50ddb4e564618cbfae44aa83c2f6600b97b9e33b7c125b6d7b6bf31a1cc941",
+  "first": {
+    "count": 1
+  },
+  "second": {
+    "count": 1
+  },
+  "closedConnection": {
+    "id": 1,
+    "opened": 1793120041965,
+    "local": "172.26.0.2",
+    "localPort": 8025,
+    "remote": "172.26.0.1",
+    "remotePort": 39494,
+    "closed": true,
+    "closedAt": 1793120048184,
+    "bytesRead": 340,
+    "bytesWritten": 368
+  },
+  "blockedClientMs": 6011.445757,
+  "afterClose": {
+    "result": "SUCCESS",
+    "body": {
+      "count": 1
+    }
+  },
+  "observedState": {
+    "connections": [
+      {
+        "id": 1,
+        "opened": 1793120041965,
+        "local": "172.26.0.2",
+        "localPort": 8025,
+        "remote": "172.26.0.1",
+        "remotePort": 39494,
+        "closed": true,
+        "closedAt": 1793120048184,
+        "bytesRead": 340,
+        "bytesWritten": 368
+      },
+      {
+        "id": 2,
+        "opened": 1793120048197,
+        "local": "172.26.0.2",
+        "localPort": 8025,
+        "remote": "172.26.0.1",
+        "remotePort": 59932,
+        "closed": false
+      }
+    ],
+    "requests": [
+      {
+        "time": 1793120041967,
+        "socket": 1,
+        "method": "GET"
+      },
+      {
+        "time": 1793120042184,
+        "socket": 1,
+        "method": "GET"
+      },
+      {
+        "time": 1793120048199,
+        "socket": 2,
+        "method": "GET"
+      }
+    ],
+    "server": {
+      "pid": 1,
+      "node": "v22.23.3",
+      "keepAliveTimeout": 5000,
+      "keepAliveTimeoutBuffer": 1000
+    }
+  },
+  "hypothesisReproduced": false,
+  "cleanup": "PASS"
+}

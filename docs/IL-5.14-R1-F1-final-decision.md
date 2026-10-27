@@ -49,3 +49,8 @@ CHANGES_REQUESTED. Owner-authorized exact replacement and designed22 guard cases
 ## E3-A2 qualification stop — 2026-10-27
 
 FAILED_QUALIFICATION. Guard hardening passes299 unit/24 contracts and favorable independent local review, but canonical application fails NETWORK_ATTACHMENT_MISMATCH (36 assertions,6 completed groups), and concurrent services has a fetch-failed case (16/17). No retries, post-failure source fix, push, hosted qualification or formal independent final-head closure occurred. Both owning cleanups are verified. See [A2 final decision](IL-5.14-R1-F1-E3-A2-final-decision.md). Prior historical failures remain unchanged.
+
+
+## E3-A3 root-cause stop — 2026-10-27
+
+BLOCKED_EVIDENCE. Application restart-backoff endpoint validation mechanism reproduced with actual canonical image/policy; Postfix HTTP cause remains unverified. Idle-close diagnostics do not reproduce UND_ERR_SOCKET and one focused actual-source3-case observation passes without a cause. No fix is inferred; production/canonical tests remain unchanged, no full qualification/push. See [A3 final decision](IL-5.14-R1-F1-E3-A3-final-decision.md). Original A2 failure evidence remains preserved.

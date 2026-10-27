@@ -1,0 +1,5 @@
+# Corrective design — not authorized to implementation yet
+
+Gate E BLOCKED until both individual causal gates pass. No production/test correction is implemented. Application evidence supports distinguishing observed Restarting from steady-state Running at the pre-recreation check while preserving the entire configured role/name set, nonempty verified NetworkIDs, owner/project/service/name identity and unconditional extra-network refusal. Any eventual change must not treat restart backoff as ready, must not alter require_existing semantics or generalize all mismatches into retries/success, and needs focused rollback plus negative membership tests. Precise API/phase design remains to be reviewed before coding.
+
+Postfix transport fix: NONE justified. Direct and Docker idle-close diagnostics and the focused actual-source case do not reproduce the cause. Do not add retries, new pooling policy, sleeps or ignore UND_ERR_SOCKET merely on the hypothesis. No change to error contracts, assertions, dependencies, A1's single replacement or A2's pinned guard is made.
