@@ -1,6 +1,6 @@
 "use strict";
 const test = require("node:test"), assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path"), os = require("node:os");
-const { model, complete, drain, terminal } = require("./model.cjs");
+const { model, complete, terminal } = require("./model.cjs");
 const { ObserverContract, campaignResult } = require("../services-capture/observer-contract.cjs");
 const { eventValue, Collection } = require("../services-capture/observer-events.cjs");
 const p1 = require("../postfix-http/observe.cjs");
