@@ -1,0 +1,31 @@
+{
+  "disposition": "CHANGES_REQUESTED",
+  "gate": "M",
+  "gate_status": "FAIL",
+  "reviewed_source": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+  "qualified_recovery": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "campaign": "DIAGNOSTIC_CAMPAIGN_INVALID",
+  "mission_status": "FAILED_QUALIFICATION",
+  "root_cause": "ROOT_CAUSE_UNDETERMINED",
+  "historical_finding_closed": false,
+  "residual_risk_acceptance": "NOT_EXECUTED; valid-campaign prerequisite not met",
+  "independent_tests_run": 0,
+  "reviewed_results": {
+    "transport_preflight": "18/18 PASS",
+    "assertion_guards": "54/54 PASS",
+    "services_child": "17/17 PASS, exit0; retained observation only",
+    "campaign": "exit1; invalid for qualification"
+  },
+  "findings": [
+    {
+      "id": "P2-IR-1",
+      "severity": "MAJOR",
+      "scope": "Test-only diagnostic qualification reliability; not production Postfix",
+      "source": "test/diagnostics/services-capture/docker-events.cjs:25",
+      "finding": "Requested SIGTERM is observed as Docker CLI code143/signal:null; observer rejects it and exits1, invalidating campaign despite Services child success",
+      "required_change": "Separately scoped narrow collector termination contract and deterministic regression covering controlled143, unexpected143/nonzero, partial lines and original error propagation before any separately justified new campaign"
+    }
+  ],
+  "handoff": "RECOVERY_QUALIFIED_POSTFIX_BLOCKED_EVIDENCE",
+  "reviewed_at": "2026-10-28T13:33:27.060746+00:00"
+}

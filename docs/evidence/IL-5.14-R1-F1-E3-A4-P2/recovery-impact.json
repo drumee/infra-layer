@@ -1,0 +1,36 @@
+{
+  "candidate": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+  "reference": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "disposition": "R5_QUALIFIED_EXECUTABLE_PRESERVED",
+  "equivalent_to_R5": {
+    "lifecycle": true,
+    "adapters": true,
+    "capabilities": true,
+    "lib": true,
+    "internal": true,
+    "test/services": true,
+    "test/support": true,
+    "test/unit": true,
+    "test/network-attachments": true,
+    "package.json": true,
+    "package-lock.json": true
+  },
+  "equivalent_to_P1_checkpoint": {
+    "lifecycle": true,
+    "adapters": true,
+    "capabilities": true,
+    "lib": true,
+    "internal": true,
+    "test/services": true,
+    "test/support": true,
+    "test/unit": true,
+    "test/network-attachments": true,
+    "test/diagnostics/postfix-http": true,
+    "package.json": true,
+    "package-lock.json": true,
+    "tooling": true,
+    ".github": true
+  },
+  "new_R5_Docker_execution": false,
+  "post_failure_executable_edits": false
+}

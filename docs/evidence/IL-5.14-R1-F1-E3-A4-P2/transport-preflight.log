@@ -1,0 +1,120 @@
+TAP version 13
+# P1_FIXTURE_OUTPUT /tmp/drumee-p1-fixtures-90LczJ
+# Subtest: E1 bounded transport observability
+ok 1 - E1 bounded transport observability
+  ---
+  duration_ms: 66.700104
+  type: 'test'
+  ...
+# Subtest: E2 bounded transport observability
+ok 2 - E2 bounded transport observability
+  ---
+  duration_ms: 38.118433
+  type: 'test'
+  ...
+# Subtest: E3 bounded transport observability
+ok 3 - E3 bounded transport observability
+  ---
+  duration_ms: 35.412864
+  type: 'test'
+  ...
+# Subtest: E4 bounded transport observability
+ok 4 - E4 bounded transport observability
+  ---
+  duration_ms: 37.975867
+  type: 'test'
+  ...
+# Subtest: E5 bounded transport observability
+ok 5 - E5 bounded transport observability
+  ---
+  duration_ms: 37.634363
+  type: 'test'
+  ...
+# Subtest: E6 bounded transport observability
+ok 6 - E6 bounded transport observability
+  ---
+  duration_ms: 6.758739
+  type: 'test'
+  ...
+# Subtest: E7 bounded transport observability
+ok 7 - E7 bounded transport observability
+  ---
+  duration_ms: 37.323287
+  type: 'test'
+  ...
+# Subtest: E8 bounded transport observability
+ok 8 - E8 bounded transport observability
+  ---
+  duration_ms: 37.999622
+  type: 'test'
+  ...
+# Subtest: E9 bounded transport observability
+ok 9 - E9 bounded transport observability
+  ---
+  duration_ms: 36.763013
+  type: 'test'
+  ...
+# P2_PREFLIGHT_OUTPUT /tmp/drumee-p2-preflight-zhIkzG
+# Subtest: P2-F1 normal response is application-completed
+ok 10 - P2-F1 normal response is application-completed
+  ---
+  duration_ms: 42.535715
+  type: 'test'
+  ...
+# Subtest: P2-F2 active request interruption stays fatal
+ok 11 - P2-F2 active request interruption stays fatal
+  ---
+  duration_ms: 8.100949
+  type: 'test'
+  ...
+# Subtest: P2-F3 intentional idle socket close is distinct
+ok 12 - P2-F3 intentional idle socket close is distinct
+  ---
+  duration_ms: 5.421113
+  type: 'test'
+  ...
+# Subtest: P2-F4 close follows completed response
+ok 13 - P2-F4 close follows completed response
+  ---
+  duration_ms: 3.913856
+  type: 'test'
+  ...
+# Subtest: P2-F5 unresolved cross-case operation is detected
+ok 14 - P2-F5 unresolved cross-case operation is detected
+  ---
+  duration_ms: 4.762611
+  type: 'test'
+  ...
+# Subtest: P2-F6 existing fatal handler fixture retains failure
+ok 15 - P2-F6 existing fatal handler fixture retains failure
+  ---
+  duration_ms: 38.87998
+  type: 'test'
+  ...
+# Subtest: P2-F7 normal cleanup has no unresolved operation
+ok 16 - P2-F7 normal cleanup has no unresolved operation
+  ---
+  duration_ms: 3.543352
+  type: 'test'
+  ...
+# Subtest: P2-F8 native hooks preserve case order and shared context
+ok 17 - P2-F8 native hooks preserve case order and shared context
+  ---
+  duration_ms: 88.138909
+  type: 'test'
+  ...
+# Subtest: P2-F9 diagnostics bound output and omit sensitive data
+ok 18 - P2-F9 diagnostics bound output and omit sensitive data
+  ---
+  duration_ms: 61.020514
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 380.035989

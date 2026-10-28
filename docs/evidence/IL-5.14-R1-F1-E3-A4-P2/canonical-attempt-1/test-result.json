@@ -1,0 +1,13 @@
+{
+  "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+  "output": "/tmp/drumee-p2-7ex9xczy/canonical-attempt-1",
+  "command": [
+    "/usr/bin/node",
+    "--require",
+    "/tmp/drumee-p2-7ex9xczy/canonical-attempt-1/client-preload.cjs",
+    "--test",
+    "/home/somanos/github/infra-layer/test/services/services.test.js"
+  ],
+  "code": 0,
+  "signal": null
+}
