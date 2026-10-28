@@ -17,6 +17,7 @@ function fixture() {
   const state = { root, project, prepared, broken, resource, network, calls, final: null, inventory: [id], volatileSnapshot: true, commandFailure: false };
   const realD = load((_program, argv) => {
     const a = argv.slice(2); calls.push({ operation: "docker-observation", args: a });
+    if (state.inspectionFailure && a[0] === "container") throw Object.assign(Error("controlled inspect failure"), { status: 125 });
     if (a[0] === "network" && a[1] === "ls") return network.name;
     if (a[0] === "network") return JSON.stringify(network);
     if (a[0] === "ps") return state.inventory.join("\n");

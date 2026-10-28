@@ -15,7 +15,7 @@ test("R5 E7 strict readiness still refuses the actual restart-backoff metadata",
 test("R5 E8 undeclared attachment refuses rollback before recreation", () => run(async f => { f.resource.networks.extra = { NetworkID: "f".repeat(64), EndpointID: "" }; await rejected(f, "NETWORK_ATTACHMENT_MISMATCH"); }));
 test("R5 E9 foreign owner refuses rollback before recreation", () => run(async f => { f.resource.owner = "foreign"; await rejected(f, "RUNTIME_IDENTITY_MISMATCH"); }));
 test("R5 E10 wrong project refuses rollback before recreation", () => run(async f => { f.resource.project = "foreign"; await rejected(f, "RUNTIME_IDENTITY_MISMATCH"); }));
-test("R5 E11 wrong service cannot replace journal target", () => run(async f => { f.resource.service = "other"; await rejected(f, "ROLLBACK_OPERATION_NOT_AUTHORIZED"); }));
+test("R5 E11 authorized wrong-service identity cannot replace journal target", () => run(async f => { f.resource.service = "other"; await rejected(f, "RUNTIME_IDENTITY_MISMATCH"); }));
 test("R5 E12 wrong network ID refuses before recreation", () => run(async f => { f.resource.networks[f.network.name].NetworkID = "f".repeat(64); await rejected(f, "NETWORK_ATTACHMENT_MISMATCH"); }));
 test("R5 E12 incorrect container ID refuses before recreation", () => run(async f => { f.resource.id = "unknown"; await rejected(f, "RUNTIME_IDENTITY_MISMATCH"); }));
 test("R5 E13 legitimate owner labels cannot authorize wrong canonical name", () => run(async f => { f.resource.name = "/foreign-application-1"; await rejected(f, "RUNTIME_IDENTITY_MISMATCH"); }));

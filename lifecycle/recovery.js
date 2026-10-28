@@ -104,7 +104,8 @@ async function restoreDeployment(directory, composition, context) {
   J.append(context.root, "restore-prepared", prepared.revision, { backup_id: manifest.id }); return { prepared, restored: true, activated: false, kernel_recovery_verified: false, source_revision: manifest.source_revision };
 }
 async function rollbackDeployment(root, revision, context) {
-  const current = A.readActive(root); if (!current || !/^[a-f0-9]{64}$/.test(revision || "") || context?.authorized !== true) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
+  if (context?.authorized !== true || !/^[a-f0-9]{64}$/.test(revision || "")) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
+  const current = A.readActive(root); if (!current) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
   const prior = JSON.parse(F.read(path.join(root, "candidates", revision, "prepared.json")));
   const change = A.classifyChanges(current, prior); if (!change.compatible || change.categories.includes("image-upgrade")) F.fail("INCOMPATIBLE_ROLLBACK");
   // Schema equality and matching secret generations are mandatory. This API

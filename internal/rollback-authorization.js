@@ -3,9 +3,9 @@ const path = require("node:path");
 const F = require("../lib/filesystem-safety");
 const P = require("../lifecycle/preparation");
 function authorizeRollback(prepared, observed, prior, pending, context, driver, checkObserved) {
-  if (context.authorized !== true || !prior || pending?.phase !== "recovery-required" || !/^[a-f0-9]{64}$/.test(pending.revision || "") || !observed.length) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
+  if (context?.authorized !== true || !prior || pending?.phase !== "recovery-required" || !/^[a-f0-9]{64}$/.test(pending.revision || "") || !observed.length) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
   const service = pending.details?.service;
-  if (!Object.hasOwn(prepared.compose.services, service) || !observed.some(value => value.service === service && value.revision === pending.revision)) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
+  if (!Object.hasOwn(prepared.compose.services, service)) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
   const candidates = new Map();
   for (const revision of new Set([prior.revision, pending.revision])) {
     const source = JSON.parse(F.read(path.join(prepared.root, "candidates", revision, "prepared.json")));
@@ -24,6 +24,9 @@ function authorizeRollback(prepared, observed, prior, pending, context, driver, 
       if ((bindings || []).some(binding => !(resource.configured_ports?.[port] || []).some(expected => expected.HostIp === binding.HostIp && expected.HostPort === binding.HostPort))) F.fail("UNEXPECTED_SERVICE_EXPOSURE");
     }
   }
+  // Authorized identity failures retain their specific refusal before target
+  // eligibility is assessed; missing authority never reaches identity details.
+  if (!observed.some(value => value.service === service && value.revision === pending.revision)) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
   // The adapter rechecks the exact ID/state snapshot and complete network set.
   driver.authorizeRecoveryNetworks(prepared.composition, observed.map(value => ({ ...value, recovery_endpoint: value.service === service && value.revision === pending.revision })));
   return { service };
