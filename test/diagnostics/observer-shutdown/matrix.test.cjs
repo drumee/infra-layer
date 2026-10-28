@@ -1,0 +1,40 @@
+"use strict";
+const test = require("node:test"), assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path"), os = require("node:os");
+const { model, complete, drain, terminal } = require("./model.cjs");
+const { ObserverContract, campaignResult } = require("../services-capture/observer-contract.cjs");
+const { eventValue, Collection } = require("../services-capture/observer-events.cjs");
+const p1 = require("../postfix-http/observe.cjs");
+const output = fs.mkdtempSync(path.join(os.tmpdir(), "drumee-observer-matrix-")); fs.chmodSync(output, 0o700); console.log("F1_MATRIX_OUTPUT " + output);
+function matrix(id, name, fn) { test(id + " " + name, () => { const log = p1.logger(id, "deterministic-child-model", path.join(output, id + ".jsonl")); const value = model(log); fn(value.contract, value.child); }); }
+function rejected(contract, child, reason, code = 143, signal = null) { const result = terminal(contract, child, code, signal); assert.equal(result.accepted, false); assert.equal(result.reason, reason); }
+function goodCampaign() { const value = campaignResult(1); value.services({ status: 0, signal: null }); value.cleanup(true); return value; }
+matrix("D1", "normal completion after required window", (c, child) => { complete(c); assert.equal(terminal(c, child, 0).accepted, true); });
+matrix("D2", "controlled signal-form SIGTERM", (c, child) => { complete(c); c.stop(child); assert.equal(terminal(c, child, null, "SIGTERM").accepted, true); });
+matrix("D3", "controlled direct Docker exit143", (c, child) => { complete(c); c.stop(child); const r = terminal(c, child); assert.equal(r.accepted, true); assert.equal(r.signal_sent, true); });
+matrix("D4", "Services success plus controlled cleanup", (c, child) => { complete(c); c.stop(child); assert.deepEqual(goodCampaign().finish([terminal(c, child)]), { code: 0, first_failure: null }); });
+matrix("D5", "unsolicited143 rejected", (c, child) => { complete(c); rejected(c, child, "UNSOLICITED_TERMINATION"); });
+matrix("D6", "unsolicited SIGTERM rejected", (c, child) => { complete(c); rejected(c, child, "UNSOLICITED_TERMINATION", null, "SIGTERM"); });
+matrix("D7", "premature normal0 rejected", (c, child) => { rejected(c, child, "PREMATURE_EXIT", 0); });
+matrix("D8", "premature143 rejected", (c, child) => { rejected(c, child, "PREMATURE_EXIT"); });
+matrix("D9", "early stop does not signal", (c, child) => { assert.equal(c.stop(child), false); assert.equal(child.kills.length, 0); rejected(c, child, "PREMATURE_STOP"); });
+matrix("D10", "collection error remains fatal", (c, child) => { c.fail("COLLECTION_ERROR"); rejected(c, child, "COLLECTION_ERROR"); });
+matrix("D11", "prior stream error remains fatal", (c, child) => { c.fail("STREAM_ERROR"); rejected(c, child, "STREAM_ERROR"); });
+matrix("D12", "malformed event causes collection failure", (c, child) => { assert.throws(() => eventValue("{", "drumee-il2-test-aabbccdd"), SyntaxError); c.fail("EVENT_PARSE_FAILED"); rejected(c, child, "EVENT_PARSE_FAILED"); });
+matrix("D13", "wrong child identity rejected without signal", (c, child) => { complete(c); assert.equal(c.stop({ ...child }), false); assert.equal(child.kills.length, 0); rejected(c, child, "OBSERVER_IDENTITY"); });
+matrix("D14", "failed signal delivery rejected", (c, child) => { complete(c); child.kill = () => false; assert.equal(c.stop(child), false); rejected(c, child, "SIGNAL_DELIVERY_FAILED"); });
+matrix("D15", "bounded shutdown timeout is fatal", (c, child) => { complete(c); c.stop(child); assert.equal(c.deadline().reason, "SHUTDOWN_TIMEOUT"); assert.equal(c.result.accepted, false); });
+matrix("D16", "unexpected SIGKILL rejected", (c, child) => { complete(c); c.stop(child); rejected(c, child, "UNEXPECTED_TERMINATION", null, "SIGKILL"); });
+matrix("D17", "unexpected nonzero exit rejected", (c, child) => { complete(c); c.stop(child); rejected(c, child, "UNEXPECTED_TERMINATION", 7); });
+matrix("D18", "Services failure cannot be masked by valid cleanup", (c, child) => { complete(c); c.stop(child); const campaign = campaignResult(1); campaign.services({ status: 1, signal: null }); campaign.cleanup(true); assert.deepEqual(campaign.finish([terminal(c, child)]), { code: 1, first_failure: "SERVICES_FAILED" }); });
+matrix("D19", "missing required collection invalidates campaign", (c, child) => { assert.equal(c.complete({ windowComplete: true, evidenceComplete: false, servicesTerminal: true }), false); assert.equal(c.firstError, "COLLECTION_INCOMPLETE"); assert.equal(goodCampaign().finish([terminal(c, child)]).first_failure, "DIAGNOSTIC_INCOMPLETE"); });
+matrix("D20", "earlier fatal result survives later SIGTERM", (c, child) => { complete(c); c.stop(child); c.fail("PRIOR_FATAL"); rejected(c, child, "PRIOR_FATAL"); });
+matrix("D21", "duplicate stop rejected, no second signal", (c, child) => { complete(c); c.stop(child); assert.equal(c.stop(child), false); assert.equal(child.kills.length, 1); rejected(c, child, "DUPLICATE_STOP"); });
+matrix("D22", "exit/close cannot qualify undrained streams", (c, child) => { complete(c); c.stop(child); c.exit(child, 143, null); assert.equal(c.close(child, 143, null), null); c.stream("stdout", "ended"); c.stream("stdout", "closed"); assert.equal(c.result, null); c.stream("stderr", "ended"); assert.equal(c.result, null); c.stream("stderr", "closed"); assert.equal(c.result.accepted, true); });
+matrix("D23", "no valid process after spawn failure", () => { const child = { pid: undefined, spawnfile: "/usr/bin/docker", spawnargs: ["/usr/bin/docker", "events"] }, c = new ObserverContract(); c.start(child); c.fail("SPAWN_ERROR"); assert.equal(c.started, undefined); rejected(c, child, "SPAWN_ERROR", -2); });
+matrix("D24", "missing observer cannot produce success", () => { assert.equal(goodCampaign().finish([]).first_failure, "DIAGNOSTIC_INCOMPLETE"); const c = campaignResult(2); c.services({ status: 0, signal: null }); c.cleanup(true); assert.equal(c.finish([{ accepted: true }]).first_failure, "DIAGNOSTIC_INCOMPLETE"); });
+matrix("D25", "cleanup cannot erase unrelated campaign failure", (c, child) => { complete(c); c.stop(child); const value = goodCampaign(); value.fail("ORIGINAL_FAILURE"); assert.deepEqual(value.finish([terminal(c, child)]), { code: 1, first_failure: "ORIGINAL_FAILURE" }); });
+matrix("D26", "missing Services terminal result cannot qualify", (c, child) => { assert.equal(c.complete({ windowComplete: true, evidenceComplete: true, servicesTerminal: false }), false); assert.equal(c.firstError, "COLLECTION_INCOMPLETE"); const result = campaignResult(); result.cleanup(true); assert.equal(result.finish([terminal(c, child)]).first_failure, "SERVICES_NOT_COMPLETE"); });
+matrix("D27", "unverified wrapper143 cannot use direct Docker contract", (c, child) => { child.spawnfile = process.execPath; child.spawnargs = [process.execPath, "wrapper.cjs"]; const other = new ObserverContract(); other.start(child); other.spawned(child); complete(other); other.stop(child); rejected(other, child, "UNEXPECTED_TERMINATION"); });
+matrix("D28", "partial stream/collection remains fatal", (c, child) => { complete(c); c.stop(child); c.fail("PARTIAL_EVENT"); rejected(c, child, "PARTIAL_EVENT"); });
+matrix("D29", "PID mutation cannot retarget signal", (c, child) => { complete(c); child.pid++; assert.equal(c.stop(child), false); assert.equal(child.kills.length, 0); assert.equal(c.firstError, "OBSERVER_IDENTITY"); });
+matrix("D30", "collection evidence requires full owned lifecycle", () => { const collection = new Collection(), id = "a".repeat(64); collection.add({ type: "container", id, action: "create" }); assert.equal(collection.complete({ min_creates: 1, ids: [id] }), false); for (const action of ["start", "die", "destroy"]) collection.add({ type: "container", id, action }); assert.equal(collection.complete({ min_creates: 1, ids: [id] }), true); assert.equal(collection.complete({ min_creates: 1, ids: ["b".repeat(64)] }), false); });

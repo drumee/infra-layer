@@ -3,10 +3,13 @@
 const fs = require("node:fs"), path = require("node:path"), crypto = require("node:crypto"), assert = require("node:assert/strict");
 const child = require("node:child_process"), { mock } = require("node:test");
 const observe = require("./observe.cjs");
+const { launch } = require("./observer-control.cjs");
+const { campaignResult } = require("./observer-contract.cjs");
+const { evidenceWindow } = require("./evidence-window.cjs");
 const root = path.resolve(__dirname, "../../.."), output = process.argv[2];
 assert.ok(path.isAbsolute(output));
 const stat = fs.lstatSync(output); assert.ok(stat.isDirectory() && !stat.isSymbolicLink() && stat.uid === process.getuid() && (stat.mode & 0o077) === 0);
-const attempt = "P2-SERVICES-" + crypto.randomUUID();
+const attempt = "P2-F1-SERVICES-" + crypto.randomUUID();
 const started = new Date().toISOString();
 const config = { attempt, output };
 fs.writeFileSync(path.join(output, "attempt.json"), JSON.stringify(config) + "\n", { flag: "wx", mode: 0o600 });
@@ -15,19 +18,24 @@ for (const name of ["client-preload.cjs", "state.cjs", "cases.json"]) fs.copyFil
 const log = observe.logger(attempt, "orchestrator", path.join(output, "orchestrator.jsonl"));
 observe.processEvents(log);
 const original = child.spawnSync;
+const outcome = campaignResult();
+const fail = code => { outcome.fail(code); process.exitCode = 1; log("campaign.failure", { code }); };
 let project, fixtures, built = false, selected = false;
 const collectors = [];
+const observedIds = new Set();
+let servicesResult, runnerDirectory, cleanupComplete = false, collectionRequested = false, finalized = false;
+const originalRemove = fs.rmSync;
+const removalObservation = mock.method(fs, "rmSync", function(file, options) {
+  const result = originalRemove.call(this, file, options);
+  if (file === runnerDirectory) { cleanupComplete = true; log("cleanup.filesystem.completed"); }
+  return result;
+});
 function startCollectors(value) {
   assert.match(value, /^drumee-il2-test-[0-9a-f]{8}$/);
   project = value;
   for (const owned of [project, project + "-ephemeral"]) {
     const file = path.join(output, owned.endsWith("-ephemeral") ? "docker-ephemeral.jsonl" : "docker-main.jsonl");
-    const observer = child.spawn(process.execPath, [path.join(__dirname, "docker-events.cjs"), owned, started, file, attempt], { stdio: "ignore" });
-    observer.unref();
-    collectors.push(observer);
-    log("collector.spawned", { project: owned, child_pid: observer.pid });
-    observer.on("error", error => { log("collector.spawn.error", { error: observe.errorValue(error) }); process.exitCode = 1; });
-    observer.on("exit", (code, signal) => { log("collector.exit", { project: owned, code, signal }); if (code !== 0) process.exitCode = 1; });
+    collectors.push(launch({ project: owned, started, file, attempt, log, fail }));
   }
 }
 function invoke(program, args, options) { return original.call(child, program, args, options); }
@@ -39,6 +47,7 @@ function snapshot(stage) {
     const inspected = invoke("/usr/bin/docker", ["inspect", "--format", '{{json .}}', id], { encoding: "utf8", timeout: 15000 }); assert.equal(inspected.status, 0);
     const v = JSON.parse(inspected.stdout), labels = v.Config.Labels;
     assert.equal(labels["com.docker.compose.project"], project);
+    observedIds.add(v.Id);
     log("docker.state", { stage, project, id: v.Id, service: labels["com.docker.compose.service"], status: v.State.Status, running: v.State.Running, restarting: v.State.Restarting, exit: v.State.ExitCode, oom: v.State.OOMKilled, restarts: v.RestartCount, health: v.State.Health?.Status, networks: Object.keys(v.NetworkSettings.Networks), published: v.NetworkSettings.Ports?.["8025/tcp"] });
   }
   return ids;
@@ -54,9 +63,16 @@ const substitution = mock.method(child, "spawnSync", function(program, args, opt
     assert.equal(selected, false); assert.equal(built, true); selected = true;
     const metadata = JSON.parse(fs.readFileSync(options.env.IL2_METADATA)); project = metadata.project; fixtures = metadata.fixtures;
     log("fixture.ready", { project, capture_port: metadata.ports.capture }); snapshot("before-test");
+    const readiness = path.join(output, "observer-readiness.json");
+    fs.writeFileSync(readiness, JSON.stringify(collectors.map(value => ({ file: value.file, token: value.token, attempt, pid: value.pid }))), { flag: "wx", mode: 0o600 });
+    const ready = invoke(process.execPath, [path.join(__dirname, "observer-ready.cjs"), readiness], { encoding: "utf8", timeout: 16000 });
+    assert.equal(ready.status, 0, "OBSERVER_READINESS_FAILED");
+    const receipts = JSON.parse(ready.stdout); receipts.forEach((receipt, index) => { collectors[index].cliPid = receipt.cli_pid; });
+    log("observers.ready", { receipts });
     const command = ["--require", path.join(output, "client-preload.cjs"), "--test", args[1]];
     log("test.start", { command });
     const result = invoke(program, command, options);
+    servicesResult = result; outcome.services(result);
     log("test.exit", { code: result.status, signal: result.signal });
     snapshot("after-test"); captureLogs("after-test");
     fs.writeFileSync(path.join(output, "test-result.json"), JSON.stringify({ ...config, command: [program, ...command], code: result.status, signal: result.signal }, null, 2) + "\n", { flag: "wx", mode: 0o600 });
@@ -65,6 +81,7 @@ const substitution = mock.method(child, "spawnSync", function(program, args, opt
   if (program === "/usr/bin/docker" && args[0] === "build" && path.basename(args.at(-1)) === "capture-build") {
     assert.equal(built, false); built = true;
     const context = args.at(-1), dockerfile = path.join(context, "Dockerfile");
+    runnerDirectory = path.dirname(context);
     assert.equal(fs.readFileSync(dockerfile, "utf8"), fs.readFileSync(path.join(root, "test/services/Dockerfile.capture"), "utf8"));
     for (const name of ["observe.cjs", "server-preload.cjs"]) fs.copyFileSync(path.join(__dirname, "../postfix-http", name), path.join(context, name));
     fs.writeFileSync(path.join(context, "attempt.json"), JSON.stringify(config));
@@ -78,11 +95,27 @@ const substitution = mock.method(child, "spawnSync", function(program, args, opt
   if (down) {
     log("cleanup.compose.completed", { code: result.status, signal: result.signal }); assert.equal(snapshot("after-cleanup").length, 0);
     if (selected) captureLogs("after-cleanup");
-    for (const observer of collectors) { observer.ref(); observer.kill("SIGTERM"); }
+    // Complete the observed window only after terminal tests, trace validation and owned down.
+    const rows = file => fs.readFileSync(file, "utf8").trim().split("\n").map(line => JSON.parse(line));
+    const window = evidenceWindow(rows(path.join(output, "client.jsonl")), rows(path.join(output, "server-after-cleanup.jsonl")), servicesResult, result.status);
+    const valid = selected && window.valid;
+    log("collection.window.completed", window);
+    collectionRequested = true;
+    if (!valid) fail("COLLECTION_WINDOW_INCOMPLETE");
+    for (const observer of collectors) observer.request(valid ? { type: "complete", window_complete: true, services_terminal: true, required: { ids: observer.project === project ? [...observedIds] : [], min_creates: observer.project === project ? 18 : 3 } } : { type: "abort" });
   }
   return result;
 });
-process.on("exit", () => { substitution.mock.restore(); });
+process.on("exit", () => { substitution.mock.restore(); removalObservation.mock.restore(); });
 // On an early setup failure canonical cleanup may have no test child; no observer persists.
-process.on("beforeExit", () => { for (const observer of collectors) if (observer.exitCode === null && !observer.killed) { observer.ref(); observer.kill("SIGTERM"); } });
+process.on("beforeExit", () => {
+  if (!collectionRequested && collectors.length) { collectionRequested = true; fail("COLLECTION_NOT_COMPLETED"); for (const observer of collectors) if (!observer.requested && !observer.closed) observer.request({ type: "abort" }); return; }
+  if (finalized) return; finalized = true;
+  if (process.exitCode) outcome.fail("ORCHESTRATOR_FAILED");
+  outcome.cleanup(cleanupComplete);
+  const result = outcome.finish(collectors.map(value => value.result));
+  log("campaign.completed", result);
+  fs.writeFileSync(path.join(output, "campaign-result.json"), JSON.stringify(result, null, 2) + "\n", { flag: "wx", mode: 0o600 });
+  if (result.code) process.exitCode = 1;
+});
 require("../../../test/services/run.js");
