@@ -1,0 +1,32 @@
+{
+  "source": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "timestamp": "2026-10-28T10:05:43.048616+00:00",
+  "disposition": "FINDING_CLOSED",
+  "scope": [
+    "E1 recovery error-contract regression",
+    "Local R5 recovery preflight boundary"
+  ],
+  "findings": [],
+  "independent_verification": {
+    "custom_static_module_probe": {
+      "pass": 14,
+      "fail": 0
+    },
+    "focused_existing_tests": {
+      "pass": 103,
+      "fail": 0,
+      "skip": 0
+    },
+    "real_docker": "Raw main-attempt evidence independently inspected; no independent Docker campaign executed",
+    "real_docker_assertions": 38,
+    "cleanup": "PASS"
+  },
+  "not_closed": [
+    "Original R1 finding on final PR head",
+    "Postfix transport cause",
+    "Overall F1 qualification",
+    "Hosted CI"
+  ],
+  "repository_modifications": false,
+  "push": false
+}

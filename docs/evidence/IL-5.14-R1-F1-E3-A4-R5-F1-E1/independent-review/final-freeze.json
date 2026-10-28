@@ -1,0 +1,24 @@
+{
+  "source": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "files": {
+    "internal/rollback-authorization.js": "8160ec85344649b52edd153dbae2435557473cc01e2b66ed717059d4e53b9bb7",
+    "lifecycle/recovery.js": "574c54c1db3f00167a473b9279f183c4e59e1d39b93733b093b4977d9e15a2ac",
+    "lifecycle/activation.js": "93f3631d482b6f822470d029c1a07690243b639d3c538374a2c51dac42b33716",
+    "lifecycle/docker.js": "e2998a6b9fe4accb4ae1b13e8752792659536c4d40f8af074c92dfe6ecc58bc1",
+    "test/support/harness-preservation.cjs": "8c5aafae1780810707fec750b5dfb5e39fba665519b82f9c822d099a69772459",
+    "test/network-attachments/real-docker.cjs": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+    "test/unit/rollback-authorization.test.js": "b62af220ae692d0f2f77b1378efbf8453ddb1628dabb828bc670ddc6cbf23e7b",
+    "test/unit/recovery-error-contract.test.js": "677e7be9d7330d35889476f626c487a95617da4b452dd562bf5046a7c502ec72",
+    "test/unit/rollback-boundary.test.js": "9da0a913481f8c8ac7bef6166b91d5cf56ead0be76159004c95c70c32cde2f24",
+    "test/support/rollback-boundary-fixture.cjs": "86700d369a74f02d95c8610331386947311a63ef3a3c47f4a9672e65767c9152",
+    "test/network-attachments/rollback-real.cjs": "8f4fbad553a2ef2b3a99118ba086ac353272d522285e76b99b687fa11ceedf26"
+  },
+  "main_evidence": {
+    "source-identity.json": "c2760e55eec8c7df3af34db063b635e1af8a371f8b2b03e9bb973a52ae733b44",
+    "execution.jsonl": "aedca29601475770168bf90e91b6683bcba9206655f8b2bda6e9abfcb3aad8e9",
+    "docker-attempt-1/result.json": "71ffa86c21bad900783e0c519924c6540d13e3bf6749bf81a1428218a1176cd2",
+    "docker-r5-e1.log": "5cd43a145e12ffb3fbd48c2dfddbf5ae8e3d0983815713df5aaf5ccf3cea76b2",
+    "cleanup-readback.json": "6299c8e5470782f2b06764a10d04b190d58f3f9b10b80e33262d3d90d9f180da"
+  },
+  "worktree": "?? docs/IL-5.14-R1-F1-E3-A4-R5-F1-E1-baseline.md\n?? docs/IL-5.14-R1-F1-E3-A4-R5-F1-E1-docker-acceptance.md\n?? docs/IL-5.14-R1-F1-E3-A4-R5-F1-E1-focused-qualification.md\n?? docs/IL-5.14-R1-F1-E3-A4-R5-F1-E1-implementation.md\n?? docs/IL-5.14-R1-F1-E3-A4-R5-F1-E1-recovery-boundary.md\n?? docs/IL-5.14-R1-F1-E3-A4-R5-F1-E1-security-review.md\n?? docs/evidence/IL-5.14-R1-F1-E3-A4-R5-F1-E1/\n"
+}

@@ -1,0 +1,55 @@
+{
+  "status": "R5_RECOVERY_QUALIFIED",
+  "executable_sha": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "gates": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "PASS",
+    "F": "PASS",
+    "G": "PASS",
+    "H": "PASS",
+    "I": "PASS",
+    "J": "PASS",
+    "K": "PASS"
+  },
+  "parent_handoff": "RECOVERY_QUALIFIED_POSTFIX_NOT_EXECUTED",
+  "historical_assertion_unchanged": true,
+  "focused": {
+    "total": 55,
+    "pass": 55,
+    "fail": 0,
+    "skip": 0
+  },
+  "unit": {
+    "total": 354,
+    "pass": 354,
+    "fail": 0,
+    "skip": 0
+  },
+  "contracts": {
+    "total": 24,
+    "pass": 24,
+    "fail": 0,
+    "skip": 0
+  },
+  "docker": {
+    "attempt": "R5-F1-E1-DOCKER-1",
+    "assertions": 38,
+    "exit": 0,
+    "cleanup": "PASS"
+  },
+  "security": "SECURITY_BOUNDARY_VERIFIED",
+  "independent": {
+    "disposition": "FINDING_CLOSED",
+    "probe_pass": 14,
+    "focused_pass": 103,
+    "scope": [
+      "E1 identity regression",
+      "local R5 recovery boundary"
+    ]
+  },
+  "postfix": "NOT_EXECUTED",
+  "push": false
+}

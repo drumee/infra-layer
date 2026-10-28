@@ -1,0 +1,62 @@
+{
+  "executable_sha": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "files": {
+    "internal/rollback-authorization.js": {
+      "sha256": "8160ec85344649b52edd153dbae2435557473cc01e2b66ed717059d4e53b9bb7",
+      "prior_sha256": "c59c5924ca5ef877cbf3ac7134c3366b455efb8160eab235266647fbb4a3a3ed",
+      "changed_from_checkpoint": true
+    },
+    "lifecycle/recovery.js": {
+      "sha256": "574c54c1db3f00167a473b9279f183c4e59e1d39b93733b093b4977d9e15a2ac",
+      "prior_sha256": "67525625672a792b0e14b6bb7738a2688ff3bfb64bc632e0b0c76ea135a4589b",
+      "changed_from_checkpoint": true
+    },
+    "lifecycle/activation.js": {
+      "sha256": "93f3631d482b6f822470d029c1a07690243b639d3c538374a2c51dac42b33716",
+      "prior_sha256": "93f3631d482b6f822470d029c1a07690243b639d3c538374a2c51dac42b33716",
+      "changed_from_checkpoint": false
+    },
+    "lifecycle/docker.js": {
+      "sha256": "e2998a6b9fe4accb4ae1b13e8752792659536c4d40f8af074c92dfe6ecc58bc1",
+      "prior_sha256": "e2998a6b9fe4accb4ae1b13e8752792659536c4d40f8af074c92dfe6ecc58bc1",
+      "changed_from_checkpoint": false
+    },
+    "test/support/harness-preservation.cjs": {
+      "sha256": "8c5aafae1780810707fec750b5dfb5e39fba665519b82f9c822d099a69772459",
+      "prior_sha256": "8c5aafae1780810707fec750b5dfb5e39fba665519b82f9c822d099a69772459",
+      "changed_from_checkpoint": false
+    },
+    "test/network-attachments/real-docker.cjs": {
+      "sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+      "prior_sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+      "changed_from_checkpoint": false
+    },
+    "test/unit/rollback-authorization.test.js": {
+      "sha256": "b62af220ae692d0f2f77b1378efbf8453ddb1628dabb828bc670ddc6cbf23e7b",
+      "prior_sha256": "b62af220ae692d0f2f77b1378efbf8453ddb1628dabb828bc670ddc6cbf23e7b",
+      "changed_from_checkpoint": false
+    },
+    "test/unit/recovery-error-contract.test.js": {
+      "sha256": "677e7be9d7330d35889476f626c487a95617da4b452dd562bf5046a7c502ec72",
+      "prior_sha256": null,
+      "changed_from_checkpoint": true
+    },
+    "test/unit/rollback-boundary.test.js": {
+      "sha256": "9da0a913481f8c8ac7bef6166b91d5cf56ead0be76159004c95c70c32cde2f24",
+      "prior_sha256": "3e06188cde60e33f66cbb7333fa589980039efb6f9b1f7363fd038479eff606b",
+      "changed_from_checkpoint": true
+    },
+    "test/support/rollback-boundary-fixture.cjs": {
+      "sha256": "86700d369a74f02d95c8610331386947311a63ef3a3c47f4a9672e65767c9152",
+      "prior_sha256": "436a1328ad495873d881dbdfa3ea5625f11ffd12c1f7c0dc399d9c31460c3fed",
+      "changed_from_checkpoint": true
+    },
+    "test/network-attachments/rollback-real.cjs": {
+      "sha256": "8f4fbad553a2ef2b3a99118ba086ac353272d522285e76b99b687fa11ceedf26",
+      "prior_sha256": "5b18e531d0b44fda3c103ff0e747400fa8e1776fb0176aa5116cb112470ce076",
+      "changed_from_checkpoint": true
+    }
+  },
+  "unit_focus_source": "1e859f6 plus exactly these committed implementation/test bytes; Docker harness extended after unit without changing unit dependencies",
+  "historical_assertion_unchanged": true
+}

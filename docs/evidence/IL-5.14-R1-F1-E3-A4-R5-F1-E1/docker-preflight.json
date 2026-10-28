@@ -1,0 +1,28 @@
+{
+  "attempt": "R5-F1-E1-DOCKER-1",
+  "source_base": "1e859f6d4dd0682ebbceaeee994ce7c69504238d",
+  "candidate_hashes": {
+    "internal/rollback-authorization.js": "8160ec85344649b52edd153dbae2435557473cc01e2b66ed717059d4e53b9bb7",
+    "lifecycle/recovery.js": "574c54c1db3f00167a473b9279f183c4e59e1d39b93733b093b4977d9e15a2ac",
+    "lifecycle/activation.js": "93f3631d482b6f822470d029c1a07690243b639d3c538374a2c51dac42b33716",
+    "lifecycle/docker.js": "e2998a6b9fe4accb4ae1b13e8752792659536c4d40f8af074c92dfe6ecc58bc1",
+    "test/network-attachments/rollback-real.cjs": "8f4fbad553a2ef2b3a99118ba086ac353272d522285e76b99b687fa11ceedf26",
+    "test/support/rollback-boundary-fixture.cjs": "86700d369a74f02d95c8610331386947311a63ef3a3c47f4a9672e65767c9152",
+    "test/unit/recovery-error-contract.test.js": "677e7be9d7330d35889476f626c487a95617da4b452dd562bf5046a7c502ec72",
+    "test/unit/rollback-boundary.test.js": "9da0a913481f8c8ac7bef6166b91d5cf56ead0be76159004c95c70c32cde2f24"
+  },
+  "directory": "/tmp/drumee-r5-contract-e1-8j7z83n2/docker-attempt-1",
+  "owner": 1000,
+  "mode": "0o700",
+  "free_bytes": 1118665453568,
+  "node": "v22.22.0",
+  "docker": "29.2.0",
+  "command": [
+    "env",
+    "IL514_DIAGNOSTIC_DIR=/tmp/drumee-r5-contract-e1-8j7z83n2/docker-attempt-1",
+    "node",
+    "test/network-attachments/rollback-real.cjs"
+  ],
+  "namespace": "fresh drumee-il5-<8hex>; runner records exact identity; qualification marker on negative fixtures",
+  "source_sha": "72f4c67254561ca5c4c47a6a65e9620e57da7841"
+}

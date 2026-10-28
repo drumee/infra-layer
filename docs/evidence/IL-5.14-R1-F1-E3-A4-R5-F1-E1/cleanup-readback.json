@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-10-28T10:04:12.189585+00:00",
+  "project": "drumee-il5-ce96c333",
+  "status": "PASS",
+  "checks": [
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=com.docker.compose.project=drumee-il5-ce96c333"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=drumee-il5-ce96c333"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "image",
+        "ls",
+        "-q",
+        "drumee-il5-application:drumee-il5-ce96c333"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

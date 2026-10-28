@@ -1,0 +1,24 @@
+"use strict";
+const assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path");
+const root = "/home/somanos/github/infra-layer", { fixture } = require(root + "/test/support/rollback-boundary-fixture.cjs"), J = require(root + "/lifecycle/journal");
+const results = [], up = f => f.calls.some(call => call.operation === "compose" && call.args[0] === "up");
+async function check(name, fn) { const f = fixture(); try { await fn(f); results.push({ name, result: "PASS" }); } finally { f.cleanup(); } }
+async function refused(f, code) { await assert.rejects(f.run, { code }); assert.equal(up(f), false); }
+(async () => {
+  await check("authorized revision substitution retains identity refusal before eligibility", async f => { f.resource.revision = "9".repeat(64); await refused(f, "RUNTIME_IDENTITY_MISMATCH"); });
+  await check("authorized service substitution retains identity refusal", async f => { f.resource.service = "other"; await refused(f, "RUNTIME_IDENTITY_MISMATCH"); });
+  await check("unauthorized request does not disclose corrupt active state", async f => { fs.writeFileSync(path.join(f.root, "active.json"), "corrupt-private-fixture"); f.context.authorized = false; await refused(f, "ROLLBACK_OPERATION_NOT_AUTHORIZED"); });
+  await check("authorized corrupt active state remains a real corruption error", async f => { fs.writeFileSync(path.join(f.root, "active.json"), "corrupt-private-fixture"); await refused(f, "ACTIVE_STATE_CORRUPTED"); });
+  await check("missing journal operation scope remains authorization refusal", async f => { J.append(f.root, "recovery-required", f.broken.revision, { code: "DOCKER_LIFECYCLE_COMMAND_FAILED" }); await refused(f, "ROLLBACK_OPERATION_NOT_AUTHORIZED"); });
+  await check("valid caller and runtime but absent failed revision remains eligibility refusal", async f => { f.resource.revision = f.prepared.revision; await refused(f, "ROLLBACK_OPERATION_NOT_AUTHORIZED"); });
+  await check("extra same-owner network is rejected before any recreation", async f => { f.resource.networks.extra = { NetworkID: "7".repeat(64), EndpointID: "" }; await refused(f, "NETWORK_ATTACHMENT_MISMATCH"); });
+  await check("forged service-owner labels cannot authorize a wrong image", async f => { f.resource.image_id = "sha256:" + "8".repeat(64); await refused(f, "RUNTIME_IDENTITY_MISMATCH"); });
+  await check("authoritative configured exposure remains exact", async f => { f.resource.configured_ports["3101/tcp"][0].HostIp = "0.0.0.0"; await refused(f, "UNEXPECTED_SERVICE_EXPOSURE"); });
+  await check("normal recover true cannot enter rollback endpoint admission", async f => { await assert.rejects(f.normal, { code: "NETWORK_ATTACHMENT_MISMATCH" }); assert.equal(up(f), false); assert.equal(f.calls.some(c => c.operation === "recovery-network"), false); });
+  await check("volatile snapshot cannot block authorized recreation and final strict network ordering", async f => { const value = await f.run(); assert.equal(value.ready, true); const admission = f.calls.findIndex(c => c.operation === "recovery-network"), recreation = f.calls.findIndex(c => c.operation === "compose" && c.args[0] === "up"), strict = f.calls.findLastIndex(c => c.operation === "strict-network"); assert.ok(admission >= 0 && recreation > admission && strict > recreation); assert.equal(f.resource.restarting, false); });
+  await check("final wrong network ID is not successful rollback", async f => { f.final = state => { state.resource.networks[state.network.name].NetworkID = "7".repeat(64); }; await assert.rejects(f.run, { code: "NETWORK_ATTACHMENT_MISMATCH" }); assert.equal(up(f), true); assert.equal(J.readJournal(f.root).at(-1).phase, "recovery-required"); });
+  await check("final unhealthy process is not successful rollback", async f => { f.final = state => { state.resource.health = "unhealthy"; }; await assert.rejects(f.run, { code: "SERVICE_STARTUP_FAILED" }); assert.equal(up(f), true); assert.equal(J.readJournal(f.root).at(-1).phase, "recovery-required"); });
+  await check("recreation command failure remains fatal", async f => { f.commandFailure = true; await assert.rejects(f.run, { code: "DOCKER_LIFECYCLE_COMMAND_FAILED" }); assert.equal(up(f), true); assert.equal(J.readJournal(f.root).at(-1).phase, "recovery-required"); });
+  fs.writeFileSync(__dirname + "/probe-result.json", JSON.stringify({ source: "72f4c67254561ca5c4c47a6a65e9620e57da7841", cases: results, pass: results.length, fail: 0, scope: "Actual rollback/activation/authorization/network modules; deterministic Docker fixture and prepared verification stub. No real Docker run." }, null, 2) + "\n", { flag: "wx", mode: 0o600 });
+  console.log(JSON.stringify({ pass: results.length, fail: 0 }));
+})().catch(error => { console.error(error); process.exitCode = 1; });
