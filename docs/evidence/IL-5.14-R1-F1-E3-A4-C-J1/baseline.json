@@ -1,0 +1,67 @@
+{
+  "checkpoint": "d44e51877151f2ab7f0397bfc3e2835767159de2",
+  "branch": "fix/il514-c1-network-attachment-identity",
+  "origin": "git@github.com:drumee/infra-layer.git",
+  "initial_working_tree": "clean, observed before creating J1 evidence",
+  "previous_qualified_executable": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "qualified_R5": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "private_directory": "/tmp/drumee-a4-c-j1-03gugcyl",
+  "attempt": "A4-C-J1-drumee-a4-c-j1-03gugcyl",
+  "uid": 1000,
+  "gid": 1000,
+  "node": "{\"node\":\"v22.22.0\",\"undici\":\"6.23.0\",\"eslint\":\"10.13.0\"}",
+  "npm": "11.18.0",
+  "docker": {
+    "Platform": {
+      "Name": "Docker Engine - Community"
+    },
+    "Version": "29.2.0",
+    "ApiVersion": "1.53",
+    "MinAPIVersion": "1.44",
+    "Os": "linux",
+    "Arch": "amd64",
+    "Components": [
+      {
+        "Name": "Engine",
+        "Version": "29.2.0",
+        "Details": {
+          "ApiVersion": "1.53",
+          "Arch": "amd64",
+          "BuildTime": "Mon Jan 26 19:26:07 2026",
+          "Experimental": "false",
+          "GitCommit": "9c62384",
+          "GoVersion": "go1.25.6",
+          "KernelVersion": "6.1.0-41-amd64",
+          "MinAPIVersion": "1.44",
+          "Os": "linux"
+        }
+      },
+      {
+        "Name": "containerd",
+        "Version": "v2.2.1",
+        "Details": {
+          "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+        }
+      },
+      {
+        "Name": "runc",
+        "Version": "1.3.4",
+        "Details": {
+          "GitCommit": "v1.3.4-0-gd6d73eb8"
+        }
+      },
+      {
+        "Name": "docker-init",
+        "Version": "0.19.0",
+        "Details": {
+          "GitCommit": "de40ad0"
+        }
+      }
+    ],
+    "GitCommit": "9c62384",
+    "GoVersion": "go1.25.6",
+    "KernelVersion": "6.1.0-41-amd64",
+    "BuildTime": "2026-01-26T19:26:07.000000000+00:00"
+  },
+  "created": "2026-10-28T21:08:27.072696+00:00"
+}

@@ -1,0 +1,7 @@
+# Unit and contract confirmation — Gate G PASS
+
+Candidate `0dd9a17d2fe63b98ba3fd6ef56c5252b595a60ec`; parent checkpoint `d44e51877151f2ab7f0397bfc3e2835767159de2`. Production/package inputs remain byte-identical to `fd708aaf914accc93aa42fcd705740db390721d5`. Node22.22.0/Undici6.23.0/npm11.18.0/ESLint10.13.0, Docker29.2.0, Linux amd64, UID/GID1000. Exact command argv/cwd/UTC, actual and expected return codes, log hashes, protected configuration and frozen-input readbacks are in [execution ledger](evidence/IL-5.14-R1-F1-E3-A4-C-J1/execution.jsonl).
+
+`npm test`: **354/354 PASS**,0 failures/skips/cancellations, exit0. `npm run test:contracts`: **24/24 PASS**,0 failures/skips/cancellations, exit0. [Unit output](evidence/IL-5.14-R1-F1-E3-A4-C-J1/full-unit.log), [contracts](evidence/IL-5.14-R1-F1-E3-A4-C-J1/contracts.log). Canonical wrappers and timestamps are in the ledger; these are actual new runs on0dd9a17.
+
+The full unit suite covers recovery authority/runtime identity/network membership/secure loader/redaction/error/Promise propagation and assertion mutations. Observer tests outside test/unit are separately30+9; focused guard54 is a subset of354 and is not added to a campaign aggregate. No assertion/test outcome/source was weakened. Frozen inputs and protected Docker configuration remain unchanged in every receipt. The separately required Python filesystem suite also passes25/25, exit0; it performs scoped --rm Docker ownership fixtures with recorded restoration, not a complete network or lifecycle campaign.

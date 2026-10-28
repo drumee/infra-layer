@@ -1,0 +1,66 @@
+TAP version 13
+# Subtest: F1 stream ordering includes bounded incomplete-stream refusal
+ok 1 - F1 stream ordering includes bounded incomplete-stream refusal
+  ---
+  duration_ms: 1.215883
+  type: 'test'
+  ...
+# Subtest: F1 duplicate request after termination cannot manufacture success
+ok 2 - F1 duplicate request after termination cannot manufacture success
+  ---
+  duration_ms: 0.292894
+  type: 'test'
+  ...
+# Subtest: F1 complete window requires17 cases and every terminal operation
+ok 3 - F1 complete window requires17 cases and every terminal operation
+  ---
+  duration_ms: 0.600911
+  type: 'test'
+  ...
+# Subtest: F1 pending operations and incomplete server lifecycle invalidate evidence
+ok 4 - F1 pending operations and incomplete server lifecycle invalidate evidence
+  ---
+  duration_ms: 0.301266
+  type: 'test'
+  ...
+# Subtest: F1 Services failure remains terminal but never becomes Services success
+ok 5 - F1 Services failure remains terminal but never becomes Services success
+  ---
+  duration_ms: 0.272433
+  type: 'test'
+  ...
+# Subtest: F1 event parser redacts command payload and preserves daemon timestamp digits
+ok 6 - F1 event parser redacts command payload and preserves daemon timestamp digits
+  ---
+  duration_ms: 0.708648
+  type: 'test'
+  ...
+# F1_BOUND_OUTPUT /tmp/drumee-observer-bound-CRBd8u
+# Subtest: F1 readiness is event-driven and rejects a stale PID receipt
+ok 7 - F1 readiness is event-driven and rejects a stale PID receipt
+  ---
+  duration_ms: 6.021028
+  type: 'test'
+  ...
+# Subtest: F1 logging remains bounded and excludes stderr payload
+ok 8 - F1 logging remains bounded and excludes stderr payload
+  ---
+  duration_ms: 54.136401
+  type: 'test'
+  ...
+# F1_REGRESSION_EVIDENCE /tmp/drumee-observer-regression-z2T6a2
+# Subtest: F1 original actual-module exit143 regression: defective exits1, corrected controlled lifecycle accepts
+ok 9 - F1 original actual-module exit143 regression: defective exits1, corrected controlled lifecycle accepts
+  ---
+  duration_ms: 36.153884
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 110.39412

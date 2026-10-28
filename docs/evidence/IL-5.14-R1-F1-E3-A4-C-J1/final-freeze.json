@@ -1,0 +1,147 @@
+{
+  "recorded": "2026-10-28T21:16:15.294923+00:00",
+  "source": "0dd9a17d2fe63b98ba3fd6ef56c5252b595a60ec",
+  "production_source_identity": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "R5": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "harness_source": "0dd9a17d2fe63b98ba3fd6ef56c5252b595a60ec",
+  "frozen_inputs_unchanged": true,
+  "changed_nondocumentation_inputs": [
+    "test/diagnostics/observer-shutdown/matrix.test.cjs"
+  ],
+  "command_count": 13,
+  "commands": [
+    {
+      "name": "baseline-lint",
+      "returncode": 1,
+      "expected_returncode": 1
+    },
+    {
+      "name": "observer-matrix",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "observer-protocol",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "assertion-guards",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "restored-lint",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "audit-production",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "audit-development",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "audit-application",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "mail-lock-graph",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "full-unit",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "contracts",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "filesystem-security",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "package-audit",
+      "returncode": 1,
+      "expected_returncode": 0
+    }
+  ],
+  "first_unexpected_failure": "J1-PKG-001 / parent K / J1 I",
+  "no_qualification_after_failure": true,
+  "post_stop_observation": "Single read-only dry-run inventory for missing failure-member attribution, separately recorded in package-attribution.json",
+  "protected_configuration_unchanged": true,
+  "new_deployment_Docker_campaigns": 0,
+  "filesystem_Docker_fixtures": "Canonical scoped --rm fixtures completed successfully; foreign-UID fixture restoration is in filesystem-security.log",
+  "cleanup": "No integration/network/application project created. Filesystem fixtures completed their own restoration/cleanup; evidence/logger temporary directories intentionally retained.",
+  "package_archive_sha256": null,
+  "package_archive_created": false,
+  "consumer_qualification": "NOT_EXECUTED",
+  "independent_final_review": "NOT_EXECUTED after mandatory package stop",
+  "remote_head": "cd9b8322bd7eef3b4094710ec4ea26be94f08922",
+  "remote_updated_at": "2026-10-26T14:58:20Z",
+  "push": false,
+  "merge": false,
+  "publish": false,
+  "deploy": false,
+  "source_delta_to_remote": [
+    ":000000 100644 0000000000000000000000000000000000000000 0995bfe211a92478d9c0219a02bb7458b916e4a2 A\tinternal/rollback-authorization.js",
+    ":100644 100644 7ae4e33476b330d9705254f680adb4c518ae059f 356e461a5dd0dae1168f938c82dbc4776100b0cf M\tlifecycle/activation.js",
+    ":100644 100644 3be7ca9d6a9774307b08849fc3129c66ed624c7d f7b1fbe11de16f90c7d73799531be9bcb7d5d7e4 M\tlifecycle/docker.js",
+    ":100644 100644 ec35004db6f62f175dbb1a6d15f130f6416fbcb8 6bacfa9e15f62571b9752c5527de1be2fa33a86f M\tlifecycle/recovery.js",
+    ":000000 100644 0000000000000000000000000000000000000000 5f07a022d7af900ee887f04b825bc1d4e17cf351 A\ttest/diagnostics/observer-shutdown/docker-probe.test.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 002605ac7888c242be28aef39e49d6943a247efb A\ttest/diagnostics/observer-shutdown/historical-replay.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 88b8a87e7e60a4755366d635e30cefd38b3d3862 A\ttest/diagnostics/observer-shutdown/matrix.test.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 dad79419252118edb6a7f395b75a1a029ac1a721 A\ttest/diagnostics/observer-shutdown/model.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 14692575e5fbdffcdaf46510c3e00598eee9d018 A\ttest/diagnostics/observer-shutdown/protocol.test.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 e2232e8cfee82e4ae3b16d4c1d4848d8458072ac A\ttest/diagnostics/observer-shutdown/record.py",
+    ":000000 100644 0000000000000000000000000000000000000000 5161164ec978d089ffe8ee1be07df33fceacb77e A\ttest/diagnostics/observer-shutdown/regression.test.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 ff50dd0ed1ab3a9eb69f822fd502c0acea86f6b4 A\ttest/diagnostics/postfix-http/client-preload.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 e2fbea961ff7e32d53f86d5240f6c1e92c9e11b4 A\ttest/diagnostics/postfix-http/diagnostic.test.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 5d3ac3196a47f43b046c0a6f387383cd1aee1829 A\ttest/diagnostics/postfix-http/fixture.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 55031f7445a78851d41f7b812ded8ccad92aefae A\ttest/diagnostics/postfix-http/observe.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 4d856e83c752522c37e2002baf336de7a4b7bcb9 A\ttest/diagnostics/postfix-http/record.py",
+    ":000000 100644 0000000000000000000000000000000000000000 19090cf1ad30a1ebf86c9716f58311201c710c51 A\ttest/diagnostics/postfix-http/server-preload.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 ad94d12d032c7601f605ffd2412ada7144e92dbd A\ttest/diagnostics/postfix-http/services-attempt.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 1bc18a8daa987e65e75d0247d0841bdb5a38204a A\ttest/diagnostics/services-capture/campaign.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 cf66a0acac4964411211564ddf7dd0f87621d47c A\ttest/diagnostics/services-capture/cases.json",
+    ":000000 100644 0000000000000000000000000000000000000000 e9dc23c480d0f61ae6aa8c4a2b03d8a7d067b5ae A\ttest/diagnostics/services-capture/client-preload.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 8a6fe9c1d2566a2866264ea6b305bbe0b330296a A\ttest/diagnostics/services-capture/docker-events.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 ca69b64db89dc30e625186efbe3488d180bc12df A\ttest/diagnostics/services-capture/evidence-window.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 791262957f1b18a46bb14d2fbf87d0818f041a41 A\ttest/diagnostics/services-capture/hook-cases.test.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 800bcdd6271abe57ee326fc4dea2cca59bd9316a A\ttest/diagnostics/services-capture/observe.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 9ed1141cd17298cc74509739dc9534757db9487c A\ttest/diagnostics/services-capture/observer-contract.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 697b25f6ff5fa4c2bd59e29aab80fe2c75211b51 A\ttest/diagnostics/services-capture/observer-control.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 21d171902242a426ee4aea6e0e84776826480430 A\ttest/diagnostics/services-capture/observer-events.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 2f047ff126ca2e4a9a540377ab3bd44cb27cf3f3 A\ttest/diagnostics/services-capture/observer-ready.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 89a9dd9e6b1409644bf376c7a2529c7d4e893309 A\ttest/diagnostics/services-capture/preflight.test.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 a9987567853f9da164d2b99d4a3f5c8c5a1cc124 A\ttest/diagnostics/services-capture/record.py",
+    ":000000 100644 0000000000000000000000000000000000000000 247831efad7ad82b0225aab95d4d3bf2b81a574f A\ttest/diagnostics/services-capture/state.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 d255736df39f0be7e38c006e56129d1eec255029 A\ttest/network-attachments/membership-real.cjs",
+    ":100644 100644 e05fb2761731b9ca589b0a271840b31b6057800d cea31f209022f9278394ffd953a09e606b2e15ee M\ttest/network-attachments/real-docker.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 143c75f8de52e5cb69eefa80c63e1dda1d2187da A\ttest/network-attachments/refusal-effectiveness.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 cd26b7d00f13e62c6f768049c783da1d0f2bc975 A\ttest/network-attachments/rollback-real.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 1c6c9b4572b016f1d90077122b6acca4050e332d A\ttest/support/harness-preservation.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 3c28eca7833e5ee14eb4329d249e20b69dd39771 A\ttest/support/rollback-boundary-fixture.cjs",
+    ":000000 100644 0000000000000000000000000000000000000000 c80af7606c79e6fc6843b9595ca0ee5e8cad356d A\ttest/unit/harness-preservation.test.js",
+    ":000000 100644 0000000000000000000000000000000000000000 80cd24d3e706fee2535f2a7a85d1eb397cbc02b9 A\ttest/unit/harness-reachability.test.js",
+    ":100644 100644 769332662576b17d37bd74ee6407f6dd553ec231 5dc1c1fde0a8fefab3cb1a4c006c493b1d765f5d M\ttest/unit/network-attachments.test.js",
+    ":000000 100644 0000000000000000000000000000000000000000 4f30b34d899b8deadfc85ec7a3725489495968f8 A\ttest/unit/network-membership.test.js",
+    ":100644 100644 1089e0d6d30cb0398a30c047cb726873d0c83d8e c3658097273c64236e671e491ee9304d9c223623 M\ttest/unit/qualification-diagnostic.test.js",
+    ":000000 100644 0000000000000000000000000000000000000000 9a47fac5c944033432f47c9624c720345934642f A\ttest/unit/recovery-error-contract.test.js",
+    ":000000 100644 0000000000000000000000000000000000000000 78f716f4d251392b67e6494ce911ad093f51f1d8 A\ttest/unit/refusal-effectiveness.test.js",
+    ":000000 100644 0000000000000000000000000000000000000000 763578eb9e802f896a1f85a9ab212be1754ce0d2 A\ttest/unit/rollback-authorization.test.js",
+    ":000000 100644 0000000000000000000000000000000000000000 0dcf7d4d829218938567f6fd06da7403b71b0dd6 A\ttest/unit/rollback-boundary.test.js"
+  ],
+  "final_documentation_checkpoint": "Commit introducing final J1 reports; exact hash in final owner handoff and private checkpoint-readback.json",
+  "private_directory": "/tmp/drumee-a4-c-j1-03gugcyl"
+}
