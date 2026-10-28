@@ -6,7 +6,7 @@ function fixture() {
   const composition = { project, compose: { services: { application: { networks: ["kernel"] } }, networks: { kernel: { name: project + "-kernel" } } } };
   const network = { id: nid, name: project + "-kernel", owner: project, project, driver: "bridge", internal: false, containers: {} };
   const resource = { id, name: "/" + project + "-application-1", service: "application", owner: project, project, revision: "d".repeat(64), image: "sha256:" + "e".repeat(64), image_id: "sha256:" + "e".repeat(64), running: true, restarting: true, networks: { [network.name]: { NetworkID: nid, EndpointID: "" } } };
-  const state = { composition, network, resource, targets: [structuredClone(resource)], error: false, inventory: [id] };
+  const state = { composition, network, resource, targets: [{ ...structuredClone(resource), recovery_endpoint: true }], error: false, inventory: [id] };
   state.D = load((_program, argv) => {
     const a = argv.slice(2);
     if (state.error) throw Object.assign(Error("fixture Docker failure"), { status: 125 });
@@ -48,10 +48,10 @@ test("R4 rollback authorization requires verified failed/active candidate identi
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "il514-rollback-unit-")), revision = "a".repeat(64), project = "drumee-recovery";
   const source = { root, revision, project, instance_id: project, compose: { services: { application: { image: "sha256:fixture", volumes: [] } } }, composition: {} };
   fs.mkdirSync(path.join(root, "candidates", revision), { recursive: true, mode: 0o700 }); fs.writeFileSync(path.join(root, "candidates", revision, "prepared.json"), JSON.stringify(source), { mode: 0o600 });
-  const resource = { id: "b".repeat(64), name: "/" + project + "-application-1", owner: project, project, service: "application", revision, image: "sha256:fixture", image_id: "sha256:fixture", ports: {}, mounts: [] };
+  const resource = { id: "b".repeat(64), name: "/" + project + "-application-1", owner: project, project, service: "application", revision, image: "sha256:fixture", image_id: "sha256:fixture", ports: {}, configured_ports: {}, mounts: [], running: true, restarting: true };
   const verification = test.mock.method(P, "verifyPrepared", () => source); let admitted = 0;
   const driver = { checkImages: () => ({ "sha256:fixture": "sha256:fixture" }), authorizeRecoveryNetworks: () => { admitted++; } };
-  const run = (r = resource, c = { authorized: true }) => authorizeRollback(source, [r], { revision }, { phase: "recovery-required", revision }, c, driver, A.checkObserved);
+  const run = (r = resource, c = { authorized: true }) => authorizeRollback(source, [r], { revision }, { phase: "recovery-required", revision, details: { service: "application" } }, c, driver, A.checkObserved);
   try {
     run(); assert.equal(admitted, 1); assert.equal(verification.mock.calls.length, 1);
     assert.throws(() => run(resource, { authorized: false }), { code: "ROLLBACK_OPERATION_NOT_AUTHORIZED" });

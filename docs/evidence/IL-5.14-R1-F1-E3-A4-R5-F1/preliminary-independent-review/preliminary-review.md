@@ -1,0 +1,11 @@
+# Independent R5 boundary preliminary review
+
+Read-only baseline c23c86110634d691d6c52d80bc792edda21dd197. No test or Docker execution. Final disposition pending corrected source review.
+
+The original failure stack identifies activation.js:165 ordinary networksReady before compose up line184. No recovery helper appears. Its selector at164 requires private operation marker, latest recovery-required event, and an inspectProject Restarting=true observation. Original trace lacks the latter two selector snapshots and captures only image-build commands, so no particular false conjunct or scheduling race is proven historically.
+
+The admission decision nevertheless demonstrably depends on volatile lifecycle state before checkPorts and a later container/network observation. The intended boundary should derive authorized rollback operation scope from immutable verified deployment/journal evidence and check narrowly permitted degradation against authoritative resource observation, rather than allowing an unrelated earlier readiness predicate to select strict mode.
+
+Other concrete barriers/risks: checkObserved uses live NetworkSettings.Ports, while original restarting snapshot has ports={} despite canonical configured publication. Recovery must validate configured HostConfig.PortBindings exactly and preserve strict live publication after recreation. The adapter currently grants the absent-endpoint recovery allowance to every restarting resource in the inventory; scope must be an explicit verified failed-service subset and unrelated invalid services must remain refused. The current failure journal lacks service scope, although the journal schema already permits a service field. The exported activation.activateRollback wrapper should enforce its own rollback evidence/compatibility boundary; a caller cannot be assumed to have passed recovery.rollbackDeployment first.
+
+Same-revision inspectDeployment catches operational failures and returns ready=false; only ready=true produces the no-op return, so failed inspection does not itself abort recreation. Final health/protocol checks and networksReady are present and must remain mandatory. Strict normal checkNetworks and all extra-network/network-ID/ownership/error refusals must remain unchanged.

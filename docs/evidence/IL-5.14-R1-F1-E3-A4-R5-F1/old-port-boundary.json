@@ -1,0 +1,31 @@
+{
+  "outcome": "OLD_LIVE_PORT_PREFLIGHT_REFUSAL_REPRODUCED",
+  "calls": [
+    {
+      "operation": "verifyPrepared",
+      "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "operation": "inspectProject",
+      "id": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "restarting": true
+    },
+    {
+      "operation": "checkPorts"
+    },
+    {
+      "operation": "verifyPrepared",
+      "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "operation": "checkImages"
+    },
+    {
+      "operation": "verifyPrepared",
+      "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "operation": "checkImages"
+    }
+  ]
+}

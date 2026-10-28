@@ -39,7 +39,7 @@ function helper(composition, directory, script, args = [], writable = false) {
   return docker(["run", "--rm", "--network", "none", "--read-only", "--cap-drop", "ALL", "--cap-add", "DAC_OVERRIDE", ...(writable ? ["--cap-add", "CHOWN", "--cap-add", "FOWNER"] : []), "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "128m", "--label", `org.drumee.infra.owner=${composition.project}`, "--label", "org.drumee.infra.role=lifecycle-helper", "--mount", `type=bind,source=${directory},target=/work${writable ? "" : ",readonly"}`, composition.distribution.helper_image, "node", "-e", script, ...args]);
 }
 function compose(prepared, args, options) { return docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args], options); }
-const format = '{"id":{{json .Id}},"image_id":{{json .Image}},"image":{{json .Config.Image}},"started_at":{{json .State.StartedAt}},"running":{{json .State.Running}},"restarting":{{json .State.Restarting}},"name":{{json .Name}},"exit_code":{{json .State.ExitCode}},"health":{{if index .State "Health"}}{{json .State.Health.Status}}{{else}}"unknown"{{end}},"owner":{{json (index .Config.Labels "org.drumee.infra.owner")}},"role":{{json (index .Config.Labels "org.drumee.infra.role")}},"project":{{json (index .Config.Labels "com.docker.compose.project")}},"service":{{json (index .Config.Labels "com.docker.compose.service")}},"revision":{{json (index .Config.Labels "org.drumee.infra.revision")}},"ports":{{json .NetworkSettings.Ports}},"mounts":{{json .Mounts}}}';
+const format = '{"id":{{json .Id}},"image_id":{{json .Image}},"image":{{json .Config.Image}},"started_at":{{json .State.StartedAt}},"running":{{json .State.Running}},"restarting":{{json .State.Restarting}},"name":{{json .Name}},"exit_code":{{json .State.ExitCode}},"health":{{if index .State "Health"}}{{json .State.Health.Status}}{{else}}"unknown"{{end}},"owner":{{json (index .Config.Labels "org.drumee.infra.owner")}},"role":{{json (index .Config.Labels "org.drumee.infra.role")}},"project":{{json (index .Config.Labels "com.docker.compose.project")}},"service":{{json (index .Config.Labels "com.docker.compose.service")}},"revision":{{json (index .Config.Labels "org.drumee.infra.revision")}},"ports":{{json .NetworkSettings.Ports}},"configured_ports":{{json .HostConfig.PortBindings}},"mounts":{{json .Mounts}}}';
 function inspectProject(project, allowed_services) {
   if (!S.identifier(project)) F.fail("INVALID_DEPLOYMENT_IDENTITY");
   const ids = docker(["ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim().split("\n").filter(Boolean);
@@ -109,7 +109,7 @@ function containerNetworks(composition, id, networks, recovery) {
   if (resource.id !== id || typeof resource.name !== "string" || !serviceName(composition.project, resource.service, resource.name?.slice(1)) || resource.name[0] !== "/" || typeof resource.running !== "boolean") F.fail("INVALID_NETWORK_ATTACHMENT");
   if (recovery) {
     const target = recovery.get(id);
-    if (!target || ["id", "name", "service", "revision", "image", "image_id", "role", "running", "restarting"].some(key => resource[key] !== target[key]) || resource.name !== `/${composition.project}-${resource.service}-1`) F.fail("RUNTIME_IDENTITY_MISMATCH");
+    if (!target || ["id", "name", "service", "revision", "image", "image_id", "role"].some(key => resource[key] !== target[key]) || ["running", "restarting"].some(key => typeof resource[key] !== "boolean" || typeof target[key] !== "boolean") || resource.name !== `/${composition.project}-${resource.service}-1` || S.serialize(resource.configured_ports) !== S.serialize(target.configured_ports) || S.serialize(resource.mounts) !== S.serialize(target.mounts)) F.fail("RUNTIME_IDENTITY_MISMATCH");
   }
   const expected = serviceNetworks(composition, resource.service), actual = resource.networks;
   if (!actual || typeof actual !== "object" || Array.isArray(actual)) F.fail("INVALID_NETWORK_ATTACHMENT");
@@ -126,7 +126,7 @@ function containerNetworks(composition, id, networks, recovery) {
     if (!resource.running && membership.EndpointID === "" && !endpoint) continue;
     // Rollback authorization is not readiness. Only an exact rechecked target
     // in restart backoff may lack an endpoint before controlled recreation.
-    if (recovery && resource.running === true && resource.restarting === true && membership.EndpointID === "" && !endpoint && !Object.values(network.containers || {}).some(value => value.Name === resource.name.slice(1))) continue;
+    if (recovery?.get(id).recovery_endpoint === true && resource.running === true && resource.restarting === true && membership.EndpointID === "" && !endpoint && !Object.values(network.containers || {}).some(value => value.Name === resource.name.slice(1))) continue;
     const pending = Object.entries(network.containers || {}).find(([key, value]) => key === "ep-" + value.EndpointID && value.Name === resource.name.slice(1) && (membership.EndpointID === "" || membership.EndpointID === value.EndpointID));
     // The complete configured set/IDs have passed; this is still refused as
     // unsettled below, never accepted or allowed to mask extra connectivity.

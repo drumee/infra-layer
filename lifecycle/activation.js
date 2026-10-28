@@ -159,18 +159,25 @@ async function activateDeployment(prepared, context, operation) {
     const rotation = require("./transitions").pending(prepared.root); if (rotation && context.rotation_id !== rotation.id) F.fail("SECRET_ROTATION_RECOVERY_REQUIRED");
     if (pending?.phase === "activation-intent" && context.recover !== true) F.fail("ACTIVATION_RECOVERY_REQUIRED");
     const prior = readActive(prepared.root); const change = classifyChanges(prior, prepared);
+    if (operation === rollbackOperation) {
+      if (context.authorized !== true || !prior || !change.compatible || change.categories.includes("image-upgrade")) F.fail("INCOMPATIBLE_ROLLBACK");
+      P.verifyPrepared(prior.prepared, context, driver);
+    }
     if (!change.compatible) { if (change.categories.length === 1 && change.categories[0] === "secret-rotation") require("./transitions").allowTransition(prior, prepared, context); else F.fail("INCOMPATIBLE_DEPLOYMENT_CHANGE"); }
     const observed = driver.inspectProject(prepared.project, Object.keys(prepared.compose.services)); driver.checkPorts(prepared.composition, observed);
-    if (operation === rollbackOperation && pending?.phase === "recovery-required" && observed.some(value => value.restarting === true)) require("../internal/rollback-authorization").authorizeRollback(prepared, observed, prior, pending, context, driver, checkObserved);
+    let admission;
+    if (operation === rollbackOperation && pending?.phase === "recovery-required") admission = require("../internal/rollback-authorization").authorizeRollback(prepared, observed, prior, pending, context, driver, checkObserved);
     else await networksReady(prepared.composition, driver, observed.length > 0);
     const images = driver.checkImages(prepared.composition);
     if (change.categories.includes("image-upgrade")) { require("./recovery").validateBackupEvidence(context.backup_evidence, prior, context); verifyImageUpgrade(prior.prepared, prepared, driver); }
     if (prior?.revision === prepared.revision) { const state = await inspectDeployment(prepared.root, context); if (state.ready) return { ...state, effect: "no-op" }; }
-    J.append(prepared.root, "activation-intent", prepared.revision, prior ? { prior_revision: prior.revision } : {});
+    J.append(prepared.root, "activation-intent", prepared.revision, { ...(prior ? { prior_revision: prior.revision } : {}), ...(admission ? { service: admission.service, code: "ROLLBACK_RECOVERY_ADMITTED" } : {}) });
     const evidence = []; const optional_diagnostics = [];
+    let failureService;
     try {
       driver.compose(prepared, ["config", "-q"]);
       for (const name of prepared.composition.activation_order) {
+        failureService = name;
         const job = prepared.composition.distribution.init_jobs.find((value) => value.id === name);
         if (job) {
           const artifact_digest = S.digest(job); const completed = J.readJournal(prepared.root).some((event) => event.phase === "job-completed" && event.details.service === name && event.details.artifact_digest === artifact_digest);
@@ -187,6 +194,7 @@ async function activateDeployment(prepared, context, operation) {
           protocolCheck(prepared, name, driver); J.append(prepared.root, "functional-verified", prepared.revision, { service: name }); evidence.push({ service: name, container_id: resource.id, image_id: resource.image_id, started_at: resource.started_at, revision: prepared.revision, native_validation: "candidate-and-process-sequence", protocol_functional: true });
         } catch (error) { if (!optional_mail) throw error; optional_diagnostics.push({ service: name, code: safeCode(error) }); }
       }
+      failureService = undefined;
       if (prepared.composition.plan.inputs.spec.http.https) await httpsCheck(prepared);
       await require("./external-gateway").probe(prepared);
       await networksReady(prepared.composition, driver, true);
@@ -195,12 +203,14 @@ async function activateDeployment(prepared, context, operation) {
       const active = { revision: prepared.revision, prepared, attestation, attestation_digest: digest, journal_sequence: event.sequence, prior_revision: prior?.revision || null, optional_diagnostics };
       F.atomic(path.join(prepared.root, "active.json"), JSON.stringify(active));
       if (prepared.certificate) F.atomic(path.join(prepared.root, "renewal.json"), JSON.stringify({ revision: prepared.revision, fingerprint: prepared.certificate.fingerprint, expires_at: prepared.certificate.expires_at, renew_before_days: prepared.composition.plan.inputs.spec.tls.renew_before_days || 14, scheduler: "distribution-trigger-required" }));
-      return { ...(await inspectDeployment(prepared.root, context)), effect: prior ? "controlled-update" : "fresh-activation", change };
+      const state = await inspectDeployment(prepared.root, context);
+      if (operation === rollbackOperation && !state.ready) F.fail("RUNTIME_ATTESTATION_INVALIDATED");
+      return { ...state, effect: prior ? "controlled-update" : "fresh-activation", change };
     } catch (error) {
-      const code = safeCode(error); J.append(prepared.root, "activation-failed", prepared.revision, { code, ...(prior ? { prior_revision: prior.revision } : {}) });
+      const code = safeCode(error); J.append(prepared.root, "activation-failed", prepared.revision, { code, ...(failureService ? { service: failureService } : {}), ...(prior ? { prior_revision: prior.revision } : {}) });
       // Never claim old containers still match after a partial update. Recovery
       // is explicit, with preserved immutable candidates, journal and data.
-      J.append(prepared.root, "recovery-required", prepared.revision, { code }); F.fail(code);
+      J.append(prepared.root, "recovery-required", prepared.revision, { code, ...(failureService ? { service: failureService } : {}) }); F.fail(code);
     }
   });
 }

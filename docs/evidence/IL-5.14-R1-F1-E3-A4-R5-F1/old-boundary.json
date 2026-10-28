@@ -1,0 +1,66 @@
+{
+  "source": "c23c86110634d691d6c52d80bc792edda21dd197",
+  "outcome": "OLD_STRICT_PREFLIGHT_REFUSAL_REPRODUCED",
+  "fixture": "first inventory snapshot restarting=false; authoritative container restarting=true, required endpoint empty; actual orchestrator and network validator",
+  "calls": [
+    {
+      "operation": "verifyPrepared",
+      "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "operation": "inspectProject",
+      "id": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "restarting": false
+    },
+    {
+      "operation": "checkPorts"
+    },
+    {
+      "operation": "strict-network",
+      "options": {
+        "require_existing": true
+      }
+    },
+    {
+      "operation": "docker-observation",
+      "args": [
+        "network",
+        "ls",
+        "--format",
+        "{{.Name}}"
+      ]
+    },
+    {
+      "operation": "docker-observation",
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+        "drumee-boundary-network"
+      ]
+    },
+    {
+      "operation": "docker-observation",
+      "args": [
+        "ps",
+        "-a",
+        "--no-trunc",
+        "--filter",
+        "label=com.docker.compose.project=drumee-boundary",
+        "--format",
+        "{{.ID}}"
+      ]
+    },
+    {
+      "operation": "docker-observation",
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"restarting\":{{json .State.Restarting}},\"name\":{{json .Name}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"role\":{{json (index .Config.Labels \"org.drumee.infra.role\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"networks\":{{json .NetworkSettings.Networks}}}",
+        "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      ]
+    }
+  ]
+}

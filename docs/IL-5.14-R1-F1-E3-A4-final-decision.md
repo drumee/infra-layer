@@ -31,3 +31,8 @@ Exact command argv, source baseline, timestamps, UID/GID1000, exits and protecte
 No production deployment, merge, publication, tag, push, foreign-resource change, protected Docker change or downstream action. Mission-owned projectdrumee-il5-8169752d has no remaining containers/networks/image. A2 guard and actual historical acceptance harness bytes remain unchanged. Original failed reports remain intact.
 
 Residuals: SMTP_RECOVERY_UNQUALIFIED; H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED. Historical Debian H3 remains failed; no SMTP Internet delivery/spool recovery or Debian qualification is claimed. Original R1 MAJOR remains open. Owner-facing disposition: do not integrate this candidate; preserve for separately scoped causal correction and new qualification.
+
+
+## R5-F1 local follow-up
+
+R5-F1 FAILED_QUALIFICATION: first focused44-case run reports43 PASS/1 historical identity-error classification failure. No real Docker R5 requalification, Postfix work or push. Candidate remains local and unqualified. See [R5-F1 decision](IL-5.14-R1-F1-E3-A4-R5-F1-final-decision.md). Original A4 failure and raw evidence above remain unchanged.

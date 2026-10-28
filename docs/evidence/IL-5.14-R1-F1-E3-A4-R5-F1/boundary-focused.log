@@ -1,0 +1,311 @@
+TAP version 13
+# Subtest: R4-01 valid operational attachment remains accepted
+ok 1 - R4-01 valid operational attachment remains accepted
+  ---
+  duration_ms: 9.096071
+  type: 'test'
+  ...
+# Subtest: R4-02 exact restarting target admits only pre-recreation authorization
+ok 2 - R4-02 exact restarting target admits only pre-recreation authorization
+  ---
+  duration_ms: 1.665125
+  type: 'test'
+  ...
+# Subtest: R4-03 authorized restarting target is never operationally ready
+ok 3 - R4-03 authorized restarting target is never operationally ready
+  ---
+  duration_ms: 3.309098
+  type: 'test'
+  ...
+# Subtest: R4-04 complete replacement is operationally valid
+ok 4 - R4-04 complete replacement is operationally valid
+  ---
+  duration_ms: 2.70481
+  type: 'test'
+  ...
+# Subtest: R4-05 undeclared extra network is never authorized for recovery
+ok 5 - R4-05 undeclared extra network is never authorized for recovery
+  ---
+  duration_ms: 1.647336
+  type: 'test'
+  ...
+# Subtest: R4-06 foreign owner is refused
+ok 6 - R4-06 foreign owner is refused
+  ---
+  duration_ms: 1.647286
+  type: 'test'
+  ...
+# Subtest: R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+ok 7 - R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+  ---
+  duration_ms: 6.321501
+  type: 'test'
+  ...
+# Subtest: R4-08 wrong service is refused
+ok 8 - R4-08 wrong service is refused
+  ---
+  duration_ms: 1.639819
+  type: 'test'
+  ...
+# Subtest: R4-09 wrong project is refused
+ok 9 - R4-09 wrong project is refused
+  ---
+  duration_ms: 1.20452
+  type: 'test'
+  ...
+# Subtest: R4-10 Docker command failure is fatal
+ok 10 - R4-10 Docker command failure is fatal
+  ---
+  duration_ms: 0.871477
+  type: 'test'
+  ...
+# Subtest: R4-11 disappearance/substitution and duplicate authorization fail
+ok 11 - R4-11 disappearance/substitution and duplicate authorization fail
+  ---
+  duration_ms: 0.887914
+  type: 'test'
+  ...
+# Subtest: R4-12 final missing required membership refuses readiness and authorization
+ok 12 - R4-12 final missing required membership refuses readiness and authorization
+  ---
+  duration_ms: 1.71559
+  type: 'test'
+  ...
+# Subtest: R4-13 final extra membership refuses readiness
+ok 13 - R4-13 final extra membership refuses readiness
+  ---
+  duration_ms: 1.111074
+  type: 'test'
+  ...
+# Subtest: R4-14 duplicate role resolving to same network is not multihoming
+ok 14 - R4-14 duplicate role resolving to same network is not multihoming
+  ---
+  duration_ms: 8.679609
+  type: 'test'
+  ...
+# Subtest: R4-15 recovery cannot select a one-off job or omit an inventoried resource
+ok 15 - R4-15 recovery cannot select a one-off job or omit an inventoried resource
+  ---
+  duration_ms: 1.35709
+  type: 'test'
+  ...
+# Subtest: R4-16 ordinary pre-creation behavior remains compatible
+ok 16 - R4-16 ordinary pre-creation behavior remains compatible
+  ---
+  duration_ms: 0.740918
+  type: 'test'
+  ...
+# Subtest: R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+ok 17 - R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+  ---
+  duration_ms: 1.58515
+  type: 'test'
+  ...
+# Subtest: R4 rollback authorization requires verified failed/active candidate identity before network admission
+not ok 18 - R4 rollback authorization requires verified failed/active candidate identity before network admission
+  ---
+  duration_ms: 7.98136
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/rollback-authorization.test.js:46:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      Comparison {
+    +   code: 'ROLLBACK_OPERATION_NOT_AUTHORIZED'
+    -   code: 'RUNTIME_IDENTITY_MISMATCH'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    code: 'RUNTIME_IDENTITY_MISMATCH'
+  actual:
+  error: 'ROLLBACK_OPERATION_NOT_AUTHORIZED'
+  stack: |-
+    Object.fail (/home/somanos/github/infra-layer/lib/filesystem-safety.js:5:43)
+    authorizeRollback (/home/somanos/github/infra-layer/internal/rollback-authorization.js:8:154)
+    run (/home/somanos/github/infra-layer/test/unit/rollback-authorization.test.js:54:59)
+    assert.throws.code (/home/somanos/github/infra-layer/test/unit/rollback-authorization.test.js:58:111)
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/somanos/github/infra-layer/test/unit/rollback-authorization.test.js:58:98)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/somanos/github/infra-layer/test/unit/rollback-authorization.test.js:58:98)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: R5 E1-E4 authorized volatile-state rollback admits the exact target, recreates and finishes strict ready
+ok 19 - R5 E1-E4 authorized volatile-state rollback admits the exact target, recreates and finishes strict ready
+  ---
+  duration_ms: 45.791281
+  type: 'test'
+  ...
+# Subtest: R5 E7 strict readiness still refuses the actual restart-backoff metadata
+ok 20 - R5 E7 strict readiness still refuses the actual restart-backoff metadata
+  ---
+  duration_ms: 35.594574
+  type: 'test'
+  ...
+# Subtest: R5 E8 undeclared attachment refuses rollback before recreation
+ok 21 - R5 E8 undeclared attachment refuses rollback before recreation
+  ---
+  duration_ms: 15.92241
+  type: 'test'
+  ...
+# Subtest: R5 E9 foreign owner refuses rollback before recreation
+ok 22 - R5 E9 foreign owner refuses rollback before recreation
+  ---
+  duration_ms: 13.856594
+  type: 'test'
+  ...
+# Subtest: R5 E10 wrong project refuses rollback before recreation
+ok 23 - R5 E10 wrong project refuses rollback before recreation
+  ---
+  duration_ms: 14.706669
+  type: 'test'
+  ...
+# Subtest: R5 E11 wrong service cannot replace journal target
+ok 24 - R5 E11 wrong service cannot replace journal target
+  ---
+  duration_ms: 14.459767
+  type: 'test'
+  ...
+# Subtest: R5 E12 wrong network ID refuses before recreation
+ok 25 - R5 E12 wrong network ID refuses before recreation
+  ---
+  duration_ms: 16.101406
+  type: 'test'
+  ...
+# Subtest: R5 E12 incorrect container ID refuses before recreation
+ok 26 - R5 E12 incorrect container ID refuses before recreation
+  ---
+  duration_ms: 14.236522
+  type: 'test'
+  ...
+# Subtest: R5 E13 legitimate owner labels cannot authorize wrong canonical name
+ok 27 - R5 E13 legitimate owner labels cannot authorize wrong canonical name
+  ---
+  duration_ms: 15.246102
+  type: 'test'
+  ...
+# Subtest: R5 E14 duplicate plausible service targets fail closed
+ok 28 - R5 E14 duplicate plausible service targets fail closed
+  ---
+  duration_ms: 14.524375
+  type: 'test'
+  ...
+# Subtest: R5 E15 an unverified candidate fails before recreation
+ok 29 - R5 E15 an unverified candidate fails before recreation
+  ---
+  duration_ms: 14.241756
+  type: 'test'
+  ...
+# Subtest: R5 E16 unauthorized rollback cannot reach admission
+ok 30 - R5 E16 unauthorized rollback cannot reach admission
+  ---
+  duration_ms: 13.257816
+  type: 'test'
+  ...
+# Subtest: R5 E17 recover true alone retains the strict normal activation preflight
+ok 31 - R5 E17 recover true alone retains the strict normal activation preflight
+  ---
+  duration_ms: 14.821485
+  type: 'test'
+  ...
+# Subtest: R5 failed-service evidence is mandatory rather than inferred from labels
+ok 32 - R5 failed-service evidence is mandatory rather than inferred from labels
+  ---
+  duration_ms: 17.898327
+  type: 'test'
+  ...
+# Subtest: R5 E19 recreation failure remains fatal and never writes a successful active event
+ok 33 - R5 E19 recreation failure remains fatal and never writes a successful active event
+  ---
+  duration_ms: 27.720799
+  type: 'test'
+  ...
+# Subtest: R5 E20 missing final membership fails after recreation
+ok 34 - R5 E20 missing final membership fails after recreation
+  ---
+  duration_ms: 33.883748
+  type: 'test'
+  ...
+# Subtest: R5 E21 extra final attachment fails after recreation
+ok 35 - R5 E21 extra final attachment fails after recreation
+  ---
+  duration_ms: 33.298571
+  type: 'test'
+  ...
+# Subtest: R5 E22 unhealthy recreated service is refused
+ok 36 - R5 E22 unhealthy recreated service is refused
+  ---
+  duration_ms: 27.154714
+  type: 'test'
+  ...
+# Subtest: R5 configured exposure stays exact when live restart ports are empty
+ok 37 - R5 configured exposure stays exact when live restart ports are empty
+  ---
+  duration_ms: 14.175102
+  type: 'test'
+  ...
+# Subtest: R5 live exposure cannot expand beyond configured bindings
+ok 38 - R5 live exposure cannot expand beyond configured bindings
+  ---
+  duration_ms: 14.660098
+  type: 'test'
+  ...
+# Subtest: R5 authoritative inspection, not initial snapshot, decides narrow restarting eligibility
+ok 39 - R5 authoritative inspection, not initial snapshot, decides narrow restarting eligibility
+  ---
+  duration_ms: 14.623348
+  type: 'test'
+  ...
+# Subtest: R5 endpoint conflict is not an empty-endpoint accommodation
+ok 40 - R5 endpoint conflict is not an empty-endpoint accommodation
+  ---
+  duration_ms: 15.841036
+  type: 'test'
+  ...
+# Subtest: R5 direct internal rollback wrapper cannot evade compatibility checks
+ok 41 - R5 direct internal rollback wrapper cannot evade compatibility checks
+  ---
+  duration_ms: 13.978512
+  type: 'test'
+  ...
+# Subtest: R5 failed candidate revision cannot substitute another source identity
+ok 42 - R5 failed candidate revision cannot substitute another source identity
+  ---
+  duration_ms: 15.073011
+  type: 'test'
+  ...
+# Subtest: R5 E18 unrelated restarting service cannot inherit failed-service endpoint permission
+ok 43 - R5 E18 unrelated restarting service cannot inherit failed-service endpoint permission
+  ---
+  duration_ms: 15.400065
+  type: 'test'
+  ...
+# Subtest: R5 changed configured bindings or mounts at authoritative reinspection cannot be substituted
+ok 44 - R5 changed configured bindings or mounts at authoritative reinspection cannot be substituted
+  ---
+  duration_ms: 15.42083
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 43
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 570.613585

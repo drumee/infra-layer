@@ -4,6 +4,8 @@ const F = require("../lib/filesystem-safety");
 const P = require("../lifecycle/preparation");
 function authorizeRollback(prepared, observed, prior, pending, context, driver, checkObserved) {
   if (context.authorized !== true || !prior || pending?.phase !== "recovery-required" || !/^[a-f0-9]{64}$/.test(pending.revision || "") || !observed.length) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
+  const service = pending.details?.service;
+  if (!Object.hasOwn(prepared.compose.services, service) || !observed.some(value => value.service === service && value.revision === pending.revision)) F.fail("ROLLBACK_OPERATION_NOT_AUTHORIZED");
   const candidates = new Map();
   for (const revision of new Set([prior.revision, pending.revision])) {
     const source = JSON.parse(F.read(path.join(prepared.root, "candidates", revision, "prepared.json")));
@@ -16,9 +18,14 @@ function authorizeRollback(prepared, observed, prior, pending, context, driver, 
     const candidate = candidates.get(resource.revision);
     if (!candidate || resource.name !== `/${prepared.project}-${resource.service}-1` || !Object.hasOwn(prepared.compose.services, resource.service)) F.fail("RUNTIME_IDENTITY_MISMATCH");
     if (resource.role !== candidate.source.compose.services[resource.service]?.labels?.["org.drumee.infra.role"]) F.fail("RUNTIME_IDENTITY_MISMATCH");
-    checkObserved(candidate.source, resource, candidate.images);
+    checkObserved(candidate.source, { ...resource, ports: resource.configured_ports }, candidate.images);
+    // Live bindings may disappear in restart backoff, but never expand exposure.
+    for (const [port, bindings] of Object.entries(resource.ports || {})) {
+      if ((bindings || []).some(binding => !(resource.configured_ports?.[port] || []).some(expected => expected.HostIp === binding.HostIp && expected.HostPort === binding.HostPort))) F.fail("UNEXPECTED_SERVICE_EXPOSURE");
+    }
   }
   // The adapter rechecks the exact ID/state snapshot and complete network set.
-  driver.authorizeRecoveryNetworks(prepared.composition, observed);
+  driver.authorizeRecoveryNetworks(prepared.composition, observed.map(value => ({ ...value, recovery_endpoint: value.service === service && value.revision === pending.revision })));
+  return { service };
 }
 module.exports = { authorizeRollback };
