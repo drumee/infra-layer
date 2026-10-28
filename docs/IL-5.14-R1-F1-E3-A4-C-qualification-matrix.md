@@ -1,0 +1,24 @@
+# Qualification inventory and dependencies — Gate C PASS
+
+Candidate executable fd708aa, checkpoint8452b9b; environment and SHA256 inputs in baseline.json. No functional correction during qualification. The recorder refuses changed frozen inputs and any command after a mandatory failure. Every execution receives an exact receipt in execution.jsonl; no expected-success gate may be silently repeated. Retained evidence requires source and harness applicability, not merely a previous PASS statement.
+
+| Gate | Required coverage | Execution or retention decision |
+|---|---|---|
+| A | Repository, source, evidence, instructions | Verified; baseline.json and baseline.md |
+| B | Narrow owner acceptance | Explicit present owner decision recorded separately |
+| C | Scope and dependencies | This inventory; prospective obligations are not PASS results |
+| D | Unit, contracts, assertion integrity and execution context | Fresh npm test and npm run test:contracts; full unit includes guard54, refusal/reachability mutations, sole authorized historical replacement, secure loader, diagnostics, error taxonomy, identity, ownership, network membership, recovery and Promise rejection. No new historical replacement authorized |
+| E | Network identity/membership security and real rollback | R5 runtime/harness exact equality permits retaining55 focused/38 real Docker assertions with cleanup and independent closure. E2 whole docker.js differs (R5 recovery path); conservatively run fresh membership-real.cjs, real-docker.cjs and container-health.cjs under separate secure owned diagnostic directories after lower-cost gates pass |
+| F | Gateway17 integration | Canonical npm run test:gateway planned; prior A2 gateway pass predates R5 runtime change. No blanket application of that result |
+| G | Canonical Services, HTTP capture, observer | Retain P2-F1 exact executable and harness fd708aa:17/17, campaign0,30 observer controls,18 diagnostic preflight, favorable independent observer/campaign reviews, cleanup. No new run claimed |
+| H | Lifecycle16, HTTPS/jobs4, complete application | Fresh npm run test:lifecycle, npm run test:lifecycle:gateway and canonical application with verified explicit network client/LAN/host nginx. R5's narrow38 assertions do not qualify the entire application. Preserve A2 failed36-assertion application. Test fixture and runners unchanged since A2 but exercised runtime changed |
+| I | Trusted tools, filesystem, redaction, supply chain, journals | Fresh test:system-tools and Python security suite; unit coverage for diagnostic/redaction and propagation; installed-consumer security included with new package. Prior PATH mitigations retained, no new exemptions |
+| J | Dependency audits and ESLint | Fresh production/development/private application fixture audits, lock graph and lint. Historical28 warnings/0 new is reference only |
+| K | Package and consumer | Fresh test:package, unpublished npm pack, member/source verification, SHA256/inventory and size; offline CommonJS/API installed consumer, installed security4 and strict TypeScript NodeNext consumer8+37. Existing exports/types/runtime dependencies must be preserved; alpha.3 never republished |
+| L | Independent final local security review | Separate reviewer after technical qualification: R1-001 local closure required; A1/R5/observer retained only through verified applicability; historical Postfix ROOT_CAUSE_UNDETERMINED — OWNER_ACCEPTED |
+| M | Hosted readiness | Read-only existing PR/check readback and exact diff; Quality unit/contracts/eslint/dependencies/packaging, CodeQL (JS/TS/Python/actions and Security result), SonarCloud unchanged gate. Local commits unpushed: HOSTED_CI_NOT_EXECUTED_NO_PUSH_AUTHORIZATION |
+| N | Coherent final qualification/handoff | Consolidate only actual/retained compatible evidence; separate executable and final report checkpoint; no remote authorization |
+
+Order: baseline/owner/inventory; unit and contracts; focused guards if needed only for additional diagnostic evidence (included suite counts never added twice); lint, audits, filesystem and package controls; bounded actual Docker/security and network checks; Gateway/lifecycle/application; final independent security review; hosted readiness and final freeze. Stop immediately at the first mandatory failure, preserve it and do not start remaining gates. Read-only attribution, cleanup and failure reporting remain permitted. No source correction or additional accepted risk is inferred.
+
+Dependencies are the locked existing graph (Nodemailer10.1.7, smtp-server3.19.24, nested Nodemailer10.1.4). Prior evidence versions Node22.22.0/Docker29.2.0 agree with current; P2-F1 capture image Node22.23.3 is recorded in its own evidence. Relevant input comparisons and historical manifests are recorded in baseline.json. Fresh package/type checks are necessary because R5 changed runtime files after A2's package artifact. No old package hash identifies this candidate.

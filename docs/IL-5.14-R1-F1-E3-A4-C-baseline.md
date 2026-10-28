@@ -1,0 +1,11 @@
+# Convergence baseline — Gate A PASS
+
+Repository drumee/infra-layer, branch fix/il514-c1-network-attachment-identity, clean starting checkpoint `8452b9be9cab7851ea058abd8b9bf90a4dd77f4e`. Qualified executable `fd708aaf914accc93aa42fcd705740db390721d5` is an ancestor; every subsequent changed path is under docs/. All non-documentation tracked files are frozen by SHA256 in [baseline](evidence/IL-5.14-R1-F1-E3-A4-C/baseline.json), including runtime JavaScript, declarations, tests and diagnostic harnesses, Docker fixtures, manifests/locks, package/lint scripts and CI configuration. Installed lock hash is also recorded. No functional input change is authorized during this campaign.
+
+Node22.22.0/Undici6.23.0, npm11.18.0, Docker29.2.0, Linux amd64, UID/GID1000. Commands record actual timestamps, exact argv, exit codes, private logs, protected Docker configuration and frozen-source readback. Private attempt directory and attempt identity are in baseline.json. No credential or secret payload is required. The evidence recorder is a new documentation-only command receipt utility, not a runtime/test input.
+
+Read-only PR20 verification: OPEN/main, head `cd9b8322bd7eef3b4094710ec4ea26be94f08922`, updated_at 2026-10-26T14:58:20Z. It has not been changed. All local commits are retained. Checkpoint and executable identities are distinct.
+
+P2-F1 final decision, independent observer/campaign reviews, residual-risk package, R5 E1 decision, original R1-001 independent review, F1/E2/A2/A4 qualification history and repository AGENTS.md were inspected. Six historical manifests verify 288 entries without mismatch (E2 19, A2 51, R5 E1 26, P1 35, P2 49, P2-F1 108). Original failures remain preserved; manifest verification is evidence integrity, not blanket evidence applicability. The precise changed-input lists relative to E2/A2/R5 are recorded in baseline.json. Runtime, canonical suites, guards, package inputs and tooling match R5; only later test/diagnostics additions differ.
+
+Execution inventory and reuse decisions are in [qualification matrix](IL-5.14-R1-F1-E3-A4-C-qualification-matrix.md). Historical Postfix cause remains ROOT_CAUSE_UNDETERMINED; see the separate explicit owner decision.
