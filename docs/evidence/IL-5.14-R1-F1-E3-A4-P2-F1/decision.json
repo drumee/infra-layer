@@ -1,0 +1,625 @@
+{
+  "status": "AWAITING_OWNER_RISK_DECISION",
+  "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "starting_checkpoint": "21e22681ce5c6f8cc0bbccc791c5adf4f5c12be5",
+  "qualified_R5": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "partial_status": "OBSERVER_QUALIFIED",
+  "technical_local_status": "CANONICAL_SERVICES_QUALIFIED_ROOT_CAUSE_UNDETERMINED",
+  "historical_Postfix": "ROOT_CAUSE_UNDETERMINED",
+  "historical_Postfix_technically_closed": false,
+  "observer_finding": "P2-IR-1 FINDING_CLOSED",
+  "campaign_review": "CAMPAIGN_EVIDENCE_VALID",
+  "owner_decision": {
+    "status": "PENDING_OWNER_DECISION",
+    "selected_option": null,
+    "risk_accepted": false,
+    "options": [
+      "A Continue investigation",
+      "B Accept residual historical uncertainty",
+      "C Reject candidate"
+    ]
+  },
+  "handoff": "RECOVERY_QUALIFIED_POSTFIX_PENDING_OWNER_RISK_DECISION",
+  "gates": [
+    {
+      "identifier": "A",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [
+        [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        [
+          "node",
+          "--test",
+          "test/diagnostics/observer-shutdown/regression.test.cjs"
+        ]
+      ],
+      "exit_codes_and_signals": [
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null,
+          "expected_defective_child_code": 1
+        }
+      ],
+      "test_counts": {
+        "regression": 1
+      },
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "P2-IR-1 exact source rejection and historical records reconstructed",
+      "evidence_paths": [
+        "baseline.json",
+        "historical-integrity.json",
+        "exit143-regression.log",
+        "historical-regression/historical.jsonl"
+      ],
+      "remaining_limitations": "Old CLI PID/kill result/separate exit/stderr EOF not backfilled; new current direct-child contract separately verified"
+    },
+    {
+      "identifier": "B",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [],
+      "exit_codes_and_signals": [],
+      "test_counts": {},
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "Strict lifecycle/intent/identity/window/stream/failure contract defined",
+      "evidence_paths": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-F1-shutdown-contract.md"
+      ],
+      "remaining_limitations": "COLLECTING is spawn/pipes, not daemon subscription acknowledgment; normal success still requires final coverage"
+    },
+    {
+      "identifier": "C",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [],
+      "exit_codes_and_signals": [],
+      "test_counts": {},
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "Minimal authorized test-only correction; numeric143 never global bypass",
+      "evidence_paths": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-F1-implementation.md",
+        "recovery-impact.json"
+      ],
+      "remaining_limitations": "Duplicate worker-protocol abort may signal same held child fatally; target pid naming documented; no production edit"
+    },
+    {
+      "identifier": "D",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [
+        [
+          "node",
+          "--test",
+          "test/diagnostics/observer-shutdown/matrix.test.cjs"
+        ]
+      ],
+      "exit_codes_and_signals": [
+        {
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "test_counts": {
+        "pass": 30,
+        "fail": 0
+      },
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "D1\u2013D26 plus4 extra lifecycle/identity/coverage controls",
+      "evidence_paths": [
+        "shutdown-matrix.log",
+        "mutation-results.json",
+        "shutdown-matrix/"
+      ],
+      "remaining_limitations": "Deterministic models do not terminate host processes; actual direct Docker behavior separately tested"
+    },
+    {
+      "identifier": "E",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [
+        [
+          "node",
+          "--test",
+          "test/diagnostics/observer-shutdown/regression.test.cjs"
+        ],
+        [
+          "node",
+          "--test",
+          "test/diagnostics/observer-shutdown/matrix.test.cjs"
+        ],
+        [
+          "node",
+          "--test",
+          "test/diagnostics/observer-shutdown/protocol.test.cjs"
+        ],
+        [
+          "node",
+          "--test",
+          "test/diagnostics/observer-shutdown/docker-probe.test.cjs"
+        ],
+        [
+          "node",
+          "--test",
+          "test/diagnostics/postfix-http/diagnostic.test.cjs",
+          "test/diagnostics/services-capture/preflight.test.cjs"
+        ],
+        [
+          "node",
+          "--test",
+          "test/unit/harness-preservation.test.js",
+          "test/unit/harness-reachability.test.js",
+          "test/unit/refusal-effectiveness.test.js"
+        ]
+      ],
+      "exit_codes_and_signals": [
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "test_counts": {
+        "original": 1,
+        "matrix": 30,
+        "protocol": 8,
+        "actual_Docker": 2,
+        "diagnostic": 18,
+        "guards": 54
+      },
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "Required focused execution order fully passes",
+      "evidence_paths": [
+        "execution.jsonl",
+        "docker-probes/",
+        "protocol-bound-receipt.json",
+        "../../IL-5.14-R1-F1-E3-A4-P2-F1-focused-qualification.md"
+      ],
+      "remaining_limitations": "Expected historical child1 and stderr-negative child1 are asserted failures, not suppressed; watchdog refusal modeled"
+    },
+    {
+      "identifier": "F",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [
+        [
+          "node",
+          "--test",
+          "test/diagnostics/observer-shutdown/regression.test.cjs"
+        ],
+        [
+          "node",
+          "--test",
+          "test/diagnostics/observer-shutdown/matrix.test.cjs"
+        ],
+        [
+          "node",
+          "--test",
+          "test/diagnostics/observer-shutdown/protocol.test.cjs"
+        ]
+      ],
+      "exit_codes_and_signals": [
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "test_counts": {
+        "independent_original": 1,
+        "independent_matrix": 30,
+        "independent_protocol": 8
+      },
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "Independent P2-IR-1 FINDING_CLOSED before campaign",
+      "evidence_paths": [
+        "independent-observer-review/decision.json",
+        "independent-observer-review/execution.json",
+        "independent-observer-review/independent-review.md"
+      ],
+      "remaining_limitations": "Reviewer inspected actualDocker2/diagnostic18/guards54; no independent Docker/Services rerun; closure only observer finding"
+    },
+    {
+      "identifier": "G",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [
+        [
+          "node",
+          "test/diagnostics/services-capture/campaign.cjs",
+          "/tmp/drumee-p2f1-ncv3fhrl/canonical-attempt-1"
+        ]
+      ],
+      "exit_codes_and_signals": [
+        {
+          "campaign_code": 0,
+          "campaign_signal": null,
+          "Services_code": 0,
+          "Services_signal": null,
+          "direct_CLI_codes": [
+            143,
+            143
+          ],
+          "direct_CLI_signals": [
+            null,
+            null
+          ],
+          "Node_wrapper_codes": [
+            0,
+            0
+          ]
+        }
+      ],
+      "test_counts": {
+        "Services_pass": 17,
+        "fail": 0
+      },
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "CANONICAL_SERVICES_DIAGNOSTIC_PASS",
+      "evidence_paths": [
+        "canonical-attempt-1/",
+        "canonical-attempt-1.log",
+        "campaign-summary.json",
+        "cleanup-readback.json"
+      ],
+      "remaining_limitations": "One campaign; source/expectations/order unchanged; observed timing differs historically"
+    },
+    {
+      "identifier": "H",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [],
+      "exit_codes_and_signals": [],
+      "test_counts": {},
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "ROOT_CAUSE_UNDETERMINED interpretation supported",
+      "evidence_paths": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-F1-causal-assessment.md"
+      ],
+      "remaining_limitations": "Current PASS does not explain original active GET or technically close Postfix"
+    },
+    {
+      "identifier": "I",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [
+        [
+          "npm",
+          "test"
+        ],
+        [
+          "npm",
+          "run",
+          "test:contracts"
+        ]
+      ],
+      "exit_codes_and_signals": [
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "test_counts": {
+        "unit_pass": 354,
+        "contracts_pass": 24,
+        "fail": 0,
+        "diagnostic_counts": "See E; guards subset of unit, not added"
+      },
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "Current affected unit/contracts and diagnostic safeguards qualify",
+      "evidence_paths": [
+        "full-unit.log",
+        "contracts.log",
+        "execution.jsonl",
+        "../../IL-5.14-R1-F1-E3-A4-P2-F1-regression-qualification.md"
+      ],
+      "remaining_limitations": "No skipped test or borrowed historical total; diagnostics outside unit counted separately"
+    },
+    {
+      "identifier": "J",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [
+        [
+          "git",
+          "diff",
+          "72f4c67",
+          "--",
+          "lifecycle"
+        ]
+      ],
+      "exit_codes_and_signals": [
+        {
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "test_counts": {
+        "new_R5_Docker_runs": 0
+      },
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "R5_QUALIFIED_EXECUTABLE_PRESERVED",
+      "evidence_paths": [
+        "recovery-impact.json",
+        "security-check.json",
+        "../../IL-5.14-R1-F1-E3-A4-P2-F1-recovery-impact.md"
+      ],
+      "remaining_limitations": "R5 historical55/354/24/38 retained at72f4c67; no new R5 Docker run; future R1 final-head review outstanding"
+    },
+    {
+      "identifier": "K",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [],
+      "exit_codes_and_signals": [],
+      "test_counts": {
+        "independent_campaign_or_Docker_reruns": 0
+      },
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "CAMPAIGN_EVIDENCE_VALID independent review",
+      "evidence_paths": [
+        "independent-campaign-review/decision.json",
+        "independent-campaign-review/inspection.json",
+        "independent-campaign-review/read-only-commands.json"
+      ],
+      "remaining_limitations": "No historical cause closure or owner risk acceptance"
+    },
+    {
+      "identifier": "L",
+      "status": "PASS",
+      "source_revision": "fd708aaf914accc93aa42fcd705740db390721d5",
+      "environment": {
+        "host": "Local Linux checkout; UID/GID1000; isolated loopback and owned Docker fixtures",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and process.start/server records"
+      },
+      "exact_commands": [],
+      "exit_codes_and_signals": [],
+      "test_counts": {},
+      "observer_lifecycle": "See observer-contract.cjs and canonical-attempt-1; current workers TERMINATED after full contract; original P2 attribution gaps preserved",
+      "collection_completeness": "Valid17 cases/9 operations/30 handlers/3 capture incarnations; main18 plus core11 IDs and ephemeral3 lifecycles; both streams closed",
+      "shutdown_intent": "Private controller IPC then per-worker recorded exact direct-child SIGTERM intent before sendtrue; CLI143/null after window, Node wrappers0",
+      "diagnostic_attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "cleanup_evidence": "cleanup-readback.json: empty owned sets, four PIDs absent, foreign sets unchanged",
+      "independent_review_disposition": {
+        "observer": "FINDING_CLOSED",
+        "campaign": "CAMPAIGN_EVIDENCE_VALID"
+      },
+      "disposition": "Residual-risk package complete; owner decision PENDING",
+      "evidence_paths": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-F1-residual-risk-decision.md"
+      ],
+      "remaining_limitations": "No option selected; explicit owner decision required; no parent resumption/push inferred"
+    }
+  ],
+  "no_push": true,
+  "no_post_qualification_executable_change": true
+}

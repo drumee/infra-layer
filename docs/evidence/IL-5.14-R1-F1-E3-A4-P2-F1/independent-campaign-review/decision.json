@@ -1,0 +1,52 @@
+{
+  "disposition": "CAMPAIGN_EVIDENCE_VALID",
+  "gate": "K",
+  "gate_status": "PASS",
+  "reviewed_source": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+  "prior_observer_finding": "P2-IR-1 FINDING_CLOSED at same executable before campaign",
+  "campaign": "CANONICAL_SERVICES_DIAGNOSTIC_PASS",
+  "services": {
+    "pass": 17,
+    "fail": 0,
+    "exit": 0
+  },
+  "whole_campaign": {
+    "exit": 0,
+    "first_failure": null
+  },
+  "unit": {
+    "pass": 354,
+    "fail": 0,
+    "exit": 0
+  },
+  "contracts": {
+    "pass": 24,
+    "fail": 0,
+    "exit": 0
+  },
+  "observer_identity_pairs": [
+    {
+      "observer": 2554111,
+      "direct_cli": 2554151
+    },
+    {
+      "observer": 2554112,
+      "direct_cli": 2554152
+    }
+  ],
+  "collection": {
+    "main_created": 18,
+    "main_required_core_ids": 11,
+    "ephemeral_created": 3,
+    "all_required_lifecycles_complete": true,
+    "all_required_streams_closed": true
+  },
+  "cleanup": "PASS; exact-owner resource and PID readback inspected",
+  "historical_Postfix": "ROOT_CAUSE_UNDETERMINED; not technically closed",
+  "residual_risk_package": "Accurately prepared; explicit owner decision PENDING; no option selected",
+  "handoff": "RECOVERY_QUALIFIED_POSTFIX_PENDING_OWNER_RISK_DECISION",
+  "independent_tests_Docker_or_campaign_runs": 0,
+  "new_major_or_blocker_findings": [],
+  "reviewed_at": "2026-10-28T15:07:18.194419+00:00"
+}

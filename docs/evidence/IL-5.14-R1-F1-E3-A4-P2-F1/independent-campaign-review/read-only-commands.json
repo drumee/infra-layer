@@ -1,0 +1,51 @@
+[
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit": 0,
+    "stdout": "fd708aaf914accc93aa42fcd705740db390721d5\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--name-only",
+      "fd708aa",
+      "--",
+      "test"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--name-only",
+      "72f4c67",
+      "HEAD",
+      "--",
+      "lifecycle",
+      "adapters",
+      "capabilities",
+      "lib",
+      "internal",
+      "test/services",
+      "test/support",
+      "test/unit",
+      "test/network-attachments",
+      "package.json",
+      "package-lock.json",
+      "tooling",
+      ".github"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

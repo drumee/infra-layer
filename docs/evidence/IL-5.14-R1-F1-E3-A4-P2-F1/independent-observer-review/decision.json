@@ -1,0 +1,45 @@
+{
+  "disposition": "FINDING_CLOSED",
+  "gate": "F",
+  "gate_status": "PASS",
+  "finding": "P2-IR-1",
+  "reviewed_source": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "qualified_recovery": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "independent_tests": {
+    "original_actual_module_regression": {
+      "pass": 1,
+      "fail": 0,
+      "exit": 0
+    },
+    "shutdown_matrix": {
+      "pass": 30,
+      "fail": 0,
+      "exit": 0
+    },
+    "protocol_controls": {
+      "pass": 8,
+      "fail": 0,
+      "exit": 0
+    }
+  },
+  "inspected_implementation_tests": {
+    "actual_Docker_probes": "2/2 PASS; direct CLI143 and actual stderr-fatal control",
+    "existing_transport_preflight": "18/18 PASS",
+    "assertion_guards": "54/54 PASS"
+  },
+  "independent_Docker_or_Services_runs": 0,
+  "new_major_or_blocker_findings": [],
+  "scope": "Original observer shutdown classification defect only; canonical campaign not executed/reviewed yet; historical Postfix finding not closed",
+  "nonblocking_precision": [
+    "Classifier duplicate refusal must be distinguished from fatal same-child abort cleanup on duplicate IPC",
+    "pid in target-specific event fields overrides logger base pid; observer_pid/cli_pid, role/process_instance and receipts must be used to distinguish emitter/target"
+  ],
+  "limitations": [
+    "Most mutation failures are deterministic lifecycle simulations, not termination of real host processes",
+    "Actual Docker direct-child positive/stderr controls inspected from implementation evidence, not rerun by reviewer",
+    "COLLECTING means spawn/pipes, not Docker subscription acknowledgment; final required coverage is essential",
+    "Timeout refusal is modeled; no successful cleanup of an uncooperative SIGTERM-ignoring process is claimed",
+    "Observer qualification does not qualify Services or explain historical Postfix failure"
+  ],
+  "reviewed_at": "2026-10-28T14:56:45.286463+00:00"
+}

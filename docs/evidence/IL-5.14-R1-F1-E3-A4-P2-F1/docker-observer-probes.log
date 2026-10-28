@@ -1,0 +1,23 @@
+TAP version 13
+# F1_DOCKER_PROBE_OUTPUT /tmp/drumee-observer-docker-cAObsX
+# Subtest: F1 direct Docker CLI requested SIGTERM actually reports143 and qualifies
+ok 1 - F1 direct Docker CLI requested SIGTERM actually reports143 and qualifies
+  ---
+  duration_ms: 328.375237
+  type: 'test'
+  ...
+# Subtest: F1 actual Docker stderr/collection failure remains fatal and redacted
+ok 2 - F1 actual Docker stderr/collection failure remains fatal and redacted
+  ---
+  duration_ms: 59.125198
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 444.602508

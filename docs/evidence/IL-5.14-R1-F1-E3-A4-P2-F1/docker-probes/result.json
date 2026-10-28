@@ -1,0 +1,46 @@
+{
+  "project": "drumee-il2-test-2b87d93b",
+  "attempt": "F1-DOCKER-31fb75e8-7f60-4404-95f9-95bc9fef8a90",
+  "producer": "2f3403777343f460680ffb0bd336ebdb0778c6b2ac0015df9f09fbd3789290a1",
+  "result": {
+    "accepted": true,
+    "reason": "CONTROLLED_SIGTERM_COMPLETE",
+    "pid": 2546688,
+    "code": 143,
+    "signal": null,
+    "controlled": true,
+    "signal_sent": true,
+    "collection_complete": true,
+    "streams": {
+      "stdout": {
+        "ended": true,
+        "closed": true
+      },
+      "stderr": {
+        "ended": true,
+        "closed": true
+      }
+    },
+    "observer_pid": 2546681,
+    "wrapper_exit": {
+      "code": 0,
+      "signal": null
+    },
+    "wrapper_close": {
+      "code": 0,
+      "signal": null
+    },
+    "wrapper_streams": {
+      "stdout": {
+        "ended": true,
+        "closed": true
+      },
+      "stderr": {
+        "ended": true,
+        "closed": true
+      }
+    }
+  },
+  "failures": [],
+  "cleanup": "PASS"
+}
