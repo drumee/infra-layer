@@ -1,0 +1,22 @@
+# P1 bounded causal hypothesis matrix
+
+Gate C PASS. Status concerns the historical first causal event, not generic reproducibility.
+
+| Hypothesis/status | Supporting / contradicting evidence | Missing evidence / expected signature | Minimal observation; production involvement |
+|---|---|---|---|
+| H1 premature server close — UNDETERMINED | Socket failure compatible; no recorded close. A3 idle-close probes did not reproduce | Listening/connection/close/response chain; close before unfinished response | Server close request/completion, socket end/close and client failure; fixture only unless other evidence |
+| H2 process termination — UNDETERMINED | No original exit record; later healthy/restarts0 opposes sustained crash, cannot establish instant state | Process incarnation/exit and daemon die/kill preceding incomplete response | Process monitor plus Docker events/state; capture fixture |
+| H3 handler failure — UNDETERMINED | Handler is short synchronous writeHead/end with no awaited work; no exception recorded | Handler enter/throw vs return, response finished flags | Error monitor and rethrow with identical exception; fixture |
+| H4 readiness ordering — UNDETERMINED | Compose health and prior count show initial readiness, contradict initial-start-before-listen explanation; readiness for failing connection absent | Actual request before listening/health vs prior ready instance | Bound address, process generation, health and fetch start; orchestration |
+| H5 premature cleanup — UNDETERMINED | Canonical runner cleanup and test15 stop follow initial GET; that exact subsequent cleanup cannot initiate it | Any independent close/stop preceding response | Cleanup and daemon events, server shutdown; orchestration |
+| H6 Docker interruption — UNDETERMINED | dkim restarts, not capture; capture later healthy/restarts0; contemporaneous daemon events missing | capture die/stop/restart/destroy during HTTP request | Owner-filtered daemon events plus container IDs/health; no production change justified |
+| H7 endpoint mismatch — UNDETERMINED | Correct port worked before and after; no exact failing socket tuple | Actual destination, bound/published port and container identity | Client connect/socket and Docker mapping; test orchestration |
+| H8 network interruption — UNDETERMINED | Transport failure consistent but not diagnostic; no packet/interface evidence | Reset/error with receiver/process stable, or independently observed network event | Socket flags/cause and stable server/container; network involvement possible but unproved; no isolation change |
+| H9 timeout/abort — UNDETERMINED | No explicit signal/timeout in source; UND_ERR_SOCKET differs from normal abort signature | Original effective deadlines and signal state absent | Fetch signal state, socket/request error codes; client only absent new evidence |
+| H10 other verified cause — UNDETERMINED | A3 proposed stale idle pooled socket after synchronous7133ms restart, but two controlled variants did not reproduce | Exact pool socket reuse, receiver close sequence, first abnormal event | Correlated actual-source observation of post-DKIM GET; cannot justify retry/pool correction |
+
+No hypothesis is SUPPORTED by mere plausibility. Narrow subclaims above are contradicted by ordering, but the broad historical hypotheses remain UNDETERMINED.
+
+Selected observation: one actual-source SMTP/DKIM/Postfix sequence, as the smallest fixture that prepares a captured message, exercises the immediately preceding DKIM restart and reaches the failing initial count. New receiver/process/daemon observations distinguish H1/H2/H3/H5/H6 from a stable-server client transport failure. Confirming H1/H10 signature: previously used connection is associated with receiver close before incomplete client response, with process/container stable; require reliable ordering and no attribution across NAT without mapping. Contradicting result for this attempt: post-restart request completes with normal server handler/finish and client body completion. A success falsifies only the deterministic claim that this sequence always fails; it cannot resolve the original incident.
+
+Prerequisites: GatesA–E PASS, source committed/frozen, fresh attempt, owned resource safety. E1–E9 validate observations first. No full Services run. No second attempt unless first produces specific new causal evidence and a changed observation can answer a remaining question. Successful non-reproduction with no new cause requires stopping BLOCKED_EVIDENCE.

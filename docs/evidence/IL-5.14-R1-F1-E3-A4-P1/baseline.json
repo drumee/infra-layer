@@ -1,0 +1,124 @@
+{
+  "time": "2026-10-28T10:53:08.145988+00:00",
+  "repository": "git@github.com:drumee/infra-layer.git",
+  "branch": "fix/il514-c1-network-attachment-identity",
+  "head": "9d8eebbb107ad3d46a189ae9d7d308d436b8e7ce",
+  "qualified": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "qualified_is_parent": true,
+  "source_equivalence": {
+    "lifecycle": true,
+    "adapters": true,
+    "capabilities": true,
+    "lib": true,
+    "internal": true,
+    "test/services": true,
+    "test/support/harness-preservation.cjs": true,
+    "test/unit/harness-reachability.test.js": true,
+    "test/unit/harness-preservation.test.js": true,
+    "test/network-attachments": true
+  },
+  "private_directory": "/tmp/drumee-p1-jipiesom",
+  "node": {
+    "node": "22.22.0",
+    "acorn": "8.15.0",
+    "ada": "2.9.2",
+    "amaro": "1.1.4",
+    "ares": "1.34.6",
+    "brotli": "1.1.0",
+    "cjs_module_lexer": "2.1.0",
+    "cldr": "47.0",
+    "icu": "77.1",
+    "llhttp": "9.3.0",
+    "modules": "127",
+    "napi": "10",
+    "nbytes": "0.1.1",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.64.0",
+    "openssl": "3.5.4",
+    "simdjson": "3.13.0",
+    "simdutf": "6.4.2",
+    "sqlite": "3.50.4",
+    "tz": "2025b",
+    "undici": "6.23.0",
+    "unicode": "16.0",
+    "uv": "1.51.0",
+    "uvwasi": "0.0.23",
+    "v8": "12.4.254.21-node.33",
+    "zlib": "1.3.1-470d3a2",
+    "zstd": "1.5.7"
+  },
+  "docker": {
+    "Client": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "DefaultAPIVersion": "1.53",
+      "GitCommit": "0b9d198",
+      "GoVersion": "go1.25.6",
+      "Os": "linux",
+      "Arch": "amd64",
+      "BuildTime": "Mon Jan 26 19:26:07 2026",
+      "Context": "default"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "MinAPIVersion": "1.44",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.2.0",
+          "Details": {
+            "ApiVersion": "1.53",
+            "Arch": "amd64",
+            "BuildTime": "Mon Jan 26 19:26:07 2026",
+            "Experimental": "false",
+            "GitCommit": "9c62384",
+            "GoVersion": "go1.25.6",
+            "KernelVersion": "6.1.0-41-amd64",
+            "MinAPIVersion": "1.44",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.2.1",
+          "Details": {
+            "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.3.4",
+          "Details": {
+            "GitCommit": "v1.3.4-0-gd6d73eb8"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "9c62384",
+      "GoVersion": "go1.25.6",
+      "KernelVersion": "6.1.0-41-amd64",
+      "BuildTime": "2026-01-26T19:26:07.000000000+00:00"
+    }
+  },
+  "historical_logs": {
+    "/tmp/drumee-il514-r1-f1-e3-a2-nceslj52/integration.log": "e28aa1ded3cf6a7df838c79d82a3f1e1a337f3e7ba2a1e1ea429c242992c5d3b",
+    "/tmp/drumee-il514-r1-f1-e3-a3-pw32_qs8/services-focused-diagnostic.log": "3071573f3701b9ae9a9229dd979d05ec4c0f753b8ef1e9466502233ae0f863b1"
+  },
+  "receipt_status": "?? docs/evidence/IL-5.14-R1-F1-E3-A4-P1/",
+  "initial_status": ""
+}
