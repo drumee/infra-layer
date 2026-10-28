@@ -1,0 +1,52 @@
+# IL2_TRACE {"project":"drumee-il2-test-c8eb299f","event":"smtp.error","utc":"2026-10-27T16:16:26.315Z","mono_ns":"719900881122410","connection":3,"code":"EAUTH","command":"AUTH"}
+# IL2_TRACE {"project":"drumee-il2-test-c8eb299f","event":"test.compose.begin","utc":"2026-10-27T16:16:26.317Z","mono_ns":"719900882778865","operation":"restart","services":["dkim"]}
+# IL2_TRACE {"project":"drumee-il2-test-c8eb299f","event":"test.compose.end","utc":"2026-10-27T16:16:33.450Z","mono_ns":"719908015831444","operation":"restart","duration_ms":7133.044383}
+# Subtest: SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails
+ok 13 - SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails
+  ---
+  duration_ms: 872.601313
+  type: 'test'
+  ...
+# Subtest: OpenDKIM signs captured bytes with the persistent key and valid public TXT material
+ok 14 - OpenDKIM signs captured bytes with the persistent key and valid public TXT material
+  ---
+  duration_ms: 7135.184941
+  type: 'test'
+  ...
+# IL2_TRACE {"project":"drumee-il2-test-c8eb299f","event":"capture.read.error","utc":"2026-10-27T16:16:33.454Z","mono_ns":"719908020200985","code":"UND_ERR_SOCKET"}
+# Subtest: Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration
+not ok 15 - Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration
+  ---
+  duration_ms: 3.765283
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/services/services.test.js:151:1'
+  failureType: 'testCodeFailure'
+  error: 'fetch failed'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    node:internal/deps/undici/undici:14902:13
+    async capturedCount (/home/somanos/github/infra-layer/test/services/services.test.js:50:62)
+    async TestContext.<anonymous> (/home/somanos/github/infra-layer/test/services/services.test.js:152:79)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 59798.284921
+IL2_TRACE {"project":"drumee-il2-test-c8eb299f","event":"service.state","utc":"2026-10-27T16:16:44.427Z","mono_ns":"719918993308527","service":"mail","state":"\"running\" \"healthy\" false 0"}
+IL2_TRACE {"project":"drumee-il2-test-c8eb299f","event":"service.state","utc":"2026-10-27T16:16:44.438Z","mono_ns":"719919003737217","service":"dkim","state":"\"running\" \"healthy\" false 0"}
+IL2_TRACE {"project":"drumee-il2-test-c8eb299f","event":"service.state","utc":"2026-10-27T16:16:44.448Z","mono_ns":"719919014154868","service":"capture","state":"\"running\" \"healthy\" false 0"}
+IL2_TRACE {"project":"drumee-il2-test-c8eb299f","event":"runner.error","utc":"2026-10-27T16:16:44.507Z","mono_ns":"719919073177314","code":"IL2_SERVICE_TESTS_FAILED"}
+calstatedir=/' '--enable-threads' '--enable-largefile' '--with-libtool' '--enable-shared' '--disable-static' '--with-gost=no' '--with-openssl=/usr' '--with-gssapi=yes' '--with-libidn2' '--with-json-c' '--with-lmdb=/usr' '--with-gnu-ld' '--with-maxminddb' '--with-atf=no' '--enable-ipv6' '--enable-rrl' '--enable-filter-aaaa' '--disable-native-pkcs11' '--enable-dnstap' 'build_alias=x86_64-linux-gnu' 'CFLAGS=-g -O2 -ffile-prefix-map=/build/reproducible-path/bind9-9.18.49=. -fstack-protector-strong -Wformat -Werror=format-security -fno-strict-aliasing -fno-delete-null-pointer-checks -DNO_VERSION_DATE -DDIG_SIGCHASE' 'LDFLAGS=-Wl,-z,relro -Wl,-z,now' 'CPPFLAGS=-Wdate-time -D_FORTIFY_SOURCE=2'
+dns-1      | 27-Oct-2026 16:16:43.188 running as: named -g -c /config/bind9.conf
+dns-1      | 27-Oct-2026 16:16:43.188 compiled by GCC 12.2.0
+dns-1      | 27-Oct-2026 16:16:43.188 compiled with OpenSSL version: OpenSSL 3.0.20 7 Apr 2026
+dns-1      | 27-Oct-2026 16:16:43.188 linked to OpenSSL version: OpenSSL 3.0.22 25 Aug 2026
+dns-1      | 27-Oct-2026 16:16:43.188 compiled with libuv version: 1.44.2
+dns-1      | 27-Oct-2026 16:16:43.188 linked to libuv version: 1.44.2
+redis-1    | 1:M 27 Oct 2026 16:16:07.728 * monotonic clock: POSIX clock_gettime
+redis-1    | 1:M 27 Oct 2026 16:16:07.728 * Running mode=standalone, port=6379.
+redis-1    | 1:M 27 Oct 2026 16:16:07.728 * Server initialized
+redis-1    | 1:M 27 Oct 2026 16:16:07.728 * Reading RDB base file on AOF loading...

@@ -1,0 +1,10 @@
+{
+  "scope": "P1 persisted diagnostic/evidence files; static logging allowlist plus actual sentinel-negative fixtures; canonical runner separately checks current secret values against collected service logs",
+  "files": 17,
+  "forbidden_patterns_found": [],
+  "protected_docker_unchanged": true,
+  "sensitive_headers_logged": false,
+  "payloads_logged": false,
+  "network_changes": false,
+  "production_changes": false
+}

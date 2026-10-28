@@ -1,0 +1,14 @@
+{
+  "attempt": "P1-POSTFIX-01d146db-98ca-4c0f-a970-178fc80b8b13",
+  "output": "/tmp/drumee-p1-jipiesom/postfix-attempt-1",
+  "command": [
+    "/usr/bin/node",
+    "--require",
+    "/tmp/drumee-p1-jipiesom/postfix-attempt-1/client-preload.cjs",
+    "--test",
+    "--test-name-pattern=SMTP STARTTLS/authenticated|OpenDKIM signs|Postfix queue survives",
+    "/home/somanos/github/infra-layer/test/services/services.test.js"
+  ],
+  "code": 0,
+  "signal": null
+}

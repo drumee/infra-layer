@@ -1,0 +1,27 @@
+{
+  "disposition": "BLOCKED_EVIDENCE",
+  "gate": "M",
+  "gate_status": "BLOCKED",
+  "reviewed_source": "5954bc121b3790d405aa48bf724a624c259f30a2",
+  "qualified_recovery": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "root_cause": "ROOT_CAUSE_UNDETERMINED",
+  "handoff": "RECOVERY_QUALIFIED_POSTFIX_BLOCKED_EVIDENCE",
+  "historical_finding_closed": false,
+  "independent_tests_executed": 0,
+  "reviewed_implementation_results": {
+    "controlled_diagnostics": "9/9 PASS",
+    "assertion_guards": "54/54 PASS",
+    "targeted_actual_source": "3/3 PASS; non-reproduction"
+  },
+  "new_major_blocker_code_findings": [],
+  "closure_blocker": "Historical first causal transport event is not established; original receiver/socket lifecycle absent and new targeted request succeeds.",
+  "limitations": [
+    "Instrument timing perturbation",
+    "Separate process/daemon clock domains",
+    "Docker timeNano JS Number precision loss",
+    "NAT tuple attribution limits",
+    "Three-case selection only",
+    "Sync-handler-only instrumentation"
+  ],
+  "reviewed_at": "2026-10-28T11:02:29.479641+00:00"
+}

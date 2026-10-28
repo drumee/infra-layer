@@ -1,0 +1,23 @@
+{
+  "diagnostic_executable": "5954bc121b3790d405aa48bf724a624c259f30a2",
+  "qualified_recovery": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "all_p1_executable_changes_committed": true,
+  "executable_unchanged_since_review": true,
+  "production_canonical_and_recovery_equivalent": true,
+  "independent_review_manifest_verified": {
+    "source-and-evidence.json": "f8149dc2ad11e873ae088887bbe694ec0c416b1af6293b165b79848557ed6657",
+    "read-only-commands.json": "4a771e5bd6bf26706dbd745d10a72cd94f65f319f159227a5ba57a4893d9f0c6",
+    "independent-review.md": "046004a300ec97f44f4cb03ce063f000de0d36723521bf3236b92b9cc6f9d3e3",
+    "decision.json": "02b3dc76f0b89b904a0df2818015473558547bf696087c1cffa234498a5bf36e"
+  },
+  "documentation_links_verified": true,
+  "source_hashes": {
+    "test/diagnostics/postfix-http/client-preload.cjs": "78bab9c3dd39c600e034a74670031958656af3fbbb4d0db3d4791d12d0f1d144",
+    "test/diagnostics/postfix-http/diagnostic.test.cjs": "c5a88f0c61c44cf96bd799d3562a968067be95529a5b8df041042b09b167f6ee",
+    "test/diagnostics/postfix-http/fixture.cjs": "d3f7e10e3bc6168a2ae9920c6fab1261a3b88fbf51dab098f3a66dd829140260",
+    "test/diagnostics/postfix-http/observe.cjs": "b968891ec02c15a7ab82eba5d6e7fffc4f043e2cf4cb08895fa37752baa1779e",
+    "test/diagnostics/postfix-http/record.py": "c25890d2585c93bc7286fb193bb3a1b1f36e02b6f921172ef996f6f8553164f9",
+    "test/diagnostics/postfix-http/server-preload.cjs": "85898d695b4cb1b079bfe02f40d68fc02d32ca29b4b0fde4695891b58ff24d0d",
+    "test/diagnostics/postfix-http/services-attempt.cjs": "6ccda0dcedbf11d1e0fbfbb78869421921f26e1efca5531319e39c985ab7d7cc"
+  }
+}
