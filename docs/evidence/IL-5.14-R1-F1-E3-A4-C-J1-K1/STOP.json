@@ -1,0 +1,46 @@
+{
+  "name": "application",
+  "command": [
+    "env",
+    "IL5_NETWORK_CLIENT=testbox",
+    "IL5_LAN_ADDRESS=192.168.5.201",
+    "IL5_HOST_NGINX=/tmp/drumee-il513-c1-nginx/root/usr/sbin/nginx",
+    "npm",
+    "run",
+    "test:application"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "production_reference": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "attempt": "K1-drumee-k1-l0h17j68",
+  "uid": 1000,
+  "gid": 1000,
+  "started": "2026-10-29T08:15:56.280418+00:00",
+  "ended": "2026-10-29T08:16:23.432845+00:00",
+  "exit_code": 1,
+  "process_returncode": 1,
+  "protected_before": [
+    {
+      "path": "/etc/docker",
+      "uid": 0,
+      "gid": 0,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_after": [
+    {
+      "path": "/etc/docker",
+      "uid": 0,
+      "gid": 0,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_unchanged": true,
+  "frozen_inputs_unchanged": true,
+  "log": "application.log",
+  "log_sha256": "cde3e88395c455ce6ad1dcb5899ed25a74f61dd90fcf885be4f6544b96ab4385"
+}

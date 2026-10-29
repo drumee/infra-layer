@@ -1,0 +1,27 @@
+{
+  "recorded": "2026-10-29T08:30:36.875708+00:00",
+  "finding": "K1-CLEAN-001",
+  "review_operation": "Post-failure evidence appraisal only; no tests, Docker commands or runtime/source changes by reviewer",
+  "evidence": "volume-cleanup-finding.json",
+  "evidence_sha256": "b32013ede3cf5a5db3e1b15417bbff62bc7f3e4c442015bebb38448766fde569",
+  "owned_volume": "a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b",
+  "association": {
+    "report": "network-health.log",
+    "container": "63a8cf61c39ba32dc221d5a91a6bc607b253e8e0f696d36e38f3cab7925cfa26",
+    "project": "drumee-il514-health-bbba2c51",
+    "owner": "drumee-il514-health-bbba2c51",
+    "mount_type": "volume",
+    "destination": "/data"
+  },
+  "original_cleanup_predicate": "Containers/networks only; source container rm has no -v",
+  "known_volume_unused": true,
+  "exact_owned_volume_removed": true,
+  "known_volume_absent_on_readback": true,
+  "deployment_container_network_image_listener_temp_readbacks": "PASS",
+  "full_resource_cleanup": "NOT_QUALIFIED",
+  "remaining_gap": "Fixture traces omit Mounts and no volume baseline was captured; other anonymous fixture volumes cannot be attributed safely from current evidence. No unproven resource removed.",
+  "new_qualification_after_failure": false,
+  "unproven_resource_removed": false,
+  "final_review": "BLOCKED_EVIDENCE",
+  "final_R1_closure": false
+}

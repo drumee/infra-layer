@@ -1,0 +1,11 @@
+# Production and Docker impact — Gate I BLOCKED (cleanup evidence)
+
+**PRODUCTION_EXECUTABLE_PRESERVED**: direct source comparison shows zero changes from fd708aa to lifecycle, internal, lib, adapters, capabilities, manifests/locks/declarations and operational Services/capture/observer inputs. R5 runtime/network recovery harness paths match72f4c67. The only post-J1 changes are the package audit, shared test-only inventory function and15 regressions. The package member bytes also match frozen source, so package completeness and live-Docker behavior remain distinct qualifications.
+
+[Source applicability and verified manifests](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1/production-impact.json). Retain R5 focused55/realDocker38, actual recreation/final strict readiness/cleanup/FINDING_CLOSED, P2-F1 Services17/17/whole campaign0/independent CAMPAIGN_EVIDENCE_VALID, unchanged observer J1 30+9, and J1 filesystem25. None is represented as a new K1 Docker run. Historical network/Gateway/lifecycle/application results are not automatically promoted: full parent evidence remains missing where R5 changed their earlier tested runtime.
+
+After independent package closure, remaining obligations include fresh complete network acceptance, Gateway, lifecycle/lifecycle-gateway, full application, standalone trusted tools, broader canonical preparation/refusal consumer and final independent R1/security review. No source change or package consumer success waives those controls. Historical Postfix cause remains unknown and owner-accepted only within decision IL-5.14-A4-POSTFIX-RISK-B.
+
+## Reassessment after parent acceptance
+
+The source-equivalence assessment remains PASS: production and qualified runtime/harness bytes are unchanged. Full Gate I applicability is now BLOCKED by K1-CLEAN-001, discovered in post-failure cleanup appraisal: prior narrow container/network cleanup does not prove complete fixture volume cleanup. One proven owned orphan was safely removed; other volume attribution is unavailable. Do not promote earlier cleanup markers to all-resource acceptance. Parent application also fails K1-APP-001; R5 standalone55/38 evidence remains scoped and source-equivalent, not complete application qualification. No production correction is applied.

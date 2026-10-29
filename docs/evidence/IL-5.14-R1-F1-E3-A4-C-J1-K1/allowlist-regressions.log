@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: K1 E1 required R5 helper has explicit authorization
+ok 1 - K1 E1 required R5 helper has explicit authorization
+  ---
+  duration_ms: 2.379249
+  type: 'test'
+  ...
+# Subtest: K1 E2 actual npm inventory contains required helper
+ok 2 - K1 E2 actual npm inventory contains required helper
+  ---
+  duration_ms: 4.11952
+  type: 'test'
+  ...
+# Subtest: K1 E3 helper dependency closure includes filesystem and preparation
+ok 3 - K1 E3 helper dependency closure includes filesystem and preparation
+  ---
+  duration_ms: 2.472052
+  type: 'test'
+  ...
+# Subtest: K1 E4 existing internal modules remain explicitly approved
+ok 4 - K1 E4 existing internal modules remain explicitly approved
+  ---
+  duration_ms: 0.156125
+  type: 'test'
+  ...
+# Subtest: K1 E5 full normal inventory and bounded computed closure pass
+ok 5 - K1 E5 full normal inventory and bounded computed closure pass
+  ---
+  duration_ms: 2.127358
+  type: 'test'
+  ...
+# Subtest: K1 E6 unknown internal helper is refused
+ok 6 - K1 E6 unknown internal helper is refused
+  ---
+  duration_ms: 2.898487
+  type: 'test'
+  ...
+# Subtest: K1 E7 nested internal module is refused
+ok 7 - K1 E7 nested internal module is refused
+  ---
+  duration_ms: 2.120109
+  type: 'test'
+  ...
+# Subtest: K1 E8 missing required helper is refused
+ok 8 - K1 E8 missing required helper is refused
+  ---
+  duration_ms: 0.194558
+  type: 'test'
+  ...
+# Subtest: K1 E9 missing transitive dependency is refused
+ok 9 - K1 E9 missing transitive dependency is refused
+  ---
+  duration_ms: 1.032307
+  type: 'test'
+  ...
+# Subtest: K1 E10 packaged test fixture is refused
+ok 10 - K1 E10 packaged test fixture is refused
+  ---
+  duration_ms: 2.438381
+  type: 'test'
+  ...
+# Subtest: K1 E11 sensitive contents remain refused
+ok 11 - K1 E11 sensitive contents remain refused
+  ---
+  duration_ms: 2.096329
+  type: 'test'
+  ...
+# Subtest: K1 E12 undeclared external import remains refused
+ok 12 - K1 E12 undeclared external import remains refused
+  ---
+  duration_ms: 0.944988
+  type: 'test'
+  ...
+# Subtest: K1 E13 unexpected package path is refused
+ok 13 - K1 E13 unexpected package path is refused
+  ---
+  duration_ms: 2.49706
+  type: 'test'
+  ...
+# Subtest: K1 E14 filesystem presence cannot replace actual archive membership
+ok 14 - K1 E14 filesystem presence cannot replace actual archive membership
+  ---
+  duration_ms: 0.233773
+  type: 'test'
+  ...
+# Subtest: K1 E15 failed package assertion is fatal in a child process
+ok 15 - K1 E15 failed package assertion is fatal in a child process
+  ---
+  duration_ms: 21.925632
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 406.660059

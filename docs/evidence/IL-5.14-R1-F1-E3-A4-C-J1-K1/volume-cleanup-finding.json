@@ -1,0 +1,68 @@
+{
+  "recorded": "2026-10-29T08:27:41.951781+00:00",
+  "finding": "K1-CLEAN-001",
+  "original_fixture_cleanup": "INCOMPLETE: anonymous volume survived container removal despite narrow container/network PASS",
+  "known_owned_volume_cleanup": [
+    {
+      "name": "a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b",
+      "ownership_evidence": {
+        "report": "network-health.log",
+        "container_id": "63a8cf61c39ba32dc221d5a91a6bc607b253e8e0f696d36e38f3cab7925cfa26",
+        "project": "drumee-il514-health-bbba2c51",
+        "owner": "drumee-il514-health-bbba2c51",
+        "mount": {
+          "Destination": "/data",
+          "Driver": "local",
+          "Mode": "",
+          "Name": "a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b/_data",
+          "Type": "volume"
+        }
+      },
+      "before": {
+        "CreatedAt": "2026-10-28T22:43:57+01:00",
+        "Driver": "local",
+        "Labels": {
+          "com.docker.volume.anonymous": ""
+        },
+        "Mountpoint": "/var/lib/docker/volumes/a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b/_data",
+        "Name": "a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b",
+        "Options": null,
+        "Scope": "local"
+      },
+      "reference_check": {
+        "command": [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "volume=a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b"
+        ],
+        "output": ""
+      },
+      "cleanup_command": [
+        "docker",
+        "volume",
+        "rm",
+        "a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b"
+      ],
+      "exit_code": 0,
+      "output": "a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b",
+      "readback": {
+        "command": [
+          "docker",
+          "volume",
+          "ls",
+          "-q",
+          "--filter",
+          "name=^a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b$"
+        ],
+        "output": ""
+      }
+    }
+  ],
+  "remaining_scope_gap": "Fixture traces omit Mounts and no volume baseline was captured; other anonymous fixture volumes cannot be attributed safely from current evidence. No unproven resource removed.",
+  "qualification_restarted": false
+}

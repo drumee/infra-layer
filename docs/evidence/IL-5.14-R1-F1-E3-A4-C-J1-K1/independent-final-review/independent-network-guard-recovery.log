@@ -1,0 +1,910 @@
+TAP version 13
+# Subtest: A1-D1 pinned unchanged historical comparison accepts
+ok 1 - A1-D1 pinned unchanged historical comparison accepts
+  ---
+  duration_ms: 116.010038
+  type: 'test'
+  ...
+# Subtest: A1-D2 historical plus precisely approved additions accepts
+ok 2 - A1-D2 historical plus precisely approved additions accepts
+  ---
+  duration_ms: 47.820985
+  type: 'test'
+  ...
+# Subtest: A1-D3 single approved replacement subtree and additions accept
+ok 3 - A1-D3 single approved replacement subtree and additions accept
+  ---
+  duration_ms: 37.299633
+  type: 'test'
+  ...
+# Subtest: A1-D4 actual canonical Docker acceptance source passes the guard
+ok 4 - A1-D4 actual canonical Docker acceptance source passes the guard
+  ---
+  duration_ms: 26.526743
+  type: 'test'
+  ...
+# Subtest: A1-D5 removed historical assertion is refused
+ok 5 - A1-D5 removed historical assertion is refused
+  ---
+  duration_ms: 13.117154
+  type: 'test'
+  ...
+# Subtest: A1-D6 unauthorized expected-value change is refused
+ok 6 - A1-D6 unauthorized expected-value change is refused
+  ---
+  duration_ms: 12.873567
+  type: 'test'
+  ...
+# Subtest: A1-D7 reordered historical operations are refused
+ok 7 - A1-D7 reordered historical operations are refused
+  ---
+  duration_ms: 14.613809
+  type: 'test'
+  ...
+# Subtest: A1-D8 removed historical Docker invocation is refused
+ok 8 - A1-D8 removed historical Docker invocation is refused
+  ---
+  duration_ms: 7.566871
+  type: 'test'
+  ...
+# Subtest: A1-D9 modified historical Docker arguments are refused
+ok 9 - A1-D9 modified historical Docker arguments are refused
+  ---
+  duration_ms: 5.586297
+  type: 'test'
+  ...
+# Subtest: A1-D10 unapproved assertion insertion is refused
+ok 10 - A1-D10 unapproved assertion insertion is refused
+  ---
+  duration_ms: 4.964427
+  type: 'test'
+  ...
+# Subtest: A1-D11 unapproved Docker insertion is refused
+ok 11 - A1-D11 unapproved Docker insertion is refused
+  ---
+  duration_ms: 5.399297
+  type: 'test'
+  ...
+# Subtest: A1-D12 wrong replacement error code is refused
+ok 12 - A1-D12 wrong replacement error code is refused
+  ---
+  duration_ms: 4.91508
+  type: 'test'
+  ...
+# Subtest: A1-D13 replacement in another phase is refused
+ok 13 - A1-D13 replacement in another phase is refused
+  ---
+  duration_ms: 4.733368
+  type: 'test'
+  ...
+# Subtest: A1-D14 second historical assertion replacement is refused
+ok 14 - A1-D14 second historical assertion replacement is refused
+  ---
+  duration_ms: 6.980446
+  type: 'test'
+  ...
+# Subtest: A1-D15 missing authorized replacement is refused for final candidate
+ok 15 - A1-D15 missing authorized replacement is refused for final candidate
+  ---
+  duration_ms: 6.465302
+  type: 'test'
+  ...
+# Subtest: A1-D16 duplicate use of replacement authorization is refused
+ok 16 - A1-D16 duplicate use of replacement authorization is refused
+  ---
+  duration_ms: 4.608871
+  type: 'test'
+  ...
+# Subtest: A1-D17 approved addition cannot compensate for historical deletion
+ok 17 - A1-D17 approved addition cannot compensate for historical deletion
+  ---
+  duration_ms: 5.086196
+  type: 'test'
+  ...
+# Subtest: A1-D18 unexpected nested protected call changes are refused
+ok 18 - A1-D18 unexpected nested protected call changes are refused
+  ---
+  duration_ms: 5.95371
+  type: 'test'
+  ...
+# Subtest: A1-D19 removing one duplicate historical occurrence is refused
+ok 19 - A1-D19 removing one duplicate historical occurrence is refused
+  ---
+  duration_ms: 11.836419
+  type: 'test'
+  ...
+# Subtest: A1-D20 moving historical assertion to unrelated function is refused
+ok 20 - A1-D20 moving historical assertion to unrelated function is refused
+  ---
+  duration_ms: 5.077773
+  type: 'test'
+  ...
+# Subtest: additional historical spawn-removal and assertion-operator mutations are refused
+ok 21 - additional historical spawn-removal and assertion-operator mutations are refused
+  ---
+  duration_ms: 11.925211
+  type: 'test'
+  ...
+# Subtest: historical bytes cannot be replaced and diagnostics stay bounded
+ok 22 - historical bytes cannot be replaced and diagnostics stay bounded
+  ---
+  duration_ms: 4.63592
+  type: 'test'
+  ...
+# Subtest: A2 exact independent short-circuit mutations are rejected for all three assertion categories
+ok 23 - A2 exact independent short-circuit mutations are rejected for all three assertion categories
+  ---
+  duration_ms: 206.053125
+  type: 'test'
+  ...
+# Subtest: A2-D1 unchanged historical source is accepted in explicit historical mode
+ok 24 - A2-D1 unchanged historical source is accepted in explicit historical mode
+  ---
+  duration_ms: 27.206201
+  type: 'test'
+  ...
+# Subtest: A2-D2 closed addition-only source is accepted in its mode
+ok 25 - A2-D2 closed addition-only source is accepted in its mode
+  ---
+  duration_ms: 25.21203
+  type: 'test'
+  ...
+# Subtest: A2-D3 exact authorized A1 replacement is accepted once
+ok 26 - A2-D3 exact authorized A1 replacement is accepted once
+  ---
+  duration_ms: 24.809634
+  type: 'test'
+  ...
+# Subtest: A2-D4 false-and suppression is rejected
+ok 27 - A2-D4 false-and suppression is rejected
+  ---
+  duration_ms: 15.031127
+  type: 'test'
+  ...
+# Subtest: A2-D5 true-or suppression is rejected
+ok 28 - A2-D5 true-or suppression is rejected
+  ---
+  duration_ms: 14.711146
+  type: 'test'
+  ...
+# Subtest: A2-D6 dead conditional block is rejected
+ok 29 - A2-D6 dead conditional block is rejected
+  ---
+  duration_ms: 5.438555
+  type: 'test'
+  ...
+# Subtest: A2-D7 unexecuted ternary branch is rejected
+ok 30 - A2-D7 unexecuted ternary branch is rejected
+  ---
+  duration_ms: 13.167973
+  type: 'test'
+  ...
+# Subtest: A2-D8 early return before protected operation is rejected
+ok 31 - A2-D8 early return before protected operation is rejected
+  ---
+  duration_ms: 18.429777
+  type: 'test'
+  ...
+# Subtest: A2-D9 early throw before protected operation is rejected
+ok 32 - A2-D9 early throw before protected operation is rejected
+  ---
+  duration_ms: 12.988898
+  type: 'test'
+  ...
+# Subtest: A2-D10 protected operation moved into unused helper is rejected
+ok 33 - A2-D10 protected operation moved into unused helper is rejected
+  ---
+  duration_ms: 5.272832
+  type: 'test'
+  ...
+# Subtest: A2-D11 protected operation moved into unused callback is rejected
+ok 34 - A2-D11 protected operation moved into unused callback is rejected
+  ---
+  duration_ms: 4.933574
+  type: 'test'
+  ...
+# Subtest: A2-D12 discarded asynchronous invocation is rejected
+ok 35 - A2-D12 discarded asynchronous invocation is rejected
+  ---
+  duration_ms: 15.863446
+  type: 'test'
+  ...
+# Subtest: A2-D13 historical assertion deletion is rejected
+ok 36 - A2-D13 historical assertion deletion is rejected
+  ---
+  duration_ms: 6.660206
+  type: 'test'
+  ...
+# Subtest: A2-D14 unauthorized expected value change is rejected
+ok 37 - A2-D14 unauthorized expected value change is rejected
+  ---
+  duration_ms: 7.507492
+  type: 'test'
+  ...
+# Subtest: A2-D15 reordered historical operations are rejected
+ok 38 - A2-D15 reordered historical operations are rejected
+  ---
+  duration_ms: 5.801959
+  type: 'test'
+  ...
+# Subtest: A2-D16 unauthorized replacement is rejected
+ok 39 - A2-D16 unauthorized replacement is rejected
+  ---
+  duration_ms: 4.493784
+  type: 'test'
+  ...
+# Subtest: A2-D17 unapproved assertion is rejected
+ok 40 - A2-D17 unapproved assertion is rejected
+  ---
+  duration_ms: 4.725524
+  type: 'test'
+  ...
+# Subtest: A2-D18 unapproved Docker command is rejected
+ok 41 - A2-D18 unapproved Docker command is rejected
+  ---
+  duration_ms: 5.302375
+  type: 'test'
+  ...
+# Subtest: A2-D19 duplicate elsewhere cannot compensate for removed occurrence
+ok 42 - A2-D19 duplicate elsewhere cannot compensate for removed occurrence
+  ---
+  duration_ms: 4.139804
+  type: 'test'
+  ...
+# Subtest: A2-D20 changed enclosing conditional is rejected
+ok 43 - A2-D20 changed enclosing conditional is rejected
+  ---
+  duration_ms: 5.835132
+  type: 'test'
+  ...
+# Subtest: A2-D21 removing an invoked helper call is rejected
+ok 44 - A2-D21 removing an invoked helper call is rejected
+  ---
+  duration_ms: 11.264614
+  type: 'test'
+  ...
+# Subtest: A2-D22 approved addition relocated to unrelated context is rejected
+ok 45 - A2-D22 approved addition relocated to unrelated context is rejected
+  ---
+  duration_ms: 4.255635
+  type: 'test'
+  ...
+# Subtest: A2-D23 benign formatting outside protected calls preserves approved AST
+ok 46 - A2-D23 benign formatting outside protected calls preserves approved AST
+  ---
+  duration_ms: 13.72599
+  type: 'test'
+  ...
+# Subtest: A2-D24 actual unchanged canonical harness passes both barriers
+ok 47 - A2-D24 actual unchanged canonical harness passes both barriers
+  ---
+  duration_ms: 12.879601
+  type: 'test'
+  ...
+# Subtest: A2 fail-closed frame rejects changes to imports and function invocation ownership
+ok 48 - A2 fail-closed frame rejects changes to imports and function invocation ownership
+  ---
+  duration_ms: 23.77934
+  type: 'test'
+  ...
+# Subtest: E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+ok 49 - E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+  ---
+  duration_ms: 15.372
+  type: 'test'
+  ...
+# Subtest: E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+ok 50 - E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+  ---
+  duration_ms: 15.846667
+  type: 'test'
+  ...
+# Subtest: E3 missing referenced container remains a failure with original nonzero status
+ok 51 - E3 missing referenced container remains a failure with original nonzero status
+  ---
+  duration_ms: 3.120033
+  type: 'test'
+  ...
+# Subtest: E4 endpoint outside the declared namespace is explicitly unexpected
+ok 52 - E4 endpoint outside the declared namespace is explicitly unexpected
+  ---
+  duration_ms: 1.673013
+  type: 'test'
+  ...
+# Subtest: E5 unsettled endpoint cannot mask a foreign container or network
+ok 53 - E5 unsettled endpoint cannot mask a foreign container or network
+  ---
+  duration_ms: 3.302127
+  type: 'test'
+  ...
+# Subtest: E6 malformed endpoint metadata and inconsistent keys fail explicitly
+ok 54 - E6 malformed endpoint metadata and inconsistent keys fail explicitly
+  ---
+  duration_ms: 4.163427
+  type: 'test'
+  ...
+# Subtest: E7 genuine Docker failure escapes once without exposing raw diagnostics
+ok 55 - E7 genuine Docker failure escapes once without exposing raw diagnostics
+  ---
+  duration_ms: 1.454092
+  type: 'test'
+  ...
+# Subtest: E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+ok 56 - E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+  ---
+  duration_ms: 3.401284
+  type: 'test'
+  ...
+# Subtest: network object identity, isolation and actual membership cannot be substituted
+ok 57 - network object identity, isolation and actual membership cannot be substituted
+  ---
+  duration_ms: 17.705995
+  type: 'test'
+  ...
+# Subtest: E12 stale container identity and invalid object keys are rejected without fallback
+ok 58 - E12 stale container identity and invalid object keys are rejected without fallback
+  ---
+  duration_ms: 4.0141
+  type: 'test'
+  ...
+# Subtest: E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+ok 59 - E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+  ---
+  duration_ms: 6.355683
+  type: 'test'
+  ...
+# Subtest: unsettled deadline refuses permanently unresolved attachment and retains metadata
+ok 60 - unsettled deadline refuses permanently unresolved attachment and retains metadata
+  ---
+  duration_ms: 1.08514
+  type: 'test'
+  ...
+# Subtest: readiness never retries command failures, missing objects or ownership refusals
+ok 61 - readiness never retries command failures, missing objects or ownership refusals
+  ---
+  duration_ms: 0.532763
+  type: 'test'
+  ...
+# Subtest: F1-D1 exact single-network membership passes actual checkNetworks
+ok 62 - F1-D1 exact single-network membership passes actual checkNetworks
+  ---
+  duration_ms: 27.102607
+  type: 'test'
+  ...
+# Subtest: F1-D2 extra undeclared network is a fatal non-transient mismatch
+ok 63 - F1-D2 extra undeclared network is a fatal non-transient mismatch
+  ---
+  duration_ms: 3.542589
+  type: 'test'
+  ...
+# Subtest: F1-D3 matching owner cannot authorize an extra network
+ok 64 - F1-D3 matching owner cannot authorize an extra network
+  ---
+  duration_ms: 3.505111
+  type: 'test'
+  ...
+# Subtest: F1-D4 array and object declarations preserve legitimate multihoming
+ok 65 - F1-D4 array and object declarations preserve legitimate multihoming
+  ---
+  duration_ms: 6.911812
+  type: 'test'
+  ...
+# Subtest: F1-D5 incomplete declared multihoming is rejected
+ok 66 - F1-D5 incomplete declared multihoming is rejected
+  ---
+  duration_ms: 3.111736
+  type: 'test'
+  ...
+# Subtest: F1-D6 project inventory detects entirely disconnected running and stopped containers
+ok 67 - F1-D6 project inventory detects entirely disconnected running and stopped containers
+  ---
+  duration_ms: 8.661738
+  type: 'test'
+  ...
+# Subtest: F1-D7 not-yet-created service and empty preparation preserve absence contract
+ok 68 - F1-D7 not-yet-created service and empty preparation preserve absence contract
+  ---
+  duration_ms: 9.762126
+  type: 'test'
+  ...
+# Subtest: F1-D8 network names cannot substitute a different ID
+ok 69 - F1-D8 network names cannot substitute a different ID
+  ---
+  duration_ms: 2.968951
+  type: 'test'
+  ...
+# Subtest: F1-D9 endpoint ID mismatch is rejected
+ok 70 - F1-D9 endpoint ID mismatch is rejected
+  ---
+  duration_ms: 3.173487
+  type: 'test'
+  ...
+# Subtest: F1-D10 inventoried foreign ownership and service/name substitution are refused
+ok 71 - F1-D10 inventoried foreign ownership and service/name substitution are refused
+  ---
+  duration_ms: 12.205474
+  type: 'test'
+  ...
+# Subtest: F1-D11 sandbox-less endpoint cannot mask extra connectivity
+ok 72 - F1-D11 sandbox-less endpoint cannot mask extra connectivity
+  ---
+  duration_ms: 6.303372
+  type: 'test'
+  ...
+# Subtest: F1-D12 Docker inventory/inspection errors remain fatal
+ok 73 - F1-D12 Docker inventory/inspection errors remain fatal
+  ---
+  duration_ms: 3.543249
+  type: 'test'
+  ...
+# Subtest: F1-D13 stopped configured membership and Redis-style fresh endpoint recovery pass
+ok 74 - F1-D13 stopped configured membership and Redis-style fresh endpoint recovery pass
+  ---
+  duration_ms: 3.382959
+  type: 'test'
+  ...
+# Subtest: F1-D14 disconnect is invalid and reconnection restores exact membership
+ok 75 - F1-D14 disconnect is invalid and reconnection restores exact membership
+  ---
+  duration_ms: 3.399427
+  type: 'test'
+  ...
+# Subtest: F1-D15 service-specific declarations cannot use the project-wide union
+ok 76 - F1-D15 service-specific declarations cannot use the project-wide union
+  ---
+  duration_ms: 10.804097
+  type: 'test'
+  ...
+# Subtest: F1-D16 aliases, duplicate identities and inconsistent reverse attachments fail closed
+ok 77 - F1-D16 aliases, duplicate identities and inconsistent reverse attachments fail closed
+  ---
+  duration_ms: 4.575238
+  type: 'test'
+  ...
+# Subtest: E1-D1 historical unknown service role is an interpretable membership mismatch
+ok 78 - E1-D1 historical unknown service role is an interpretable membership mismatch
+  ---
+  duration_ms: 3.524985
+  type: 'test'
+  ...
+# Subtest: E1-D2 malformed declaration or attachment remains invalid data
+ok 79 - E1-D2 malformed declaration or attachment remains invalid data
+  ---
+  duration_ms: 12.277518
+  type: 'test'
+  ...
+# Subtest: E1-D3 structurally valid wrong network identity remains a mismatch
+ok 80 - E1-D3 structurally valid wrong network identity remains a mismatch
+  ---
+  duration_ms: 1.773491
+  type: 'test'
+  ...
+# Subtest: E1-D4 structurally valid wrong endpoint identity remains a mismatch
+ok 81 - E1-D4 structurally valid wrong endpoint identity remains a mismatch
+  ---
+  duration_ms: 1.844377
+  type: 'test'
+  ...
+# Subtest: E1-D5 undeclared connectivity stays non-transient
+ok 82 - E1-D5 undeclared connectivity stays non-transient
+  ---
+  duration_ms: 3.429298
+  type: 'test'
+  ...
+# Subtest: E1-D6 missing required membership stays non-transient
+ok 83 - E1-D6 missing required membership stays non-transient
+  ---
+  duration_ms: 1.673646
+  type: 'test'
+  ...
+# Subtest: E1-D7 exact declared multihoming remains valid
+ok 84 - E1-D7 exact declared multihoming remains valid
+  ---
+  duration_ms: 1.674278
+  type: 'test'
+  ...
+# Subtest: E1-D8 synthetic endpoint cannot become an accepted container
+ok 85 - E1-D8 synthetic endpoint cannot become an accepted container
+  ---
+  duration_ms: 1.458417
+  type: 'test'
+  ...
+# Subtest: E1-D9 ownership remains distinct from membership mismatch
+ok 86 - E1-D9 ownership remains distinct from membership mismatch
+  ---
+  duration_ms: 1.706252
+  type: 'test'
+  ...
+# Subtest: E1-D10 Docker failures are never remapped as validation errors
+ok 87 - E1-D10 Docker failures are never remapped as validation errors
+  ---
+  duration_ms: 1.809992
+  type: 'test'
+  ...
+# Subtest: E1-D11 mixed malformed attachment and wrong membership use deterministic metadata-first precedence
+ok 88 - E1-D11 mixed malformed attachment and wrong membership use deterministic metadata-first precedence
+  ---
+  duration_ms: 2.260326
+  type: 'test'
+  ...
+# Subtest: E1-D12 valid ordinary lifecycle observation preserves success
+ok 89 - E1-D12 valid ordinary lifecycle observation preserves success
+  ---
+  duration_ms: 3.359239
+  type: 'test'
+  ...
+# Subtest: E1 D1/D16 unauthorized caller gets no active-state or runtime-identity details
+ok 90 - E1 D1/D16 unauthorized caller gets no active-state or runtime-identity details
+  ---
+  duration_ms: 24.501028
+  type: 'test'
+  ...
+# Subtest: E1 D2 absent caller context is refused before state observation
+ok 91 - E1 D2 absent caller context is refused before state observation
+  ---
+  duration_ms: 21.777768
+  type: 'test'
+  ...
+# Subtest: E1 D3/D23 authorized unknown runtime revision is identity failure before eligibility
+ok 92 - E1 D3/D23 authorized unknown runtime revision is identity failure before eligibility
+  ---
+  duration_ms: 26.419229
+  type: 'test'
+  ...
+# Subtest: E1 D8 authorized wrong runtime service retains identity refusal
+ok 93 - E1 D8 authorized wrong runtime service retains identity refusal
+  ---
+  duration_ms: 23.489819
+  type: 'test'
+  ...
+# Subtest: E1 D24 missing journal scope precedes an identity defect
+ok 94 - E1 D24 missing journal scope precedes an identity defect
+  ---
+  duration_ms: 37.084738
+  type: 'test'
+  ...
+# Subtest: E1 D24 unknown journal service refuses authority without runtime details
+ok 95 - E1 D24 unknown journal service refuses authority without runtime details
+  ---
+  duration_ms: 25.608995
+  type: 'test'
+  ...
+# Subtest: E1 D24 authorized valid identity without failed-target eligibility remains refused
+ok 96 - E1 D24 authorized valid identity without failed-target eligibility remains refused
+  ---
+  duration_ms: 27.393076
+  type: 'test'
+  ...
+# Subtest: E1 D4/D5 correct scoped identity still reaches recreation and final strict readiness
+ok 97 - E1 D4/D5 correct scoped identity still reaches recreation and final strict readiness
+  ---
+  duration_ms: 62.091128
+  type: 'test'
+  ...
+# Subtest: E1 D18 actual Docker adapter inspection failure is neither authority nor identity refusal
+ok 98 - E1 D18 actual Docker adapter inspection failure is neither authority nor identity refusal
+  ---
+  duration_ms: 27.771676
+  type: 'test'
+  ...
+# Subtest: E1 D21 healthy ordinary activation remains strict and can return no-op
+ok 99 - E1 D21 healthy ordinary activation remains strict and can return no-op
+  ---
+  duration_ms: 63.129404
+  type: 'test'
+  ...
+# Subtest: E1 D17/D22 ordinary recovery invocations cannot inherit rollback admission
+ok 100 - E1 D17/D22 ordinary recovery invocations cannot inherit rollback admission
+  ---
+  duration_ms: 23.715868
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness extra: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 101 - A2 effectiveness extra: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 184.664291
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness missing: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 102 - A2 effectiveness missing: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 117.916092
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness identity: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 103 - A2 effectiveness identity: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 106.513303
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness malformed: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 104 - A2 effectiveness malformed: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 105.404959
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness foreign: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 105 - A2 effectiveness foreign: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 99.247709
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness command: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 106 - A2 effectiveness command: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 94.116156
+  type: 'test'
+  ...
+# Subtest: R4-01 valid operational attachment remains accepted
+ok 107 - R4-01 valid operational attachment remains accepted
+  ---
+  duration_ms: 18.26623
+  type: 'test'
+  ...
+# Subtest: R4-02 exact restarting target admits only pre-recreation authorization
+ok 108 - R4-02 exact restarting target admits only pre-recreation authorization
+  ---
+  duration_ms: 1.690531
+  type: 'test'
+  ...
+# Subtest: R4-03 authorized restarting target is never operationally ready
+ok 109 - R4-03 authorized restarting target is never operationally ready
+  ---
+  duration_ms: 5.498938
+  type: 'test'
+  ...
+# Subtest: R4-04 complete replacement is operationally valid
+ok 110 - R4-04 complete replacement is operationally valid
+  ---
+  duration_ms: 5.017296
+  type: 'test'
+  ...
+# Subtest: R4-05 undeclared extra network is never authorized for recovery
+ok 111 - R4-05 undeclared extra network is never authorized for recovery
+  ---
+  duration_ms: 3.485923
+  type: 'test'
+  ...
+# Subtest: R4-06 foreign owner is refused
+ok 112 - R4-06 foreign owner is refused
+  ---
+  duration_ms: 2.390254
+  type: 'test'
+  ...
+# Subtest: R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+ok 113 - R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+  ---
+  duration_ms: 13.0025
+  type: 'test'
+  ...
+# Subtest: R4-08 wrong service is refused
+ok 114 - R4-08 wrong service is refused
+  ---
+  duration_ms: 2.059952
+  type: 'test'
+  ...
+# Subtest: R4-09 wrong project is refused
+ok 115 - R4-09 wrong project is refused
+  ---
+  duration_ms: 2.71923
+  type: 'test'
+  ...
+# Subtest: R4-10 Docker command failure is fatal
+ok 116 - R4-10 Docker command failure is fatal
+  ---
+  duration_ms: 1.807908
+  type: 'test'
+  ...
+# Subtest: R4-11 disappearance/substitution and duplicate authorization fail
+ok 117 - R4-11 disappearance/substitution and duplicate authorization fail
+  ---
+  duration_ms: 2.195905
+  type: 'test'
+  ...
+# Subtest: R4-12 final missing required membership refuses readiness and authorization
+ok 118 - R4-12 final missing required membership refuses readiness and authorization
+  ---
+  duration_ms: 2.976748
+  type: 'test'
+  ...
+# Subtest: R4-13 final extra membership refuses readiness
+ok 119 - R4-13 final extra membership refuses readiness
+  ---
+  duration_ms: 9.246081
+  type: 'test'
+  ...
+# Subtest: R4-14 duplicate role resolving to same network is not multihoming
+ok 120 - R4-14 duplicate role resolving to same network is not multihoming
+  ---
+  duration_ms: 16.344645
+  type: 'test'
+  ...
+# Subtest: R4-15 recovery cannot select a one-off job or omit an inventoried resource
+ok 121 - R4-15 recovery cannot select a one-off job or omit an inventoried resource
+  ---
+  duration_ms: 2.25192
+  type: 'test'
+  ...
+# Subtest: R4-16 ordinary pre-creation behavior remains compatible
+ok 122 - R4-16 ordinary pre-creation behavior remains compatible
+  ---
+  duration_ms: 1.241803
+  type: 'test'
+  ...
+# Subtest: R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+ok 123 - R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+  ---
+  duration_ms: 4.139297
+  type: 'test'
+  ...
+# Subtest: R4 rollback authorization requires verified failed/active candidate identity before network admission
+ok 124 - R4 rollback authorization requires verified failed/active candidate identity before network admission
+  ---
+  duration_ms: 10.736052
+  type: 'test'
+  ...
+# Subtest: R5 E1-E4 authorized volatile-state rollback admits the exact target, recreates and finishes strict ready
+ok 125 - R5 E1-E4 authorized volatile-state rollback admits the exact target, recreates and finishes strict ready
+  ---
+  duration_ms: 90.178184
+  type: 'test'
+  ...
+# Subtest: R5 E7 strict readiness still refuses the actual restart-backoff metadata
+ok 126 - R5 E7 strict readiness still refuses the actual restart-backoff metadata
+  ---
+  duration_ms: 25.549196
+  type: 'test'
+  ...
+# Subtest: R5 E8 undeclared attachment refuses rollback before recreation
+ok 127 - R5 E8 undeclared attachment refuses rollback before recreation
+  ---
+  duration_ms: 29.866171
+  type: 'test'
+  ...
+# Subtest: R5 E9 foreign owner refuses rollback before recreation
+ok 128 - R5 E9 foreign owner refuses rollback before recreation
+  ---
+  duration_ms: 23.278485
+  type: 'test'
+  ...
+# Subtest: R5 E10 wrong project refuses rollback before recreation
+ok 129 - R5 E10 wrong project refuses rollback before recreation
+  ---
+  duration_ms: 21.97903
+  type: 'test'
+  ...
+# Subtest: R5 E11 authorized wrong-service identity cannot replace journal target
+ok 130 - R5 E11 authorized wrong-service identity cannot replace journal target
+  ---
+  duration_ms: 20.49788
+  type: 'test'
+  ...
+# Subtest: R5 E12 wrong network ID refuses before recreation
+ok 131 - R5 E12 wrong network ID refuses before recreation
+  ---
+  duration_ms: 24.330633
+  type: 'test'
+  ...
+# Subtest: R5 E12 incorrect container ID refuses before recreation
+ok 132 - R5 E12 incorrect container ID refuses before recreation
+  ---
+  duration_ms: 22.538635
+  type: 'test'
+  ...
+# Subtest: R5 E13 legitimate owner labels cannot authorize wrong canonical name
+ok 133 - R5 E13 legitimate owner labels cannot authorize wrong canonical name
+  ---
+  duration_ms: 20.100443
+  type: 'test'
+  ...
+# Subtest: R5 E14 duplicate plausible service targets fail closed
+ok 134 - R5 E14 duplicate plausible service targets fail closed
+  ---
+  duration_ms: 24.396608
+  type: 'test'
+  ...
+# Subtest: R5 E15 an unverified candidate fails before recreation
+ok 135 - R5 E15 an unverified candidate fails before recreation
+  ---
+  duration_ms: 21.267749
+  type: 'test'
+  ...
+# Subtest: R5 E16 unauthorized rollback cannot reach admission
+ok 136 - R5 E16 unauthorized rollback cannot reach admission
+  ---
+  duration_ms: 18.306297
+  type: 'test'
+  ...
+# Subtest: R5 E17 recover true alone retains the strict normal activation preflight
+ok 137 - R5 E17 recover true alone retains the strict normal activation preflight
+  ---
+  duration_ms: 21.569208
+  type: 'test'
+  ...
+# Subtest: R5 failed-service evidence is mandatory rather than inferred from labels
+ok 138 - R5 failed-service evidence is mandatory rather than inferred from labels
+  ---
+  duration_ms: 21.685367
+  type: 'test'
+  ...
+# Subtest: R5 E19 recreation failure remains fatal and never writes a successful active event
+ok 139 - R5 E19 recreation failure remains fatal and never writes a successful active event
+  ---
+  duration_ms: 30.18622
+  type: 'test'
+  ...
+# Subtest: R5 E20 missing final membership fails after recreation
+ok 140 - R5 E20 missing final membership fails after recreation
+  ---
+  duration_ms: 35.407545
+  type: 'test'
+  ...
+# Subtest: R5 E21 extra final attachment fails after recreation
+ok 141 - R5 E21 extra final attachment fails after recreation
+  ---
+  duration_ms: 33.384917
+  type: 'test'
+  ...
+# Subtest: R5 E22 unhealthy recreated service is refused
+ok 142 - R5 E22 unhealthy recreated service is refused
+  ---
+  duration_ms: 29.612325
+  type: 'test'
+  ...
+# Subtest: R5 configured exposure stays exact when live restart ports are empty
+ok 143 - R5 configured exposure stays exact when live restart ports are empty
+  ---
+  duration_ms: 14.597203
+  type: 'test'
+  ...
+# Subtest: R5 live exposure cannot expand beyond configured bindings
+ok 144 - R5 live exposure cannot expand beyond configured bindings
+  ---
+  duration_ms: 14.288959
+  type: 'test'
+  ...
+# Subtest: R5 authoritative inspection, not initial snapshot, decides narrow restarting eligibility
+ok 145 - R5 authoritative inspection, not initial snapshot, decides narrow restarting eligibility
+  ---
+  duration_ms: 15.40034
+  type: 'test'
+  ...
+# Subtest: R5 endpoint conflict is not an empty-endpoint accommodation
+ok 146 - R5 endpoint conflict is not an empty-endpoint accommodation
+  ---
+  duration_ms: 15.375861
+  type: 'test'
+  ...
+# Subtest: R5 direct internal rollback wrapper cannot evade compatibility checks
+ok 147 - R5 direct internal rollback wrapper cannot evade compatibility checks
+  ---
+  duration_ms: 14.275839
+  type: 'test'
+  ...
+# Subtest: R5 failed candidate revision cannot substitute another source identity
+ok 148 - R5 failed candidate revision cannot substitute another source identity
+  ---
+  duration_ms: 13.993603
+  type: 'test'
+  ...
+# Subtest: R5 E18 unrelated restarting service cannot inherit failed-service endpoint permission
+ok 149 - R5 E18 unrelated restarting service cannot inherit failed-service endpoint permission
+  ---
+  duration_ms: 15.81397
+  type: 'test'
+  ...
+# Subtest: R5 changed configured bindings or mounts at authoritative reinspection cannot be substituted
+ok 150 - R5 changed configured bindings or mounts at authoritative reinspection cannot be substituted
+  ---
+  duration_ms: 14.597793
+  type: 'test'
+  ...
+1..150
+# tests 150
+# suites 0
+# pass 150
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 773.543245

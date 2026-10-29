@@ -1,0 +1,37 @@
+{
+  "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "production_reference": "fd708aa",
+  "production_differences": [],
+  "operational_services_differences": [],
+  "R5_runtime_differences": [],
+  "historical_manifests_verified": {
+    "IL-5.14-R1-F1-E2": 19,
+    "IL-5.14-R1-F1-E3-A2": 51,
+    "IL-5.14-R1-F1-E3-A4-R5-F1-E1": 26,
+    "IL-5.14-R1-F1-E3-A4-P1": 35,
+    "IL-5.14-R1-F1-E3-A4-P2": 49,
+    "IL-5.14-R1-F1-E3-A4-P2-F1": 108,
+    "IL-5.14-R1-F1-E3-A4-C": 11,
+    "IL-5.14-R1-F1-E3-A4-C-J1": 62
+  },
+  "retained": {
+    "Services": "fd708aa17/17 campaign0 / independent CAMPAIGN_EVIDENCE_VALID",
+    "R5": "72f4c67 55 focused/38 real Docker assertions / independent FINDING_CLOSED",
+    "observer": "J1 30/30 +9/9 unchanged contract",
+    "filesystem": "J1 25/25 unchanged Python fixtures/utilities/runtime"
+  },
+  "missing_parent_gates": [
+    "Fresh full Docker network acceptance",
+    "Gateway",
+    "Lifecycle",
+    "Lifecycle-gateway",
+    "Complete application acceptance",
+    "Standalone trusted executable campaign",
+    "Canonical preparation/refusal consumer",
+    "Final independent R1/security review"
+  ],
+  "gate_I_final_status": "BLOCKED",
+  "source_equivalence_status": "PRODUCTION_EXECUTABLE_PRESERVED",
+  "cleanup_evidence_gap": "K1-CLEAN-001",
+  "application_failure": "K1-APP-001"
+}

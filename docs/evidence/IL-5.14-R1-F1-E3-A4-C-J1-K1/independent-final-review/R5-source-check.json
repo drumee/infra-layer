@@ -1,0 +1,19 @@
+{
+  "recorded": "2026-10-29T08:12:07.197046+00:00",
+  "reference": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "matches": {
+    "internal/rollback-authorization.js": true,
+    "lifecycle/recovery.js": true,
+    "lifecycle/activation.js": true,
+    "lifecycle/docker.js": true,
+    "test/support/harness-preservation.cjs": true,
+    "test/network-attachments/real-docker.cjs": true,
+    "test/unit/rollback-authorization.test.js": true,
+    "test/unit/recovery-error-contract.test.js": true,
+    "test/unit/rollback-boundary.test.js": true,
+    "test/support/rollback-boundary-fixture.cjs": true,
+    "test/network-attachments/rollback-real.cjs": true
+  },
+  "status": "ALL11_SOURCE_HASHES_MATCH",
+  "metadata_reader_note": "An initial exploratory read compared current SHA strings to object-valued manifest records and raised AssertionError. Correctly selecting each record.sha256 verifies all11 unchanged files. No source/test/data correction or qualification rerun occurred."
+}
