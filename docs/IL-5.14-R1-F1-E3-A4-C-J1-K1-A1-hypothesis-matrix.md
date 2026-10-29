@@ -1,0 +1,27 @@
+# Causal hypotheses — Gate E PASS (pre-attempt inventory)
+
+No hypothesis is supported merely by plausibility. Each remains unresolved for original K1 because the decisive state/call is missing; static negative indications and source obligations below constrain the probe. Confidence in any positive historical cause is LOW. Security implication for every hypothesis: preserve full membership/identity/ownership checks, fatal errors and strict final readiness; a timing/fixture hypothesis cannot authorize undeclared connectivity. No raw-state contradiction is invented.
+
+| ID | Mechanism | Status | Expected confirming observation | Current supporting/contradicting/missing evidence | Minimal discriminating check |
+|---|---|---|---|---|---|
+| H1 | Unauthorized extra network / legitimate refusal | UNRESOLVED | Full actual set contains an undeclared name | No original full membership preserved; complete-set validator can legitimately emit this code | Record full-set input and failing source frame; never allow extra membership |
+| H2 | Missing required membership | UNRESOLVED | Declared name absent or no matching NetworkID | Code permits this cause; original inspect absent | Capture actual name set and exact NetworkID at consumed read |
+| H3 | Unsettled endpoint/observation transition | UNRESOLVED | Correct names/IDs but empty/stale endpoint map/state | APP_CRASH and R5/canonical ordering differ; no original state | Record endpoint maps/state and existing supported unsettled distinction |
+| H4 | Wrong declared topology | UNRESOLVED | Unexpected role/name in prepared contract | Factory statically declares kernel/application; original prepared file removed | Log actual prepared declaration and compare fixed factory |
+| H5 | Wrong/stale target container | UNRESOLVED | Inventory/labels/name/revision do not match approved target | Original target ID absent; validator includes all project containers | Log exact discovered IDs/labels/revisions; never recover foreign target |
+| H6 | Wrong network identity | UNRESOLVED | Name resolves to ID differing from membership | Original network IDs missing | Capture network and container membership snapshots consumed by check |
+| H7 | Recovery sequencing before admission | UNRESOLVED | Strict check occurs before authorized admission or post-failure journal wrong phase | Source has separate strict/admission paths; original call unknown | Trace driver method sequence, phase and journal recovery entry |
+| H8 | Recovery cannot authorize identity/state | UNRESOLVED | Authority/identity or degraded endpoint requirements not met | No original snapshot; R5 scoped acceptance does not cover all app states | Observe exact target, journal and first thrown method/frame |
+| H9 | Compose/fixture drift | UNRESOLVED | Prepared/materialized declaration differs from validator contract | Canonical immutable prepared validation exists; no saved original candidate | Record in-memory authoritative declaration and revision before validation |
+| H10 | Cross-test resource interference | UNRESOLVED | Resource from another namespace/phase appears | Fresh K1 namespace, prior groups passed, no evidence of interference | Use fresh owned namespace; fail on ownership ambiguity |
+| H11 | Cleanup races active application | UNRESOLVED | Cleanup begins before functional error | Original finally/log order places canonical cleanup after reported error; external cleanup unknown | Record first failure then cleanup sequence, no inference from timing alone |
+| H12 | Wrong error taxonomy | UNRESOLVED | First throw maps to wrong established contract | Code alone does not distinguish failing branch | Original source stack frame plus typed input resolves actual branch |
+| H13 | Other supported mechanism | UNRESOLVED | A separate observed mechanism precedes refusal | No positive evidence available | Retain exact original error and consider only observed alternatives |
+
+H11 has source-supported contrary evidence for the canonical finally, but original external cleanup is unobserved; it is not globally declared impossible. H4 has a source-supported single-network expectation but lacks the original materialized contract. H3/H7 are prioritized because of the explicit canonical versus R5 sequence difference, not classified SUPPORTED. One specifically instrumented narrow prefix may distinguish these; successful execution alone cannot resolve historical causality.
+
+## Post-attempt assessment
+
+For the historical failure, H1–H13 remain UNRESOLVED wherever the original dynamic state is required. No historical cause is SUPPORTED. New successful data contradicts deterministic claims that the same canonical factory always creates an invalid topology, the normal recovery path always skips admission, the unchanged R5 boundary can never admit an APP_CRASH target, or strict final IDs always fail. It does not contradict intermittent original variants of H2/H3/H5/H6/H7/H8/H9/H10/H11.
+
+The actual false→true Restarting observations219/229 support only the fact of changing, non-atomic observations in the new successful run; H3 as the original cause remains UNRESOLVED. No original extra network, missing network, foreign/stale identity, cleanup interference or wrong error category was captured. The reduced prefix omits original read-only LAN/TLS operations and introduces synchronous observer overhead; those interaction/timing differences limit falsification. No observation justifies a speculative wait/retry or readiness bypass. One attempt is consumed; no repetition is performed.

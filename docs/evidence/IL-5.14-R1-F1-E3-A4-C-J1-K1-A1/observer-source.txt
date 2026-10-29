@@ -1,0 +1,28 @@
+"use strict";
+const fs=require("node:fs"),path=require("node:path"),cp=require("node:child_process");
+function create(directory,project,{maxRecords=2048,maxBytes=2097152}={}){
+ const stat=fs.lstatSync(directory);if(!stat.isDirectory()||stat.uid!==process.getuid()||(stat.mode&63)||fs.realpathSync(directory)!==directory)throw Error("UNSAFE_DIAGNOSTICS");
+ const file=path.join(directory,"trace.jsonl"),fd=fs.openSync(file,"wx",384),start=process.hrtime.bigint();let sequence=0,bytes=0,phase="setup";const errors=[];
+ function event(kind,value={}){try{if(sequence>=maxRecords)throw Error("TRACE_RECORD_LIMIT");const text=JSON.stringify({sequence:++sequence,mono_ns:String(process.hrtime.bigint()-start),wall_time:new Date().toISOString(),pid:process.pid,phase,kind,...value})+"\n";if(Buffer.byteLength(text)>16384||bytes+Buffer.byteLength(text)>maxBytes)throw Error("TRACE_BYTE_LIMIT");fs.writeSync(fd,text);bytes+=Buffer.byteLength(text);}catch(error){errors.push(error.message);}}
+ function error(value,depth=0){if(!value||depth>3)return undefined;const code=typeof value.code==="string"&&/^[A-Z0-9_]{1,80}$/.test(value.code)?value.code:undefined;return {name:value.name,code,exit_status:value.exit_status,frames:String(value.stack||"").split("\n").filter(line=>/^\s+at /.test(line)).slice(0,10),cause:error(value.cause,depth+1)};}
+ function snapshot(value){if(!value||typeof value!=="object")return;
+  const labels=value.Config?.Labels||value.Labels||{},ownerProject=value.project||labels["com.docker.compose.project"];
+  if(ownerProject!==project)return;
+  const result={};for(const key of ["id","name","owner","project","service","role","revision","image_id","image","running","restarting","exit_code","started_at"])if(Object.hasOwn(value,key))result[key]=value[key];
+  if(value.Id)result.id=value.Id;if(value.Name)result.name=value.Name;
+  result.labels=Object.fromEntries(["org.drumee.infra.owner","com.docker.compose.project","com.docker.compose.service","org.drumee.infra.role","org.drumee.infra.revision"].filter(key=>Object.hasOwn(labels,key)).map(key=>[key,labels[key]]));
+  if(value.State)result.state=Object.fromEntries(["Status","Running","Restarting","ExitCode","StartedAt","FinishedAt"].map(key=>[key,value.State[key]]));
+  const nets=value.networks||value.NetworkSettings?.Networks;if(nets)result.networks=Object.fromEntries(Object.entries(nets).map(([name,m])=>[name,Object.fromEntries(["NetworkID","EndpointID","Aliases","DNSNames","IPAddress","IPPrefixLen","Gateway","MacAddress"].filter(key=>Object.hasOwn(m,key)).map(key=>[key,m[key]]))]));
+  if(Object.hasOwn(value,"containers")||Object.hasOwn(value,"Containers")){const map=value.containers??value.Containers;result.containers=map==null?null:Object.fromEntries(Object.entries(map).map(([id,m])=>[id,m&&typeof m==="object"?Object.fromEntries(["Name","EndpointID","IPv4Address","IPv6Address","MacAddress"].filter(k=>Object.hasOwn(m,k)).map(k=>[k,m[k]])):"[Invalid attachment shape]"]));}
+  const mounts=value.mounts||value.Mounts;if(mounts)result.mounts=mounts.map(m=>({Type:m.Type,Name:m.Name,Destination:m.Destination}));
+  return result;
+ }
+ function install(){const original=cp.execFileSync;function observed(program,args,options){const started=process.hrtime.bigint();let result;try{result=Reflect.apply(original,this,arguments);}catch(e){if(String(program).endsWith("docker"))event("docker.error",{error:error(e)});throw e;}
+   if(String(program).endsWith("docker")&&Array.isArray(args)&&args.includes("inspect")&&args.some(arg=>String(arg).includes("json"))){try{const raw=String(result).trim();if(raw.startsWith("{")||raw.startsWith("[")){const parsed=JSON.parse(raw);for(const item of Array.isArray(parsed)?parsed:[parsed]){const selected=snapshot(item);if(selected)event("docker.inspection",{verb:args.includes("network")?"network":"container",observation:selected,elapsed_ns:String(process.hrtime.bigint()-started)});}}}catch(e){errors.push("INSPECTION_COLLECTION_FAILED");}}
+   return result;}
+  cp.execFileSync=observed;return()=>{if(cp.execFileSync!==observed)errors.push("OBSERVER_REPLACED");cp.execFileSync=original;};
+ }
+ function wrap(driver,names){const result={...driver};for(const name of names)result[name]=function(...args){const composition=args[0]?.composition||args[0];event("driver.enter",{method:name,declared:composition?.compose?{project:composition.project,networks:composition.compose.networks,service_networks:composition.compose.services.application?.networks}:undefined,compose_action:name==="compose"?args[1]?.[0]:undefined});try{const value=Reflect.apply(driver[name],driver,args);event("driver.return",{method:name});return value;}catch(e){event("driver.throw",{method:name,error:error(e)});throw e;}};return result;}
+ return {event,error,snapshot,install,wrap,errors,phase(name){phase=name;event("phase.begin");},close(){fs.closeSync(fd);},file};
+}
+module.exports={create};

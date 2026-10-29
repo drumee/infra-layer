@@ -1,0 +1,36 @@
+{
+  "reviewer": "/root/a1_diagnostic_review",
+  "review_mode": "Additive static metadata-only readback; no tests or Docker",
+  "read_at": "2026-10-29T18:52:41.794157+00:00",
+  "disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+  "documentation_consistency": "PASS",
+  "material_correction_required": false,
+  "new_major_or_blocker": [],
+  "matrix_statuses": {
+    "A": "PASS",
+    "B": "BLOCKED",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "PASS",
+    "F": "PASS",
+    "G": "PASS",
+    "H": "PASS",
+    "I": "BLOCKED",
+    "J": "NOT_EXECUTED",
+    "K": "PASS",
+    "L": "PASS"
+  },
+  "changed_since_preserved_final_docs_receipt": [
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-final-decision.md"
+  ],
+  "other_prior_readback_hashes_unchanged": 15,
+  "readback_sha256": {
+    "docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-A1/final-gates.json": "84296a62fe5cc71de8ef1a4329b93ac79527f595a1e880aa52011cd4b4329dbf",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-final-decision.md": "24ba9cf133a836f21994289018666ab6ba900383ff6ad148154d3988c872f5e6"
+  },
+  "original_receipt_preserved": true,
+  "scope": "Final matrix metadata and one final-decision link sentence only; no qualification or root-cause claim added",
+  "no_tests": true,
+  "no_docker_commands": true,
+  "no_implementing_docs_edits": true
+}

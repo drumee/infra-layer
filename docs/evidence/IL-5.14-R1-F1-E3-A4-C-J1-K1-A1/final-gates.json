@@ -1,0 +1,297 @@
+{
+  "common": {
+    "environment": "Local repository host, Linux amd64, UID/GID 1000, Europe/Paris; UTC evidence timestamps",
+    "tool_versions": {
+      "node": {
+        "node": "v22.22.0",
+        "undici": "6.23.0"
+      },
+      "npm": "11.18.0",
+      "docker": {
+        "Platform": {
+          "Name": "Docker Engine - Community"
+        },
+        "Version": "29.2.0",
+        "ApiVersion": "1.53",
+        "MinAPIVersion": "1.44",
+        "Os": "linux",
+        "Arch": "amd64",
+        "Components": [
+          {
+            "Name": "Engine",
+            "Version": "29.2.0",
+            "Details": {
+              "ApiVersion": "1.53",
+              "Arch": "amd64",
+              "BuildTime": "Mon Jan 26 19:26:07 2026",
+              "Experimental": "false",
+              "GitCommit": "9c62384",
+              "GoVersion": "go1.25.6",
+              "KernelVersion": "6.1.0-41-amd64",
+              "MinAPIVersion": "1.44",
+              "Os": "linux"
+            }
+          },
+          {
+            "Name": "containerd",
+            "Version": "v2.2.1",
+            "Details": {
+              "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+            }
+          },
+          {
+            "Name": "runc",
+            "Version": "1.3.4",
+            "Details": {
+              "GitCommit": "v1.3.4-0-gd6d73eb8"
+            }
+          },
+          {
+            "Name": "docker-init",
+            "Version": "0.19.0",
+            "Details": {
+              "GitCommit": "de40ad0"
+            }
+          }
+        ],
+        "GitCommit": "9c62384",
+        "GoVersion": "go1.25.6",
+        "KernelVersion": "6.1.0-41-amd64",
+        "BuildTime": "2026-01-26T19:26:07.000000000+00:00"
+      },
+      "recorded": "2026-10-29T18:47:44.924568+00:00"
+    },
+    "source_identity_record": "baseline.json and final-freeze.json",
+    "command_and_exit_record": "execution.jsonl; read-only evidence analyses are not test executions",
+    "historical_failed_attempt": "K1 project drumee-il5-35341a09; six completed groups/36 reported assertions; NETWORK_ATTACHMENT_MISMATCH; exact failing API unavailable",
+    "new_observed_state": "network-comparison.json and controlled-attempt-1/trace.jsonl; IDs belong only to project drumee-il5-8f39498a",
+    "volume_record": "volume-context-inventory.json; five creation contexts, four physical volume identities unknown; no A1 volume deletion",
+    "independent_record": "independent-review/decision.json",
+    "security_boundary": "No qualified source/assertion/network/recovery/observer change; no historical/foreign-resource cleanup",
+    "package_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+    "retained_qualification": "Historical source-equivalent results only; no new unit/contract/full application/package run in A1",
+    "remote_operations": "None; PR read-only verification only"
+  },
+  "gates": [
+    {
+      "gate": "A",
+      "status": "PASS",
+      "disposition": "Source and historical artifact identity established",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-baseline.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "Source and historical artifact identity established"
+    },
+    {
+      "gate": "B",
+      "status": "BLOCKED",
+      "disposition": "Exact original awaited API, error stack and phase unavailable",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-failure-localization.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "Exact original awaited API, error stack and phase unavailable"
+    },
+    {
+      "gate": "C",
+      "status": "PASS",
+      "disposition": "Original missing state precisely identified; new diagnostic state kept separate",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-network-state.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "Original missing state precisely identified; new diagnostic state kept separate"
+    },
+    {
+      "gate": "D",
+      "status": "PASS",
+      "disposition": "Timeline reconstructed to explicit historical evidence limit",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-docker-timeline.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "Timeline reconstructed to explicit historical evidence limit"
+    },
+    {
+      "gate": "E",
+      "status": "PASS",
+      "disposition": "H1-H13 evaluated; no historical cause established",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-hypothesis-matrix.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "H1-H13 evaluated; no historical cause established"
+    },
+    {
+      "gate": "F",
+      "status": "PASS",
+      "disposition": "Actual isolation and recovery contract audited without changes",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-contract-audit.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "Actual isolation and recovery contract audited without changes"
+    },
+    {
+      "gate": "G",
+      "status": "PASS",
+      "disposition": "One trustworthy controlled diagnostic; historical error not reproduced",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "A1-8804ae28-d05a-4b13-b5d9-aaa763abac28",
+      "commands": [
+        {
+          "argv": [
+            "node",
+            "/tmp/drumee-app-a1-ym4dmo_w/preflight.cjs"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "exit_code": 0,
+          "evidence_log": "observation-preflight.log"
+        },
+        {
+          "argv": [
+            "node",
+            "--check",
+            "/tmp/drumee-app-a1-ym4dmo_w/diagnostic.cjs"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "exit_code": 0,
+          "evidence_log": "diagnostic-syntax.log"
+        },
+        {
+          "argv": [
+            "node",
+            "--check",
+            "/tmp/drumee-app-a1-ym4dmo_w/diagnostic.cjs"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "exit_code": 0,
+          "evidence_log": "diagnostic-final-syntax.log"
+        },
+        {
+          "argv": [
+            "node",
+            "/tmp/drumee-app-a1-ym4dmo_w/diagnostic.cjs",
+            "/tmp/drumee-app-a1-ym4dmo_w/attempt-1"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "exit_code": 0,
+          "evidence_log": "controlled-diagnostic-1.log"
+        }
+      ],
+      "test_counts": "Observer preflight 10/10; one narrow diagnostic succeeds, not a full application assertion count",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-controlled-diagnostic.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "One trustworthy controlled diagnostic; historical error not reproduced"
+    },
+    {
+      "gate": "H",
+      "status": "PASS",
+      "disposition": "Cleanup evidence gap and separate V1 scope established; cleanup remains unqualified",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-volume-cleanup-evidence.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "Cleanup evidence gap and separate V1 scope established; cleanup remains unqualified"
+    },
+    {
+      "gate": "I",
+      "status": "BLOCKED",
+      "disposition": "ROOT_CAUSE_UNDETERMINED",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-causal-assessment.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "ROOT_CAUSE_UNDETERMINED"
+    },
+    {
+      "gate": "J",
+      "status": "NOT_EXECUTED",
+      "disposition": "No supported functional correction proposal",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-corrective-scope.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "No supported functional correction proposal"
+    },
+    {
+      "gate": "K",
+      "status": "PASS",
+      "disposition": "Independent diagnostic assessment completed; ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-independent-review.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "Independent diagnostic assessment completed; ROOT_CAUSE_UNDETERMINED_CONFIRMED"
+    },
+    {
+      "gate": "L",
+      "status": "PASS",
+      "disposition": "Accurate diagnostic consolidation; parent qualification remains failed",
+      "source_sha": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+      "qualified_executable_and_test_harness": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+      "diagnostic_attempt": "See common record; not a separate attempt",
+      "commands": [],
+      "test_counts": "NOT_EXECUTED as qualification tests; source/evidence assessment only",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-A1-final-decision.md",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "cleanup": "A1 scoped cleanup PASS; historical fixture volumes CLEANUP_BLOCKED_OWNERSHIP",
+      "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+      "remaining_limitations": "Accurate diagnostic consolidation; parent qualification remains failed"
+    }
+  ]
+}

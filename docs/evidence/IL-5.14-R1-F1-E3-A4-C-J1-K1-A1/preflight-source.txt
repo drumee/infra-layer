@@ -1,0 +1,18 @@
+"use strict";
+const assert=require("node:assert/strict"),fs=require("node:fs"),os=require("node:os"),path=require("node:path"),cp=require("node:child_process");
+const {create}=require("./observe.cjs");let controls=0;
+const temp=()=>{const p=fs.mkdtempSync(path.join(os.tmpdir(),"a1-observer-preflight-"));fs.chmodSync(p,448);return p;};
+let dir=temp(),o=create(dir,"fixture"),original=cp.execFileSync;
+try{
+ const value={project:"fixture",id:"a".repeat(64),networks:{"fixture-application":{NetworkID:"b".repeat(64),EndpointID:"",Aliases:["application"]}},mounts:[{Type:"bind",Source:"SECRET_FILE_SENTINEL",Destination:"/run/secrets/signing"}],Env:["CREDENTIAL_SENTINEL"]};
+ const text=Buffer.from(JSON.stringify(value));cp.execFileSync=()=>text;const restore=o.install();assert.equal(cp.execFileSync("/usr/bin/docker",["container","inspect","--format","{{json .}}"]),text);restore();controls++;
+ const rows=fs.readFileSync(o.file,"utf8").trim().split("\n").map(JSON.parse);assert.equal(rows[0].observation.networks["fixture-application"].EndpointID,"");assert.equal(rows[0].observation.networks["fixture-application"].NetworkID,"b".repeat(64));controls++;
+ assert.doesNotMatch(fs.readFileSync(o.file,"utf8"),/CREDENTIAL_SENTINEL|SECRET_FILE_SENTINEL/);assert.deepEqual(value.Env,["CREDENTIAL_SENTINEL"]);controls++;
+ assert.equal(o.snapshot({project:"foreign",Env:["FOREIGN_SENTINEL"]}),undefined);controls++;
+ const cause=Object.assign(Error("SECRET_CAUSE_SENTINEL"),{code:"CAUSE_CODE"}),error=Object.assign(Error("SECRET_ERROR_SENTINEL"),{code:"NETWORK_ATTACHMENT_MISMATCH",cause});
+ cp.execFileSync=()=>{throw error;};const r=o.install();assert.throws(()=>cp.execFileSync("/usr/bin/docker",[]),e=>e===error&&e.cause===cause);r();assert.doesNotMatch(fs.readFileSync(o.file,"utf8"),/SECRET_CAUSE_SENTINEL|SECRET_ERROR_SENTINEL/);controls++;assert.ok(JSON.parse(fs.readFileSync(o.file,"utf8").trim().split("\n").at(-1)).error.frames.some(frame=>frame.includes("preflight.cjs")));controls++;
+ const output={},driver={go(arg){assert.equal(this,driver);assert.equal(arg,output);return output;},bad(){throw error;}};const wrapped=o.wrap(driver,["go","bad"]);assert.equal(wrapped.go(output),output);assert.throws(()=>wrapped.bad(),e=>e===error);controls++;
+ cp.execFileSync=()=>"{malformed";const r2=o.install();assert.equal(cp.execFileSync("/usr/bin/docker",["container","inspect","{{json .}}"]),"{malformed");r2();assert.ok(o.errors.includes("INSPECTION_COLLECTION_FAILED"));controls++;
+}finally{cp.execFileSync=original;o.close();fs.rmSync(dir,{recursive:true,force:true});}
+dir=temp();o=create(dir,"fixture",{maxRecords:1});o.event("one");o.event("two");assert.equal(o.errors[0],"TRACE_RECORD_LIMIT");assert.equal(fs.readFileSync(o.file,"utf8").trim().split("\n").length,1);o.close();fs.rmSync(dir,{recursive:true,force:true});controls++;
+assert.equal(cp.execFileSync,original);controls++;console.log(JSON.stringify({controls,pass:controls,Docker_commands:0,builtin_restored:true,cleanup:"PASS"}));

@@ -1,0 +1,45 @@
+{
+  "recorded": "2026-10-29T18:37:11.935294+00:00",
+  "project": "drumee-il5-8f39498a",
+  "checks": [
+    {
+      "command": [
+        "/usr/bin/docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=com.docker.compose.project=drumee-il5-8f39498a"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "/usr/bin/docker",
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=drumee-il5-8f39498a"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "/usr/bin/docker",
+        "image",
+        "ls",
+        "-q",
+        "--filter",
+        "reference=drumee-il5-application:drumee-il5-8f39498a"
+      ],
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "remaining_deployment_directories": [],
+  "scope": "This A1 attempt only; does not qualify historical fixture volumes",
+  "new_volume_deletions": 0,
+  "historical_resources_changed": false
+}

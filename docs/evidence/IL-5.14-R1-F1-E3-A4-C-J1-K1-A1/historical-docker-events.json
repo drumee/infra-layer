@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/usr/bin/docker",
+    "events",
+    "--since",
+    "2026-10-29T08:15:56.280418Z",
+    "--until",
+    "2026-10-29T08:16:24.432845Z",
+    "--filter",
+    "label=com.docker.compose.project=drumee-il5-35341a09",
+    "--format",
+    "{{json .}}"
+  ],
+  "started": "2026-10-29T18:02:46.344807+00:00",
+  "ended": "2026-10-29T18:02:46.354440+00:00",
+  "exit_code": 0,
+  "rows": [],
+  "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 0,
+  "limitation": "Daemon events are retention-limited; zero rows do not prove no events occurred. Request boundaries are explicit query bounds, not invented event times."
+}

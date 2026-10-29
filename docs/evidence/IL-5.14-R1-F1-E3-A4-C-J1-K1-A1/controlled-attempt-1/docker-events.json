@@ -1,0 +1,906 @@
+{
+  "args": [
+    "events",
+    "--since",
+    "2026-10-29T18:27:17.222Z",
+    "--until",
+    "2026-10-29T18:27:46.879Z",
+    "--filter",
+    "label=com.docker.compose.project=drumee-il5-8f39498a",
+    "--format",
+    "{{json .}}"
+  ],
+  "rows": [
+    {
+      "type": "container",
+      "action": "destroy",
+      "id": "cb7d14a3f1f8f59bc833822169193a03a446641a5b5d38495237bbb7f998e128",
+      "time_nano": "1793298449568430309",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "rename",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298449571442218",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "start",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298449751059652",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298451751302687",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298451751355119",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298451868679893",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "health_status",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298451869176575",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298452308473712",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298452308740898",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298452403530253",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298452751431042",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298452751665432",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298452848819781",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "create",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298453429499549",
+      "attributes": {
+        "name": "b1d6d043eb56_drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "kill",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298453440771249",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "stop",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298453778009359",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "die",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298453780999026",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "destroy",
+      "id": "b1d6d043eb56a24a65a4f79033a4464e7c713fe7f81e6014d196970e8f2bd4dc",
+      "time_nano": "1793298453785223534",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "a8556f44a3932b5cf18678d78c8f8538c35ebdce0f0ebc65cc27be86a2baf746"
+      }
+    },
+    {
+      "type": "container",
+      "action": "rename",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298453787754532",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "start",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298453939559070",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298455940388431",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298455940418786",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298456035538744",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "health_status",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298456035825577",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298456496561863",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298456496803701",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298456607038802",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298456961050239",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298456961282550",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298457046566722",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298458036442910",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298458036485110",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298458115589342",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "create",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298458418488448",
+      "attributes": {
+        "name": "26ce434ceac7_drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "kill",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298458426586325",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "stop",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298458737797136",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "die",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298458740531282",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "destroy",
+      "id": "26ce434ceac7de2b9dce1b7d8538285d6cc61e555e40d85a7c7e01f999a19560",
+      "time_nano": "1793298458744289008",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "rename",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298458747082843",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "start",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298458907394924",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "die",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298459304307085",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "start",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298459415545576",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "die",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298459796820893",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "start",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298459939621488",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "die",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298460249561046",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "start",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298460513260535",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "die",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298460849629424",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "start",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298461493109257",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "die",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298462125687247",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "create",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298462499702646",
+      "attributes": {
+        "name": "fcb9d44e47b0_drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "stop",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298462503465667",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "destroy",
+      "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+      "time_nano": "1793298462509813151",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11"
+      }
+    },
+    {
+      "type": "container",
+      "action": "rename",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298462513078838",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "start",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298462689407539",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298464689789936",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298464689889250",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298464766865256",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "health_status",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298464767161676",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298465249281585",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298465249545970",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298465333647400",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_create",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298465729709612",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_start",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298465729950489",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "exec_die",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298465822182977",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "0",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "kill",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298465866519833",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "die",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298466209241273",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "exitCode": "137",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    },
+    {
+      "type": "container",
+      "action": "destroy",
+      "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+      "time_nano": "1793298466212834266",
+      "attributes": {
+        "name": "drumee-il5-8f39498a-application-1",
+        "com.docker.compose.project": "drumee-il5-8f39498a",
+        "com.docker.compose.service": "application",
+        "org.drumee.infra.owner": "drumee-il5-8f39498a",
+        "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+      }
+    }
+  ],
+  "retention_limited": true,
+  "cross_clock_millisecond_causality": false
+}
