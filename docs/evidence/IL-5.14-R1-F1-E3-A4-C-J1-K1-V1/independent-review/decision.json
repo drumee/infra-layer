@@ -1,0 +1,106 @@
+{
+  "reviewer": "/root/v1_cleanup_review",
+  "independent": true,
+  "created": "2026-10-30T09:14:29.552268+00:00",
+  "disposition": "BLOCKED_EVIDENCE",
+  "recommended_mission_status": "V1_FAILED_QUALIFICATION",
+  "source": "9797f80796c94c83ba8cdb2215f0775497f72b76",
+  "qualified_source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "package_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "frozen_original_inputs_verified": 177,
+  "production_executable_preserved": true,
+  "harness_sha256": {
+    "test/diagnostics/fixture-volumes/campaign.cjs": "f4aceba0e9f6a2e7a853fd5fcb4a624211c6010d5f40fdb1c0aca42ca48bf2a7",
+    "test/diagnostics/fixture-volumes/docker.cjs": "e2b733c345e5ef60177b6dec02377bc941b80805f42eb153f796482f9bacf80b",
+    "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+    "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+  },
+  "daemon": {
+    "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+    "context": "default",
+    "endpoint": "unix:///var/run/docker.sock"
+  },
+  "historical_daemon_identity": "NOT_RECORDED",
+  "deterministic_controls": {
+    "pass": 24,
+    "fail": 0,
+    "exit_code": 0,
+    "scope": "Implementer fake-observation safety matrix only; independently inspected, not rerun by reviewer"
+  },
+  "lint": {
+    "exit_code": 1,
+    "errors": 1,
+    "historical_warnings": 28,
+    "new_findings": 1,
+    "rule": "no-useless-assignment",
+    "file": "test/diagnostics/fixture-volumes/docker.cjs:11:9"
+  },
+  "preflight_approval": "NOT_ISSUED",
+  "real_docker_campaign": "NOT_EXECUTED",
+  "post_campaign_reconciliation": "NOT_EXECUTED",
+  "new_docker_mutations": 0,
+  "historical_volume_deletions": 0,
+  "reviewer_docker_commands": 0,
+  "reviewer_tests": 0,
+  "mechanism_qualification": "NOT_QUALIFIED; no real Docker qualification and mandatory lint gate failed",
+  "historical_entries": {
+    "V1-H01": {
+      "container_id": "a9cd40872104064968b682fea7af420a215b0577070cf80a25c4f900b1df58ab",
+      "volume_name": null,
+      "attribution": "RESOURCE_IDENTITY_UNRESOLVED",
+      "disposition": "UNRESOLVED_HISTORICAL_EVIDENCE"
+    },
+    "V1-H02": {
+      "container_id": "95d91746379216a69c303c2d20157e5f2cf1c2736fb4676ac26dfc93915e7b72",
+      "volume_name": null,
+      "attribution": "RESOURCE_IDENTITY_UNRESOLVED",
+      "disposition": "UNRESOLVED_HISTORICAL_EVIDENCE"
+    },
+    "V1-H03": {
+      "container_id": "5e2db80b8d968c369bfdc344dd73c6c055e28ab30ef36b5dfa5dd2f8a245877a",
+      "volume_name": null,
+      "attribution": "RESOURCE_IDENTITY_UNRESOLVED",
+      "disposition": "UNRESOLVED_HISTORICAL_EVIDENCE"
+    },
+    "V1-H04": {
+      "container_id": "b6244e7b91cff88047f76adc0c1b637fa873c53799388b8b985175b90e4fa45c",
+      "volume_name": null,
+      "attribution": "RESOURCE_IDENTITY_UNRESOLVED",
+      "disposition": "UNRESOLVED_HISTORICAL_EVIDENCE"
+    }
+  },
+  "known_prior_volume": {
+    "name": "a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b",
+    "historical_proof": "Exact Mounts association, zero references, exact rm0 and absent readback",
+    "current_initial_inventory": "Absent; not independently proof of historical daemon continuity"
+  },
+  "partial_creation_observation": {
+    "severity": "LOW",
+    "category": "Auditability and structured partial-setup bookkeeping",
+    "source": "campaign.cjs:39-47,65-77",
+    "status": "Follow-up hardening; not a demonstrated false successful campaign",
+    "finding": "Structured volume/container creation manifest is written only after post-create inspect/returned-ID checks. Partial successful creation relies on command trace, campaign-start plan and global inventory comparison rather than explicit durable creation lifecycle records.",
+    "correction_to_initial_message": "The initial suggestion that surviving unmanifested volume could yield cleanup PASS was too broad. Global final inventory mismatch normally produces cleanup error INCOMPLETE and campaign remains FAIL. No unsafe deletion or false successful campaign was demonstrated.",
+    "required_security_preservation": "Do not delete partially attributed objects without exact ownership proof; preserve first failure and pending identity/cleanup obligations."
+  },
+  "new_major_or_blocker_security_findings": [],
+  "required_followup": [
+    "Correct the single lint error without suppressions/policy change under separate scope",
+    "Review explicit partial creation lifecycle receipts and test that accounting",
+    "Requalify changed harness and all mandatory preflight controls before one separately justified real Docker campaign",
+    "Keep four historical identities unresolved/protected absent exact evidence or separate owner resource decision"
+  ],
+  "parent_application_acceptance": "FAILED; NETWORK_ATTACHMENT_MISMATCH root cause undetermined",
+  "R1_final_closure": "PENDING",
+  "historical_Postfix": "ROOT_CAUSE_UNDETERMINED \u2014 OWNER_ACCEPTED; not extended to this failure",
+  "review_scope": "Static independent source/artifact and hash verification only; no Docker operation/test/implementation edit",
+  "reviewed_evidence_sha256": {
+    "baseline.json": "cdf1c879ac372be3328e838d84d75756d008d3a5d67132e0340f440d4e3da885",
+    "historical-ledger.json": "7f3c9679c9d73aa006ed0ea88523c7e5d06b1a5407061bcf2852be01ee4a43bc",
+    "initial-inventory.json": "60bb632af045ce9d819ad2cecb2c93a007b44f0a40c1342ffef88857b076e709",
+    "execution.jsonl": "ca461bb78a49d2425194058b41cf6e5057a5aaf3d1ee133fc6680b2f239327f9",
+    "safety-matrix.log": "5da4beda82e0c54739cbbe3a0d2fc22e56d92bfefbca32cc989b498078f4e8e9",
+    "eslint.log": "35943edc32b8e1179b9ab8a5d7c76a5206b394c3b0c22381ad2035b9fe1eba76",
+    "STOP.json": "6712d37886fcf1a0f957733fd7a8e84b125f7211ce9e80ac303b4f65d52d915c"
+  }
+}
