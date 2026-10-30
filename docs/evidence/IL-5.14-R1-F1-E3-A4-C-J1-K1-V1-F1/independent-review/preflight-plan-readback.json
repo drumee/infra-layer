@@ -1,0 +1,24 @@
+{
+  "reviewer": "/root/v1_cleanup_review",
+  "created": "2026-10-30T19:14:43.249211+00:00",
+  "status": "PASS",
+  "disposition": "PREFLIGHT_REVIEW_PASS",
+  "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+  "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+  "prior_preflight_decision_preserved": "preflight-decision.json",
+  "prior_plan_sha256": "25ec93bb4b3402270e43037ded492d24e36a39460f1e28cec1d92047962b3a2c",
+  "final_plan_sha256": "ddcfd9f46497cd2cd3b887dd0f27b392e08aa5ba1d49a54111975bace0d5c78d",
+  "only_plan_change": "One post_campaign_read_only_verification field added; removing it reconstructs byte-identical initial plan hash",
+  "added_requirement": {
+    "commands": "Re-read exact owned resource absence and same daemon; bounded past-window Docker container events filtered by exact org.drumee.qualification attempt label, no live observer/no future --until",
+    "required_evidence": "Correlate exact created container ID and die exitCode with owned lifecycle; preserve actual start/stop/destroy events and non-force deletion commands; no hidden transport/process exit accepted",
+    "boundary": "This adds read-only evidence retrieval, not a second campaign or fixture action. No source/harness change. Any missing mandatory termination evidence remains blocked rather than fabricated."
+  },
+  "harness_unchanged": true,
+  "seven_static_receipts_unchanged": true,
+  "approval_scope": "One current-owned-fixture campaign under existing owner authorization; only bounded exact-attempt historical-time events/exact absence and daemon readback afterward, no additional mutation/fixture",
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "new_major_or_blocker": [],
+  "final_review_requirement": "Actual owned-container termination evidence must be inspected; missing required proof stays blocked, not inferred from stop command or mocked result"
+}

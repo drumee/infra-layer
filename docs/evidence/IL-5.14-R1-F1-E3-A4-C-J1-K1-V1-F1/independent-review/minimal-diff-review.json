@@ -1,0 +1,28 @@
+{
+  "reviewer": "/root/v1_cleanup_review",
+  "read_at": "2026-10-30T19:10:57.029581+00:00",
+  "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+  "source_parent": "af888a0bb51d837e40479bd69d7aec797dbf6767",
+  "phase": "Committed minimal patch review; not campaign approval",
+  "minimal_diff": "Exactly stdout initializer removal and fixed new V1-F1 evidence directory literal; no ownership/cleanup/assertion/test-body/timeout/retry change",
+  "original_error_assignments": "Both successful execFileSync and caught-error branch still assign actual string before logging/return/throw. Removing overwritten empty initialization preserves behavior.",
+  "fresh_evidence_root": "Necessary to bind new baseline/approval/attempt and preserve original failed V1 evidence; no arbitrary path parameter or code-loading widening",
+  "harness_sha256": {
+    "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+    "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+    "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+    "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+  },
+  "package_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "new_major_or_blocker": [],
+  "real_campaign_approval": "PENDING required successful focused/safety/lint/assertion controls, read-only environment/ownership preflight and specific attempt plan",
+  "retained_limitations": [
+    "Historical four physical volume identities unresolved and protected",
+    "New standalone mechanism does not retrofit all old fixtures",
+    "Partial setup structured receipt auditability LOW; global inventory guard ordinarily detects surviving unmanifested resources",
+    "No defence against privileged Docker administrator forging identical resource metadata"
+  ],
+  "verdict": "Minimal correction boundary supported; no live execution approval yet"
+}

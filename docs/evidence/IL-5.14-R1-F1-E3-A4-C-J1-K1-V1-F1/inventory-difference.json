@@ -1,0 +1,355 @@
+{
+  "purpose": "Post-failure read-only artifact analysis, no retest",
+  "differences": [
+    {
+      "path": "/containers/0/mounts/0/destination",
+      "before": "/etc/drumee",
+      "after": "/data/mfs"
+    },
+    {
+      "path": "/containers/0/mounts/0/name",
+      "before": "scratchpad_drumee_conf",
+      "after": "scratchpad_mfs_data"
+    },
+    {
+      "path": "/containers/0/mounts/1/destination",
+      "before": "/srv/drumee/runtime/plugins/server",
+      "after": "/etc/drumee"
+    },
+    {
+      "path": "/containers/0/mounts/1/name",
+      "before": null,
+      "after": "scratchpad_drumee_conf"
+    },
+    {
+      "path": "/containers/0/mounts/1/type",
+      "before": "bind",
+      "after": "volume"
+    },
+    {
+      "path": "/containers/0/mounts/2/destination",
+      "before": "/data/mfs",
+      "after": "/srv/drumee/runtime/plugins/server"
+    },
+    {
+      "path": "/containers/0/mounts/2/name",
+      "before": "scratchpad_mfs_data",
+      "after": null
+    },
+    {
+      "path": "/containers/0/mounts/2/type",
+      "before": "volume",
+      "after": "bind"
+    },
+    {
+      "path": "/containers/1/mounts/0/destination",
+      "before": "/etc/nginx/nginx.conf",
+      "after": "/etc/nginx/test-tls"
+    },
+    {
+      "path": "/containers/1/mounts/1/destination",
+      "before": "/etc/nginx/proxy.inc",
+      "after": "/srv/static"
+    },
+    {
+      "path": "/containers/1/mounts/2/destination",
+      "before": "/etc/nginx/test-tls",
+      "after": "/etc/nginx/nginx.conf"
+    },
+    {
+      "path": "/containers/1/mounts/3/destination",
+      "before": "/srv/static",
+      "after": "/etc/nginx/proxy.inc"
+    },
+    {
+      "path": "/containers/2/mounts/0/destination",
+      "before": "/run/secrets/db_root_password",
+      "after": "/var/lib/mysql"
+    },
+    {
+      "path": "/containers/2/mounts/0/name",
+      "before": null,
+      "after": "oxymot-blog01-blog04-candidate_mysql_data"
+    },
+    {
+      "path": "/containers/2/mounts/0/type",
+      "before": "bind",
+      "after": "volume"
+    },
+    {
+      "path": "/containers/2/mounts/1/destination",
+      "before": "/var/lib/mysql",
+      "after": "/run/secrets/db_password"
+    },
+    {
+      "path": "/containers/2/mounts/1/name",
+      "before": "oxymot-blog01-blog04-candidate_mysql_data",
+      "after": null
+    },
+    {
+      "path": "/containers/2/mounts/1/type",
+      "before": "volume",
+      "after": "bind"
+    },
+    {
+      "path": "/containers/2/mounts/2/destination",
+      "before": "/run/secrets/db_password",
+      "after": "/run/secrets/db_root_password"
+    },
+    {
+      "path": "/containers/4/mounts/0/destination",
+      "before": "/var/lib/mysql",
+      "after": "/run/secrets/db_root_password"
+    },
+    {
+      "path": "/containers/4/mounts/0/name",
+      "before": "oxymot-blog01_mysql_data",
+      "after": null
+    },
+    {
+      "path": "/containers/4/mounts/0/type",
+      "before": "volume",
+      "after": "bind"
+    },
+    {
+      "path": "/containers/4/mounts/1/destination",
+      "before": "/run/secrets/db_password",
+      "after": "/var/lib/mysql"
+    },
+    {
+      "path": "/containers/4/mounts/1/name",
+      "before": null,
+      "after": "oxymot-blog01_mysql_data"
+    },
+    {
+      "path": "/containers/4/mounts/1/type",
+      "before": "bind",
+      "after": "volume"
+    },
+    {
+      "path": "/containers/4/mounts/2/destination",
+      "before": "/run/secrets/db_root_password",
+      "after": "/run/secrets/db_password"
+    },
+    {
+      "path": "/containers/6/mounts/0/destination",
+      "before": "/srv/db",
+      "after": "/exchangearea"
+    },
+    {
+      "path": "/containers/6/mounts/1/destination",
+      "before": "/data",
+      "after": "/home/somanos"
+    },
+    {
+      "path": "/containers/6/mounts/2/destination",
+      "before": "/exchangearea",
+      "after": "/mnt/devel"
+    },
+    {
+      "path": "/containers/6/mounts/3/destination",
+      "before": "/home/somanos",
+      "after": "/srv/db"
+    },
+    {
+      "path": "/containers/6/mounts/4/destination",
+      "before": "/mnt/devel",
+      "after": "/data"
+    },
+    {
+      "path": "/containers/12/mounts/0/destination",
+      "before": "/opt/blog01/capture-mail",
+      "after": "/var/lib/ghost/content"
+    },
+    {
+      "path": "/containers/12/mounts/0/name",
+      "before": null,
+      "after": "oxymot-blog01-blog03-restore-20261028214442_ghost_content"
+    },
+    {
+      "path": "/containers/12/mounts/0/type",
+      "before": "bind",
+      "after": "volume"
+    },
+    {
+      "path": "/containers/12/mounts/1/destination",
+      "before": "/run/secrets/db_password",
+      "after": "/opt/blog01/capture-mail"
+    },
+    {
+      "path": "/containers/12/mounts/2/destination",
+      "before": "/var/lib/ghost/content",
+      "after": "/run/secrets/db_password"
+    },
+    {
+      "path": "/containers/12/mounts/2/name",
+      "before": "oxymot-blog01-blog03-restore-20261028214442_ghost_content",
+      "after": null
+    },
+    {
+      "path": "/containers/12/mounts/2/type",
+      "before": "volume",
+      "after": "bind"
+    },
+    {
+      "path": "/containers/18/mounts/0/destination",
+      "before": "/reports",
+      "after": "/run/mysqld"
+    },
+    {
+      "path": "/containers/18/mounts/0/name",
+      "before": null,
+      "after": "lotja-tuning-r2_experiment_socket"
+    },
+    {
+      "path": "/containers/18/mounts/0/type",
+      "before": "bind",
+      "after": "volume"
+    },
+    {
+      "path": "/containers/18/mounts/1/destination",
+      "before": "/run/mysqld",
+      "after": "/workspace"
+    },
+    {
+      "path": "/containers/18/mounts/1/name",
+      "before": "lotja-tuning-r2_experiment_socket",
+      "after": null
+    },
+    {
+      "path": "/containers/18/mounts/1/type",
+      "before": "volume",
+      "after": "bind"
+    },
+    {
+      "path": "/containers/18/mounts/2/destination",
+      "before": "/workspace",
+      "after": "/baseline"
+    },
+    {
+      "path": "/containers/18/mounts/3/destination",
+      "before": "/baseline",
+      "after": "/reports"
+    },
+    {
+      "path": "/containers/21/mounts/0/destination",
+      "before": "/etc/nginx/rss-disabled.inc",
+      "after": "/etc/nginx/proxy-headers.inc"
+    },
+    {
+      "path": "/containers/21/mounts/1/destination",
+      "before": "/etc/nginx/public-surface-map.inc",
+      "after": "/srv/rollback-assets"
+    },
+    {
+      "path": "/containers/21/mounts/2/destination",
+      "before": "/etc/nginx/nginx.conf",
+      "after": "/srv/static"
+    },
+    {
+      "path": "/containers/21/mounts/3/destination",
+      "before": "/etc/nginx/proxy-headers.inc",
+      "after": "/etc/nginx/blog04"
+    },
+    {
+      "path": "/containers/21/mounts/4/destination",
+      "before": "/srv/rollback-assets",
+      "after": "/srv/public"
+    },
+    {
+      "path": "/containers/21/mounts/5/destination",
+      "before": "/srv/static",
+      "after": "/srv/rollback-blog"
+    },
+    {
+      "path": "/containers/21/mounts/6/destination",
+      "before": "/etc/nginx/blog04",
+      "after": "/etc/nginx/public-surface-guard.inc"
+    },
+    {
+      "path": "/containers/21/mounts/7/destination",
+      "before": "/srv/public",
+      "after": "/srv/rollback"
+    },
+    {
+      "path": "/containers/21/mounts/8/destination",
+      "before": "/srv/rollback-blog",
+      "after": "/etc/nginx/proxy.inc"
+    },
+    {
+      "path": "/containers/21/mounts/9/destination",
+      "before": "/etc/nginx/public-surface-guard.inc",
+      "after": "/etc/nginx/test-tls"
+    },
+    {
+      "path": "/containers/21/mounts/10/destination",
+      "before": "/srv/rollback",
+      "after": "/etc/nginx/rss-disabled.inc"
+    },
+    {
+      "path": "/containers/21/mounts/11/destination",
+      "before": "/etc/nginx/proxy.inc",
+      "after": "/etc/nginx/public-surface-map.inc"
+    },
+    {
+      "path": "/containers/21/mounts/12/destination",
+      "before": "/etc/nginx/test-tls",
+      "after": "/etc/nginx/nginx.conf"
+    },
+    {
+      "path": "/containers/24/mounts/0/destination",
+      "before": "/srv/drumee/cache",
+      "after": "/etc/drumee"
+    },
+    {
+      "path": "/containers/24/mounts/0/name",
+      "before": "scratchpad_web_cache",
+      "after": "scratchpad_drumee_conf"
+    },
+    {
+      "path": "/containers/24/mounts/1/destination",
+      "before": "/etc/drumee",
+      "after": "/etc/nginx/sites-enabled"
+    },
+    {
+      "path": "/containers/24/mounts/2/destination",
+      "before": "/etc/nginx/sites-enabled",
+      "after": "/srv/drumee/cache"
+    },
+    {
+      "path": "/containers/24/mounts/2/name",
+      "before": "scratchpad_drumee_conf",
+      "after": "scratchpad_web_cache"
+    },
+    {
+      "path": "/containers/26/mounts/0/destination",
+      "before": "/etc/drumee",
+      "after": "/var/lib/drumee/setup-schemas/lib/drumate.js"
+    },
+    {
+      "path": "/containers/26/mounts/0/name",
+      "before": "scratchpad_drumee_conf",
+      "after": null
+    },
+    {
+      "path": "/containers/26/mounts/0/type",
+      "before": "volume",
+      "after": "bind"
+    },
+    {
+      "path": "/containers/26/mounts/1/destination",
+      "before": "/var/lib/drumee/setup-schemas/lib/drumate.js",
+      "after": "/etc/drumee"
+    },
+    {
+      "path": "/containers/26/mounts/1/name",
+      "before": null,
+      "after": "scratchpad_drumee_conf"
+    },
+    {
+      "path": "/containers/26/mounts/1/type",
+      "before": "bind",
+      "after": "volume"
+    }
+  ]
+}

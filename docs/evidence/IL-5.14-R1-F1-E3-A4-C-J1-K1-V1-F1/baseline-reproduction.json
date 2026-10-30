@@ -1,0 +1,17 @@
+{
+  "purpose": "Expected reproduction of authorized V1 defect before correction; not corrected-candidate preflight",
+  "source": "af888a0bb51d837e40479bd69d7aec797dbf6767",
+  "command": [
+    "npm",
+    "run",
+    "lint"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "started": "2026-10-30T19:09:16.002493+00:00",
+  "ended": "2026-10-30T19:09:17.683394+00:00",
+  "exit_code": 1,
+  "expected_exit_code": 1,
+  "log_sha256": "35943edc32b8e1179b9ab8a5d7c76a5206b394c3b0c22381ad2035b9fe1eba76",
+  "new_finding": "no-useless-assignment test/diagnostics/fixture-volumes/docker.cjs:11:9",
+  "historical_warnings": 28
+}

@@ -1,0 +1,168 @@
+{
+  "reviewer": "/root/v1_cleanup_review",
+  "created": "2026-10-30T19:20:03.461148+00:00",
+  "mode": "Read-only original artifact analysis; no normalization applied to implementation or original evidence",
+  "finding": "V1-F1-REC-001",
+  "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+  "source_location": "test/diagnostics/fixture-volumes/docker.cjs:49 and campaign.cjs:73",
+  "observed_original_result": {
+    "exit_code": 1,
+    "primary_error": null,
+    "cleanup_errors": [
+      "ERR_ASSERTION"
+    ],
+    "cleanup": "INCOMPLETE",
+    "campaign": "FAIL"
+  },
+  "observed_difference": "Only 10 container Mounts array permutations; all projected tuples and multiplicities match, all other fields/ID sets identical",
+  "changed_mount_order_records": [
+    {
+      "id": "026c71e034fdd7a8d75c4387683d7fe92053453d32ed7146d4c1bdb1205faf01",
+      "name": "/scratchpad-app-1",
+      "only_changed_field": "mounts array order",
+      "mount_count": 3,
+      "same_multiset_including_multiplicity": true
+    },
+    {
+      "id": "03d98e22a3f27b2860875872fcd86609278d71e5d001df0803cd52cd8a5b01dd",
+      "name": "/oxymot-blog01-proxy-1",
+      "only_changed_field": "mounts array order",
+      "mount_count": 4,
+      "same_multiset_including_multiplicity": true
+    },
+    {
+      "id": "274756d7c1f27542bf20d1eb4d1e827e31fc610c9082ca7c44a7c9d11eab9b83",
+      "name": "/oxymot-blog01-blog04-candidate-db-1",
+      "only_changed_field": "mounts array order",
+      "mount_count": 3,
+      "same_multiset_including_multiplicity": true
+    },
+    {
+      "id": "2d49a09b1a13aa4c5584e9d15552ef6be96e6e7cde3ca9339c2c64567604d8b1",
+      "name": "/oxymot-blog01-db-1",
+      "only_changed_field": "mounts array order",
+      "mount_count": 3,
+      "same_multiset_including_multiplicity": true
+    },
+    {
+      "id": "38695756ad2c2df360537cd958462f575d43cb18aef848c7dff22eff4a8837fc",
+      "name": "/perdrix",
+      "only_changed_field": "mounts array order",
+      "mount_count": 5,
+      "same_multiset_including_multiplicity": true
+    },
+    {
+      "id": "583928424c20c4bbdbf807532902c639471a619b7d0006020b552ca2eae80e59",
+      "name": "/oxymot-blog01-blog03-restore-20261028214442-ghost-1",
+      "only_changed_field": "mounts array order",
+      "mount_count": 3,
+      "same_multiset_including_multiplicity": true
+    },
+    {
+      "id": "9ab9d911d67df7eaff96ea50fec20f48a30a8c550de1189f546728401523654e",
+      "name": "/lotja-tuning-r2-codex-1",
+      "only_changed_field": "mounts array order",
+      "mount_count": 4,
+      "same_multiset_including_multiplicity": true
+    },
+    {
+      "id": "a8bd95457fff22c6d144d665f3905a23c12940ce10aae3c105ca10a57c9fadfb",
+      "name": "/oxymot-blog01-tls-proxy-1",
+      "only_changed_field": "mounts array order",
+      "mount_count": 13,
+      "same_multiset_including_multiplicity": true
+    },
+    {
+      "id": "c2d515f4382efd55e45b3254ee6cbd0abae0a01c4bbc9b1b431d96c6cb192243",
+      "name": "/scratchpad-web-1",
+      "only_changed_field": "mounts array order",
+      "mount_count": 3,
+      "same_multiset_including_multiplicity": true
+    },
+    {
+      "id": "ca5091e89d7df77fa91b819b2c4d9c927a6edd13726f3b08a166c03293346fbc",
+      "name": "/scratchpad-migrate-1",
+      "only_changed_field": "mounts array order",
+      "mount_count": 2,
+      "same_multiset_including_multiplicity": true
+    }
+  ],
+  "counts_before_after": {
+    "volumes": [
+      682,
+      682
+    ],
+    "containers": [
+      35,
+      35
+    ],
+    "networks": [
+      21,
+      21
+    ]
+  },
+  "volume_snapshots_identical": true,
+  "network_snapshots_identical": true,
+  "campaign_command_count": 131,
+  "all_Docker_exits": 0,
+  "mutations": [
+    {
+      "seq": 13,
+      "action": "volume.create",
+      "target": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "exit_code": 0
+    },
+    {
+      "seq": 22,
+      "action": "create",
+      "target": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "exit_code": 0
+    },
+    {
+      "seq": 41,
+      "action": "start",
+      "target": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "exit_code": 0
+    },
+    {
+      "seq": 60,
+      "action": "stop",
+      "target": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "exit_code": 0
+    },
+    {
+      "seq": 83,
+      "action": "rm",
+      "target": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "exit_code": 0
+    },
+    {
+      "seq": 117,
+      "action": "volume.rm",
+      "target": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "exit_code": 0
+    }
+  ],
+  "post_failure_readonly_commands": 7,
+  "owned_die_exitCode": "0",
+  "owned_signal": "15",
+  "owned_container_destroyed": true,
+  "owned_volume_absent_and_no_consumers": true,
+  "historical_volume_deletions": 0,
+  "foreign_modification_by_campaign_evidenced": false,
+  "comparison_limit": "Projected metadata plus exact command scope, not a claim about every unobserved property or external actors",
+  "normalization_used_only_for_causal_analysis": "Mount lists sorted by full canonical JSON of each tuple, preserving duplicate multiplicity; this does not change original mandatory FAIL",
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "artifact_sha256": {
+    "campaign-1/before.json": "68dd86bc09ec26ad4be1c37d8aca9d187c2267c75e8ffa787c938b77be081bf3",
+    "campaign-1/after.json": "165ecf1e709e1ee1092bca9736d07e36eab47e0d442d31c3e7ce91c2d6914456",
+    "campaign-1/manifest.json": "df9f44ed029b5e1409cb972292ad9ddcc4a9a214a68b50890180a69362e4053e",
+    "campaign-1/result.json": "b54f7af5009bdc23203810b76df6f03ddf8a5c02eeeaac50a7a0743c15b10b83",
+    "campaign-1/removals.json": "a74491eb69d79a0c4d288ca3e5224c0cbc5eda6627a85dfc74a3a50b10a3fed8",
+    "campaign-1/commands.jsonl": "cdd0d64bfb26bee12400b6db1fed5840b1647f0c291fa6a8443e8a45caec2a30",
+    "post-failure-readback.json": "aeb321af98af332587a21d1f59a480bdebf0c62480da0545a736d16b669d35f7",
+    "post-failure-docker-commands.jsonl": "1e41ec235e8d31dc8a2668cc71a57f77eb8acc41b8465e214d49b2bffb311885",
+    "STOP.json": "890fcee42f0335be9f5fe11ea37968d6cdef1e888617223c596ecdc7ac533dda"
+  }
+}
