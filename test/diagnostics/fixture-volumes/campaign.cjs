@@ -1,7 +1,7 @@
 "use strict";
 const fs = require("node:fs"), path = require("node:path"), crypto = require("node:crypto"), assert = require("node:assert/strict");
 const { createDocker } = require("./docker.cjs"), O = require("./ownership.cjs");
-const evidence = path.resolve(__dirname, "../../../docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1");
+const evidence = path.resolve(__dirname, "../../../docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1");
 const baseline = JSON.parse(fs.readFileSync(path.join(evidence, "baseline.json")));
 const approval = JSON.parse(fs.readFileSync(path.join(evidence, "preflight-approved.json")));
 assert.equal(approval.attempt, baseline.attempt); assert.equal(approval.status, "PASS");

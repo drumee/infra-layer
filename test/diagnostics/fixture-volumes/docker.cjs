@@ -8,7 +8,7 @@ function createDocker(directory) {
   let sequence = 0;
   function run(args) {
     const started = new Date().toISOString(), argv = ["--host", endpoint, ...args];
-    let stdout = "", error;
+    let stdout, error;
     try { stdout = cp.execFileSync(executable, argv, { env: environment, encoding: "utf8", timeout: 30000, maxBuffer: 8 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }); }
     catch (cause) { error = cause; stdout = String(cause.stdout || ""); }
     const record = { seq: ++sequence, executable, argv, started, ended: new Date().toISOString(), exit_code: error ? error.status : 0, signal: error ? error.signal : null, stdout_hash: digest(stdout), stderr_hash: digest(error ? String(error.stderr || "") : "") };
