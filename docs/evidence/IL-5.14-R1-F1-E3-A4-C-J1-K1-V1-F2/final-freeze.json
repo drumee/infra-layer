@@ -1,0 +1,49 @@
+{
+  "recorded": "2026-11-02T16:01:17.131521+00:00",
+  "resume_checkpoint": "987a3bba377fa7f6153b8ce10f4fca231fff0790",
+  "candidate_source": "5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6",
+  "qualified_source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "harness_sha256": {
+    "test/diagnostics/fixture-volumes/campaign.cjs": "6f339f2e78415a3a7aa0bb362524f0a8d82a965ccd90589e7817b535a8aa790c",
+    "test/diagnostics/fixture-volumes/docker.cjs": "e91d21e7518c2dbdd0c41de50fca3037911a3b4d997435df6f3d6dc72d9b9cd1",
+    "test/diagnostics/fixture-volumes/mounts.cjs": "17e8d663a1985ec13b410a9c12baf8c4d8ec16256cd22fef0c7b7488425a74cb",
+    "test/diagnostics/fixture-volumes/mounts.test.cjs": "3d186f6c27323559a4a74004e851193f2a09faf82fb624db4f2f56ab9aaa0c6e",
+    "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+    "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+  },
+  "original_177_inputs_preserved": true,
+  "source_changes_after_failure": false,
+  "command_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "comparator_totals": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "scope": "file-level, no subcase results"
+  },
+  "first_failure": "comparator-regressions root exit1; ERR_TEST_FAILURE; underlying cause not established",
+  "mission_status": "V1_FAILED_QUALIFICATION",
+  "independent_review": "BLOCKED_EVIDENCE",
+  "comparator_finding": "V1-F1-REC-001 OPEN; NOT FINDING_CLOSED",
+  "real_campaigns": 0,
+  "live_Docker_commands": 0,
+  "resources_created": 0,
+  "resources_deleted": 0,
+  "historical_deletions": 0,
+  "cleanup": "NOT_EXECUTED / NOT_QUALIFIED",
+  "historical_records": "V1-H01-H04 RESOURCE_IDENTITY_UNRESOLVED / HISTORICAL_EVIDENCE_INSUFFICIENT",
+  "archive_available": false,
+  "archive_rehashed": false,
+  "historically_recorded_archive_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "application_acceptance": "FAILED NETWORK_ATTACHMENT_MISMATCH",
+  "R1_final_closure": "PENDING",
+  "remote_mutations": false,
+  "checkpoint_note": "Following documentation-only commit does not change candidate inputs; exact SHA returned to owner and private checkpoint-readback.json."
+}

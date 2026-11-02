@@ -1,0 +1,9 @@
+# V1-F2 baseline — Gate A PASS
+
+Resume checkpoint `987a3bba377fa7f6153b8ce10f4fca231fff0790`, branch `fix/il514-c1-network-attachment-identity`, origin `git@github.com:drumee/infra-layer.git`. Initial working tree clean. No local commits discarded. Qualified production/package reference remains `20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee`.
+
+Original finding V1-F1-REC-001: inventory adapter `test/diagnostics/fixture-volumes/docker.cjs:49` emitted type/name/destination mount tuples in Docker response order; caller `campaign.cjs:73` used `assert.deepEqual(after, before)`. Expected is campaign-1/before.json; actual is campaign-1/after.json in V1-F1 evidence. Reconstructed ten permutations and all other projected fields identical across 682 volumes/35 containers/21 networks. The membership/reference contract uses identity and occurrence, not enumeration position. Duplicate counts remain meaningful even if a real container ordinarily forbids duplicate targets.
+
+Historical attempt V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece exited1, primary_error=null, cleanup_errors=[ERR_ASSERTION], cleanup=INCOMPLETE, campaign=FAIL. Its exact owned volume/container disposal does not override failed reconciliation. Original raw source/access attributes were not captured and cannot be inferred now. The new schema extends observations; explicit historical replay proves only its original three fields. No historical artifact is rewritten.
+
+The 177 original input hashes and available prior evidence manifests were verified unchanged. The old archive temporary path is absent: recorded SHA256 is historical evidence, not a new physical check. See [reconstruction](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2/baseline-reconstruction.json) and independently produced baseline-reconstruction.json under independent-review. New attempt `V1-F2-830ab96f-f97f-4403-94ac-de1f9c12673e` is distinct. No Docker operation has occurred at this baseline stage.

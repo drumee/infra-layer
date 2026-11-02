@@ -1,0 +1,99 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "independent": true,
+  "created": "2026-11-02T15:57:56.546471+00:00",
+  "disposition": "BLOCKED_EVIDENCE",
+  "recommended_mission_status": "V1_FAILED_QUALIFICATION",
+  "source": "5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6",
+  "resume_checkpoint": "987a3bba377fa7f6153b8ce10f4fca231fff0790",
+  "attempt": "V1-F2-830ab96f-f97f-4403-94ac-de1f9c12673e",
+  "finding": "V1-F1-REC-001",
+  "finding_status": "OPEN; NOT FINDING_CLOSED",
+  "affected_gates": [
+    "D comparator regressions FAIL",
+    "E static preflight FAIL",
+    "F independent comparator closure BLOCKED",
+    "G/H/I Docker preflight/campaign/reconciliation NOT_EXECUTED",
+    "L independent cleanup qualification BLOCKED"
+  ],
+  "actual_execution": {
+    "syntax_commands": 6,
+    "syntax_exit_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "comparator_command": [
+      "node",
+      "--test",
+      "test/diagnostics/fixture-volumes/mounts.test.cjs"
+    ],
+    "comparator_root_exit": 1,
+    "actual_tap_totals": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "reported_error": "ERR_TEST_FAILURE / file-level testCodeFailure / child exit1 / signal null",
+    "subcase_results": "NOT_AVAILABLE; no individual D1-D24 or extra comparator control PASS may be claimed",
+    "cause": "UNDETERMINED_FROM_PRESERVED_OUTPUT",
+    "post_stop_tests": 0,
+    "real_campaigns": 0,
+    "Docker_commands": 0,
+    "later_static_commands": "NOT_EXECUTED; ownership24/guards48/refusal6/lint0-28-0 are historical reference only"
+  },
+  "source_review": {
+    "corrected_design": "Full-tuple count maps; multiset, not set; input records/arrays not sorted or mutated. Current exact schema includes type/name/destination/source_hash/driver/rw/mode/propagation. Distinct explicit historical three-field replay cannot be used implicitly by current campaign.",
+    "inventory_boundary": "Only per-container mounts treated order-independent; non-mount inventory fields still deepStrictEqual with resource arrays/IDs/ownership/network/daemon retained.",
+    "campaign_boundaries": "Prior ownership checks, all-state consumer checks, exact non-force cleanup commands and primary/cleanup error preservation remain present. Adds strict owned expected mount manifest and active comparator calls. No broad resource selector.",
+    "reachability_design": "Frozen campaign AST fingerprint uses existing infrastructure and statically declares bypass negative controls; failed run supplies no successful execution evidence for those controls.",
+    "static_assessment_limit": "Design inspection finds no demonstrated unequal-collection acceptance or duplicate loss, but cannot replace mandatory failed regression or confer security qualification.",
+    "production_177_inputs_verified_unchanged": true,
+    "harness_hashes_verified": {
+      "test/diagnostics/fixture-volumes/campaign.cjs": "6f339f2e78415a3a7aa0bb362524f0a8d82a965ccd90589e7817b535a8aa790c",
+      "test/diagnostics/fixture-volumes/docker.cjs": "e91d21e7518c2dbdd0c41de50fca3037911a3b4d997435df6f3d6dc72d9b9cd1",
+      "test/diagnostics/fixture-volumes/mounts.cjs": "17e8d663a1985ec13b410a9c12baf8c4d8ec16256cd22fef0c7b7488425a74cb",
+      "test/diagnostics/fixture-volumes/mounts.test.cjs": "3d186f6c27323559a4a74004e851193f2a09faf82fb624db4f2f56ab9aaa0c6e",
+      "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+      "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+    },
+    "source_changed_paths": [
+      "test/diagnostics/fixture-volumes/campaign.cjs",
+      "test/diagnostics/fixture-volumes/docker.cjs",
+      "test/diagnostics/fixture-volumes/mounts.cjs",
+      "test/diagnostics/fixture-volumes/mounts.test.cjs"
+    ],
+    "new_major_or_blocker_security_findings": []
+  },
+  "resource_state": {
+    "current_attempt_resources_created": 0,
+    "current_attempt_resources_deleted": 0,
+    "historical_resources_deleted": 0,
+    "cleanup_qualification": "NOT_EXECUTED / NOT_QUALIFIED",
+    "historical_entries": "V1-H01-H04 RESOURCE_IDENTITY_UNRESOLVED / HISTORICAL_EVIDENCE_INSUFFICIENT; no new Docker readback performed"
+  },
+  "package": {
+    "qualified_source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "previously_recorded_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+    "source_inputs_preserved": true,
+    "physical_archive_available": false,
+    "physical_archive_rehashed": false,
+    "qualification_scope": "Historical qualification applicability only through unchanged relevant inputs; no newly checked physical archive"
+  },
+  "required_next_step": "Separate diagnostic scope must capture the first actionable test failure before correction or requalification. Do not infer a comparator bug, environment fault, or approval failure from this generic exit alone. Do not rerun unchanged qualification or execute Docker within stopped F2.",
+  "application_acceptance": "APPLICATION_ACCEPTANCE_FAILED_NETWORK_ATTACHMENT_MISMATCH",
+  "R1_final_closure": "R1_FINAL_CLOSURE_PENDING",
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "evidence": {
+    "STOP.json": "b60e3273c14605b6753d66d48c9d359730e4ceb10f91bac252648f808a502fca",
+    "execution.jsonl": "2b0fdd128ba7e511bd22e4f4d70eded28b8bf3e477ff51fac59e7c907ffaf1aa",
+    "comparator-regressions.log": "391467808661e540939aaa64b813910ae18d0bf00be1cd2b296d132dad0f7ff4",
+    "baseline-reconstruction.json": "458d89fff97d3519ae638cf1e0ac58c65df3cdeb2e1ae8e59783d4ae15fbcd7d"
+  }
+}
