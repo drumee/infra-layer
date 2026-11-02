@@ -1,6 +1,7 @@
 "use strict";
 const fs = require("node:fs"), path = require("node:path"), cp = require("node:child_process");
 const T = require("../../../internal/system-tools"), { digest, volumeIdentity } = require("./ownership.cjs");
+const { projectMount } = require("./mounts.cjs");
 const endpoint = "unix:///var/run/docker.sock";
 function createDocker(directory) {
   fs.mkdirSync(directory, { recursive: true, mode: 0o700 });
@@ -46,7 +47,7 @@ function createDocker(directory) {
     }) : [];
     const ids = lines(run(["ps", "-aq", "--no-trunc"])).sort();
     const containers = ids.length ? lines(run(["container", "inspect", "--format", "{{json .}}", ...ids])).map(s => {
-      const c = JSON.parse(s); return { id: c.Id, name: c.Name, ownership_hash: digest(c.Config.Labels || {}), mounts: c.Mounts.map(m => ({ type: m.Type, name: m.Name || null, destination: m.Destination })), networks_hash: digest(c.NetworkSettings.Networks || {}) };
+      const c = JSON.parse(s); return { id: c.Id, name: c.Name, ownership_hash: digest(c.Config.Labels || {}), mounts: c.Mounts.map(projectMount), networks_hash: digest(c.NetworkSettings.Networks || {}) };
     }) : [];
     const nets = lines(run(["network", "ls", "-q", "--no-trunc"])).sort();
     const networks = nets.length ? lines(run(["network", "inspect", "--format", "{{json .}}", ...nets])).map(s => {

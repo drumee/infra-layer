@@ -1,7 +1,8 @@
 "use strict";
 const fs = require("node:fs"), path = require("node:path"), crypto = require("node:crypto"), assert = require("node:assert/strict");
 const { createDocker } = require("./docker.cjs"), O = require("./ownership.cjs");
-const evidence = path.resolve(__dirname, "../../../docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1");
+const { projectMount, assertMountsEqual, assertInventoryEqual } = require("./mounts.cjs");
+const evidence = path.resolve(__dirname, "../../../docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2");
 const baseline = JSON.parse(fs.readFileSync(path.join(evidence, "baseline.json")));
 const approval = JSON.parse(fs.readFileSync(path.join(evidence, "preflight-approved.json")));
 assert.equal(approval.attempt, baseline.attempt); assert.equal(approval.status, "PASS");
@@ -24,6 +25,10 @@ function verifyContainer(entry) {
   assert.equal(raw.Config.Labels["org.drumee.qualification"], attempt); assert.equal(raw.Config.Labels["org.drumee.infra.owner"], attempt); assert.equal(raw.Config.Labels["org.drumee.volume.nonce"], nonce);
   assert.equal(raw.Config.Labels["com.docker.compose.project"], project); assert.equal(raw.Image, approval.image.id);
   assert.equal(raw.Mounts.length, 1); assert.equal(raw.Mounts[0].Name, volumeName); assert.equal(raw.Mounts[0].Type, "volume"); assert.equal(raw.Mounts[0].Destination, "/fixture");
+  const expectedMounts = [{ type: "volume", name: volumeName, destination: "/fixture", source_hash: manifest.volumes[0].identity.mountpoint_hash, driver: "local", rw: false, mode: "", propagation: "" }];
+  const observedMounts = raw.Mounts.map(projectMount);
+  write("mount-observation-" + D.commandCount(), { container: entry.id, expected: expectedMounts, observed: observedMounts });
+  assertMountsEqual(expectedMounts, observedMounts);
   return raw;
 }
 function cleanupContainer() {
@@ -70,8 +75,8 @@ finally {
   }
   write("removals", removals);
   try {
-    const after = D.inventory(); write("after", after); assert.deepEqual(after, before);
-    result.inventory_reconciliation = "EXACT_METADATA_MATCH";
+    const after = D.inventory(); write("after", after); assertInventoryEqual(before, after);
+    result.inventory_reconciliation = "EXACT_METADATA_MOUNT_MULTISET_MATCH";
   } catch (error) { cleanupErrors.push(error); }
   Object.assign(result, O.outcome(primary, cleanupErrors, manifest.volumes.map(v => v.name), removals));
   if (!manifest.volumes.length || !manifest.containers.length) result.campaign = "FAIL";
