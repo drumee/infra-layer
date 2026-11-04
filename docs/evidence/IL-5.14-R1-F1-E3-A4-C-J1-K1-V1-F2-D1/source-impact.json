@@ -1,0 +1,29 @@
+{
+  "checkpoint": "f6ec38e24d2504b3ed45fe4da94b4a00e785da4c",
+  "comparator_implementation": "5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6",
+  "diagnostic_source": "57a451e8f7cea089385a618a96e0aa8e2af7eb24",
+  "diagnostic_paths": [
+    "test/diagnostics/comparator-failure/capture.cjs",
+    "test/diagnostics/comparator-failure/failure-reporter.cjs",
+    "test/diagnostics/comparator-failure/fixture.cjs",
+    "test/diagnostics/comparator-failure/preload.cjs",
+    "test/diagnostics/comparator-failure/record.py",
+    "test/diagnostics/comparator-failure/reporter.cjs"
+  ],
+  "all_177_original_inputs_unchanged": true,
+  "all_six_comparator_harness_files_unchanged": true,
+  "diagnostic_source_unchanged_after_stop": true,
+  "F2_evidence_manifest_unchanged": true,
+  "archive_rehashed": false,
+  "historically_recorded_package_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "Docker_commands": 0,
+  "comparator_attempts": 0,
+  "source_diff_from_checkpoint": [
+    "test/diagnostics/comparator-failure/capture.cjs",
+    "test/diagnostics/comparator-failure/failure-reporter.cjs",
+    "test/diagnostics/comparator-failure/fixture.cjs",
+    "test/diagnostics/comparator-failure/preload.cjs",
+    "test/diagnostics/comparator-failure/record.py",
+    "test/diagnostics/comparator-failure/reporter.cjs"
+  ]
+}

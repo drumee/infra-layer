@@ -1,0 +1,59 @@
+[
+  {
+    "command": [
+      "/usr/bin/node",
+      "--check",
+      "test/diagnostics/comparator-failure/capture.cjs"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/usr/bin/node",
+      "--check",
+      "test/diagnostics/comparator-failure/failure-reporter.cjs"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/usr/bin/node",
+      "--check",
+      "test/diagnostics/comparator-failure/fixture.cjs"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/usr/bin/node",
+      "--check",
+      "test/diagnostics/comparator-failure/preload.cjs"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/usr/bin/node",
+      "--check",
+      "test/diagnostics/comparator-failure/reporter.cjs"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "Python ast.parse",
+      "test/diagnostics/comparator-failure/record.py"
+    ],
+    "exit_code": 0
+  }
+]

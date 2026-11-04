@@ -1,0 +1,53 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "created": "2026-11-04T09:42:25.521433+00:00",
+  "disposition": "REPORTS_CONSISTENT_WITH_FAILED_DIAGNOSTIC",
+  "independent_causal_disposition": "BLOCKED_EVIDENCE",
+  "mission_status": "FAILED_DIAGNOSTIC",
+  "original_comparator_cause": "ROOT_CAUSE_UNDETERMINED",
+  "comparator_finding": "V1-F1-REC-001 OPEN",
+  "diagnostic_source": "57a451e8f7cea089385a618a96e0aa8e2af7eb24",
+  "gate_matrix": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "FAIL",
+    "F": "NOT_EXECUTED",
+    "G": "BLOCKED",
+    "H": "NOT_EXECUTED",
+    "I": "PASS",
+    "J": "BLOCKED",
+    "K": "PASS"
+  },
+  "reviewed_report_sha256": {
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-baseline.md": "d6ca0c72449034ef68e844654e64538930f7c823e68bd8139e83fb7602e982dd",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-causal-assessment.md": "04f42e13c505c0b1fba242eaa75808f88b8d0412ab20634daca078f2d9b77407",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-comparator-diagnostic.md": "252fec7d7b813127f92173cfc02be02089cb6ffc614e621d5bc46bb40a4e33b6",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-corrective-scope.md": "7bb2b0f90c5af3df083a4e10e0284217a816ce2d1d3dc35677266c80c118e4f8",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-diagnostic-design.md": "248e99d193b9051d330de782e18c382a92ae3080521e0da2b59703395838353e",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-diagnostic-preflight.md": "2ab56d393eda9b417342037fd935dfefda10850cdd84672d8a5dae08aff3f14e",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-final-decision.md": "0159a78fa78814f233cc60d53fa8e4ed23a70c34092e336822b3c84513871719",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-independent-review.md": "033f1221720fd6fa4580094f0ff1e98414eb889e3a033cef93370583c5d1710e",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-source-impact.md": "3a7695922ab6152f64d74616579aec17f450652da3bc6580fa4db6b975ab5ba6",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-static-inspection.md": "6905e86c7dd340bd249205941ad3f89932b19980041420403529747f4feaedfb",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-test-architecture.md": "acc447d6e778de33dd0d339809ba80786786948f7db48ab42f8bf6c73f983cdb"
+  },
+  "structured_gate_matrix_sha256": "2bd705f52a3e068425679c07509e5b68568bfd1be78dcd31a3b91834455f54ac",
+  "checked_conclusions": [
+    "First fixture load/registration observations recorded; callback execution unknown.",
+    "Synthetic Node file-level PASS/exit0 kept separate from validator record.py125 AssertionError/exit1.",
+    "E1 observable module load PASS; E8 required individual completion event fidelity FAIL.",
+    "All other E2-E7/E9-E10 scenarios and actual comparator diagnostic NOT_EXECUTED.",
+    "D1 preflight stop does not establish the original F2 cause or justify a functional correction.",
+    "GateD PASS denotes reviewed design only; GateJ BLOCKED and final causal disposition remain BLOCKED_EVIDENCE.",
+    "No tests or Docker after stop; original177/comparator6/diagnostic6 remain frozen.",
+    "Qualified package source unchanged; absent archive not rehashed.",
+    "Historical four volume records protected/unresolved with no new Docker readback.",
+    "Application failed, original R1 closure pending, A2 unexecuted, remote delivery unauthorized.",
+    "Original tool traceback explicitly attributed to copied transcript; original empty STOP receipt preserved."
+  ],
+  "new_major_or_blocker_findings": [],
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0
+}

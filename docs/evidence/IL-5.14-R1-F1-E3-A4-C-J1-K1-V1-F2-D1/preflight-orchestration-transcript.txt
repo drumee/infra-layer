@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/somanos/github/infra-layer/test/diagnostics/comparator-failure/record.py", line 159, in <module>
+    preflight()
+  File "/home/somanos/github/infra-layer/test/diagnostics/comparator-failure/record.py", line 125, in preflight
+    assert any(x.get("type") == "test:pass" and x.get("name") == "D1 fixture success" for x in events)
+AssertionError

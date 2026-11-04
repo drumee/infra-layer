@@ -1,0 +1,43 @@
+{
+  "label": "preflight-success",
+  "attempt": "D1-02a026b2-8d7d-4d4d-b579-70d9a970be7f",
+  "source": "57a451e8f7cea089385a618a96e0aa8e2af7eb24",
+  "node": "v22.22.0",
+  "command": [
+    "/usr/bin/node",
+    "--require=/home/somanos/github/infra-layer/test/diagnostics/comparator-failure/preload.cjs",
+    "--trace-uncaught",
+    "--test",
+    "--test-reporter=tap",
+    "--test-reporter=/home/somanos/github/infra-layer/test/diagnostics/comparator-failure/reporter.cjs",
+    "--test-reporter-destination=stdout",
+    "--test-reporter-destination=/tmp/drumee-v1-f2-d1-xg19pwoh/preflight-success/events.jsonl",
+    "test/diagnostics/comparator-failure/fixture.cjs"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "pid": 3,
+  "started": "2026-11-04T09:36:33.401186+00:00",
+  "ended": "2026-11-04T09:36:33.494145+00:00",
+  "returncode": 0,
+  "signal": null,
+  "timed_out": false,
+  "forced_stream_close": false,
+  "streams": {
+    "stdout": {
+      "bytes_seen": 284,
+      "bytes_kept": 284,
+      "sha256_all_raw_bytes": "f7889b0ee08fcba6e19e5c3fae1f834287892d590024ae1260726bd8ad2da31a",
+      "bounded": false,
+      "eof": true
+    },
+    "stderr": {
+      "bytes_seen": 0,
+      "bytes_kept": 0,
+      "sha256_all_raw_bytes": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bounded": false,
+      "eof": true
+    }
+  },
+  "frozen_inputs_unchanged": true,
+  "comparator_source_unchanged": true
+}
