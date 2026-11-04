@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/tmp/cq02r-prepare.py", line 27, in <module>
+    p=subprocess.run(['ssh','-o','BatchMode=yes','testbox','python3 -c '+__import__('shlex').quote(khscript)],input=json.dumps(config),text=True,capture_output=True);assert p.returncode==0,p.stderr
+                                                                                                                                                                             ^^^^^^^^^^^^^^^
+AssertionError: Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+    d=json.loads(sys.stdin.read());base=pathlib.Path(d['remote']);p=pathlib.Path.home()/'.ssh/known_hosts';s=p.lstat();assert stat.S_ISREG(s.st_mode) and s.st_uid==os.getuid() and s.st_nlink==1
+                                                                                                             ~~~~~~~^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 437, in lstat
+    return self.stat(follow_symlinks=False)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 517, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/somanos/.ssh/known_hosts'
+

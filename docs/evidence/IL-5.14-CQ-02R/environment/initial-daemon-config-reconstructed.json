@@ -1,0 +1,28 @@
+{
+  "hosts": [
+    "unix:///data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/docker.sock"
+  ],
+  "data-root": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/engine-data",
+  "exec-root": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/engine-exec",
+  "pidfile": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/dockerd.pid",
+  "bridge": "none",
+  "iptables": false,
+  "ip6tables": false,
+  "ip-forward": false,
+  "ip-masq": false,
+  "group": "docker",
+  "containerd-namespace": "cq02r6ce324805cce4512a6a127872271b397",
+  "containerd-plugins-namespace": "cq02r6ce324805cce4512a6a127872271b397plugins",
+  "features": {
+    "containerd-snapshotter": false
+  },
+  "default-address-pools": [
+    {
+      "base": "10.247.0.0/16",
+      "size": 24
+    }
+  ],
+  "labels": [
+    "org.drumee.qualification=CQ02R-6ce32480-5cce-4512-a6a1-27872271b397"
+  ]
+}

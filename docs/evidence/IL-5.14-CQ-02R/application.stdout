@@ -1,0 +1,16 @@
+
+> @drumee/infra-layer@0.1.0-alpha.3 test:application
+> node test/application/run.js
+
+IL5_APPLICATION_OK prepare-is-persistent-private-and-does-not-start-application
+IL5_APPLICATION_OK real-runtime-public-rpc-and-canonical-authorization-denial
+IL5_APPLICATION_OK actual-loopback-publication-and-separate-lan-client-denial
+IL5_APPLICATION_OK external-host-nginx-https-and-unchanged-native-rpc-prefix
+IL5_APPLICATION_OK stop-start-preserves-resource-and-secret-generations
+IL5_APPLICATION_OK controlled-configuration-update-and-canonical-rollback
+IL5_APPLICATION_OK failed-startup-does-not-reset-owned-application-state
+IL5_APPLICATION_OK real-process-interruption-requires-explicit-recovery
+IL5_APPLICATION_OK unknown-resource-and-prepared-tampering-are-refused
+IL5_APPLICATION_OK complete-no-smtp-backup-and-isolated-restore
+IL5_APPLICATION_REPORT /tmp/drumee-il5-836bf147-report.json
+IL5_OWNED_RESOURCES_CLEANED drumee-il5-836bf147

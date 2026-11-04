@@ -1,0 +1,35 @@
+{
+  "name": "filesystem-security",
+  "argv": [
+    "python3",
+    "/tmp/cq02r-remote-run.py",
+    "filesystem-security",
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "test/security",
+    "-p",
+    "*_test.py",
+    "-v"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "49931e1e0de253f13b82c7ec3c2cb94bb199cea6",
+  "manifest_sha256": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd",
+  "lock_sha256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+  "started": "2026-11-04T17:21:59.813983+00:00",
+  "exit": 0,
+  "ended": "2026-11-04T17:22:14.459672+00:00",
+  "stdout": {
+    "file": "filesystem-security.stdout",
+    "bytes": 7224,
+    "sha256": "b2ab55ccae9ed5845716c5112a30b6859444b9d2a9b68be75f0811f22298cf46"
+  },
+  "stderr": {
+    "file": "filesystem-security.stderr",
+    "bytes": 3615,
+    "sha256": "d9f786cbfadc60002ba72bc71676e3523d32c325e877b6b35dcd12fe199a48d4"
+  }
+}

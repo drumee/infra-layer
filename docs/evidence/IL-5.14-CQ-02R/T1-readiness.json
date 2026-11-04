@@ -1,0 +1,30 @@
+{
+  "gate": "T1",
+  "status": "PASS",
+  "candidate_sha": "49931e1e0de253f13b82c7ec3c2cb94bb199cea6",
+  "host": "minis",
+  "uid": 1000,
+  "private_daemon_id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+  "private_data_root": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/engine-data",
+  "containerd_socket": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/containerd.sock",
+  "namespace_adapter": "private mount namespace, fixed daemon-ID check, original socket unchanged",
+  "source_worktree": "",
+  "helper": {
+    "reference": "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+    "id": "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7",
+    "repo_digests": [
+      "node@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392"
+    ],
+    "implicit_volumes": null
+  },
+  "node": "v22.23.2",
+  "npm": "10.9.8",
+  "nginx_syntax": "nginx: the configuration file /data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/nginx-readiness/nginx.conf syntax is ok\nnginx: configuration file /data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/nginx-readiness/nginx.conf test is successful",
+  "IL5_NETWORK_CLIENT": "192.168.5.201",
+  "IL5_LAN_ADDRESS": "192.168.5.202",
+  "IL5_HOST_NGINX": "/usr/sbin/nginx",
+  "client_control": "independent-client.receipt.json proves LAN positive control and loopback denial",
+  "existing_resources": "protected default daemon, 3 stopped containers/5 volumes/4 networks; no adoption",
+  "ownership": "new daemon initially empty; task-exclusive socket parent; live creation events and exact IDs; canonical ownership checks",
+  "cleanup": "only this attempt creations; exact IDs/types/creation evidence and no unauthorized consumers; remove temporary rule/trust after campaign"
+}

@@ -1,0 +1,73 @@
+{
+  "oxymot-pull.service": {
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "executable": "/usr/bin/python3",
+    "exec_description_sha256": "0b6f218c3c8787ffe29c3c0cdff888db783d857d2566e8aeb3f72bec97243647",
+    "WorkingDirectory": "/var/lib/oxymot-pull",
+    "User": "oxymot",
+    "Group": "oxymot",
+    "ActiveState": "inactive",
+    "script_sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+    "operations_detected": [
+      "gzip",
+      "install",
+      "find"
+    ],
+    "literal_backup_paths": []
+  },
+  "oxymot-blog-backup.service": {
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "executable": "/usr/local/sbin/oxymot-blog-backup",
+    "exec_description_sha256": "17140e45888845fbfcdb9d0ea1e3834481d0ba53470d77ca5223e4169c7b7746",
+    "WorkingDirectory": "",
+    "User": "root",
+    "Group": "",
+    "ActiveState": "inactive",
+    "script_sha256": "db0a9a949e85704dddd243162d3f93810fc9a761349ec349f8da491698414754",
+    "operations_detected": [
+      "mysqldump",
+      "tar",
+      "restic",
+      "docker"
+    ],
+    "literal_backup_paths": []
+  },
+  "oxymot-blog-monitor.service": {
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "executable": "/usr/local/sbin/oxymot-blog-monitor",
+    "exec_description_sha256": "c04d09787743c0a7dfe880f964c403ac797dd5463b81f46267a0528c4d396b5b",
+    "WorkingDirectory": "",
+    "User": "root",
+    "Group": "",
+    "ActiveState": "inactive",
+    "script_sha256": "5d3f64dfb22339d1c2825ead9a341a8cf5f845f218863dd7eee8e7856265ad23",
+    "operations_detected": [
+      "restic",
+      "docker",
+      "openssl"
+    ],
+    "literal_backup_paths": []
+  },
+  "oxymot-nft-guard.service": {
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "executable": "/usr/sbin/nft",
+    "exec_description_sha256": "ed2f5e1e76c11c283f5dc8527345a373f79dd6ac2987d200ff0fd31be3538ec9",
+    "WorkingDirectory": "",
+    "User": "",
+    "Group": "",
+    "ActiveState": "active",
+    "script_sha256": "57bdb96c8a48844ddd6dd469c267cda951b9a466be93d254c928891ed8c3b7f0",
+    "operations_detected": [],
+    "literal_backup_paths": []
+  },
+  "backup_files": {},
+  "inspected_infra_locations": {
+    "/opt/infra-layer": false,
+    "/srv/infra-layer": false,
+    "/var/lib/infra-layer": false
+  }
+}

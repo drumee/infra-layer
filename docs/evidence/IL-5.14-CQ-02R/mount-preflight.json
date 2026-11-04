@@ -1,0 +1,27 @@
+{
+  "baseline": {
+    "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+    "private_directory": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/mount-data",
+    "fixture_bind": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/mount-data/marker",
+    "source_sha": "49931e1e0de253f13b82c7ec3c2cb94bb199cea6"
+  },
+  "preflight": {
+    "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+    "status": "PASS",
+    "harness_sha256": {
+      "test/diagnostics/fixture-volumes/campaign.cjs": "f566951b26abb5cdc31fa889c9ccdd58af269ae44fdda410d90bdb2692a125dd",
+      "test/diagnostics/fixture-volumes/docker.cjs": "e91d21e7518c2dbdd0c41de50fca3037911a3b4d997435df6f3d6dc72d9b9cd1",
+      "test/diagnostics/fixture-volumes/mounts.cjs": "17e8d663a1985ec13b410a9c12baf8c4d8ec16256cd22fef0c7b7488425a74cb",
+      "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb"
+    },
+    "daemon": {
+      "id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+      "context": "default",
+      "endpoint": "unix:///var/run/docker.sock"
+    },
+    "image": {
+      "reference": "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+      "id": "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7"
+    }
+  }
+}

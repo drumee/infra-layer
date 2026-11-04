@@ -1,0 +1,45 @@
+{
+  "original_campaign": "FAIL",
+  "cleanup": "PASS",
+  "verified_container": {
+    "id": "bcac2bab3a0b82ce702569c21a633ac00eb30123bb4690baecbed54b42f48f63",
+    "state": "created",
+    "mounts": [
+      {
+        "type": "volume",
+        "name": "drumee-v1-9213305836ce5e605b8d8f54-data",
+        "destination": "/fixture",
+        "source_hash": "3331fc4c2ad79107c4e0be21e02d823c8fbee7e3aee25df733edfcf7dc7ab9d3",
+        "driver": "local",
+        "rw": false,
+        "mode": "z",
+        "propagation": ""
+      },
+      {
+        "type": "bind",
+        "name": null,
+        "destination": "/fixture-bind",
+        "source_hash": "9eda7c2beb9f129c5d78e3a7df5173821e95c0554c78dc002b39582fe7a63a66",
+        "driver": null,
+        "rw": false,
+        "mode": "",
+        "propagation": "rprivate"
+      }
+    ],
+    "creation": {
+      "id": "bcac2bab3a0b82ce702569c21a633ac00eb30123bb4690baecbed54b42f48f63",
+      "name": "drumee-v1-9213305836ce5e605b8d8f54-consumer",
+      "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+      "creation_command_seq": 20
+    }
+  },
+  "removals": [
+    {
+      "name": "drumee-v1-9213305836ce5e605b8d8f54-data",
+      "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+      "fingerprint": "f988119985963cbd6443f24a1c0c96564cab4ea480f31dc44d34a3f1eb8dc065",
+      "verified_absent": true
+    }
+  ],
+  "scope": "Only exact current-attempt creation IDs; original mismatch remains failed"
+}

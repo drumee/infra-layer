@@ -1,0 +1,15 @@
+import datetime, hashlib, json, pathlib, subprocess, sys
+root=pathlib.Path('/home/somanos/github/infra-layer')
+evidence=root/'docs/evidence/IL-5.14-CQ-02R'
+evidence.mkdir(parents=True,exist_ok=True)
+name,*argv=sys.argv[1:]
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+record={'name':name,'argv':argv,'cwd':str(root),'source_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'manifest_sha256':sha(root/'package.json'),'lock_sha256':sha(root/'package-lock.json'),'started':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+with (evidence/(name+'.stdout')).open('xb') as out,(evidence/(name+'.stderr')).open('xb') as err:
+    try:record['exit']=subprocess.run(argv,cwd=root,stdout=out,stderr=err,timeout=600).returncode
+    except subprocess.TimeoutExpired:record['exit']='TIMEOUT'
+record['ended']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+for stream in ['stdout','stderr']:
+    p=evidence/(name+'.'+stream);record[stream]={'file':p.name,'bytes':p.stat().st_size,'sha256':sha(p)}
+(evidence/(name+'.receipt.json')).write_text(json.dumps(record,indent=2)+'\n')
+print(json.dumps(record));sys.exit(0 if record['exit']==0 else 1)

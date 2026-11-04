@@ -1,0 +1,24 @@
+{
+  "name": "prepare-client",
+  "argv": [
+    "python3",
+    "/tmp/cq02r-prepare.py"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "b67c48dbc8dd9e1f365a2259b12f90f62180b042",
+  "manifest_sha256": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd",
+  "lock_sha256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+  "started": "2026-11-04T17:05:57.528407+00:00",
+  "exit": 1,
+  "ended": "2026-11-04T17:05:59.446089+00:00",
+  "stdout": {
+    "file": "prepare-client.stdout",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "file": "prepare-client.stderr",
+    "bytes": 1303,
+    "sha256": "db502c5dbeb23b68c70bb10ed84d44b42bd3d79c79bbdc19bcdeb59fa3523766"
+  }
+}

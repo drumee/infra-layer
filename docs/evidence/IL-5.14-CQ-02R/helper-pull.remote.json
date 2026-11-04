@@ -1,0 +1,19 @@
+{
+  "candidate_sha": "49931e1e0de253f13b82c7ec3c2cb94bb199cea6",
+  "host": "testbox",
+  "command": [
+    "docker",
+    "pull",
+    "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392"
+  ],
+  "environment": [
+    "npm_config_cache=/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/npm-cache",
+    "IL514_DIAGNOSTIC_DIR=/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/evidence/helper-pull/diagnostic",
+    "IL5_NETWORK_CLIENT=192.168.5.201",
+    "IL5_LAN_ADDRESS=192.168.5.202",
+    "IL5_HOST_NGINX=/usr/sbin/nginx"
+  ],
+  "cwd": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source",
+  "remote_evidence": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/evidence/helper-pull",
+  "exit": 0
+}

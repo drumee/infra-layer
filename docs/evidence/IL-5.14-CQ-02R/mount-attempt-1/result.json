@@ -1,0 +1,61 @@
+{
+  "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+  "project": "drumee-v1-9213305836ce5e605b8d8f54",
+  "started": "2026-11-04T17:24:37.065Z",
+  "expected_refusals": [],
+  "volume_deletions": [],
+  "historical_volume_deletions": 0,
+  "errors": [
+    {
+      "code": "MOUNT_MULTISET_MISMATCH",
+      "frames": [
+        "    at compare (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/mounts.cjs:43:25)",
+        "    at assertMountsEqual (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/mounts.cjs:46:50)",
+        "    at verifyContainer (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/campaign.cjs:44:3)",
+        "    at Object.<anonymous> (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/campaign.cjs:76:3)",
+        "    at Module._compile (node:internal/modules/cjs/loader:1781:14)"
+      ]
+    },
+    {
+      "code": "MOUNT_MULTISET_MISMATCH",
+      "frames": [
+        "    at compare (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/mounts.cjs:43:25)",
+        "    at assertMountsEqual (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/mounts.cjs:46:50)",
+        "    at verifyContainer (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/campaign.cjs:44:3)",
+        "    at cleanupContainer (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/campaign.cjs:54:47)",
+        "    at Object.<anonymous> (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/campaign.cjs:89:9)"
+      ]
+    },
+    {
+      "code": "VOLUME_IN_USE",
+      "frames": [
+        "    at fail (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/ownership.cjs:5:43)",
+        "    at assess (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/ownership.cjs:38:37)",
+        "    at Object.cleanup (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/ownership.cjs:43:19)",
+        "    at Object.<anonymous> (/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source/test/diagnostics/fixture-volumes/campaign.cjs:91:33)",
+        "    at Module._compile (node:internal/modules/cjs/loader:1781:14)"
+      ]
+    },
+    {
+      "code": "ERR_ASSERTION",
+      "frames": [
+        "+ actual - expected",
+        "... Skipped lines",
+        "",
+        "  {",
+        "+   containers: ["
+      ]
+    }
+  ],
+  "primary_error": "MOUNT_MULTISET_MISMATCH",
+  "cleanup_errors": [
+    "MOUNT_MULTISET_MISMATCH",
+    "VOLUME_IN_USE",
+    "ERR_ASSERTION"
+  ],
+  "cleanup": "INCOMPLETE",
+  "campaign": "FAIL",
+  "container_removed": false,
+  "finished": "2026-11-04T17:24:39.084Z",
+  "commands": 44
+}

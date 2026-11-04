@@ -1,0 +1,10 @@
+import json,pathlib,shlex,subprocess,sys
+repo=pathlib.Path('/home/somanos/github/infra-layer');out=repo/'docs/evidence/IL-5.14-CQ-02R';d=json.loads((out/'attempt.json').read_text());label,*argv=sys.argv[1:];assert label.replace('-','').isalnum()
+sha=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip();base=d['remote'];directory=base+'/evidence/'+label
+variables=['npm_config_cache='+base+'/npm-cache','IL514_DIAGNOSTIC_DIR='+directory+'/diagnostic','IL5_NETWORK_CLIENT='+d['client'],'IL5_LAN_ADDRESS='+d['testbox_lan'],'IL5_HOST_NGINX='+d['host_nginx']]
+if label=='docker-mounts':variables.append('IL514_FIXTURE_EVIDENCE_DIR='+base+'/mount-preflight')
+if label=='docker-mounts-corrected':variables.append('IL514_FIXTURE_EVIDENCE_DIR='+base+'/mount-preflight-corrected')
+inner='cd '+shlex.quote(base+'/source')+'\n"$@"\ncode=$?\nprintf "%s\\n" "$code" > '+shlex.quote(directory+'/exit-status')+'\nexit "$code"'
+command='set -eu\ntest "$(git -C '+shlex.quote(base+'/source')+' rev-parse HEAD)" = '+shlex.quote(sha)+'\nmkdir -p '+shlex.quote(base+'/evidence')+'\nmkdir -m 700 '+shlex.quote(directory)+'\nmkdir -m 700 '+shlex.quote(directory+'/diagnostic')+'\n'+shlex.join(['sudo','-n',base+'/run-isolated','/usr/bin/env',*variables,'/bin/sh','-c',inner,'sh',*argv])
+p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=10','testbox',command],timeout=550)
+(out/(label+'.remote.json')).write_text(json.dumps({'candidate_sha':sha,'host':'testbox','command':argv,'environment':variables,'cwd':base+'/source','remote_evidence':directory,'exit':p.returncode},indent=2)+'\n');raise SystemExit(p.returncode)

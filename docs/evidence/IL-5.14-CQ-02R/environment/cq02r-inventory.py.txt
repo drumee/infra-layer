@@ -1,0 +1,14 @@
+import datetime,hashlib,json,os,pathlib,platform,subprocess
+def run(argv):
+ p=subprocess.run(argv,capture_output=True,text=True,timeout=40)
+ if p.returncode: raise RuntimeError(str(argv)+': '+p.stderr)
+ return p.stdout.strip()
+def docker(*args):return run(['/usr/bin/docker',*args])
+info=json.loads(docker('info','--format','{{json .}}'))
+ids=docker('ps','-aq','--no-trunc').splitlines();nets=docker('network','ls','-q','--no-trunc').splitlines();vols=docker('volume','ls','-q').splitlines()
+containers=[]
+for cid in ids:
+ c=json.loads(docker('container','inspect',cid))[0]
+ containers.append({'id':c['Id'],'name':c['Name'],'state':c['State'],'image':c['Image'],'labels':c['Config']['Labels'],'mounts':c['Mounts'],'networks':c['NetworkSettings']['Networks']})
+data={'observed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'host':platform.node(),'os_release':pathlib.Path('/etc/os-release').read_text(),'uid':os.getuid(),'gid':os.getgid(),'groups':os.getgroups(),'cpu':os.cpu_count(),'memory':pathlib.Path('/proc/meminfo').read_text(),'disk':run(['df','-B1','/','/tmp','/var/tmp','/data']),'context':docker('context','show'),'endpoint':json.loads(docker('context','inspect'))[0]['Endpoints']['docker']['Host'],'daemon':{k:info[k] for k in ['ID','Name','DockerRootDir','Containers','ContainersRunning','Images','ServerVersion']},'compose_version':docker('compose','version'),'containers':containers,'networks':[json.loads(docker('network','inspect',n))[0] for n in nets],'volumes':[json.loads(docker('volume','inspect',v))[0] for v in vols],'images':[json.loads(x) for x in docker('image','ls','--digests','--no-trunc','--format','{{json .}}').splitlines()],'interfaces':json.loads(run(['ip','-json','address','show'])),'routes':json.loads(run(['ip','-json','route','show'])),'listeners':run(['ss','-lntup']),'running_services':run(['systemctl','list-units','--type=service','--state=running','--no-pager','--plain']),'sudo':run(['sudo','-n','-l']),'iptables_sha256':hashlib.sha256(run(['sudo','-n','iptables-save']).encode()).hexdigest(),'ip6tables_sha256':hashlib.sha256(run(['sudo','-n','ip6tables-save']).encode()).hexdigest(),'node':run(['/usr/bin/node','--version']),'npm':run(['/usr/bin/npm','--version']),'nginx':run(['/usr/sbin/nginx','-v'])}
+print(json.dumps(data,indent=2))

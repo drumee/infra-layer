@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "<stdin>", line 21, in <module>
+RuntimeError: OWN_DAEMON_NETWORK_START_FAILED time="2026-11-04T12:32:38.438617488-05:00" level=info msg="Starting up"
+time="2026-11-04T12:32:38.440125200-05:00" level=info msg="OTEL tracing is not configured, using no-op tracer provider"
+time="2026-11-04T12:32:38.440285475-05:00" level=info msg="CDI directory does not exist, skipping" dir=/etc/cdi
+time="2026-11-04T12:32:38.440305776-05:00" level=info msg="CDI directory does not exist, skipping" dir=/var/run/cdi
+time="2026-11-04T12:32:38.440566826-05:00" level=info msg="Daemon shutdown complete" error="failed to start daemon: You specified -b & --bip, mutually exclusive options. Please specify only one"
+failed to start daemon: You specified -b & --bip, mutually exclusive options. Please specify only one
+

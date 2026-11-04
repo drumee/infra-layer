@@ -1,0 +1,17 @@
+import datetime,json,os,pathlib,shutil,stat,subprocess
+b=pathlib.Path('/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397');attempt='CQ02R-6ce32480-5cce-4512-a6a1-27872271b397'
+assert os.getuid()==0 and b.parent==pathlib.Path('/data') and not b.is_symlink()
+s=b.lstat();assert stat.S_ISDIR(s.st_mode) and s.st_uid==1000
+assert json.loads((b/'owner.json').read_text())=={'attempt':attempt,'creator_uid':1000,'type':'CQ02R_EXCLUSIVE_TEST_ENVIRONMENT'}
+assert json.loads((b/'cleanup-resumed.json').read_text())['status']=='PASS'
+e=json.loads((b/'engine-final.json').read_text())
+for pid in [e['pid'],e['containerd_pid']]:
+ p=pathlib.Path('/proc',str(pid))
+ assert not p.exists() or (p/'stat').read_text().split()[2]=='Z'
+p=subprocess.run(['findmnt','-rn','-o','TARGET,SOURCE,FSTYPE'],text=True,capture_output=True,check=True)
+assert not any(str(b) in l for l in p.stdout.splitlines())
+assert not pathlib.Path('/sys/class/net/br-cq6ce32480').exists()
+assert not pathlib.Path('/home/somanos/.ssh/known_hosts').exists()
+shutil.rmtree(b)
+assert not b.exists()
+print(json.dumps({'attempt':attempt,'operation':'remove-exclusive-owned-root-after-evidence-export','path':str(b),'creation_marker_verified':True,'private_processes_stopped':True,'no_mounts':True,'absent_after':True,'status':'PASS','ended':datetime.datetime.now(datetime.timezone.utc).isoformat()},indent=2))

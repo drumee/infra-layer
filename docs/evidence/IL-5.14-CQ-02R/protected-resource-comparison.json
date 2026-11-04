@@ -1,0 +1,27 @@
+{
+  "protected_daemon_id": "690569ff-0ab3-482e-81d0-09e2c6f93da0",
+  "checks": {
+    "containers": false,
+    "networks": true,
+    "volumes": true,
+    "daemon_identity": true,
+    "daemon_counts": true,
+    "images": true
+  },
+  "before_counts": {
+    "containers": 3,
+    "networks": 4,
+    "volumes": 5,
+    "images": 13
+  },
+  "after_counts": {
+    "containers": 3,
+    "networks": 4,
+    "volumes": 5,
+    "images": 13
+  },
+  "image_comparison_excludes": [
+    "CreatedSince"
+  ],
+  "status": "FAIL"
+}

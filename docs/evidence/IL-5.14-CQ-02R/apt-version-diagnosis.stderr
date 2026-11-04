@@ -1,0 +1,18 @@
+Unable to find image 'debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818' locally
+docker.io/library/debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818: Pulling from library/debian
+597c6c618d36: Already exists
+Digest: sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+Status: Downloaded newer image for debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+E: setgroups 65534 failed - setgroups (1: Operation not permitted)
+E: setegid 65534 failed - setegid (1: Operation not permitted)
+E: seteuid 42 failed - seteuid (1: Operation not permitted)
+E: setgroups 0 failed - setgroups (1: Operation not permitted)
+W: chown to _apt:root of directory /var/lib/apt/lists/partial failed - SetupAPTPartialDirectory (1: Operation not permitted)
+W: chown to _apt:root of directory /var/lib/apt/lists/auxfiles failed - SetupAPTPartialDirectory (1: Operation not permitted)
+E: setgroups 65534 failed - setgroups (1: Operation not permitted)
+E: setegid 65534 failed - setegid (1: Operation not permitted)
+E: seteuid 42 failed - seteuid (1: Operation not permitted)
+E: setgroups 0 failed - setgroups (1: Operation not permitted)
+E: Method gave invalid 400 URI Failure message: Failed to setgroups - setgroups (1: Operation not permitted)
+E: Method http has died unexpectedly!
+E: Sub-process http returned an error code (112)

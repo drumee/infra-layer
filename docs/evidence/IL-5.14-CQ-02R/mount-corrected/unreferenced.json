@@ -1,0 +1,22 @@
+{
+  "daemon": {
+    "id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+    "context": "default",
+    "endpoint": "unix:///var/run/docker.sock"
+  },
+  "volume": {
+    "name": "drumee-v1-4d5f410196cf615450a91dd8-data",
+    "driver": "local",
+    "scope": "local",
+    "created": "2026-11-04T12:28:32-05:00",
+    "labels": {
+      "com.docker.compose.project": "drumee-v1-4d5f410196cf615450a91dd8",
+      "org.drumee.infra.owner": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED",
+      "org.drumee.qualification": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED",
+      "org.drumee.volume.nonce": "5a26c64bdc9775afe26876db57aceb98614a8470855a7301"
+    },
+    "options_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "mountpoint_hash": "5ed138886933098da737d8d93044202f0bd3c811cc72183d1fafbd5666a705b8"
+  },
+  "consumers": []
+}

@@ -1,0 +1,107 @@
+{
+  "private": {
+    "argv": [
+      "docker",
+      "-H",
+      "unix:///data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/docker.sock",
+      "ps",
+      "-a",
+      "--no-trunc",
+      "--format",
+      "{{json .}}"
+    ],
+    "exit": 0,
+    "out": "",
+    "err": ""
+  },
+  "volumes": {
+    "argv": [
+      "docker",
+      "-H",
+      "unix:///data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/docker.sock",
+      "volume",
+      "ls",
+      "--format",
+      "{{json .}}"
+    ],
+    "exit": 0,
+    "out": "",
+    "err": ""
+  },
+  "networks": {
+    "argv": [
+      "docker",
+      "-H",
+      "unix:///data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/docker.sock",
+      "network",
+      "ls",
+      "--no-trunc",
+      "--format",
+      "{{json .}}"
+    ],
+    "exit": 0,
+    "out": "{\"CreatedAt\":\"2026-11-04 15:46:32.215396047 -0500 EST\",\"Driver\":\"bridge\",\"ID\":\"7fcaf6d3f8becbe2661a22f650f5105f07af0af06a22fb9bde5504c26d1daf33\",\"IPv4\":\"true\",\"IPv6\":\"false\",\"Internal\":\"false\",\"Labels\":\"\",\"Name\":\"bridge\",\"Scope\":\"local\"}\n{\"CreatedAt\":\"2026-11-04 12:08:20.906210613 -0500 EST\",\"Driver\":\"host\",\"ID\":\"408ad3e37a512172e6caae129e6e4cd801804bc05e5e8e229bc5d97e76405d6e\",\"IPv4\":\"true\",\"IPv6\":\"false\",\"Internal\":\"false\",\"Labels\":\"\",\"Name\":\"host\",\"Scope\":\"local\"}\n{\"CreatedAt\":\"2026-11-04 12:08:20.785486561 -0500 EST\",\"Driver\":\"null\",\"ID\":\"757a6597dd388cb1d92da874518e91ede6d1cd6d715e6025db7ad0f6f925ae1e\",\"IPv4\":\"true\",\"IPv6\":\"false\",\"Internal\":\"false\",\"Labels\":\"\",\"Name\":\"none\",\"Scope\":\"local\"}\n",
+    "err": ""
+  },
+  "processes": {
+    "argv": [
+      "ps",
+      "-eo",
+      "pid,uid,args"
+    ],
+    "exit": 0,
+    "out": "    PID   UID COMMAND\n      1     0 /sbin/init\n      2     0 [kthreadd]\n      3     0 [pool_workqueue_release]\n      4     0 [kworker/R-kvfree_rcu_reclaim]\n      5     0 [kworker/R-rcu_gp]\n      6     0 [kworker/R-sync_wq]\n      7     0 [kworker/R-slub_flushwq]\n      8     0 [kworker/R-netns]\n     10     0 [kworker/0:0H-events_highpri]\n     13     0 [kworker/R-mm_percpu_wq]\n     14     0 [rcu_tasks_kthread]\n     15     0 [rcu_tasks_rude_kthread]\n     16     0 [rcu_tasks_trace_kthread]\n     17     0 [ksoftirqd/0]\n     18     0 [rcu_preempt]\n     19     0 [rcu_exp_par_gp_kthread_worker/0]\n     20     0 [rcu_exp_gp_kthread_worker]\n     21     0 [migration/0]\n     22     0 [idle_inject/0]\n     23     0 [cpuhp/0]\n     24     0 [cpuhp/1]\n     25     0 [idle_inject/1]\n     26     0 [migration/1]\n     27     0 [ksoftirqd/1]\n     29     0 [kworker/1:0H-events_highpri]\n     30     0 [cpuhp/2]\n     31     0 [idle_inject/2]\n     32     0 [migration/2]\n     33     0 [ksoftirqd/2]\n     35     0 [kworker/2:0H-events_highpri]\n     36     0 [cpuhp/3]\n     37     0 [idle_inject/3]\n     38     0 [migration/3]\n     39     0 [ksoftirqd/3]\n     41     0 [kworker/3:0H-events_highpri]\n     46     0 [kdevtmpfs]\n     47     0 [kworker/R-inet_frag_wq]\n     48     0 [kauditd]\n     49     0 [khungtaskd]\n     50     0 [oom_reaper]\n     51     0 [kworker/R-writeback]\n     52     0 [kcompactd0]\n     53     0 [ksmd]\n     54     0 [khugepaged]\n     55     0 [kworker/R-kintegrityd]\n     56     0 [kworker/R-kblockd]\n     57     0 [kworker/R-blkcg_punt_bio]\n     58     0 [irq/9-acpi]\n     62     0 [kworker/R-tpm_dev_wq]\n     63     0 [kworker/R-edac-poller]\n     64     0 [kworker/R-devfreq_wq]\n     65     0 [kworker/R-quota_events_unbound]\n     66     0 [kworker/1:1H-kblockd]\n     67     0 [kswapd0]\n     74     0 [kworker/R-kthrotld]\n     78     0 [kworker/R-acpi_thermal_pm]\n     80     0 [kworker/R-mld]\n     81     0 [kworker/3:1H-kblockd]\n     82     0 [kworker/R-ipv6_addrconf]\n     87     0 [kworker/R-kstrp]\n    144     0 [kworker/0:1H-kblockd]\n    194     0 [kworker/2:1H-kblockd]\n    210     0 [kworker/R-sdhci]\n    211     0 [irq/5-mmc0]\n    215     0 [watchdogd]\n    216     0 [kworker/R-ata_sff]\n    218     0 [scsi_eh_0]\n    219     0 [kworker/R-scsi_tmf_0]\n    221     0 [scsi_eh_1]\n    222     0 [kworker/R-scsi_tmf_1]\n    223     0 [scsi_eh_2]\n    224     0 [kworker/R-scsi_tmf_2]\n    230     0 [kworker/R-ttm]\n    231     0 [card0-crtc0]\n    232     0 [card0-crtc1]\n    233     0 [card0-crtc2]\n    241     0 /usr/sbin/plymouthd --mode=boot --attach-to-session --pid-file=/run/plymouth/pid\n    270     0 [jbd2/sda2-8]\n    271     0 [kworker/R-ext4-rsv-conversion]\n    315     0 /usr/lib/systemd/systemd-journald\n    344     0 /usr/lib/systemd/systemd-udevd\n    367     0 [psimon]\n    435     0 [irq/53-mei_me]\n    440     0 [kworker/R-kmemstick]\n    453     0 [kworker/R-cryptd]\n    457     0 [kworker/R-cfg80211]\n    527     0 [irq/56-iwlwifi]\n    551     0 [jbd2/sda3-8]\n    553     0 [kworker/R-ext4-rsv-conversion]\n    556     0 [jbd2/sda5-8]\n    557     0 [kworker/R-ext4-rsv-conversion]\n    562     0 [jbd2/sdb1-8]\n    563     0 [kworker/R-ext4-rsv-conversion]\n    568   991 /usr/lib/systemd/systemd-timesyncd\n    765     0 /usr/libexec/accounts-daemon\n    767   102 avahi-daemon: running [minis.local]\n    769     0 /usr/libexec/bluetooth/bluetoothd\n    770     0 /usr/sbin/cron -f\n    771   990 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    776     0 /usr/libexec/low-memory-monitor\n    777   986 /usr/lib/polkit-1/polkitd --no-debug --log-level=notice\n    779     0 /usr/libexec/switcheroo-control\n    781     0 /usr/lib/systemd/systemd-logind\n    783     0 /usr/libexec/udisks2/udisksd\n    786   102 avahi-daemon: chroot helper\n    814     0 /usr/sbin/NetworkManager --no-daemon\n    815     0 [psimon]\n    816     0 /usr/sbin/wpa_supplicant -u -s -O DIR=/run/wpa_supplicant GROUP=netdev\n    859     0 /usr/sbin/ModemManager\n    868     0 [krfcommd]\n    903     0 /usr/bin/plymouth --wait\n    905     0 /usr/bin/containerd\n    919     0 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\n    932     0 /usr/sbin/gdm3\n    938     0 gdm-session-worker [pam/gdm-launch-environment]\n    947   110 /usr/lib/systemd/systemd --user\n    949   110 (sd-pam)\n    970   110 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    972   110 /usr/bin/pipewire\n    973   110 /usr/bin/pipewire -c filter-chain.conf\n    974   110 /usr/bin/wireplumber\n    975   110 /usr/libexec/gdm-wayland-session dbus-run-session -- gnome-session --autostart /usr/share/gdm/greeter/autostart\n    976   110 /usr/bin/pipewire-pulse\n    983   110 dbus-run-session -- gnome-session --autostart /usr/share/gdm/greeter/autostart\n    985   108 /usr/libexec/rtkit-daemon\n    987   110 dbus-daemon --nofork --print-address 4 --session\n    990   110 /usr/libexec/gnome-session-binary --autostart /usr/share/gdm/greeter/autostart\n   1014   110 /usr/bin/gnome-shell\n   1057   110 /usr/libexec/at-spi-bus-launcher\n   1063   110 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 11 --address=unix:path=/run/user/110/at-spi/bus\n   1064   110 /usr/bin/Xwayland :1024 -rootless -noreset -accessx -core -auth /run/user/110/.mutter-Xwaylandauth.OIO1W3 -listenfd 4 -listenfd 5 -displayfd 6 -initfd 7 -byteswappedclients\n   1066   110 /usr/libexec/at-spi2-registryd --use-gnome-session\n   1067   109 /usr/libexec/colord\n   1103   110 /usr/libexec/xdg-permission-store\n   1112     0 /usr/libexec/upowerd\n   1114   110 /usr/bin/gjs -m /usr/share/gnome-shell/org.gnome.Shell.Notifications\n   1115   110 /usr/libexec/gsd-sharing\n   1119   110 /usr/libexec/gsd-wacom\n   1129   110 /usr/libexec/gsd-color\n   1131   110 /usr/libexec/gsd-keyboard\n   1139   110 /usr/libexec/gsd-print-notifications\n   1149   110 /usr/libexec/gsd-rfkill\n   1155   110 /usr/libexec/gsd-smartcard\n   1158   110 /usr/libexec/gsd-datetime\n   1164   110 /usr/libexec/gsd-media-keys\n   1167   110 /usr/libexec/gsd-screensaver-proxy\n   1170   110 /usr/libexec/gsd-sound\n   1179   110 /usr/libexec/gsd-a11y-settings\n   1187   110 /usr/libexec/gsd-housekeeping\n   1201   110 /usr/libexec/gsd-power\n   1325   110 /usr/libexec/mutter-x11-frames\n   1330   110 ibus-daemon --panel disable -r --xim\n   1338   110 /usr/bin/gjs -m /usr/share/gnome-shell/org.gnome.ScreenSaver\n   1353   110 /usr/libexec/ibus-memconf\n   1354   110 /usr/libexec/ibus-extension-gtk3\n   1356   110 /usr/libexec/ibus-x11 --kill-daemon\n   1367   110 /usr/libexec/ibus-portal\n   1390   110 /usr/libexec/ibus-engine-simple\n   1398   110 /usr/libexec/xdg-desktop-portal\n   1406   110 /usr/libexec/xdg-document-portal\n   1415     0 fusermount3 -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal -- /run/user/110/doc\n   1420   110 /usr/libexec/xdg-desktop-portal-gnome\n   1441   110 /usr/libexec/xdg-desktop-portal-gtk\n   1464   110 /usr/bin/gnome-keyring-daemon --foreground --components=pkcs11,secrets --control-directory=/run/user/110/keyring\n   1468   110 /usr/libexec/gsd-printer\n   1504     0 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock\n   1511     0 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;\n   1512    33 nginx: worker process\n   1513    33 nginx: worker process\n   1514    33 nginx: worker process\n   1516    33 nginx: worker process\n   2214     0 [kworker/R-dio/sdb1]\n   3418   110 /usr/libexec/dconf-service\n  21760     0 [psimon]\n 263572     0 /usr/libexec/fwupd/fwupd\n 638278     0 /usr/sbin/cupsd -l\n 638282     0 /usr/sbin/cups-browsed\n 638289     7 /usr/lib/cups/notifier/dbus dbus://\n 638290     7 /usr/lib/cups/notifier/dbus dbus://\n 640384  1000 /usr/lib/systemd/systemd --user\n 640386  1000 (sd-pam)\n 640406  1000 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n 640407  1000 /usr/bin/pipewire\n 640408  1000 /usr/bin/pipewire -c filter-chain.conf\n 640411  1000 /usr/bin/wireplumber\n 640415  1000 /usr/bin/pipewire-pulse\n 640418  1000 /usr/bin/mpris-proxy\n 640745     0 /usr/bin/containerd --config /data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/containerd.toml\n 642043     0 [kworker/u17:0-rb_allocator]\n 653452     0 [kworker/2:2-events]\n 653477     0 [kworker/3:2-i915-unordered]\n 653510     0 [kworker/2:0-events]\n 653519     0 [kworker/u16:1-kvfree_rcu_reclaim]\n 653520     0 [kworker/1:0-i915-unordered]\n 653521     0 [kworker/0:2-events]\n 653537     0 /usr/bin/dockerd --config-file /data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/daemon.json\n 653601     0 [kworker/u16:0-kvfree_rcu_reclaim]\n 653653  1000 /usr/bin/python3 /data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/events-app.py /data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397\n 653655  1000 /usr/bin/docker --host unix:///data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/docker.sock events --since 2026-11-04T20:47:30.236589+00:00 --format {{json .}}\n 653984     0 [kworker/3:3-events]\n 666956     0 [kworker/u17:2-rb_allocator]\n 668230     0 [kworker/1:2-events]\n 668399     0 [kworker/0:3-kacpi_notify]\n 668903     0 [kworker/u16:6-flush-8:0]\n 669340     0 [kworker/0:0-events]\n 669341     0 [kworker/1:1-cgroup_free]\n 669354     0 [kworker/2:1]\n 669437     0 [kworker/u16:2-events_unbound]\n 669438     0 sshd-session: somanos [priv]\n 669447  1000 sshd-session: somanos@notty\n 669448  1000 python3 -\n 669475  1000 ps -eo pid,uid,args\n",
+    "err": ""
+  },
+  "tmp": {
+    "argv": [
+      "find",
+      "/tmp",
+      "-maxdepth",
+      "1",
+      "-name",
+      "*drumee*",
+      "-printf",
+      "%p %u %m\n"
+    ],
+    "exit": 0,
+    "out": "/tmp/drumee-il5-836bf147-report.json somanos 600\n",
+    "err": ""
+  },
+  "wrapper": {
+    "argv": [
+      "sudo",
+      "-n",
+      "cat",
+      "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/run-isolated"
+    ],
+    "exit": 0,
+    "out": "#!/bin/sh\nset -eu\ntest \"$(id -u)\" = 0\nexec /usr/bin/unshare --mount --propagation private -- /bin/sh -c '\nset -eu\n/usr/bin/mount --bind \"/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/docker.sock\" /run/docker.sock\ntest \"$(/usr/bin/docker --host unix:///var/run/docker.sock info --format \"{{.ID}}\")\" = \"97180776-3da5-479c-b9b6-b59a2211c28b\"\nexec /usr/sbin/runuser -u somanos -- \"$@\"\n' sh \"$@\"\n",
+    "err": ""
+  },
+  "mounts": {
+    "argv": [
+      "findmnt",
+      "-rn",
+      "-o",
+      "TARGET,SOURCE,FSTYPE"
+    ],
+    "exit": 0,
+    "out": "/sys sysfs sysfs\n/proc proc proc\n/dev udev devtmpfs\n/dev/pts devpts devpts\n/run tmpfs tmpfs\n/ /dev/sda2 ext4\n/sys/kernel/security securityfs securityfs\n/dev/shm tmpfs tmpfs\n/sys/fs/cgroup cgroup2 cgroup2\n/sys/fs/pstore pstore pstore\n/sys/firmware/efi/efivars efivarfs efivarfs\n/sys/fs/bpf bpf bpf\n/proc/sys/fs/binfmt_misc systemd-1 autofs\n/sys/kernel/tracing tracefs tracefs\n/dev/hugepages hugetlbfs hugetlbfs\n/sys/kernel/debug debugfs debugfs\n/run/lock tmpfs tmpfs\n/dev/mqueue mqueue mqueue\n/run/credentials/systemd-journald.service tmpfs tmpfs\n/sys/fs/fuse/connections fusectl fusectl\n/sys/kernel/config configfs configfs\n/tmp tmpfs tmpfs\n/boot/efi /dev/sda1 vfat\n/var /dev/sda3 ext4\n/srv /dev/sda5 ext4\n/data /dev/sdb1 ext4\n/proc/sys/fs/binfmt_misc binfmt_misc binfmt_misc\n/run/user/110 tmpfs tmpfs\n/run/user/110/doc portal fuse.portal\n/run/user/1000 tmpfs tmpfs\n",
+    "err": ""
+  },
+  "namespaces": {
+    "argv": [
+      "sudo",
+      "-n",
+      "ctr",
+      "--address",
+      "/run/containerd/containerd.sock",
+      "namespaces",
+      "list"
+    ],
+    "exit": 0,
+    "out": "NAME         LABELS \nmoby                \nmoby_history        \n",
+    "err": ""
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "project": "drumee-e1-membership-ec7a08621929",
+  "image": "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+  "versions": {
+    "Client": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.7.2",
+      "ApiVersion": "1.55",
+      "DefaultAPIVersion": "1.55",
+      "GitCommit": "a7dcaa6",
+      "GoVersion": "go1.26.5",
+      "Os": "linux",
+      "Arch": "amd64",
+      "BuildTime": "Wed Aug  5 18:29:26 2026",
+      "Context": "default"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.7.2",
+      "ApiVersion": "1.55",
+      "MinAPIVersion": "1.40",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.7.2",
+          "Details": {
+            "ApiVersion": "1.55",
+            "Arch": "amd64",
+            "BuildTime": "Wed Aug  5 18:29:26 2026",
+            "Experimental": "false",
+            "GitCommit": "6a43e3d",
+            "GoVersion": "go1.26.5",
+            "KernelVersion": "6.12.100+deb13-amd64",
+            "MinAPIVersion": "1.40",
+            "Module": "github.com/moby/moby/v2",
+            "ModuleVersion": "v2.0.0+unknown",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.3.3",
+          "Details": {
+            "GitCommit": "aad11006b869517fcd3009450b6f82da282e1a9b"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.4.3",
+          "Details": {
+            "GitCommit": "v1.4.3-0-gbb14dabe"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "6a43e3d",
+      "GoVersion": "go1.26.5",
+      "KernelVersion": "6.12.100+deb13-amd64",
+      "BuildTime": "2026-08-05T18:29:26.000000000+00:00"
+    }
+  },
+  "states": [
+    {
+      "step": "nominal",
+      "networks": {
+        "drumee-e1-membership-ec7a08621929-kernel": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "c3f77223b153b06a401338046c0c52f5bf9caf5ad96a9a868c70e885027ff01b",
+          "EndpointID": "d5dbc3f8356da9c9275774fdab4d7126bcd1e91c3ddd2b10031042035d870875",
+          "Gateway": "10.247.0.1",
+          "IPAddress": "10.247.0.2",
+          "MacAddress": "3e:60:82:f2:ef:a4",
+          "IPPrefixLen": 24,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-e1-membership-ec7a08621929-redis-1",
+            "9242f7a5b3d0"
+          ]
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "step": "undeclared",
+      "networks": {
+        "drumee-e1-membership-ec7a08621929-extra": {
+          "IPAMConfig": {},
+          "Links": null,
+          "Aliases": [],
+          "DriverOpts": {},
+          "GwPriority": 0,
+          "NetworkID": "ef1ccc571db39636eb472a21f37f59f8a01f2d177ae80c9a7081973499af0929",
+          "EndpointID": "5a719e3795b05968236306d317a2d14196fe9e6af5c792eb5671bd70ccf52b45",
+          "Gateway": "10.247.2.1",
+          "IPAddress": "10.247.2.2",
+          "MacAddress": "1a:9a:53:1f:47:33",
+          "IPPrefixLen": 24,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-e1-membership-ec7a08621929-redis-1",
+            "9242f7a5b3d0"
+          ]
+        },
+        "drumee-e1-membership-ec7a08621929-kernel": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "c3f77223b153b06a401338046c0c52f5bf9caf5ad96a9a868c70e885027ff01b",
+          "EndpointID": "d5dbc3f8356da9c9275774fdab4d7126bcd1e91c3ddd2b10031042035d870875",
+          "Gateway": "10.247.0.1",
+          "IPAddress": "10.247.0.2",
+          "MacAddress": "3e:60:82:f2:ef:a4",
+          "IPPrefixLen": 24,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-e1-membership-ec7a08621929-redis-1",
+            "9242f7a5b3d0"
+          ]
+        }
+      },
+      "result": "NETWORK_ATTACHMENT_MISMATCH",
+      "validatorModifiedResources": false
+    },
+    {
+      "step": "multihoming",
+      "networks": {
+        "drumee-e1-membership-ec7a08621929-front": {
+          "IPAMConfig": {},
+          "Links": null,
+          "Aliases": [],
+          "DriverOpts": {},
+          "GwPriority": 0,
+          "NetworkID": "959bf977e17477b7641bd9e1670a8c2c824a4f6019e0c8ca27a9dda35e79060a",
+          "EndpointID": "b39824ca18d4a2115e07d16d93868371a4ab46504efb436b81db3ea3f633ca7b",
+          "Gateway": "10.247.1.1",
+          "IPAddress": "10.247.1.2",
+          "MacAddress": "4a:66:65:e8:58:36",
+          "IPPrefixLen": 24,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-e1-membership-ec7a08621929-redis-1",
+            "9242f7a5b3d0"
+          ]
+        },
+        "drumee-e1-membership-ec7a08621929-kernel": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "c3f77223b153b06a401338046c0c52f5bf9caf5ad96a9a868c70e885027ff01b",
+          "EndpointID": "d5dbc3f8356da9c9275774fdab4d7126bcd1e91c3ddd2b10031042035d870875",
+          "Gateway": "10.247.0.1",
+          "IPAddress": "10.247.0.2",
+          "MacAddress": "3e:60:82:f2:ef:a4",
+          "IPPrefixLen": 24,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-e1-membership-ec7a08621929-redis-1",
+            "9242f7a5b3d0"
+          ]
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "step": "disconnected",
+      "networks": {},
+      "result": "NETWORK_ATTACHMENT_MISMATCH"
+    },
+    {
+      "step": "stopped",
+      "networks": {
+        "drumee-e1-membership-ec7a08621929-front": {
+          "IPAMConfig": {},
+          "Links": null,
+          "Aliases": [],
+          "DriverOpts": {},
+          "GwPriority": 0,
+          "NetworkID": "959bf977e17477b7641bd9e1670a8c2c824a4f6019e0c8ca27a9dda35e79060a",
+          "EndpointID": "",
+          "Gateway": "",
+          "IPAddress": "",
+          "MacAddress": "",
+          "IPPrefixLen": 0,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-e1-membership-ec7a08621929-redis-1",
+            "9242f7a5b3d0"
+          ]
+        },
+        "drumee-e1-membership-ec7a08621929-kernel": {
+          "IPAMConfig": {},
+          "Links": null,
+          "Aliases": [],
+          "DriverOpts": {},
+          "GwPriority": 0,
+          "NetworkID": "c3f77223b153b06a401338046c0c52f5bf9caf5ad96a9a868c70e885027ff01b",
+          "EndpointID": "",
+          "Gateway": "",
+          "IPAddress": "",
+          "MacAddress": "",
+          "IPPrefixLen": 0,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-e1-membership-ec7a08621929-redis-1",
+            "9242f7a5b3d0"
+          ]
+        }
+      },
+      "result": "PASS"
+    }
+  ],
+  "status": "PASS",
+  "cleanup": "PASS",
+  "assertions": 21
+}

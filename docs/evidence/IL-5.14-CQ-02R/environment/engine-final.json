@@ -1,0 +1,65 @@
+{
+  "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397",
+  "pid": 653537,
+  "containerd_pid": 640745,
+  "config": {
+    "hosts": [
+      "unix:///data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/docker.sock"
+    ],
+    "data-root": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/engine-data",
+    "exec-root": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/engine-exec",
+    "pidfile": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/dockerd.pid",
+    "bridge": "br-cq6ce32480",
+    "iptables": false,
+    "ip6tables": false,
+    "ip-forward": false,
+    "ip-masq": false,
+    "group": "docker",
+    "containerd-namespace": "cq02r6ce324805cce4512a6a127872271b397",
+    "containerd-plugins-namespace": "cq02r6ce324805cce4512a6a127872271b397plugins",
+    "features": {
+      "containerd-snapshotter": false
+    },
+    "default-address-pools": [
+      {
+        "base": "10.247.0.0/16",
+        "size": 24
+      }
+    ],
+    "labels": [
+      "org.drumee.qualification=CQ02R-6ce32480-5cce-4512-a6a1-27872271b397"
+    ],
+    "containerd": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/containerd.sock"
+  },
+  "config_sha256": "ae0265aa2a280d8208e6be15496d7b905abcb3625e6badc579b03482a89eba86",
+  "containerd_config_sha256": "56a499c430958e593c272a57e70841ed9712292fb41570c3c0a3a1b15b495224",
+  "started": "2026-11-04T17:14:18.884352+00:00",
+  "purpose": "Correct dynamic firewall monitoring and use an explicitly separate containerd; no campaign has run",
+  "daemon_id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+  "protected_daemon_id": "690569ff-0ab3-482e-81d0-09e2c6f93da0",
+  "initial_containers": 0,
+  "initial_images": 0,
+  "firewall_static_before_sha256": {
+    "iptables-save": "64549a2139f481b3c0a617ae6afc5c1251639b62372c2a17f8a94e8e218f42ea",
+    "ip6tables-save": "2fd6a6431f1f276ca54efa58518f4275c67c1a5127fb5922e2015a51956567e9"
+  },
+  "firewall_rule_creation": {
+    "operation": "iptables.insert-exact",
+    "exit": 0,
+    "spec": [
+      "FORWARD",
+      "-s",
+      "10.247.0.0/16",
+      "-d",
+      "10.247.0.0/16",
+      "-m",
+      "comment",
+      "--comment",
+      "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397",
+      "-j",
+      "ACCEPT"
+    ],
+    "scope": "source AND destination in the new private pool only"
+  },
+  "wrapper_sha256": "2fffb418d4357132b55a0e2426b72b291d6e3364cb1e795df024b434a78c125c"
+}

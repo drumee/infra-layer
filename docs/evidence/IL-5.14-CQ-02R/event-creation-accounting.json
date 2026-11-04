@@ -1,0 +1,40 @@
+{
+  "counts": {
+    "volume": {
+      "create": 2,
+      "destroy": 2,
+      "mount": 1,
+      "unmount": 1
+    },
+    "container": {
+      "create": 127,
+      "attach": 108,
+      "start": 137,
+      "die": 137,
+      "destroy": 127,
+      "kill": 15,
+      "stop": 13,
+      "health_status: healthy": 12,
+      "rename": 11
+    },
+    "network": {
+      "connect": 144,
+      "disconnect": 144,
+      "create": 7,
+      "destroy": 7
+    },
+    "image": {
+      "pull": 3,
+      "tag": 2,
+      "create": 2,
+      "untag": 2,
+      "delete": 2
+    }
+  },
+  "unmatched_creations": {
+    "container": [],
+    "volume": [],
+    "network": []
+  },
+  "scope": "Projected private-daemon live streams. Final empty inventory is separately required; event stream excludes default-network preparation before observation."
+}

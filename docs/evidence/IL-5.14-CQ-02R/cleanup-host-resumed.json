@@ -1,0 +1,236 @@
+{
+  "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397",
+  "started": "2026-11-04T21:04:51.941145+00:00",
+  "operations": [
+    {
+      "operation": "resume-after-rule-serialization-check",
+      "prior_evidence": "cleanup-host.json",
+      "change": "Use iptables canonical rule ordering; private processes remain stopped"
+    },
+    {
+      "operation": "remove-exact-created-rule",
+      "table_options": [],
+      "spec": [
+        "FORWARD",
+        "-s",
+        "10.247.0.0/16",
+        "-d",
+        "10.247.0.0/16",
+        "-m",
+        "comment",
+        "--comment",
+        "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397",
+        "-j",
+        "ACCEPT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "operation": "remove-exact-created-rule",
+      "table_options": [],
+      "spec": [
+        "FORWARD",
+        "-i",
+        "br+",
+        "-s",
+        "10.247.0.0/16",
+        "-o",
+        "wlp2s0",
+        "-m",
+        "comment",
+        "--comment",
+        "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-BUILD-OUT",
+        "-j",
+        "ACCEPT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "operation": "remove-exact-created-rule",
+      "table_options": [],
+      "spec": [
+        "FORWARD",
+        "-i",
+        "wlp2s0",
+        "-o",
+        "br+",
+        "-d",
+        "10.247.0.0/16",
+        "-m",
+        "conntrack",
+        "--ctstate",
+        "ESTABLISHED,RELATED",
+        "-m",
+        "comment",
+        "--comment",
+        "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-BUILD-RETURN",
+        "-j",
+        "ACCEPT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "operation": "remove-exact-created-rule",
+      "table_options": [
+        "-t",
+        "nat"
+      ],
+      "spec": [
+        "POSTROUTING",
+        "-s",
+        "10.247.0.0/16",
+        "-o",
+        "wlp2s0",
+        "-m",
+        "comment",
+        "--comment",
+        "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-BUILD-NAT",
+        "-j",
+        "MASQUERADE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "operation": "compare-all-static-firewall-rules",
+      "result": "PASS",
+      "reference": "firewall-static-before.json",
+      "final_sha256": {
+        "iptables-save": "64549a2139f481b3c0a617ae6afc5c1251639b62372c2a17f8a94e8e218f42ea",
+        "ip6tables-save": "2fd6a6431f1f276ca54efa58518f4275c67c1a5127fb5922e2015a51956567e9"
+      }
+    },
+    {
+      "operation": "delete-created-bridge",
+      "creation_ifindex": 1428,
+      "observed_before": {
+        "ifindex": 1428,
+        "ifname": "br-cq6ce32480",
+        "flags": [
+          "NO-CARRIER",
+          "BROADCAST",
+          "MULTICAST",
+          "UP"
+        ],
+        "mtu": 1500,
+        "qdisc": "noqueue",
+        "operstate": "DOWN",
+        "group": "default",
+        "txqlen": 1000,
+        "link_type": "ether",
+        "address": "8a:e7:17:23:8d:ae",
+        "broadcast": "ff:ff:ff:ff:ff:ff",
+        "promiscuity": 0,
+        "allmulti": 0,
+        "min_mtu": 68,
+        "max_mtu": 65535,
+        "linkinfo": {
+          "info_kind": "bridge",
+          "info_data": {
+            "forward_delay": 1500,
+            "hello_time": 200,
+            "max_age": 2000,
+            "ageing_time": 30000,
+            "stp_state": 0,
+            "priority": 32768,
+            "vlan_filtering": 0,
+            "vlan_protocol": "802.1Q",
+            "bridge_id": "8000.8a:e7:17:23:8d:ae",
+            "root_id": "8000.8a:e7:17:23:8d:ae",
+            "root_port": 0,
+            "root_path_cost": 0,
+            "topology_change": 0,
+            "topology_change_detected": 0,
+            "hello_timer": 0.0,
+            "tcn_timer": 0.0,
+            "topology_change_timer": 0.0,
+            "gc_timer": 19.49,
+            "fdb_n_learned": 0,
+            "fdb_max_learned": 0,
+            "vlan_default_pvid": 1,
+            "vlan_stats_enabled": 0,
+            "vlan_stats_per_port": 0,
+            "group_fwd_mask": "0",
+            "group_addr": "01:80:c2:00:00:00",
+            "mcast_snooping": 1,
+            "no_linklocal_learn": 0,
+            "mcast_vlan_snooping": 0,
+            "mst_enabled": 0,
+            "mcast_router": 1,
+            "mcast_query_use_ifaddr": 0,
+            "mcast_querier": 0,
+            "mcast_hash_elasticity": 16,
+            "mcast_hash_max": 4096,
+            "mcast_last_member_cnt": 2,
+            "mcast_startup_query_cnt": 2,
+            "mcast_last_member_intvl": 100,
+            "mcast_membership_intvl": 26000,
+            "mcast_querier_intvl": 25500,
+            "mcast_query_intvl": 12500,
+            "mcast_query_response_intvl": 1000,
+            "mcast_startup_query_intvl": 3124,
+            "mcast_stats_enabled": 0,
+            "mcast_igmp_version": 2,
+            "mcast_mld_version": 1,
+            "nf_call_iptables": 0,
+            "nf_call_ip6tables": 0,
+            "nf_call_arptables": 0
+          }
+        },
+        "num_tx_queues": 1,
+        "num_rx_queues": 1,
+        "gso_max_size": 65536,
+        "gso_max_segs": 65535,
+        "tso_max_size": 524280,
+        "tso_max_segs": 65535,
+        "gro_max_size": 65536,
+        "gso_ipv4_max_size": 65536,
+        "gro_ipv4_max_size": 65536,
+        "addr_info": [
+          {
+            "family": "inet",
+            "local": "10.247.254.1",
+            "prefixlen": 24,
+            "scope": "global",
+            "label": "br-cq6ce32480",
+            "valid_life_time": 4294967295,
+            "preferred_life_time": 4294967295
+          },
+          {
+            "family": "inet6",
+            "local": "fe80::14c2:48ff:fe1d:4d4c",
+            "prefixlen": 64,
+            "scope": "link",
+            "protocol": "kernel_ll",
+            "valid_life_time": 4294967295,
+            "preferred_life_time": 4294967295
+          }
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "operation": "remove-created-known-hosts",
+      "path": "/home/somanos/.ssh/known_hosts",
+      "sha256": "d56c7ba355c1798487acc7506585bc6f65f69b69ff20b10770777e6ba689508a",
+      "entries": 3,
+      "all_keys_verified_same_client": true,
+      "result": "PASS"
+    },
+    {
+      "operation": "remove-created-application-report",
+      "path": "/tmp/drumee-il5-836bf147-report.json",
+      "sha256": "03016fceaccdfa9fc34b666b4f2c1766aadc1e89ac0ef939dcde583d8bde8c0a",
+      "result": "PASS"
+    },
+    {
+      "operation": "verify-system-containerd-has-no-campaign-namespace",
+      "observed": [
+        "moby",
+        "moby_history"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "status": "PASS",
+  "ended": "2026-11-04T21:04:52.151585+00:00"
+}
