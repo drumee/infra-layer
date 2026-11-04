@@ -2,7 +2,11 @@
 const fs = require("node:fs"), path = require("node:path"), crypto = require("node:crypto"), assert = require("node:assert/strict");
 const { createDocker } = require("./docker.cjs"), O = require("./ownership.cjs");
 const { projectMount, assertMountsEqual, assertInventoryEqual } = require("./mounts.cjs");
-const evidence = path.resolve(__dirname, "../../../docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2");
+const evidence = process.env.IL514_FIXTURE_EVIDENCE_DIR ? path.resolve(process.env.IL514_FIXTURE_EVIDENCE_DIR) : path.resolve(__dirname, "../../../docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2");
+if (process.env.IL514_FIXTURE_EVIDENCE_DIR) {
+  const stat = fs.lstatSync(evidence);
+  assert.ok(stat.isDirectory() && stat.uid === process.getuid() && !(stat.mode & 0o077));
+}
 const baseline = JSON.parse(fs.readFileSync(path.join(evidence, "baseline.json")));
 const approval = JSON.parse(fs.readFileSync(path.join(evidence, "preflight-approved.json")));
 assert.equal(approval.attempt, baseline.attempt); assert.equal(approval.status, "PASS");
@@ -17,6 +21,12 @@ const before = D.inventory(); write("before", before); assert.deepEqual(before.d
 assert.equal(before.volumes.some(v => v.name === volumeName), false); assert.equal(before.containers.some(c => c.name === "/" + containerName), false);
 const manifest = { version: 1, type: "V1_CURRENT_ATTEMPT", attempt, started, daemon: before.daemon, volumes: [], containers: [] };
 const removals = [], cleanupErrors = []; let primary, containerRemoved = false;
+const bind = baseline.fixture_bind;
+if (bind) {
+  assert.equal(path.dirname(bind), baseline.private_directory);
+  const stat = fs.lstatSync(bind);
+  assert.ok(stat.isDirectory() && stat.uid === process.getuid() && !(stat.mode & 0o077));
+}
 const labels = ["--label", "org.drumee.qualification=" + attempt, "--label", "org.drumee.infra.owner=" + attempt, "--label", "org.drumee.volume.nonce=" + nonce, "--label", "com.docker.compose.project=" + project];
 function verifyContainer(entry) {
   assert.deepEqual(D.daemon(), manifest.daemon);
@@ -24,11 +34,19 @@ function verifyContainer(entry) {
   assert.equal(raw.Id, entry.id); assert.equal(raw.Name, "/" + containerName);
   assert.equal(raw.Config.Labels["org.drumee.qualification"], attempt); assert.equal(raw.Config.Labels["org.drumee.infra.owner"], attempt); assert.equal(raw.Config.Labels["org.drumee.volume.nonce"], nonce);
   assert.equal(raw.Config.Labels["com.docker.compose.project"], project); assert.equal(raw.Image, approval.image.id);
-  assert.equal(raw.Mounts.length, 1); assert.equal(raw.Mounts[0].Name, volumeName); assert.equal(raw.Mounts[0].Type, "volume"); assert.equal(raw.Mounts[0].Destination, "/fixture");
+  assert.equal(raw.Mounts.length, bind ? 2 : 1);
+  const volumeMount = raw.Mounts.find(m => m.Destination === "/fixture");
+  assert.ok(volumeMount); assert.equal(volumeMount.Name, volumeName); assert.equal(volumeMount.Type, "volume");
   const expectedMounts = [{ type: "volume", name: volumeName, destination: "/fixture", source_hash: manifest.volumes[0].identity.mountpoint_hash, driver: "local", rw: false, mode: "", propagation: "" }];
+  if (bind) expectedMounts.push({ type: "bind", name: null, destination: "/fixture-bind", source_hash: O.digest(bind), driver: null, rw: false, mode: "", propagation: "rprivate" });
   const observedMounts = raw.Mounts.map(projectMount);
   write("mount-observation-" + D.commandCount(), { container: entry.id, expected: expectedMounts, observed: observedMounts });
   assertMountsEqual(expectedMounts, observedMounts);
+  if (bind) {
+    const original = JSON.stringify(observedMounts);
+    assertMountsEqual(expectedMounts, observedMounts.slice().reverse());
+    assert.equal(JSON.stringify(observedMounts), original);
+  }
   return raw;
 }
 function cleanupContainer() {
@@ -48,7 +66,7 @@ try {
   write("manifest", manifest);
   const request = { type: "volume", action: "remove-exact", name: volumeName };
   assert.equal(O.assess(manifest, request, D.observe(volumeName)).disposition, "ELIGIBLE");
-  const id = D.run(["create", "--name", containerName, ...labels, "--network", "none", "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "64m", "--user", process.getuid() + ":" + process.getgid(), "--interactive", "--mount", "type=volume,source=" + volumeName + ",target=/fixture,readonly", approval.image.reference, "node", "-e", "process.on('SIGTERM',()=>process.exit(0)); process.stdin.resume();"]);
+  const id = D.run(["create", "--name", containerName, ...labels, "--network", "none", "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "64m", "--user", process.getuid() + ":" + process.getgid(), "--interactive", "--mount", "type=volume,source=" + volumeName + ",target=/fixture,readonly", ...(bind ? ["--mount", "type=bind,source=" + bind + ",target=/fixture-bind,readonly"] : []), approval.image.reference, "node", "-e", "process.on('SIGTERM',()=>process.exit(0)); process.stdin.resume();"]);
   assert.match(id, /^[a-f0-9]{64}$/); manifest.containers.push({ id, name: containerName, attempt, creation_command_seq: D.commandCount() }); write("manifest", manifest);
   function refusal(phase) {
     const snapshot = D.observe(volumeName); assert.equal(snapshot.consumers.length, 1); assert.equal(snapshot.consumers[0].id, id);

@@ -24,7 +24,7 @@ diagnostic.run(async () => {
     }
     const composition = { project, compose: { services: { redis: { networks: ["kernel"] } }, networks: { kernel: { name: nets[0].name } } } };
     diagnostic.step("not-yet-created-service"); equal(D.checkNetworks(composition, { require_existing: true }), undefined);
-    const id = docker(["run", "-d", "--name", project + "-redis-1", ...labels, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", nets[0].name, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "64m", "--entrypoint", "/bin/sh", image, "-c", "sleep 600"]); containers.push(id);
+    const id = docker(["run", "-d", "--name", project + "-redis-1", ...labels, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", nets[0].name, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "64m", "--tmpfs", "/data:rw,nosuid,nodev,noexec,size=1048576", "--entrypoint", "/bin/sh", image, "-c", "sleep 600"]); containers.push(id);
     diagnostic.step("authorized-single-network"); await ready(composition, D, true); report.states.push({ step: "nominal", networks: inspect(id).NetworkSettings.Networks, result: "PASS" });
     diagnostic.step("same-owner-undeclared-network"); docker(["network", "connect", nets[2].id, id]);
     const before = inspect(id).NetworkSettings.Networks, beforeNets = nets.map(n => network(n.id).Containers);
