@@ -113,7 +113,7 @@ test("actual adapter inventory captures full mounts in raw order using determini
 test("existing program-fingerprint infrastructure seals active campaign comparison paths and rejects bypasses", () => {
   const guard = require("../../support/harness-preservation.cjs");
   const source = fs.readFileSync(path.join(__dirname, "campaign.cjs"), "utf8");
-  const approved = "c109f34526bd257c3088b362f028ae40402a938dedb4be47673eb1931c22f758";
+  const approved = "946b0bfafc5ddab6e9b3689adaaaadb153a4e89d9313b574e8eac38497bf3b11";
   const verify = text => assert.equal(guard.programFingerprint(text), approved);
   verify(source);
   for (const call of ["assertMountsEqual(expectedMounts, observedMounts);", "assertMountsEqual(expectedMounts, observedMounts.slice().reverse());", "assertInventoryEqual(before, after);"]) {

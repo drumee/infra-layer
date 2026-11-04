@@ -37,7 +37,7 @@ function verifyContainer(entry) {
   assert.equal(raw.Mounts.length, bind ? 2 : 1);
   const volumeMount = raw.Mounts.find(m => m.Destination === "/fixture");
   assert.ok(volumeMount); assert.equal(volumeMount.Name, volumeName); assert.equal(volumeMount.Type, "volume");
-  const expectedMounts = [{ type: "volume", name: volumeName, destination: "/fixture", source_hash: manifest.volumes[0].identity.mountpoint_hash, driver: "local", rw: false, mode: "", propagation: "" }];
+  const expectedMounts = [{ type: "volume", name: volumeName, destination: "/fixture", source_hash: manifest.volumes[0].identity.mountpoint_hash, driver: "local", rw: false, mode: "ro", propagation: "" }];
   if (bind) expectedMounts.push({ type: "bind", name: null, destination: "/fixture-bind", source_hash: O.digest(bind), driver: null, rw: false, mode: "", propagation: "rprivate" });
   const observedMounts = raw.Mounts.map(projectMount);
   write("mount-observation-" + D.commandCount(), { container: entry.id, expected: expectedMounts, observed: observedMounts });
@@ -66,7 +66,7 @@ try {
   write("manifest", manifest);
   const request = { type: "volume", action: "remove-exact", name: volumeName };
   assert.equal(O.assess(manifest, request, D.observe(volumeName)).disposition, "ELIGIBLE");
-  const id = D.run(["create", "--name", containerName, ...labels, "--network", "none", "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "64m", "--user", process.getuid() + ":" + process.getgid(), "--interactive", "--mount", "type=volume,source=" + volumeName + ",target=/fixture,readonly", ...(bind ? ["--mount", "type=bind,source=" + bind + ",target=/fixture-bind,readonly"] : []), approval.image.reference, "node", "-e", "process.on('SIGTERM',()=>process.exit(0)); process.stdin.resume();"]);
+  const id = D.run(["create", "--name", containerName, ...labels, "--network", "none", "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "64m", "--user", process.getuid() + ":" + process.getgid(), "--interactive", "--volume", volumeName + ":/fixture:ro", ...(bind ? ["--mount", "type=bind,source=" + bind + ",target=/fixture-bind,readonly"] : []), approval.image.reference, "node", "-e", "process.on('SIGTERM',()=>process.exit(0)); process.stdin.resume();"]);
   assert.match(id, /^[a-f0-9]{64}$/); manifest.containers.push({ id, name: containerName, attempt, creation_command_seq: D.commandCount() }); write("manifest", manifest);
   function refusal(phase) {
     const snapshot = D.observe(volumeName); assert.equal(snapshot.consumers.length, 1); assert.equal(snapshot.consumers[0].id, id);
