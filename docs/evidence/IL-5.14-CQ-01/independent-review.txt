@@ -1,0 +1,51 @@
+Reviewer: /root/cq01_independent_review, separate read-only agent requested by the CQ-01 mission.
+Candidate: 5bb733b7f709547f928f87edf9a37fd7f31fe4be.
+The following is the reviewer's final response, preserved before the root's reporting correction readback.
+
+Independent disposition: BLOCKED_EVIDENCE.
+
+This review does not authorize integration, publication or deployment.
+
+Candidate identity: All 191 inventoried non-documentation hashes match current files. Production/package equivalence with R5, observer and K1 revisions is confirmed.
+
+Production changes: Inspected the actual changes in lifecycle/docker.js, activation.js, recovery.js, both new internal helpers, manifest and lock. No new production security defect established.
+
+Network invariants: Complete attachment-set, network identity, endpoint identity and foreign-resource checks are present. Current named positive/negative results support deterministic qualification.
+
+Rollback authorization: Public authorization precedes active-state disclosure. Admission verifies journal scope, prepared candidates, runtime identity and authoritative reinspection before recreation. The restart exemption remains restricted to the identified failed target.
+
+Failure propagation: Command failures remain fatal. Readiness retries only unsettled metadata and is bounded. Recovery negatives require failed recreation and invalid final membership to remain failures.
+
+Effective negatives: Inspected the actual refusal-effectiveness implementation and named raw results. Unsafe success and unrelated errors cause child-process failure. Comparator negative control reaches the call and terminates with MOUNT_MULTISET_MISMATCH, exit 1.
+
+Real Docker evidence: Missing for CQ-01. Historical R5 evidence supports unchanged recovery implementation but does not qualify this consolidated campaign.
+
+Ownership and cleanup: Withholding mutation on the shared daemon is correct. No successful current campaign creation/removal is evidenced. The three filesystem-test Docker attempts failed at socket connection. Historical H01–H04 remain protected and unresolved.
+
+Canonical application: Missing. Required environment inputs are absent and the complete workflow was not executed. The historical application mismatch is neither reproduced nor resolved.
+
+Package integrity: Independently verified archive SHA256, all 43 regular members against candidate Git bytes, inventory hashes and required rollback helper. Consumer evidence supports installation, exports and 37 refusal assertions.
+
+Active unresolved findings: Current development audit fails; complete filesystem-security suite fails during three fixture setups; mandatory integration/application evidence is missing. V1-F1-REC-001 cannot close.
+
+Historical limitations: Historical Postfix acceptance is incident-specific. SMTP recovery, H1 causality and Debian H3 limitations remain outside any new acceptance claim. Old TAP anomalies need no further diagnostic mission to assess these current results.
+
+Release blockers:
+
+1. P1 — Missing mandatory integration and application evidence. The shared daemon inventory does not establish an isolated nonproduction environment. Establish that prerequisite, positively attribute every new resource, then perform the representative real Docker campaign and complete canonical application workflow. Include real mount reconciliation before closing V1-F1-REC-001.
+
+2. P1 qualification gate — Development dependency audit failure. Raw audit output reports five moderate dependency entries rooted in locked minimatch@10.2.6. The package has no production dependencies and contains no affected development dependency. This is a verified development dependency vulnerability and failed qualification gate; the available evidence does not establish a runtime product security defect. Resolve through a compatible dependency correction and rerun affected checks. Do not accept the risk or apply npm’s suggested major downgrade automatically.
+
+3. P1 evidence gate — Incomplete filesystem-security verification. Twenty-two tests pass, but three foreign-UID cases fail before their security assertions because Docker fixture setup is denied. Preserve the failure and rerun the complete suite only when its Docker operations satisfy current isolation and ownership prerequisites.
+
+4. P2 execution deviation — Indirect Docker setup escaped preflight. The initial filesystem-suite invocation attempted Docker creation before isolation was established. Socket denial contained the attempt; it is not a successful ownership-refusal test. Future execution planning must account for this existing indirect dependency.
+
+One minor reporting correction is needed: the failed initial environment command’s environment.json receipt was overwritten by the corrected environment record. Preserve its original tool-return metadata separately, identifying reconstruction accurately, or narrow the claim that every command has a retained JSON receipt.
+
+Independent read-only checks verified 19 retained command receipts against actual stream hashes, all 191 source hashes, and all 43 archive members. Archive SHA256 is:
+
+004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1
+
+Representative raw evidence examined includes current unit network/refusal/recovery TAP, contracts and mount receipts/results, comparator negative stdout/stderr, lint findings, dependency audit output, filesystem setup errors, environment inventory, package consumer output and archive contents. Historical R5 docker-attempt-1/result.json was inspected directly: it records actual authorized recreation, fatal failure controls, strict final-network refusal and historical cleanup; it remains supporting evidence only.
+
+The deterministic checks and exact package are credible within their stated scope. Required current Docker/application evidence and failed mandatory gates prevent QUALIFIED_FOR_CONTROLLED_INTEGRATION_REVIEW.

@@ -1,0 +1,30 @@
+{
+  "name": "filesystem-security",
+  "argv": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "test/security",
+    "-p",
+    "*_test.py",
+    "-v"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5bb733b7f709547f928f87edf9a37fd7f31fe4be",
+  "started": "2026-11-04T15:45:05.720360+00:00",
+  "ended": "2026-11-04T15:45:06.539002+00:00",
+  "exit": 1,
+  "stdout": {
+    "file": "filesystem-security.stdout",
+    "bytes": 3894,
+    "sha256": "d547a773d7b5e8ecbfbb338aecbad2a81fc605afd9f9b6a82aa7fddc76ef0f4b"
+  },
+  "stderr": {
+    "file": "filesystem-security.stderr",
+    "bytes": 8559,
+    "sha256": "715794438a9b01d6cdf93176acb205090cc2938aa7c10afbaaf105608641b77d"
+  }
+}

@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: test/diagnostics/fixture-volumes/mounts.test.cjs
+not ok 1 - test/diagnostics/fixture-volumes/mounts.test.cjs
+  ---
+  duration_ms: 352.229433
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/diagnostics/fixture-volumes/mounts.test.cjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/diagnostics/fixture-volumes/safety.test.cjs
+ok 2 - test/diagnostics/fixture-volumes/safety.test.cjs
+  ---
+  duration_ms: 59.108055
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 360.502015

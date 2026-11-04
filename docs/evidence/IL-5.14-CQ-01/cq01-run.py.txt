@@ -1,0 +1,22 @@
+import datetime, hashlib, json, pathlib, subprocess, sys, time
+
+root = pathlib.Path('/home/somanos/github/infra-layer')
+evidence = root / 'docs/evidence/IL-5.14-CQ-01'
+evidence.mkdir(parents=True, exist_ok=True)
+name, *command = sys.argv[1:]
+started = datetime.datetime.now(datetime.timezone.utc).isoformat()
+sha = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+with (evidence / (name + '.stdout')).open('wb') as out, (evidence / (name + '.stderr')).open('wb') as err:
+    try:
+        result = subprocess.run(command, cwd=root, stdout=out, stderr=err, timeout=600)
+        code = result.returncode
+    except subprocess.TimeoutExpired:
+        code = 'TIMEOUT'
+record = dict(name=name, argv=command, cwd=str(root), source_sha=sha, started=started,
+              ended=datetime.datetime.now(datetime.timezone.utc).isoformat(), exit=code)
+for stream in ['stdout', 'stderr']:
+    p = evidence / (name + '.' + stream)
+    record[stream] = dict(file=p.name, bytes=p.stat().st_size, sha256=hashlib.sha256(p.read_bytes()).hexdigest())
+(evidence / (name + '.json')).write_text(json.dumps(record, indent=2) + '\n')
+print(json.dumps(record))
+sys.exit(0 if code == 0 else 1)

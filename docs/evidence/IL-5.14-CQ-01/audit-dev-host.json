@@ -1,0 +1,24 @@
+{
+  "name": "audit-dev-host",
+  "argv": [
+    "npm",
+    "audit",
+    "--include=dev",
+    "--json"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5bb733b7f709547f928f87edf9a37fd7f31fe4be",
+  "started": "2026-11-04T15:45:24.621581+00:00",
+  "ended": "2026-11-04T15:45:25.888850+00:00",
+  "exit": 1,
+  "stdout": {
+    "file": "audit-dev-host.stdout",
+    "bytes": 3046,
+    "sha256": "ca48a3a9ba926acd10aadeafa9750b5cee80928f52b246aa10355b56bd636116"
+  },
+  "stderr": {
+    "file": "audit-dev-host.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

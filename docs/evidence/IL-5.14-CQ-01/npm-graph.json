@@ -1,0 +1,24 @@
+{
+  "name": "npm-graph",
+  "argv": [
+    "npm",
+    "ls",
+    "--all",
+    "--json"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5bb733b7f709547f928f87edf9a37fd7f31fe4be",
+  "started": "2026-11-04T15:46:45.385650+00:00",
+  "ended": "2026-11-04T15:46:45.651030+00:00",
+  "exit": 0,
+  "stdout": {
+    "file": "npm-graph.stdout",
+    "bytes": 32287,
+    "sha256": "a5f584e334415c59a8b188d473bee9b53a8ee28ce0398de00b044227e5786407"
+  },
+  "stderr": {
+    "file": "npm-graph.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

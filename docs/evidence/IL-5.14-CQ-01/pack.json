@@ -1,0 +1,25 @@
+{
+  "name": "pack",
+  "argv": [
+    "npm",
+    "pack",
+    "--json",
+    "--pack-destination",
+    "docs/evidence/IL-5.14-CQ-01"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5bb733b7f709547f928f87edf9a37fd7f31fe4be",
+  "started": "2026-11-04T15:46:25.287589+00:00",
+  "ended": "2026-11-04T15:46:25.603256+00:00",
+  "exit": 1,
+  "stdout": {
+    "file": "pack.stdout",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "file": "pack.stderr",
+    "bytes": 199,
+    "sha256": "47af3b205bc4d4bc504444f51dd843467ba9e11de6d278552f10f92162e2aba3"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "environment",
+  "argv": ["python3", "/tmp/cq01-environment.py"],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5bb733b7f709547f928f87edf9a37fd7f31fe4be",
+  "started": "2026-11-04T15:47:42.634706+00:00",
+  "ended": "2026-11-04T15:47:42.849902+00:00",
+  "exit": 1,
+  "stdout": {
+    "file": "environment.stdout",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "file": "environment.stderr",
+    "bytes": 1163,
+    "sha256": "b87de0607aab2c4044a5d1fcaa3245fc0f40fa4a5295e0e017f19da74164d5ea"
+  },
+  "provenance": "Reconstructed verbatim command/result fields from the original functions.exec tool output. The corrected environment capture overwrote the original environment.json receipt with environment metadata. Original stdout/stderr were retained unchanged; no command was rerun to recreate this receipt."
+}
