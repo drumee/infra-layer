@@ -1,0 +1,47 @@
+Reviewer: /root/cq02_independent_review, one separate read-only reviewer requested by the CQ-02 mission.
+Candidate reviewed: 5df139e952ce9ce6d8cedfc86367c9c24dd9b402.
+Disposition: BLOCKED_ENVIRONMENT.
+
+The candidate is not qualified for controlled integration review.
+
+Final identity: Independently verified all 191 source hashes against candidate Git bytes. Production, fixtures, manifest and lock remain unchanged.
+
+Dependency remediation: Required audit FAILS with five moderate entries rooted in minimatch 10.2.6. Current parent ranges exclude patched major 11; no supported correction within those observed ranges was identified.
+
+Filesystem security: NOT_EXECUTED in CQ-02. Inspected the three foreign-UID cases and their actual setup, refusal and restoration assertions. CQ-01 setup failures remain unqualified.
+
+Network isolation: Actual complete-set, network-ID, endpoint-ID and foreign-resource checks inspected. Fresh named positive and negative unit results support deterministic qualification.
+
+Authorization/recovery: Public authority checks precede active-state disclosure. Recovery admission verifies journal scope, candidates and runtime identity before authoritative network reinspection and recreation.
+
+Failure propagation: Docker failures remain fatal; readiness retries only bounded unsettled metadata. Named tests require unauthorized recovery, failed recreation and invalid final membership to remain failures.
+
+Real Docker integration: NOT_EXECUTED. Historical R5 raw evidence supports unchanged recovery implementation only.
+
+Live mount reconciliation: NOT_EXECUTED. Current comparator and applicable CQ-01 deterministic/negative evidence are credible; V1-F1-REC-001_OPEN cannot close.
+
+Attribution/cleanup: No campaign creation, lifecycle or deletion is evidenced. Shared remote blog resources remain protected; no cleanup success is claimed.
+
+Complete application: NOT_EXECUTED. Explicit client/LAN configuration is absent. Native nginx exists at /usr/sbin/nginx, version 1.26.3; its presence alone does not establish application readiness.
+
+Package integrity: Independently verified all 43 archive members against candidate Git bytes and installed-consumer bytes. Canonical package audit and 37 consumer refusal assertions pass.
+
+Active defects: No additional production security defect established in inspected paths. Failed dependency audit and missing mandatory runtime/security evidence remain release blockers.
+
+Historical limitations: Application mismatch, H01–H04, Postfix’s incident-specific uncertainty, SMTP recovery, H1 causality and Debian H3 limitations remain preserved.
+
+The owner confirms the VPS is nonproduction and explicitly prohibits intervention on the blog. Read-only evidence nevertheless shows two active unrelated Ghost/MySQL workloads on its default daemon. No dedicated qualification daemon or enforceable boundary protecting those workloads has been established. The intended future SMTP-relay use is context, not current SMTP acceptance or an isolation waiver. Stopping Docker-mutating stages is consistent with CQ-02’s requirements.
+
+The observed lint invocation used optimization level 1 and never entered the advisory’s aggressive preprocessing path. This narrows observed exposure; it does not remove the dependency vulnerability or satisfy the required audit. The unchanged runtime archive has no production dependencies and contains no minimatch files.
+
+Required next actions:
+
+1. P1 environment: Establish an isolated qualification endpoint or demonstrable existing boundary protecting all blog/database resources, then execute the complete filesystem suite, representative real Docker campaign and canonical application workflow with explicit prerequisites.
+2. P1 dependency gate: Obtain a maintained major-10 security backport or supported parent migration to a patched major, validate compatibility, freeze the revised candidate and rerun affected installation/audit/lint/unit/contract/package checks.
+3. P1 evidence: Demonstrate live mount reconciliation and complete application acceptance before closing their findings. Historical successes cannot substitute.
+
+Independent checks covered 15 current command receipts and stream hashes, 128 installed lock versions, 191 source files, all 43 archive members and installed package members. The freshly measured archive SHA256 is:
+
+004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1
+
+The baseline and evidence reports accurately distinguish the failed audit from unexecuted campaigns. No reporting correction is required. No successful review, merge, publication or deployment approval is granted.

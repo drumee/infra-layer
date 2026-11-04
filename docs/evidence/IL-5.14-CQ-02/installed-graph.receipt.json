@@ -1,0 +1,26 @@
+{
+  "name": "installed-graph",
+  "argv": [
+    "npm",
+    "ls",
+    "--all",
+    "--json"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5df139e952ce9ce6d8cedfc86367c9c24dd9b402",
+  "manifest_sha256": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd",
+  "lock_sha256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+  "started": "2026-11-04T16:35:49.901705+00:00",
+  "exit": 0,
+  "ended": "2026-11-04T16:35:50.216059+00:00",
+  "stdout": {
+    "file": "installed-graph.stdout",
+    "bytes": 32287,
+    "sha256": "a5f584e334415c59a8b188d473bee9b53a8ee28ce0398de00b044227e5786407"
+  },
+  "stderr": {
+    "file": "installed-graph.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,577 @@
+{
+  "observed_at": "2026-11-04T16:36:45.917650+00:00",
+  "host": "asohka",
+  "platform": "Linux-6.1.0-41-amd64-x86_64-with-glibc2.36",
+  "uid": 1000,
+  "gid": 1000,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "context",
+        "ls",
+        "--format",
+        "{{json .}}"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "context",
+        "show"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "context",
+        "inspect",
+        "default"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "version",
+        "--format",
+        "{{json .}}"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "version"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "info",
+        "--format",
+        "{{json .}}"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-a",
+        "--no-trunc",
+        "--format",
+        "{\"id\":{{json .ID}},\"name\":{{json .Names}},\"state\":{{json .State}},\"project\":{{json (.Label \"com.docker.compose.project\")}},\"owner\":{{json (.Label \"org.drumee.infra.owner\")}}}"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "ls",
+        "--no-trunc",
+        "--format",
+        "{\"id\":{{json .ID}},\"name\":{{json .Name}},\"internal\":{{json .Internal}}}"
+      ],
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "ls",
+        "-q"
+      ],
+      "exit": 0,
+      "stderr": ""
+    }
+  ],
+  "source_sha": "5df139e952ce9ce6d8cedfc86367c9c24dd9b402",
+  "contexts": [
+    {
+      "Current": true,
+      "Description": "Current DOCKER_HOST based configuration",
+      "DockerEndpoint": "unix:///var/run/docker.sock",
+      "Error": "",
+      "Name": "default"
+    }
+  ],
+  "context": "default",
+  "endpoint": "unix:///var/run/docker.sock",
+  "version": {
+    "Client": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "DefaultAPIVersion": "1.53",
+      "GitCommit": "0b9d198",
+      "GoVersion": "go1.25.6",
+      "Os": "linux",
+      "Arch": "amd64",
+      "BuildTime": "Mon Jan 26 19:26:07 2026",
+      "Context": "default"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "MinAPIVersion": "1.44",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.2.0",
+          "Details": {
+            "ApiVersion": "1.53",
+            "Arch": "amd64",
+            "BuildTime": "Mon Jan 26 19:26:07 2026",
+            "Experimental": "false",
+            "GitCommit": "9c62384",
+            "GoVersion": "go1.25.6",
+            "KernelVersion": "6.1.0-41-amd64",
+            "MinAPIVersion": "1.44",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.2.1",
+          "Details": {
+            "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.3.4",
+          "Details": {
+            "GitCommit": "v1.3.4-0-gd6d73eb8"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "9c62384",
+      "GoVersion": "go1.25.6",
+      "KernelVersion": "6.1.0-41-amd64",
+      "BuildTime": "2026-01-26T19:26:07.000000000+00:00"
+    }
+  },
+  "compose_version": "Docker Compose version v5.0.2",
+  "daemon": {
+    "ID": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+    "Name": "asohka",
+    "ServerVersion": "29.2.0",
+    "Containers": 35,
+    "ContainersRunning": 1,
+    "ContainersStopped": 34,
+    "Labels": [],
+    "DockerRootDir": "/var/lib/docker",
+    "SecurityOptions": [
+      "name=apparmor",
+      "name=seccomp,profile=builtin",
+      "name=cgroupns"
+    ]
+  },
+  "containers": [
+    {
+      "id": "36601669643bbeba686d2e2f767eeee31fce1f041574a06acb7cd6861427716d",
+      "name": "oxymot-blog01-blog04-candidate-proxy-1",
+      "state": "exited",
+      "project": "oxymot-blog01-blog04-candidate",
+      "owner": ""
+    },
+    {
+      "id": "53115c90e8b28868f200ab0e49107e69f20ebc9f346a44ae7bdf92bb3f2b9d32",
+      "name": "oxymot-blog01-blog04-candidate-ghost-1",
+      "state": "exited",
+      "project": "oxymot-blog01-blog04-candidate",
+      "owner": ""
+    },
+    {
+      "id": "274756d7c1f27542bf20d1eb4d1e827e31fc610c9082ca7c44a7c9d11eab9b83",
+      "name": "oxymot-blog01-blog04-candidate-db-1",
+      "state": "exited",
+      "project": "oxymot-blog01-blog04-candidate",
+      "owner": ""
+    },
+    {
+      "id": "a8bd95457fff22c6d144d665f3905a23c12940ce10aae3c105ca10a57c9fadfb",
+      "name": "oxymot-blog01-tls-proxy-1",
+      "state": "exited",
+      "project": "oxymot-blog01-tls",
+      "owner": ""
+    },
+    {
+      "id": "dbec0f1ada0dc9166bb057d24eeb7c1517a7e0be0dcc80602effd4d466f8c6de",
+      "name": "oxymot-blog01-blog03-restore-20261028214442-proxy-1",
+      "state": "exited",
+      "project": "oxymot-blog01-blog03-restore-20261028214442",
+      "owner": ""
+    },
+    {
+      "id": "583928424c20c4bbdbf807532902c639471a619b7d0006020b552ca2eae80e59",
+      "name": "oxymot-blog01-blog03-restore-20261028214442-ghost-1",
+      "state": "exited",
+      "project": "oxymot-blog01-blog03-restore-20261028214442",
+      "owner": ""
+    },
+    {
+      "id": "7ec252e8c32c4c000d3f902bbb7d95a940917b6cabe60dc093605e92442c5d56",
+      "name": "oxymot-blog01-blog03-restore-20261028214442-db-1",
+      "state": "exited",
+      "project": "oxymot-blog01-blog03-restore-20261028214442",
+      "owner": ""
+    },
+    {
+      "id": "dd86fdfae8bd4135e348ba84cc5697d81b40c4990b3d16adaad5f66943b898ef",
+      "name": "oxymot-blog01-restore-proxy-1",
+      "state": "exited",
+      "project": "oxymot-blog01-restore",
+      "owner": ""
+    },
+    {
+      "id": "565ff453ff6929875f9bd91e4f60a0c2f11668d7db8d92fe492b043719af1448",
+      "name": "oxymot-blog01-restore-ghost-1",
+      "state": "exited",
+      "project": "oxymot-blog01-restore",
+      "owner": ""
+    },
+    {
+      "id": "f7fcac93eeae9583d83158cf339eafdb7a0cf74b3d7cd9477867b74d03df8ea9",
+      "name": "oxymot-blog01-restore-db-1",
+      "state": "exited",
+      "project": "oxymot-blog01-restore",
+      "owner": ""
+    },
+    {
+      "id": "4f5bcc10202aa43e0e412f44e23b99b270d4c4b9a1d8b37128494add80808b31",
+      "name": "oxymot-blog01-tls-ghost-1",
+      "state": "exited",
+      "project": "oxymot-blog01-tls",
+      "owner": ""
+    },
+    {
+      "id": "dac6ff2871b7a4f81d4592e629c9875ba0ea870b005da3f76fa786f5ee984cdf",
+      "name": "oxymot-blog01-tls-db-1",
+      "state": "exited",
+      "project": "oxymot-blog01-tls",
+      "owner": ""
+    },
+    {
+      "id": "c90b0f7ffa1982957e89d1e6231a1cade320537b4772f090cb2436717541f7d8",
+      "name": "oxymot-blog01-ghost-1",
+      "state": "exited",
+      "project": "oxymot-blog01",
+      "owner": ""
+    },
+    {
+      "id": "03d98e22a3f27b2860875872fcd86609278d71e5d001df0803cd52cd8a5b01dd",
+      "name": "oxymot-blog01-proxy-1",
+      "state": "exited",
+      "project": "oxymot-blog01",
+      "owner": ""
+    },
+    {
+      "id": "2d49a09b1a13aa4c5584e9d15552ef6be96e6e7cde3ca9339c2c64567604d8b1",
+      "name": "oxymot-blog01-db-1",
+      "state": "exited",
+      "project": "oxymot-blog01",
+      "owner": ""
+    },
+    {
+      "id": "e48d1991476f0e5a36e1097672ad93be2fa32115ac11341dd311f2d5ff9a79fd",
+      "name": "oxymotion-hub-phase0-2417811-9d0945fb",
+      "state": "exited",
+      "project": "",
+      "owner": ""
+    },
+    {
+      "id": "9ab9d911d67df7eaff96ea50fec20f48a30a8c550de1189f546728401523654e",
+      "name": "lotja-tuning-r2-codex-1",
+      "state": "exited",
+      "project": "lotja-tuning-r2",
+      "owner": ""
+    },
+    {
+      "id": "ad54c9ae43709e7dbbd8e1d5ce5a9ca24bbf24cbe091357c4fd84826c093c9b9",
+      "name": "lotja-tuning-r2-db-1",
+      "state": "running",
+      "project": "lotja-tuning-r2",
+      "owner": ""
+    },
+    {
+      "id": "dbef18b88da6ccf35c480fb6fe11037c36802d6a9f5d486666fe0f3a74cc3782",
+      "name": "drumee-apt-local",
+      "state": "exited",
+      "project": "",
+      "owner": ""
+    },
+    {
+      "id": "c2d515f4382efd55e45b3254ee6cbd0abae0a01c4bbc9b1b431d96c6cb192243",
+      "name": "scratchpad-web-1",
+      "state": "exited",
+      "project": "scratchpad",
+      "owner": ""
+    },
+    {
+      "id": "026c71e034fdd7a8d75c4387683d7fe92053453d32ed7146d4c1bdb1205faf01",
+      "name": "scratchpad-app-1",
+      "state": "exited",
+      "project": "scratchpad",
+      "owner": ""
+    },
+    {
+      "id": "ca5091e89d7df77fa91b819b2c4d9c927a6edd13726f3b08a166c03293346fbc",
+      "name": "scratchpad-migrate-1",
+      "state": "exited",
+      "project": "scratchpad",
+      "owner": ""
+    },
+    {
+      "id": "b8d5ccd026ffadb4a1d538065b89bdb830f7b73e5d6bf4c39dba4ecad6171e59",
+      "name": "scratchpad-schemas-init-1",
+      "state": "exited",
+      "project": "scratchpad",
+      "owner": ""
+    },
+    {
+      "id": "a64b550f1d3b01ee345ae73ae0996b011ae34f068edd4f598431f96b07c164b0",
+      "name": "scratchpad-db-1",
+      "state": "exited",
+      "project": "scratchpad",
+      "owner": ""
+    },
+    {
+      "id": "cf649f7d235203a770fe19cf60d5ada8ad6f18e99e0e1220931f3302d80c4f26",
+      "name": "scratchpad-infra-init-1",
+      "state": "exited",
+      "project": "scratchpad",
+      "owner": ""
+    },
+    {
+      "id": "9320436b6b82b9082379ac3b4e4354b3f57418e3a375689a97ef98bc20c3dff1",
+      "name": "scratchpad-cache-1",
+      "state": "exited",
+      "project": "scratchpad",
+      "owner": ""
+    },
+    {
+      "id": "674b611e8b0de146d7c6d9b148bbb43c967b8bc5bcf7b2394d88187913ad88ca",
+      "name": "drumeeroles-dns-1",
+      "state": "exited",
+      "project": "drumeeroles",
+      "owner": ""
+    },
+    {
+      "id": "8df71ec63e28f212d229f09f8634e96502811d4ebfffe2bc06c16c0907a35901",
+      "name": "drumeeroles-db-1",
+      "state": "exited",
+      "project": "drumeeroles",
+      "owner": ""
+    },
+    {
+      "id": "2850273720ec7aba2a87a5615d0712c9d6e11978394c0230db0f2c08ce74a245",
+      "name": "drumeeroles-infra-init-1",
+      "state": "exited",
+      "project": "drumeeroles",
+      "owner": ""
+    },
+    {
+      "id": "5ce0ce990a4da8e0fe380359451c3277852516e30b6d598a95fa08b1128704a1",
+      "name": "drumeeroles-cache-1",
+      "state": "exited",
+      "project": "drumeeroles",
+      "owner": ""
+    },
+    {
+      "id": "42113b43f533c8c7abcc65425f1e42cdcccb36433b39d9de368eb95927a963cd",
+      "name": "drumee-local-registry",
+      "state": "exited",
+      "project": "",
+      "owner": ""
+    },
+    {
+      "id": "4c802389b1e4919880b8261b08bb983061f38fe466cdf46e3a13ffe688187242",
+      "name": "dbg-sd",
+      "state": "exited",
+      "project": "",
+      "owner": ""
+    },
+    {
+      "id": "9dfda18e01d4802ffe15d441735e12b670154dc148f8dd5a842f1cebf270a54d",
+      "name": "buildx_buildkit_drumee-multi0",
+      "state": "exited",
+      "project": "",
+      "owner": ""
+    },
+    {
+      "id": "38695756ad2c2df360537cd958462f575d43cb18aef848c7dff22eff4a8837fc",
+      "name": "perdrix",
+      "state": "exited",
+      "project": "perdrix-server",
+      "owner": ""
+    },
+    {
+      "id": "d01f0aa174161eacc5cf0878404ba68065e26e8626c80d8ce4d0e7f7a3fecd12",
+      "name": "schemas",
+      "state": "exited",
+      "project": "docker",
+      "owner": ""
+    }
+  ],
+  "networks": [
+    {
+      "id": "03597d21100ec81d29e3df6b5e68d9ff1d971039f58b75b515f5964be3f47ce9",
+      "name": "bridge",
+      "internal": "false"
+    },
+    {
+      "id": "a5de72fecf555a2d3570fc27b147595ed4ea5413923f6e7312b8e3d3101e1a3f",
+      "name": "docker_default",
+      "internal": "false"
+    },
+    {
+      "id": "7a11de4b25834458200f8cf24f40bbd2ec3715671c9ca80c155cf6fafbac8da6",
+      "name": "drumeeroles_drumee",
+      "internal": "false"
+    },
+    {
+      "id": "6ab343a5df47dba8172cd806a365515e37390f57c180b48b500319d085b9bd32",
+      "name": "host",
+      "internal": "false"
+    },
+    {
+      "id": "02b4589f2622bbbb2e97347d2704eb82a2aee6d2e3afd6bea6f6b2e58834e6cd",
+      "name": "lotja-tuning-r2_default",
+      "internal": "false"
+    },
+    {
+      "id": "431486b00b0f862422c68f271ddafb9e7aeaf2b82ff5c2e513ef2e403c208985",
+      "name": "lotja_default",
+      "internal": "false"
+    },
+    {
+      "id": "7a1b2dedbf65eea63786f00f5be095926c23b13a73fb8708d453be611a7ee7a3",
+      "name": "my-starter_default",
+      "internal": "false"
+    },
+    {
+      "id": "2d155988db0e3d54ae7c82dae660611c6639d0701be70696103032b17d78eb68",
+      "name": "none",
+      "internal": "false"
+    },
+    {
+      "id": "05648de6328dbd61c1eb8fcf19bc010f0e2974f5196a087f8317edb1059c8841",
+      "name": "oxymot-blog01-blog03-restore-20261028214442_backend",
+      "internal": "true"
+    },
+    {
+      "id": "10dedc05e5721661db7f8de7aa5bd21fe0b947349be72ec2c3ea79025b089ac8",
+      "name": "oxymot-blog01-blog03-restore-20261028214442_frontend",
+      "internal": "false"
+    },
+    {
+      "id": "f5e8410a4d68d8593156257eaef176db42b1bf4946b5a525218dcc518973ceef",
+      "name": "oxymot-blog01-blog04-candidate_backend",
+      "internal": "true"
+    },
+    {
+      "id": "714c60476c0341731d2116924248248fde9f32391dbbb4ff7161c9b70e4581e2",
+      "name": "oxymot-blog01-blog04-candidate_frontend",
+      "internal": "false"
+    },
+    {
+      "id": "a60c8932b0533c21076af4750fd37904f4d7e19bdb70d549bd383a0e09b9fea8",
+      "name": "oxymot-blog01-restore_backend",
+      "internal": "true"
+    },
+    {
+      "id": "0dfb27600ce84b0dd37d26879f9c550d2bdf6ccc6bd35635eaf91b24116a0063",
+      "name": "oxymot-blog01-restore_frontend",
+      "internal": "false"
+    },
+    {
+      "id": "14cd9ac1d8b9a423f96f4d5ec0172990da8f728372984fe86cf69de3eb0d82d3",
+      "name": "oxymot-blog01-tls_backend",
+      "internal": "true"
+    },
+    {
+      "id": "5e50eb10023d6afaca6127a4fece0bb7129b0eaa0b7a8fbe30d3d4f28da39436",
+      "name": "oxymot-blog01-tls_frontend",
+      "internal": "false"
+    },
+    {
+      "id": "acbf4d7cae57524833c4bf89f33c3bdc5edb2ef2ef8bfd5ffa9145af8e753bcc",
+      "name": "oxymot-blog01_backend",
+      "internal": "true"
+    },
+    {
+      "id": "230007444a442642d3f40cab4a3e69a7b88d9f53b7867a8ec836f735d6d94340",
+      "name": "oxymot-blog01_frontend",
+      "internal": "false"
+    },
+    {
+      "id": "8183a8fd8e8c6020bb16d4d2e3cf953e291bf322508885a30a169a2e020b083d",
+      "name": "perdrix-server_default",
+      "internal": "false"
+    },
+    {
+      "id": "809d8e8f3611deb58c80caa8acbb2671d94316584bd91b1c244a3bebf8f50951",
+      "name": "scratchpad_drumee",
+      "internal": "false"
+    },
+    {
+      "id": "4b2f2ffd26805182bd13e5ef7e4a89296ebdfb4de4c52728a2f8a2a2cc47c19f",
+      "name": "starter-kit_default",
+      "internal": "false"
+    }
+  ],
+  "volume_count": 682,
+  "socket": {
+    "uid": 0,
+    "gid": 1001,
+    "mode": "0o660",
+    "modified": false
+  },
+  "application_prerequisites": {
+    "IL5_NETWORK_CLIENT": null,
+    "IL5_LAN_ADDRESS": null,
+    "IL5_HOST_NGINX": null
+  },
+  "docker_isolation_status": "DOCKER_ISOLATION_NOT_ESTABLISHED",
+  "application_status": "APPLICATION_ENVIRONMENT_NOT_READY",
+  "reason": "Only configured endpoint is shared with unrelated and historical resources; no dedicated environment or enforceable boundary supplied.",
+  "resource_mutations": []
+}

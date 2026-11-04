@@ -1,0 +1,29 @@
+{
+  "name": "remote-application-prerequisites",
+  "argv": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=10",
+    "debian@oxymot.fr",
+    "python3 - <<'PY'\nimport json,os,pathlib,subprocess\npaths=[\"/usr/sbin/nginx\",\"/usr/local/sbin/nginx\",\"/usr/bin/nginx\"]\nd={\"variables\":{k:os.environ.get(k) for k in [\"IL5_NETWORK_CLIENT\",\"IL5_LAN_ADDRESS\",\"IL5_HOST_NGINX\"]},\"native_nginx\":[]}\nfor p in paths:\n if pathlib.Path(p).exists():\n  r=subprocess.run([p,\"-v\"],capture_output=True,text=True);d[\"native_nginx\"].append({\"path\":p,\"exit\":r.returncode,\"version\":r.stderr.strip()})\nprint(json.dumps(d,indent=2))\nPY"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5df139e952ce9ce6d8cedfc86367c9c24dd9b402",
+  "manifest_sha256": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd",
+  "lock_sha256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+  "started": "2026-11-04T16:40:31.351427+00:00",
+  "exit": 0,
+  "ended": "2026-11-04T16:40:33.069065+00:00",
+  "stdout": {
+    "file": "remote-application-prerequisites.stdout",
+    "bytes": 247,
+    "sha256": "01b0d44075d866e6704053b952f2ecfac07761cd0791da1d7342d505becb613f"
+  },
+  "stderr": {
+    "file": "remote-application-prerequisites.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

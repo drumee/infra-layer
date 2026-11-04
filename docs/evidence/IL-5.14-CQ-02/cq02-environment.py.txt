@@ -1,0 +1,27 @@
+import datetime,json,os,pathlib,platform,stat,subprocess
+root=pathlib.Path('/home/somanos/github/infra-layer')
+data={'observed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'host':platform.node(),'platform':platform.platform(),'uid':os.getuid(),'gid':os.getgid(),'commands':[]}
+def run(argv):
+    p=subprocess.run(argv,capture_output=True,text=True,timeout=30)
+    data['commands'].append({'argv':argv,'exit':p.returncode,'stderr':p.stderr})
+    if p.returncode:raise RuntimeError(p.stderr)
+    return p.stdout.strip()
+data['source_sha']=run(['git','rev-parse','HEAD'])
+data['contexts']=[json.loads(x) for x in run(['docker','context','ls','--format','{{json .}}']).splitlines()]
+data['context']=run(['docker','context','show'])
+data['endpoint']=json.loads(run(['docker','context','inspect',data['context']]))[0]['Endpoints']['docker']['Host']
+data['version']=json.loads(run(['docker','version','--format','{{json .}}']))
+data['compose_version']=run(['docker','compose','version'])
+info=json.loads(run(['docker','info','--format','{{json .}}']))
+data['daemon']={k:info[k] for k in ['ID','Name','ServerVersion','Containers','ContainersRunning','ContainersStopped','Labels','DockerRootDir','SecurityOptions']}
+data['containers']=[json.loads(x) for x in run(['docker','ps','-a','--no-trunc','--format','{"id":{{json .ID}},"name":{{json .Names}},"state":{{json .State}},"project":{{json (.Label "com.docker.compose.project")}},"owner":{{json (.Label "org.drumee.infra.owner")}}}']).splitlines()]
+data['networks']=[json.loads(x) for x in run(['docker','network','ls','--no-trunc','--format','{"id":{{json .ID}},"name":{{json .Name}},"internal":{{json .Internal}}}']).splitlines()]
+data['volume_count']=len(run(['docker','volume','ls','-q']).splitlines())
+sock=os.stat('/var/run/docker.sock');data['socket']={'uid':sock.st_uid,'gid':sock.st_gid,'mode':oct(stat.S_IMODE(sock.st_mode)),'modified':False}
+data['application_prerequisites']={k:os.environ.get(k) for k in ['IL5_NETWORK_CLIENT','IL5_LAN_ADDRESS','IL5_HOST_NGINX']}
+data['docker_isolation_status']='DOCKER_ISOLATION_NOT_ESTABLISHED'
+data['application_status']='APPLICATION_ENVIRONMENT_NOT_READY'
+data['reason']='Only configured endpoint is shared with unrelated and historical resources; no dedicated environment or enforceable boundary supplied.'
+data['resource_mutations']=[]
+(root/'docs/evidence/IL-5.14-CQ-02/environment-details.json').write_text(json.dumps(data,indent=2)+'\n')
+print(json.dumps({k:data[k] for k in ['host','context','endpoint','daemon','volume_count','application_prerequisites','docker_isolation_status','application_status']},indent=2))

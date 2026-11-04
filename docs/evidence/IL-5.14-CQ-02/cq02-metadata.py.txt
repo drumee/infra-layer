@@ -1,0 +1,11 @@
+import json,pathlib,subprocess,datetime
+root=pathlib.Path('/home/somanos/github/infra-layer')
+commands=[['npm','view','eslint','dist-tags','--json'],['npm','view','eslint@10.14.0','version','dependencies','engines','--json'],['npm','view','@eslint/config-array','dist-tags','version','dependencies','--json'],['npm','view','minimatch@10','version','--json'],['npm','view','minimatch@11.0.1','version','engines','dependencies','exports','--json'],['npm','view','minimatch','dist-tags','engines','--json']]
+records=[]
+for argv in commands:
+    p=subprocess.run(argv,cwd=root,capture_output=True,text=True,timeout=60)
+    records.append({'argv':argv,'exit':p.returncode,'stdout':json.loads(p.stdout) if p.returncode==0 else p.stdout,'stderr':p.stderr})
+data={'observed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'registry':'https://registry.npmjs.org','records':records}
+(root/'docs/evidence/IL-5.14-CQ-02/registry-metadata.json').write_text(json.dumps(data,indent=2)+'\n')
+assert all(r['exit']==0 for r in records)
+print('Current registry metadata captured for six exact read-only queries')
