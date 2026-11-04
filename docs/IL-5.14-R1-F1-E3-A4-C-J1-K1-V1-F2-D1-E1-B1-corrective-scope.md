@@ -1,0 +1,5 @@
+# B1 corrective scope — Gate G NOT_EXECUTED
+
+A concrete correction requires an established original cause and qualified named native positive/negative pair. Both conditions are unmet. No fixture path/API/filter/registration/reporting fix is selected or implemented. In particular, do not replace exact native named PASS with the observed file PASS, marker success, root0 or summarypass1.
+
+Further work would be a separately authorized diagnostic scope, focusing on native worker result generation, serialization and parent acceptance, with the new callback/marker evidence as a boundary. That is not a demonstrated correction proposal. A later supported implementation scope must identify an exact faulty operation, preserve ordinary assertion/nonzero failure propagation, visibly qualify exact positive and negative names, reject absent-case success, and receive independent review. Impact on D1/F2 cannot be claimed without their separately qualified diagnostics. No framework/dependency/Node version change, generic retry, filter relaxation, comparator correction or Docker authority follows from this document.

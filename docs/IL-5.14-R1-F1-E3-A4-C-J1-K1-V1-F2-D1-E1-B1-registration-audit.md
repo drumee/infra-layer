@@ -1,0 +1,11 @@
+# B1 static registration audit — Gate B PASS
+
+**REGISTRATION_PRESENT_AND_REACHABLE (static source classification).** This does not certify actual runtime registration/selection or callback execution.
+
+The E1 fixture imports `node:test` with the correct node: scheme. Installed native module source explicitly exports the harness test function as its default and test property. The harness function creates a subtest from the name/options/function, bootstraps its parent and schedules its start; supported test(name,fn) is the existing convention. Native API source was read without calling the test registration function. Independent source hashes/locations are in independent-review/static-registration-review.json.
+
+The actual seven-line file has no conditional, branch, early return/exit, skip/todo/only, asynchronous registration, external fixture dependency, catch, output mock or comparator import. Its single top-level literal call names e1-native-positive and passes a synchronous arithmetic assertion callback. The source is syntactically valid, unchanged, and points to a real non-symlink .test.cjs file. No missing/unreachable registration or wrong API is demonstrated. If ordinary synchronous evaluation reaches that call against the inspected built-in implementation, the registration path exists; no actual native runtime acknowledgment was preserved.
+
+The original invocation is explicitly --test with the expected file and native TAP. No test-name/skip pattern or NODE_OPTIONS preload is recorded, and no such variables are currently set. Explicit file selection avoids relying on automatic naming discovery. The selected original file hash matches; absolute /usr/bin/node is a stable ELF rather than shell alias. Source/argv contradict a demonstrated wrong file, ordinary-module mode or explicit filter. Hidden effective worker state, native execution and emission remain unobserved; do not infer them from marker return or file-level PASS.
+
+The new reference changes cwd/path to a fresh owned /tmp directory, has the same native name/assertion, and adds narrow synchronous marker probes. No wrapper/custom reporter, environment reset, test framework or selection workaround is introduced. Marker presence can establish only that new reference's phases; the strict named native PASS is still required.

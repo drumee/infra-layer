@@ -1,0 +1,68 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "created": "2026-11-04T14:55:13.356239+00:00",
+  "checkpoint": "a62c6e3b04a0916c89b8891d78697240679eab99",
+  "scope": "Read-only original E1 fixture, installed native API source, binary and invocation evidence. No test registration API invocation, comparator, Docker or remote operation.",
+  "source_preservation": {
+    "original_inputs": 177,
+    "comparator_files": 6,
+    "D1_diagnostic_files": 6,
+    "E1_fixture_files": 2,
+    "all_hashes_verified_unchanged": true
+  },
+  "original_positive": {
+    "path": "test/diagnostics/test-events-e1/positive.test.cjs",
+    "sha256": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e",
+    "API": "const test=require(\"node:test\"); top-level test(\"e1-native-positive\", callback)",
+    "callback": "assert.equal(2+2,4)",
+    "static_reachability": "Direct top-level call, no branch/early-return/skip/todo/async registration in source.",
+    "runtime_registration": "NOT_ESTABLISHED",
+    "runtime_callback_execution": "NOT_ESTABLISHED",
+    "package_mode": "Explicit .cjs under CommonJS package; reference outside repo may isolate repository context but cannot infer callback behavior."
+  },
+  "installed_Node": {
+    "path": "/usr/bin/node",
+    "regular_file": true,
+    "symlink": false,
+    "ELF_magic": true,
+    "observed_file_type": "ELF 64-bit LSB executable x86-64; dynamic interpreter /lib64/ld-linux-x86-64.so.2",
+    "size": 123405064,
+    "mode": "0o100755",
+    "uid": 65534,
+    "gid": 65534,
+    "sha256": "1bec56ef7cfa9a76f3e0b7c0a87f220eb73f23102b9c0b4c7529a3f7c3ce7c31",
+    "version_from_source_read_process": "v22.22.0",
+    "upstream_provenance": "NOT_VERIFIED; no network/package installation authorized"
+  },
+  "native_API_source": {
+    "inspection_method": "Read only process.binding('natives'); never require('node:test') or execute fixtures in reviewer process.",
+    "test_builtin_contract": "module.exports=test imported from internal/test_runner/harness; default require(node:test) function import shape matches source.",
+    "harness_contract": "Exported test is runInParentContext(Test); top-level test forwards name/options/fn to parent.createSubtest and bootstrap/start scheduling.",
+    "native_registration_acknowledgment": "No runtime observation. Exported source contract is not proof the E1 call executed.",
+    "previous_five_internal_source_hashes": "All five match preserved D1 runner/v8-serializer/TAP/harness/utils source hashes in node-architecture.json."
+  },
+  "environment_presence": {
+    "NODE_OPTIONS": null,
+    "NODE_TEST_CONTEXT": null,
+    "NODE_PATH": null,
+    "NODE_NO_WARNINGS": null,
+    "NO_COLOR": {
+      "present": true,
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+    },
+    "NODE_DISABLE_COLORS": null
+  },
+  "hypothesis_limits": [
+    "Wrong static builtin import/API shape contradicted for inspected source; runtime substitution remains unproved.",
+    "Symlink/shell-script wrapper at /usr/bin/node contradicted by regular ELF metadata.",
+    "Recorded local binary or five inspected native source replacements contradicted by matching hashes; genuine upstream provenance not established.",
+    "Actual test registration, callback scheduling, inner event emission and runtime filtering remain unobserved.",
+    "Original --test explicit-file mode/source no filters narrow selection hypotheses, not prove individual lifecycle.",
+    "An outside-repository positive reference can test the observation contract; first missing named result requires stop before any negative or original comparison."
+  ],
+  "reviewer_tests": 0,
+  "reviewer_Node_source_read_processes": 2,
+  "reviewer_Docker_commands": 0,
+  "reviewer_remote_operations": 0,
+  "disposition": "STATIC_REGISTRATION_CONTRACT_RECONSTRUCTED; actual reference and causal review pending"
+}

@@ -1,0 +1,22 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "created": "2026-11-04T14:58:38.681773+00:00",
+  "scope": "Pre-execution amendment: same four synchronous markers with one reference-only sidechannel journal.",
+  "disposition": "DESIGN_ACCEPTED_PENDING_ACTUAL_REFERENCE_EVIDENCE",
+  "conditions": [
+    "Only fresh private owned /tmp directory; journal created exclusively before native invocation.",
+    "Tiny helper writes marker to fd2 via fs.writeSync, then records marker/pid/returned byte count in the owned journal.",
+    "Full marker length must be distinguished from short write; no retry or catch suppression.",
+    "No direct test call, callback/assertion, registration semantics, native reporter, exit status or mandatory named-result criterion is changed.",
+    "No D1 preload/collector or custom reporter is introduced; helper is bounded four-marker instrumentation only.",
+    "Missing named native result stops negative/original comparisons regardless of sidechannel evidence."
+  ],
+  "interpretation_limits": [
+    "Journal after returned write proves this marked reference code path reached that operation and worker fd2 accepted the recorded bytes.",
+    "Journal does not prove native parent receipt, stream retention, individual event emission or root cause.",
+    "Marker/body observations apply to the new diagnostic reference only, not original E1/D1/F2 callbacks."
+  ],
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "reviewer_remote_operations": 0
+}

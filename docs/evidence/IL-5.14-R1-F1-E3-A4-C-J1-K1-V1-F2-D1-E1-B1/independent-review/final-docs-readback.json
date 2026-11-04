@@ -1,0 +1,59 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "created": "2026-11-04T15:08:05.595856+00:00",
+  "disposition": "REPORTS_CONSISTENT_WITH_FAILED_DIAGNOSTIC",
+  "independent_causal_disposition": "BLOCKED_EVIDENCE",
+  "mission_status": "FAILED_DIAGNOSTIC",
+  "failed_gate": "C",
+  "repository_source": "a62c6e3b04a0916c89b8891d78697240679eab99",
+  "reference_sha256": "c32f3dc74a4feb035d6a3c22bf30540cb12ba854a4bd69f9dfa5bfe69016fd91",
+  "original_E1_D1_F2_causes": "ROOT_CAUSE_UNDETERMINED",
+  "gate_matrix": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "FAIL",
+    "D": "NOT_EXECUTED",
+    "E": "NOT_EXECUTED",
+    "F": "BLOCKED",
+    "G": "NOT_EXECUTED",
+    "H": "PASS",
+    "I": "BLOCKED",
+    "J": "PASS"
+  },
+  "reviewed_report_sha256": {
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-baseline.md": "d78ca6beb4bf391a162ad81a78c7829781d951df1a6b2895dcbf5145eeb5795a",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-causal-assessment.md": "d408f611175b0abf2fb027881c6597538dca8b5c3a67d07aeb597c05c162b1c1",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-corrective-scope.md": "384dff3a41b7dbb3f241d9e8dfc70f3afe715e6ddc39edbd648f0be91d63e75f",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-final-decision.md": "7ae5bc81966731711c3c9579d2ef6875bca5197b788194d09f0982d16deeef7b",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-fixture-comparison.md": "defc8b9a57eba281d0e7f45b09234049ba398fde4ae29fbfcbaa1be3f323cb2a",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-independent-review.md": "9f2ec2c648cee4df8957a5edd0d0663baa1ff5fd2fba7ce332f4b70d056b6001",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-native-negative.md": "fa32d7587f534d1662c14ac9ae715ca86185d9c22ade3d42c3e274ce170edf0e",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-native-positive.md": "76614ca0d710cd57887eb2095c9f1c34543cbc5f87ed820a147b28cc44b28c22",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-registration-audit.md": "970c21da169d25bf37adea3ea7919b6f4414d2cc65ef49081c3ada4f1ef3a510",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-B1-source-impact.md": "3d721fe85020720f7ce3a5adce7a8dd88ceca16048901c547f2b5344a6e3fc80"
+  },
+  "structured_gate_matrix_sha256": "2ab45834329c63afda9897ca3f66ba999dd94fffa9462681061c1ff61897f0bc",
+  "hypotheses_sha256": "ece86d7c67f572f8fae9700b6435b583cf8c668f5aef2ca3c00b8c3a45ffd68c",
+  "checked_hypothesis_limits": {
+    "H1": "Contradicted only as literal source omission; correct original call is present, but original runtime acknowledgment is not inferred.",
+    "H2": "Original registration reachability remains runtime-unresolved; new reference markers cannot supply historical proof.",
+    "H8": "Supported only as new reference callback/assertion execution with missing named native output; responsible native component and historical mechanism unresolved.",
+    "other_hypotheses": "Narrow source/API/argv contradictions remain scoped; unrecorded native worker state and exact first cause are not invented."
+  },
+  "verified_conclusions": [
+    "NEW marked reference callback and assert.equal(2+2,4) path directly observed, not a native TEST_COMPLETED/PASS acknowledgment.",
+    "Owned journal and parent TAP corroborate marker order and full23/30/20/23 worker fd2 writes.",
+    "Empty outer stderr does not indicate loss of these markers; they are visible as parent TAP comments.",
+    "FileTest acceptance-counter reasoning explicitly source-based, not a captured private counter or transport trace.",
+    "Exact e1-native-positive native result remains absent; filebasename is not accepted as the case identity.",
+    "Only one positive reference execution; negative neither created nor executed, original dynamic comparison NOT_EXECUTED.",
+    "No exact cause, working native pair or concrete corrective implementation supported.",
+    "Repository executable source unchanged; original177/comparator6/D1diagnostic6/E1fixture2 retained; only B1 reports/evidence plus nonexecuted .txt source snapshot.",
+    "No comparator/Docker/application/remote activity, archive build/rehash or historical volume action.",
+    "Failed application, pending R1, openV1-F1-REC-001 and unqualified cleanup remain preserved."
+  ],
+  "new_major_or_blocker_findings": [],
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "reviewer_remote_operations": 0
+}

@@ -1,0 +1,25 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "created": "2026-11-04T14:56:31.867082+00:00",
+  "scope": "Pre-execution review of one proposed marked standalone B1 positive fixture; no test execution.",
+  "disposition": "DESIGN_ACCEPTED_PENDING_ACTUAL_REFERENCE_EVIDENCE",
+  "authorized_scope_from_parent": "User allows narrowly scoped synchronous diagnostic markers; one outside-repository positive reference, negative/original comparisons conditional on mandatory named native result.",
+  "required_shape": [
+    "Keep builtin node:test function import and direct top-level test(e1-native-positive, callback).",
+    "Keep explicit assert.equal(2+2,4) inside the actual callback.",
+    "Use synchronous fs.writeSync(2,...) only for before/after registration call and before/after actual arithmetic assertion.",
+    "No registration wrapper, catch suppression, async registration, custom reporter, D1 collector/preload, or exit override.",
+    "Preserve exact fixture bytes/hash, absolute /tmp path and fresh cwd, native argv, environment and separate raw streams.",
+    "Named individual native PASS remains required; markers cannot replace it.",
+    "Any missing named PASS stops all later negative/original comparison executions."
+  ],
+  "marker_limits": [
+    "Registration markers establish source reachability/call return only, not native registration acknowledgment.",
+    "Callback markers can establish this marked fixture callback/assertion reachability; they cannot prove original unmarked E1 callback behavior.",
+    "Synchronous writes reduce asynchronous observer effects, but the reference remains diagnostic instrumentation with a distinct purpose; no historical outcome is rewritten.",
+    "Marker I/O errors remain fatal and cannot be treated as a production or comparator defect."
+  ],
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "reviewer_remote_operations": 0
+}

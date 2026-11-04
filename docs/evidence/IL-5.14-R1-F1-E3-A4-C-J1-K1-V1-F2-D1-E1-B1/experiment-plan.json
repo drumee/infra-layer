@@ -1,0 +1,25 @@
+{
+  "purpose": "Isolate E1 registration/callback visibility in a fresh temporary cwd and file, without D1 instrumentation or repo discovery. Synchronous markers distinguish callback execution from file pass; never replace required named native PASS.",
+  "command": [
+    "/usr/bin/node",
+    "--test",
+    "--test-reporter=tap",
+    "./e1-native-positive.test.cjs"
+  ],
+  "cwd": "/tmp/drumee-b1-native-s3r6yhe1",
+  "exact_source_sha256": "c32f3dc74a4feb035d6a3c22bf30540cb12ba854a4bd69f9dfa5bfe69016fd91",
+  "positive_attempt_limit": 1,
+  "negative_requires": "Gate C named native PASS; create/run at most one negative afterward",
+  "original_E1_execution_requires": "Both native reference controls pass; at most one unchanged original execution if static comparison insufficient",
+  "capture": "Direct native CLI with separate raw stdout/stderr redirects. Four synchronous fd2 markers plus owned temporary marker-file receipts establish reachability/callback/write boundaries without wrapping test or changing assertions. No preload/custom reporter/filter reset.",
+  "stop_policy": "Named positive result absent -> immediate stop; only static command/environment/reference analysis thereafter. No retries/source correction.",
+  "marker_interpretation": {
+    "B1_BEFORE_REGISTRATION": "Execution reached before direct test() call, not native registration ack",
+    "B1_REGISTRATION_CALL_RETURNED": "Direct call returned without synchronous throw, not native registration ack",
+    "B1_CALLBACK_STARTED": "Callback entry independently observed if marker emitted",
+    "B1_ASSERTION_COMPLETED": "Code after unchanged explicit assertion reached if marker emitted"
+  },
+  "mandatory_named_result": "Native Subtest e1-native-positive and corresponding individual ok record, root0. File-level PASS/markers/summary alone insufficient.",
+  "marker_file": "/tmp/drumee-b1-native-s3r6yhe1/reference-markers.jsonl",
+  "marker_source_verified_no_prior_execution": true
+}

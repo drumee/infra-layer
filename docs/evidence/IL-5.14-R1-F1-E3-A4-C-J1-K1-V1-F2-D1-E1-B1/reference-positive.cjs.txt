@@ -1,0 +1,16 @@
+"use strict";
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+
+function mark(marker) {
+  const bytesWritten = fs.writeSync(2, marker + "\n");
+  fs.appendFileSync(__dirname + "/reference-markers.jsonl", JSON.stringify({ marker, pid: process.pid, bytes_written: bytesWritten }) + "\n", { mode: 0o600 });
+}
+mark("B1_BEFORE_REGISTRATION");
+test("e1-native-positive", () => {
+  mark("B1_CALLBACK_STARTED");
+  assert.equal(2 + 2, 4);
+  mark("B1_ASSERTION_COMPLETED");
+});
+mark("B1_REGISTRATION_CALL_RETURNED");
