@@ -1,0 +1,57 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "created": "2026-11-04T10:34:30.650657+00:00",
+  "disposition": "REPORTS_CONSISTENT_WITH_FAILED_DIAGNOSTIC",
+  "independent_causal_disposition": "BLOCKED_EVIDENCE",
+  "mission_status": "FAILED_DIAGNOSTIC",
+  "failed_gate": "B",
+  "fixture_source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+  "original_D1_cause": "ROOT_CAUSE_UNDETERMINED",
+  "older_F2_cause": "ROOT_CAUSE_UNDETERMINED",
+  "gate_matrix": {
+    "A": "PASS",
+    "B": "FAIL",
+    "C": "NOT_EXECUTED",
+    "D": "BLOCKED",
+    "E": "BLOCKED",
+    "F": "BLOCKED",
+    "G": "NOT_EXECUTED",
+    "H": "PASS",
+    "I": "BLOCKED",
+    "J": "PASS"
+  },
+  "reviewed_report_sha256": {
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-baseline.md": "617bc2bfde9294363275dfca27419e2d601ef8a9e6977e0a6a48f110c880a906",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-causal-assessment.md": "8460f5f23dd3a214faa34fd8c4a51fc12bcc7e48270f70c74c67a13315c1cf42",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-channel-comparison.md": "ac8a0bc95d7cbc831837442cd4c38a06789f68de2a57f867ede80d81a3fe94e1",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-corrective-scope.md": "f4417778c3f67f062959239374da86ec7b47ddeb5f498df0803e3bf6d23b6b86",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-discovery-registration.md": "60f27a808946890a822fd26ba40c6e681c10b269e2e506161947ce7b68dc2032",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-final-decision.md": "cd807c7975ae078fdbdf94abdd45ffc4d4b27f827d091874b5f273c7e8649095",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-independent-review.md": "4864a86e53f3d2d0de3c35db05ed2cd934b72b559529c89795788f412af90def",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-native-baseline.md": "3fea1023554fe8c6edd310f1a81ec4b90cbf3b95993def67c5ac9eb7c7a97d23",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-reporter-audit.md": "8c4e3d581005402f69e3d484ec65650811a90c737d9d731896fc35a8b7c964f8",
+    "docs/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1-source-impact.md": "5d6d04809aede807a48e319875c224e989c1ead0a7a951f6c774ec3953f63398"
+  },
+  "structured_gate_matrix_sha256": "d1ecd459b392aaf54c527156f5c2d29db0fbeeff7250cf22324b98b854e4035d",
+  "hypothesis_matrix_sha256": "7c0d0df70f03823f904eddf31e0de3e23fdf69f61e5836f762d5a11019c667b6",
+  "checked_hypothesis_limits": {
+    "H5": "CONTRADICTED only for the examined final name-matcher discarding an already recorded correct named event; no such input exists. Native internal parsing remains unresolved.",
+    "H7": "CONTRADICTED only for ordinary-module parent command invocation; actual argv explicitly includes --test. Native inner lifecycle remains unresolved.",
+    "H9": "CONTRADICTED only for misclassification of observed current statuses; nativeexit0 and controlFAIL remain separate. Unexecuted negative propagation is not qualified.",
+    "others": "UNRESOLVED; no responsible native component or original cause established"
+  },
+  "verified_boundaries": [
+    "Only native positive control ran; exact registered name absent from raw parent TAP despite file-levelpass1/rootexit0.",
+    "Native negative and matched wrapped pair NOT_EXECUTED after mandatory stop.",
+    "Original D1 registration markers prove synchronous code returned, not callback execution or native individual acknowledgment.",
+    "New symptom occurs outside D1, but no same-fixture differential experiment or verified upstream individual emission exists.",
+    "No exact cause or supported corrective implementation proposal.",
+    "Original177/comparator6/D1diagnostic6/E1fixture2 and installed Node binary hashes preserved.",
+    "No comparator/Docker/remote operation, archive rehash or runtime/package change.",
+    "Historical resources unresolved/protected, application failed, R1 pending; no qualification upgrade."
+  ],
+  "new_major_or_blocker_findings": [],
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "reviewer_remote_operations": 0
+}

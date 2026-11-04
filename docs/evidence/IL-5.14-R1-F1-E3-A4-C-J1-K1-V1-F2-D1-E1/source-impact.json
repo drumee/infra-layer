@@ -1,0 +1,37 @@
+{
+  "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+  "fixture_source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+  "source_changed_paths": [
+    "test/diagnostics/test-events-e1/negative.test.cjs",
+    "test/diagnostics/test-events-e1/positive.test.cjs"
+  ],
+  "frozen_original_inputs": 177,
+  "original_inputs_equal_to_qualified_source": true,
+  "unchanged_comparator_files": 6,
+  "unchanged_D1_diagnostic_files": 6,
+  "unchanged_new_fixture_hashes": true,
+  "D1_evidence_manifest_unchanged": true,
+  "package_files_allowlist": [
+    "internal/",
+    "lib/",
+    "capabilities/",
+    "adapters/",
+    "lifecycle/",
+    "index.d.ts",
+    "README.md",
+    "LICENSE",
+    "PROVENANCE.md",
+    "CHANGELOG.md"
+  ],
+  "fixtures_outside_package": true,
+  "package_archive_rehashed": false,
+  "historical_archive_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "native_controls_executed": [
+    "positive"
+  ],
+  "negative_control_executed": false,
+  "wrapped_controls_executed": false,
+  "comparator_executed": false,
+  "Docker_operations": false,
+  "remote_operations": false
+}

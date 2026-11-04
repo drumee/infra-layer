@@ -1,0 +1,12 @@
+# E1 source and security impact — Gate H PASS
+
+**PRODUCTION_EXECUTABLE_PRESERVED.** Resume `9c70b7563eb898379d1d3a3d26f97694bb03d6d6`; fixture source `0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a`; executable `/usr/bin/node` v22.22.0. Native fixture hashes, binary hash and relevant environment are in baseline.json. No comparator, Docker or remote operation occurred.
+
+The only source changes from resume are positive.test.cjs and negative.test.cjs under test/diagnostics/test-events-e1. The two seven-line fixtures are isolated CommonJS arithmetic controls. No production or D1 implementation path imports them. Existing package files allowlist excludes test/, so no published member, manifest/audit/export/dependency changes. No archive was built, rehashed or published; recorded004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1 remains historical package identity only. Physical archive availability was not rechecked in E1.
+
+All177 frozen original files remain byte-equivalent to qualified20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee. Six comparator and six D1 diagnostic files/hashes remain unchanged, as do D1 evidence and historical failed reports. Source-impact.json records exact path diff, package allowlist and preservation. New source is frozen as executed; no correction follows failure.
+
+Only native arithmetic positive executes. Native negative is created but unexecuted; D1 wrapper/comparator/application/Services/Docker suites are not run. No Docker command, daemon inquiry, resource creation/deletion/modification or historical volume action occurs. No remote operation occurs, including PR reads; no push/merge/publication/tag/deployment or Debian/Server Runtime/Oxy-form change. Existing package/unit/contracts/R5/lifecycle/Services/network-isolation evidence retains its old unchanged-source scope, not a new test PASS.
+
+Preserve D1_FAILED_DIAGNOSTIC, V1_FAILED_QUALIFICATION, V1-F1-REC-001_OPEN, APPLICATION_ACCEPTANCE_FAILED_NETWORK_ATTACHMENT_MISMATCH, APPLICATION_HISTORICAL_ROOT_CAUSE_UNDETERMINED, F1_FAILED_QUALIFICATION_APPLICATION_ACCEPTANCE and R1_FINAL_CLOSURE_PENDING. Keep FIXTURE_VOLUME_CLEANUP_UNQUALIFIED, POSTFIX_HISTORICAL_ROOT_CAUSE_UNDETERMINED, POSTFIX_HISTORICAL_UNCERTAINTY_ACCEPTED_BY_OWNER, SMTP_RECOVERY_UNQUALIFIED, H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED and historical Debian H3 stability failure. Four historical volume identities remain unresolved and untouched. Owner Option B covers only historical Postfix HTTP capture uncertainty. No comparator/observation/cleanup/application risk is accepted.
+

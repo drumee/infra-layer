@@ -1,0 +1,22 @@
+[
+  {
+    "command": [
+      "/usr/bin/node",
+      "--check",
+      "test/diagnostics/test-events-e1/negative.test.cjs"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "/usr/bin/node",
+      "--check",
+      "test/diagnostics/test-events-e1/positive.test.cjs"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

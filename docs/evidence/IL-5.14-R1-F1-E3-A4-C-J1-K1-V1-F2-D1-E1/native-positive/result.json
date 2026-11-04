@@ -1,0 +1,30 @@
+{
+  "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+  "started": "2026-11-04T10:28:30.852809+00:00",
+  "command": [
+    "/usr/bin/node",
+    "--test",
+    "--test-reporter=tap",
+    "test/diagnostics/test-events-e1/positive.test.cjs"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "stdout": "native-positive/stdout.txt",
+  "stderr": "native-positive/stderr.txt",
+  "D1_observation_layer": false,
+  "finished": "2026-11-04T10:28:47.148078+00:00",
+  "root_exit": 0,
+  "expected_case": "e1-native-positive",
+  "expected_case_subtest_present": false,
+  "expected_individual_PASS_present": false,
+  "control_status": "FAIL",
+  "stdout_bytes": 288,
+  "stderr_bytes": 0,
+  "stdout_sha256": "1cf8e47505c7b446dc5d7c0f74f2809946684d9e7a580593d13255fa35c4dd36",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_truncated": false,
+  "stderr_truncated": false,
+  "registered_case_count": "NOT_ESTABLISHED",
+  "executed_case_count": "NOT_ESTABLISHED",
+  "wrapper_comparison_permitted": false,
+  "finished_timestamp_provenance": "Post-execution receipt timestamp, not a measured child close timestamp."
+}

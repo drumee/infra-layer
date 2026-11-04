@@ -1,0 +1,40 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "created": "2026-11-04T10:26:27.463059+00:00",
+  "source_checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+  "scope": "Read-only D1 source and original synthetic/native/reporter/collector evidence review. No test, comparator, Docker or remote operation.",
+  "prior_D1_evidence": {
+    "diagnostic_source": "57a451e8f7cea089385a618a96e0aa8e2af7eb24",
+    "source_harness_sha256": {
+      "test/diagnostics/comparator-failure/capture.cjs": "3476cea99270de4ea3052e75a31585420a33e2d6b64bcc8879c90e9a44909f2f",
+      "test/diagnostics/comparator-failure/failure-reporter.cjs": "6b01c3047ef6ea02bb1a9562aa0940db8a14c32f31a8a7803e458952bc17c688",
+      "test/diagnostics/comparator-failure/fixture.cjs": "81d1fe2d29afa886ab1864560509a00a636e6a8d899ef7dd677dc1c6974d418a",
+      "test/diagnostics/comparator-failure/preload.cjs": "e85a39a9d26717cf77968eead31907184f72e9dbcf1d8b87d0cc01b681236ab1",
+      "test/diagnostics/comparator-failure/record.py": "e13023c55d08f3c0fda39f065be04b78abf09b0527b94b625a00998682478089",
+      "test/diagnostics/comparator-failure/reporter.cjs": "283af7c56490d95428cd6a061ee2ce85a19f073abcd10cf9197519c0a6f46758"
+    },
+    "preflight_result_sha256": "4d3a4560609514c074548dd82ab9fee10c1357b7bfd8fe85ae42b95f435ce5bb",
+    "native_parent_events_sha256": "8736c4e607081f92f50b97a2d114317bb7ae5af7845c14ac0c2bf7a4f237d64d",
+    "native_parent_stdout_sha256": "f7889b0ee08fcba6e19e5c3fae1f834287892d590024ae1260726bd8ad2da31a"
+  },
+  "preserved_source_counts": {
+    "original_inputs": 177,
+    "comparator_harness": 6,
+    "D1_diagnostic_harness": 6
+  },
+  "prior_failure_boundary": "D1 synthetic load/registration complete, child exit0, only parent file-level PASS; required individual case completion event absent. Original missing-event cause undetermined.",
+  "native_control_requirements": [
+    "CommonJS fixture with exactly one explicitly named node:test registration and arithmetic assertion; no preloads/custom reporter/collector code in the native test process.",
+    "Direct /usr/bin/node --test --test-reporter=tap with exact fixture target and separate raw stdout/stderr preservation.",
+    "Positive requires exact case-name PASS and exit0.",
+    "Negative requires exact case-name FAIL, arithmetic ERR_ASSERTION evidence at fixture location and nonzero exit; arbitrary process/file failure is insufficient.",
+    "First native failure stops immediately without later native or wrapped controls.",
+    "Matched positive/negative D1 path comparisons allowed only after both native controls pass; no assertion/source drift.",
+    "Any native-only absence limits localization to a path that excludes D1 observation instrumentation; it does not itself identify a Node/fixture/environment defect.",
+    "No comparator execution, production/package change, Docker, historical volume operation or remote action."
+  ],
+  "independent_disposition": "BASELINE_AND_DESIGN_BOUNDARIES_RECONSTRUCTED; actual controls and causal review pending",
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "reviewer_remote_operations": 0
+}
