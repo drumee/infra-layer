@@ -13,7 +13,7 @@ RUN printf '%s\n' \
     'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] https://snapshot.debian.org/archive/debian/20261105T000000Z trixie-updates main' \
     'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] https://snapshot.debian.org/archive/debian-security/20261105T000000Z trixie-security main' \
     > /etc/apt/sources.list && rm /etc/apt/sources.list.d/debian.sources && \
-    apt-get update --error-on=any -qq && \
+    apt-get -o Acquire::https::CAInfo=/etc/ssl/certs/ca-certificates.crt update --error-on=any -qq && \
     printf '%s\n' \
     '0584fba32e13e0ab8285fb16c27adea1ec03a73669c18702821094fd6ca86675  /var/lib/apt/lists/snapshot.debian.org_archive_debian_20261105T000000Z_dists_trixie_InRelease' \
     '4271d665e5b5670acea6c77e0e27b2d0d5a683734f7017db26b44cc0068831af  /var/lib/apt/lists/snapshot.debian.org_archive_debian_20261105T000000Z_dists_trixie-updates_InRelease' \
@@ -38,7 +38,7 @@ RUN printf '%s\n' \
                 infra_uri="https://deb.debian.org/debian/${infra_uri#https://snapshot.debian.org/archive/debian/20261105T000000Z/}" ;; \
             *) exit 78 ;; \
         esac; \
-        /usr/lib/apt/apt-helper download-file "$infra_uri" \
+        /usr/lib/apt/apt-helper -o Acquire::https::CAInfo=/etc/ssl/certs/ca-certificates.crt download-file "$infra_uri" \
             "/var/cache/apt/archives/partial/$infra_file" "$infra_hash" || exit 1; \
         mv "/var/cache/apt/archives/partial/$infra_file" "/var/cache/apt/archives/$infra_file" || exit 1; \
     done < /tmp/infra-package-uris && \
