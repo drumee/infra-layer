@@ -55,8 +55,39 @@ function protocolCheck(prepared, name, driver) {
   } else if (name === "gateway") exec(prepared, name, driver, "wget", "-q", "-O", "/dev/null", `http://127.0.0.1:${prepared.composition.plan.inputs.adapter_input.gateway.health_port}/__infra_ready`);
   else if (name === "dkim") exec(prepared, name, driver, "opendkim", "-n", "-x", "/config/opendkim.conf");
   else if (name === "mail") { exec(prepared, name, driver, "postfix", "-c", "/run/infra-mail/config", "check");
-    const authentication = spec.mail.submission_secret_ref ? `infra_auth="$(printf '\\0${spec.mail.submission_user}\\0%s' "$(cat /run/secrets/mail-submission)" | openssl base64 -A)"; printf 'EHLO infrastructure\\r\\nAUTH PLAIN %s\\r\\nQUIT\\r\\n' "$infra_auth"` : "printf 'EHLO infrastructure\\r\\nQUIT\\r\\n'";
-    const response = exec(prepared, name, driver, "/bin/sh", "-c", `{ ${authentication}; } | openssl s_client -starttls smtp -connect 127.0.0.1:${spec.mail.endpoint.port} -servername ${spec.mail.hostname} -CAfile /run/secrets/mail-ca -verify_return_error -quiet`);
+    // EHLO and AUTH must each finish before the next command is sent. Postfix
+    // correctly rejects pipelining across those protocol synchronization points.
+    // Bash coprocess pipes keep credentials inside the container; timeout bounds
+    // the entire exchange, including TLS and malformed multiline responses.
+    const authentication = spec.mail.submission_secret_ref ? `infra_auth="$(printf '\\0${spec.mail.submission_user}\\0%s' "$(cat /run/secrets/mail-submission)" | openssl base64 -A)"
+printf 'AUTH PLAIN %s\\r\\n' "$infra_auth" >&3
+infra_response` : "";
+    const script = `set -eu
+coproc infra_smtp { exec openssl s_client -starttls smtp -connect 127.0.0.1:${spec.mail.endpoint.port} -servername ${spec.mail.hostname} -CAfile /run/secrets/mail-ca -verify_return_error -quiet; }
+infra_pid=$infra_smtp_PID
+trap 'kill "$infra_pid" 2>/dev/null || :; wait "$infra_pid" 2>/dev/null || :' EXIT
+exec 3>&"\${infra_smtp[1]}" 4<&"\${infra_smtp[0]}"
+infra_response() {
+  while IFS= read -r -t 5 -u 4 infra_line; do
+    case "$infra_line" in
+      [0-9][0-9][0-9]-*) ;;
+      [0-9][0-9][0-9]' '*) infra_code=\${infra_line%% *}; printf '%s \\n' "$infra_code"; return 0 ;;
+      *) return 78 ;;
+    esac
+  done
+  return 78
+}
+printf 'EHLO infrastructure\\r\\n' >&3
+infra_response
+[ "$infra_code" = 250 ]
+${authentication}
+printf 'QUIT\\r\\n' >&3
+infra_response
+[ "$infra_code" = 221 ]
+exec 3>&- 4<&-
+wait "$infra_pid"
+trap - EXIT`;
+    const response = exec(prepared, name, driver, "/usr/bin/timeout", "15", "/bin/bash", "-c", script);
     if (spec.mail.submission_secret_ref ? !/(?:^|\n)235 /.test(response) : !/(?:^|\n)250/.test(response)) F.fail("SMTP_PROTOCOL_FAILED");
   } else {
     const service = [prepared.composition.distribution.kernel, prepared.composition.distribution.application, ...(prepared.composition.distribution.services || [])].find(value => value?.id === name);

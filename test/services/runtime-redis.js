@@ -1,6 +1,9 @@
 "use strict";
 // Runs the revision-pinned actual Essentials client, not a reimplementation.
 const assert = require("node:assert/strict");
+assert.ok(require("node:path").isAbsolute(process.argv[2] || ""));
+process.env.credential_dir = process.argv[2];
+process.env.instance_name = "";
 const RedisStore = require(process.env.IL2_REDIS_STORE_SOURCE);
 async function main() {
   const instance = new RedisStore(); await instance.init(); const client = RedisStore.getClient(); assert.equal(await client.ping(), "PONG");

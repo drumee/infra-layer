@@ -84,5 +84,8 @@
     "./capabilities/mail": "./capabilities/mail/index.js",
     "./capabilities/http/nginx": "./capabilities/http/nginx/index.js",
     "./capabilities/tls/acme": "./capabilities/tls/acme.js"
+  },
+  "overrides": {
+    "minimatch": "11.0.4"
   }
 }

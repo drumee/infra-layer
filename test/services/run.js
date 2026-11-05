@@ -32,7 +32,7 @@ async function main() {
     for (const tag of [image, capture_image]) if (spawnSync(trustedExecutable("docker"), ["image", "inspect", tag], { stdio: "ignore" , env: trustedEnvironment()}).status === 0) throw new Error("TEST_IMAGE_COLLISION");
     command(["docker", "build", "--label", `org.drumee.infra.owner=${project}`, "-f", path.join(root, "capabilities/docker/Dockerfile.services"), "-t", image, root], { stdio: "inherit" }); images.push(image);
     const image_id = command(["docker", "image", "inspect", image, "--format", "{{.Id}}"] ).trim();
-    const fixtures = path.join(directory, "fixtures"); fs.mkdirSync(fixtures);
+    const fixtures = path.join(directory, "fixtures"); fs.mkdirSync(fixtures, { mode: 0o700 });
     const ports = { dns: await freePort(), database: await freePort(), redis: await freePort(), mail: await freePort(), capture: await freePort() };
     const value = serviceInputs(fixtures, project, image_id); value.adapter_input.services.dns.bindings.forEach((entry) => { entry.host_port = ports.dns; });
     const relay_ref = { resource: "mail", key: "relay" }; value.spec.secrets.resources.push({ ref: relay_ref, type: "smtp-relay-credential", consumers: ["capture", "mail"] });
