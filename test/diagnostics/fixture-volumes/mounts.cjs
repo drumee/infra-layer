@@ -1,10 +1,11 @@
 "use strict";
+const compareOrdinal = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 const assert = require("node:assert/strict"), { digest } = require("./ownership.cjs");
 const legacyFields = ["type", "name", "destination"];
 const fields = [...legacyFields, "source_hash", "driver", "rw", "mode", "propagation"];
 function invalid() { throw Object.assign(new Error("INVALID_MOUNT_EVIDENCE"), { code: "INVALID_MOUNT_EVIDENCE" }); }
 function validate(m, schema) {
-  if (!m || typeof m !== "object" || Array.isArray(m) || Object.keys(m).sort().join() !== schema.slice().sort().join()) invalid();
+  if (!m || typeof m !== "object" || Array.isArray(m) || Object.keys(m).sort(compareOrdinal).join() !== schema.slice().sort(compareOrdinal).join()) invalid();
   if (typeof m.type !== "string" || !m.type || typeof m.destination !== "string" || !m.destination.startsWith("/")) invalid();
   if (m.type === "volume" ? typeof m.name !== "string" || !m.name : m.name !== null) invalid();
   if (schema === fields && (typeof m.source_hash !== "string" || !/^[a-f0-9]{64}$/.test(m.source_hash) || typeof m.rw !== "boolean" || typeof m.mode !== "string" || typeof m.propagation !== "string" || (m.type === "volume" ? typeof m.driver !== "string" || !m.driver : m.driver !== null))) invalid();
@@ -23,7 +24,7 @@ function compare(expected, observed, schema) {
   const want = keys(expected, schema), got = keys(observed, schema);
   const counts = list => { const map = new Map(); for (const k of list) map.set(k, (map.get(k) || 0) + 1); return map; };
   const a = counts(want), b = counts(got), missing = [], additional = [];
-  for (const k of [...new Set([...a.keys(), ...b.keys()])].sort()) {
+  for (const k of [...new Set([...a.keys(), ...b.keys()])].sort(compareOrdinal)) {
     const expectedCount = a.get(k) || 0, observedCount = b.get(k) || 0;
     const entry = { mount_hash: digest(k), expected_count: expectedCount, observed_count: observedCount };
     if (expectedCount > observedCount) missing.push(entry);
@@ -39,7 +40,7 @@ function compare(expected, observed, schema) {
       const x = JSON.parse(left[0]), y = JSON.parse(right[0]);
       schema.forEach((field, j) => { if (x[j] !== y[j]) changed.add(field); });
     }
-    const details = { missing: missing.slice(0, 8), additional: additional.slice(0, 8), missing_identities: missing.length, additional_identities: additional.length, changed_fields: [...changed].sort() };
+    const details = { missing: missing.slice(0, 8), additional: additional.slice(0, 8), missing_identities: missing.length, additional_identities: additional.length, changed_fields: [...changed].sort(compareOrdinal) };
     throw Object.assign(new Error("MOUNT_MULTISET_MISMATCH " + JSON.stringify(details)), { code: "MOUNT_MULTISET_MISMATCH", details });
   }
 }

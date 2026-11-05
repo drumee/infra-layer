@@ -1,11 +1,12 @@
 "use strict";
+const compareOrdinal = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 // Test-only contract. The manifest and receipts are trusted attempt-local evidence,
 // not labels supplied by an arbitrary resource or a defence against Docker admins.
 const crypto = require("node:crypto");
 function fail(code) { throw Object.assign(new Error(code), { code }); }
 function canonical(value) {
   if (Array.isArray(value)) return value.map(canonical);
-  if (value && typeof value === "object") return Object.fromEntries(Object.keys(value).sort().map(k => [k, canonical(value[k])]));
+  if (value && typeof value === "object") return Object.fromEntries(Object.keys(value).sort(compareOrdinal).map(k => [k, canonical(value[k])]));
   return value;
 }
 function digest(value) { return crypto.createHash("sha256").update(JSON.stringify(canonical(value))).digest("hex"); }

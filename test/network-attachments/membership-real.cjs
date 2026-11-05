@@ -1,4 +1,5 @@
 "use strict";
+const compareOrdinal = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 const assert = require("node:assert/strict"), crypto = require("node:crypto");
 const diagnostic = require("../support/qualification-diagnostic.cjs").createDiagnostics({ scenario: "complete-network-membership" });
 diagnostic.observeDocker();
@@ -28,7 +29,7 @@ diagnostic.run(async () => {
     diagnostic.step("authorized-single-network"); await ready(composition, D, true); report.states.push({ step: "nominal", networks: inspect(id).NetworkSettings.Networks, result: "PASS" });
     diagnostic.step("same-owner-undeclared-network"); docker(["network", "connect", nets[2].id, id]);
     const before = inspect(id).NetworkSettings.Networks, beforeNets = nets.map(n => network(n.id).Containers);
-    equal(Object.keys(before).sort(), [nets[0].name, nets[2].name].sort()); refuse(composition, "NETWORK_ATTACHMENT_MISMATCH");
+    equal(Object.keys(before).sort(compareOrdinal), [nets[0].name, nets[2].name].sort(compareOrdinal)); refuse(composition, "NETWORK_ATTACHMENT_MISMATCH");
     equal(inspect(id).NetworkSettings.Networks, before); equal(nets.map(n => network(n.id).Containers), beforeNets); report.states.push({ step: "undeclared", networks: before, result: "NETWORK_ATTACHMENT_MISMATCH", validatorModifiedResources: false });
     docker(["network", "disconnect", nets[2].id, id]); await ready(composition, D, true);
     diagnostic.step("declared-multihoming"); composition.compose.services.redis.networks = { kernel: { aliases: ["redis"] }, front: {} }; composition.compose.networks.front = { name: nets[1].name };

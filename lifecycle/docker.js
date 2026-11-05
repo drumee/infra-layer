@@ -1,4 +1,5 @@
 "use strict";
+const compareOrdinal = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 const fs = require("node:fs");
 const { execFileSync } = require("node:child_process");
 const { resolveTrustedExecutable, systemEnvironment } = require("../internal/system-tools");
@@ -160,7 +161,7 @@ function validateNetworks(composition, require_existing, recovery) {
   const inventory = docker(["ps", "-a", "--no-trunc", "--filter", `label=com.docker.compose.project=${composition.project}`, "--format", "{{.ID}}"] ).trim().split("\n").filter(Boolean);
   for (const id of inventory) ids.add(id);
   if (recovery && (ids.size !== recovery.size || [...recovery.keys()].some(id => !ids.has(id)))) F.fail("RUNTIME_IDENTITY_MISMATCH");
-  for (const id of [...ids].sort()) containerNetworks(composition, id, networks, recovery);
+  for (const id of [...ids].sort(compareOrdinal)) containerNetworks(composition, id, networks, recovery);
   // Unsettled metadata never masks an ownership, membership or command failure.
   if (unsettled.length) throw Object.assign(new Error("NETWORK_ATTACHMENT_UNSETTLED"), { code: "NETWORK_ATTACHMENT_UNSETTLED", attachments: unsettled });
 }

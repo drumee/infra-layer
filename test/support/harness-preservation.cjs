@@ -1,4 +1,5 @@
 "use strict";
+const compareOrdinal = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 const crypto = require("node:crypto"), espree = require("espree");
 const { execFileSync } = require("node:child_process"), path = require("node:path");
 const { trustedExecutable, trustedEnvironment } = require("./trusted-process");
@@ -51,7 +52,7 @@ function programFingerprint(source) {
     if (value instanceof RegExp) return { regexp: value.source, flags: value.flags };
     if (Array.isArray(value)) return value.map(canonical);
     if (!value || typeof value !== "object") return value;
-    return Object.fromEntries(Object.keys(value).filter(key => !["range", "loc", "start", "end", "raw"].includes(key)).sort().map(key => [key, canonical(value[key])]));
+    return Object.fromEntries(Object.keys(value).filter(key => !["range", "loc", "start", "end", "raw"].includes(key)).sort(compareOrdinal).map(key => [key, canonical(value[key])]));
   }
   // The entire approved program is closed, including sibling statements and
   // invocation/await paths. This is not a general JavaScript reachability proof.

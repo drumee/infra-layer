@@ -1,13 +1,17 @@
+FROM curlimages/curl@sha256:935d9100e9ba842cdb060de42472c7ca90cfe9a7c96e4dacb55e79e560b3ff40 AS bootstrap_ca
 FROM debian@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2
 # Capability tools only. No kernel, historical schemas, identities or applications.
 ARG DEBIAN_FRONTEND=noninteractive
+# The minimal Debian base has no CA bundle. Bootstrap only public trust anchors
+# from an immutable image; the pinned Debian CA package is installed below.
+COPY --from=bootstrap_ca /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 # Freeze dependency resolution as well as the direct package versions. Snapshot
 # expiry is scoped off; APT signatures and these exact signed-index hashes remain
 # mandatory, so neither an older signed index nor changed archive content is accepted.
 RUN printf '%s\n' \
-    'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] http://snapshot.debian.org/archive/debian/20261105T000000Z trixie main' \
-    'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] http://snapshot.debian.org/archive/debian/20261105T000000Z trixie-updates main' \
-    'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] http://snapshot.debian.org/archive/debian-security/20261105T000000Z trixie-security main' \
+    'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] https://snapshot.debian.org/archive/debian/20261105T000000Z trixie main' \
+    'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] https://snapshot.debian.org/archive/debian/20261105T000000Z trixie-updates main' \
+    'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] https://snapshot.debian.org/archive/debian-security/20261105T000000Z trixie-security main' \
     > /etc/apt/sources.list && rm /etc/apt/sources.list.d/debian.sources && \
     apt-get update --error-on=any -qq && \
     printf '%s\n' \
@@ -28,10 +32,10 @@ RUN printf '%s\n' \
         case "$infra_file" in */*|''|.|..) exit 78 ;; esac; \
         infra_uri=${infra_uri#\'}; infra_uri=${infra_uri%\'}; \
         case "$infra_uri" in \
-            http://snapshot.debian.org/archive/debian-security/20261105T000000Z/pool/*) \
-                infra_uri="http://deb.debian.org/debian-security/${infra_uri#http://snapshot.debian.org/archive/debian-security/20261105T000000Z/}" ;; \
-            http://snapshot.debian.org/archive/debian/20261105T000000Z/pool/*) \
-                infra_uri="http://deb.debian.org/debian/${infra_uri#http://snapshot.debian.org/archive/debian/20261105T000000Z/}" ;; \
+            https://snapshot.debian.org/archive/debian-security/20261105T000000Z/pool/*) \
+                infra_uri="https://deb.debian.org/debian-security/${infra_uri#https://snapshot.debian.org/archive/debian-security/20261105T000000Z/}" ;; \
+            https://snapshot.debian.org/archive/debian/20261105T000000Z/pool/*) \
+                infra_uri="https://deb.debian.org/debian/${infra_uri#https://snapshot.debian.org/archive/debian/20261105T000000Z/}" ;; \
             *) exit 78 ;; \
         esac; \
         /usr/lib/apt/apt-helper download-file "$infra_uri" \
