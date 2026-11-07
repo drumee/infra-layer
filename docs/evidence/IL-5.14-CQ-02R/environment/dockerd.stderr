@@ -1,0 +1,19 @@
+time="2026-11-04T12:08:19.828355347-05:00" level=info msg="Starting up"
+time="2026-11-04T12:08:19.829004216-05:00" level=info msg="OTEL tracing is not configured, using no-op tracer provider"
+time="2026-11-04T12:08:19.829105299-05:00" level=info msg="CDI directory does not exist, skipping" dir=/etc/cdi
+time="2026-11-04T12:08:19.829129439-05:00" level=info msg="CDI directory does not exist, skipping" dir=/var/run/cdi
+time="2026-11-04T12:08:19.860476614-05:00" level=info msg="Creating a containerd client" address=/run/containerd/containerd.sock timeout=1m0s
+time="2026-11-04T12:08:19.861238794-05:00" level=warning msg="failed check for fsverity support" error="enable fsverity failed: operation not supported" path=/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/engine-data/plugins/storage
+time="2026-11-04T12:08:20.411221220-05:00" level=info msg="Loading containers: start."
+time="2026-11-04T12:08:20.411393630-05:00" level=info msg="NRI is disabled"
+time="2026-11-04T12:08:20.728473644-05:00" level=info msg="Restoring containers: start."
+time="2026-11-04T12:08:21.027267670-05:00" level=info msg="Loading containers: done."
+time="2026-11-04T12:08:21.136867358-05:00" level=info msg="Docker daemon" commit=6a43e3d containerd-snapshotter=false storage-driver=overlay2 version=29.7.2
+time="2026-11-04T12:08:21.137028401-05:00" level=info msg="Initializing buildkit"
+time="2026-11-04T12:08:21.137279448-05:00" level=warning msg="failed check for fsverity support" error="enable fsverity failed: operation not supported" path=/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/engine-data/buildkit/content
+time="2026-11-04T12:08:21.875392826-05:00" level=info msg="Completed buildkit initialization"
+time="2026-11-04T12:08:21.889567506-05:00" level=info msg="Daemon has completed initialization"
+time="2026-11-04T12:08:21.889764934-05:00" level=info msg="API listen on /data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/docker.sock"
+time="2026-11-04T12:14:18.176607696-05:00" level=info msg="Processing signal 'terminated'"
+time="2026-11-04T12:14:18.177457977-05:00" level=info msg="stopping event stream following graceful shutdown" error="<nil>" module=libcontainerd namespace=cq02r6ce324805cce4512a6a127872271b397
+time="2026-11-04T12:14:18.177876166-05:00" level=info msg="Daemon shutdown complete"

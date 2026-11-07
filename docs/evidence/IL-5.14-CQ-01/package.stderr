@@ -1,0 +1,21 @@
+/home/somanos/github/infra-layer/test/support/trusted-process.js:7
+  if (![0, process.getuid()].includes(stat.uid) || (!stat.isSymbolicLink() && (stat.mode & 0o022) && !stickyRoot)) throw Object.assign(new Error("UNSAFE_QUALIFICATION_EXECUTABLE"), { path: file, owner_uid: stat.uid, mode: (stat.mode & 0o7777).toString(8) });
+                                                                                                                   ^
+
+Error: UNSAFE_QUALIFICATION_EXECUTABLE
+    at safeMetadata (/home/somanos/github/infra-layer/test/support/trusted-process.js:7:136)
+    at trustedExecutable (/home/somanos/github/infra-layer/test/support/trusted-process.js:18:5)
+    at trustedExecutable (/home/somanos/github/infra-layer/test/support/trusted-process.js:11:60)
+    at Object.<anonymous> (/home/somanos/github/infra-layer/test/package-audit.js:9:40)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object..js (node:internal/modules/cjs/loader:1839:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24) {
+  path: '/usr',
+  owner_uid: 65534,
+  mode: '755'
+}
+
+Node.js v22.22.0

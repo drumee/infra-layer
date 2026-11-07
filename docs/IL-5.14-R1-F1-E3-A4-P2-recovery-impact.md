@@ -1,0 +1,11 @@
+# P2 qualified recovery preservation
+
+Gate K PASS for source preservation: **R5_QUALIFIED_EXECUTABLE_PRESERVED**. Candidate diagnostics `7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb`; R5 executable `72f4c67254561ca5c4c47a6a65e9620e57da7841`; P1 checkpoint ee53ed9. [Exact component equivalence receipt](evidence/IL-5.14-R1-F1-E3-A4-P2/recovery-impact.json).
+
+Recovery/activation/rollback, Docker network validation, discovery/readiness/identity/ownership, production service lifecycle, canonical Services/capture sources, A2 guard/reachability/network acceptance, dependencies/lock, tooling and scanner policies are unchanged. P1 diagnostic sources are also unchanged. P2 adds only opt-in test diagnostics and reports/evidence. The demonstrated collector shutdown bug is confined to new diagnostic code; no post-failure executable edit occurred.
+
+Unauthorized attachments/missing memberships, valid declared multihoming, exact runtime/network/endpoint identity, foreign-resource refusal, controlled rollback admission, actual recreation and strict final validation retain their qualified source. Docker command failures remain fatal; notably the new collector error is not suppressed. R5 historical55 focused/354 unit/24 contracts/38 actual Docker assertions and independent FINDING_CLOSED remain tied to72f4c67. No R5 Docker run occurred in P2; no new unit354/contracts24 result is claimed.
+
+[Cleanup readback](evidence/IL-5.14-R1-F1-E3-A4-P2/cleanup-readback.json) verifies both owned projects removed, no owner-tagged containers/images or project networks, no runner temporary directory or observer process remains, and preexisting container/network ID sets unchanged. [Security receipt](evidence/IL-5.14-R1-F1-E3-A4-P2/security-check.json) confirms sentinel/private-key pattern absence and protected Docker configuration snapshots unchanged. These read-only/source-preservation facts do not rehabilitate the invalid canonical campaign or qualify Postfix.
+
+No production, Debian/Server Runtime/Oxy-form, published alpha.3, PR or scanner-policy mutation. No broadened network or foreign-resource action. Original R1 MAJOR remains open; SMTP_RECOVERY_UNQUALIFIED, H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED and historical Debian H3 failure remain.

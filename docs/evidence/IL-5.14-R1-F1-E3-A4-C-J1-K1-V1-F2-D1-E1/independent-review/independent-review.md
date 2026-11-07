@@ -1,0 +1,11 @@
+# Independent native observation review — BLOCKED_EVIDENCE
+
+Recommend **FAILED_DIAGNOSTIC — Gate B**. Exact fixture candidate `0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a`, checkpoint `9c70b7563eb898379d1d3a3d26f97694bb03d6d6`, attempt `E1-3cc9baeb-b576-46ca-b5d1-3903e7757815`. Original D1 and F2 causes remain **ROOT_CAUSE_UNDETERMINED**.
+
+The only executed control directly invokes `/usr/bin/node --test --test-reporter=tap test/diagnostics/test-events-e1/positive.test.cjs`. Raw redirected stdout288 bytes and stderr0 bytes match recorded hashes. Root exit0 and TAP tests1/pass1/fail0 describe a file-level result only. The expected registered name `e1-native-positive` appears nowhere in raw output, so exact individual PASS evidence is absent. The positive callback's execution remains unestablished. The first native control therefore fails Gate B despite root exit0.
+
+No D1 preload, custom reporter, collector or D1 synthetic fixture is present in that native command or the isolated arithmetic fixture source. The missing individual-event symptom thus occurs on a path outside those D1 components. They are not necessary for this newly observed symptom. This narrow observation does not establish why events are missing, a Node/fixture/invocation/environment defect, D1's contribution to historical behavior, or the original F2 cause. Native negative and matched D1 pairs are NOT_EXECUTED; no qualified differential experiment identifies an exact event-loss layer.
+
+Independent readback verifies original177/comparator6/D1diagnostic6 and the two new arithmetic fixture hashes. Source changes since checkpoint add only the two isolated fixture files; no comparator, D1 instrumentation, production/package source or historical evidence is changed. No comparator execution, Docker operation, historical resource readback/deletion or remote action occurs. V1-F1-REC-001 remains open, cleanup unqualified, historical H01-H04 unresolved, application failed and R1 closure pending. No new MAJOR/BLOCKER security defect is established.
+
+The mandatory stop is appropriate. Do not weaken native validation to accept file-level PASS, run the remaining pair, change test expectations or propose a specific correction from current evidence. Reviewer runs **zero tests, zero Docker commands and zero remote operations**. See `decision.json`.

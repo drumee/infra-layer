@@ -1,0 +1,2853 @@
+{
+  "status": "PASS",
+  "versions": {
+    "Client": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "DefaultAPIVersion": "1.53",
+      "GitCommit": "0b9d198",
+      "GoVersion": "go1.25.6",
+      "Os": "linux",
+      "Arch": "amd64",
+      "BuildTime": "Mon Jan 26 19:26:07 2026",
+      "Context": "default"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "MinAPIVersion": "1.44",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.2.0",
+          "Details": {
+            "ApiVersion": "1.53",
+            "Arch": "amd64",
+            "BuildTime": "Mon Jan 26 19:26:07 2026",
+            "Experimental": "false",
+            "GitCommit": "9c62384",
+            "GoVersion": "go1.25.6",
+            "KernelVersion": "6.1.0-41-amd64",
+            "MinAPIVersion": "1.44",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.2.1",
+          "Details": {
+            "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.3.4",
+          "Details": {
+            "GitCommit": "v1.3.4-0-gd6d73eb8"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "9c62384",
+      "GoVersion": "go1.25.6",
+      "KernelVersion": "6.1.0-41-amd64",
+      "BuildTime": "2026-01-26T19:26:07.000000000+00:00"
+    }
+  },
+  "image": "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+  "assertions": 42,
+  "runs": [
+    {
+      "cycle": 1,
+      "project": "drumee-il514-net-56b083e7",
+      "pending": [],
+      "source_revision": "2ec85bcd16219f592ee40836728493584bbd170a",
+      "network_id": "6170b274a894d48dbedf3ba7894df2befc8be2bddceec9d241ecde5445034b2a",
+      "container_id": "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849",
+      "initial_attachments": {
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849": {
+          "Name": "drumee-il514-net-56b083e7-redis-1",
+          "EndpointID": "d3f4bbd8e670c0d675f14b040d2dd816f2e225178c81a0f6e3b40d26233c29a4",
+          "MacAddress": "76:d6:4b:8a:07:a0",
+          "IPv4Address": "172.26.0.2/16",
+          "IPv6Address": ""
+        }
+      },
+      "redis_recovery": "PASS",
+      "recovered_attachments": {
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849": {
+          "Name": "drumee-il514-net-56b083e7-redis-1",
+          "EndpointID": "d17caadb7f6111f6006f3f8837e7de6224de4231f27e6ce60d68be663a14a6ce",
+          "MacAddress": "62:1d:66:69:43:aa",
+          "IPv4Address": "172.26.0.2/16",
+          "IPv6Address": ""
+        }
+      },
+      "stopped_attachments": {},
+      "status": "PASS",
+      "cleanup": "PASS",
+      "actual_missing_object_exit": 1
+    },
+    {
+      "cycle": 2,
+      "project": "drumee-il514-net-1fc9f658",
+      "pending": [],
+      "source_revision": "2ec85bcd16219f592ee40836728493584bbd170a",
+      "network_id": "f7306e1738d60bfa784942e9c747365ae679d34c51e449e30ff3c9ba022dbb7a",
+      "container_id": "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653",
+      "initial_attachments": {
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653": {
+          "Name": "drumee-il514-net-1fc9f658-redis-1",
+          "EndpointID": "3ff9de25b9e1dd5ddb31517de160b126da70fe006e5a2926bf64be42c2606896",
+          "MacAddress": "36:b2:2a:dd:5d:a2",
+          "IPv4Address": "172.26.0.2/16",
+          "IPv6Address": ""
+        }
+      },
+      "redis_recovery": "PASS",
+      "recovered_attachments": {
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653": {
+          "Name": "drumee-il514-net-1fc9f658-redis-1",
+          "EndpointID": "ba5f2cf7307649cdc160b0ff96be7654fbd60cb598aa8131dee8673f4c48d4d4",
+          "MacAddress": "92:6e:52:10:fe:3f",
+          "IPv4Address": "172.26.0.2/16",
+          "IPv6Address": ""
+        }
+      },
+      "stopped_attachments": {},
+      "status": "PASS",
+      "cleanup": "PASS",
+      "actual_missing_object_exit": 1
+    }
+  ],
+  "commands": [
+    {
+      "args": [
+        "version",
+        "--format",
+        "{{json .}}"
+      ],
+      "exit_status": 0,
+      "duration_ms": 16
+    },
+    {
+      "args": [
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.drumee.qualification=drumee-il514-net-56b083e7"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "name=^drumee-il514-net-56b083e7-kernel$"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "network",
+        "create",
+        "--label",
+        "org.drumee.qualification=drumee-il514-net-56b083e7",
+        "--label",
+        "org.drumee.infra.owner=drumee-il514-net-56b083e7",
+        "--label",
+        "com.docker.compose.project=drumee-il514-net-56b083e7",
+        "drumee-il514-net-56b083e7-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 31
+    },
+    {
+      "args": [
+        "create",
+        "--name",
+        "drumee-il514-net-56b083e7-redis-1",
+        "--label",
+        "org.drumee.qualification=drumee-il514-net-56b083e7",
+        "--label",
+        "org.drumee.infra.owner=drumee-il514-net-56b083e7",
+        "--label",
+        "com.docker.compose.project=drumee-il514-net-56b083e7",
+        "--label",
+        "com.docker.compose.service=redis",
+        "--user",
+        "1000:1000",
+        "--network",
+        "drumee-il514-net-56b083e7-kernel",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "128m",
+        "--mount",
+        "type=bind,source=/tmp/drumee-il514-net-56b083e7-KUs0SK/redis.conf,target=/config/redis.conf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/drumee-il514-net-56b083e7-KUs0SK/data,target=/data",
+        "--health-cmd",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; test \"$(redis-cli ping)\" = PONG",
+        "--health-interval",
+        "1s",
+        "--health-timeout",
+        "1s",
+        "--health-retries",
+        "10",
+        "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+        "redis-server",
+        "/config/redis.conf"
+      ],
+      "exit_status": 0,
+      "duration_ms": 128
+    },
+    {
+      "args": [
+        "start",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "signal": null
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 20
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "exec",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849",
+        "/bin/sh",
+        "-c",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; exec redis-cli \"$@\"",
+        "redis-cli",
+        "PING"
+      ],
+      "exit_status": 0,
+      "duration_ms": 85
+    },
+    {
+      "args": [
+        "exec",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849",
+        "/bin/sh",
+        "-c",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; exec redis-cli \"$@\"",
+        "redis-cli",
+        "SET",
+        "qualification-key",
+        "persisted"
+      ],
+      "exit_status": 0,
+      "duration_ms": 39
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-56b083e7-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "kill",
+        "--signal",
+        "KILL",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 251
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 47
+    },
+    {
+      "args": [
+        "start",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "signal": null
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 40
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "exec",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849",
+        "/bin/sh",
+        "-c",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; exec redis-cli \"$@\"",
+        "redis-cli",
+        "GET",
+        "qualification-key"
+      ],
+      "exit_status": 0,
+      "duration_ms": 68
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-56b083e7-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "restart",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 405
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 24
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "exec",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849",
+        "/bin/sh",
+        "-c",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; exec redis-cli \"$@\"",
+        "redis-cli",
+        "GET",
+        "qualification-key"
+      ],
+      "exit_status": 0,
+      "duration_ms": 58
+    },
+    {
+      "args": [
+        "network",
+        "disconnect",
+        "drumee-il514-net-56b083e7-kernel",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 199
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-56b083e7-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "network",
+        "connect",
+        "drumee-il514-net-56b083e7-kernel",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 38
+    },
+    {
+      "args": [
+        "run",
+        "-d",
+        "--name",
+        "drumee-il514-net-56b083e7-intruder-1",
+        "--label",
+        "org.drumee.qualification=drumee-il514-net-56b083e7",
+        "--label",
+        "org.drumee.infra.owner=unauthorized-fixture",
+        "--label",
+        "com.docker.compose.project=drumee-il514-net-56b083e7",
+        "--label",
+        "com.docker.compose.service=redis",
+        "--user",
+        "1000:1000",
+        "--network",
+        "drumee-il514-net-56b083e7-kernel",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--entrypoint",
+        "/bin/sh",
+        "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+        "-c",
+        "sleep 600"
+      ],
+      "exit_status": 0,
+      "duration_ms": 173
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "8b94909439c5ed9babf1dccdb1a0eacbab4858918d1b971b9deeb067152ab505"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "stop",
+        "8b94909439c5ed9babf1dccdb1a0eacbab4858918d1b971b9deeb067152ab505"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10230
+    },
+    {
+      "args": [
+        "rm",
+        "8b94909439c5ed9babf1dccdb1a0eacbab4858918d1b971b9deeb067152ab505"
+      ],
+      "exit_status": 0,
+      "duration_ms": 13
+    },
+    {
+      "args": [
+        "stop",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 272
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-56b083e7-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "rm",
+        "685615b6ddbced8a4a7d262db52a732c99989feda705bdfae80d2b5e06ab8849"
+      ],
+      "exit_status": 0,
+      "duration_ms": 14
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-56b083e7-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "network",
+        "rm",
+        "drumee-il514-net-56b083e7-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 217
+    },
+    {
+      "args": [
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.drumee.qualification=drumee-il514-net-56b083e7"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "name=^drumee-il514-net-56b083e7-kernel$"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.drumee.qualification=drumee-il514-net-1fc9f658"
+      ],
+      "exit_status": 0,
+      "duration_ms": 9
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "name=^drumee-il514-net-1fc9f658-kernel$"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "network",
+        "create",
+        "--label",
+        "org.drumee.qualification=drumee-il514-net-1fc9f658",
+        "--label",
+        "org.drumee.infra.owner=drumee-il514-net-1fc9f658",
+        "--label",
+        "com.docker.compose.project=drumee-il514-net-1fc9f658",
+        "drumee-il514-net-1fc9f658-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 29
+    },
+    {
+      "args": [
+        "create",
+        "--name",
+        "drumee-il514-net-1fc9f658-redis-1",
+        "--label",
+        "org.drumee.qualification=drumee-il514-net-1fc9f658",
+        "--label",
+        "org.drumee.infra.owner=drumee-il514-net-1fc9f658",
+        "--label",
+        "com.docker.compose.project=drumee-il514-net-1fc9f658",
+        "--label",
+        "com.docker.compose.service=redis",
+        "--user",
+        "1000:1000",
+        "--network",
+        "drumee-il514-net-1fc9f658-kernel",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "64",
+        "--memory",
+        "128m",
+        "--mount",
+        "type=bind,source=/tmp/drumee-il514-net-1fc9f658-5opH7u/redis.conf,target=/config/redis.conf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/drumee-il514-net-1fc9f658-5opH7u/data,target=/data",
+        "--health-cmd",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; test \"$(redis-cli ping)\" = PONG",
+        "--health-interval",
+        "1s",
+        "--health-timeout",
+        "1s",
+        "--health-retries",
+        "10",
+        "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+        "redis-server",
+        "/config/redis.conf"
+      ],
+      "exit_status": 0,
+      "duration_ms": 32
+    },
+    {
+      "args": [
+        "start",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "signal": null
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 35
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "exec",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653",
+        "/bin/sh",
+        "-c",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; exec redis-cli \"$@\"",
+        "redis-cli",
+        "PING"
+      ],
+      "exit_status": 0,
+      "duration_ms": 69
+    },
+    {
+      "args": [
+        "exec",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653",
+        "/bin/sh",
+        "-c",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; exec redis-cli \"$@\"",
+        "redis-cli",
+        "SET",
+        "qualification-key",
+        "persisted"
+      ],
+      "exit_status": 0,
+      "duration_ms": 39
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-1fc9f658-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "kill",
+        "--signal",
+        "KILL",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 240
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "start",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "signal": null
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 38
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "exec",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653",
+        "/bin/sh",
+        "-c",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; exec redis-cli \"$@\"",
+        "redis-cli",
+        "GET",
+        "qualification-key"
+      ],
+      "exit_status": 0,
+      "duration_ms": 74
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-1fc9f658-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "restart",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 445
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 12
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 21
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 36
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "exec",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653",
+        "/bin/sh",
+        "-c",
+        "export REDISCLI_AUTH=\"$(sed -n 's/^requirepass //p' /config/redis.conf)\"; exec redis-cli \"$@\"",
+        "redis-cli",
+        "GET",
+        "qualification-key"
+      ],
+      "exit_status": 0,
+      "duration_ms": 59
+    },
+    {
+      "args": [
+        "network",
+        "disconnect",
+        "drumee-il514-net-1fc9f658-kernel",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 184
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-1fc9f658-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "network",
+        "connect",
+        "drumee-il514-net-1fc9f658-kernel",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 62
+    },
+    {
+      "args": [
+        "run",
+        "-d",
+        "--name",
+        "drumee-il514-net-1fc9f658-intruder-1",
+        "--label",
+        "org.drumee.qualification=drumee-il514-net-1fc9f658",
+        "--label",
+        "org.drumee.infra.owner=unauthorized-fixture",
+        "--label",
+        "com.docker.compose.project=drumee-il514-net-1fc9f658",
+        "--label",
+        "com.docker.compose.service=redis",
+        "--user",
+        "1000:1000",
+        "--network",
+        "drumee-il514-net-1fc9f658-kernel",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--entrypoint",
+        "/bin/sh",
+        "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+        "-c",
+        "sleep 600"
+      ],
+      "exit_status": 0,
+      "duration_ms": 177
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "478867c7aad6b22c935030d5a6e6ddb43c6c89b0f980c58a383045dbf5286195"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "stop",
+        "478867c7aad6b22c935030d5a6e6ddb43c6c89b0f980c58a383045dbf5286195"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10245
+    },
+    {
+      "args": [
+        "rm",
+        "478867c7aad6b22c935030d5a6e6ddb43c6c89b0f980c58a383045dbf5286195"
+      ],
+      "exit_status": 0,
+      "duration_ms": 13
+    },
+    {
+      "args": [
+        "stop",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 292
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-1fc9f658-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "rm",
+        "c3ec05db0ac0d68142283162a8c3938cc401c64c95f6dfbf2d5d5d49c32fc653"
+      ],
+      "exit_status": 0,
+      "duration_ms": 13
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-il514-net-1fc9f658-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 11
+    },
+    {
+      "args": [
+        "network",
+        "rm",
+        "drumee-il514-net-1fc9f658-kernel"
+      ],
+      "exit_status": 0,
+      "duration_ms": 335
+    },
+    {
+      "args": [
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.drumee.qualification=drumee-il514-net-1fc9f658"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "name=^drumee-il514-net-1fc9f658-kernel$"
+      ],
+      "exit_status": 0,
+      "duration_ms": 10
+    }
+  ],
+  "note": "Sandbox-less timing is daemon-dependent; deterministic typed metadata/refusal/deadline cases are separately covered by actual-code fixtures. No failed lifecycle operation is retried."
+}

@@ -1,0 +1,24 @@
+{
+  "candidate_source": "5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6",
+  "checkpoint": "987a3bba377fa7f6153b8ce10f4fca231fff0790",
+  "source_changes": [
+    "test/diagnostics/fixture-volumes/campaign.cjs",
+    "test/diagnostics/fixture-volumes/docker.cjs",
+    "test/diagnostics/fixture-volumes/mounts.cjs",
+    "test/diagnostics/fixture-volumes/mounts.test.cjs"
+  ],
+  "all_177_inputs_equal_to_qualified_source": true,
+  "harness_unchanged_since_test": true,
+  "prior_evidence_manifests_verified": {
+    "IL-5.14-R1-F1-E3-A4-C-J1-K1": 89,
+    "IL-5.14-R1-F1-E3-A4-C-J1-K1-A1": 41,
+    "IL-5.14-R1-F1-E3-A4-C-J1-K1-V1": 24,
+    "IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1": 52
+  },
+  "archive_available": false,
+  "archive_rehashed": false,
+  "recorded_archive_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "current_docker_commands": 0,
+  "campaigns": 0,
+  "remote_mutations": 0
+}

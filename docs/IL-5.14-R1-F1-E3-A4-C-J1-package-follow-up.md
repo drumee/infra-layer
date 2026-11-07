@@ -1,0 +1,7 @@
+# Proposed package follow-up — not executed
+
+Trigger: J1-PKG-001, source0dd9a17d2fe63b98ba3fd6ef56c5252b595a60ec, npm run test:package exit1 at test/package-audit.js:27. Sole rejected dry-run member is internal/rollback-authorization.js; its required runtime reference is lifecycle/activation.js:169. The already qualified R5 helper and manifest are unchanged. Do not remove that helper or alter recovery behavior to obtain a green package check.
+
+A separately scoped corrective mission should independently inspect the exact module's runtime need, package footprint and security, then reconcile the narrow package allowlist if justified. Preserve the unexpected-member assertion and other secret/import/dependency/integrity/consumer protections; do not permit all internal files. Any expected-member contract change needs explicit disposition in that follow-up rather than an assumed waiver under J1. Include an unrelated-file rejection control, a new coherent source/harness freeze, canonical package/consumer checks and appropriate lint/unit/contracts/security review. Preserve this failed output and resume remaining parent Docker/Gateway/lifecycle/application/security/package/final review gates only on qualified corrected inputs.
+
+J1 performed no package correction, no policy expansion and no requalification after the failure. Existing Option B applies only to historical Postfix uncertainty and cannot waive this package gate.

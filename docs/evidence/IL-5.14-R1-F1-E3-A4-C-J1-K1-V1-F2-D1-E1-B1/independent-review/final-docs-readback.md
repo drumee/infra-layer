@@ -1,0 +1,9 @@
+# Independent final B1 documentation readback
+
+All ten B1 reports, hypothesis records and the structured gate matrix consistently report **FAILED_DIAGNOSTIC — Gate C**, source checkpoint `a62c6e3b04a0916c89b8891d78697240679eab99`, independent causal disposition **BLOCKED_EVIDENCE**, and original E1/D1/F2 causes **ROOT_CAUSE_UNDETERMINED**.
+
+The new marked standalone reference's callback and arithmetic assertion path are directly observed through the owned journal and matching parent TAP comments. Full fd2 counts23/30/20/23 are corroborated. This proves neither an exact named native TEST_COMPLETED/PASS result nor historical unmarked callback execution. Exact e1-native-positive output remains absent; the file-name result and root0 do not satisfy GateC. These observed worker stderr markers reached parent TAP; outer stderr0 is not their loss. FileTest counter/accepted-result reasoning remains explicitly source-based, without a measured private counter or child event-emission trace.
+
+H1 contradicts only literal source omission; H2 preserves unknown original runtime reachability; H8 supports the new reporting symptom only. No responsible native component or original cause is claimed. Negative is NOT_CREATED/NOT_EXECUTED, original dynamic comparison NOT_EXECUTED and correction GateG NOT_EXECUTED. GateH PASS concerns unchanged repository executable source; GateJ PASS concerns auditable failure accounting.
+
+Original177/comparator6/D1diagnostic6/E1fixture2 and reference source copies remain verified. Production/package/history/application/R1/remote boundaries are preserved without qualification upgrade. No unsupported historical callback proof, original F2 cause or exact correction was found; no new MAJOR/BLOCKER is identified. Reviewer runs zero tests, zero Docker commands and zero remote operations. Exact report/hypothesis/matrix hashes are in final-docs-readback.json.

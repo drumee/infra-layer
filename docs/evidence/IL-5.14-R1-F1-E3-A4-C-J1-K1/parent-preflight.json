@@ -1,0 +1,64 @@
+{
+  "membership": {
+    "directory": "/tmp/drumee-k1-l0h17j68/membership",
+    "script": "test/network-attachments/membership-real.cjs"
+  },
+  "redis": {
+    "directory": "/tmp/drumee-k1-l0h17j68/redis",
+    "script": "test/network-attachments/real-docker.cjs"
+  },
+  "health": {
+    "directory": "/tmp/drumee-k1-l0h17j68/health",
+    "script": "test/network-attachments/container-health.cjs"
+  },
+  "existing_container_ids": [
+    "dd86fdfae8bd",
+    "565ff453ff69",
+    "f7fcac93eeae",
+    "1458e3c772e2",
+    "4f5bcc10202a",
+    "dac6ff2871b7",
+    "c90b0f7ffa19",
+    "03d98e22a3f2",
+    "2d49a09b1a13",
+    "e48d1991476f",
+    "9ab9d911d67d",
+    "ad54c9ae4370",
+    "dbef18b88da6",
+    "c2d515f4382e",
+    "026c71e034fd",
+    "ca5091e89d7d",
+    "b8d5ccd026ff",
+    "a64b550f1d3b",
+    "cf649f7d2352",
+    "9320436b6b82",
+    "674b611e8b0d",
+    "8df71ec63e28",
+    "2850273720ec",
+    "5ce0ce990a4d",
+    "42113b43f533",
+    "4c802389b1e4",
+    "9dfda18e01d4",
+    "38695756ad2c",
+    "d01f0aa17416"
+  ],
+  "existing_network_ids": [
+    "b59b2684c6c87ec6fb4f2c85c447be40a1087c14319fcef2e491ba5401e37a38",
+    "a5de72fecf555a2d3570fc27b147595ed4ea5413923f6e7312b8e3d3101e1a3f",
+    "7a11de4b25834458200f8cf24f40bbd2ec3715671c9ca80c155cf6fafbac8da6",
+    "6ab343a5df47dba8172cd806a365515e37390f57c180b48b500319d085b9bd32",
+    "02b4589f2622bbbb2e97347d2704eb82a2aee6d2e3afd6bea6f6b2e58834e6cd",
+    "431486b00b0f862422c68f271ddafb9e7aeaf2b82ff5c2e513ef2e403c208985",
+    "7a1b2dedbf65eea63786f00f5be095926c23b13a73fb8708d453be611a7ee7a3",
+    "2d155988db0e3d54ae7c82dae660611c6639d0701be70696103032b17d78eb68",
+    "a60c8932b0533c21076af4750fd37904f4d7e19bdb70d549bd383a0e09b9fea8",
+    "0dfb27600ce84b0dd37d26879f9c550d2bdf6ccc6bd35635eaf91b24116a0063",
+    "14cd9ac1d8b9a423f96f4d5ec0172990da8f728372984fe86cf69de3eb0d82d3",
+    "5e50eb10023d6afaca6127a4fece0bb7129b0eaa0b7a8fbe30d3d4f28da39436",
+    "acbf4d7cae57524833c4bf89f33c3bdc5edb2ef2ef8bfd5ffa9145af8e753bcc",
+    "230007444a442642d3f40cab4a3e69a7b88d9f53b7867a8ec836f735d6d94340",
+    "8183a8fd8e8c6020bb16d4d2e3cf953e291bf322508885a30a169a2e020b083d",
+    "809d8e8f3611deb58c80caa8acbb2671d94316584bd91b1c244a3bebf8f50951",
+    "4b2f2ffd26805182bd13e5ef7e4a89296ebdfb4de4c52728a2f8a2a2cc47c19f"
+  ]
+}

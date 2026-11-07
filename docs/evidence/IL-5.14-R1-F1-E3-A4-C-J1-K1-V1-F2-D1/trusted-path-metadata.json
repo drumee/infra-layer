@@ -1,0 +1,47 @@
+{
+  "purpose": "Read-only filesystem metadata; no Docker invocation. Current state is not reconstructed historical state.",
+  "entries": [
+    {
+      "path": "/",
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o40755",
+      "symlink": false
+    },
+    {
+      "path": "/usr",
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o40755",
+      "symlink": false
+    },
+    {
+      "path": "/usr/bin",
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o40755",
+      "symlink": false
+    },
+    {
+      "path": "/usr/bin/docker",
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o100755",
+      "symlink": false
+    },
+    {
+      "path": "/etc",
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o40755",
+      "symlink": false
+    },
+    {
+      "path": "/etc/docker",
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o40755",
+      "symlink": false
+    }
+  ]
+}

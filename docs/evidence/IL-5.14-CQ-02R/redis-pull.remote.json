@@ -1,0 +1,19 @@
+{
+  "candidate_sha": "49931e1e0de253f13b82c7ec3c2cb94bb199cea6",
+  "host": "testbox",
+  "command": [
+    "docker",
+    "pull",
+    "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf"
+  ],
+  "environment": [
+    "npm_config_cache=/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/npm-cache",
+    "IL514_DIAGNOSTIC_DIR=/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/evidence/redis-pull/diagnostic",
+    "IL5_NETWORK_CLIENT=192.168.5.201",
+    "IL5_LAN_ADDRESS=192.168.5.202",
+    "IL5_HOST_NGINX=/usr/sbin/nginx"
+  ],
+  "cwd": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source",
+  "remote_evidence": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/evidence/redis-pull",
+  "exit": 0
+}

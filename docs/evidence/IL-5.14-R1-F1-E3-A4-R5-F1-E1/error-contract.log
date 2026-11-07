@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: E1 D1/D16 unauthorized caller gets no active-state or runtime-identity details
+ok 1 - E1 D1/D16 unauthorized caller gets no active-state or runtime-identity details
+  ---
+  duration_ms: 17.936844
+  type: 'test'
+  ...
+# Subtest: E1 D2 absent caller context is refused before state observation
+ok 2 - E1 D2 absent caller context is refused before state observation
+  ---
+  duration_ms: 13.840116
+  type: 'test'
+  ...
+# Subtest: E1 D3/D23 authorized unknown runtime revision is identity failure before eligibility
+ok 3 - E1 D3/D23 authorized unknown runtime revision is identity failure before eligibility
+  ---
+  duration_ms: 19.010908
+  type: 'test'
+  ...
+# Subtest: E1 D8 authorized wrong runtime service retains identity refusal
+ok 4 - E1 D8 authorized wrong runtime service retains identity refusal
+  ---
+  duration_ms: 34.851664
+  type: 'test'
+  ...
+# Subtest: E1 D24 missing journal scope precedes an identity defect
+ok 5 - E1 D24 missing journal scope precedes an identity defect
+  ---
+  duration_ms: 17.760859
+  type: 'test'
+  ...
+# Subtest: E1 D24 unknown journal service refuses authority without runtime details
+ok 6 - E1 D24 unknown journal service refuses authority without runtime details
+  ---
+  duration_ms: 18.206125
+  type: 'test'
+  ...
+# Subtest: E1 D24 authorized valid identity without failed-target eligibility remains refused
+ok 7 - E1 D24 authorized valid identity without failed-target eligibility remains refused
+  ---
+  duration_ms: 15.765307
+  type: 'test'
+  ...
+# Subtest: E1 D4/D5 correct scoped identity still reaches recreation and final strict readiness
+ok 8 - E1 D4/D5 correct scoped identity still reaches recreation and final strict readiness
+  ---
+  duration_ms: 42.538772
+  type: 'test'
+  ...
+# Subtest: E1 D18 actual Docker adapter inspection failure is neither authority nor identity refusal
+ok 9 - E1 D18 actual Docker adapter inspection failure is neither authority nor identity refusal
+  ---
+  duration_ms: 17.055418
+  type: 'test'
+  ...
+# Subtest: E1 D21 healthy ordinary activation remains strict and can return no-op
+ok 10 - E1 D21 healthy ordinary activation remains strict and can return no-op
+  ---
+  duration_ms: 43.826685
+  type: 'test'
+  ...
+# Subtest: E1 D17/D22 ordinary recovery invocations cannot inherit rollback admission
+ok 11 - E1 D17/D22 ordinary recovery invocations cannot inherit rollback admission
+  ---
+  duration_ms: 15.792623
+  type: 'test'
+  ...
+# Subtest: R4-01 valid operational attachment remains accepted
+ok 12 - R4-01 valid operational attachment remains accepted
+  ---
+  duration_ms: 9.540524
+  type: 'test'
+  ...
+# Subtest: R4-02 exact restarting target admits only pre-recreation authorization
+ok 13 - R4-02 exact restarting target admits only pre-recreation authorization
+  ---
+  duration_ms: 1.574559
+  type: 'test'
+  ...
+# Subtest: R4-03 authorized restarting target is never operationally ready
+ok 14 - R4-03 authorized restarting target is never operationally ready
+  ---
+  duration_ms: 3.416237
+  type: 'test'
+  ...
+# Subtest: R4-04 complete replacement is operationally valid
+ok 15 - R4-04 complete replacement is operationally valid
+  ---
+  duration_ms: 2.82341
+  type: 'test'
+  ...
+# Subtest: R4-05 undeclared extra network is never authorized for recovery
+ok 16 - R4-05 undeclared extra network is never authorized for recovery
+  ---
+  duration_ms: 1.682534
+  type: 'test'
+  ...
+# Subtest: R4-06 foreign owner is refused
+ok 17 - R4-06 foreign owner is refused
+  ---
+  duration_ms: 1.698237
+  type: 'test'
+  ...
+# Subtest: R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+ok 18 - R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+  ---
+  duration_ms: 6.064549
+  type: 'test'
+  ...
+# Subtest: R4-08 wrong service is refused
+ok 19 - R4-08 wrong service is refused
+  ---
+  duration_ms: 1.614459
+  type: 'test'
+  ...
+# Subtest: R4-09 wrong project is refused
+ok 20 - R4-09 wrong project is refused
+  ---
+  duration_ms: 1.519162
+  type: 'test'
+  ...
+# Subtest: R4-10 Docker command failure is fatal
+ok 21 - R4-10 Docker command failure is fatal
+  ---
+  duration_ms: 0.892738
+  type: 'test'
+  ...
+# Subtest: R4-11 disappearance/substitution and duplicate authorization fail
+ok 22 - R4-11 disappearance/substitution and duplicate authorization fail
+  ---
+  duration_ms: 0.919946
+  type: 'test'
+  ...
+# Subtest: R4-12 final missing required membership refuses readiness and authorization
+ok 23 - R4-12 final missing required membership refuses readiness and authorization
+  ---
+  duration_ms: 1.907245
+  type: 'test'
+  ...
+# Subtest: R4-13 final extra membership refuses readiness
+ok 24 - R4-13 final extra membership refuses readiness
+  ---
+  duration_ms: 1.232466
+  type: 'test'
+  ...
+# Subtest: R4-14 duplicate role resolving to same network is not multihoming
+ok 25 - R4-14 duplicate role resolving to same network is not multihoming
+  ---
+  duration_ms: 8.659794
+  type: 'test'
+  ...
+# Subtest: R4-15 recovery cannot select a one-off job or omit an inventoried resource
+ok 26 - R4-15 recovery cannot select a one-off job or omit an inventoried resource
+  ---
+  duration_ms: 1.331556
+  type: 'test'
+  ...
+# Subtest: R4-16 ordinary pre-creation behavior remains compatible
+ok 27 - R4-16 ordinary pre-creation behavior remains compatible
+  ---
+  duration_ms: 0.711863
+  type: 'test'
+  ...
+# Subtest: R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+ok 28 - R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+  ---
+  duration_ms: 1.615448
+  type: 'test'
+  ...
+# Subtest: R4 rollback authorization requires verified failed/active candidate identity before network admission
+ok 29 - R4 rollback authorization requires verified failed/active candidate identity before network admission
+  ---
+  duration_ms: 7.60697
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 315.882004

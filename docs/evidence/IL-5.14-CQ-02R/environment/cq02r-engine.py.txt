@@ -1,0 +1,38 @@
+import datetime,hashlib,json,os,pathlib,subprocess,time,sys
+d=json.loads(sys.argv[1]);base=pathlib.Path(d['remote']);owner=json.loads((base/'owner.json').read_text());assert owner['attempt']==d['attempt']
+def call(args):return subprocess.check_output(args,text=True,stderr=subprocess.STDOUT).strip()
+def cli(*args):return call(['/usr/bin/docker','--host','unix://'+str(base/'docker.sock'),*args])
+protected=call(['/usr/bin/docker','info','--format','{{.ID}}']);assert protected==d['protected_daemon_id']
+fw={p:hashlib.sha256(call(['/usr/sbin/'+p]).encode()).hexdigest() for p in ['iptables-save','ip6tables-save']}
+nonce=d['attempt'].lower().replace('-','')
+config={'hosts':['unix://'+str(base/'docker.sock')],'data-root':str(base/'engine-data'),'exec-root':str(base/'engine-exec'),'pidfile':str(base/'dockerd.pid'),'bridge':'none','iptables':False,'ip6tables':False,'ip-forward':False,'ip-masq':False,'group':'docker','containerd-namespace':nonce,'containerd-plugins-namespace':nonce+'plugins','features':{'containerd-snapshotter':False},'default-address-pools':[{'base':d['private_pool'],'size':24}],'labels':['org.drumee.qualification='+d['attempt']]}
+path=base/'daemon.json';fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+with os.fdopen(fd,'w') as f:json.dump(config,f,indent=2);f.write('\n')
+log=(base/'dockerd.stdout').open('xb');err=(base/'dockerd.stderr').open('xb')
+p=subprocess.Popen(['/usr/bin/dockerd','--config-file',str(path)],stdin=subprocess.DEVNULL,stdout=log,stderr=err,start_new_session=True)
+receipt={'attempt':d['attempt'],'pid':p.pid,'argv':['/usr/bin/dockerd','--config-file',str(path)],'started':datetime.datetime.now(datetime.timezone.utc).isoformat(),'config_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'protected_daemon_id':protected}
+(base/'engine-creation.json').write_text(json.dumps(receipt,indent=2)+'\n')
+deadline=time.monotonic()+30
+while True:
+ if p.poll() is not None:raise RuntimeError('PRIVATE_DAEMON_START_FAILED '+str(p.returncode)+' '+(base/'dockerd.stderr').read_text()[-4000:])
+ q=subprocess.run(['/usr/bin/docker','--host','unix://'+str(base/'docker.sock'),'info','--format','{{json .}}'],capture_output=True,text=True)
+ if q.returncode==0:info=json.loads(q.stdout);break
+ if time.monotonic()>=deadline:raise RuntimeError('PRIVATE_DAEMON_READINESS_TIMEOUT')
+ time.sleep(.2)
+assert info['ID'] and info['ID']!=protected and info['DockerRootDir']==str(base/'engine-data') and info['Containers']==0 and info['Images']==0
+assert 'org.drumee.qualification='+d['attempt'] in info['Labels']
+assert call(['/usr/bin/docker','info','--format','{{.ID}}'])==protected
+assert all(hashlib.sha256(call(['/usr/sbin/'+p]).encode()).hexdigest()==h for p,h in fw.items())
+wrapper='''#!/bin/sh
+set -eu
+test "$(id -u)" = 0
+exec /usr/bin/unshare --mount --propagation private -- /bin/sh -c '
+set -eu
+/usr/bin/mount --bind "SOCKET" /run/docker.sock
+test "$(/usr/bin/docker --host unix:///var/run/docker.sock info --format "{{.ID}}")" = "ENGINE"
+exec /usr/sbin/runuser -u somanos -- "$@"
+' sh "$@"
+'''.replace('SOCKET',str(base/'docker.sock')).replace('ENGINE',info['ID'])
+w=base/'run-isolated';w.write_text(wrapper);w.chmod(0o700)
+receipt.update({'daemon_id':info['ID'],'docker_root':info['DockerRootDir'],'labels':info['Labels'],'socket':str(base/'docker.sock'),'firewall_hashes_unchanged':fw,'initial_containers':0,'initial_images':0,'containerd_config':str(base/'engine-exec/containerd/containerd.toml'),'wrapper_sha256':hashlib.sha256(w.read_bytes()).hexdigest()})
+(base/'engine-creation.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt,indent=2))

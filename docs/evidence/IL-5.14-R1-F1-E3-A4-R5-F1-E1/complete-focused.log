@@ -1,0 +1,340 @@
+TAP version 13
+# Subtest: E1 D1/D16 unauthorized caller gets no active-state or runtime-identity details
+ok 1 - E1 D1/D16 unauthorized caller gets no active-state or runtime-identity details
+  ---
+  duration_ms: 40.16842
+  type: 'test'
+  ...
+# Subtest: E1 D2 absent caller context is refused before state observation
+ok 2 - E1 D2 absent caller context is refused before state observation
+  ---
+  duration_ms: 14.736934
+  type: 'test'
+  ...
+# Subtest: E1 D3/D23 authorized unknown runtime revision is identity failure before eligibility
+ok 3 - E1 D3/D23 authorized unknown runtime revision is identity failure before eligibility
+  ---
+  duration_ms: 23.78591
+  type: 'test'
+  ...
+# Subtest: E1 D8 authorized wrong runtime service retains identity refusal
+ok 4 - E1 D8 authorized wrong runtime service retains identity refusal
+  ---
+  duration_ms: 21.800558
+  type: 'test'
+  ...
+# Subtest: E1 D24 missing journal scope precedes an identity defect
+ok 5 - E1 D24 missing journal scope precedes an identity defect
+  ---
+  duration_ms: 25.766228
+  type: 'test'
+  ...
+# Subtest: E1 D24 unknown journal service refuses authority without runtime details
+ok 6 - E1 D24 unknown journal service refuses authority without runtime details
+  ---
+  duration_ms: 60.777532
+  type: 'test'
+  ...
+# Subtest: E1 D24 authorized valid identity without failed-target eligibility remains refused
+ok 7 - E1 D24 authorized valid identity without failed-target eligibility remains refused
+  ---
+  duration_ms: 23.463209
+  type: 'test'
+  ...
+# Subtest: E1 D4/D5 correct scoped identity still reaches recreation and final strict readiness
+ok 8 - E1 D4/D5 correct scoped identity still reaches recreation and final strict readiness
+  ---
+  duration_ms: 68.64006
+  type: 'test'
+  ...
+# Subtest: E1 D18 actual Docker adapter inspection failure is neither authority nor identity refusal
+ok 9 - E1 D18 actual Docker adapter inspection failure is neither authority nor identity refusal
+  ---
+  duration_ms: 23.426956
+  type: 'test'
+  ...
+# Subtest: E1 D21 healthy ordinary activation remains strict and can return no-op
+ok 10 - E1 D21 healthy ordinary activation remains strict and can return no-op
+  ---
+  duration_ms: 57.990051
+  type: 'test'
+  ...
+# Subtest: E1 D17/D22 ordinary recovery invocations cannot inherit rollback admission
+ok 11 - E1 D17/D22 ordinary recovery invocations cannot inherit rollback admission
+  ---
+  duration_ms: 22.24169
+  type: 'test'
+  ...
+# Subtest: R4-01 valid operational attachment remains accepted
+ok 12 - R4-01 valid operational attachment remains accepted
+  ---
+  duration_ms: 9.169495
+  type: 'test'
+  ...
+# Subtest: R4-02 exact restarting target admits only pre-recreation authorization
+ok 13 - R4-02 exact restarting target admits only pre-recreation authorization
+  ---
+  duration_ms: 1.621252
+  type: 'test'
+  ...
+# Subtest: R4-03 authorized restarting target is never operationally ready
+ok 14 - R4-03 authorized restarting target is never operationally ready
+  ---
+  duration_ms: 3.218994
+  type: 'test'
+  ...
+# Subtest: R4-04 complete replacement is operationally valid
+ok 15 - R4-04 complete replacement is operationally valid
+  ---
+  duration_ms: 2.861461
+  type: 'test'
+  ...
+# Subtest: R4-05 undeclared extra network is never authorized for recovery
+ok 16 - R4-05 undeclared extra network is never authorized for recovery
+  ---
+  duration_ms: 1.574588
+  type: 'test'
+  ...
+# Subtest: R4-06 foreign owner is refused
+ok 17 - R4-06 foreign owner is refused
+  ---
+  duration_ms: 1.604217
+  type: 'test'
+  ...
+# Subtest: R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+ok 18 - R4-07 exact snapshot rejects substituted ID/name/revision/image/state
+  ---
+  duration_ms: 5.972525
+  type: 'test'
+  ...
+# Subtest: R4-08 wrong service is refused
+ok 19 - R4-08 wrong service is refused
+  ---
+  duration_ms: 1.470538
+  type: 'test'
+  ...
+# Subtest: R4-09 wrong project is refused
+ok 20 - R4-09 wrong project is refused
+  ---
+  duration_ms: 1.186174
+  type: 'test'
+  ...
+# Subtest: R4-10 Docker command failure is fatal
+ok 21 - R4-10 Docker command failure is fatal
+  ---
+  duration_ms: 0.833774
+  type: 'test'
+  ...
+# Subtest: R4-11 disappearance/substitution and duplicate authorization fail
+ok 22 - R4-11 disappearance/substitution and duplicate authorization fail
+  ---
+  duration_ms: 0.914112
+  type: 'test'
+  ...
+# Subtest: R4-12 final missing required membership refuses readiness and authorization
+ok 23 - R4-12 final missing required membership refuses readiness and authorization
+  ---
+  duration_ms: 1.818454
+  type: 'test'
+  ...
+# Subtest: R4-13 final extra membership refuses readiness
+ok 24 - R4-13 final extra membership refuses readiness
+  ---
+  duration_ms: 1.128832
+  type: 'test'
+  ...
+# Subtest: R4-14 duplicate role resolving to same network is not multihoming
+ok 25 - R4-14 duplicate role resolving to same network is not multihoming
+  ---
+  duration_ms: 9.721212
+  type: 'test'
+  ...
+# Subtest: R4-15 recovery cannot select a one-off job or omit an inventoried resource
+ok 26 - R4-15 recovery cannot select a one-off job or omit an inventoried resource
+  ---
+  duration_ms: 1.299533
+  type: 'test'
+  ...
+# Subtest: R4-16 ordinary pre-creation behavior remains compatible
+ok 27 - R4-16 ordinary pre-creation behavior remains compatible
+  ---
+  duration_ms: 0.953661
+  type: 'test'
+  ...
+# Subtest: R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+ok 28 - R4 restart exemption cannot accept non-restarting or nonempty invalid endpoint
+  ---
+  duration_ms: 1.663006
+  type: 'test'
+  ...
+# Subtest: R4 rollback authorization requires verified failed/active candidate identity before network admission
+ok 29 - R4 rollback authorization requires verified failed/active candidate identity before network admission
+  ---
+  duration_ms: 7.110302
+  type: 'test'
+  ...
+# Subtest: R5 E1-E4 authorized volatile-state rollback admits the exact target, recreates and finishes strict ready
+ok 30 - R5 E1-E4 authorized volatile-state rollback admits the exact target, recreates and finishes strict ready
+  ---
+  duration_ms: 78.89948
+  type: 'test'
+  ...
+# Subtest: R5 E7 strict readiness still refuses the actual restart-backoff metadata
+ok 31 - R5 E7 strict readiness still refuses the actual restart-backoff metadata
+  ---
+  duration_ms: 22.856792
+  type: 'test'
+  ...
+# Subtest: R5 E8 undeclared attachment refuses rollback before recreation
+ok 32 - R5 E8 undeclared attachment refuses rollback before recreation
+  ---
+  duration_ms: 24.61457
+  type: 'test'
+  ...
+# Subtest: R5 E9 foreign owner refuses rollback before recreation
+ok 33 - R5 E9 foreign owner refuses rollback before recreation
+  ---
+  duration_ms: 59.379989
+  type: 'test'
+  ...
+# Subtest: R5 E10 wrong project refuses rollback before recreation
+ok 34 - R5 E10 wrong project refuses rollback before recreation
+  ---
+  duration_ms: 24.112909
+  type: 'test'
+  ...
+# Subtest: R5 E11 authorized wrong-service identity cannot replace journal target
+ok 35 - R5 E11 authorized wrong-service identity cannot replace journal target
+  ---
+  duration_ms: 32.81476
+  type: 'test'
+  ...
+# Subtest: R5 E12 wrong network ID refuses before recreation
+ok 36 - R5 E12 wrong network ID refuses before recreation
+  ---
+  duration_ms: 22.085773
+  type: 'test'
+  ...
+# Subtest: R5 E12 incorrect container ID refuses before recreation
+ok 37 - R5 E12 incorrect container ID refuses before recreation
+  ---
+  duration_ms: 21.665819
+  type: 'test'
+  ...
+# Subtest: R5 E13 legitimate owner labels cannot authorize wrong canonical name
+ok 38 - R5 E13 legitimate owner labels cannot authorize wrong canonical name
+  ---
+  duration_ms: 21.748037
+  type: 'test'
+  ...
+# Subtest: R5 E14 duplicate plausible service targets fail closed
+ok 39 - R5 E14 duplicate plausible service targets fail closed
+  ---
+  duration_ms: 22.175206
+  type: 'test'
+  ...
+# Subtest: R5 E15 an unverified candidate fails before recreation
+ok 40 - R5 E15 an unverified candidate fails before recreation
+  ---
+  duration_ms: 22.655877
+  type: 'test'
+  ...
+# Subtest: R5 E16 unauthorized rollback cannot reach admission
+ok 41 - R5 E16 unauthorized rollback cannot reach admission
+  ---
+  duration_ms: 19.213011
+  type: 'test'
+  ...
+# Subtest: R5 E17 recover true alone retains the strict normal activation preflight
+ok 42 - R5 E17 recover true alone retains the strict normal activation preflight
+  ---
+  duration_ms: 19.204786
+  type: 'test'
+  ...
+# Subtest: R5 failed-service evidence is mandatory rather than inferred from labels
+ok 43 - R5 failed-service evidence is mandatory rather than inferred from labels
+  ---
+  duration_ms: 17.406687
+  type: 'test'
+  ...
+# Subtest: R5 E19 recreation failure remains fatal and never writes a successful active event
+ok 44 - R5 E19 recreation failure remains fatal and never writes a successful active event
+  ---
+  duration_ms: 27.131518
+  type: 'test'
+  ...
+# Subtest: R5 E20 missing final membership fails after recreation
+ok 45 - R5 E20 missing final membership fails after recreation
+  ---
+  duration_ms: 32.972113
+  type: 'test'
+  ...
+# Subtest: R5 E21 extra final attachment fails after recreation
+ok 46 - R5 E21 extra final attachment fails after recreation
+  ---
+  duration_ms: 32.323472
+  type: 'test'
+  ...
+# Subtest: R5 E22 unhealthy recreated service is refused
+ok 47 - R5 E22 unhealthy recreated service is refused
+  ---
+  duration_ms: 25.886763
+  type: 'test'
+  ...
+# Subtest: R5 configured exposure stays exact when live restart ports are empty
+ok 48 - R5 configured exposure stays exact when live restart ports are empty
+  ---
+  duration_ms: 13.632945
+  type: 'test'
+  ...
+# Subtest: R5 live exposure cannot expand beyond configured bindings
+ok 49 - R5 live exposure cannot expand beyond configured bindings
+  ---
+  duration_ms: 14.05358
+  type: 'test'
+  ...
+# Subtest: R5 authoritative inspection, not initial snapshot, decides narrow restarting eligibility
+ok 50 - R5 authoritative inspection, not initial snapshot, decides narrow restarting eligibility
+  ---
+  duration_ms: 14.47047
+  type: 'test'
+  ...
+# Subtest: R5 endpoint conflict is not an empty-endpoint accommodation
+ok 51 - R5 endpoint conflict is not an empty-endpoint accommodation
+  ---
+  duration_ms: 14.657753
+  type: 'test'
+  ...
+# Subtest: R5 direct internal rollback wrapper cannot evade compatibility checks
+ok 52 - R5 direct internal rollback wrapper cannot evade compatibility checks
+  ---
+  duration_ms: 13.67571
+  type: 'test'
+  ...
+# Subtest: R5 failed candidate revision cannot substitute another source identity
+ok 53 - R5 failed candidate revision cannot substitute another source identity
+  ---
+  duration_ms: 14.009236
+  type: 'test'
+  ...
+# Subtest: R5 E18 unrelated restarting service cannot inherit failed-service endpoint permission
+ok 54 - R5 E18 unrelated restarting service cannot inherit failed-service endpoint permission
+  ---
+  duration_ms: 16.18881
+  type: 'test'
+  ...
+# Subtest: R5 changed configured bindings or mounts at authoritative reinspection cannot be substituted
+ok 55 - R5 changed configured bindings or mounts at authoritative reinspection cannot be substituted
+  ---
+  duration_ms: 14.427854
+  type: 'test'
+  ...
+1..55
+# tests 55
+# suites 0
+# pass 55
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 711.494489

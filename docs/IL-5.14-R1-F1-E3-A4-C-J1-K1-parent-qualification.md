@@ -1,0 +1,25 @@
+# Resumed parent qualification — partial execution record
+
+At frozen source20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee, independent package FINDING_CLOSED was verified before these parent executions. No production input changed. Exact commands, UTC, source hashes, exits and protected-state receipts are in execution.jsonl.
+
+Fresh trusted executables: npm run test:system-tools,12/12 PASS, exit0, isolated network-none/read-only fixture; no host binary/config changes. Fresh actual Docker network commands: membership-real.cjs21 assertions PASS; real-docker.cjs42 assertions over2 Redis cycles PASS; container-health.cjs15 assertions PASS. Unique owned namespaces, safe foreign-control fixtures, complete membership/identity/refusal/protocol/error tests and cleanup are preserved in their raw logs and real-network/*/trace.jsonl. Secure destination ownership/mode preflight recorded before launch. The established512-event trace limit is retained and disclosed; full console results remain available. network-cleanup.json independently reads all four fixture namespaces empty after completion; it modifies no resource.
+
+Broader canonical package consumer: existing wrapper was copied into the new secure mission directory with its pinned TypeScript tool, leaving historical evidence unchanged. It builds a uniquely owned image, executes test/application/package-consumer.js, and passes8 actual preparation plus37 refusal assertions and strict NodeNext types. Its freshly packed archive has exactly the retained artifact's SHA512 integrity; direct retained-archive installation/consumer10 was separately qualified. OWNED_CONSUMER_IMAGE_CLEANED confirms the exact owned image is removed. No live rollback was executed by these consumers. Canonical wrapper/tool source hashes and raw outputs are retained.
+
+Services17/17/campaign0 and R5 focused55/realDocker38 remain qualified by exact relevant source/harness comparison, not rerun. Gateway17/17 may be retained: old A2 integration log has completed17/17 and IL1 cleanup before its separate Services failure, and the entire exercised Gateway/lib/adapter/fixed dependency/tool/input closure is byte-identical and never imports lifecycle/recovery. gateway-applicability.json gives the inspected paths; final independent review must confirm applicability.
+
+Lifecycle, lifecycle-gateway and complete application acceptance are pending at this partial record; no success is inferred. Final local security disposition is pending their completion. Historical Postfix remains ROOT_CAUSE_UNDETERMINED — OWNER_ACCEPTED. No push/merge/publication/deployment authorization exists.
+
+## Completed continuation and mandatory stop
+
+After this partial record, npm run test:lifecycle passes16/16, exit0, IL3 cleanup confirmed drumee-il3-test-5dab5f8e. npm run test:lifecycle:gateway passes4 HTTPS/jobs scenarios, exit0, strict CA/SAN/renewal/failed-activation retention/job checks and cleanup confirmed drumee-il3-gateway-8cf2a2af. Application preflight validates current hostNode22.22/Undici6.23, expected LAN/client testboxNode22.23.2 and trusted hostnginx1.22.1.
+
+**Mandatory application failure:** canonical env command exits1 at20c8a29 with NETWORK_ATTACHMENT_MISMATCH,6 completed groups/36 reported assertions. Exact first failing API/refusal branch is unavailable; no causal explanation is invented. Original report is application-report.json, original stdout application.log and STOP.json. No qualification follows. No new active HTTP-capture UND_ERR_SOCKET was reported by this failure. No Postfix risk waiver is applied. final-cleanup.json independently verifies all affected project scopes/images/listener/temp roots absent. See application-follow-up.md for the separately scoped diagnostic proposal. Overall parent convergence remains FAILED_QUALIFICATION despite PACKAGE_QUALIFIED.
+
+## Cleanup scope correction
+
+Post-stop appraisal found K1-CLEAN-001: at least one explicitly attributed anonymous Redis fixture volume survived container/network cleanup. It was safely removed after exact attribution and unused-reference checks. Full fixture-volume accounting remains unavailable; no unproven resource is touched. The earlier all-resources wording is superseded by container/network-only readback scope, preserving the original snapshot. Numeric network21/42/15 and lifecycle16/gateway4 outcomes remain passing test observations, but complete cleanup is not qualified. Parent E is therefore BLOCKED for cleanup evidence and parent H remains FAIL for the mandatory application acceptance; no final R1/security approval is available. See cleanup-finding.md.
+
+## Immediate J1 mapping
+
+J1's original failed package result remains historical. On new20c8a29, K1 independently qualifies J1 Gate I / A4-C Gate K with the actual archive and consumers. J1 Gate H (remaining convergence) now fails at complete application acceptance; J1 Gate J (final independent local review) is BLOCKED_EVIDENCE; J1 hosted/final consolidation records are superseded only by the new K1 readiness/failure matrix, never by a fictional prior PASS. Parent J lint/audits remain qualified, and no current application/cleanup failure is waived.

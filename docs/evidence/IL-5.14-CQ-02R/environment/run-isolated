@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+test "$(id -u)" = 0
+exec /usr/bin/unshare --mount --propagation private -- /bin/sh -c '
+set -eu
+/usr/bin/mount --bind "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/docker.sock" /run/docker.sock
+test "$(/usr/bin/docker --host unix:///var/run/docker.sock info --format "{{.ID}}")" = "97180776-3da5-479c-b9b6-b59a2211c28b"
+exec /usr/sbin/runuser -u somanos -- "$@"
+' sh "$@"

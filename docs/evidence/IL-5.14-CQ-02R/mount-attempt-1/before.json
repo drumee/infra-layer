@@ -1,0 +1,21 @@
+{
+  "daemon": {
+    "id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+    "context": "default",
+    "endpoint": "unix:///var/run/docker.sock"
+  },
+  "volumes": [],
+  "containers": [],
+  "networks": [
+    {
+      "id": "408ad3e37a512172e6caae129e6e4cd801804bc05e5e8e229bc5d97e76405d6e",
+      "name": "host",
+      "metadata_hash": "847a0e873dbfdf46a180df57b973138704e01ac3f2c9d45f1204ba5db19fad66"
+    },
+    {
+      "id": "757a6597dd388cb1d92da874518e91ede6d1cd6d715e6025db7ad0f6f925ae1e",
+      "name": "none",
+      "metadata_hash": "965e29932d151e78300e28280f63d403672aebeaebed24c08d14de5e3aed225d"
+    }
+  ]
+}

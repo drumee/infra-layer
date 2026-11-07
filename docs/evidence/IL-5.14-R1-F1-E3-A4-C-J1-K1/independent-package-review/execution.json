@@ -1,0 +1,273 @@
+[
+  {
+    "name": "independent-inventory-regressions",
+    "command": [
+      "/usr/bin/node",
+      "--test",
+      "test/unit/package-inventory.test.js"
+    ],
+    "cwd": "/home/somanos/github/infra-layer",
+    "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "uid": 1000,
+    "gid": 1000,
+    "started": "2026-10-28T21:39:36.949648+00:00",
+    "ended": "2026-10-28T21:39:37.383132+00:00",
+    "exit_code": 0,
+    "protected_unchanged": true,
+    "protected_before": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "protected_after": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "log": "independent-inventory-regressions.log",
+    "log_sha256": "4f8e3825b526fd3021eb37b3c2c193796adb74c79f9172df19258856172dfa6c"
+  },
+  {
+    "name": "independent-canonical-package-audit",
+    "command": [
+      "/usr/bin/node",
+      "test/package-audit.js"
+    ],
+    "cwd": "/home/somanos/github/infra-layer",
+    "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "uid": 1000,
+    "gid": 1000,
+    "started": "2026-10-28T21:39:37.383418+00:00",
+    "ended": "2026-10-28T21:39:38.344529+00:00",
+    "exit_code": 0,
+    "protected_unchanged": true,
+    "protected_before": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "protected_after": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "log": "independent-canonical-package-audit.log",
+    "log_sha256": "d5a02f890e0d4f205362b09d772683c50b409d4abf0d05a2b3664a5093ec2e46"
+  },
+  {
+    "name": "independent-install",
+    "command": [
+      "/usr/bin/node",
+      "/usr/lib/node_modules/npm/bin/npm-cli.js",
+      "install",
+      "--offline",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "/tmp/drumee-k1-l0h17j68/candidate/drumee-infra-layer-0.1.0-alpha.3.tgz"
+    ],
+    "cwd": "/tmp/drumee-k1-package-review-y6wsv_02/valid-consumer",
+    "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "uid": 1000,
+    "gid": 1000,
+    "started": "2026-10-28T21:39:38.351881+00:00",
+    "ended": "2026-10-28T21:39:38.618418+00:00",
+    "exit_code": 0,
+    "protected_unchanged": true,
+    "protected_before": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "protected_after": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "log": "independent-install.log",
+    "log_sha256": "eb8af5e9eb07a88b2e40ad55905d1a5de6a1e50ee729fdea56f8f68da120fd54"
+  },
+  {
+    "name": "independent-installed-runtime",
+    "command": [
+      "/usr/bin/node",
+      "/tmp/drumee-k1-package-review-y6wsv_02/runtime-check.cjs",
+      "/tmp/drumee-k1-package-review-y6wsv_02/valid-consumer",
+      "valid"
+    ],
+    "cwd": "/tmp/drumee-k1-package-review-y6wsv_02/valid-consumer",
+    "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "uid": 1000,
+    "gid": 1000,
+    "started": "2026-10-28T21:39:38.618930+00:00",
+    "ended": "2026-10-28T21:39:38.660741+00:00",
+    "exit_code": 0,
+    "protected_unchanged": true,
+    "protected_before": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "protected_after": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "log": "independent-installed-runtime.log",
+    "log_sha256": "f16a16e645ff3bdddf7e6535e733bbe7be02aee3e8dce3f5260a637069a51ad8"
+  },
+  {
+    "name": "independent-strict-types",
+    "command": [
+      "/usr/bin/node",
+      "/tmp/drumee-il514-r1-f1-e3-a2-nceslj52/typescript-tool/node_modules/typescript/lib/tsc.js",
+      "--strict",
+      "--noEmit",
+      "--module",
+      "NodeNext",
+      "--moduleResolution",
+      "NodeNext",
+      "--target",
+      "ES2022",
+      "check.ts"
+    ],
+    "cwd": "/tmp/drumee-k1-package-review-y6wsv_02/valid-consumer",
+    "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "uid": 1000,
+    "gid": 1000,
+    "started": "2026-10-28T21:39:38.661196+00:00",
+    "ended": "2026-10-28T21:39:39.626955+00:00",
+    "exit_code": 0,
+    "protected_unchanged": true,
+    "protected_before": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "protected_after": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "log": "independent-strict-types.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "independent-controlled-broken-install",
+    "command": [
+      "/usr/bin/node",
+      "/usr/lib/node_modules/npm/bin/npm-cli.js",
+      "install",
+      "--offline",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "/tmp/drumee-k1-package-review-y6wsv_02/controlled-missing-helper.tgz"
+    ],
+    "cwd": "/tmp/drumee-k1-package-review-y6wsv_02/broken-consumer",
+    "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "uid": 1000,
+    "gid": 1000,
+    "started": "2026-10-28T21:39:39.642140+00:00",
+    "ended": "2026-10-28T21:39:39.908161+00:00",
+    "exit_code": 0,
+    "protected_unchanged": true,
+    "protected_before": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "protected_after": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "log": "independent-controlled-broken-install.log",
+    "log_sha256": "9a2a360fc9d3493e17be033eed412e6432df6a0f73f4aced805bac4384450ef6"
+  },
+  {
+    "name": "independent-missing-helper-negative",
+    "command": [
+      "/usr/bin/node",
+      "/tmp/drumee-k1-package-review-y6wsv_02/runtime-check.cjs",
+      "/tmp/drumee-k1-package-review-y6wsv_02/broken-consumer",
+      "missing"
+    ],
+    "cwd": "/tmp/drumee-k1-package-review-y6wsv_02/broken-consumer",
+    "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "uid": 1000,
+    "gid": 1000,
+    "started": "2026-10-28T21:39:39.908562+00:00",
+    "ended": "2026-10-28T21:39:39.948857+00:00",
+    "exit_code": 0,
+    "protected_unchanged": true,
+    "protected_before": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "protected_after": [
+      {
+        "path": "/etc/docker",
+        "uid": 0,
+        "gid": 0,
+        "mode": 16877,
+        "sha256": null
+      }
+    ],
+    "log": "independent-missing-helper-negative.log",
+    "log_sha256": "c6d7fe652d7f7c5c5c5f12c76e7b975e90a87fe047d7b663b1447897cddbf14d"
+  }
+]

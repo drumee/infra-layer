@@ -1,0 +1,595 @@
+{
+  "common": {
+    "mission_status": "V1_FAILED_QUALIFICATION",
+    "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+    "resume": "af888a0bb51d837e40479bd69d7aec797dbf6767",
+    "qualified_runtime_source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "package_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+    "environment": {
+      "recorded": "2026-10-30T19:11:33.792Z",
+      "daemon": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "version": {
+        "Platform": {
+          "Name": "Docker Engine - Community"
+        },
+        "Version": "29.2.0",
+        "ApiVersion": "1.53",
+        "MinAPIVersion": "1.44",
+        "Os": "linux",
+        "Arch": "amd64",
+        "Components": [
+          {
+            "Name": "Engine",
+            "Version": "29.2.0",
+            "Details": {
+              "ApiVersion": "1.53",
+              "Arch": "amd64",
+              "BuildTime": "Mon Jan 26 19:26:07 2026",
+              "Experimental": "false",
+              "GitCommit": "9c62384",
+              "GoVersion": "go1.25.6",
+              "KernelVersion": "6.1.0-41-amd64",
+              "MinAPIVersion": "1.44",
+              "Os": "linux"
+            }
+          },
+          {
+            "Name": "containerd",
+            "Version": "v2.2.1",
+            "Details": {
+              "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+            }
+          },
+          {
+            "Name": "runc",
+            "Version": "1.3.4",
+            "Details": {
+              "GitCommit": "v1.3.4-0-gd6d73eb8"
+            }
+          },
+          {
+            "Name": "docker-init",
+            "Version": "0.19.0",
+            "Details": {
+              "GitCommit": "de40ad0"
+            }
+          }
+        ],
+        "GitCommit": "9c62384",
+        "GoVersion": "go1.25.6",
+        "KernelVersion": "6.1.0-41-amd64",
+        "BuildTime": "2026-01-26T19:26:07.000000000+00:00"
+      },
+      "node": "v22.22.0",
+      "undici": "6.23.0",
+      "image": {
+        "reference": "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+        "id": "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7"
+      },
+      "dedicated_daemon": false,
+      "suitability": "Shared selected local daemon; exact fresh owned volume/container only, network none, no host ports, no historical deletion; global metadata equality required.",
+      "counts": {
+        "volumes": 682,
+        "containers": 35,
+        "networks": 21
+      },
+      "command_bounds": {
+        "per_command_ms": 30000,
+        "max_output_bytes": 8388608
+      },
+      "sensitive_data": "Container Env/volume option/label contents may be inspected in memory but only selected metadata or hashes retained; no volume content mount/read for unknown objects."
+    },
+    "baseline_lint_replay": "baseline-reproduction.json expected exit1 before correction",
+    "static_and_campaign_ledger": "execution.jsonl",
+    "Docker_preflight_read_only_commands": 19,
+    "Docker_campaign_commands": 131,
+    "Docker_post_failure_read_only_commands": 7,
+    "historical_entries": [
+      "V1-H01",
+      "V1-H02",
+      "V1-H03",
+      "V1-H04"
+    ],
+    "owned_disposal_and_full_qualification_are_distinct": true,
+    "program_result": "FAIL/INCOMPLETE",
+    "offline_analysis": "Mount multiset equivalence diagnoses ordering failure; never overrides original exit/result",
+    "root_case_counts": "7static0 plus1campaign1; originalbaseline1 separate; 131CLIall0 includes6mutations,125reads",
+    "original_inputs_and_historical_artifacts": "verified unchanged; retained prior results are not new runs",
+    "remote": "read-only PR check; no push/edit/merge/publish/deploy; HOSTED_CI_NOT_EXECUTED_NO_PUSH_AUTHORIZATION"
+  },
+  "gates": [
+    {
+      "gate": "A",
+      "status": "PASS",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-baseline.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "B",
+      "status": "PASS",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-implementation.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "C",
+      "status": "PASS",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [
+        {
+          "argv": [
+            "node",
+            "--check",
+            "test/diagnostics/fixture-volumes/docker.cjs"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+          "exit_code": 0,
+          "evidence_log": "syntax-docker.log"
+        },
+        {
+          "argv": [
+            "node",
+            "--check",
+            "test/diagnostics/fixture-volumes/campaign.cjs"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+          "exit_code": 0,
+          "evidence_log": "syntax-campaign.log"
+        },
+        {
+          "argv": [
+            "node",
+            "node_modules/eslint/bin/eslint.js",
+            "test/diagnostics/fixture-volumes/docker.cjs",
+            "test/diagnostics/fixture-volumes/campaign.cjs"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+          "exit_code": 0,
+          "evidence_log": "focused-eslint.log"
+        },
+        {
+          "argv": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+          "exit_code": 0,
+          "evidence_log": "canonical-eslint.log"
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "test/diagnostics/fixture-volumes/safety.test.cjs"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+          "exit_code": 0,
+          "evidence_log": "safety-matrix.log"
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "test/unit/harness-preservation.test.js",
+            "test/unit/harness-reachability.test.js"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+          "exit_code": 0,
+          "evidence_log": "assertion-guards.log"
+        },
+        {
+          "argv": [
+            "node",
+            "--test",
+            "test/unit/refusal-effectiveness.test.js"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+          "exit_code": 0,
+          "evidence_log": "refusal-effectiveness.log"
+        }
+      ],
+      "test_counts": {
+        "ownership": 24,
+        "guards": 48,
+        "refusal_effectiveness": 6,
+        "canonical_lint": {
+          "errors": 0,
+          "historical_warnings": 28,
+          "new_findings": 0
+        }
+      },
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-static-preflight.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "D",
+      "status": "PASS",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-contract-verification.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "E",
+      "status": "PASS",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-docker-preflight.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "F",
+      "status": "FAIL",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [
+        {
+          "argv": [
+            "node",
+            "test/diagnostics/fixture-volumes/campaign.cjs"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+          "exit_code": 1,
+          "evidence_log": "controlled-docker-campaign.log"
+        }
+      ],
+      "test_counts": {
+        "campaigns": 1,
+        "harness_reference_refusals": 3,
+        "Docker_commands": 131,
+        "Docker_exits_all": 0,
+        "root_exit": 1
+      },
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-real-docker-campaign.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "G",
+      "status": "FAIL",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [
+        {
+          "argv": [
+            "node",
+            "test/diagnostics/fixture-volumes/campaign.cjs"
+          ],
+          "cwd": "/home/somanos/github/infra-layer",
+          "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+          "exit_code": 1,
+          "evidence_log": "controlled-docker-campaign.log"
+        }
+      ],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-resource-reconciliation.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "H",
+      "status": "PASS",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-historical-volume-disposition.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "I",
+      "status": "PASS",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-source-impact.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "J",
+      "status": "BLOCKED",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-independent-review.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "K",
+      "status": "PASS",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-A2-handoff.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    },
+    {
+      "gate": "L",
+      "status": "PASS",
+      "source_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+      "test_harness_sha256": {
+        "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+        "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+        "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+        "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+      },
+      "daemon_context": {
+        "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+        "context": "default",
+        "endpoint": "unix:///var/run/docker.sock"
+      },
+      "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+      "commands": [],
+      "test_counts": "No separate new test; source/evidence assessment only",
+      "ownership_manifest": "campaign-1/manifest.json",
+      "owned_volume": "drumee-v1-7ce5916aa16dcb4d7797241b-data",
+      "owned_container": "af9b62076545488e6c08a52eb3f4a97fef245e43854a88dc4da72484098cc134",
+      "consumer_evidence": "campaign-1/result.json three created/running/stopped snapshots; campaign-1/unreferenced.json and post-failure-readback.json",
+      "cleanup_commands": "campaign-1/commands.jsonl seq83 exact container rm, seq117 exact volume rm; all0",
+      "program_cleanup_result": "INCOMPLETE; original result preserved despite exact owned disposal",
+      "post_state": "owned objects absent,0 refs; global ordered raw comparison fails; offline complete mount multiset comparison equal (diagnosis only)",
+      "historical_ledger": "historical-ledger.json: H01-H04 unresolved, no deletion",
+      "foreign_safety": "Only six own mutations; no unauthorized target; raw metadata differs only10Mounts permutations",
+      "independent_disposition": "CHANGES_REQUESTED / V1-F1-REC-001 MODERATE",
+      "report": "../../IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1-final-decision.md",
+      "limitations": "Mechanism unqualified; one attempt consumed; no current correction/retest/application/hosted qualification; historical root causes and volume identities unresolved"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397",
+  "created": "2026-11-04T17:32:38.361819+00:00",
+  "bridge": {
+    "ifindex": 1428,
+    "ifname": "br-cq6ce32480",
+    "flags": [
+      "NO-CARRIER",
+      "BROADCAST",
+      "MULTICAST",
+      "UP"
+    ],
+    "mtu": 1500,
+    "qdisc": "noqueue",
+    "operstate": "DOWN",
+    "group": "default",
+    "txqlen": 1000,
+    "link_type": "ether",
+    "address": "8a:e7:17:23:8d:ae",
+    "broadcast": "ff:ff:ff:ff:ff:ff",
+    "addr_info": [
+      {
+        "family": "inet",
+        "local": "10.247.254.1",
+        "prefixlen": 24,
+        "scope": "global",
+        "label": "br-cq6ce32480",
+        "valid_life_time": 4294967295,
+        "preferred_life_time": 4294967295
+      },
+      {
+        "family": "inet6",
+        "local": "fe80::14c2:48ff:fe1d:4d4c",
+        "prefixlen": 64,
+        "scope": "link",
+        "tentative": true,
+        "protocol": "kernel_ll",
+        "valid_life_time": 4294967295,
+        "preferred_life_time": 4294967295
+      }
+    ]
+  },
+  "address": "10.247.254.1/24",
+  "rules": [
+    [
+      "-I",
+      "FORWARD",
+      "1",
+      "-i",
+      "br+",
+      "-s",
+      "10.247.0.0/16",
+      "-o",
+      "wlp2s0",
+      "-m",
+      "comment",
+      "--comment",
+      "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-BUILD-OUT",
+      "-j",
+      "ACCEPT"
+    ],
+    [
+      "-I",
+      "FORWARD",
+      "1",
+      "-i",
+      "wlp2s0",
+      "-o",
+      "br+",
+      "-d",
+      "10.247.0.0/16",
+      "-m",
+      "conntrack",
+      "--ctstate",
+      "ESTABLISHED,RELATED",
+      "-m",
+      "comment",
+      "--comment",
+      "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-BUILD-RETURN",
+      "-j",
+      "ACCEPT"
+    ],
+    [
+      "-t",
+      "nat",
+      "-A",
+      "POSTROUTING",
+      "-s",
+      "10.247.0.0/16",
+      "-o",
+      "wlp2s0",
+      "-m",
+      "comment",
+      "--comment",
+      "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-BUILD-NAT",
+      "-j",
+      "MASQUERADE"
+    ]
+  ],
+  "purpose": "Permit canonical image build on an owned default bridge; only new campaign source range; no existing rule replacement",
+  "status": "PASS",
+  "candidate_sha": "76236faa85dd2cfdaf46646b28ce38fd41d26fb3",
+  "private_daemon_id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+  "fix": "Existing custom bridge already has its IP; removed mutually exclusive bip option",
+  "config_sha256": "ae0265aa2a280d8208e6be15496d7b905abcb3625e6badc579b03482a89eba86"
+}

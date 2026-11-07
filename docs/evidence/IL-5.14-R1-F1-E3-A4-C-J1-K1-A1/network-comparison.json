@@ -1,0 +1,153 @@
+{
+  "original": {
+    "project": "drumee-il5-35341a09",
+    "declared_network": "drumee-il5-35341a09-application",
+    "role": "kernel",
+    "classification": "INSUFFICIENT_EVIDENCE",
+    "container_id": null,
+    "network_id": null,
+    "endpoint_id": null,
+    "state": null,
+    "unavailable": "No pre-error Docker inspect/journal/candidate snapshot or stack"
+  },
+  "controlled": {
+    "project": "drumee-il5-8f39498a",
+    "declared_network": "drumee-il5-8f39498a-application",
+    "admission": {
+      "sequence": 229,
+      "container": {
+        "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+        "name": "/drumee-il5-8f39498a-application-1",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "service": "application",
+        "role": "application",
+        "revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11",
+        "image_id": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "image": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "running": true,
+        "restarting": true,
+        "exit_code": 1,
+        "started_at": "2026-10-29T18:27:41.35930245Z",
+        "labels": {},
+        "networks": {
+          "drumee-il5-8f39498a-application": {
+            "NetworkID": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+            "EndpointID": "",
+            "Aliases": [
+              "drumee-il5-8f39498a-application-1",
+              "application"
+            ],
+            "DNSNames": [
+              "drumee-il5-8f39498a-application-1",
+              "application",
+              "fcb9d44e47b0"
+            ],
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "Gateway": "",
+            "MacAddress": ""
+          }
+        },
+        "mounts": [
+          {
+            "Type": "bind",
+            "Destination": "/app/state"
+          },
+          {
+            "Type": "bind",
+            "Destination": "/run/secrets/signing"
+          }
+        ]
+      },
+      "owned_network_snapshot": {
+        "id": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+        "name": "drumee-il5-8f39498a-application",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "labels": {},
+        "containers": {}
+      },
+      "classification": "AUTHORIZED_AND_PRESENT",
+      "endpoint_qualification": "Absent endpoint allowed for exact verified running/restarting recovery target; never ready"
+    },
+    "final": {
+      "sequence": 249,
+      "container": {
+        "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+        "name": "/drumee-il5-8f39498a-application-1",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "service": "application",
+        "role": "application",
+        "revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280",
+        "image_id": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "image": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "running": true,
+        "restarting": false,
+        "exit_code": 0,
+        "started_at": "2026-10-29T18:27:42.521659567Z",
+        "labels": {},
+        "networks": {
+          "drumee-il5-8f39498a-application": {
+            "NetworkID": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+            "EndpointID": "d116449feb652f81f3bee6d3eb6fff9ab49074eee45698848929fb8a2dc1356a",
+            "Aliases": [
+              "drumee-il5-8f39498a-application-1",
+              "application"
+            ],
+            "DNSNames": [
+              "drumee-il5-8f39498a-application-1",
+              "application",
+              "d08cb6285a60"
+            ],
+            "IPAddress": "192.168.48.2",
+            "IPPrefixLen": 20,
+            "Gateway": "192.168.48.1",
+            "MacAddress": "b6:d3:c9:77:cf:0c"
+          }
+        },
+        "mounts": [
+          {
+            "Type": "bind",
+            "Destination": "/app/state"
+          },
+          {
+            "Type": "bind",
+            "Destination": "/run/secrets/signing"
+          }
+        ]
+      },
+      "owned_network_snapshot": {
+        "id": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+        "name": "drumee-il5-8f39498a-application",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "labels": {},
+        "containers": {
+          "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031": {
+            "Name": "drumee-il5-8f39498a-application-1",
+            "EndpointID": "d116449feb652f81f3bee6d3eb6fff9ab49074eee45698848929fb8a2dc1356a",
+            "IPv4Address": "192.168.48.2/20",
+            "IPv6Address": "",
+            "MacAddress": "b6:d3:c9:77:cf:0c"
+          }
+        }
+      },
+      "classification": "AUTHORIZED_AND_PRESENT",
+      "endpoint_id": "d116449feb652f81f3bee6d3eb6fff9ab49074eee45698848929fb8a2dc1356a",
+      "strict_validation_return_sequences": [
+        250,
+        259
+      ]
+    },
+    "observed_state_change": {
+      "before_sequence": 219,
+      "restarting": false,
+      "at_authorization_sequence": 229,
+      "restarting_now": true,
+      "interpretation": "Demonstrates non-atomic state observations in this successful attempt; not historical failure causality"
+    }
+  },
+  "original_identifiers_not_filled_from_new_attempt": true
+}

@@ -1,0 +1,5 @@
+# E1 corrective scope — Gate G NOT_EXECUTED
+
+No exact cause was established, so no concrete observation fix is justified. Do not weaken the positive criterion to accept the file name, replace an individual event with summary counts, disable native isolation, change dependencies, skip a case or repeat unchanged commands for a green result. No D1, comparator, reporter or collector implementation correction occurs in E1.
+
+A future separately authorized diagnostic scope must first identify the inner native registration/callback/emission boundary using evidence beyond this failed baseline. The exact change cannot be chosen from the current record. Any later supported correction must preserve exact case identity, missing-case failure, positive visible result, intentionally failing negative assertion/nonzero exit, module-load and subprocess failures, complete separate streams and original error propagation. Native facilities remain preferred; this report introduces no new observation framework.

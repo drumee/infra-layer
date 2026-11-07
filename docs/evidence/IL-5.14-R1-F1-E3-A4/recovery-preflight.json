@@ -1,0 +1,24 @@
+{
+  "attempt": "A4-R5-RECOVERY-1",
+  "directory": "/tmp/drumee-il514-a4-fl8t4b6j/recovery-docker",
+  "owner": 1000,
+  "mode": "0o700",
+  "source": "51cfd7b9839d45f6423fdb0f2be0d240ee8c114a",
+  "modified_bytes": {
+    "lifecycle/activation.js": "e2ed425d1df485866189be14ff6c581aa53557123d53483fc30f0b22d27ba4cd",
+    "lifecycle/recovery.js": "67525625672a792b0e14b6bb7738a2688ff3bfb64bc632e0b0c76ea135a4589b",
+    "lifecycle/docker.js": "b2ddc523aef50100f30dd7f20fb93e43715be36df88fe8cf671a1b88c13b41b6",
+    "internal/rollback-authorization.js": "b29778657161e981acea8eef597c935a2a2ddc95b951b8c8e9a3f6659c3053ee",
+    "test/network-attachments/rollback-real.cjs": "5b18e531d0b44fda3c103ff0e747400fa8e1776fb0176aa5116cb112470ce076"
+  },
+  "free_bytes": 1119929921536,
+  "node": "v22.22.0",
+  "docker": "29.2.0",
+  "namespace": "drumee-il5-<random8>; exact project recorded by runner",
+  "command": [
+    "env",
+    "IL514_DIAGNOSTIC_DIR=/tmp/drumee-il514-a4-fl8t4b6j/recovery-docker",
+    "node",
+    "test/network-attachments/rollback-real.cjs"
+  ]
+}

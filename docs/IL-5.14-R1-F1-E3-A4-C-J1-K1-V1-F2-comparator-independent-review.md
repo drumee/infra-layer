@@ -1,0 +1,7 @@
+# Independent comparator review — Gate F BLOCKED
+
+Reviewer `/root/v1_f2_review`, separately scoped from implementation, returns **BLOCKED_EVIDENCE**. **V1-F1-REC-001 remains OPEN; NOT FINDING_CLOSED**. [Decision](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2/independent-review/decision.json), [independent report](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2/independent-review/independent-review.md).
+
+Candidate `5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6`; resume `987a3bba377fa7f6153b8ce10f4fca231fff0790`; attempt `V1-F2-830ab96f-f97f-4403-94ac-de1f9c12673e`. Harness SHA256 values: [baseline](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2/baseline.json). No Docker daemon/context was inspected in V1-F2. Planned endpoint is unix:///var/run/docker.sock/default, not a current verified daemon identity. No live Docker commands, fixtures, cleanup or campaign occurred.
+
+The reviewer reconstructs exact historical ordering-only differences, inspects current complete tuple count maps, strict current/historical schema separation, multiplicity, non-mutation, negative controls, unchanged cleanup checks, candidate source/hashes and seven execution/log receipts. Static design inspection finds no demonstrated unsafe deletion bypass or duplicate loss. It cannot substitute for the failed mandatory regression. No new MAJOR/BLOCKER is demonstrated. Reviewer executes zero tests and zero Docker commands. Docker authorization gate remains closed.

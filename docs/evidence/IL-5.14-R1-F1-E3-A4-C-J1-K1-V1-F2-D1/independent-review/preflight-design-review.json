@@ -1,0 +1,55 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "independent": true,
+  "created": "2026-11-04T09:36:50.943942+00:00",
+  "source_checkpoint": "f6ec38e24d2504b3ed45fe4da94b4a00e785da4c",
+  "diagnostic_candidate": "57a451e8f7cea089385a618a96e0aa8e2af7eb24",
+  "comparator_source": "5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6",
+  "disposition": "PREFLIGHT_DESIGN_ACCEPTED_PENDING_EXECUTION",
+  "scope": "Static diagnostic design inspection only; no diagnostic/comparator/test/Docker execution",
+  "diagnostic_working_tree_sha256": {
+    "test/diagnostics/comparator-failure/capture.cjs": "3476cea99270de4ea3052e75a31585420a33e2d6b64bcc8879c90e9a44909f2f",
+    "test/diagnostics/comparator-failure/failure-reporter.cjs": "6b01c3047ef6ea02bb1a9562aa0940db8a14c32f31a8a7803e458952bc17c688",
+    "test/diagnostics/comparator-failure/fixture.cjs": "81d1fe2d29afa886ab1864560509a00a636e6a8d899ef7dd677dc1c6974d418a",
+    "test/diagnostics/comparator-failure/preload.cjs": "e85a39a9d26717cf77968eead31907184f72e9dbcf1d8b87d0cc01b681236ab1",
+    "test/diagnostics/comparator-failure/record.py": "e13023c55d08f3c0fda39f065be04b78abf09b0527b94b625a00998682478089",
+    "test/diagnostics/comparator-failure/reporter.cjs": "283af7c56490d95428cd6a061ee2ce85a19f073abcd10cf9197519c0a6f46758"
+  },
+  "comparator_harness_verified_unchanged": {
+    "test/diagnostics/fixture-volumes/campaign.cjs": "6f339f2e78415a3a7aa0bb362524f0a8d82a965ccd90589e7817b535a8aa790c",
+    "test/diagnostics/fixture-volumes/docker.cjs": "e91d21e7518c2dbdd0c41de50fca3037911a3b4d997435df6f3d6dc72d9b9cd1",
+    "test/diagnostics/fixture-volumes/mounts.cjs": "17e8d663a1985ec13b410a9c12baf8c4d8ec16256cd22fef0c7b7488425a74cb",
+    "test/diagnostics/fixture-volumes/mounts.test.cjs": "3d186f6c27323559a4a74004e851193f2a09faf82fb624db4f2f56ab9aaa0c6e",
+    "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+    "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+  },
+  "reviewed_properties": [
+    "Existing comparator/assertion/registration source is unchanged; target preload observes exact _compile call and rethrows same source exception.",
+    "Per-process observer uses uncaughtExceptionMonitor; rejection emission delegates to original process.emit with original receiver/arguments/result and no added unhandledRejection handler.",
+    "Native parent TAP plus bounded custom reporter and worker sidechannel capture phase/error evidence independently. Child-v8 transport stays unchanged.",
+    "observeError preserves the original error in catch paths and separately exposes collection errors; incomplete/failed collection cannot count as successful evidence.",
+    "String truncation, cause-depth/journal/output bounds explicit; redaction applies to diagnostic messages and public raw stream copies.",
+    "Subprocess starts new session; only that exact owned process group receives deadline SIGKILL once, with bounded drain and explicit forced-close/EOF flags.",
+    "Frozen source checks include original inputs, comparator source and diagnostic instrumentation.",
+    "Preflight fixtures cover load success/failure, registration failure, assertion failure, rejection, worker exit7, reporter failure, normal completion, precedence and output bound/redaction before comparator permission.",
+    "Comparator attempt has exclusive marker; failed preflight blocks it. No Docker command is present in instrumentation."
+  ],
+  "resolved_static_concerns": [
+    "Original error replacement on capture failure",
+    "Unmarked individual stack/message truncation",
+    "Outer-only timeout leaving worker/output descriptors",
+    "Diagnostic instrumentation not bound to frozen hash map"
+  ],
+  "limitations": [
+    "Actual E1-E10 behavior is not established until all preflight evidence is available.",
+    "Design acceptance is not causal confirmation or comparator qualification.",
+    "Unexpected collection error, timeout, forced EOF or missing required event must block comparator diagnostic rather than be ignored.",
+    "Existing generic F2 failure remains unexplained; all static hypotheses are unproven."
+  ],
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "comparator_finding": "V1-F1-REC-001 OPEN",
+  "cleanup_mechanism": "NOT_QUALIFIED",
+  "application_acceptance": "FAILED",
+  "R1_closure": "PENDING"
+}

@@ -1,0 +1,64 @@
+{
+  "qualified_diagnostic_executable": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "qualified_R5": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "starting_checkpoint": "21e22681ce5c6f8cc0bbccc791c5adf4f5c12be5",
+  "status": "AWAITING_OWNER_RISK_DECISION",
+  "no_executable_changes_after_qualification": true,
+  "R5_source_equivalent": true,
+  "historical_entries_reverified": 188,
+  "independent_reviews": {
+    "independent-observer-review": {
+      "manifest_verified": true,
+      "disposition": "FINDING_CLOSED"
+    },
+    "independent-campaign-review": {
+      "manifest_verified": true,
+      "disposition": "CAMPAIGN_EVIDENCE_VALID"
+    }
+  },
+  "command_entries_verified": 9,
+  "all_command_exits": 0,
+  "documentation_links_verified": true,
+  "owner_decision": "PENDING; no option selected",
+  "diagnostic_hashes": {
+    "test/diagnostics/observer-shutdown/docker-probe.test.cjs": "1fc582e38f7e7ade74adc7cb1c891573b7452f8025bd2b4edcd759d3bd4bc000",
+    "test/diagnostics/observer-shutdown/historical-replay.cjs": "408c97a27621dfa84c861ff3a0bbd82aa83080ed660fb5814ad6bd0aebacb6cd",
+    "test/diagnostics/observer-shutdown/matrix.test.cjs": "ebbfc8b7c52c8cb834137b801d1d9cd56306607c3a5bc5a31330858ad1a42105",
+    "test/diagnostics/observer-shutdown/model.cjs": "17595e5ab4fe938c756cb8e2b566a90f517a283e7a439cc85dc07a5e5ceea490",
+    "test/diagnostics/observer-shutdown/protocol.test.cjs": "616f8c8397dfb53362fb01569ae4e534f81953b925c3fab526181ff51eb63b85",
+    "test/diagnostics/observer-shutdown/regression.test.cjs": "84ec6fbb25b2c2350e510ac5075375bce83e8a3ce35f8d450bb346ad81c94829",
+    "test/diagnostics/postfix-http/client-preload.cjs": "78bab9c3dd39c600e034a74670031958656af3fbbb4d0db3d4791d12d0f1d144",
+    "test/diagnostics/postfix-http/diagnostic.test.cjs": "c5a88f0c61c44cf96bd799d3562a968067be95529a5b8df041042b09b167f6ee",
+    "test/diagnostics/postfix-http/fixture.cjs": "d3f7e10e3bc6168a2ae9920c6fab1261a3b88fbf51dab098f3a66dd829140260",
+    "test/diagnostics/postfix-http/observe.cjs": "b968891ec02c15a7ab82eba5d6e7fffc4f043e2cf4cb08895fa37752baa1779e",
+    "test/diagnostics/postfix-http/server-preload.cjs": "85898d695b4cb1b079bfe02f40d68fc02d32ca29b4b0fde4695891b58ff24d0d",
+    "test/diagnostics/postfix-http/services-attempt.cjs": "6ccda0dcedbf11d1e0fbfbb78869421921f26e1efca5531319e39c985ab7d7cc",
+    "test/diagnostics/services-capture/campaign.cjs": "06dcb59202db2f953c9127f088cf986d471824afaec3677e45933753b2dda406",
+    "test/diagnostics/services-capture/client-preload.cjs": "700c5d4d92a95ee88d3db728012ecb6748e17172fef05dc9c8a8d058e29f376b",
+    "test/diagnostics/services-capture/docker-events.cjs": "3685bbe6b82c092ca2eb035aee95603637ea32c2370976c4d4501c154d2643a5",
+    "test/diagnostics/services-capture/evidence-window.cjs": "b5f3ec60239b84a60be14dac597a527bf1588d515df1e4af59a62c3564178dca",
+    "test/diagnostics/services-capture/hook-cases.test.cjs": "bbe25d05ef1f63011abf5b06d7526159049279fc0a32c7d4287fb0ba046303dc",
+    "test/diagnostics/services-capture/observe.cjs": "0120aa6eedbd8c38dad8e3aeed0325668c9163da52afa082fd9aa86600cb894a",
+    "test/diagnostics/services-capture/observer-contract.cjs": "437e169ff122115a820b938b80912c2de467d42cbad3ee12030ca7154e007e4e",
+    "test/diagnostics/services-capture/observer-control.cjs": "72970418aec1369819d2acdef853c08c2562978817faddd327a253bafd5389bf",
+    "test/diagnostics/services-capture/observer-events.cjs": "a553d6b826b5d806fbf8583f354c23a9bfe07e3b180fae60a5ef5b7815021b8f",
+    "test/diagnostics/services-capture/observer-ready.cjs": "9408f8e132ef41a0b3383708f2e24f6b967d0d586f6ae5c5c6230f81c37a15bb",
+    "test/diagnostics/services-capture/preflight.test.cjs": "1a9ffb4c52f4dc42022878694e490d17c30e471d3a74d0b2c8d02647035dfc2d",
+    "test/diagnostics/services-capture/state.cjs": "896ae60471b347d2579922bb558de547d6b24bdd45d443851cb714cc8789c3d0"
+  },
+  "reports": {
+    "IL-5.14-R1-F1-E3-A4-P2-F1-baseline.md": "e82399bd73ddf252a8256801549579d681c5b3085b885bbf91fd06af2e5910b7",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-campaign-review.md": "6d2b48714234f34abaefafc61f98eec2f63aa2114b8798621b00c654ffd5b08c",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-canonical-services-campaign.md": "e443baf19a8dd12613e8fda2b09cc3a47971b0ba0c46cfeef5ade4ab0c023a01",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-causal-assessment.md": "df4bc5da246f99f6816c194573f015e08355f1af6c980ba8d5e9b0b456f99ac0",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-final-decision.md": "27b7156a4b3f4b9a9e30b8dc1035533d9280bbac1b5526384a027e1446c7cc14",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-focused-qualification.md": "2e9cf02997e08e4c1f49f5abb5781fd9a11ac787f0f6aa7c5fa79e4742b6d05d",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-implementation.md": "6b88e0c503a7f38c4d37b85dce0bab30776ae624c7534ebd2b6efa75d77bbbc8",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-independent-review.md": "8f292a36979faacc838bea8a5ca16bb46057e233f5d3e8e985c7b6e6f717e0a6",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-mutation-qualification.md": "8c0462451be66a0a5a1a2a9dbfa54a9d9790335e5682d804a030f328d40ae33a",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-recovery-impact.md": "17c286cf29a9d3b41f3665f7157380148d6ccc1e779f0a3546acd2bbdaeedbfc",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-regression-qualification.md": "ed547697eef23f1a8102bc9a2926c75bfe3c639fa7517a1f6c68da26145e5d13",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-residual-risk-decision.md": "fc97f99273956119dba6ffe4e5868ac1de13a2c2f2f3a45daf741a23c8f29342",
+    "IL-5.14-R1-F1-E3-A4-P2-F1-shutdown-contract.md": "8b24cbd072d0bee436d29e364191873c1aa85ef538d0ac8f3ffa511cefd63f9e"
+  }
+}

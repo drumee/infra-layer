@@ -1,0 +1,23 @@
+{
+  "name": "mount-negative",
+  "argv": [
+    "node",
+    "-e",
+    "const M=require(\"./test/diagnostics/fixture-volumes/mounts.cjs\"); const a=M.projectMount({Type:\"volume\",Name:\"cq01-control\",Source:\"/fixture/source\",Destination:\"/fixture\",Driver:\"local\",RW:false,Mode:\"\",Propagation:\"\"}); console.log(\"CQ01_ASSERTION_REACHED\"); M.assertMountsEqual([a],[{...a,rw:true}]); console.log(\"UNREACHABLE_UNSAFE_SUCCESS\");"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5bb733b7f709547f928f87edf9a37fd7f31fe4be",
+  "started": "2026-11-04T15:46:25.169544+00:00",
+  "ended": "2026-11-04T15:46:25.202504+00:00",
+  "exit": 1,
+  "stdout": {
+    "file": "mount-negative.stdout",
+    "bytes": 23,
+    "sha256": "09042f093281d3900943156d4e0b1a4b504f01dee92989a655c6bf403e99e92f"
+  },
+  "stderr": {
+    "file": "mount-negative.stderr",
+    "bytes": 1716,
+    "sha256": "0dd4400331b1e9fe9b18aedecba1421f6735bcf1d4364ece26b866d69422aabb"
+  }
+}

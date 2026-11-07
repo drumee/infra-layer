@@ -1,0 +1,94 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "independent": true,
+  "created": "2026-11-04T10:30:18.524805+00:00",
+  "disposition": "BLOCKED_EVIDENCE",
+  "recommended_mission_status": "FAILED_DIAGNOSTIC",
+  "failed_gate": "B native positive control",
+  "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+  "fixture_candidate": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+  "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+  "original_D1_cause": "ROOT_CAUSE_UNDETERMINED",
+  "original_F2_cause": "ROOT_CAUSE_UNDETERMINED",
+  "native_positive": {
+    "command": [
+      "/usr/bin/node",
+      "--test",
+      "--test-reporter=tap",
+      "test/diagnostics/test-events-e1/positive.test.cjs"
+    ],
+    "cwd": "/home/somanos/github/infra-layer",
+    "D1_observation_layer": false,
+    "root_exit": 0,
+    "expected_individual_case": "e1-native-positive",
+    "expected_named_subtest_present": false,
+    "expected_named_PASS_present": false,
+    "actual_TAP_totals": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "scope": "File-level positive.test.cjs only"
+    },
+    "stdout_bytes": 288,
+    "stderr_bytes": 0,
+    "raw_stdout_sha256": "1cf8e47505c7b446dc5d7c0f74f2809946684d9e7a580593d13255fa35c4dd36",
+    "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "truncation": false,
+    "test_callback_execution": "NOT_ESTABLISHED; no callback/native named case evidence"
+  },
+  "remaining_experiments": {
+    "native_negative": "NOT_EXECUTED",
+    "D1_wrapped_positive": "NOT_EXECUTED",
+    "D1_wrapped_negative": "NOT_EXECUTED",
+    "comparator": "NOT_EXECUTED",
+    "Docker": "NOT_EXECUTED"
+  },
+  "causal_assessment": {
+    "verified_boundary": "The missing individual-event symptom occurs in a direct native command with neither D1 preload, custom reporter, collector nor synthetic D1 fixture code. D1 observation components are not necessary for this newly observed symptom.",
+    "not_established": [
+      "Why native individual events are absent",
+      "Whether the positive callback executed",
+      "An installed Node internal defect",
+      "A fixture, invocation or environment defect",
+      "A D1 component defect or its contribution to the historical D1 failure",
+      "The original F2 comparator causal event"
+    ],
+    "comparison_limit": "Native pair prerequisite fails on its first control. Negative control and matched D1-path pairs cannot be run. There is no qualified differential experiment identifying an exact event-loss layer.",
+    "required_stop": "Do not accept file-level exit0/PASS as named test execution. No further experiment, source correction, comparator invocation or Docker in stopped E1."
+  },
+  "source_verification": {
+    "original_inputs": 177,
+    "comparator_files": 6,
+    "D1_diagnostic_files": 6,
+    "new_E1_fixture_files": 2,
+    "all_hashes_unchanged": true,
+    "source_changes_since_checkpoint": [
+      "test/diagnostics/test-events-e1/negative.test.cjs",
+      "test/diagnostics/test-events-e1/positive.test.cjs"
+    ],
+    "new_fixture_source_only": true,
+    "current_fixture_hashes": {
+      "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+      "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+    }
+  },
+  "qualification_boundaries": {
+    "V1_F1_REC_001": "OPEN",
+    "V1_cleanup": "V1_FAILED_QUALIFICATION / mechanism NOT_QUALIFIED",
+    "historical_H01_H04": "RESOURCE_IDENTITY_UNRESOLVED / HISTORICAL_EVIDENCE_INSUFFICIENT; no new readback or deletion",
+    "production_and_package": "Preserved original177/package-relevant inputs; no archive rehash",
+    "application_acceptance": "FAILED NETWORK_ATTACHMENT_MISMATCH",
+    "R1_closure": "PENDING"
+  },
+  "evidence_hashes": {
+    "baseline.json": "0fc6fd42a38ed2d6ef527dfd3de1deabc5be24478a0d6b72da41bc990569bfc7",
+    "STOP.json": "2b4dae54b08133e1cf6d804b8925ed11713b56a87ecf7d6c978c7caa668730a6",
+    "native-positive/start.json": "2ce35a8d0efae7b7e7168fc135d95f9c2593a27a04f51d955aabbe53b51d7fcf",
+    "native-positive/tool-result.json": "cbf1126482b0ec9ce63c7b539e3de41a9a4a00e6cd7ce2df4c80236c7ce2bf1a",
+    "native-positive/result.json": "e2173b421bb66fa39ae40a4d971386b6f38db1f0ccd924dcf713e83252f8f75b"
+  },
+  "new_major_or_blocker_security_findings": [],
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "reviewer_remote_operations": 0
+}

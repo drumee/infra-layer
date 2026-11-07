@@ -1,0 +1,22 @@
+import collections, datetime, hashlib, json, pathlib, subprocess
+root=pathlib.Path('/home/somanos/github/infra-layer')
+out=root/'docs/evidence/IL-5.14-CQ-01'
+def git(*args): return subprocess.check_output(['git',*args],cwd=root)
+sha=git('rev-parse','HEAD').decode().strip()
+paths=git('ls-files','-z').decode().split('\0')[:-1]
+def category(p):
+    if p.startswith('docs/evidence/'): return 'historical_raw_evidence'
+    if p.startswith('docs/'): return 'documentation'
+    if p.startswith('test/'): return 'test_only'
+    if p.startswith(('adapters/','capabilities/','internal/','lifecycle/','lib/')) or p in ['index.d.ts','package.json','package-lock.json','README.md','LICENSE','PROVENANCE.md','CHANGELOG.md']: return 'production_or_package_input'
+    return 'tooling_or_repository'
+changed=git('diff','--name-only','main...HEAD').decode().splitlines()
+inventory={p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in paths if not p.startswith('docs/')}
+historical={}
+for revision in ['f54a6ea3c1d170ee543ef98a890b38f0dd449a55','72f4c67254561ca5c4c47a6a65e9620e57da7841','20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee','fd708aaf914accc93aa42fcd705740db390721d5']:
+    historical[revision]={
+      'production_package_diff':git('diff','--name-only',revision,sha,'--','adapters','capabilities','internal','lifecycle','lib','index.d.ts','package.json','package-lock.json','README.md','LICENSE','PROVENANCE.md','CHANGELOG.md').decode().splitlines(),
+      'non_documentation_diff':git('diff','--name-only',revision,sha,'--','.',':(exclude)docs').decode().splitlines()}
+data=dict(candidate_sha=sha,observed_at=datetime.datetime.now(datetime.timezone.utc).isoformat(),branch=git('branch','--show-current').decode().strip(),initial_worktree='clean (observed before evidence creation)',base=git('rev-parse','main').decode().strip(),non_documentation_sha256=inventory,pr_diff={k:[p for p in changed if category(p)==k] for k in sorted(set(map(category,changed)))},historical_comparison=historical)
+(out/'source-inventory.json').write_text(json.dumps(data,indent=2)+'\n')
+print(json.dumps({'candidate_sha':sha,'hashed_files':len(inventory),'pr_categories':{k:len(v) for k,v in data['pr_diff'].items()},'historical_production_diffs':{k:v['production_package_diff'] for k,v in historical.items()}},indent=2))

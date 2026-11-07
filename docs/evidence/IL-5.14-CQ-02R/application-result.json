@@ -1,0 +1,35 @@
+{
+  "project": "drumee-il5-836bf147",
+  "source_revision": "76236faa85dd2cfdaf46646b28ce38fd41d26fb3",
+  "groups": [
+    "prepare-is-persistent-private-and-does-not-start-application",
+    "real-runtime-public-rpc-and-canonical-authorization-denial",
+    "actual-loopback-publication-and-separate-lan-client-denial",
+    "external-host-nginx-https-and-unchanged-native-rpc-prefix",
+    "stop-start-preserves-resource-and-secret-generations",
+    "controlled-configuration-update-and-canonical-rollback",
+    "failed-startup-does-not-reset-owned-application-state",
+    "real-process-interruption-requires-explicit-recovery",
+    "unknown-resource-and-prepared-tampering-are-refused",
+    "complete-no-smtp-backup-and-isolated-restore"
+  ],
+  "assertions": 62,
+  "smtp_recovery": "explicitly-unsupported",
+  "internet_delivery": "not-tested",
+  "runtime_version": "0.1.0-alpha.4",
+  "network": {
+    "control_route": true,
+    "application_non_loopback": "ECONNREFUSED"
+  },
+  "socket_observation": "LISTEN 0      4096   127.0.0.1:44799 0.0.0.0:*",
+  "host_proxy": {
+    "version": "nginx version: nginx/1.26.3",
+    "tls": "actual-CA-SAN-verified",
+    "containerized": false
+  },
+  "status": "failed",
+  "failure": {
+    "code": "IL5_APPLICATION_ACCEPTANCE_FAILED",
+    "command_status": 1
+  }
+}

@@ -1,0 +1,14 @@
+# B1 source and qualification impact — Gate H PASS
+
+**PRODUCTION_EXECUTABLE_PRESERVED.** Repository source `a62c6e3b04a0916c89b8891d78697240679eab99` (resume checkpoint unchanged), Node `/usr/bin/node` v22.22.0. Temporary reference `/tmp/drumee-b1-native-s3r6yhe1/e1-native-positive.test.cjs`, exact source SHA256 `c32f3dc74a4feb035d6a3c22bf30540cb12ba854a4bd69f9dfa5bfe69016fd91`, archived as reference-positive.cjs.txt. No repository executable source changed.
+
+No repository executable file is added or changed. Only new B1 English reports/evidence, including a non-executable .txt source snapshot, are introduced. The live marked reference and its journal are in a newly owned private /tmp directory and remain preserved. Existing production/package files allowlist excludes docs/test diagnostics; no fixture enters published package paths.
+
+All177 frozen original files remain byte-equivalent to qualified20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee. Comparator6, D1diagnostic6, E1fixture2 and original E1 evidence hashes are unchanged. No runtime/network validation/rollback authorization/observer/lifecycle/Postfix/capture/package manifest/audit/exports/dependency changes. Source-impact.json records actual empty executable diff and exact temporary reference identity; no source correction follows the failed control.
+
+Recorded archive SHA256004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1 remains historical K1 evidence. No physical archive check, rehash, rebuild or publication occurs. Previous scoped package/unit/contracts/R5/lifecycle/Services/network-isolation evidence retains only its relevant unchanged-source scope, not a new qualification result.
+
+One new native arithmetic positive reference executes. Negative is not created/run, original E1 not reexecuted, comparator/application/Services/Docker suites not invoked. No Docker command, daemon query or resource creation/modification/deletion; historical H01–H04 volume identities remain unresolved and protected. No remote operation, PR read/edit/push/merge, image/package publication, tag, deployment or Debian/Server Runtime/Oxy-form modification.
+
+Preserve E1_FAILED_DIAGNOSTIC, D1_FAILED_DIAGNOSTIC, V1_FAILED_QUALIFICATION, V1-F1-REC-001_OPEN, APPLICATION_ACCEPTANCE_FAILED_NETWORK_ATTACHMENT_MISMATCH, APPLICATION_HISTORICAL_ROOT_CAUSE_UNDETERMINED, F1_FAILED_QUALIFICATION_APPLICATION_ACCEPTANCE and R1_FINAL_CLOSURE_PENDING. Also preserve FIXTURE_VOLUME_CLEANUP_UNQUALIFIED, POSTFIX_HISTORICAL_ROOT_CAUSE_UNDETERMINED, POSTFIX_HISTORICAL_UNCERTAINTY_ACCEPTED_BY_OWNER, SMTP_RECOVERY_UNQUALIFIED, H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED and historical Debian H3 stability failure. Four historical volume identities remain unresolved and untouched. Owner Option B covers only historical Postfix HTTP capture uncertainty; no diagnostic/comparator/cleanup/application residual risk is accepted.
+

@@ -1,0 +1,42 @@
+{
+  "name": "comparator-regressions",
+  "command": [
+    "node",
+    "--test",
+    "test/diagnostics/fixture-volumes/mounts.test.cjs"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source": "5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6",
+  "qualified_reference": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "attempt": "V1-F2-830ab96f-f97f-4403-94ac-de1f9c12673e",
+  "uid": 1000,
+  "gid": 1000,
+  "started": "2026-11-02T15:56:08.523253+00:00",
+  "ended": "2026-11-02T15:56:08.782520+00:00",
+  "exit_code": 1,
+  "process_returncode": 1,
+  "protected_before": [
+    {
+      "path": "/etc/docker",
+      "uid": 65534,
+      "gid": 65534,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_after": [
+    {
+      "path": "/etc/docker",
+      "uid": 65534,
+      "gid": 65534,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_unchanged": true,
+  "frozen_inputs_unchanged": true,
+  "log": "comparator-regressions.log",
+  "log_sha256": "391467808661e540939aaa64b813910ae18d0bf00be1cd2b296d132dad0f7ff4"
+}

@@ -1,0 +1,33 @@
+{
+  "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397",
+  "local": "/tmp/drumee-cq02r-yktkfhtd",
+  "remote": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397",
+  "source_sha": "b67c48dbc8dd9e1f365a2259b12f90f62180b042",
+  "protected_daemon_id": "690569ff-0ab3-482e-81d0-09e2c6f93da0",
+  "private_pool": "10.247.0.0/16",
+  "client": "192.168.5.201",
+  "testbox_lan": "192.168.5.202",
+  "host_nginx": "/usr/sbin/nginx",
+  "created_resources": [
+    {
+      "type": "directory",
+      "path": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397",
+      "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397",
+      "creation": "exclusive mkdir verified by owner marker"
+    }
+  ],
+  "temporary_authorized_keys": {
+    "path": "/home/somanos/.ssh/authorized_keys",
+    "created_exclusively": true,
+    "sha256": "68e5bc8f98f1a207adbf1ef85dd22365b4b42388df7a86f2451503aa4451a6fd",
+    "constraint": "from testbox only; fixed canonical network-client command; restrict option"
+  },
+  "trust": "192.168.5.201 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJb9NsryKvpXJH21dCuFvC7Hbx+j5GVp+nbr5dURicaS CQ02R-6ce32480-5cce-4512-a6a1-27872271b397\n",
+  "known_hosts": {
+    "path": "/home/somanos/.ssh/known_hosts",
+    "existed": false,
+    "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "after_sha256": "d5dc15e6053990cdf154c4dd0782d139ec714b3c004d90896bb8d2d325efe9a6",
+    "appended": "192.168.5.201 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJb9NsryKvpXJH21dCuFvC7Hbx+j5GVp+nbr5dURicaS CQ02R-6ce32480-5cce-4512-a6a1-27872271b397\n"
+  }
+}

@@ -1,0 +1,334 @@
+TAP version 13
+# Subtest: A1-D1 pinned unchanged historical comparison accepts
+ok 1 - A1-D1 pinned unchanged historical comparison accepts
+  ---
+  duration_ms: 126.161073
+  type: 'test'
+  ...
+# Subtest: A1-D2 historical plus precisely approved additions accepts
+ok 2 - A1-D2 historical plus precisely approved additions accepts
+  ---
+  duration_ms: 46.517982
+  type: 'test'
+  ...
+# Subtest: A1-D3 single approved replacement subtree and additions accept
+ok 3 - A1-D3 single approved replacement subtree and additions accept
+  ---
+  duration_ms: 39.430781
+  type: 'test'
+  ...
+# Subtest: A1-D4 actual canonical Docker acceptance source passes the guard
+ok 4 - A1-D4 actual canonical Docker acceptance source passes the guard
+  ---
+  duration_ms: 32.910366
+  type: 'test'
+  ...
+# Subtest: A1-D5 removed historical assertion is refused
+ok 5 - A1-D5 removed historical assertion is refused
+  ---
+  duration_ms: 14.648706
+  type: 'test'
+  ...
+# Subtest: A1-D6 unauthorized expected-value change is refused
+ok 6 - A1-D6 unauthorized expected-value change is refused
+  ---
+  duration_ms: 14.795173
+  type: 'test'
+  ...
+# Subtest: A1-D7 reordered historical operations are refused
+ok 7 - A1-D7 reordered historical operations are refused
+  ---
+  duration_ms: 14.472023
+  type: 'test'
+  ...
+# Subtest: A1-D8 removed historical Docker invocation is refused
+ok 8 - A1-D8 removed historical Docker invocation is refused
+  ---
+  duration_ms: 9.462652
+  type: 'test'
+  ...
+# Subtest: A1-D9 modified historical Docker arguments are refused
+ok 9 - A1-D9 modified historical Docker arguments are refused
+  ---
+  duration_ms: 9.367575
+  type: 'test'
+  ...
+# Subtest: A1-D10 unapproved assertion insertion is refused
+ok 10 - A1-D10 unapproved assertion insertion is refused
+  ---
+  duration_ms: 7.479454
+  type: 'test'
+  ...
+# Subtest: A1-D11 unapproved Docker insertion is refused
+ok 11 - A1-D11 unapproved Docker insertion is refused
+  ---
+  duration_ms: 4.518792
+  type: 'test'
+  ...
+# Subtest: A1-D12 wrong replacement error code is refused
+ok 12 - A1-D12 wrong replacement error code is refused
+  ---
+  duration_ms: 7.960396
+  type: 'test'
+  ...
+# Subtest: A1-D13 replacement in another phase is refused
+ok 13 - A1-D13 replacement in another phase is refused
+  ---
+  duration_ms: 7.869716
+  type: 'test'
+  ...
+# Subtest: A1-D14 second historical assertion replacement is refused
+ok 14 - A1-D14 second historical assertion replacement is refused
+  ---
+  duration_ms: 10.052309
+  type: 'test'
+  ...
+# Subtest: A1-D15 missing authorized replacement is refused for final candidate
+ok 15 - A1-D15 missing authorized replacement is refused for final candidate
+  ---
+  duration_ms: 9.360945
+  type: 'test'
+  ...
+# Subtest: A1-D16 duplicate use of replacement authorization is refused
+ok 16 - A1-D16 duplicate use of replacement authorization is refused
+  ---
+  duration_ms: 8.604844
+  type: 'test'
+  ...
+# Subtest: A1-D17 approved addition cannot compensate for historical deletion
+ok 17 - A1-D17 approved addition cannot compensate for historical deletion
+  ---
+  duration_ms: 7.522528
+  type: 'test'
+  ...
+# Subtest: A1-D18 unexpected nested protected call changes are refused
+ok 18 - A1-D18 unexpected nested protected call changes are refused
+  ---
+  duration_ms: 7.98452
+  type: 'test'
+  ...
+# Subtest: A1-D19 removing one duplicate historical occurrence is refused
+ok 19 - A1-D19 removing one duplicate historical occurrence is refused
+  ---
+  duration_ms: 11.963144
+  type: 'test'
+  ...
+# Subtest: A1-D20 moving historical assertion to unrelated function is refused
+ok 20 - A1-D20 moving historical assertion to unrelated function is refused
+  ---
+  duration_ms: 7.637984
+  type: 'test'
+  ...
+# Subtest: additional historical spawn-removal and assertion-operator mutations are refused
+ok 21 - additional historical spawn-removal and assertion-operator mutations are refused
+  ---
+  duration_ms: 12.537975
+  type: 'test'
+  ...
+# Subtest: historical bytes cannot be replaced and diagnostics stay bounded
+ok 22 - historical bytes cannot be replaced and diagnostics stay bounded
+  ---
+  duration_ms: 9.270898
+  type: 'test'
+  ...
+# Subtest: A2 exact independent short-circuit mutations are rejected for all three assertion categories
+ok 23 - A2 exact independent short-circuit mutations are rejected for all three assertion categories
+  ---
+  duration_ms: 147.539283
+  type: 'test'
+  ...
+# Subtest: A2-D1 unchanged historical source is accepted in explicit historical mode
+ok 24 - A2-D1 unchanged historical source is accepted in explicit historical mode
+  ---
+  duration_ms: 31.298154
+  type: 'test'
+  ...
+# Subtest: A2-D2 closed addition-only source is accepted in its mode
+ok 25 - A2-D2 closed addition-only source is accepted in its mode
+  ---
+  duration_ms: 35.976638
+  type: 'test'
+  ...
+# Subtest: A2-D3 exact authorized A1 replacement is accepted once
+ok 26 - A2-D3 exact authorized A1 replacement is accepted once
+  ---
+  duration_ms: 41.827375
+  type: 'test'
+  ...
+# Subtest: A2-D4 false-and suppression is rejected
+ok 27 - A2-D4 false-and suppression is rejected
+  ---
+  duration_ms: 19.089276
+  type: 'test'
+  ...
+# Subtest: A2-D5 true-or suppression is rejected
+ok 28 - A2-D5 true-or suppression is rejected
+  ---
+  duration_ms: 13.284558
+  type: 'test'
+  ...
+# Subtest: A2-D6 dead conditional block is rejected
+ok 29 - A2-D6 dead conditional block is rejected
+  ---
+  duration_ms: 8.429275
+  type: 'test'
+  ...
+# Subtest: A2-D7 unexecuted ternary branch is rejected
+ok 30 - A2-D7 unexecuted ternary branch is rejected
+  ---
+  duration_ms: 21.684165
+  type: 'test'
+  ...
+# Subtest: A2-D8 early return before protected operation is rejected
+ok 31 - A2-D8 early return before protected operation is rejected
+  ---
+  duration_ms: 23.942602
+  type: 'test'
+  ...
+# Subtest: A2-D9 early throw before protected operation is rejected
+ok 32 - A2-D9 early throw before protected operation is rejected
+  ---
+  duration_ms: 19.737347
+  type: 'test'
+  ...
+# Subtest: A2-D10 protected operation moved into unused helper is rejected
+ok 33 - A2-D10 protected operation moved into unused helper is rejected
+  ---
+  duration_ms: 5.64028
+  type: 'test'
+  ...
+# Subtest: A2-D11 protected operation moved into unused callback is rejected
+ok 34 - A2-D11 protected operation moved into unused callback is rejected
+  ---
+  duration_ms: 5.268188
+  type: 'test'
+  ...
+# Subtest: A2-D12 discarded asynchronous invocation is rejected
+ok 35 - A2-D12 discarded asynchronous invocation is rejected
+  ---
+  duration_ms: 16.165582
+  type: 'test'
+  ...
+# Subtest: A2-D13 historical assertion deletion is rejected
+ok 36 - A2-D13 historical assertion deletion is rejected
+  ---
+  duration_ms: 8.792991
+  type: 'test'
+  ...
+# Subtest: A2-D14 unauthorized expected value change is rejected
+ok 37 - A2-D14 unauthorized expected value change is rejected
+  ---
+  duration_ms: 7.423165
+  type: 'test'
+  ...
+# Subtest: A2-D15 reordered historical operations are rejected
+ok 38 - A2-D15 reordered historical operations are rejected
+  ---
+  duration_ms: 9.288937
+  type: 'test'
+  ...
+# Subtest: A2-D16 unauthorized replacement is rejected
+ok 39 - A2-D16 unauthorized replacement is rejected
+  ---
+  duration_ms: 8.311
+  type: 'test'
+  ...
+# Subtest: A2-D17 unapproved assertion is rejected
+ok 40 - A2-D17 unapproved assertion is rejected
+  ---
+  duration_ms: 7.236756
+  type: 'test'
+  ...
+# Subtest: A2-D18 unapproved Docker command is rejected
+ok 41 - A2-D18 unapproved Docker command is rejected
+  ---
+  duration_ms: 7.808415
+  type: 'test'
+  ...
+# Subtest: A2-D19 duplicate elsewhere cannot compensate for removed occurrence
+ok 42 - A2-D19 duplicate elsewhere cannot compensate for removed occurrence
+  ---
+  duration_ms: 9.11475
+  type: 'test'
+  ...
+# Subtest: A2-D20 changed enclosing conditional is rejected
+ok 43 - A2-D20 changed enclosing conditional is rejected
+  ---
+  duration_ms: 5.838203
+  type: 'test'
+  ...
+# Subtest: A2-D21 removing an invoked helper call is rejected
+ok 44 - A2-D21 removing an invoked helper call is rejected
+  ---
+  duration_ms: 16.110726
+  type: 'test'
+  ...
+# Subtest: A2-D22 approved addition relocated to unrelated context is rejected
+ok 45 - A2-D22 approved addition relocated to unrelated context is rejected
+  ---
+  duration_ms: 5.879655
+  type: 'test'
+  ...
+# Subtest: A2-D23 benign formatting outside protected calls preserves approved AST
+ok 46 - A2-D23 benign formatting outside protected calls preserves approved AST
+  ---
+  duration_ms: 17.626334
+  type: 'test'
+  ...
+# Subtest: A2-D24 actual unchanged canonical harness passes both barriers
+ok 47 - A2-D24 actual unchanged canonical harness passes both barriers
+  ---
+  duration_ms: 19.240327
+  type: 'test'
+  ...
+# Subtest: A2 fail-closed frame rejects changes to imports and function invocation ownership
+ok 48 - A2 fail-closed frame rejects changes to imports and function invocation ownership
+  ---
+  duration_ms: 33.819146
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness extra: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 49 - A2 effectiveness extra: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 152.990424
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness missing: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 50 - A2 effectiveness missing: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 141.26693
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness identity: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 51 - A2 effectiveness identity: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 134.383738
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness malformed: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 52 - A2 effectiveness malformed: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 115.835084
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness foreign: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 53 - A2 effectiveness foreign: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 109.47399
+  type: 'test'
+  ...
+# Subtest: A2 effectiveness command: actual refusal passes; unsafe success and unrelated failure fail the process
+ok 54 - A2 effectiveness command: actual refusal passes; unsafe success and unrelated failure fail the process
+  ---
+  duration_ms: 116.242105
+  type: 'test'
+  ...
+1..54
+# tests 54
+# suites 0
+# pass 54
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 825.172328

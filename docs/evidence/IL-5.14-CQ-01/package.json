@@ -1,0 +1,23 @@
+{
+  "name": "package",
+  "argv": [
+    "npm",
+    "run",
+    "test:package"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5bb733b7f709547f928f87edf9a37fd7f31fe4be",
+  "started": "2026-11-04T15:45:05.724843+00:00",
+  "ended": "2026-11-04T15:45:05.942877+00:00",
+  "exit": 1,
+  "stdout": {
+    "file": "package.stdout",
+    "bytes": 80,
+    "sha256": "a8dcc79c4fad185b7cd313b1564adb1e5699924dd267db1054dc14c8c147c19f"
+  },
+  "stderr": {
+    "file": "package.stderr",
+    "bytes": 1315,
+    "sha256": "81ba1e68bc5474353bd51cac49b1621c1e0f1fc3d3724760216c29f80c6636f1"
+  }
+}

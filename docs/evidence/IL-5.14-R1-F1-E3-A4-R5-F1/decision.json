@@ -1,0 +1,19 @@
+{
+  "status": "FAILED_QUALIFICATION",
+  "gate": "E",
+  "tests": {
+    "total": 44,
+    "pass": 43,
+    "fail": 1,
+    "skip": 0
+  },
+  "error": {
+    "expected": "RUNTIME_IDENTITY_MISMATCH",
+    "actual": "ROLLBACK_OPERATION_NOT_AUTHORIZED",
+    "origin": "internal/rollback-authorization.js:8"
+  },
+  "docker": "NOT_EXECUTED",
+  "postfix": "NOT_EXECUTED",
+  "push": false,
+  "independent_closure": false
+}

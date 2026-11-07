@@ -1,0 +1,68 @@
+{
+  "attempt": "P1-POSTFIX-01d146db-98ca-4c0f-a970-178fc80b8b13",
+  "source": "5954bc121b3790d405aa48bf724a624c259f30a2",
+  "counts": {
+    "client": {
+      "process.start": 2,
+      "fixture.ready": 2,
+      "client.fetch.start": 5,
+      "client.request.create": 5,
+      "client.beforeConnect": 2,
+      "client.connected": 2,
+      "client.request.socket": 5,
+      "client.response.headers": 5,
+      "client.response.body.complete": 5,
+      "client.fetch.headers": 5,
+      "client.socket.end": 1,
+      "client.socket.error": 1,
+      "client.socket.close": 1,
+      "process.exit": 2
+    },
+    "server": {
+      "process.start": 2,
+      "server.listening": 2,
+      "server.connection": 10,
+      "server.request": 13,
+      "server.handler.enter": 13,
+      "server.handler.return": 13,
+      "server.response.finish": 13,
+      "server.response.close": 13,
+      "server.socket.end": 9,
+      "server.socket.close": 9,
+      "process.sigterm": 2,
+      "server.close.requested": 2,
+      "server.close.completed": 2,
+      "process.exit": 2
+    }
+  },
+  "client_request_errors": [],
+  "socket_notifications": [
+    {
+      "attempt": "P1-POSTFIX-01d146db-98ca-4c0f-a970-178fc80b8b13",
+      "role": "test-client",
+      "pid": 2304084,
+      "process_instance": "a777c12b-4c6c-46a3-910a-dc4e83d7e9b5",
+      "sequence": 24,
+      "mono_ns": "787327779067888",
+      "utc": "2026-10-28T11:00:13.213Z",
+      "event": "client.socket.error",
+      "connection_id": 1,
+      "error": {
+        "name": "SocketError",
+        "code": "UND_ERR_SOCKET",
+        "socket": {
+          "localAddress": "127.0.0.1",
+          "localPort": 46986,
+          "remoteAddress": "127.0.0.1",
+          "remotePort": 38339,
+          "bytesRead": 684,
+          "bytesWritten": 510
+        }
+      }
+    }
+  ],
+  "server_failures": [],
+  "disposition": "ROOT_CAUSE_UNDETERMINED",
+  "outcome": "F2_TARGETED_PASS_NON_REPRODUCTION",
+  "second_attempt": "NOT_EXECUTED: no historical causal mechanism identified; intentional idle close only explains new shutdown"
+}

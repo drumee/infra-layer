@@ -20,6 +20,9 @@ test("configuration/image/schema/volume/secret changes have explicit compatibili
 test("corrupt active pointer is rejected before any daemon request",()=>{
  const root=fs.mkdtempSync(path.join(os.tmpdir(),"il3-active-"));try{fs.writeFileSync(path.join(root,"active.json"),JSON.stringify({revision:"secret-value"}),{mode:0o600});assert.throws(()=>A.readActive(root),{code:"ACTIVE_STATE_CORRUPTED"});}finally{fs.rmSync(root,{recursive:true,force:true});}
 });
+test("active pointer parse failures retain the explicit corruption refusal",()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),"il514-active-"));try{assert.equal(A.readActive(root),null);fs.writeFileSync(path.join(root,"active.json"),"invalid-json-sensitive-fixture",{mode:0o600});assert.throws(()=>A.readActive(root),error=>error.code==="ACTIVE_STATE_CORRUPTED"&&!error.message.includes("sensitive"));}finally{fs.rmSync(root,{recursive:true,force:true});}
+});
 test("filesystem helpers reject a replaced symlink mount before invoking Docker",()=>{
   const root=fs.mkdtempSync(path.join(os.tmpdir(),"il3-helper-"));try{const directory=path.join(root,"real");fs.mkdirSync(directory,{mode:0o700});const link=path.join(root,"link");fs.symlinkSync(directory,link);assert.throws(()=>require("../../lifecycle/docker").helper({project:"test",distribution:{helper_image:"invalid"}},link,"process.exit(0)"),{code:"UNSAFE_RESOURCE_PATH"});}finally{fs.rmSync(root,{recursive:true,force:true});}
 });

@@ -1,0 +1,5 @@
+# B1 independent diagnostic review — Gate I BLOCKED
+
+Actual disposition **BLOCKED_EVIDENCE**, recommendation **FAILED_DIAGNOSTIC — Gate C**. Separately scoped reviewer /root/v1_f2_review independently reads original E1 evidence, correct native API/source, unchanged ELF/binary hash, reference source/argv/streams/journal and stop, then verifies preservation. Decision and source/raw hashes are in independent-review/decision.json and independent-review/independent-review.md.
+
+The reviewer confirms new reference callback/assertion-path completion, fd2 counts23/30/20/23 and matching parent TAP comments. This is not a native named PASS and cannot upgrade GateC or original E1/D1 callbacks. Private FileTest counter interpretation remains a source-based inference only. Exact root cause is unknown and no correction is confirmed. Native negative is not created/run; original comparison/comparator/Docker/remote operations are absent. No new MAJOR/BLOCKER or assertion weakening is demonstrated. Reviewer executes zero tests, zero Docker commands and zero remote operations. V1-F1-REC-001 remains OPEN.

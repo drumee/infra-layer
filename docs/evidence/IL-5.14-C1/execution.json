@@ -1,0 +1,32 @@
+{
+  "source_commit": "c218811effc83da25cf71a914e27accc96101329",
+  "note": "Commands were run before the first local reproduction commit. Fixture hashes bind the uncommitted test inputs; recorded times are output-file mtimes, not invented command start times.",
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund",
+      "exit_code": 0,
+      "evidence": "npm-ci.log",
+      "evidence_sha256": "2e73d72bbbc416ee21b4dfec6ce4488fd6718ed6b3354f37305a289844f1db5e",
+      "report_file_mtime_utc": "2026-10-25T11:38:24.862605+00:00"
+    },
+    {
+      "command": "node test/network-attachments/reproduce-alpha3.cjs",
+      "exit_code": 0,
+      "evidence": "original-reproduction.json",
+      "evidence_sha256": "d781cc27dc3b1c2b74e2f59f4ff7479ec93c9eda6602535a44db841d3dfe8e80",
+      "report_file_mtime_utc": "2026-10-25T11:38:24.862605+00:00"
+    },
+    {
+      "command": "npm audit --include=dev --json --registry=https://registry.npmjs.org",
+      "exit_code": 1,
+      "evidence": "baseline-audit.json",
+      "evidence_sha256": "84f3e6ec57c586ea6ee8dd44d945bc4a0830a2bd1b0bffe2d408664b10009811",
+      "report_file_mtime_utc": "2026-10-25T11:38:24.862605+00:00"
+    }
+  ],
+  "fixture_sha256": {
+    "test/network-attachments/reproduce-alpha3.cjs": "7496379645641a5bc2438c2dd887ef4ae9fa4d1a9c66cc3afaeb3a7d070cbc64",
+    "test/network-attachments/load.cjs": "09b01c1ac90599bb70366bc53c5a89b332a339edf3038732ada648419d628b0b",
+    "test/network-attachments/fixture.json": "c7313101fa16e8027b6b880585316fadf51a41f29915a49e0b67b68e9179baa0"
+  }
+}

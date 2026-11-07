@@ -1,0 +1,5 @@
+# A2 baseline and independent finding reproduction
+
+Gate A PASS. Clean initial branch fix/il514-c1-network-attachment-identity at2b08fe118a8268154d8797e4c7097795e763cf19. PR20 remains open on cd9b8322bd7eef3b4094710ec4ea26be94f08922, main. Original A1 independent report/probe is available under docs/evidence/IL-5.14-R1-F1-E3-A1/independent-review and /tmp/drumee-il514-a1-independent-review-CshVQOmi.
+
+Before editing, one isolated static reproduction called the actual old guard with each of3 current-harness mutations: false&&historical PING assertion, false&&authorized missing-membership replacement, false&&approved detachment addition. All3 were incorrectly accepted with52 historical/54 current expressions. Mutated source was only parsed; no generated JavaScript executed, no canonical source mutated in place. The new LogicalExpression wraps the unchanged call, so the old selective ancestor list omits the conditional evaluation while its text/count/order/phase remain equal. Original raw evidence and new reproduction remain immutable.

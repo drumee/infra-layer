@@ -1,0 +1,102 @@
+[
+  {
+    "id": "H1",
+    "hypothesis": "Missing registration call",
+    "classification": "CONTRADICTED as a literal source omission; original runtime acknowledgment unproved",
+    "expected_observation": "Missing correct direct test(name,fn) call",
+    "supporting_evidence": "Original native acknowledgment absent, which alone does not prove missing call",
+    "contradicting_evidence": "Original exact source contains correct direct named builtin test call; new reference callback executes",
+    "missing_evidence": "Original E1 inner native registration acknowledgment",
+    "discriminating_control": "Original E1 runtime comparison only after qualified reference pair; not permitted after failed C"
+  },
+  {
+    "id": "H2",
+    "hypothesis": "Registration code not reached",
+    "classification": "UNRESOLVED for original runtime",
+    "expected_observation": "A branch/early exit or runtime exception prevents call",
+    "supporting_evidence": "Original runtime reachability acknowledgment not captured",
+    "contradicting_evidence": "No blocking source branch/early exit; new reference call returns and callback runs",
+    "missing_evidence": "Original E1 before/call/after runtime boundary",
+    "discriminating_control": "Would require later qualified original comparison; not executed"
+  },
+  {
+    "id": "H3",
+    "hypothesis": "Wrong ordinary-module invocation mode",
+    "classification": "CONTRADICTED for recorded CLI mode",
+    "expected_observation": "Missing --test or other verified command mismatch",
+    "supporting_evidence": "None in preserved argv",
+    "contradicting_evidence": "Original and reference explicitly use --test; native file TAP emitted",
+    "missing_evidence": "Effective inner worker state not directly captured",
+    "discriminating_control": "Existing argv/builtin-source inspection narrows this; no extra run"
+  },
+  {
+    "id": "H4",
+    "hypothesis": "Wrong test file",
+    "classification": "UNRESOLVED at unrecorded effective-worker boundary; no mismatch demonstrated",
+    "expected_observation": "Resolved path/hash differs from intended original",
+    "supporting_evidence": "No original worker file-read receipt",
+    "contradicting_evidence": "Original selected path/realpath/hash and file-level result match; no symlink",
+    "missing_evidence": "Original actual worker file-open/compile trace",
+    "discriminating_control": "Qualified original runtime identity trace in a separately scoped investigation"
+  },
+  {
+    "id": "H5",
+    "hypothesis": "Discovery or selection filter",
+    "classification": "UNRESOLVED for native original lifecycle",
+    "expected_observation": "Active filter excludes expected case",
+    "supporting_evidence": "No original named event",
+    "contradicting_evidence": "No recorded explicit name/skip/only flags or NODE_OPTIONS; direct source no skip/todo; marked reference executes",
+    "missing_evidence": "Original native filter/registration state",
+    "discriminating_control": "Native configuration/selection observation; no filter disabled here"
+  },
+  {
+    "id": "H6",
+    "hypothesis": "Incorrect test framework usage",
+    "classification": "CONTRADICTED for inspected import/API",
+    "expected_observation": "Wrong module or unsupported call shape",
+    "supporting_evidence": "None identified",
+    "contradicting_evidence": "node: builtin default is installed harness test; correct test(name,fn); same API runs new callback",
+    "missing_evidence": "No separate original acknowledgment",
+    "discriminating_control": "Installed native source inspection plus new reference path, without changing original"
+  },
+  {
+    "id": "H7",
+    "hypothesis": "Registered but skipped or cancelled",
+    "classification": "UNRESOLVED for original; not supported for new callback path",
+    "expected_observation": "Named skip/cancel or callback exclusion",
+    "supporting_evidence": "Original named lifecycle missing",
+    "contradicting_evidence": "No source skip/todo; new callback/assertion executes; no native named skip/cancel captured",
+    "missing_evidence": "Original named terminal event",
+    "discriminating_control": "Would require qualified original comparison; not executed"
+  },
+  {
+    "id": "H8",
+    "hypothesis": "Reporter output discrepancy",
+    "classification": "SUPPORTED as new-reference symptom only; original mechanism UNRESOLVED",
+    "expected_observation": "Callback runs but expected named native result absent",
+    "supporting_evidence": "New journal+TAP callback/assertion markers present, exact named native result absent",
+    "contradicting_evidence": "No direct child result-emission/transport trace to identify responsible component",
+    "missing_evidence": "Native result generation/serialization/parent acceptance boundary",
+    "discriminating_control": "A separate bounded native-result investigation may inspect that boundary; not a corrective fix"
+  },
+  {
+    "id": "H9",
+    "hypothesis": "Wrapper or command substitution",
+    "classification": "UNRESOLVED for unrecorded worker details; no substitution demonstrated",
+    "expected_observation": "Recorded argv/executable differs from actual worker",
+    "supporting_evidence": "Original inner worker argv not recorded",
+    "contradicting_evidence": "Absolute stable regular ELF, no shell alias, current reference direct command, local binary/source hashes match prior evidence",
+    "missing_evidence": "Independent effective worker invocation trace/upstream binary provenance",
+    "discriminating_control": "Native invocation inspection beyond current saved source, only in future authorized scope"
+  },
+  {
+    "id": "H10",
+    "hypothesis": "Other verified cause",
+    "classification": "UNRESOLVED",
+    "expected_observation": "Exact first faulty native operation and causal chain",
+    "supporting_evidence": "New named-result absence after observed callback",
+    "contradicting_evidence": "No exact causal operation identified; minimal reference contract failed",
+    "missing_evidence": "Working named native pair and original comparison",
+    "discriminating_control": "Further separate diagnostic scope; no speculative correction"
+  }
+]

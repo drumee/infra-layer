@@ -1,0 +1,166 @@
+{
+  "provenance": "Derived from actual test definitions and first passing guard-focused TAP; not a new test run",
+  "cases": [
+    {
+      "case": "A1-D1 pinned unchanged historical comparison accepts",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "ACCEPT",
+      "assertedDiagnostic": null,
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D2 historical plus precisely approved additions accepts",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "ACCEPT",
+      "assertedDiagnostic": null,
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D3 single approved replacement subtree and additions accept",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "ACCEPT",
+      "assertedDiagnostic": null,
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D4 actual canonical Docker acceptance source passes the guard",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "ACCEPT",
+      "assertedDiagnostic": null,
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D5 removed historical assertion is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "HISTORICAL_EXPRESSION_REMOVED",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D6 unauthorized expected-value change is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "HISTORICAL_EXPRESSION_MODIFIED",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D7 reordered historical operations are refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "HISTORICAL_EXPRESSION_REORDERED",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D8 removed historical Docker invocation is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "HISTORICAL_EXPRESSION_REMOVED",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D9 modified historical Docker arguments are refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "HISTORICAL_EXPRESSION_MODIFIED",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D10 unapproved assertion insertion is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "UNAPPROVED_ADDITION",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D11 unapproved Docker insertion is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "UNAPPROVED_ADDITION",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D12 wrong replacement error code is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "UNAUTHORIZED_REPLACEMENT",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D13 replacement in another phase is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "EXPRESSION_CONTEXT_MISMATCH",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D14 second historical assertion replacement is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "HISTORICAL_EXPRESSION_MODIFIED",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D15 missing authorized replacement is refused for final candidate",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "APPROVED_REPLACEMENT_MISSING",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D16 duplicate use of replacement authorization is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "DUPLICATE_AUTHORIZATION_USE",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D17 approved addition cannot compensate for historical deletion",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "UNAPPROVED_ADDITION",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D18 unexpected nested protected call changes are refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "UNAUTHORIZED_REPLACEMENT",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D19 removing one duplicate historical occurrence is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "HISTORICAL_EXPRESSION_REMOVED",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    },
+    {
+      "case": "A1-D20 moving historical assertion to unrelated function is refused",
+      "fixture": "in-memory pinned/authorized/canonical source as defined in test/unit/harness-preservation.test.js",
+      "expected": "REFUSE",
+      "assertedDiagnostic": "EXPRESSION_CONTEXT_MISMATCH",
+      "observed": "test PASS and exact diagnostic assertion satisfied",
+      "commandExit": 0
+    }
+  ],
+  "independentCounterexamples": "independent-review/guard-short-circuit-probe.json; expected refusal but all3 accepted"
+}

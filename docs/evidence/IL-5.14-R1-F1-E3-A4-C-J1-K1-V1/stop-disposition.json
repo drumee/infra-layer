@@ -1,0 +1,39 @@
+{
+  "recorded": "2026-10-30T09:12:45.098159+00:00",
+  "source": "9797f80796c94c83ba8cdb2215f0775497f72b76",
+  "attempt": "V1-249c40f8-029c-45fc-b75c-e336ab60de19",
+  "qualification_stop": "Canonical ESLint exit1; no-useless-assignment in new test adapter",
+  "failing_location": "test/diagnostics/fixture-volumes/docker.cjs:11:9",
+  "lint_errors": 1,
+  "historical_visible_warnings": 28,
+  "new_findings": 1,
+  "safety_tests": {
+    "passed": 24,
+    "failed": 0,
+    "exit_code": 0,
+    "scope": "deterministic fake observations only; not real Docker qualification"
+  },
+  "subsequent_static_finding": "LOW severity structured partial-creation ledger auditability gap; global before/after reconciliation ordinarily detects surviving unmanifested resources and sets cleanup INCOMPLETE/campaign FAIL. No false successful campaign or unsafe deletion demonstrated.",
+  "real_campaign": "NOT_EXECUTED",
+  "preflight_approval": "NOT_ISSUED",
+  "docker_commands": {
+    "initial_read_only": 9,
+    "historical_read_only": 13,
+    "all_exit_codes": 0,
+    "mutating_commands": 0
+  },
+  "new_fixture_volumes_created": 0,
+  "new_fixture_containers_created": 0,
+  "new_volume_deletions": 0,
+  "historical_volume_deletions": 0,
+  "source_correction_after_stop": false,
+  "reruns_after_stop": 0,
+  "parent_status": "F1_FAILED_QUALIFICATION_APPLICATION_ACCEPTANCE",
+  "assessment_correction": {
+    "recorded": "2026-10-30T09:15:02.409981+00:00",
+    "initial_assessment": "Preserved in stop-disposition-initial.json; initial masking claim was too strong",
+    "reason": "Independent full-path review includes final global inventory equality guard",
+    "required_correction": "Mandatory ESLint failure; optional bounded partial-creation ledger hardening before future qualification",
+    "independent_outcome": "BLOCKED_EVIDENCE; live mechanism unqualified, no new MAJOR/BLOCKER demonstrated"
+  }
+}

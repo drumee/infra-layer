@@ -1,0 +1,37 @@
+{
+  "recorded": "2026-10-30T09:17:33.578466+00:00",
+  "parent_checkpoint": "9797f80796c94c83ba8cdb2215f0775497f72b76",
+  "qualified_source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "original_frozen_inputs_unchanged": 177,
+  "new_unqualified_test_harness_sha256": {
+    "test/diagnostics/fixture-volumes/campaign.cjs": "f4aceba0e9f6a2e7a853fd5fcb4a624211c6010d5f40fdb1c0aca42ca48bf2a7",
+    "test/diagnostics/fixture-volumes/docker.cjs": "e2b733c345e5ef60177b6dec02377bc941b80805f42eb153f796482f9bacf80b",
+    "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+    "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+  },
+  "production_executable": "PRESERVED",
+  "qualified_package_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "package_unchanged": true,
+  "original_K1_A1_manifests_unchanged": true,
+  "execution_exit_codes": [
+    0,
+    1
+  ],
+  "stop": "canonical ESLint1 no-useless-assignment",
+  "real_campaign": "NOT_EXECUTED",
+  "docker_mutations": 0,
+  "new_resources_created": 0,
+  "historical_volume_deletions": 0,
+  "current_resources_deleted": 0,
+  "independent": "BLOCKED_EVIDENCE",
+  "historical_entries": {
+    "V1-H01": "UNRESOLVED_HISTORICAL_EVIDENCE",
+    "V1-H02": "UNRESOLVED_HISTORICAL_EVIDENCE",
+    "V1-H03": "UNRESOLVED_HISTORICAL_EVIDENCE",
+    "V1-H04": "UNRESOLVED_HISTORICAL_EVIDENCE"
+  },
+  "post_stop_source_changes": false,
+  "further_qualification_tests": 0,
+  "remote_operations": "read-only metadata; no push/edit/CI trigger",
+  "checkpoint_note": "The local commit introducing these files is recorded in the owner handoff and private checkpoint-readback.json. Existing runtime/package inputs unchanged; new diagnostics explicitly unqualified."
+}

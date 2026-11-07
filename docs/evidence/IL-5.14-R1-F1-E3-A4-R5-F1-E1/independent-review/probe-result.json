@@ -1,0 +1,64 @@
+{
+  "source": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "cases": [
+    {
+      "name": "authorized revision substitution retains identity refusal before eligibility",
+      "result": "PASS"
+    },
+    {
+      "name": "authorized service substitution retains identity refusal",
+      "result": "PASS"
+    },
+    {
+      "name": "unauthorized request does not disclose corrupt active state",
+      "result": "PASS"
+    },
+    {
+      "name": "authorized corrupt active state remains a real corruption error",
+      "result": "PASS"
+    },
+    {
+      "name": "missing journal operation scope remains authorization refusal",
+      "result": "PASS"
+    },
+    {
+      "name": "valid caller and runtime but absent failed revision remains eligibility refusal",
+      "result": "PASS"
+    },
+    {
+      "name": "extra same-owner network is rejected before any recreation",
+      "result": "PASS"
+    },
+    {
+      "name": "forged service-owner labels cannot authorize a wrong image",
+      "result": "PASS"
+    },
+    {
+      "name": "authoritative configured exposure remains exact",
+      "result": "PASS"
+    },
+    {
+      "name": "normal recover true cannot enter rollback endpoint admission",
+      "result": "PASS"
+    },
+    {
+      "name": "volatile snapshot cannot block authorized recreation and final strict network ordering",
+      "result": "PASS"
+    },
+    {
+      "name": "final wrong network ID is not successful rollback",
+      "result": "PASS"
+    },
+    {
+      "name": "final unhealthy process is not successful rollback",
+      "result": "PASS"
+    },
+    {
+      "name": "recreation command failure remains fatal",
+      "result": "PASS"
+    }
+  ],
+  "pass": 14,
+  "fail": 0,
+  "scope": "Actual rollback/activation/authorization/network modules; deterministic Docker fixture and prepared verification stub. No real Docker run."
+}

@@ -1,0 +1,14 @@
+{
+  "purpose": "Observe current canonical lint path; does not waive audit finding",
+  "minimatch": "10.2.6",
+  "linted_files": 175,
+  "preprocess_calls_by_level": {
+    "1": 19
+  },
+  "first_phase_preprocess_calls": 0,
+  "source_sha256": {
+    "node_modules/minimatch/dist/commonjs/index.js": "d224f71f20d7c206fcc5b7e9f747324c7698345a0b2c28d717dd9cf698306783",
+    "node_modules/eslint/lib/eslint/eslint-helpers.js": "4a1d745b6b7e1972ba59d2402ce488e90309825c8f3bb4d973a59d8dee511ebd",
+    "node_modules/@eslint/config-array/dist/cjs/index.cjs": "615889758115b8254f0c5ae4761ab659a98c4b4cc16da0f06215b9107ba49675"
+  }
+}

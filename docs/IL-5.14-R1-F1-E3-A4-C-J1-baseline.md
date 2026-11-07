@@ -1,0 +1,9 @@
+# J1 baseline — Gate A PASS
+
+Verified repository drumee/infra-layer, active branch fix/il514-c1-network-attachment-identity, clean actual starting HEAD d44e51877151f2ab7f0397bfc3e2835767159de2. It descends from fd708aa with only documentation/evidence changes. All local commits are preserved. AGENTS.md, parent final decision, Gate J raw log/finding and qualification inventory were read. PR20 read-only verification remains OPEN/main/head cd9b8322bd7eef3b4094710ec4ea26be94f08922, updated_at2026-10-26T14:58:20Z. No remote mutation is authorized.
+
+Fresh canonical before-edit `npm run lint` returned1:0 errors,29 visible warnings,65 stored baseline entries,1 new finding. Only new diagnostic is test/diagnostics/observer-shutdown/matrix.test.cjs:3:26, no-unused-vars, imported binding drain. [Original reproduction](evidence/IL-5.14-R1-F1-E3-A4-C-J1/baseline-lint.log). The evidence recorder narrowly expects this known reproducer to return1 and checks the exact summary and drain warning; its wrapper success means successful reproduction, **not a lint PASS**. process_returncode1 remains recorded. Any different result would stop J1.
+
+Exact declaration before editing: `const { model, complete, drain, terminal } = require("./model.cjs");`. Identifier search finds drain only in this declaration. model.cjs exports functions; terminal invokes its local drain implementation to complete required stdout/stderr observations. No exported property getter is involved. Other three imported bindings are used. Keeping the require expression and other bindings preserves module initialization/cache behavior; removing only the unused binding neither removes the module nor changes its stream-draining function. The prior warning is not reclassified as success.
+
+[Baseline/environment](evidence/IL-5.14-R1-F1-E3-A4-C-J1/baseline.json), [original175 frozen inputs](evidence/IL-5.14-R1-F1-E3-A4-C-J1/baseline-inputs.json).

@@ -1,0 +1,7 @@
+# Docker and recovery evidence impact — Gate E NOT_EXECUTED
+
+Fresh C network acceptance was planned conservatively because E2's whole lifecycle/docker.js differs after R5; it did not run after the mandatory lint stop. E2's21 membership/42 Redis/15 Health results remain historical, not newly certified by C. No mission Docker resources were created or manipulated; no fresh Docker cleanup campaign is claimed.
+
+R5_QUALIFIED_EXECUTABLE_PRESERVED: all runtime directories (lifecycle, adapters, capabilities, lib, internal), canonical suites/support, unit/network harnesses, manifests/locks and tooling match qualified72f4c67 byte for byte. The differences are only later test/diagnostics files. Frozen hashes and exact changed-input lists: [baseline](evidence/IL-5.14-R1-F1-E3-A4-C/baseline.json). The R5 rollback runner and protected ordinary network validator remain unchanged; no recovery bypass, foreign ownership relaxation or network isolation policy change occurred.
+
+Therefore retain historical R5 acceptance55 focused/354 unit/24 contracts/38 real Docker assertions, actual recreation, strict final network/service readiness, negative final detachment and verified cleanup, independently FINDING_CLOSED. [R5 final decision](IL-5.14-R1-F1-E3-A4-R5-F1-E1-final-decision.md). All26 root manifest entries were verified. C's new354/24 results are separately reported; no new R5 Docker run is claimed. R5 preservation alone does not close original R1 locally or qualify full lifecycle/application acceptance.

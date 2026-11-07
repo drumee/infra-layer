@@ -1,0 +1,19 @@
+[
+  "managed descriptors parse native configs, publish only test loopback ports and mount no secret-store root",
+  "real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion",
+  "real service observer separates protocol success, Docker revision labels and unverified loaded configuration",
+  "BIND9 restart and recreation preserve zone serial and TSIG fingerprint",
+  "DNS port conflict and corrupt native configuration are rejected",
+  "MariaDB fresh initialization creates no kernel/application schema and rejects incompatible engines",
+  "MariaDB service account connects over TCP, rejects wrong credentials and owns no schema grants",
+  "MariaDB existing-volume restart/recreation preserve data and credentials; repeated account provision does not rotate",
+  "Redis authenticated connection and pub/sub work, unauthenticated/wrong clients reject",
+  "Redis AOF survives recreation with the same secret fingerprint and authenticated reconnection",
+  "revision-pinned Essentials RedisStore authenticates via redisUrl including duplicate pub/sub clients",
+  "Redis ephemeral descriptor loses reconstructible state on recreation and rejects malformed configuration",
+  "SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails",
+  "OpenDKIM signs captured bytes with the persistent key and valid public TXT material",
+  "Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration",
+  "controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias",
+  "BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses"
+]

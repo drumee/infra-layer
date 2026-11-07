@@ -1,0 +1,191 @@
+TAP version 13
+# F1_MATRIX_OUTPUT /tmp/drumee-observer-matrix-JIiY3T
+# Subtest: D1 normal completion after required window
+ok 1 - D1 normal completion after required window
+  ---
+  duration_ms: 2.646584
+  type: 'test'
+  ...
+# Subtest: D2 controlled signal-form SIGTERM
+ok 2 - D2 controlled signal-form SIGTERM
+  ---
+  duration_ms: 0.682577
+  type: 'test'
+  ...
+# Subtest: D3 controlled direct Docker exit143
+ok 3 - D3 controlled direct Docker exit143
+  ---
+  duration_ms: 0.498527
+  type: 'test'
+  ...
+# Subtest: D4 Services success plus controlled cleanup
+ok 4 - D4 Services success plus controlled cleanup
+  ---
+  duration_ms: 1.125827
+  type: 'test'
+  ...
+# Subtest: D5 unsolicited143 rejected
+ok 5 - D5 unsolicited143 rejected
+  ---
+  duration_ms: 0.578953
+  type: 'test'
+  ...
+# Subtest: D6 unsolicited SIGTERM rejected
+ok 6 - D6 unsolicited SIGTERM rejected
+  ---
+  duration_ms: 0.46444
+  type: 'test'
+  ...
+# Subtest: D7 premature normal0 rejected
+ok 7 - D7 premature normal0 rejected
+  ---
+  duration_ms: 0.489097
+  type: 'test'
+  ...
+# Subtest: D8 premature143 rejected
+ok 8 - D8 premature143 rejected
+  ---
+  duration_ms: 0.432801
+  type: 'test'
+  ...
+# Subtest: D9 early stop does not signal
+ok 9 - D9 early stop does not signal
+  ---
+  duration_ms: 0.725516
+  type: 'test'
+  ...
+# Subtest: D10 collection error remains fatal
+ok 10 - D10 collection error remains fatal
+  ---
+  duration_ms: 0.637073
+  type: 'test'
+  ...
+# Subtest: D11 prior stream error remains fatal
+ok 11 - D11 prior stream error remains fatal
+  ---
+  duration_ms: 0.410301
+  type: 'test'
+  ...
+# Subtest: D12 malformed event causes collection failure
+ok 12 - D12 malformed event causes collection failure
+  ---
+  duration_ms: 0.676896
+  type: 'test'
+  ...
+# Subtest: D13 wrong child identity rejected without signal
+ok 13 - D13 wrong child identity rejected without signal
+  ---
+  duration_ms: 0.378099
+  type: 'test'
+  ...
+# Subtest: D14 failed signal delivery rejected
+ok 14 - D14 failed signal delivery rejected
+  ---
+  duration_ms: 0.528252
+  type: 'test'
+  ...
+# Subtest: D15 bounded shutdown timeout is fatal
+ok 15 - D15 bounded shutdown timeout is fatal
+  ---
+  duration_ms: 0.297606
+  type: 'test'
+  ...
+# Subtest: D16 unexpected SIGKILL rejected
+ok 16 - D16 unexpected SIGKILL rejected
+  ---
+  duration_ms: 0.382205
+  type: 'test'
+  ...
+# Subtest: D17 unexpected nonzero exit rejected
+ok 17 - D17 unexpected nonzero exit rejected
+  ---
+  duration_ms: 0.362592
+  type: 'test'
+  ...
+# Subtest: D18 Services failure cannot be masked by valid cleanup
+ok 18 - D18 Services failure cannot be masked by valid cleanup
+  ---
+  duration_ms: 0.452958
+  type: 'test'
+  ...
+# Subtest: D19 missing required collection invalidates campaign
+ok 19 - D19 missing required collection invalidates campaign
+  ---
+  duration_ms: 0.341613
+  type: 'test'
+  ...
+# Subtest: D20 earlier fatal result survives later SIGTERM
+ok 20 - D20 earlier fatal result survives later SIGTERM
+  ---
+  duration_ms: 0.375522
+  type: 'test'
+  ...
+# Subtest: D21 duplicate stop rejected, no second signal
+ok 21 - D21 duplicate stop rejected, no second signal
+  ---
+  duration_ms: 0.897655
+  type: 'test'
+  ...
+# Subtest: D22 exit/close cannot qualify undrained streams
+ok 22 - D22 exit/close cannot qualify undrained streams
+  ---
+  duration_ms: 0.368386
+  type: 'test'
+  ...
+# Subtest: D23 no valid process after spawn failure
+ok 23 - D23 no valid process after spawn failure
+  ---
+  duration_ms: 0.338834
+  type: 'test'
+  ...
+# Subtest: D24 missing observer cannot produce success
+ok 24 - D24 missing observer cannot produce success
+  ---
+  duration_ms: 0.170803
+  type: 'test'
+  ...
+# Subtest: D25 cleanup cannot erase unrelated campaign failure
+ok 25 - D25 cleanup cannot erase unrelated campaign failure
+  ---
+  duration_ms: 0.35878
+  type: 'test'
+  ...
+# Subtest: D26 missing Services terminal result cannot qualify
+ok 26 - D26 missing Services terminal result cannot qualify
+  ---
+  duration_ms: 0.335487
+  type: 'test'
+  ...
+# Subtest: D27 unverified wrapper143 cannot use direct Docker contract
+ok 27 - D27 unverified wrapper143 cannot use direct Docker contract
+  ---
+  duration_ms: 0.165681
+  type: 'test'
+  ...
+# Subtest: D28 partial stream/collection remains fatal
+ok 28 - D28 partial stream/collection remains fatal
+  ---
+  duration_ms: 0.511932
+  type: 'test'
+  ...
+# Subtest: D29 PID mutation cannot retarget signal
+ok 29 - D29 PID mutation cannot retarget signal
+  ---
+  duration_ms: 0.291174
+  type: 'test'
+  ...
+# Subtest: D30 collection evidence requires full owned lifecycle
+ok 30 - D30 collection evidence requires full owned lifecycle
+  ---
+  duration_ms: 0.512249
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 78.036438

@@ -1,0 +1,19 @@
+{
+  "id": "J1-PKG-001",
+  "severity": "MINOR",
+  "impact": "Mandatory package qualification blocker; no production isolation defect demonstrated",
+  "status": "OPEN",
+  "source": "0dd9a17d2fe63b98ba3fd6ef56c5252b595a60ec",
+  "failed_command": "npm run test:package",
+  "exit_code": 1,
+  "error": "AssertionError [ERR_ASSERTION]: Unexpected package member",
+  "location": "test/package-audit.js:27",
+  "allowlist_location": "test/package-audit.js:11",
+  "rejected_member": "internal/rollback-authorization.js",
+  "member_first_added": "c23c861",
+  "required_runtime_reference": "lifecycle/activation.js:169",
+  "mechanism": "Manifest includes internal/ but canonical package audit permits only system-tools.js and network-readiness.js. Qualified R5 helper is present and required; audit rejects it before archive construction and consumer checks.",
+  "correction_performed": false,
+  "policy_changed": false,
+  "failed_campaign_repeated": false
+}

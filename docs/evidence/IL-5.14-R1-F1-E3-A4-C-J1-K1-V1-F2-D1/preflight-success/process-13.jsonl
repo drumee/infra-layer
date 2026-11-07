@@ -1,0 +1,6 @@
+{"seq":1,"pid":13,"ppid":3,"kind":"process-start","node":"v22.22.0","test_context":"child-v8","argv":["/usr/bin/node","/home/somanos/github/infra-layer/test/diagnostics/comparator-failure/fixture.cjs"]}
+{"seq":2,"pid":13,"ppid":3,"kind":"target-load-start","file":"/home/somanos/github/infra-layer/test/diagnostics/comparator-failure/fixture.cjs"}
+{"seq":3,"pid":13,"ppid":3,"kind":"registration-start","scenario":"success"}
+{"seq":4,"pid":13,"ppid":3,"kind":"registration-complete"}
+{"seq":5,"pid":13,"ppid":3,"kind":"target-load-complete","file":"/home/somanos/github/infra-layer/test/diagnostics/comparator-failure/fixture.cjs"}
+{"seq":6,"pid":13,"ppid":3,"kind":"process-exit","code":0}

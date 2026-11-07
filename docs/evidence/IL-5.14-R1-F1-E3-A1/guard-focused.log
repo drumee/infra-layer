@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: A1-D1 pinned unchanged historical comparison accepts
+ok 1 - A1-D1 pinned unchanged historical comparison accepts
+  ---
+  duration_ms: 35.747214
+  type: 'test'
+  ...
+# Subtest: A1-D2 historical plus precisely approved additions accepts
+ok 2 - A1-D2 historical plus precisely approved additions accepts
+  ---
+  duration_ms: 18.238598
+  type: 'test'
+  ...
+# Subtest: A1-D3 single approved replacement subtree and additions accept
+ok 3 - A1-D3 single approved replacement subtree and additions accept
+  ---
+  duration_ms: 13.12334
+  type: 'test'
+  ...
+# Subtest: A1-D4 actual canonical Docker acceptance source passes the guard
+ok 4 - A1-D4 actual canonical Docker acceptance source passes the guard
+  ---
+  duration_ms: 14.138823
+  type: 'test'
+  ...
+# Subtest: A1-D5 removed historical assertion is refused
+ok 5 - A1-D5 removed historical assertion is refused
+  ---
+  duration_ms: 9.029662
+  type: 'test'
+  ...
+# Subtest: A1-D6 unauthorized expected-value change is refused
+ok 6 - A1-D6 unauthorized expected-value change is refused
+  ---
+  duration_ms: 9.147912
+  type: 'test'
+  ...
+# Subtest: A1-D7 reordered historical operations are refused
+ok 7 - A1-D7 reordered historical operations are refused
+  ---
+  duration_ms: 8.15658
+  type: 'test'
+  ...
+# Subtest: A1-D8 removed historical Docker invocation is refused
+ok 8 - A1-D8 removed historical Docker invocation is refused
+  ---
+  duration_ms: 7.497002
+  type: 'test'
+  ...
+# Subtest: A1-D9 modified historical Docker arguments are refused
+ok 9 - A1-D9 modified historical Docker arguments are refused
+  ---
+  duration_ms: 5.274632
+  type: 'test'
+  ...
+# Subtest: A1-D10 unapproved assertion insertion is refused
+ok 10 - A1-D10 unapproved assertion insertion is refused
+  ---
+  duration_ms: 5.690492
+  type: 'test'
+  ...
+# Subtest: A1-D11 unapproved Docker insertion is refused
+ok 11 - A1-D11 unapproved Docker insertion is refused
+  ---
+  duration_ms: 4.481001
+  type: 'test'
+  ...
+# Subtest: A1-D12 wrong replacement error code is refused
+ok 12 - A1-D12 wrong replacement error code is refused
+  ---
+  duration_ms: 4.75561
+  type: 'test'
+  ...
+# Subtest: A1-D13 replacement in another phase is refused
+ok 13 - A1-D13 replacement in another phase is refused
+  ---
+  duration_ms: 4.896604
+  type: 'test'
+  ...
+# Subtest: A1-D14 second historical assertion replacement is refused
+ok 14 - A1-D14 second historical assertion replacement is refused
+  ---
+  duration_ms: 4.165407
+  type: 'test'
+  ...
+# Subtest: A1-D15 missing authorized replacement is refused for final candidate
+ok 15 - A1-D15 missing authorized replacement is refused for final candidate
+  ---
+  duration_ms: 4.745628
+  type: 'test'
+  ...
+# Subtest: A1-D16 duplicate use of replacement authorization is refused
+ok 16 - A1-D16 duplicate use of replacement authorization is refused
+  ---
+  duration_ms: 3.986593
+  type: 'test'
+  ...
+# Subtest: A1-D17 approved addition cannot compensate for historical deletion
+ok 17 - A1-D17 approved addition cannot compensate for historical deletion
+  ---
+  duration_ms: 4.425771
+  type: 'test'
+  ...
+# Subtest: A1-D18 unexpected nested protected call changes are refused
+ok 18 - A1-D18 unexpected nested protected call changes are refused
+  ---
+  duration_ms: 4.601706
+  type: 'test'
+  ...
+# Subtest: A1-D19 removing one duplicate historical occurrence is refused
+ok 19 - A1-D19 removing one duplicate historical occurrence is refused
+  ---
+  duration_ms: 6.739272
+  type: 'test'
+  ...
+# Subtest: A1-D20 moving historical assertion to unrelated function is refused
+ok 20 - A1-D20 moving historical assertion to unrelated function is refused
+  ---
+  duration_ms: 4.154277
+  type: 'test'
+  ...
+# Subtest: additional historical spawn-removal and assertion-operator mutations are refused
+ok 21 - additional historical spawn-removal and assertion-operator mutations are refused
+  ---
+  duration_ms: 10.72844
+  type: 'test'
+  ...
+# Subtest: historical bytes cannot be replaced and diagnostics stay bounded
+ok 22 - historical bytes cannot be replaced and diagnostics stay bounded
+  ---
+  duration_ms: 4.455858
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 263.54999

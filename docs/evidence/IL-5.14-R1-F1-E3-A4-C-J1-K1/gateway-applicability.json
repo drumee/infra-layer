@@ -1,0 +1,22 @@
+{
+  "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "historical_execution": "04a4fc9f1196ef42aec9428144609735e00ceb4a",
+  "historical_result": "Gateway17/17 PASS; separate Services failure invalidates aggregate but not completed Gateway assertions/cleanup",
+  "evidence": "docs/evidence/IL-5.14-R1-F1-E3-A2/integration.log",
+  "relevant_paths": [
+    "test/integration",
+    "test/support/inputs.js",
+    "test/support/trusted-process.js",
+    "lib",
+    "adapters",
+    "capabilities",
+    "internal/system-tools.js",
+    "internal/network-readiness.js",
+    "package.json",
+    "package-lock.json"
+  ],
+  "byte_differences": [],
+  "module_model": "Gateway runner/tests load lib, adapters/docker/nginx and fixed integration fixtures, never lifecycle/rollback authorization. prepare-kernel copies other source files but does not execute new package audit/unit files. Pinned external kernel revision/paths and manifest/lock inputs unchanged.",
+  "retention": "Gateway qualified evidence may be retained; final independent reviewer must assess applicability",
+  "new_run": false
+}

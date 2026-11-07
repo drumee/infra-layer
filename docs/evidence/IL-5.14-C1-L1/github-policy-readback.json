@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-26T09:17:15.733458+00:00",
+  "repository": "drumee/infra-layer",
+  "defaultBranch": "main",
+  "verifiedIntegrationCommit": "c218811effc83da25cf71a914e27accc96101329",
+  "originMainIsAncestor": true,
+  "workflow": ".github/workflows/quality.yml",
+  "branchProtectionRead": {
+    "command": "gh api repos/drumee/infra-layer/branches/main/protection",
+    "exitCode": 1,
+    "httpStatus": 403,
+    "message": "Resource not accessible by personal access token",
+    "disposition": "Policy details unverified; no protection change or bypass attempted. Hosted checks must remain separately pending until actual execution."
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "source": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "time": "2026-10-28T14:57:55.263506+00:00",
+  "gates": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "PASS",
+    "F": "PASS"
+  },
+  "observer_disposition": "OBSERVER_QUALIFIED",
+  "independent_review": "FINDING_CLOSED",
+  "independent_decision": "independent-observer-review/decision.json",
+  "command": [
+    "node",
+    "test/diagnostics/services-capture/campaign.cjs",
+    "/tmp/drumee-p2f1-ncv3fhrl/canonical-attempt-1"
+  ],
+  "attempt": "Fresh P2-F1-SERVICES UUID assigned and written before any resource operation by campaign startup",
+  "canonical_command": [
+    "npm",
+    "run",
+    "test:services"
+  ],
+  "case_inventory": [
+    "managed descriptors parse native configs, publish only test loopback ports and mount no secret-store root",
+    "real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion",
+    "real service observer separates protocol success, Docker revision labels and unverified loaded configuration",
+    "BIND9 restart and recreation preserve zone serial and TSIG fingerprint",
+    "DNS port conflict and corrupt native configuration are rejected",
+    "MariaDB fresh initialization creates no kernel/application schema and rejects incompatible engines",
+    "MariaDB service account connects over TCP, rejects wrong credentials and owns no schema grants",
+    "MariaDB existing-volume restart/recreation preserve data and credentials; repeated account provision does not rotate",
+    "Redis authenticated connection and pub/sub work, unauthenticated/wrong clients reject",
+    "Redis AOF survives recreation with the same secret fingerprint and authenticated reconnection",
+    "revision-pinned Essentials RedisStore authenticates via redisUrl including duplicate pub/sub clients",
+    "Redis ephemeral descriptor loses reconstructible state on recreation and rejects malformed configuration",
+    "SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails",
+    "OpenDKIM signs captured bytes with the persistent key and valid public TXT material",
+    "Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration",
+    "controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias",
+    "BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses"
+  ],
+  "node": {
+    "node": "22.22.0",
+    "acorn": "8.15.0",
+    "ada": "2.9.2",
+    "amaro": "1.1.4",
+    "ares": "1.34.6",
+    "brotli": "1.1.0",
+    "cjs_module_lexer": "2.1.0",
+    "cldr": "47.0",
+    "icu": "77.1",
+    "llhttp": "9.3.0",
+    "modules": "127",
+    "napi": "10",
+    "nbytes": "0.1.1",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.64.0",
+    "openssl": "3.5.4",
+    "simdjson": "3.13.0",
+    "simdutf": "6.4.2",
+    "sqlite": "3.50.4",
+    "tz": "2025b",
+    "undici": "6.23.0",
+    "unicode": "16.0",
+    "uv": "1.51.0",
+    "uvwasi": "0.0.23",
+    "v8": "12.4.254.21-node.33",
+    "zlib": "1.3.1-470d3a2",
+    "zstd": "1.5.7"
+  },
+  "docker": {
+    "Client": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "DefaultAPIVersion": "1.53",
+      "GitCommit": "0b9d198",
+      "GoVersion": "go1.25.6",
+      "Os": "linux",
+      "Arch": "amd64",
+      "BuildTime": "Mon Jan 26 19:26:07 2026",
+      "Context": "default"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "MinAPIVersion": "1.44",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.2.0",
+          "Details": {
+            "ApiVersion": "1.53",
+            "Arch": "amd64",
+            "BuildTime": "Mon Jan 26 19:26:07 2026",
+            "Experimental": "false",
+            "GitCommit": "9c62384",
+            "GoVersion": "go1.25.6",
+            "KernelVersion": "6.1.0-41-amd64",
+            "MinAPIVersion": "1.44",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.2.1",
+          "Details": {
+            "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.3.4",
+          "Details": {
+            "GitCommit": "v1.3.4-0-gd6d73eb8"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "9c62384",
+      "GoVersion": "go1.25.6",
+      "KernelVersion": "6.1.0-41-amd64",
+      "BuildTime": "2026-01-26T19:26:07.000000000+00:00"
+    }
+  },
+  "containers_before": [
+    "e48d1991476f",
+    "9ab9d911d67d",
+    "ad54c9ae4370",
+    "dbef18b88da6",
+    "c2d515f4382e",
+    "026c71e034fd",
+    "ca5091e89d7d",
+    "b8d5ccd026ff",
+    "a64b550f1d3b",
+    "cf649f7d2352",
+    "9320436b6b82",
+    "674b611e8b0d",
+    "8df71ec63e28",
+    "2850273720ec",
+    "5ce0ce990a4d",
+    "42113b43f533",
+    "4c802389b1e4",
+    "9dfda18e01d4",
+    "38695756ad2c",
+    "d01f0aa17416"
+  ],
+  "networks_before": [
+    "b59b2684c6c8",
+    "a5de72fecf55",
+    "7a11de4b2583",
+    "6ab343a5df47",
+    "02b4589f2622",
+    "431486b00b0f",
+    "7a1b2dedbf65",
+    "2d155988db0e",
+    "8183a8fd8e8c",
+    "809d8e8f3611",
+    "4b2f2ffd2680"
+  ],
+  "observer_cutoff": "Terminal17 cases and request/server evidence; owned Compose down; all initial/final coreIDs and every observed container lifecycle complete; minima18 main/3ephemeral creates; CLI+wrapper streams closed",
+  "shutdown": "Private IPC to exact Node worker; child-object SIGTERM only after coverage;143 allowed only directDockerCLI/fullcontract; wrappers must0",
+  "cleanup": "Canonical owned down/images/filesystem removal, two observer/CLI closures, exactownerreadback; noforeignresource mutation",
+  "historical_evidence": "188 entries preserved; old P2 invalid result unchanged",
+  "source_hashes": {
+    "test/diagnostics/services-capture/evidence-window.cjs": "b5f3ec60239b84a60be14dac597a527bf1588d515df1e4af59a62c3564178dca",
+    "test/diagnostics/services-capture/observer-events.cjs": "a553d6b826b5d806fbf8583f354c23a9bfe07e3b180fae60a5ef5b7815021b8f",
+    "test/diagnostics/services-capture/record.py": "93579a60b3ca05e8b6196365d535b4a55108151a975ff1b379059f65e2a2a2d0",
+    "test/diagnostics/services-capture/cases.json": "9a0b372f8f06d9c95a835eb25f8fa642dfba85efbede9851730623a1660b6dfe",
+    "test/diagnostics/services-capture/observer-contract.cjs": "437e169ff122115a820b938b80912c2de467d42cbad3ee12030ca7154e007e4e",
+    "test/diagnostics/services-capture/state.cjs": "896ae60471b347d2579922bb558de547d6b24bdd45d443851cb714cc8789c3d0",
+    "test/diagnostics/services-capture/hook-cases.test.cjs": "bbe25d05ef1f63011abf5b06d7526159049279fc0a32c7d4287fb0ba046303dc",
+    "test/diagnostics/services-capture/observer-control.cjs": "72970418aec1369819d2acdef853c08c2562978817faddd327a253bafd5389bf",
+    "test/diagnostics/services-capture/campaign.cjs": "06dcb59202db2f953c9127f088cf986d471824afaec3677e45933753b2dda406",
+    "test/diagnostics/services-capture/client-preload.cjs": "700c5d4d92a95ee88d3db728012ecb6748e17172fef05dc9c8a8d058e29f376b",
+    "test/diagnostics/services-capture/observer-ready.cjs": "9408f8e132ef41a0b3383708f2e24f6b967d0d586f6ae5c5c6230f81c37a15bb",
+    "test/diagnostics/services-capture/preflight.test.cjs": "1a9ffb4c52f4dc42022878694e490d17c30e471d3a74d0b2c8d02647035dfc2d",
+    "test/diagnostics/services-capture/docker-events.cjs": "3685bbe6b82c092ca2eb035aee95603637ea32c2370976c4d4501c154d2643a5",
+    "test/diagnostics/services-capture/observe.cjs": "0120aa6eedbd8c38dad8e3aeed0325668c9163da52afa082fd9aa86600cb894a",
+    "test/diagnostics/postfix-http/server-preload.cjs": "85898d695b4cb1b079bfe02f40d68fc02d32ca29b4b0fde4695891b58ff24d0d",
+    "test/diagnostics/postfix-http/record.py": "c25890d2585c93bc7286fb193bb3a1b1f36e02b6f921172ef996f6f8553164f9",
+    "test/diagnostics/postfix-http/services-attempt.cjs": "6ccda0dcedbf11d1e0fbfbb78869421921f26e1efca5531319e39c985ab7d7cc",
+    "test/diagnostics/postfix-http/diagnostic.test.cjs": "c5a88f0c61c44cf96bd799d3562a968067be95529a5b8df041042b09b167f6ee",
+    "test/diagnostics/postfix-http/client-preload.cjs": "78bab9c3dd39c600e034a74670031958656af3fbbb4d0db3d4791d12d0f1d144",
+    "test/diagnostics/postfix-http/fixture.cjs": "d3f7e10e3bc6168a2ae9920c6fab1261a3b88fbf51dab098f3a66dd829140260",
+    "test/diagnostics/postfix-http/observe.cjs": "b968891ec02c15a7ab82eba5d6e7fffc4f043e2cf4cb08895fa37752baa1779e",
+    "test/services/trace.js": "5c2237459226ab75e79e81810703665fce89b75d9548fde9f21735687418d0a7",
+    "test/services/capture.js": "b162c084f5b238df06d35508a83695d7d783c24950fa09029328c3624ca90cf3",
+    "test/services/Dockerfile.capture": "45fccb17834f938edfb37a6463cfc6c545efe1c67d235a7bc5edd71194f1c094",
+    "test/services/runtime-redis.js": "6f669db5c8a5e166111dffe4993f03140852190fc2a1a09c4f5ba9928d2df68b",
+    "test/services/run.js": "56bbbdfc27e97a30dd592249b53f5777c034d5b328dd3a62ca683823e99eaf4a",
+    "test/services/services.test.js": "bd2d808e75cf5b3d13b3de343e14e6966e065ae64384529ab9851aac36224394"
+  },
+  "hypotheses": [
+    "Stablecapture with allrequiredGETscomplete andonlyintentionalidlesocketclosure",
+    "ActiveGETinterruptionwithcausalserver/socket/process/Dockerevent",
+    "DifferentcurrentServicesfailure",
+    "Observerevidencefailure mustinvalidateoverall"
+  ],
+  "limitations": [
+    "No historical cause inferredfromsuccess",
+    "Observerlogging/hooks/Promisecontinuationsperturbtiming",
+    "No crossNATtuplecertainty orcrossprocessmillisecondcausality",
+    "Original aggregateGatewayprefix not repeated"
+  ]
+}

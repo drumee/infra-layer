@@ -1,0 +1,14 @@
+{
+  "source": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "files_checked": 66,
+  "forbidden_markers_found": [],
+  "scope": "Persisted diagnostic/event/test logs; actual stderr only counts/hash; canonical runner generated-secret checks retained",
+  "protected_config_unchanged": true,
+  "production_or_network_changes": false,
+  "scanner_policy_changes": false,
+  "limitations": [
+    "No broad production security qualification claimed",
+    "Current user private IPC/correlation UUIDs are metadata, not service credentials",
+    "Standard readiness polling semantics preserved"
+  ]
+}

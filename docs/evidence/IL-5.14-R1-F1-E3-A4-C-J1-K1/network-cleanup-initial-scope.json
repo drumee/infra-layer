@@ -1,0 +1,107 @@
+{
+  "recorded": "2026-10-29T08:12:05.550016+00:00",
+  "results": {
+    "network-membership": 21,
+    "network-redis": 42,
+    "network-health": 15
+  },
+  "projects": [
+    {
+      "project": "drumee-e1-membership-fd8cad7a699e",
+      "commands": [
+        [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "label=org.drumee.qualification=drumee-e1-membership-fd8cad7a699e"
+        ],
+        [
+          "docker",
+          "network",
+          "ls",
+          "-q",
+          "--filter",
+          "label=org.drumee.qualification=drumee-e1-membership-fd8cad7a699e"
+        ]
+      ],
+      "outputs": [
+        "",
+        ""
+      ]
+    },
+    {
+      "project": "drumee-il514-net-0d7e88d0",
+      "commands": [
+        [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "label=org.drumee.qualification=drumee-il514-net-0d7e88d0"
+        ],
+        [
+          "docker",
+          "network",
+          "ls",
+          "-q",
+          "--filter",
+          "label=org.drumee.qualification=drumee-il514-net-0d7e88d0"
+        ]
+      ],
+      "outputs": [
+        "",
+        ""
+      ]
+    },
+    {
+      "project": "drumee-il514-net-2c96556f",
+      "commands": [
+        [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "label=org.drumee.qualification=drumee-il514-net-2c96556f"
+        ],
+        [
+          "docker",
+          "network",
+          "ls",
+          "-q",
+          "--filter",
+          "label=org.drumee.qualification=drumee-il514-net-2c96556f"
+        ]
+      ],
+      "outputs": [
+        "",
+        ""
+      ]
+    },
+    {
+      "project": "drumee-il514-health-bbba2c51",
+      "commands": [
+        [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "label=org.drumee.qualification=drumee-il514-health-bbba2c51"
+        ],
+        [
+          "docker",
+          "network",
+          "ls",
+          "-q",
+          "--filter",
+          "label=org.drumee.qualification=drumee-il514-health-bbba2c51"
+        ]
+      ],
+      "outputs": [
+        "",
+        ""
+      ]
+    }
+  ],
+  "all_owned_resources_removed": true
+}

@@ -1,0 +1,10 @@
+"use strict";
+const fs = require("node:fs");
+const path = require("node:path");
+const observe = require("./observe.cjs");
+const metadata = JSON.parse(fs.readFileSync(process.env.IL2_METADATA));
+const config = require("./attempt.json");
+const log = observe.logger(config.attempt, "test-client", path.join(config.output, "client.jsonl"));
+observe.processEvents(log);
+log("fixture.ready", { project: metadata.project, test_file: "test/services/services.test.js", port: metadata.ports.capture });
+observe.clientEvents(metadata.ports.capture, log);

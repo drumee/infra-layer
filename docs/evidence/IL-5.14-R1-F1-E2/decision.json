@@ -1,0 +1,69 @@
+{
+  "status": "FAILED_QUALIFICATION",
+  "testedSource": "2ec85bcd16219f592ee40836728493584bbd170a",
+  "executableRevision": "740d01f77b20358cee8b3cad4cb501b830bd0ce8",
+  "attempt": "drumee-il514-r1-f1-e2-jef250tq",
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "detail": "E1 initialization failure verified; historical Docker scenario NOT_EXECUTED."
+    },
+    "B": {
+      "status": "PASS",
+      "detail": "Existing diagnostic contract documented; no harness source change."
+    },
+    "C": {
+      "status": "PASS",
+      "detail": "6 secure positive/negative preflight cases; no Docker launch."
+    },
+    "D": {
+      "status": "PASS",
+      "detail": "Unique private directories verified; source hashes and tools frozen."
+    },
+    "E": {
+      "status": "PASS",
+      "detail": "21 membership+42 Redis+15 optional Health assertions; all owned cleanup verified."
+    },
+    "F": {
+      "status": "FAIL",
+      "detail": "Full unit245 total/244 pass/1 preservation-test failure; contracts/lint/package check pass."
+    },
+    "G": {
+      "status": "NOT_EXECUTED",
+      "detail": "Full security/audit/retained package/strict consumer stopped; package smoke only passed."
+    },
+    "H": {
+      "status": "NOT_EXECUTED",
+      "detail": "No push/new hosted head."
+    },
+    "I": {
+      "status": "NOT_EXECUTED",
+      "detail": "Original MAJOR remains open; independent closure not eligible."
+    },
+    "J": {
+      "status": "PASS",
+      "detail": "Historical results preserved; precise failed decision recorded."
+    }
+  },
+  "realDocker": {
+    "membershipAssertions": 21,
+    "redisAssertions": 42,
+    "redisCycles": 2,
+    "healthAssertions": 15,
+    "cleanup": "PASS"
+  },
+  "unit": {
+    "total": 245,
+    "pass": 244,
+    "fail": 1,
+    "skipped": 0
+  },
+  "failureTest": "real harness preserves all original assertion and Docker/spawn expressions in order",
+  "pushed": false,
+  "independentFinding": "OPEN",
+  "historicalLimitations": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "Debian H3 failed; downstream not qualified"
+  ]
+}

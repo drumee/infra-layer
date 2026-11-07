@@ -1,0 +1,23 @@
+{
+  "purpose": "Read-only post-failure attribution; inventory absent from first failure. No audit rerun, new qualification or archive construction.",
+  "command": [
+    "npm",
+    "pack",
+    "--dry-run",
+    "--json"
+  ],
+  "started": "2026-10-28T21:10:54.576018+00:00",
+  "ended": "2026-10-28T21:10:54.885955+00:00",
+  "exit_code": 0,
+  "source": "0dd9a17d2fe63b98ba3fd6ef56c5252b595a60ec",
+  "file_count": 43,
+  "first_rejected_member": "internal/rollback-authorization.js",
+  "all_rejected_members": [
+    "internal/rollback-authorization.js"
+  ],
+  "tarball_created": false,
+  "inventory_sha256": "6a781dc6ec2346015c75ec46aa07f3c906586019c2caf3f5f7093783630cd953",
+  "policy_file": "test/package-audit.js",
+  "policy_line": 11,
+  "policy_unchanged": true
+}

@@ -1,0 +1,11 @@
+# Proposed V1-F1 corrective scope — not executed
+
+Proposed mission **IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1** addresses the failed V1 preflight, not production runtime or historical resource deletion.
+
+1. Verify the checkpoint containing V1's four frozen diagnostic drafts and preserve the safety 24/24, canonical lint exit 1 and independent BLOCKED_EVIDENCE records. Confirm no V1 resource was created.
+2. Remove only the unused initial assignment at `test/diagnostics/fixture-volumes/docker.cjs:11:9`; retain both actual command-success and caught-error output assignments, original exception propagation, trusted executable/environment and output bounds. Do not add a lint suppression or modify lint policies. This is a proposal, not an applied fix.
+3. Assess the LOW severity partial-creation structured-ledger observation. Prefer explicit planned/issued/created/verified or unresolved receipts immediately around each mutating creation, including failed post-create inspection/ID validation. Preserve primary and cleanup outcomes; an uncertain object stays protected. Extend deterministic partial-setup accounting coverage without broad cleanup selectors or adoption of unknown objects. The existing global inventory guard already ordinarily flags survivors; do not claim an unproven security bypass.
+4. Establish a new exact harness baseline, qualify affected deterministic controls and canonical lint, independently review the safe campaign plan, then conduct at most one newly justified current-attempt real Docker qualification if authorized and preflight passes. Inspect all-state consumers, exact metadata identity and daemon immediately before non-force removal. Retain all creation/removal/readback evidence and stop on any mandatory failure.
+5. Keep current mechanism acceptance separate from all four unresolved historical records. No historical deletion, labels-only attribution, prune, production source change, package rebuild, application rerun or owner uncertainty acceptance is included. Preserve qualified package/R5/observer behaviour and obtain independent review of the actual final evidence.
+
+No correction, retest or live attempt under this proposal occurs in V1. Its local commit preserves an explicitly unqualified draft and the exact failure boundary for review.

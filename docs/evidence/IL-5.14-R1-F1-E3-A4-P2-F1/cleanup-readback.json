@@ -1,0 +1,106 @@
+{
+  "time": "2026-10-28T15:00:01.863716+00:00",
+  "project": "drumee-il2-test-be22d37f",
+  "resources": {
+    "drumee-il2-test-be22d37f": {
+      "compose_containers": "",
+      "owner_containers": "",
+      "networks": "",
+      "images": ""
+    },
+    "drumee-il2-test-be22d37f-ephemeral": {
+      "compose_containers": "",
+      "owner_containers": "",
+      "networks": "",
+      "images": ""
+    }
+  },
+  "containers_before": [
+    "e48d1991476f",
+    "9ab9d911d67d",
+    "ad54c9ae4370",
+    "dbef18b88da6",
+    "c2d515f4382e",
+    "026c71e034fd",
+    "ca5091e89d7d",
+    "b8d5ccd026ff",
+    "a64b550f1d3b",
+    "cf649f7d2352",
+    "9320436b6b82",
+    "674b611e8b0d",
+    "8df71ec63e28",
+    "2850273720ec",
+    "5ce0ce990a4d",
+    "42113b43f533",
+    "4c802389b1e4",
+    "9dfda18e01d4",
+    "38695756ad2c",
+    "d01f0aa17416"
+  ],
+  "containers_after": [
+    "e48d1991476f",
+    "9ab9d911d67d",
+    "ad54c9ae4370",
+    "dbef18b88da6",
+    "c2d515f4382e",
+    "026c71e034fd",
+    "ca5091e89d7d",
+    "b8d5ccd026ff",
+    "a64b550f1d3b",
+    "cf649f7d2352",
+    "9320436b6b82",
+    "674b611e8b0d",
+    "8df71ec63e28",
+    "2850273720ec",
+    "5ce0ce990a4d",
+    "42113b43f533",
+    "4c802389b1e4",
+    "9dfda18e01d4",
+    "38695756ad2c",
+    "d01f0aa17416"
+  ],
+  "foreign_containers_unchanged": true,
+  "networks_before": [
+    "b59b2684c6c8",
+    "a5de72fecf55",
+    "7a11de4b2583",
+    "6ab343a5df47",
+    "02b4589f2622",
+    "431486b00b0f",
+    "7a1b2dedbf65",
+    "2d155988db0e",
+    "8183a8fd8e8c",
+    "809d8e8f3611",
+    "4b2f2ffd2680"
+  ],
+  "networks_after": [
+    "b59b2684c6c8",
+    "a5de72fecf55",
+    "7a11de4b2583",
+    "6ab343a5df47",
+    "02b4589f2622",
+    "431486b00b0f",
+    "7a1b2dedbf65",
+    "2d155988db0e",
+    "8183a8fd8e8c",
+    "809d8e8f3611",
+    "4b2f2ffd2680"
+  ],
+  "foreign_networks_unchanged": true,
+  "remaining_runner_directories": [],
+  "processes": {
+    "2554112": {
+      "alive": false
+    },
+    "2554152": {
+      "alive": false
+    },
+    "2554151": {
+      "alive": false
+    },
+    "2554111": {
+      "alive": false
+    }
+  },
+  "status": "PASS"
+}

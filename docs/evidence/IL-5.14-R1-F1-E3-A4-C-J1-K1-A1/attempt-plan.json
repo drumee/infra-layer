@@ -1,0 +1,40 @@
+{
+  "recorded": "2026-10-29T18:19:47.885825+00:00",
+  "checkpoint": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+  "qualified_source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "attempt": "A1-drumee-app-a1-ym4dmo_w-controlled-1",
+  "authorized_attempts": 1,
+  "question": "Which exact awaited operation/refusal branch rejects the APP_CRASH recovery sequence, and what full membership/identity/endpoint state did that branch actually consume?",
+  "hypotheses": [
+    "H1 unauthorized attachment",
+    "H2 missing required membership",
+    "H3 unsettled/inconsistent endpoint observation",
+    "H7 recovery sequencing",
+    "H8 recovery authorization",
+    "H12 taxonomy"
+  ],
+  "confirming": "Phase-tagged original driver throw with stack and the exact Docker network/container inspect results consumed by validation, journal recovery state and revision/ownership identity.",
+  "contradicting": "Different operation/code, undeclared/wrong identity, or successful recovery without same failure; no cause selected in advance.",
+  "fixture": "Minimal canonical state-changing prefix: initial/repeated preparation, public RPC state writes, stop/start, banner update/rollback, APP_CRASH group. Canonical source files and target assertions unchanged.",
+  "omitted": "Original LAN denial and host TLS proxy steps are read-only host/network controls and do not create/connect Docker resources. They are not disabled in the canonical suite; full suite is not run.",
+  "synchronization": "No new waits/retries/sleeps/timeouts. In particular no added R5 restarting-state wait. Actual production Docker API responses are passively copied without extra diagnostic Docker reads between failed activation, canonical inspect and rollback.",
+  "scope": "Unique fresh drumee-il5-<random> project, secure private deployment root and unique owned image. Only application service/kernel network, explicit bind mounts/tmpfs, pinned Node base Config.Volumes=null. No Redis fixture or historical volume manipulation.",
+  "cleanup": "Exact project+owner+service/name checks before removal, expected network only, no volume mounts, no in-use foreign endpoint; exact owned image tag/owner; private root clear via existing helper; empty project readback. No volume deletion in A1.",
+  "observability": "2048 records/2MiB total/16KiB per record; per-process monotonic order, UTC for reference; selected safe network/container fields, no Env/credentials/secret source paths/payloads. Original return/error/cause identity preserved. Observer errors make diagnostics invalid.",
+  "Docker_events": "One retrospective label-filtered bounded past-window read after cleanup, retention-limited auxiliary evidence; no qualified Docker observer implementation changed and no cross-process millisecond causality inferred.",
+  "preflight": "10 deterministic no-Docker observer controls PASS plus actual diagnostic syntax PASS; source hashes below",
+  "output": "/tmp/drumee-app-a1-ym4dmo_w/attempt-1",
+  "command": [
+    "node",
+    "/tmp/drumee-app-a1-ym4dmo_w/diagnostic.cjs",
+    "/tmp/drumee-app-a1-ym4dmo_w/attempt-1"
+  ],
+  "stop": "Stop after this single attempt. First uncaught functional failure ends scenario, then safe owned cleanup. Observer/ownership/cleanup failure invalidates diagnostic; no retry/correction. PASS alone leaves historical cause undetermined.",
+  "script_hashes": {
+    "observe.cjs": "dd6cbfa2733c19ab22d976c117bc122560522c6299837288f40b42b24afbe452",
+    "preflight.cjs": "7e3aad9c45fdb5edcdfd7cfff44cf4fd97f9c62c6daf97a7ba316c06031b8798",
+    "diagnostic.cjs": "dadf3b1b184090d152a489703de6d0dafbe33d67fd6d78bbabb68d5d4a44bb9e"
+  },
+  "updated": "2026-10-29T18:23:55.791405+00:00",
+  "pre_execution_hardening": "Secondary journal observation errors recorded separately; original operation error preserved; observer errors evaluated after restoration; exact image tag/readback also checked on partial setup failures."
+}

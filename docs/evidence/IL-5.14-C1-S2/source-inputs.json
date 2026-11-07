@@ -1,0 +1,31 @@
+{
+  "sourceRevision": "f54a6ea3c1d170ee543ef98a890b38f0dd449a55",
+  "hashes": {
+    "package.json": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd",
+    "package-lock.json": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+    "test/application/package.json": "19af64bb7c30c873d014c3b3ac7591b8af193ab32dfb3eb6ce6738094f1c3836",
+    "test/application/package-lock.json": "b0dcb6001f3f31b4c0e5201fbc01d93b07d01405e8e49a008894a386a2835189",
+    "tooling/eslint-baseline.json": "4ed3ffda318796bda37b65deda058240d0d8926b866ffc46c7bd678b68cfbfb2",
+    "tooling/lint.cjs": "0351b4a54251320eba9faf79fa4989b298bd4cbbb848ff2be3a01bf6dbe9deb9",
+    "eslint.config.cjs": "18c4871f01cde503be9c99bdc9cfcaf67c2682a74f939f8a32186808d0eeb0cd",
+    "index.d.ts": "5aa3c8e77fe018686406bdbbb52a76ebb14f455342006b8cce7f6f380c31a6bf",
+    "lifecycle/index.d.ts": "eb19c680376d062a5c67ef8e33dd84deb9db2a9d68a8d040308a452243ad915b",
+    "lifecycle/docker.js": "99fe06b55c110d80480c0cb5a62cf7b86f558c4940bfee448f91d4d664212b97",
+    "internal/network-readiness.js": "cabb4f7279454bb61f1f5ed4254a3a99b875657408165d6d3e19a57af89945ee",
+    "lifecycle/activation.js": "09bd15d0a9bc6bb53907acc0a38598a3b19586589eed9b86b832814442b1e965"
+  },
+  "unchangedFromCheckpoint": {
+    "package.json": true,
+    "package-lock.json": true,
+    "test/application/package.json": true,
+    "test/application/package-lock.json": true,
+    "tooling/eslint-baseline.json": true,
+    "tooling/lint.cjs": true,
+    "eslint.config.cjs": true,
+    "index.d.ts": true,
+    "lifecycle/index.d.ts": true,
+    "lifecycle/docker.js": true,
+    "internal/network-readiness.js": false,
+    "lifecycle/activation.js": false
+  }
+}

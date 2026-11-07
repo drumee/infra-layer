@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "checks": {
+    "containers_strict_attributes_mount_multiset": true,
+    "networks": true,
+    "volumes": true,
+    "daemon_identity_counts": true,
+    "images_except_elapsed_created_since": true
+  },
+  "reference": "testbox-before.json",
+  "observed": "testbox-after.json",
+  "prior_ordered_comparison": "protected-resource-comparison.json",
+  "correction": "Docker Mounts array order is immaterial. Sort copied full records including duplicates; compare all remaining container fields exactly. No resource mutated.",
+  "protected_counts": {
+    "containers": 3,
+    "networks": 4,
+    "volumes": 5,
+    "image_records": 13,
+    "daemon_unique_images": 15
+  }
+}

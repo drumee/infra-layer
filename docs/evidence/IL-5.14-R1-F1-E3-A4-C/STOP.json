@@ -1,0 +1,42 @@
+{
+  "name": "lint",
+  "command": [
+    "npm",
+    "run",
+    "lint"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source": "8452b9be9cab7851ea058abd8b9bf90a4dd77f4e",
+  "executable": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "attempt": "A4-C-drumee-il514-a4-c-axxwu3_x",
+  "uid": 1000,
+  "gid": 1000,
+  "started": "2026-10-28T20:47:59.156477+00:00",
+  "ended": "2026-10-28T20:48:00.866375+00:00",
+  "exit_code": 1,
+  "process_returncode": 1,
+  "protected_before": [
+    {
+      "path": "/etc/docker",
+      "uid": 0,
+      "gid": 0,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_after": [
+    {
+      "path": "/etc/docker",
+      "uid": 0,
+      "gid": 0,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_unchanged": true,
+  "frozen_inputs_unchanged": true,
+  "log": "lint.log",
+  "log_sha256": "69909eecb8d9a9be59e87c1db6aa53b4413ab94b80a61ae3a2ff5726090c81e5"
+}

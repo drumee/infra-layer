@@ -1,0 +1,89 @@
+{
+  "A2_APPLICATION_INTEGRATION_FAILURE": {
+    "source": "04a4fc9f1196ef42aec9428144609735e00ceb4a",
+    "command": [
+      "env",
+      "IL5_NETWORK_CLIENT=testbox",
+      "IL5_LAN_ADDRESS=192.168.5.201",
+      "IL5_HOST_NGINX=/tmp/drumee-il513-c1-nginx/root/usr/sbin/nginx",
+      "npm",
+      "run",
+      "test:application"
+    ],
+    "uid": 1000,
+    "gid": 1000,
+    "exit": 1,
+    "logSHA256": "70905e85d9d8fe713f886b3eaf7f686ef26e34f8983b4bff3dbd44267f9c3e6c",
+    "report": {
+      "project": "drumee-il5-c683e4f9",
+      "source_revision": "04a4fc9f1196ef42aec9428144609735e00ceb4a",
+      "groups": [
+        "prepare-is-persistent-private-and-does-not-start-application",
+        "real-runtime-public-rpc-and-canonical-authorization-denial",
+        "actual-loopback-publication-and-separate-lan-client-denial",
+        "external-host-nginx-https-and-unchanged-native-rpc-prefix",
+        "stop-start-preserves-resource-and-secret-generations",
+        "controlled-configuration-update-and-canonical-rollback"
+      ],
+      "assertions": 36,
+      "smtp_recovery": "explicitly-unsupported",
+      "internet_delivery": "not-tested",
+      "runtime_version": "0.1.0-alpha.4",
+      "network": {
+        "control_route": true,
+        "application_non_loopback": "ECONNREFUSED"
+      },
+      "socket_observation": "LISTEN 0      4096   127.0.0.1:34585 0.0.0.0:*",
+      "host_proxy": {
+        "version": "nginx version: nginx/1.22.1",
+        "tls": "actual-CA-SAN-verified",
+        "containerized": false
+      },
+      "status": "failed",
+      "failure": {
+        "code": "NETWORK_ATTACHMENT_MISMATCH"
+      }
+    },
+    "missingOriginalFacts": [
+      "container ID",
+      "precise checkNetworks invocation stack",
+      "observed membership/endpoint/state snapshot at refusal"
+    ],
+    "cleanup": "logged and verified in A2 cleanup readback"
+  },
+  "A2_POSTFIX_SERVICES_FAILURE": {
+    "source": "04a4fc9f1196ef42aec9428144609735e00ceb4a",
+    "command": [
+      "npm",
+      "run",
+      "test:integration"
+    ],
+    "exit": 1,
+    "logSHA256": "e28aa1ded3cf6a7df838c79d82a3f1e1a337f3e7ba2a1e1ea429c242992c5d3b",
+    "project": "drumee-il2-test-c8eb299f",
+    "HTTPendpoint": "http://127.0.0.1:44221/",
+    "method": "GET",
+    "target": "capture-control API, container8025",
+    "phase": "first capturedCount of services.test.js case15 before stopping capture or creating SMTP client",
+    "lastSuccessfulCountTime": "2026-10-27T16:16:25.992Z",
+    "blockingComposeRestart": {
+      "service": "dkim",
+      "begin": "2026-10-27T16:16:26.317Z",
+      "end": "2026-10-27T16:16:33.450Z",
+      "durationMs": 7133.044383
+    },
+    "errorTime": "2026-10-27T16:16:33.454Z",
+    "error": "TypeError fetch failed / UND_ERR_SOCKET",
+    "stack": [
+      "capturedCount services.test.js:50:62",
+      "test case services.test.js:152:79"
+    ],
+    "missingOriginalFacts": [
+      "socket tuple/bytes",
+      "HTTP connection ID and close reason",
+      "exact capture container ID",
+      "daemon events at socket failure"
+    ],
+    "cleanup": "runner cleanup.confirmed16:16:47.938Z"
+  }
+}

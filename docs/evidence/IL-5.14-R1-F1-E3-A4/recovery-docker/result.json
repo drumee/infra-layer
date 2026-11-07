@@ -1,0 +1,97 @@
+{
+  "project": "drumee-il5-8169752d",
+  "steps": [
+    "initial-operational"
+  ],
+  "assertions": 20,
+  "initial": {
+    "id": "4f5bcadd5d656e40a0dd5d42d141b7bfaf7319ddcab60788d806fe2f017e4378",
+    "image_id": "sha256:abf170991cbb1e35ddea5d02edbb9ddec6a8f2b9995dbf4377038d69e9879e68",
+    "image": "sha256:abf170991cbb1e35ddea5d02edbb9ddec6a8f2b9995dbf4377038d69e9879e68",
+    "started_at": "2026-10-27T22:15:29.230921018Z",
+    "running": true,
+    "restarting": false,
+    "name": "/drumee-il5-8169752d-application-1",
+    "exit_code": 0,
+    "health": "healthy",
+    "owner": "drumee-il5-8169752d",
+    "role": "application",
+    "project": "drumee-il5-8169752d",
+    "service": "application",
+    "revision": "cec7cbd7cbc17ca4cda801e5246621202e4c18f8c3c8c29f70af6f23d3fc0895",
+    "ports": {
+      "3101/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "41087"
+        }
+      ]
+    },
+    "mounts": []
+  },
+  "degraded": {
+    "observed": {
+      "id": "21c5cef1dd727415bbcb1d199c38c1666cca7956c0a0924eca14f67f8905e67b",
+      "image_id": "sha256:abf170991cbb1e35ddea5d02edbb9ddec6a8f2b9995dbf4377038d69e9879e68",
+      "image": "sha256:abf170991cbb1e35ddea5d02edbb9ddec6a8f2b9995dbf4377038d69e9879e68",
+      "started_at": "2026-10-27T22:15:35.945351486Z",
+      "running": true,
+      "restarting": true,
+      "name": "/drumee-il5-8169752d-application-1",
+      "exit_code": 1,
+      "health": "unhealthy",
+      "owner": "drumee-il5-8169752d",
+      "role": "application",
+      "project": "drumee-il5-8169752d",
+      "service": "application",
+      "revision": "dbf32d2f7fccfbb962f6b63b594e8b3c1665c1f0c09b0e0003e8e9a9f0189a78",
+      "ports": {},
+      "mounts": []
+    },
+    "state": {
+      "Status": "restarting",
+      "Running": true,
+      "Paused": false,
+      "Restarting": true,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 1,
+      "Error": "",
+      "StartedAt": "2026-10-27T22:15:35.945351486Z",
+      "FinishedAt": "2026-10-27T22:15:36.450943554Z",
+      "Health": {
+        "Status": "unhealthy",
+        "FailingStreak": 0,
+        "Log": []
+      }
+    },
+    "networks": {
+      "drumee-il5-8169752d-application": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "drumee-il5-8169752d-application-1",
+          "application"
+        ],
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "ffe42e5ceffbb3896caba869eb07cd9af19b1b3594d1a84d902117ab9b160f2d",
+        "EndpointID": "",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": [
+          "drumee-il5-8169752d-application-1",
+          "application",
+          "21c5cef1dd72"
+        ]
+      }
+    }
+  },
+  "cleanup": "PASS"
+}

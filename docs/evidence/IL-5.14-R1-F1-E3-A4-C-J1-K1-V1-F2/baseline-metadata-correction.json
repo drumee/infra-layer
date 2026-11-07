@@ -1,0 +1,13 @@
+{
+  "recorded": "2026-11-02T15:57:30.232790+00:00",
+  "original_baseline_sha256": "62fa8e6b6126e7d4eec68aeca16916013705c0262e6bdd76b9593f787000088f",
+  "corrected_baseline_sha256": "87f88288f63114e16abedef9b094b9cff0c2034e7fce43ed44986c93d63bcf6e",
+  "changed_fields": [
+    "head",
+    "created",
+    "initial_harness_sha256"
+  ],
+  "source_changed": false,
+  "tests_rerun": false,
+  "reason": "Post-stop record clarification only: inherited F1 head/timestamp and older inherited initial harness hashes replaced by verified F2 checkpoint hashes. Original executed baseline preserved as baseline-at-static-start.json. Frozen_inputs/harness_sha256/attempt/candidate_source and executed sources unchanged."
+}

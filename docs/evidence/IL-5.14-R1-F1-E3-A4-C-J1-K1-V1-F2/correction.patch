@@ -1,0 +1,251 @@
+diff --git a/test/diagnostics/fixture-volumes/campaign.cjs b/test/diagnostics/fixture-volumes/campaign.cjs
+index 48d1934..40db70d 100644
+--- a/test/diagnostics/fixture-volumes/campaign.cjs
++++ b/test/diagnostics/fixture-volumes/campaign.cjs
+@@ -1,7 +1,8 @@
+ "use strict";
+ const fs = require("node:fs"), path = require("node:path"), crypto = require("node:crypto"), assert = require("node:assert/strict");
+ const { createDocker } = require("./docker.cjs"), O = require("./ownership.cjs");
+-const evidence = path.resolve(__dirname, "../../../docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1");
++const { projectMount, assertMountsEqual, assertInventoryEqual } = require("./mounts.cjs");
++const evidence = path.resolve(__dirname, "../../../docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2");
+ const baseline = JSON.parse(fs.readFileSync(path.join(evidence, "baseline.json")));
+ const approval = JSON.parse(fs.readFileSync(path.join(evidence, "preflight-approved.json")));
+ assert.equal(approval.attempt, baseline.attempt); assert.equal(approval.status, "PASS");
+@@ -24,6 +25,10 @@ function verifyContainer(entry) {
+   assert.equal(raw.Config.Labels["org.drumee.qualification"], attempt); assert.equal(raw.Config.Labels["org.drumee.infra.owner"], attempt); assert.equal(raw.Config.Labels["org.drumee.volume.nonce"], nonce);
+   assert.equal(raw.Config.Labels["com.docker.compose.project"], project); assert.equal(raw.Image, approval.image.id);
+   assert.equal(raw.Mounts.length, 1); assert.equal(raw.Mounts[0].Name, volumeName); assert.equal(raw.Mounts[0].Type, "volume"); assert.equal(raw.Mounts[0].Destination, "/fixture");
++  const expectedMounts = [{ type: "volume", name: volumeName, destination: "/fixture", source_hash: manifest.volumes[0].identity.mountpoint_hash, driver: "local", rw: false, mode: "", propagation: "" }];
++  const observedMounts = raw.Mounts.map(projectMount);
++  write("mount-observation-" + D.commandCount(), { container: entry.id, expected: expectedMounts, observed: observedMounts });
++  assertMountsEqual(expectedMounts, observedMounts);
+   return raw;
+ }
+ function cleanupContainer() {
+@@ -70,8 +75,8 @@ finally {
+   }
+   write("removals", removals);
+   try {
+-    const after = D.inventory(); write("after", after); assert.deepEqual(after, before);
+-    result.inventory_reconciliation = "EXACT_METADATA_MATCH";
++    const after = D.inventory(); write("after", after); assertInventoryEqual(before, after);
++    result.inventory_reconciliation = "EXACT_METADATA_MOUNT_MULTISET_MATCH";
+   } catch (error) { cleanupErrors.push(error); }
+   Object.assign(result, O.outcome(primary, cleanupErrors, manifest.volumes.map(v => v.name), removals));
+   if (!manifest.volumes.length || !manifest.containers.length) result.campaign = "FAIL";
+diff --git a/test/diagnostics/fixture-volumes/docker.cjs b/test/diagnostics/fixture-volumes/docker.cjs
+index e05096d..92459ee 100644
+--- a/test/diagnostics/fixture-volumes/docker.cjs
++++ b/test/diagnostics/fixture-volumes/docker.cjs
+@@ -1,6 +1,7 @@
+ "use strict";
+ const fs = require("node:fs"), path = require("node:path"), cp = require("node:child_process");
+ const T = require("../../../internal/system-tools"), { digest, volumeIdentity } = require("./ownership.cjs");
++const { projectMount } = require("./mounts.cjs");
+ const endpoint = "unix:///var/run/docker.sock";
+ function createDocker(directory) {
+   fs.mkdirSync(directory, { recursive: true, mode: 0o700 });
+@@ -46,7 +47,7 @@ function createDocker(directory) {
+     }) : [];
+     const ids = lines(run(["ps", "-aq", "--no-trunc"])).sort();
+     const containers = ids.length ? lines(run(["container", "inspect", "--format", "{{json .}}", ...ids])).map(s => {
+-      const c = JSON.parse(s); return { id: c.Id, name: c.Name, ownership_hash: digest(c.Config.Labels || {}), mounts: c.Mounts.map(m => ({ type: m.Type, name: m.Name || null, destination: m.Destination })), networks_hash: digest(c.NetworkSettings.Networks || {}) };
++      const c = JSON.parse(s); return { id: c.Id, name: c.Name, ownership_hash: digest(c.Config.Labels || {}), mounts: c.Mounts.map(projectMount), networks_hash: digest(c.NetworkSettings.Networks || {}) };
+     }) : [];
+     const nets = lines(run(["network", "ls", "-q", "--no-trunc"])).sort();
+     const networks = nets.length ? lines(run(["network", "inspect", "--format", "{{json .}}", ...nets])).map(s => {
+diff --git a/test/diagnostics/fixture-volumes/mounts.cjs b/test/diagnostics/fixture-volumes/mounts.cjs
+new file mode 100644
+index 0000000..79eb43c
+--- /dev/null
++++ b/test/diagnostics/fixture-volumes/mounts.cjs
+@@ -0,0 +1,57 @@
++"use strict";
++const assert = require("node:assert/strict"), { digest } = require("./ownership.cjs");
++const legacyFields = ["type", "name", "destination"];
++const fields = [...legacyFields, "source_hash", "driver", "rw", "mode", "propagation"];
++function invalid() { throw Object.assign(new Error("INVALID_MOUNT_EVIDENCE"), { code: "INVALID_MOUNT_EVIDENCE" }); }
++function validate(m, schema) {
++  if (!m || typeof m !== "object" || Array.isArray(m) || Object.keys(m).sort().join() !== schema.slice().sort().join()) invalid();
++  if (typeof m.type !== "string" || !m.type || typeof m.destination !== "string" || !m.destination.startsWith("/")) invalid();
++  if (m.type === "volume" ? typeof m.name !== "string" || !m.name : m.name !== null) invalid();
++  if (schema === fields && (typeof m.source_hash !== "string" || !/^[a-f0-9]{64}$/.test(m.source_hash) || typeof m.rw !== "boolean" || typeof m.mode !== "string" || typeof m.propagation !== "string" || (m.type === "volume" ? typeof m.driver !== "string" || !m.driver : m.driver !== null))) invalid();
++}
++function projectMount(m) {
++  if (!m || typeof m !== "object" || typeof m.Source !== "string" || ((m.Type === "volume" || m.Type === "bind") && !m.Source)) invalid();
++  const record = { type: m.Type, name: m.Type === "volume" ? m.Name : null, destination: m.Destination,
++    source_hash: digest(m.Source), driver: m.Type === "volume" ? m.Driver : null, rw: m.RW, mode: m.Mode, propagation: m.Propagation };
++  validate(record, fields); return record;
++}
++function keys(mounts, schema) {
++  if (!Array.isArray(mounts)) invalid();
++  return Array.from(mounts, m => { validate(m, schema); return JSON.stringify(schema.map(k => m[k])); });
++}
++function compare(expected, observed, schema) {
++  const want = keys(expected, schema), got = keys(observed, schema);
++  const counts = list => { const map = new Map(); for (const k of list) map.set(k, (map.get(k) || 0) + 1); return map; };
++  const a = counts(want), b = counts(got), missing = [], additional = [];
++  for (const k of [...new Set([...a.keys(), ...b.keys()])].sort()) {
++    const expectedCount = a.get(k) || 0, observedCount = b.get(k) || 0;
++    const entry = { mount_hash: digest(k), expected_count: expectedCount, observed_count: observedCount };
++    if (expectedCount > observedCount) missing.push(entry);
++    if (observedCount > expectedCount) additional.push(entry);
++  }
++  if (missing.length || additional.length) {
++    // Values (including host paths) stay out of bounded diagnostics. Complete
++    // records remain in the caller's evidence in their original observed order.
++    const changed = new Set();
++    if (missing.length === 1 && additional.length === 1) {
++      const left = [...a.keys()].filter(k => (a.get(k) || 0) > (b.get(k) || 0));
++      const right = [...b.keys()].filter(k => (b.get(k) || 0) > (a.get(k) || 0));
++      const x = JSON.parse(left[0]), y = JSON.parse(right[0]);
++      schema.forEach((field, j) => { if (x[j] !== y[j]) changed.add(field); });
++    }
++    const details = { missing: missing.slice(0, 8), additional: additional.slice(0, 8), missing_identities: missing.length, additional_identities: additional.length, changed_fields: [...changed].sort() };
++    throw Object.assign(new Error("MOUNT_MULTISET_MISMATCH " + JSON.stringify(details)), { code: "MOUNT_MULTISET_MISMATCH", details });
++  }
++}
++function assertMountsEqual(expected, observed) { compare(expected, observed, fields); }
++function inventory(expected, observed, schema) {
++  if (!expected || !observed || !Array.isArray(expected.containers) || !Array.isArray(observed.containers)) invalid();
++  const withoutMounts = value => ({ ...value, containers: value.containers.map(c => ({ ...c, mounts: [] })) });
++  assert.deepEqual(withoutMounts(observed), withoutMounts(expected));
++  expected.containers.forEach((c, i) => compare(c.mounts, observed.containers[i].mounts, schema));
++}
++function assertInventoryEqual(expected, observed) { inventory(expected, observed, fields); }
++// Explicit replay only: historical evidence never contained current access or
++// source fields. The campaign cannot implicitly downgrade incomplete records.
++function assertHistoricalInventoryEqual(expected, observed) { inventory(expected, observed, legacyFields); }
++module.exports = { projectMount, assertMountsEqual, assertInventoryEqual, assertHistoricalInventoryEqual };
+diff --git a/test/diagnostics/fixture-volumes/mounts.test.cjs b/test/diagnostics/fixture-volumes/mounts.test.cjs
+new file mode 100644
+index 0000000..5a1aa5e
+--- /dev/null
++++ b/test/diagnostics/fixture-volumes/mounts.test.cjs
+@@ -0,0 +1,125 @@
++"use strict";
++const assert = require("node:assert/strict"), { test } = require("node:test"), fs = require("node:fs"), path = require("node:path"), cp = require("node:child_process"), os = require("node:os");
++const M = require("./mounts.cjs"), O = require("./ownership.cjs");
++const raw = (name = "one") => ({ Type: "volume", Name: name, Source: "/var/lib/docker/volumes/" + name + "/_data", Destination: "/" + name, Driver: "local", RW: false, Mode: "", Propagation: "" });
++const a = M.projectMount(raw()), b = M.projectMount(raw("two")), c = M.projectMount(raw("three"));
++const mismatch = (expected, observed) => assert.throws(() => M.assertMountsEqual(expected, observed), { code: "MOUNT_MULTISET_MISMATCH" });
++const invalid = (expected, observed) => assert.throws(() => M.assertMountsEqual(expected, observed), { code: "INVALID_MOUNT_EVIDENCE" });
++test("D1 identical arrays", () => M.assertMountsEqual([a, b], [a, b]));
++test("D2 reverse order", () => M.assertMountsEqual([a, b], [b, a]));
++test("D3 arbitrary permutation", () => M.assertMountsEqual([a, b, c], [c, a, b]));
++test("D4 duplicate-preserving permutation", () => M.assertMountsEqual([a, a, b], [b, a, a]));
++test("D5 empty collections", () => M.assertMountsEqual([], []));
++const oldRoot = path.resolve(__dirname, "../../../docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F1/campaign-1");
++const before = JSON.parse(fs.readFileSync(path.join(oldRoot, "before.json"))), after = JSON.parse(fs.readFileSync(path.join(oldRoot, "after.json")));
++test("D6 exact historical F1 failure: ordered assertion fails; explicit projected multiset replay passes", () => {
++  assert.throws(() => assert.deepEqual(after, before), { code: "ERR_ASSERTION" });
++  M.assertHistoricalInventoryEqual(before, after);
++  // Missing current access evidence is never implicitly accepted as legacy.
++  assert.throws(() => M.assertInventoryEqual(before, after), { code: "INVALID_MOUNT_EVIDENCE" });
++});
++test("D7 additional mount", () => mismatch([a], [a, b]));
++test("D8 missing mount", () => mismatch([a, b], [a]));
++test("D9 extra duplicate", () => mismatch([a, b], [a, a, b]));
++test("D10 missing duplicate", () => mismatch([a, a, b], [a, b]));
++test("D11 different source", () => mismatch([a], [{ ...a, source_hash: O.digest("other-source") }]));
++test("D12 different destination", () => mismatch([a], [{ ...a, destination: "/other" }]));
++test("D13 different mount type", () => mismatch([a], [{ ...a, type: "bind", name: null, driver: null }]));
++test("D14 read-only versus read-write", () => mismatch([a], [{ ...a, rw: true }]));
++test("D15 different access mode", () => mismatch([a], [{ ...a, mode: "ro,z" }]));
++test("D16 different propagation", () => mismatch([a], [{ ...a, propagation: "rshared" }]));
++test("D17 different volume identity", () => mismatch([a], [{ ...a, name: "another-volume" }]));
++test("D18 unknown additional mount", () => mismatch([a, b], [a, b, c]));
++test("D19 incomplete and malformed current records fail even when both sides match", () => {
++  for (const key of Object.keys(a)) { const bad = { ...a }; delete bad[key]; invalid([bad], [bad]); }
++  for (const bad of [{ ...a, name: "" }, { ...a, destination: "relative" }, { ...a, source_hash: "bad" }, { ...a, rw: "false" }, { ...a, mode: null }, { ...a, propagation: null }, { ...a, driver: "" }, { ...a, extra: "unknown" }]) invalid([bad], [bad]);
++});
++test("D20 invalid collections, entries and sparse arrays", () => {
++  for (const bad of [null, {}, "mount", [null], ["mount"], new Array(1)]) invalid(bad, bad);
++});
++function freeze(value) { if (value && typeof value === "object") { Object.freeze(value); Object.values(value).forEach(freeze); } return value; }
++test("D21 frozen inputs and original order survive success and mismatch", () => {
++  const x = freeze(structuredClone([a, b, a])), y = freeze(structuredClone([b, a, a]));
++  const initial = JSON.stringify([x, y]); M.assertMountsEqual(x, y); mismatch(x, [a]); assert.equal(JSON.stringify([x, y]), initial);
++});
++test("D22 equal count unequal contents", () => mismatch([a, b], [a, c]));
++test("D23 bounded diagnostic fidelity with hashes, counts and changed attributes", () => {
++  assert.throws(() => M.assertMountsEqual([a], [{ ...a, rw: true }]), e => {
++    assert.equal(e.code, "MOUNT_MULTISET_MISMATCH"); assert.deepEqual(e.details.changed_fields, ["rw"]);
++    assert.equal(e.details.missing[0].expected_count, 1); assert.equal(e.details.missing[0].observed_count, 0);
++    assert.equal(e.details.additional[0].observed_count, 1); assert.equal(e.message.includes(a.destination), false); return true;
++  });
++  assert.throws(() => M.assertMountsEqual([a], [a, a]), e => e.details.additional[0].expected_count === 1 && e.details.additional[0].observed_count === 2);
++  assert.throws(() => M.assertMountsEqual([], Array.from({ length: 30 }, (_, i) => ({ ...a, name: "v" + i }))), e => e.details.additional.length === 8 && e.details.additional_identities === 30 && e.message.length < 3000);
++});
++test("D24 genuine mismatch throws through caller and preserves prior failure independently", () => {
++  const main = { code: "FIRST_FAILURE" }; let cleanupError;
++  try { M.assertMountsEqual([a], [b]); } catch (error) { cleanupError = error; }
++  assert.equal(cleanupError.code, "MOUNT_MULTISET_MISMATCH");
++  const result = O.outcome(main, [cleanupError], [], []);
++  assert.equal(result.primary_error, "FIRST_FAILURE"); assert.deepEqual(result.cleanup_errors, ["MOUNT_MULTISET_MISMATCH"]); assert.equal(result.campaign, "FAIL");
++});
++const inventory = mounts => ({ daemon: { id: "engine", context: "default", endpoint: "unix:///var/run/docker.sock" }, volumes: [{ name: "v", metadata_hash: "volume" }], containers: [{ id: "id", name: "/c", ownership_hash: "owner", networks_hash: "network", mounts }], networks: [{ id: "n", metadata_hash: "network" }] });
++test("current inventory path permits only mount permutation and does not mutate", () => {
++  const x = freeze(inventory([a, b])), y = freeze(inventory([b, a])); M.assertInventoryEqual(x, y);
++  assert.deepEqual(x.containers[0].mounts, [a, b]);
++});
++for (const [label, change] of [
++  ["container identity", v => { v.containers[0].id = "other"; }],
++  ["container ownership", v => { v.containers[0].ownership_hash = "other"; }],
++  ["container network", v => { v.containers[0].networks_hash = "other"; }],
++  ["volume metadata", v => { v.volumes[0].metadata_hash = "other"; }],
++  ["network metadata", v => { v.networks[0].metadata_hash = "other"; }],
++  ["daemon", v => { v.daemon.id = "other"; }],
++  ["context", v => { v.daemon.context = "other"; }],
++  ["endpoint", v => { v.daemon.endpoint = "other"; }],
++  ["missing container", v => { v.containers.pop(); }],
++  ["extra container", v => { v.containers.push(structuredClone(v.containers[0])); }]
++]) test("inventory rejects " + label, () => { const x = inventory([a, b]), y = structuredClone(x); change(y); assert.throws(() => M.assertInventoryEqual(x, y), { code: "ERR_ASSERTION" }); });
++test("inventory mismatch and malformed mounts propagate through actual helper", () => {
++  assert.throws(() => M.assertInventoryEqual(inventory([a]), inventory([b])), { code: "MOUNT_MULTISET_MISMATCH" });
++  assert.throws(() => M.assertInventoryEqual(inventory([{}]), inventory([{}])), { code: "INVALID_MOUNT_EVIDENCE" });
++});
++test("raw Docker projection preserves required fields and rejects absent evidence", () => {
++  assert.equal(a.source_hash, O.digest(raw().Source)); assert.equal(a.rw, false);
++  for (const field of ["Source", "Type", "Name", "Destination", "Driver", "RW", "Mode", "Propagation"]) {
++    const bad = raw(); delete bad[field]; assert.throws(() => M.projectMount(bad), { code: "INVALID_MOUNT_EVIDENCE" });
++  }
++  const bind = M.projectMount({ ...raw(), Type: "bind" }); assert.equal(bind.name, null); assert.equal(bind.driver, null);
++  const tmpfs = M.projectMount({ ...raw(), Type: "tmpfs", Source: "" }); assert.equal(tmpfs.source_hash, O.digest(""));
++});
++test("actual adapter inventory captures full mounts in raw order using deterministic Docker double", () => {
++  const { createDocker } = require("./docker.cjs"), directory = fs.mkdtempSync(path.join(os.tmpdir(), "v1-f2-adapter-"));
++  const original = cp.execFileSync;
++  const mounts = [raw("two"), raw()];
++  cp.execFileSync = (executable, args) => {
++    assert.ok(path.isAbsolute(executable)); const command = args.slice(2);
++    const key = command.slice(0, 2).join(" ");
++    if (key === "context show") return "default\n";
++    if (key === "info --format") return '"engine"\n';
++    if (key === "context inspect") return '"unix:///var/run/docker.sock"\n';
++    if (key === "volume ls" || key === "network ls") return "";
++    if (key === "ps -aq") return "container\n";
++    assert.equal(key, "container inspect");
++    return JSON.stringify({ Id: "container", Name: "/c", Config: { Labels: {} }, Mounts: mounts, NetworkSettings: { Networks: {} } }) + "\n";
++  };
++  try {
++    const actual = createDocker(directory).inventory();
++    assert.deepEqual(actual.containers[0].mounts, mounts.map(M.projectMount));
++    M.assertInventoryEqual(actual, { ...actual, containers: [{ ...actual.containers[0], mounts: actual.containers[0].mounts.slice().reverse() }] });
++    assert.equal(actual.containers[0].mounts[0].name, "two");
++  } finally { cp.execFileSync = original; fs.rmSync(directory, { recursive: true }); }
++});
++test("existing program-fingerprint infrastructure seals active campaign comparison paths and rejects bypasses", () => {
++  const guard = require("../../support/harness-preservation.cjs");
++  const source = fs.readFileSync(path.join(__dirname, "campaign.cjs"), "utf8");
++  const approved = "0bc3cbffe4ef2896ff0bb9783bee6be51ad1eaf705c9d11c4222940cf437a88f";
++  const verify = text => assert.equal(guard.programFingerprint(text), approved);
++  verify(source);
++  for (const call of ["assertMountsEqual(expectedMounts, observedMounts);", "assertInventoryEqual(before, after);"]) {
++    assert.ok(source.includes(call));
++    for (const replacement of ["false && " + call, "true || " + call, "function uncalled() { " + call + " }", "try { " + call + " } catch (error) { console.log(error.code); }", "void 0;"]) {
++      assert.throws(() => verify(source.replace(call, replacement)), { code: "ERR_ASSERTION" });
++    }
++  }
++});

@@ -1,0 +1,41 @@
+{
+  "observed_at": "2026-11-04T16:40:32.505393+00:00",
+  "owner_statement": "Endpoint is nonproduction; access authorized as debian@oxymot.fr",
+  "ssh_target": "debian@oxymot.fr",
+  "host": "vps-c5f4cd75",
+  "daemon_id": "b9c382a6-6e0e-458c-8690-4e4797190106",
+  "endpoint": "unix:///var/run/docker.sock",
+  "docker_version": "29.9.2",
+  "containers": [
+    {
+      "id": "348624f1ab687a7a7f7ce6b23d905b037bdd9170d76cce5799963a674158963d",
+      "name": "oxymot-blog-ghost-1",
+      "state": "running",
+      "image": "ghost:6.73.0-bookworm@sha256:3656324ad804308b9ef39571b15b41465cdee64f6a78d1807719b5ea379688fd",
+      "networks": "oxymot-blog_backend,oxymot-blog_egress"
+    },
+    {
+      "id": "3683a81734ac04ddddef7c7cb0023f58ebfc6dc1b6359465a23dd2bf57ba5920",
+      "name": "oxymot-blog-db-1",
+      "state": "running",
+      "image": "mysql:8.4.13@sha256:5cf1e1293ea42e077e6a22114e6773b9aae3bb8f9933a2acd5a9721518ff8f5b",
+      "networks": "oxymot-blog_backend"
+    }
+  ],
+  "network_count": 5,
+  "volume_count": 12,
+  "socket": "root:docker 0660; unchanged",
+  "debian_direct_docker_access": "DENIED",
+  "sudo_read_only_inspection": "PASS",
+  "isolation": "DOCKER_ISOLATION_NOT_ESTABLISHED",
+  "reason": "Existing unrelated oxymot-blog workloads; no dedicated daemon/resource boundary established. Distinct from local historical daemon, but that alone does not isolate remote unrelated resources.",
+  "mutations": [],
+  "cleanup_targets": [],
+  "H01_H04": "protected on historical daemon; not attributed to remote volumes",
+  "owner_followup": {
+    "blog_intervention": "Explicitly prohibited",
+    "intended_future_use": "oxymot-blog will use Infra Layer as an SMTP relay",
+    "dedicated_qualification_daemon_or_boundary": "Not identified",
+    "qualification_criteria_waived": false
+  }
+}

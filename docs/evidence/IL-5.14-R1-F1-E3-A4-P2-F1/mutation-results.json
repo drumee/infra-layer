@@ -1,0 +1,189 @@
+{
+  "source": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "kind": "Deterministic lifecycle models; fakePID101 is not a real host target",
+  "tests": 30,
+  "passed": 30,
+  "failed": 0,
+  "rows": [
+    {
+      "id": "D1",
+      "expected": "PASS",
+      "asserted_disposition": "NORMAL_COLLECTION_COMPLETE",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D2",
+      "expected": "PASS",
+      "asserted_disposition": "CONTROLLED_SIGTERM_COMPLETE",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D3",
+      "expected": "PASS",
+      "asserted_disposition": "CONTROLLED_SIGTERM_COMPLETE",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D4",
+      "expected": "PASS",
+      "asserted_disposition": "campaign0",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D5",
+      "expected": "REJECT",
+      "asserted_disposition": "UNSOLICITED_TERMINATION",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D6",
+      "expected": "REJECT",
+      "asserted_disposition": "UNSOLICITED_TERMINATION",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D7",
+      "expected": "REJECT",
+      "asserted_disposition": "PREMATURE_EXIT",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D8",
+      "expected": "REJECT",
+      "asserted_disposition": "PREMATURE_EXIT",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D9",
+      "expected": "REJECT",
+      "asserted_disposition": "PREMATURE_STOP",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D10",
+      "expected": "REJECT",
+      "asserted_disposition": "COLLECTION_ERROR",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D11",
+      "expected": "REJECT",
+      "asserted_disposition": "STREAM_ERROR",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D12",
+      "expected": "REJECT",
+      "asserted_disposition": "EVENT_PARSE_FAILED",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D13",
+      "expected": "REJECT",
+      "asserted_disposition": "OBSERVER_IDENTITY",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D14",
+      "expected": "REJECT",
+      "asserted_disposition": "SIGNAL_DELIVERY_FAILED",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D15",
+      "expected": "REJECT",
+      "asserted_disposition": "SHUTDOWN_TIMEOUT",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D16",
+      "expected": "REJECT",
+      "asserted_disposition": "UNEXPECTED_TERMINATION",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D17",
+      "expected": "REJECT",
+      "asserted_disposition": "UNEXPECTED_TERMINATION",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D18",
+      "expected": "REJECT",
+      "asserted_disposition": "SERVICES_FAILED",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D19",
+      "expected": "REJECT",
+      "asserted_disposition": "DIAGNOSTIC_INCOMPLETE; COLLECTION_INCOMPLETE",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D20",
+      "expected": "REJECT",
+      "asserted_disposition": "PRIOR_FATAL",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D21",
+      "expected": "REJECT",
+      "asserted_disposition": "DUPLICATE_STOP",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D22",
+      "expected": "WAIT_THEN_PASS",
+      "asserted_disposition": "no result until stdout/stderr end+close",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D23",
+      "expected": "REJECT",
+      "asserted_disposition": "SPAWN_ERROR",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D24",
+      "expected": "REJECT",
+      "asserted_disposition": "DIAGNOSTIC_INCOMPLETE",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D25",
+      "expected": "REJECT",
+      "asserted_disposition": "ORIGINAL_FAILURE",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D26",
+      "expected": "REJECT",
+      "asserted_disposition": "SERVICES_NOT_COMPLETE; COLLECTION_INCOMPLETE",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D27",
+      "expected": "REJECT",
+      "asserted_disposition": "UNEXPECTED_TERMINATION (wrapper143)",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D28",
+      "expected": "REJECT",
+      "asserted_disposition": "PARTIAL_EVENT",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D29",
+      "expected": "REJECT",
+      "asserted_disposition": "OBSERVER_IDENTITY",
+      "test_outcome": "PASS"
+    },
+    {
+      "id": "D30",
+      "expected": "REJECT_THEN_PASS",
+      "asserted_disposition": "missing lifecycle/ID rejected; full owned lifecycle accepted",
+      "test_outcome": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,706 @@
+{
+  "actualSource": true,
+  "generatedJavaScriptExecuted": false,
+  "cases": [
+    {
+      "label": "nominal",
+      "expected": null,
+      "error": null,
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "extra undeclared",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "error": {
+        "code": "NETWORK_ATTACHMENT_MISMATCH"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "missing every declared membership remains inventoried",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "error": {
+        "code": "NETWORK_ATTACHMENT_MISMATCH"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "wrong selected network identity",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "error": {
+        "code": "NETWORK_ATTACHMENT_MISMATCH"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "wrong selected endpoint identity",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "error": {
+        "code": "NETWORK_ATTACHMENT_MISMATCH"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "foreign owner",
+      "expected": "NETWORK_OWNERSHIP_MISMATCH",
+      "error": {
+        "code": "NETWORK_OWNERSHIP_MISMATCH"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "undeclared service",
+      "expected": "NETWORK_OWNERSHIP_MISMATCH",
+      "error": {
+        "code": "NETWORK_OWNERSHIP_MISMATCH"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "wrong container actual identity",
+      "expected": "INVALID_NETWORK_ATTACHMENT",
+      "error": {
+        "code": "INVALID_NETWORK_ATTACHMENT"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "invalid container id from inventory",
+      "expected": "INVALID_DOCKER_OBJECT_IDENTITY",
+      "error": {
+        "code": "INVALID_DOCKER_OBJECT_IDENTITY"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "malformed metadata",
+      "expected": "INVALID_NETWORK_ATTACHMENT",
+      "error": {
+        "code": "INVALID_NETWORK_ATTACHMENT"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ]
+      ]
+    },
+    {
+      "label": "non-JSON Docker result",
+      "expected": "INVALID_NETWORK_ATTACHMENT",
+      "error": {
+        "code": "INVALID_NETWORK_ATTACHMENT"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ]
+      ]
+    },
+    {
+      "label": "Docker failure is not swallowed",
+      "expected": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+      "error": {
+        "code": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+        "exit_status": 125,
+        "object_missing": false
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ]
+      ]
+    },
+    {
+      "label": "missing required container refused",
+      "expected": "REQUIRED_CONTAINER_MISSING",
+      "error": {
+        "code": "REQUIRED_CONTAINER_MISSING",
+        "exit_status": 1
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "missing required network refused",
+      "expected": "REQUIRED_NETWORK_MISSING",
+      "error": {
+        "code": "REQUIRED_NETWORK_MISSING"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ]
+      ]
+    },
+    {
+      "label": "optional missing network with owned container refused",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "error": {
+        "code": "NETWORK_ATTACHMENT_MISMATCH"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "optional missing network without resources allowed",
+      "expected": null,
+      "error": null,
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ]
+      ]
+    },
+    {
+      "label": "stopped configured membership permitted",
+      "expected": null,
+      "error": null,
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "owned oneoff declared membership permitted",
+      "expected": null,
+      "error": null,
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "valid multihoming object roles",
+      "expected": null,
+      "error": null,
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-secondary"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "typed sandboxless endpoint always unsettled",
+      "expected": "NETWORK_ATTACHMENT_UNSETTLED",
+      "error": {
+        "code": "NETWORK_ATTACHMENT_UNSETTLED"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    },
+    {
+      "label": "sandboxless pending cannot hide extra connectivity",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "error": {
+        "code": "NETWORK_ATTACHMENT_MISMATCH"
+      },
+      "calls": [
+        [
+          "network",
+          "ls",
+          "--format",
+          "{{.Name}}"
+        ],
+        [
+          "network",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"owner\":{{json (index .Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Labels \"com.docker.compose.project\")}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"containers\":{{json .Containers}}}",
+          "drumee-a2-independent-kernel"
+        ],
+        [
+          "ps",
+          "-a",
+          "--no-trunc",
+          "--filter",
+          "label=com.docker.compose.project=drumee-a2-independent",
+          "--format",
+          "{{.ID}}"
+        ],
+        [
+          "container",
+          "inspect",
+          "--format",
+          "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if index .State \"Health\"}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+          "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        ]
+      ]
+    }
+  ],
+  "passed": 21
+}

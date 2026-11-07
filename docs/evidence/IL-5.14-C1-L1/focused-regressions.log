@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: lifecycle writers reject concurrent and stale locks without taking over
+ok 1 - lifecycle writers reject concurrent and stale locks without taking over
+  ---
+  duration_ms: 3.754359
+  type: 'test'
+  ...
+# Subtest: corrupt renewal schedule and arbitrary provider errors never expose values
+ok 2 - corrupt renewal schedule and arbitrary provider errors never expose values
+  ---
+  duration_ms: 1.129121
+  type: 'test'
+  ...
+# Subtest: configuration/image/schema/volume/secret changes have explicit compatibility classifications
+ok 3 - configuration/image/schema/volume/secret changes have explicit compatibility classifications
+  ---
+  duration_ms: 1.014619
+  type: 'test'
+  ...
+# Subtest: corrupt active pointer is rejected before any daemon request
+ok 4 - corrupt active pointer is rejected before any daemon request
+  ---
+  duration_ms: 0.816216
+  type: 'test'
+  ...
+# Subtest: active pointer parse failures retain the explicit corruption refusal
+ok 5 - active pointer parse failures retain the explicit corruption refusal
+  ---
+  duration_ms: 0.619228
+  type: 'test'
+  ...
+# Subtest: filesystem helpers reject a replaced symlink mount before invoking Docker
+ok 6 - filesystem helpers reject a replaced symlink mount before invoking Docker
+  ---
+  duration_ms: 0.532552
+  type: 'test'
+  ...
+# Subtest: a corrupted pre-existing rotation generation cannot be committed over a valid canonical secret
+ok 7 - a corrupted pre-existing rotation generation cannot be committed over a valid canonical secret
+  ---
+  duration_ms: 31.607907
+  type: 'test'
+  ...
+# Subtest: E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+ok 8 - E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+  ---
+  duration_ms: 10.584632
+  type: 'test'
+  ...
+# Subtest: E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+ok 9 - E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+  ---
+  duration_ms: 2.112363
+  type: 'test'
+  ...
+# Subtest: E3 missing referenced container remains a failure with original nonzero status
+ok 10 - E3 missing referenced container remains a failure with original nonzero status
+  ---
+  duration_ms: 1.713606
+  type: 'test'
+  ...
+# Subtest: E4 endpoint outside the declared namespace is explicitly unexpected
+ok 11 - E4 endpoint outside the declared namespace is explicitly unexpected
+  ---
+  duration_ms: 2.166282
+  type: 'test'
+  ...
+# Subtest: E5 unsettled endpoint cannot mask a foreign container or network
+ok 12 - E5 unsettled endpoint cannot mask a foreign container or network
+  ---
+  duration_ms: 2.35589
+  type: 'test'
+  ...
+# Subtest: E6 malformed endpoint metadata and inconsistent keys fail explicitly
+ok 13 - E6 malformed endpoint metadata and inconsistent keys fail explicitly
+  ---
+  duration_ms: 6.59454
+  type: 'test'
+  ...
+# Subtest: E7 genuine Docker failure escapes once without exposing raw diagnostics
+ok 14 - E7 genuine Docker failure escapes once without exposing raw diagnostics
+  ---
+  duration_ms: 2.538191
+  type: 'test'
+  ...
+# Subtest: E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+ok 15 - E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+  ---
+  duration_ms: 2.006748
+  type: 'test'
+  ...
+# Subtest: network object identity, isolation and actual membership cannot be substituted
+ok 16 - network object identity, isolation and actual membership cannot be substituted
+  ---
+  duration_ms: 8.27249
+  type: 'test'
+  ...
+# Subtest: E12 stale container identity and invalid object keys are rejected without fallback
+ok 17 - E12 stale container identity and invalid object keys are rejected without fallback
+  ---
+  duration_ms: 2.774011
+  type: 'test'
+  ...
+# Subtest: E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+ok 18 - E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+  ---
+  duration_ms: 8.263158
+  type: 'test'
+  ...
+# Subtest: unsettled deadline refuses permanently unresolved attachment and retains metadata
+ok 19 - unsettled deadline refuses permanently unresolved attachment and retains metadata
+  ---
+  duration_ms: 1.754777
+  type: 'test'
+  ...
+# Subtest: readiness never retries command failures, missing objects or ownership refusals
+ok 20 - readiness never retries command failures, missing objects or ownership refusals
+  ---
+  duration_ms: 4.526266
+  type: 'test'
+  ...
+# Subtest: D1 assertion fields, non-enumerable message/stack and source survive the actual failed process
+ok 21 - D1 assertion fields, non-enumerable message/stack and source survive the actual failed process
+  ---
+  duration_ms: 47.278951
+  type: 'test'
+  ...
+# Subtest: D2 failure remains nonzero with concise human summary and restrictive artifact mode
+ok 22 - D2 failure remains nonzero with concise human summary and restrictive artifact mode
+  ---
+  duration_ms: 32.841014
+  type: 'test'
+  ...
+# Subtest: D3 nested cause retains original assertion
+ok 23 - D3 nested cause retains original assertion
+  ---
+  duration_ms: 31.314279
+  type: 'test'
+  ...
+# Subtest: D4 child assertion remains identifiable through parent reporting
+ok 24 - D4 child assertion remains identifiable through parent reporting
+  ---
+  duration_ms: 65.076129
+  type: 'test'
+  ...
+# Subtest: D5 asynchronous assertion is captured rather than swallowed
+ok 25 - D5 asynchronous assertion is captured rather than swallowed
+  ---
+  duration_ms: 33.842876
+  type: 'test'
+  ...
+# Subtest: D6 real trusted Docker failure remains distinct with command, nonzero status and stderr
+ok 26 - D6 real trusted Docker failure remains distinct with command, nonzero status and stderr
+  ---
+  duration_ms: 47.027862
+  type: 'test'
+  ...
+# Subtest: D7 redaction covers nested values, causes, stack, command/output and protected contexts
+ok 27 - D7 redaction covers nested values, causes, stack, command/output and protected contexts
+  ---
+  duration_ms: 33.148321
+  type: 'test'
+  ...
+# Subtest: D8 circular values, bigint, symbol, Buffer, Map, Set and undefined are safe
+ok 28 - D8 circular values, bigint, symbol, Buffer, Map, Set and undefined are safe
+  ---
+  duration_ms: 32.750577
+  type: 'test'
+  ...
+# Subtest: D9 large diagnostics remain bounded valid JSON with explicit truncation
+ok 29 - D9 large diagnostics remain bounded valid JSON with explicit truncation
+  ---
+  duration_ms: 452.545761
+  type: 'test'
+  ...
+# Subtest: D10 successful execution creates no failure artifact or artificial error
+ok 30 - D10 successful execution creates no failure artifact or artificial error
+  ---
+  duration_ms: 28.773876
+  type: 'test'
+  ...
+# Subtest: observer preserves original argv/options/receiver/stdin/timeout/return/error identity and executes once
+ok 31 - observer preserves original argv/options/receiver/stdin/timeout/return/error identity and executes once
+  ---
+  duration_ms: 31.852633
+  type: 'test'
+  ...
+# Subtest: real harness preserves all original assertion and Docker/spawn expressions in order
+ok 32 - real harness preserves all original assertion and Docker/spawn expressions in order
+  ---
+  duration_ms: 45.064172
+  type: 'test'
+  ...
+# Subtest: artifact directory ownership/permissions and exclusive trace prevent unsafe reuse
+ok 33 - artifact directory ownership/permissions and exclusive trace prevent unsafe reuse
+  ---
+  duration_ms: 3.47061
+  type: 'test'
+  ...
+# Subtest: lint debt never permits a new, moved or duplicate diagnostic
+ok 34 - lint debt never permits a new, moved or duplicate diagnostic
+  ---
+  duration_ms: 1.317069
+  type: 'test'
+  ...
+# Subtest: lint catches undefined identifiers, unreachable flow and unsafe finally
+ok 35 - lint catches undefined identifiers, unreachable flow and unsafe finally
+  ---
+  duration_ms: 119.289025
+  type: 'test'
+  ...
+# Subtest: lint includes tests and treats newly unused variables as regressions
+ok 36 - lint includes tests and treats newly unused variables as regressions
+  ---
+  duration_ms: 7.877742
+  type: 'test'
+  ...
+# Subtest: quality workflow is valid, read-only, explicit and fail-closed
+ok 37 - quality workflow is valid, read-only, explicit and fail-closed
+  ---
+  duration_ms: 29.904576
+  type: 'test'
+  ...
+# Subtest: Dependabot is scoped, periodic and never configures automatic merge
+ok 38 - Dependabot is scoped, periodic and never configures automatic merge
+  ---
+  duration_ms: 1.833053
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 940.133903

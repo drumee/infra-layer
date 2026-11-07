@@ -1,0 +1,14 @@
+"use strict";
+const fs=require("node:fs"),path=require("node:path"),crypto=require("node:crypto");
+const root="/home/somanos/github/infra-layer",load=require("node:module").createRequire(path.join(root,"package.json"));
+const M=load("minimatch"),levels={},prototype=M.Minimatch.prototype;
+const preprocess=prototype.preprocess,firstPhase=prototype.firstPhasePreProcess;
+let firstPhaseCalls=0;
+prototype.preprocess=function(...args){const level=this.options.optimizationLevel??1;levels[level]=(levels[level]||0)+1;return Reflect.apply(preprocess,this,args);};
+prototype.firstPhasePreProcess=function(...args){firstPhaseCalls++;return Reflect.apply(firstPhase,this,args);};
+(async()=>{
+  const {ESLint}=load("eslint"),engine=new ESLint({cwd:root});
+  const results=await engine.lintFiles(["."]);
+  const files=["node_modules/minimatch/dist/commonjs/index.js","node_modules/eslint/lib/eslint/eslint-helpers.js","node_modules/@eslint/config-array/dist/cjs/index.cjs"];
+  console.log(JSON.stringify({purpose:"Observe current canonical lint path; does not waive audit finding",minimatch:load("minimatch/package.json").version,linted_files:results.length,preprocess_calls_by_level:levels,first_phase_preprocess_calls:firstPhaseCalls,source_sha256:Object.fromEntries(files.map(f=>[f,crypto.createHash("sha256").update(fs.readFileSync(path.join(root,f))).digest("hex")]))},null,2));
+})().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>{prototype.preprocess=preprocess;prototype.firstPhasePreProcess=firstPhase;});

@@ -1,0 +1,7 @@
+# K1 baseline — Gate A PASS
+
+Clean actual checkpoint6b9027b81fd16fe45b182a7d49e5f034079031d8 verified on fix/il514-c1-network-attachment-identity, drumee/infra-layer. J1 correction0dd9a17 is preserved; relative to fd708aa only its unused matrix binding changed before K1. AGENTS.md, J1 final decision/package failure and A4-C qualification inventory were inspected. PR20 remains OPEN/main/head cd9b8322bd7eef3b4094710ec4ea26be94f08922 by read-only metadata; no PR edit/push.
+
+Original `npm run test:package` exits1 at test/package-audit.js:27, Unexpected package member. J1's preserved dry-run lists43 members; sole rejected member is internal/rollback-authorization.js. Current audit, manifests and production source match that failed execution byte for byte. Local package.json files includes internal/; current exports do not publicly expose an internal helper. Existing audit's internal regex names only system-tools and network-readiness. No archive/consumer was reached in J1; its failed decision remains unchanged. This source/evidence reconstruction conclusively establishes the cause without repeating the unchanged failed audit.
+
+[Baseline and original inputs](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1/baseline.json), [J1 original package failure](IL-5.14-R1-F1-E3-A4-C-J1-package-qualification.md), [frozen candidate diff](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1/candidate.json). Earlier manifests are reverified rather than rewriting historical results.

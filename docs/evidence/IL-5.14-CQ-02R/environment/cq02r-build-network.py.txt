@@ -1,0 +1,23 @@
+import datetime,hashlib,json,os,pathlib,signal,subprocess,sys,time
+d=json.loads(sys.argv[1]);b=pathlib.Path(d['remote']);record=json.loads((b/'engine-final.json').read_text());cfg=b/'daemon.json';config=json.loads(cfg.read_text());bridge='br-cq'+d['attempt'].split('-')[1];subnet='10.247.254.1/24';interface='wlp2s0'
+def call(argv):return subprocess.check_output(argv,text=True,stderr=subprocess.STDOUT).strip()
+def docker(*args):return call(['/usr/bin/docker','--host','unix://'+str(b/'docker.sock'),*args])
+assert docker('ps','-aq')=='' and docker('volume','ls','-q')==''
+assert subprocess.run(['ip','link','show',bridge],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode!=0
+pid=record['pid'];assert str(cfg).encode() in pathlib.Path('/proc/'+str(pid)+'/cmdline').read_bytes();os.kill(pid,signal.SIGTERM);deadline=time.monotonic()+20
+while pathlib.Path('/proc/'+str(pid)).exists():
+ assert time.monotonic()<deadline;time.sleep(.1)
+subprocess.run(['ip','link','add','name',bridge,'type','bridge'],check=True);subprocess.run(['ip','address','add',subnet,'dev',bridge],check=True);subprocess.run(['ip','link','set',bridge,'up'],check=True)
+identity=json.loads(call(['ip','-json','address','show','dev',bridge]))[0]
+rules=[['-I','FORWARD','1','-i','br+','-s',d['private_pool'],'-o',interface,'-m','comment','--comment',d['attempt']+'-BUILD-OUT','-j','ACCEPT'],['-I','FORWARD','1','-i',interface,'-o','br+','-d',d['private_pool'],'-m','conntrack','--ctstate','ESTABLISHED,RELATED','-m','comment','--comment',d['attempt']+'-BUILD-RETURN','-j','ACCEPT'],['-t','nat','-A','POSTROUTING','-s',d['private_pool'],'-o',interface,'-m','comment','--comment',d['attempt']+'-BUILD-NAT','-j','MASQUERADE']]
+for rule in rules:subprocess.run(['/usr/sbin/iptables',*rule],check=True)
+preparation={'attempt':d['attempt'],'created':datetime.datetime.now(datetime.timezone.utc).isoformat(),'bridge':identity,'address':subnet,'rules':rules,'purpose':'Permit canonical image build on an owned default bridge; only new campaign source range; no existing rule replacement'}
+(b/'build-network-creation.json').write_text(json.dumps(preparation,indent=2)+'\n')
+config['bridge']=bridge;config['bip']=subnet;cfg.write_text(json.dumps(config,indent=2)+'\n');p=subprocess.Popen(['/usr/bin/dockerd','--config-file',str(cfg)],stdin=subprocess.DEVNULL,stdout=(b/'dockerd-build-network.stdout').open('xb'),stderr=(b/'dockerd-build-network.stderr').open('xb'),start_new_session=True);record['pid']=p.pid;record['config']=config;record['config_sha256']=hashlib.sha256(cfg.read_bytes()).hexdigest();(b/'engine-final.json').write_text(json.dumps(record,indent=2)+'\n')
+deadline=time.monotonic()+30
+while True:
+ q=subprocess.run(['/usr/bin/docker','--host','unix://'+str(b/'docker.sock'),'info','--format','{{json .}}'],capture_output=True,text=True)
+ if q.returncode==0:info=json.loads(q.stdout);break
+ if p.poll() is not None or time.monotonic()>deadline:raise RuntimeError('OWN_DAEMON_NETWORK_START_FAILED '+(b/'dockerd-build-network.stderr').read_text()[-2000:])
+ time.sleep(.2)
+assert info['ID']==record['daemon_id'];preparation['status']='PASS';preparation['private_daemon_id']=info['ID'];preparation['candidate_sha']=d['candidate'];(b/'build-network-creation.json').write_text(json.dumps(preparation,indent=2)+'\n');print(json.dumps(preparation,indent=2))

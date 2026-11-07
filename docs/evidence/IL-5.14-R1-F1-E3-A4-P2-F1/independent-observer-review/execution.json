@@ -1,0 +1,47 @@
+[
+  {
+    "name": "original-regression",
+    "command": [
+      "node",
+      "--test",
+      "test/diagnostics/observer-shutdown/regression.test.cjs"
+    ],
+    "source": "fd708aaf914accc93aa42fcd705740db390721d5",
+    "started": "2026-10-28T14:54:09.247689+00:00",
+    "ended": "2026-10-28T14:54:09.353350+00:00",
+    "exit": 0,
+    "sha256": "bc4f69d2dd5d89131c7724b86fc3480d09abc78ebfd395a3859d4e41abcb88fb",
+    "uid": 1000,
+    "gid": 1000
+  },
+  {
+    "name": "mutation-matrix",
+    "command": [
+      "node",
+      "--test",
+      "test/diagnostics/observer-shutdown/matrix.test.cjs"
+    ],
+    "source": "fd708aaf914accc93aa42fcd705740db390721d5",
+    "started": "2026-10-28T14:54:09.353451+00:00",
+    "ended": "2026-10-28T14:54:09.455426+00:00",
+    "exit": 0,
+    "sha256": "46d39aab28087063c4bf77077252f4e1448cfa8764bf739d14ab532a6973c9f2",
+    "uid": 1000,
+    "gid": 1000
+  },
+  {
+    "name": "protocol-controls",
+    "command": [
+      "node",
+      "--test",
+      "test/diagnostics/observer-shutdown/protocol.test.cjs"
+    ],
+    "source": "fd708aaf914accc93aa42fcd705740db390721d5",
+    "started": "2026-10-28T14:54:09.455527+00:00",
+    "ended": "2026-10-28T14:54:09.589791+00:00",
+    "exit": 0,
+    "sha256": "9120dac7ff82546934d8f915a08ad13958524f81b6d4e1c6cd45592bb2426d6e",
+    "uid": 1000,
+    "gid": 1000
+  }
+]

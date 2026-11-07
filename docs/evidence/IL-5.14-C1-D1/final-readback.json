@@ -1,0 +1,35 @@
+{
+  "sourceRevision": "d4be9edadc60cb70ea8d4236297dedd5052ccb0d",
+  "commands": {
+    "containers": [
+      "/usr/bin/docker",
+      "--host",
+      "unix:///var/run/docker.sock",
+      "ps",
+      "-a",
+      "--filter",
+      "name=drumee-il514-net-",
+      "--filter",
+      "name=drumee-il514-health-",
+      "--format",
+      "{{.ID}} {{.Names}}"
+    ],
+    "networks": [
+      "/usr/bin/docker",
+      "--host",
+      "unix:///var/run/docker.sock",
+      "network",
+      "ls",
+      "--filter",
+      "name=drumee-il514-net-",
+      "--format",
+      "{{.ID}} {{.Name}}"
+    ]
+  },
+  "readback": {
+    "containers": "",
+    "networks": ""
+  },
+  "protectedDockerAllCommandsUnchanged": true,
+  "rootLockSHA256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3"
+}

@@ -1,0 +1,7 @@
+# Critical assertion effectiveness
+
+Six actual checkNetworks scenarios are exercised through the existing fixed canonical-module loader and restricted Docker response substitution: extra network, missing required membership, wrong network ID, malformed attachment metadata, foreign ownership and genuine command-failure propagation (simulated nonzero125 through the real Docker adapter). Each actual case invokes the validator once, reaches the relevant inspection fixture calls and asserts its exact expected refusal (including command exit125 where applicable).
+
+For every scenario, two isolated child-process negative controls substitute validator behavior: unsafe success and unrelated exception. Both cause actual ERR_ASSERTION and process exit1; normal expected refusal gives exit0. An unrelated parse/timeout/error is not accepted. Six parent tests PASS, covering18 real child invocations. Counters supplement but do not replace exact assert.throws code predicates, actual module invocation and observed process status. No production source is mutated, generated JS evaluated or real Docker resource disrupted. The controlled fixture accepts only fixed scenario/mode names and does not execute arbitrary inputs.
+
+These tests validate refusal-assertion effectiveness independently of AST preservation. Actual-daemon behavior remains supported separately by unchanged-source E2 real Docker evidence. No claim is made that simulated command failure alone is real daemon qualification.

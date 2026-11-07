@@ -1,0 +1,859 @@
+{
+  "observed_at": "2026-11-04T21:05:22.340482+00:00",
+  "host": "minis",
+  "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+  "uid": 1000,
+  "gid": 1000,
+  "groups": [
+    24,
+    25,
+    29,
+    30,
+    44,
+    46,
+    100,
+    101,
+    102,
+    106,
+    108,
+    989,
+    1000
+  ],
+  "cpu": 4,
+  "memory": "MemTotal:        8063064 kB\nMemFree:         2312224 kB\nMemAvailable:    6966844 kB\nBuffers:          494440 kB\nCached:          4152048 kB\nSwapCached:            0 kB\nActive:          1477040 kB\nInactive:        3652568 kB\nActive(anon):     508556 kB\nInactive(anon):        0 kB\nActive(file):     968484 kB\nInactive(file):  3652568 kB\nUnevictable:       16524 kB\nMlocked:            5812 kB\nSwapTotal:       1000444 kB\nSwapFree:         999420 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:              1396 kB\nWriteback:             0 kB\nAnonPages:        498720 kB\nMapped:           359436 kB\nShmem:             15996 kB\nKReclaimable:     340492 kB\nSlab:             465064 kB\nSReclaimable:     340492 kB\nSUnreclaim:       124572 kB\nKernelStack:        7820 kB\nPageTables:        15688 kB\nSecPageTables:      2728 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     5031976 kB\nCommitted_AS:    3583156 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:       38472 kB\nVmallocChunk:          0 kB\nPercpu:             4240 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:    202752 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nUnaccepted:            0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:      199384 kB\nDirectMap2M:     4968448 kB\nDirectMap1G:     4194304 kB\n",
+  "disk": "Filesystem        1B-blocks        Used    Available Use% Mounted on\n/dev/sda2       18044682240  6422773760  10679345152  38% /\ntmpfs            4128288768     3813376   4124475392   1% /tmp\n/dev/sda3        7190102016  2305941504   4497080320  34% /var\n/dev/sdb1      313906880512 11955126272 285931401216   5% /data",
+  "context": "default",
+  "endpoint": "unix:///var/run/docker.sock",
+  "daemon": {
+    "ID": "690569ff-0ab3-482e-81d0-09e2c6f93da0",
+    "Name": "minis",
+    "DockerRootDir": "/data/docker",
+    "Containers": 3,
+    "ContainersRunning": 0,
+    "Images": 15,
+    "ServerVersion": "29.7.2"
+  },
+  "compose_version": "Docker Compose version v5.4.0",
+  "containers": [
+    {
+      "id": "c514f6c155f5c708e55bec1165cdc296cd4aaae2cf9226b710435b9c6f09e4a7",
+      "name": "/drumee-migrate-1",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-09-01T13:10:36.66616844Z",
+        "FinishedAt": "2026-09-01T13:10:37.177645597Z"
+      },
+      "image": "sha256:340265dd4164647a743b16bfdce2e780fedd069c25bd8227f823d5105278d825",
+      "labels": {
+        "com.docker.compose.config-hash": "cc090d03bea2861a533b5bb256c4914c4f8b3ab55fc543e4478183de8bef16fa",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "schemas-init:service_completed_successfully:false",
+        "com.docker.compose.image": "sha256:340265dd4164647a743b16bfdce2e780fedd069c25bd8227f823d5105278d825",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "drumee",
+        "com.docker.compose.project.config_files": "/opt/drumee/docker-compose.yml",
+        "com.docker.compose.project.working_dir": "/opt/drumee",
+        "com.docker.compose.service": "migrate",
+        "com.docker.compose.version": "5.4.0",
+        "org.opencontainers.image.description": "Drumee schemas role: creates the databases, then applies migrations",
+        "org.opencontainers.image.licenses": "AGPL-3.0-or-later",
+        "org.opencontainers.image.source": "https://github.com/drumee/debian",
+        "org.opencontainers.image.title": "drumee-schemas-job"
+      },
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "drumee_drumee_conf",
+          "Source": "/data/docker/volumes/drumee_drumee_conf/_data",
+          "Destination": "/etc/drumee",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": false,
+          "Propagation": ""
+        }
+      ],
+      "networks": {
+        "drumee_drumee": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": [
+            "drumee-migrate-1",
+            "migrate"
+          ],
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "170923d8cded8c95bb79bd710fc83be6fba138134aad63bcf55c25a23e6268c6",
+          "EndpointID": "",
+          "Gateway": "",
+          "IPAddress": "",
+          "MacAddress": "",
+          "IPPrefixLen": 0,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-migrate-1",
+            "migrate",
+            "c514f6c155f5"
+          ]
+        }
+      }
+    },
+    {
+      "id": "86e518b5a6ecda7badfc0347c942b92370f1bae3fbc51c704a3b6dae6ba3e7ae",
+      "name": "/drumee-schemas-init-1",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-09-01T12:39:29.853691982Z",
+        "FinishedAt": "2026-09-01T13:10:35.473945333Z"
+      },
+      "image": "sha256:340265dd4164647a743b16bfdce2e780fedd069c25bd8227f823d5105278d825",
+      "labels": {
+        "com.docker.compose.config-hash": "8725c53d760250fea2b5ccefe34224ff6752b04668512650266a432508096ed1",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "infra-init:service_completed_successfully:false,db:service_healthy:false",
+        "com.docker.compose.image": "sha256:340265dd4164647a743b16bfdce2e780fedd069c25bd8227f823d5105278d825",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "drumee",
+        "com.docker.compose.project.config_files": "/opt/drumee/docker-compose.yml",
+        "com.docker.compose.project.working_dir": "/opt/drumee",
+        "com.docker.compose.service": "schemas-init",
+        "com.docker.compose.version": "5.4.0",
+        "org.opencontainers.image.description": "Drumee schemas role: creates the databases, then applies migrations",
+        "org.opencontainers.image.licenses": "AGPL-3.0-or-later",
+        "org.opencontainers.image.source": "https://github.com/drumee/debian",
+        "org.opencontainers.image.title": "drumee-schemas-job"
+      },
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "drumee_mfs_data",
+          "Source": "/data/docker/volumes/drumee_mfs_data/_data",
+          "Destination": "/data/mfs",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "volume",
+          "Name": "drumee_drumee_conf",
+          "Source": "/data/docker/volumes/drumee_drumee_conf/_data",
+          "Destination": "/etc/drumee",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": {
+        "drumee_drumee": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": [
+            "drumee-schemas-init-1",
+            "schemas-init"
+          ],
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "170923d8cded8c95bb79bd710fc83be6fba138134aad63bcf55c25a23e6268c6",
+          "EndpointID": "",
+          "Gateway": "",
+          "IPAddress": "",
+          "MacAddress": "",
+          "IPPrefixLen": 0,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-schemas-init-1",
+            "schemas-init",
+            "86e518b5a6ec"
+          ]
+        }
+      }
+    },
+    {
+      "id": "e29b72ba5093eedb2a46b572e8a7cb70f26dec89c0caa276fa19f5e59eeaa44c",
+      "name": "/drumee-infra-init-1",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-09-01T12:38:38.186047137Z",
+        "FinishedAt": "2026-09-01T12:39:22.488676799Z"
+      },
+      "image": "sha256:24574df2c5a0f848b479419a7dac00d53b5963fba2db7c8c284a3b4da10b27aa",
+      "labels": {
+        "com.docker.compose.config-hash": "06cf4ee34b73ba102f1e413528318e35b67bdfd42e31b6c6db2809bd0448266c",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:24574df2c5a0f848b479419a7dac00d53b5963fba2db7c8c284a3b4da10b27aa",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "drumee",
+        "com.docker.compose.project.config_files": "/opt/drumee/docker-compose.yml",
+        "com.docker.compose.project.working_dir": "/opt/drumee",
+        "com.docker.compose.service": "infra-init",
+        "com.docker.compose.version": "5.4.0",
+        "org.opencontainers.image.description": "Drumee infra role: renders the configuration tree into the shared volume, once",
+        "org.opencontainers.image.licenses": "AGPL-3.0-or-later",
+        "org.opencontainers.image.source": "https://github.com/drumee/debian",
+        "org.opencontainers.image.title": "drumee-infra-init"
+      },
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/opt/drumee/install.conf",
+          "Destination": "/etc/drumee/install.conf",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "volume",
+          "Name": "drumee_drumee_conf",
+          "Source": "/data/docker/volumes/drumee_drumee_conf/_data",
+          "Destination": "/out",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": {
+        "drumee_drumee": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": [
+            "drumee-infra-init-1",
+            "infra-init"
+          ],
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "170923d8cded8c95bb79bd710fc83be6fba138134aad63bcf55c25a23e6268c6",
+          "EndpointID": "",
+          "Gateway": "",
+          "IPAddress": "",
+          "MacAddress": "",
+          "IPPrefixLen": 0,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "drumee-infra-init-1",
+            "infra-init",
+            "e29b72ba5093"
+          ]
+        }
+      }
+    }
+  ],
+  "networks": [
+    {
+      "Name": "bridge",
+      "Id": "1ebb81d2df9ca4b13a737991dac91f706df9be90f86f0cdd10608f1b4b1f6861",
+      "Created": "2026-10-13T08:16:03.13740289-04:00",
+      "Scope": "local",
+      "Driver": "bridge",
+      "EnableIPv4": true,
+      "EnableIPv6": false,
+      "IPAM": {
+        "Driver": "default",
+        "Options": null,
+        "Config": [
+          {
+            "Subnet": "172.17.0.0/16",
+            "Gateway": "172.17.0.1"
+          }
+        ]
+      },
+      "Internal": false,
+      "Attachable": false,
+      "Ingress": false,
+      "ConfigFrom": {
+        "Network": ""
+      },
+      "ConfigOnly": false,
+      "Options": {
+        "com.docker.network.bridge.default_bridge": "true",
+        "com.docker.network.bridge.enable_icc": "true",
+        "com.docker.network.bridge.enable_ip_masquerade": "true",
+        "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+        "com.docker.network.bridge.name": "docker0",
+        "com.docker.network.driver.mtu": "1500"
+      },
+      "Labels": {},
+      "Containers": {},
+      "Status": {
+        "IPAM": {
+          "Subnets": {
+            "172.17.0.0/16": {
+              "IPsInUse": 3,
+              "DynamicIPsAvailable": 65533
+            }
+          }
+        }
+      }
+    },
+    {
+      "Name": "drumee_drumee",
+      "Id": "170923d8cded8c95bb79bd710fc83be6fba138134aad63bcf55c25a23e6268c6",
+      "Created": "2026-09-01T08:38:27.005436384-04:00",
+      "Scope": "local",
+      "Driver": "bridge",
+      "EnableIPv4": true,
+      "EnableIPv6": false,
+      "IPAM": {
+        "Driver": "default",
+        "Options": null,
+        "Config": [
+          {
+            "Subnet": "172.18.0.0/16",
+            "Gateway": "172.18.0.1"
+          }
+        ]
+      },
+      "Internal": false,
+      "Attachable": false,
+      "Ingress": false,
+      "ConfigFrom": {
+        "Network": ""
+      },
+      "ConfigOnly": false,
+      "Options": {},
+      "Labels": {
+        "com.docker.compose.config-hash": "99d02565d346a2b3d3972ae24dcb641012a8c04c1f4403d38dc4b4508cc53bf2",
+        "com.docker.compose.network": "drumee",
+        "com.docker.compose.project": "drumee",
+        "com.docker.compose.version": "5.4.0"
+      },
+      "Containers": {},
+      "Status": {
+        "IPAM": {
+          "Subnets": {
+            "172.18.0.0/16": {
+              "IPsInUse": 3,
+              "DynamicIPsAvailable": 65533
+            }
+          }
+        }
+      }
+    },
+    {
+      "Name": "host",
+      "Id": "cb1e4683b18346467661913adafe89a60db9d78854b613421700f373c6b5028c",
+      "Created": "2026-08-10T11:29:15.703066859-04:00",
+      "Scope": "local",
+      "Driver": "host",
+      "EnableIPv4": true,
+      "EnableIPv6": false,
+      "IPAM": {
+        "Driver": "default",
+        "Options": null,
+        "Config": null
+      },
+      "Internal": false,
+      "Attachable": false,
+      "Ingress": false,
+      "ConfigFrom": {
+        "Network": ""
+      },
+      "ConfigOnly": false,
+      "Options": {},
+      "Labels": {},
+      "Containers": {},
+      "Status": {
+        "IPAM": {}
+      }
+    },
+    {
+      "Name": "none",
+      "Id": "415773c45830af0435d4a4e11c7090a257a502b43e49e6525188b2fef07fa927",
+      "Created": "2026-08-10T11:29:15.574270436-04:00",
+      "Scope": "local",
+      "Driver": "null",
+      "EnableIPv4": true,
+      "EnableIPv6": false,
+      "IPAM": {
+        "Driver": "default",
+        "Options": null,
+        "Config": null
+      },
+      "Internal": false,
+      "Attachable": false,
+      "Ingress": false,
+      "ConfigFrom": {
+        "Network": ""
+      },
+      "ConfigOnly": false,
+      "Options": {},
+      "Labels": {},
+      "Containers": {},
+      "Status": {
+        "IPAM": {}
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "CreatedAt": "2026-09-01T08:38:27-04:00",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.compose.config-hash": "c411204c2a5a1176f923bec2a93a2474333694cf6de80e1da0cb9d421b9c342a",
+        "com.docker.compose.project": "drumee",
+        "com.docker.compose.version": "5.4.0",
+        "com.docker.compose.volume": "cache_data"
+      },
+      "Mountpoint": "/data/docker/volumes/drumee_cache_data/_data",
+      "Name": "drumee_cache_data",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-09-01T08:38:27-04:00",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.compose.config-hash": "c581ea4479a85f7a43ae0b720b48ae169739900806272fd721dd4fc6ae1a1524",
+        "com.docker.compose.project": "drumee",
+        "com.docker.compose.version": "5.4.0",
+        "com.docker.compose.volume": "db_data"
+      },
+      "Mountpoint": "/data/docker/volumes/drumee_db_data/_data",
+      "Name": "drumee_db_data",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-09-01T08:38:27-04:00",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.compose.config-hash": "40277506ae17d893421df145a7af56d743dc8d8c9743e5fe6f18d932cfb58611",
+        "com.docker.compose.project": "drumee",
+        "com.docker.compose.version": "5.4.0",
+        "com.docker.compose.volume": "drumee_conf"
+      },
+      "Mountpoint": "/data/docker/volumes/drumee_drumee_conf/_data",
+      "Name": "drumee_drumee_conf",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-09-01T08:38:27-04:00",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.compose.config-hash": "add0c3980497d20648b82709e12290af1723467d6272cad6fa00bb5f1aa35fc8",
+        "com.docker.compose.project": "drumee",
+        "com.docker.compose.version": "5.4.0",
+        "com.docker.compose.volume": "mfs_data"
+      },
+      "Mountpoint": "/data/docker/volumes/drumee_mfs_data/_data",
+      "Name": "drumee_mfs_data",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-09-01T08:38:27-04:00",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.compose.config-hash": "ca68c52ae1295269d11169f162efd661f6de3ed19f7711b6ec26b5d58a127395",
+        "com.docker.compose.project": "drumee",
+        "com.docker.compose.version": "5.4.0",
+        "com.docker.compose.volume": "web_cache"
+      },
+      "Mountpoint": "/data/docker/volumes/drumee_web_cache/_data",
+      "Name": "drumee_web_cache",
+      "Options": null,
+      "Scope": "local"
+    }
+  ],
+  "images": [
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-10-16 08:08:19 -0400 EDT",
+      "CreatedSince": "2 weeks ago",
+      "Digest": "sha256:522c2d56ca8372d2c03318dff5c3b931b54d67209315a8e6497c283af7c9f08b",
+      "ID": "sha256:522c2d56ca8372d2c03318dff5c3b931b54d67209315a8e6497c283af7c9f08b",
+      "Repository": "drumee-minimal-kernel",
+      "SharedSize": "N/A",
+      "Size": "554MB",
+      "Tag": "4a0efba6193912ce5b0487db51fb541ca79638d0",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-10-16 05:19:02 -0400 EDT",
+      "CreatedSince": "2 weeks ago",
+      "Digest": "sha256:fb785a4f33c3f9b4ddec87463818e94fc86a81b15bcf41e661263d1aef4c52ae",
+      "ID": "sha256:fb785a4f33c3f9b4ddec87463818e94fc86a81b15bcf41e661263d1aef4c52ae",
+      "Repository": "drumee-minimal-tools",
+      "SharedSize": "N/A",
+      "Size": "429MB",
+      "Tag": "ad8f2baecb65e5e8782bb60fa92f1653bcc9f724",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-10-16 04:05:05 -0400 EDT",
+      "CreatedSince": "2 weeks ago",
+      "Digest": "sha256:6903675a5e7a8bc9cb179192420d4cf06ecb5b8c08973b1eae132a60e05449f2",
+      "ID": "sha256:6903675a5e7a8bc9cb179192420d4cf06ecb5b8c08973b1eae132a60e05449f2",
+      "Repository": "drumee-minimal-kernel",
+      "SharedSize": "N/A",
+      "Size": "554MB",
+      "Tag": "6555f1868b95b6f7f160d5b6a2ec0777c3f94f94",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-10-05 21:45:41 -0400 EDT",
+      "CreatedSince": "4 weeks ago",
+      "Digest": "sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+      "ID": "sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+      "Repository": "node",
+      "SharedSize": "N/A",
+      "Size": "329MB",
+      "Tag": "<none>",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-08-24 20:43:54 -0400 EDT",
+      "CreatedSince": "2 months ago",
+      "Digest": "sha256:71da9275c5f3fcb97d0fa0c8c5b36cc995327265420f17a04bfd544f458059f7",
+      "ID": "sha256:71da9275c5f3fcb97d0fa0c8c5b36cc995327265420f17a04bfd544f458059f7",
+      "Repository": "redis",
+      "SharedSize": "N/A",
+      "Size": "170MB",
+      "Tag": "7",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-08-24 14:05:16 -0400 EDT",
+      "CreatedSince": "2 months ago",
+      "Digest": "sha256:611a2fcc5fa7c6ceb8644c6f74b25ede004ff6c3a6b38c8f8c23d3bbf6c26430",
+      "ID": "sha256:611a2fcc5fa7c6ceb8644c6f74b25ede004ff6c3a6b38c8f8c23d3bbf6c26430",
+      "Repository": "mariadb",
+      "SharedSize": "N/A",
+      "Size": "455MB",
+      "Tag": "<none>",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-08-24 14:04:55 -0400 EDT",
+      "CreatedSince": "2 months ago",
+      "Digest": "sha256:2439dcd7d14010ecd1ff7a4e1c5abe8e208c34fe35290744deeeaac3569043c3",
+      "ID": "sha256:2439dcd7d14010ecd1ff7a4e1c5abe8e208c34fe35290744deeeaac3569043c3",
+      "Repository": "mariadb",
+      "SharedSize": "N/A",
+      "Size": "458MB",
+      "Tag": "11.8",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-08-18 12:56:46 -0400 EDT",
+      "CreatedSince": "2 months ago",
+      "Digest": "sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+      "ID": "sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+      "Repository": "redis",
+      "SharedSize": "N/A",
+      "Size": "57.8MB",
+      "Tag": "<none>",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-08-11 03:44:29 -0400 EDT",
+      "CreatedSince": "2 months ago",
+      "Digest": "sha256:2e4ed92a67600f234f8ac2f6bd425ad638a45f0dfcb4c3058825383cb0decdd7",
+      "ID": "sha256:2e4ed92a67600f234f8ac2f6bd425ad638a45f0dfcb4c3058825383cb0decdd7",
+      "Repository": "drumee/role-web",
+      "SharedSize": "N/A",
+      "Size": "649MB",
+      "Tag": "1.0.57",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-08-11 03:39:24 -0400 EDT",
+      "CreatedSince": "2 months ago",
+      "Digest": "sha256:f63ecfe057d4e88a3b2a1718275b27992cdf3b2875d00ca74eb1f0aaa4ece98d",
+      "ID": "sha256:f63ecfe057d4e88a3b2a1718275b27992cdf3b2875d00ca74eb1f0aaa4ece98d",
+      "Repository": "drumee/role-app",
+      "SharedSize": "N/A",
+      "Size": "3.73GB",
+      "Tag": "1.0.57",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "2",
+      "CreatedAt": "2026-08-11 03:32:37 -0400 EDT",
+      "CreatedSince": "2 months ago",
+      "Digest": "sha256:340265dd4164647a743b16bfdce2e780fedd069c25bd8227f823d5105278d825",
+      "ID": "sha256:340265dd4164647a743b16bfdce2e780fedd069c25bd8227f823d5105278d825",
+      "Repository": "drumee/role-schemas",
+      "SharedSize": "N/A",
+      "Size": "2.63GB",
+      "Tag": "1.0.57",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "1",
+      "CreatedAt": "2026-08-11 03:30:10 -0400 EDT",
+      "CreatedSince": "2 months ago",
+      "Digest": "sha256:24574df2c5a0f848b479419a7dac00d53b5963fba2db7c8c284a3b4da10b27aa",
+      "ID": "sha256:24574df2c5a0f848b479419a7dac00d53b5963fba2db7c8c284a3b4da10b27aa",
+      "Repository": "drumee/role-infra",
+      "SharedSize": "N/A",
+      "Size": "1.1GB",
+      "Tag": "1.0.57",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-07-15 19:57:33 -0400 EDT",
+      "CreatedSince": "3 months ago",
+      "Digest": "sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752",
+      "ID": "sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752",
+      "Repository": "nginx",
+      "SharedSize": "N/A",
+      "Size": "93.6MB",
+      "Tag": "<none>",
+      "UniqueSize": "N/A"
+    }
+  ],
+  "interfaces": [
+    {
+      "ifindex": 1,
+      "ifname": "lo",
+      "flags": [
+        "LOOPBACK",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 65536,
+      "qdisc": "noqueue",
+      "operstate": "UNKNOWN",
+      "group": "default",
+      "txqlen": 1000,
+      "link_type": "loopback",
+      "address": "00:00:00:00:00:00",
+      "broadcast": "00:00:00:00:00:00",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "127.0.0.1",
+          "prefixlen": 8,
+          "scope": "host",
+          "label": "lo",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        },
+        {
+          "family": "inet6",
+          "local": "::1",
+          "prefixlen": 128,
+          "scope": "host",
+          "noprefixroute": true,
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 2,
+      "ifname": "enp1s0",
+      "flags": [
+        "NO-CARRIER",
+        "BROADCAST",
+        "MULTICAST",
+        "UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "fq_codel",
+      "operstate": "DOWN",
+      "group": "default",
+      "txqlen": 1000,
+      "link_type": "ether",
+      "address": "5c:85:7e:40:01:ec",
+      "broadcast": "ff:ff:ff:ff:ff:ff",
+      "altnames": [
+        "enx5c857e4001ec"
+      ],
+      "addr_info": []
+    },
+    {
+      "ifindex": 3,
+      "ifname": "enp3s0",
+      "flags": [
+        "NO-CARRIER",
+        "BROADCAST",
+        "MULTICAST",
+        "UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "fq_codel",
+      "operstate": "DOWN",
+      "group": "default",
+      "txqlen": 1000,
+      "link_type": "ether",
+      "address": "5c:85:7e:40:01:ed",
+      "broadcast": "ff:ff:ff:ff:ff:ff",
+      "altnames": [
+        "enx5c857e4001ed"
+      ],
+      "addr_info": []
+    },
+    {
+      "ifindex": 4,
+      "ifname": "wlp2s0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "UP",
+      "group": "default",
+      "txqlen": 1000,
+      "link_type": "ether",
+      "address": "f8:e4:e3:ce:9c:bc",
+      "broadcast": "ff:ff:ff:ff:ff:ff",
+      "altnames": [
+        "wlxf8e4e3ce9cbc"
+      ],
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "192.168.5.202",
+          "prefixlen": 24,
+          "broadcast": "192.168.5.255",
+          "scope": "global",
+          "noprefixroute": true,
+          "label": "wlp2s0",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        },
+        {
+          "family": "inet6",
+          "local": "fe80::fae4:e3ff:fece:9cbc",
+          "prefixlen": 64,
+          "scope": "link",
+          "noprefixroute": true,
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 5,
+      "ifname": "br-170923d8cded",
+      "flags": [
+        "NO-CARRIER",
+        "BROADCAST",
+        "MULTICAST",
+        "UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "DOWN",
+      "group": "default",
+      "link_type": "ether",
+      "address": "3a:f3:9d:9d:c2:12",
+      "broadcast": "ff:ff:ff:ff:ff:ff",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "172.18.0.1",
+          "prefixlen": 16,
+          "broadcast": "172.18.255.255",
+          "scope": "global",
+          "label": "br-170923d8cded",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        },
+        {
+          "family": "inet6",
+          "local": "fe80::38f3:9dff:fe9d:c212",
+          "prefixlen": 64,
+          "scope": "link",
+          "protocol": "kernel_ll",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "dst": "default",
+      "gateway": "192.168.5.1",
+      "dev": "wlp2s0",
+      "protocol": "static",
+      "metric": 600,
+      "flags": []
+    },
+    {
+      "dst": "127.0.0.0/8",
+      "dev": "lo",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "127.0.0.1",
+      "metric": 30,
+      "flags": []
+    },
+    {
+      "dst": "172.18.0.0/16",
+      "dev": "br-170923d8cded",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "172.18.0.1",
+      "flags": [
+        "linkdown"
+      ]
+    },
+    {
+      "dst": "192.168.5.0/24",
+      "dev": "wlp2s0",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "192.168.5.202",
+      "metric": 600,
+      "flags": []
+    }
+  ],
+  "listeners": "Netid State  Recv-Q Send-Q                      Local Address:Port  Peer Address:PortProcess\nudp   UNCONN 0      0                                 0.0.0.0:5353       0.0.0.0:*          \nudp   UNCONN 0      0                                 0.0.0.0:38647      0.0.0.0:*          \nudp   UNCONN 0      0      [fe80::fae4:e3ff:fece:9cbc]%wlp2s0:546           [::]:*          \nudp   UNCONN 0      0                                    [::]:5353          [::]:*          \nudp   UNCONN 0      0                                    [::]:54579         [::]:*          \ntcp   LISTEN 0      128                               0.0.0.0:22         0.0.0.0:*          \ntcp   LISTEN 0      4096                            127.0.0.1:631        0.0.0.0:*          \ntcp   LISTEN 0      4096                                [::1]:631           [::]:*          \ntcp   LISTEN 0      128                                  [::]:22            [::]:*",
+  "running_services": "UNIT                       LOAD   ACTIVE SUB     DESCRIPTION\naccounts-daemon.service    loaded active running Accounts Service\navahi-daemon.service       loaded active running Avahi mDNS/DNS-SD Stack\nbluetooth.service          loaded active running Bluetooth service\ncolord.service             loaded active running Manage, Install and Generate Color Profiles\ncontainerd.service         loaded active running containerd container runtime\ncron.service               loaded active running Regular background program processing daemon\ncups-browsed.service       loaded active running Make remote CUPS printers available locally\ncups.service               loaded active running CUPS Scheduler\ndbus.service               loaded active running D-Bus System Message Bus\ndocker.service             loaded active running Docker Application Container Engine\nfwupd.service              loaded active running Firmware update daemon\ngdm.service                loaded active running GNOME Display Manager\nlow-memory-monitor.service loaded active running Low Memory Monitor\nModemManager.service       loaded active running Modem Manager\nNetworkManager.service     loaded active running Network Manager\nnginx.service              loaded active running A high performance web server and a reverse proxy server\npolkit.service             loaded active running Authorization Manager\nrtkit-daemon.service       loaded active running RealtimeKit Scheduling Policy Service\nssh.service                loaded active running OpenBSD Secure Shell server\nswitcheroo-control.service loaded active running Switcheroo Control Proxy service\nsystemd-journald.service   loaded active running Journal Service\nsystemd-logind.service     loaded active running User Login Management\nsystemd-timesyncd.service  loaded active running Network Time Synchronization\nsystemd-udevd.service      loaded active running Rule-based Manager for Device Events and Files\nudisks2.service            loaded active running Disk Manager\nupower.service             loaded active running Daemon for power management\nuser@1000.service          loaded active running User Manager for UID 1000\nuser@110.service           loaded active running User Manager for UID 110\nwpa_supplicant.service     loaded active running WPA supplicant\n\nLegend: LOAD   \u2192 Reflects whether the unit definition was properly loaded.\n        ACTIVE \u2192 The high-level unit activation state, i.e. generalization of SUB.\n        SUB    \u2192 The low-level unit activation state, values depend on unit type.\n\n29 loaded units listed.",
+  "sudo": "Matching Defaults entries for somanos on minis:\n    env_reset, mail_badpass, secure_path=/usr/local/sbin\\:/usr/local/bin\\:/usr/sbin\\:/usr/bin\\:/sbin\\:/bin, use_pty\n\nUser somanos may run the following commands on minis:\n    (ALL) NOPASSWD: ALL",
+  "iptables_sha256": "0b1af8d518e2361dca10afdba4792b58fabe02a46d7a16d328a22c756e81681b",
+  "ip6tables_sha256": "b80c25db734fdec58c78e8b3780f15a8d68f6de061d73ccda8ea5c52ba979d80",
+  "node": "v22.23.2",
+  "npm": "10.9.8",
+  "nginx": ""
+}

@@ -1,0 +1,1465 @@
+[
+  {
+    "action": "exec_start: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185199774340900"
+  },
+  {
+    "action": "exec_create: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185199774930700"
+  },
+  {
+    "action": "exec_start: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185199774948600"
+  },
+  {
+    "action": "exec_create: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185199778929200"
+  },
+  {
+    "action": "exec_start: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185199778947000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185199851612700"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185199856332300"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185199908541400"
+  },
+  {
+    "action": "exec_create: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185199942410800"
+  },
+  {
+    "action": "exec_start: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185199942432800"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185200002767000"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185200047086600"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185200047139300"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185200122615800"
+  },
+  {
+    "action": "exec_create: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185200892589000"
+  },
+  {
+    "action": "exec_start: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185200892610000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185200975659800"
+  },
+  {
+    "action": "exec_create: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185201852674300"
+  },
+  {
+    "action": "exec_start: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185201852693000"
+  },
+  {
+    "action": "exec_create: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185201857009200"
+  },
+  {
+    "action": "exec_start: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185201857032400"
+  },
+  {
+    "action": "exec_create: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185201909137400"
+  },
+  {
+    "action": "exec_start: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185201909156400"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185201917895200"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185201923576800"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185201991772700"
+  },
+  {
+    "action": "exec_create: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185202003654400"
+  },
+  {
+    "action": "exec_start: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185202003668000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185202077830100"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185202123680800"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185202123702000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185202205317400"
+  },
+  {
+    "action": "exec_create: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185203919298600"
+  },
+  {
+    "action": "exec_start: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185203919318500"
+  },
+  {
+    "action": "exec_create: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185203924670700"
+  },
+  {
+    "action": "exec_start: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185203924695600"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185203979022600"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185203982199000"
+  },
+  {
+    "action": "exec_create: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185203992900400"
+  },
+  {
+    "action": "exec_start: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185203992915500"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185204073271800"
+  },
+  {
+    "action": "exec_create: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185204079134000"
+  },
+  {
+    "action": "exec_start: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185204079149000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185204177033700"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185204206516200"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185204206542600"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185204248870000"
+  },
+  {
+    "action": "exec_create: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185205976251000"
+  },
+  {
+    "action": "exec_start: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185205976266000"
+  },
+  {
+    "action": "exec_create: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185205979587600"
+  },
+  {
+    "action": "exec_start: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185205979619000"
+  },
+  {
+    "action": "exec_create: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185205982869000"
+  },
+  {
+    "action": "exec_start: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185205982889500"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185206034473000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185206040369000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185206044018400"
+  },
+  {
+    "action": "health_status: healthy",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185206044402200"
+  },
+  {
+    "action": "exec_create: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185206073892000"
+  },
+  {
+    "action": "exec_start: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185206073922300"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185206157068300"
+  },
+  {
+    "action": "exec_create: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185206178015500"
+  },
+  {
+    "action": "exec_start: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185206178035700"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185206249741000"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185206249760000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185206258474200"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185206291591700"
+  },
+  {
+    "action": "kill",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185207480011000"
+  },
+  {
+    "action": "exec_create: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185208035779800"
+  },
+  {
+    "action": "exec_start: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185208035821800"
+  },
+  {
+    "action": "exec_create: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185208041288000"
+  },
+  {
+    "action": "exec_start: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185208041313000"
+  },
+  {
+    "action": "exec_create: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185208045388800"
+  },
+  {
+    "action": "exec_start: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185208045409800"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185208115308300"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185208135248000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185208151312400"
+  },
+  {
+    "action": "exec_create: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185208158180600"
+  },
+  {
+    "action": "exec_start: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185208158196500"
+  },
+  {
+    "action": "exec_create: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185208258887700"
+  },
+  {
+    "action": "exec_start: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185208258914600"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185208283454700"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185208292441600"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185208292463900"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185208359462400"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185208366604800"
+  },
+  {
+    "action": "exec_create: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185210116329500"
+  },
+  {
+    "action": "exec_start: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185210116354600"
+  },
+  {
+    "action": "exec_create: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185210135841500"
+  },
+  {
+    "action": "exec_start: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185210135865600"
+  },
+  {
+    "action": "exec_create: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185210152230700"
+  },
+  {
+    "action": "exec_start: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185210152250400"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185210199175200"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185210204465700"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185210209524200"
+  },
+  {
+    "action": "exec_create: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185210284439800"
+  },
+  {
+    "action": "exec_start: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185210284493800"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185210359981000"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185210360002000"
+  },
+  {
+    "action": "exec_create: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185210367418400"
+  },
+  {
+    "action": "exec_start: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185210367444500"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185210410276900"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185210411764000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185210412605000"
+  },
+  {
+    "action": "exec_create: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185212199741000"
+  },
+  {
+    "action": "exec_start: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185212199769600"
+  },
+  {
+    "action": "exec_create: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185212205187800"
+  },
+  {
+    "action": "exec_start: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185212205208300"
+  },
+  {
+    "action": "exec_create: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185212210646300"
+  },
+  {
+    "action": "exec_start: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185212210668300"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185212250991000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185212263402500"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185212264280600"
+  },
+  {
+    "action": "exec_create: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185212410843000"
+  },
+  {
+    "action": "exec_start: node -e fetch('http://127.0.0.1:8025').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185212410868500"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185212413011500"
+  },
+  {
+    "action": "exec_create: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185212413012500"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185212413025800"
+  },
+  {
+    "action": "exec_start: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185212413028600"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185212515334700"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185212533119200"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185212558711600"
+  },
+  {
+    "action": "stop",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185212569242000"
+  },
+  {
+    "action": "die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185212573312000"
+  },
+  {
+    "action": "start",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185212737012500"
+  },
+  {
+    "action": "restart",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185212737024000"
+  },
+  {
+    "action": "kill",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185212804447700"
+  },
+  {
+    "action": "stop",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185213205287200"
+  },
+  {
+    "action": "die",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185213208074500"
+  },
+  {
+    "action": "exec_create: postqueue -c /run/infra-mail/config -j",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185213483531300"
+  },
+  {
+    "action": "exec_start: postqueue -c /run/infra-mail/config -j",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185213483746800"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185213555146200"
+  },
+  {
+    "action": "create",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185213627891700"
+  },
+  {
+    "action": "kill",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185213636565200"
+  },
+  {
+    "action": "stop",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185214160053500"
+  },
+  {
+    "action": "die",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185214162725600"
+  },
+  {
+    "action": "destroy",
+    "type": "container",
+    "id": "44c586fbde1bb86a3cd430a37192dd3b0b065346b9a7a93f4059c85bc9697c0c",
+    "service": "mail",
+    "timeNano": "1793185214166631700"
+  },
+  {
+    "action": "rename",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185214169682000"
+  },
+  {
+    "action": "exec_create: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185214251616500"
+  },
+  {
+    "action": "exec_start: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185214251647200"
+  },
+  {
+    "action": "exec_create: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185214264920300"
+  },
+  {
+    "action": "exec_start: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185214264944000"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185214280561200"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185214302813000"
+  },
+  {
+    "action": "start",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185214395395600"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185214455112700"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185214455326500"
+  },
+  {
+    "action": "exec_create: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185214516852500"
+  },
+  {
+    "action": "exec_start: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185214516871200"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185214561955000"
+  },
+  {
+    "action": "exec_create: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185214737693000"
+  },
+  {
+    "action": "exec_start: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185214737710600"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185214802731000"
+  },
+  {
+    "action": "health_status: healthy",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185214803015000"
+  },
+  {
+    "action": "exec_create: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185216281060400"
+  },
+  {
+    "action": "exec_start: /bin/sh -c REDISCLI_AUTH=\"$(cat /run/secrets/redis-auth)\" redis-cli -h 127.0.0.1 -p 6379 ping | grep -Fx PONG",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185216281078000"
+  },
+  {
+    "action": "exec_create: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185216303338800"
+  },
+  {
+    "action": "exec_start: healthcheck.sh --connect --innodb_initialized",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185216303368400"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216331675100"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185216344959200"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185216355865000"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216395987200"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216396028400"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216436878300"
+  },
+  {
+    "action": "exec_create: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185216562886700"
+  },
+  {
+    "action": "exec_start: /bin/sh -c dig @127.0.0.1 -p 1053 drumee.lan A +short | grep -Fx 192.168.50.10",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185216562911000"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216618099500"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216618376400"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185216648500700"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216662576400"
+  },
+  {
+    "action": "exec_create: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185216803580700"
+  },
+  {
+    "action": "exec_start: opendkim -n -x /config/opendkim.conf",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185216803598600"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185216865717000"
+  },
+  {
+    "action": "exec_create: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216920087000"
+  },
+  {
+    "action": "exec_start: postfix -c /run/infra-mail/config status",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216920390100"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185216992767500"
+  },
+  {
+    "action": "exec_create: postqueue -c /run/infra-mail/config -j",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185217051264500"
+  },
+  {
+    "action": "exec_start: postqueue -c /run/infra-mail/config -j",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185217051521800"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185217118942500"
+  },
+  {
+    "action": "start",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185217337265000"
+  },
+  {
+    "action": "exec_create: postqueue -c /run/infra-mail/config -f",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185217401333800"
+  },
+  {
+    "action": "exec_start: postqueue -c /run/infra-mail/config -f",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185217401584600"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185217463556000"
+  },
+  {
+    "action": "exec_create: postqueue -c /run/infra-mail/config -f",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185217730984700"
+  },
+  {
+    "action": "exec_start: postqueue -c /run/infra-mail/config -f",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185217731198200"
+  },
+  {
+    "action": "exec_die",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185217786745900"
+  },
+  {
+    "action": "kill",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185218016082200"
+  },
+  {
+    "action": "kill",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185218016805000"
+  },
+  {
+    "action": "kill",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185218016833500"
+  },
+  {
+    "action": "kill",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185218017222400"
+  },
+  {
+    "action": "kill",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185218018370600"
+  },
+  {
+    "action": "kill",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185218018662000"
+  },
+  {
+    "action": "stop",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185218519904000"
+  },
+  {
+    "action": "die",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185218522708200"
+  },
+  {
+    "action": "destroy",
+    "type": "container",
+    "id": "f1988e949e660e41af626a505af3ce61181af366cd3a221f18c57ccc9d2099f6",
+    "service": "capture",
+    "timeNano": "1793185218526974700"
+  },
+  {
+    "action": "stop",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185218837670700"
+  },
+  {
+    "action": "die",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185218841002000"
+  },
+  {
+    "action": "destroy",
+    "type": "container",
+    "id": "df23e2dd8f890a0db7499154fbf8db3bd20d44acaf8e88e6febfa59b4450e69c",
+    "service": "dns",
+    "timeNano": "1793185218844754400"
+  },
+  {
+    "action": "stop",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185218921187300"
+  },
+  {
+    "action": "die",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185218924247000"
+  },
+  {
+    "action": "destroy",
+    "type": "container",
+    "id": "f47ddb411b296b4035bb4c6c9858b9a87b87f0e56b8cb1bee96c13ea1991da7f",
+    "service": "redis",
+    "timeNano": "1793185218928311000"
+  },
+  {
+    "action": "stop",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185219187960600"
+  },
+  {
+    "action": "die",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185219190678500"
+  },
+  {
+    "action": "destroy",
+    "type": "container",
+    "id": "e0fead7abe15c1a9a51d0c9786aa0233470c31aee73875d807f68f8745f97a3a",
+    "service": "database",
+    "timeNano": "1793185219195973000"
+  },
+  {
+    "action": "stop",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185219260515300"
+  },
+  {
+    "action": "die",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185219263347500"
+  },
+  {
+    "action": "destroy",
+    "type": "container",
+    "id": "fb1b867d8b6d5b03bf38dfe6ba322b8933c824b56be9deb3d445af4ce8fedeb8",
+    "service": "dkim",
+    "timeNano": "1793185219268336400"
+  },
+  {
+    "action": "stop",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185219332864300"
+  },
+  {
+    "action": "die",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185219335651800"
+  },
+  {
+    "action": "destroy",
+    "type": "container",
+    "id": "f909ba22263e8d3a1eff48a7e3464da2ed7eb0e9a65448592e21f86f63c00c38",
+    "service": "mail",
+    "timeNano": "1793185219340473600"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "variables": {
+    "IL5_NETWORK_CLIENT": null,
+    "IL5_LAN_ADDRESS": null,
+    "IL5_HOST_NGINX": null
+  },
+  "native_nginx": [
+    {
+      "path": "/usr/sbin/nginx",
+      "exit": 0,
+      "version": "nginx version: nginx/1.26.3"
+    }
+  ]
+}

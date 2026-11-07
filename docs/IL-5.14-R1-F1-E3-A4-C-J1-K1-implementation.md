@@ -1,0 +1,5 @@
+# Minimal package-control correction — Gate D PASS
+
+Commit20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee changes exactly test/package-audit.js and adds test/support/package-inventory.cjs plus test/unit/package-inventory.test.js. The allowlist/three original per-member security assertions move intact into a test-only validator; the canonical audit calls it synchronously before its unchanged manifest/archive/consumer assertions. Only the specific rollback-authorization name is admitted. New inventory completeness and runtime closure checks enforce the demonstrated requirement.
+
+The small extraction permits isolated negative fixtures to execute the same canonical checks; no alternate permissive implementation is used for tests. Fifteen explicit regressions cover authorized/complete members and exclusion/error propagation. No production code, rollback/network/observer/Postfix behavior, package exports, dependencies, manifest, lint rules or warning baseline changes. [Exact file scope/freeze](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1/candidate.json), [input hashes](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1/candidate-inputs.json).

@@ -1,0 +1,58 @@
+{
+  "daemon": {
+    "id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+    "context": "default",
+    "endpoint": "unix:///var/run/docker.sock"
+  },
+  "volumes": [
+    {
+      "name": "drumee-v1-9213305836ce5e605b8d8f54-data",
+      "driver": "local",
+      "scope": "local",
+      "created": "2026-11-04T12:24:37-05:00",
+      "metadata_hash": "f988119985963cbd6443f24a1c0c96564cab4ea480f31dc44d34a3f1eb8dc065"
+    }
+  ],
+  "containers": [
+    {
+      "id": "bcac2bab3a0b82ce702569c21a633ac00eb30123bb4690baecbed54b42f48f63",
+      "name": "/drumee-v1-9213305836ce5e605b8d8f54-consumer",
+      "ownership_hash": "b79e3186b3b4f866b1e203ce733b2e331a75d356e8448c45c10d8994e108b9f8",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "drumee-v1-9213305836ce5e605b8d8f54-data",
+          "destination": "/fixture",
+          "source_hash": "3331fc4c2ad79107c4e0be21e02d823c8fbee7e3aee25df733edfcf7dc7ab9d3",
+          "driver": "local",
+          "rw": false,
+          "mode": "z",
+          "propagation": ""
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/fixture-bind",
+          "source_hash": "9eda7c2beb9f129c5d78e3a7df5173821e95c0554c78dc002b39582fe7a63a66",
+          "driver": null,
+          "rw": false,
+          "mode": "",
+          "propagation": "rprivate"
+        }
+      ],
+      "networks_hash": "2d462a5b2b9e3ae17699cf5bb759f8658e9576304932a4534bd76a8bc1d2e5fb"
+    }
+  ],
+  "networks": [
+    {
+      "id": "408ad3e37a512172e6caae129e6e4cd801804bc05e5e8e229bc5d97e76405d6e",
+      "name": "host",
+      "metadata_hash": "847a0e873dbfdf46a180df57b973138704e01ac3f2c9d45f1204ba5db19fad66"
+    },
+    {
+      "id": "757a6597dd388cb1d92da874518e91ede6d1cd6d715e6025db7ad0f6f925ae1e",
+      "name": "none",
+      "metadata_hash": "965e29932d151e78300e28280f63d403672aebeaebed24c08d14de5e3aed225d"
+    }
+  ]
+}

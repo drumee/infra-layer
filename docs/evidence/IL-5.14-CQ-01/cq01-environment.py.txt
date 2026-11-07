@@ -1,0 +1,24 @@
+import datetime, hashlib, json, os, pathlib, platform, subprocess
+root=pathlib.Path('/home/somanos/github/infra-layer')
+data={'observed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'platform':platform.platform(),'uid':os.getuid(),'gid':os.getgid(),'source_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'commands':[]}
+def run(args):
+    p=subprocess.run(args,capture_output=True,text=True,check=True)
+    data['commands'].append({'argv':args,'exit':p.returncode})
+    return p.stdout.strip()
+data['tools']={name:run([name,'--version']) for name in ['node','npm','git','python3']}
+data['context']=run(['docker','context','show'])
+data['context_details']=json.loads(run(['docker','context','inspect']))
+data['docker_version']=json.loads(run(['docker','version','--format','{{json .}}']))
+data['compose_version']=run(['docker','compose','version'])
+info=json.loads(run(['docker','info','--format','{{json .}}']))
+data['daemon']={key:info[key] for key in ['ID','Name','Containers','ContainersRunning','ContainersStopped','Images','DockerRootDir','SecurityOptions','Labels','ServerVersion']}
+containers=run(['docker','ps','-a','--no-trunc','--format','{"id":{{json .ID}},"name":{{json .Names}},"state":{{json .State}},"project":{{json (.Label "com.docker.compose.project")}},"owner":{{json (.Label "org.drumee.infra.owner")}}}'])
+data['containers']=[json.loads(x) for x in containers.splitlines()]
+data['networks']=[json.loads(x) for x in run(['docker','network','ls','--no-trunc','--format','{"id":{{json .ID}},"name":{{json .Name}},"internal":{{json .Internal}}}']).splitlines()]
+data['volume_count']=len(run(['docker','volume','ls','-q']).splitlines())
+data['application_prerequisites']={key:os.environ.get(key) for key in ['IL5_NETWORK_CLIENT','IL5_LAN_ADDRESS','IL5_HOST_NGINX']}
+data['isolation_established']=False
+data['campaign_resources_created']=[]
+data['reason']='Shared historical daemon, unrelated projects, no current nonproduction isolation record available. No campaign resource action authorized.'
+(root/'docs/evidence/IL-5.14-CQ-01/environment.json').write_text(json.dumps(data,indent=2)+'\n')
+print(json.dumps({k:data[k] for k in ['context','daemon','volume_count','application_prerequisites','isolation_established']},indent=2))

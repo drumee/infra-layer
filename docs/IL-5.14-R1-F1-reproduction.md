@@ -1,0 +1,3 @@
+# F1-A: independent finding reproduction
+
+PASS against unchanged source `cd9b8322bd7eef3b4094710ec4ea26be94f08922`. PR20 is open, targets main at `c218811effc83da25cf71a914e27accc96101329`; initial tree clean. UID/GID1000. Command: `node /tmp/drumee-il514-r1-f1/network-exposure-probe.cjs`, exit0 (successful measurement, not security acceptance). Nominal ACCEPTED; undeclared additional network incorrectly ACCEPTED. Full labels, IDs, map, commands and verified cleanup: [raw reproduction](evidence/IL-5.14-R1-F1/before-network-exposure-probe.json). Both fixture networks and container were mission-owned; no foreign resource was changed. Original R1 reports are preserved alongside it. Gate A PASS.

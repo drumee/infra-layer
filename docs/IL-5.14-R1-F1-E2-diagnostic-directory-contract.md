@@ -1,0 +1,5 @@
+# Diagnostic directory contract
+
+Gate B PASS. test/support/qualification-diagnostic.cjs selects IL514_DIAGNOSTIC_DIR when supplied, otherwise mkdtemp creates its own isolated directory. A supplied directory must already exist: lstat, absolute/realpath equality, directory/non-symlink status, current UID and no group/other permission bits are checked. trace.jsonl opens with wx/0600; structured artifacts use O_EXCL|O_NOFOLLOW/0600. Therefore each run requires a new destination; no prior evidence may be deleted to reuse a path.
+
+Caller setup adds parent safety, exact0700 mode, empty state, available space>=64MiB, write/fsync/exclusive-create probe and verified cleanup of that probe. Atomic tempfile.mkdtemp creates the private parent under root-owned sticky /tmp; all other ancestors must have a trusted owner and no unauthorized write bits or symlink. Final evidence destinations remain private700, never shared world-writable directories. Path and owner checks are verified before acceptance. No harness or production change is necessary.

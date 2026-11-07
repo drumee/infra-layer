@@ -38,6 +38,7 @@ test("quality workflow is valid, read-only, explicit and fail-closed", () => {
   }
   assert.equal(text.includes("secrets."), false); assert.doesNotMatch(text, /npm publish|docker push|gh pr merge/);
   assert.equal(workflow.jobs.check.steps[0].with['persist-credentials'], false);
+  assert.equal(workflow.jobs.check.steps[0].with['fetch-depth'], 0);
 });
 test("Dependabot is scoped, periodic and never configures automatic merge", () => {
   const fs = require("node:fs"), { parseDocument } = require("yaml");

@@ -1,0 +1,26 @@
+{
+  "typescript": {
+    "version": "5.9.3",
+    "license": "Apache-2.0",
+    "engines": {
+      "node": ">=14.17"
+    }
+  },
+  "npmRegistryToolLock": {
+    "version": "5.9.3",
+    "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+    "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+    "license": "Apache-2.0",
+    "bin": {
+      "tsc": "bin/tsc",
+      "tsserver": "bin/tsserver"
+    },
+    "engines": {
+      "node": ">=14.17"
+    }
+  },
+  "runnerSHA256": "81cad82facce30cbbf781d5821481a5a9dfbdc05a67e6fcbdb290497541a4220",
+  "runnerReusedFrom": "docs/evidence/IL-5.14-C1-L1/run.py",
+  "consumerWrapperSHA256": "2ce4a8210f0acd34c40a080d40e82333e13c95955d9a30cde3d53186796d1c2b",
+  "consumerWrapperReusedFrom": "docs/evidence/IL-5.14-C1-L1/consumer-qualification.cjs.txt"
+}

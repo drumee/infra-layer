@@ -1,0 +1,26 @@
+{
+  "test/support/harness-preservation.cjs": {
+    "sha256": "174586571877b31fc70073992e54b58a377397d02a31fb8ac7bbfe15ba642d4d",
+    "bytes": 6647
+  },
+  "test/network-attachments/real-docker.cjs": {
+    "sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+    "bytes": 10469
+  },
+  "test/unit/harness-preservation.test.js": {
+    "sha256": "983dd4843fc55eda5f353a1862d89f9382a6cdb6c393b2ae22b34a79a9d8edd2",
+    "bytes": 5813
+  },
+  "lifecycle/docker.js": {
+    "sha256": "2a72f5bca8d8494141eca7b597d52a820643cb0dcf04c9c2dd9bfd2b01ca2650",
+    "bytes": 16110
+  },
+  "pinnedHistorical:703b637425487286632e741045a1b96591e90c62:test/network-attachments/real-docker.cjs": {
+    "sha256": "67672bb516d08281f8dbdba8e8fe1b1a8f9f15d86667a3b7f74f2229cc9d107c",
+    "bytes": 8827
+  },
+  "guard-short-circuit-probe.json": {
+    "sha256": "09bd1ad4e985d7bacde2f4f1e6779e1e8a02b9cbd930104faa52d737bef832fb",
+    "bytes": 1682
+  }
+}

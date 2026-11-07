@@ -1,0 +1,381 @@
+{
+  "generatedJavaScriptExecuted": false,
+  "head": "04a4fc9f1196ef42aec9428144609735e00ceb4a",
+  "historicalSHA256": "67672bb516d08281f8dbdba8e8fe1b1a8f9f15d86667a3b7f74f2229cc9d107c",
+  "fixedFrameSHA256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+  "actualEqualsFixedFrame": true,
+  "taggedTemplateCount": 0,
+  "cases": [
+    {
+      "name": "actual unchanged approved harness",
+      "expected": "ACCEPTED",
+      "status": "ACCEPTED",
+      "result": {
+        "historicalExpressions": 52,
+        "currentExpressions": 54,
+        "replacements": 1,
+        "additions": 1
+      },
+      "sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4"
+    },
+    {
+      "name": "historical unmodified explicit mode",
+      "expected": "ACCEPTED",
+      "status": "ACCEPTED",
+      "result": {
+        "historicalExpressions": 52,
+        "currentExpressions": 52,
+        "replacements": 0,
+        "additions": 0
+      },
+      "sha256": "67672bb516d08281f8dbdba8e8fe1b1a8f9f15d86667a3b7f74f2229cc9d107c"
+    },
+    {
+      "name": "closed addition-only mode",
+      "expected": "ACCEPTED",
+      "status": "ACCEPTED",
+      "result": {
+        "historicalExpressions": 52,
+        "currentExpressions": 54,
+        "replacements": 0,
+        "additions": 1
+      },
+      "sha256": "fdb33374360c7f0f558ded7ced24407fa214e5ef9a687ec8c6d8d919a24f0213"
+    },
+    {
+      "name": "historical false-and",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "9901132345b522136ad4e63d2f9c40e0740c9a8f002b8b74433ab4217fa61e8b"
+    },
+    {
+      "name": "historical true-or",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "7e35a676e40f78f87e9d403cb4bea1836615469afa745c7016e9e0cb0057cab7"
+    },
+    {
+      "name": "historical false-if",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "1d9a1d84bed471e0eb1fcde0b7e82a5964df03fbbfee7328b65bc798ff50a69f"
+    },
+    {
+      "name": "historical dead-ternary",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "0a6a5353d1cc8c177a30a49b2a219d28efb234e102df66b6150f22fe1e1410c0"
+    },
+    {
+      "name": "historical early-return",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "65b282845f71dc7bf1fdfaae7ab45bf0e8395ccc734ae2a9b0a84c4d4c3a4e1a"
+    },
+    {
+      "name": "historical early-throw",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "fd691c9890acfe80249f5824b316ad8f8ea814f1e694300fc76d2acebeec6386"
+    },
+    {
+      "name": "historical unused-function",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "349746a75712dbd0efdfd825b8fe33b10d966458036b66e570e98213ab48f3fa"
+    },
+    {
+      "name": "historical unused-callback",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "eaa71768a706035d15e3695f70cb744fa2883323b1c085ad2d36e3fdbc0b8218"
+    },
+    {
+      "name": "historical while-false",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "fda08861cd38f9abb5ee1efe60ea1deb36a12bca14a4d06d886258568ef80b1f"
+    },
+    {
+      "name": "historical duplicate",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "UNAPPROVED_ADDITION",
+      "sha256": "f0dcb2e7b5a52c02a4602f97440b38710cf9a312317d8fe9e516832e85fcc801"
+    },
+    {
+      "name": "replacement false-and",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "ce8787db40aed4cd392160ab6f48a5ba7ffab3d117e697230dc956e0bafc3d5e"
+    },
+    {
+      "name": "replacement true-or",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "5b88ffa302951e5bfc55dc7f5d283761a92f06ff810405ef9b8970811464a5eb"
+    },
+    {
+      "name": "replacement false-if",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "b836af6a624ca28e12b7de5766050c1d3c87662a639ba89bc27dbad9c54a481c"
+    },
+    {
+      "name": "replacement dead-ternary",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "43bad16e456c54ec6f3a5e8f972e972fd92c6f5cbb96a0cc44ba69785bad1d4e"
+    },
+    {
+      "name": "replacement early-return",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "188c6d3fac868ca3d666143cdd17aa4ca34b71af9d17d1a1416fe8007bb19d2c"
+    },
+    {
+      "name": "replacement early-throw",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "a885766468383167bbfdf6b84005814b642f4b2ce35ea61933b99375a9ca1eb5"
+    },
+    {
+      "name": "replacement unused-function",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "9f87ef31bd54528c648386c9c18bcf3947e71ce376c8f7f4973c14985b6b604b"
+    },
+    {
+      "name": "replacement unused-callback",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "79b26ffa2daa2e9ecac9b2812c1b1c5e00dffd83ef7f8f27c2f81b0c69bffef1"
+    },
+    {
+      "name": "replacement while-false",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "2eba4a3762c350add460b55242899bce98df5e415bc6913b53ffc78525c62bb1"
+    },
+    {
+      "name": "replacement duplicate",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "DUPLICATE_AUTHORIZATION_USE",
+      "sha256": "cacdc428f8ab2d371eae8562163f52b7ba7598012a8ab0dabe31df43c0b721a8"
+    },
+    {
+      "name": "addition false-and",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "7db2464189649afc8bc71cd0e947bcd4265920011fe5df6293c071b154daef15"
+    },
+    {
+      "name": "addition true-or",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "e67f8ad43edefc5042bae21558730f205ffd107ec6512a61b58df3da298aaf2f"
+    },
+    {
+      "name": "addition false-if",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "e1a3b0b264faebfdefb911d434b02f5cd119956c5b8ce20ebbd4cd2b61d05cbf"
+    },
+    {
+      "name": "addition dead-ternary",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "ca542440ce56ca931db78ba38d27105678f0447be117bec036ef83776f5c76d3"
+    },
+    {
+      "name": "addition early-return",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "811280a8d53905055708dafc2d73e75db7fc8b25a0e7bf54c9ef73ffc86d9938"
+    },
+    {
+      "name": "addition early-throw",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "5ba389b2ecc7a2d9f5f6daccb616cc65de67683469f9a8e97fd3d65649ffd260"
+    },
+    {
+      "name": "addition unused-function",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "a6a8327a0d3f7eaa4817c9d0b0f4f431a45cbe952bdeb40bb4143b14023c8bf4"
+    },
+    {
+      "name": "addition unused-callback",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "d894a1b07974b53089942c30633ebf6c75bd04591610e04575e8b2252322228e"
+    },
+    {
+      "name": "addition while-false",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "65ba2eaa50d4fe64485f62198f9f2dcd353ce4823aeeddc15837a5c9beba72f1"
+    },
+    {
+      "name": "addition duplicate",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "UNAPPROVED_ADDITION",
+      "sha256": "404f934bb1b20864dca6f60383787719553dd915e14c203a49a8589d130d195e"
+    },
+    {
+      "name": "unauthorized replacement error",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "UNAUTHORIZED_REPLACEMENT",
+      "sha256": "61aa9e98393fd9ea89b876f350b26e64a01077d8cd0793aff62aed227709a5dc"
+    },
+    {
+      "name": "authorize missing only elsewhere",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "APPROVED_REPLACEMENT_MISSING",
+      "sha256": "2b05d3a1c760cd6353f5f4d03643cd8256420dc187eca2f2162a308777970bac"
+    },
+    {
+      "name": "changed target scope",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "UNAUTHORIZED_REPLACEMENT",
+      "sha256": "425576e423da749839f19cae3697e70ac0b2d5985c7497356481e288b19d0e8b"
+    },
+    {
+      "name": "addition wrong target",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "UNAPPROVED_ADDITION",
+      "sha256": "1782d702b77fe1573c2f9d73b0ee468014f07d4ecb0d6f9f8a039a2fd1380c38"
+    },
+    {
+      "name": "replaced import",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "ce5bfe5878ddf2a820b82aefea59dbcd542f5f973f99eb3c4f313ada9f5e42ed"
+    },
+    {
+      "name": "removed awaited helper",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "d3553a6de2cfbfc787a3b2c17aa5b35d46358ea679bb4247331ce9801c9908e5"
+    },
+    {
+      "name": "changed async helper execution",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "76bedad6e2d3693efbb5e864871fb851af1d26778d5ba4521e53d28af0c350b1"
+    },
+    {
+      "name": "changed invocation owner",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "ee4aff568a09265528b9040d6329fb6f271137f68adec90581d99166f2f3c295"
+    },
+    {
+      "name": "disable loop",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXPRESSION_CONTEXT_MISMATCH",
+      "sha256": "acfa4c794b8028189a91fea7785cd1ac53f1612d2280e93c24f2030ca51f286c"
+    },
+    {
+      "name": "unauthorized Docker operation",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "UNAPPROVED_ADDITION",
+      "sha256": "aa5c75d5e19953fa0bd36bd4b82d2facaab11b57596ec83b7e0c38cdb3e227d9"
+    },
+    {
+      "name": "unprotected sibling suppresses process",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "EXECUTION_CONTEXT_CHANGED",
+      "sha256": "638ffbbcb4414e241ffea21500b23b7f199c65bc3a8097683ac57db30c44d811"
+    },
+    {
+      "name": "modified historical provenance",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "UNAPPROVED_HISTORICAL_SOURCE",
+      "sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4"
+    },
+    {
+      "name": "historical success cannot pass candidate mode",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "APPROVED_REPLACEMENT_MISSING",
+      "sha256": "67672bb516d08281f8dbdba8e8fe1b1a8f9f15d86667a3b7f74f2229cc9d107c"
+    },
+    {
+      "name": "candidate cannot pass historical mode",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "UNAPPROVED_ADDITION",
+      "sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4"
+    },
+    {
+      "name": "candidate cannot pass addition-only mode",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "HISTORICAL_EXPRESSION_MODIFIED",
+      "sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4"
+    },
+    {
+      "name": "invalid mode refuses",
+      "expected": "REFUSED",
+      "status": "REFUSED",
+      "error": "INVALID_PRESERVATION_MODE",
+      "sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4"
+    },
+    {
+      "name": "benign comments/formatting",
+      "expected": "ACCEPTED",
+      "status": "ACCEPTED",
+      "result": {
+        "historicalExpressions": 52,
+        "currentExpressions": 54,
+        "replacements": 1,
+        "additions": 1
+      },
+      "sha256": "f0233039b38714c3fbe5d5be03545430fddda4198b2547053eef6574660f4576"
+    }
+  ],
+  "passed": 50
+}

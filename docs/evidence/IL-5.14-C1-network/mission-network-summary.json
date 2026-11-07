@@ -1,0 +1,17 @@
+{
+  "read_only_query": [
+    "/usr/bin/docker",
+    "--host",
+    "unix:///var/run/docker.sock",
+    "events",
+    "--since",
+    "2026-10-25T16:10:50Z",
+    "--until",
+    "2026-10-25T16:11:10Z",
+    "--filter",
+    "type=network",
+    "--format",
+    "{{json .}}"
+  ],
+  "events": []
+}

@@ -241,7 +241,7 @@ test("Chromium loads real LETC + hello through gateway, native services and WebS
   const chrome = [process.env.CHROME_BIN, "/usr/bin/google-chrome", "/usr/bin/chromium"].filter(Boolean).find((file) => fs.existsSync(file));
   assert.ok(chrome, "Chromium is mandatory for Level 4; not silently skipped");
   const profile = fs.mkdtempSync(path.join(os.tmpdir(), "il1-chrome-"));
-  const child = spawn(trustedExecutable(chrome), ["--headless=new", "--no-sandbox", "--disable-gpu", "--no-proxy-server", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "--host-resolver-rules=MAP kernel.test 127.0.0.1", "about:blank"], { stdio: ["ignore", "ignore", "pipe"], env: trustedEnvironment() });
+  const child = spawn(trustedExecutable(chrome), ["--headless=new", "--disable-gpu", "--no-proxy-server", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "--host-resolver-rules=MAP kernel.test 127.0.0.1", "about:blank"], { stdio: ["ignore", "ignore", "pipe"], env: trustedEnvironment() });
   let stderr = ""; child.stderr.on("data", (chunk) => { stderr += chunk.toString(); });
   t.after(async () => { child.kill("SIGTERM"); for (let index = 0; child.exitCode === null && index < 50; index++) await delay(50); if (child.exitCode === null) child.kill("SIGKILL"); fs.rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 }); });
   let devtools_port;

@@ -1,0 +1,125 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "independent": true,
+  "created": "2026-11-04T15:02:46.725745+00:00",
+  "disposition": "BLOCKED_EVIDENCE",
+  "recommended_mission_status": "FAILED_DIAGNOSTIC",
+  "failed_gate": "C minimal native reference",
+  "source_checkpoint": "a62c6e3b04a0916c89b8891d78697240679eab99",
+  "reference_path": "/tmp/drumee-b1-native-s3r6yhe1/e1-native-positive.test.cjs",
+  "reference_sha256": "c32f3dc74a4feb035d6a3c22bf30540cb12ba854a4bd69f9dfa5bfe69016fd91",
+  "original_D1_cause": "ROOT_CAUSE_UNDETERMINED",
+  "original_E1_callback_execution": "NOT_ESTABLISHED; original fixture not rerun",
+  "older_F2_cause": "ROOT_CAUSE_UNDETERMINED",
+  "actual_reference_observations": {
+    "command": [
+      "/usr/bin/node",
+      "--test",
+      "--test-reporter=tap",
+      "./e1-native-positive.test.cjs"
+    ],
+    "cwd": "/tmp/drumee-b1-native-s3r6yhe1",
+    "D1_layer_used": false,
+    "custom_reporter_used": false,
+    "root_exit": 0,
+    "stdout_bytes": 347,
+    "stderr_bytes": 0,
+    "source_registration_call_returned": true,
+    "marked_reference_callback_started": true,
+    "marked_reference_arithmetic_assertion_completed": true,
+    "marker_receipts": [
+      {
+        "marker": "B1_BEFORE_REGISTRATION",
+        "pid": 13,
+        "bytes_written": 23
+      },
+      {
+        "marker": "B1_REGISTRATION_CALL_RETURNED",
+        "pid": 13,
+        "bytes_written": 30
+      },
+      {
+        "marker": "B1_CALLBACK_STARTED",
+        "pid": 13,
+        "bytes_written": 20
+      },
+      {
+        "marker": "B1_ASSERTION_COMPLETED",
+        "pid": 13,
+        "bytes_written": 23
+      }
+    ],
+    "marker_order_same_in_journal_and_parent_TAP": true,
+    "worker_fd2_full_writes": true,
+    "these_worker_stderr_markers_visible_in_parent_TAP": true,
+    "expected_individual_name": "e1-native-positive",
+    "expected_exact_named_Subtest_or_PASS_present": false,
+    "observed_Subtest_names": [
+      "e1-native-positive.test.cjs"
+    ],
+    "actual_TAP_totals": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "scope": "File-level e1-native-positive.test.cjs only"
+    },
+    "positive_control_contract": "FAIL despite callback/assertion observations; required named native acknowledgment absent"
+  },
+  "causal_limits": {
+    "direct_proof": "This new marked standalone reference callback and assertion path executed; four full worker fd2 writes are corroborated by matching parent TAP comments and owned-file journal.",
+    "source_based_inference": "Installed FileTest suppression logic is consistent with outer file-level PASS when no accepted child pass/fail result is present. This is source-based reasoning, not direct measurement of private #reportedChildren or transport decoding.",
+    "stderr_interpretation": "Outer stderr0 is not evidence of loss of these worker markers: they are visible as parent TAP comments. No general stderr-loss claim is supported.",
+    "not_established": [
+      "Named native registration/result acknowledgment",
+      "Upstream child named-event emission or precise missing-event component",
+      "Cause of missing acknowledgment",
+      "Native working positive/negative pair",
+      "Original unmarked E1/D1 callback execution",
+      "Original F2 comparator causal event"
+    ],
+    "no_historical_upgrade": true
+  },
+  "remaining_experiments": {
+    "negative_reference_creation": "NOT_EXECUTED",
+    "negative_reference_execution": "NOT_EXECUTED",
+    "original_E1_dynamic_comparison": "NOT_EXECUTED",
+    "comparator": "NOT_EXECUTED",
+    "Docker": "NOT_EXECUTED",
+    "post_stop_tests_or_correction": false
+  },
+  "source_verification": {
+    "original_inputs": 177,
+    "comparator_files": 6,
+    "D1_diagnostic_files": 6,
+    "E1_fixture_files": 2,
+    "all_hashes_preserved": true,
+    "Node_binary_sha256_matches_baseline": true,
+    "new_reference_source_and_journal_match_preserved_copies": true,
+    "git_source_changed": false
+  },
+  "qualification_boundaries": {
+    "V1_F1_REC_001": "OPEN",
+    "V1_cleanup": "V1_FAILED_QUALIFICATION / NOT_QUALIFIED",
+    "historical_H01_H04": "RESOURCE_IDENTITY_UNRESOLVED / HISTORICAL_EVIDENCE_INSUFFICIENT; no new readback or deletion",
+    "production_and_package": "Preserved source; no archive rehash/build",
+    "application_acceptance": "FAILED NETWORK_ATTACHMENT_MISMATCH",
+    "R1_closure": "PENDING"
+  },
+  "evidence_hashes": {
+    "baseline.json": "13a2648f06c25ee9077a357392396ab7b497b1ef0b75228b04216b236123370a",
+    "STOP.json": "195d38eebb63ba15b5f42e8a1de99977d704a01bc55e788f24251a994acc8d6f",
+    "reference-positive.cjs.txt": "c32f3dc74a4feb035d6a3c22bf30540cb12ba854a4bd69f9dfa5bfe69016fd91",
+    "owned-marker-journal.json": "6052c5a81440e909eaf98098401328b705777de56c8846e58667ae9ba519f8b4",
+    "native-positive/start.json": "4e948b8ccadbc676684a4baa8d35072348eb5057204ddbd4830c4f580860e41a",
+    "native-positive/tool-result.json": "8513193f58028980812a1c071391b440ba461be5f3c39a198eaa769b80588a7b",
+    "native-positive/result.json": "6e874fa0c05df03f94247e7950ffc06f2eb066c7be9383c05e33ceeca926220d",
+    "native-positive/stdout.txt": "3673576f185b57c08b4b70eab246fd8b428f2543805a6ace10038bea1631a835",
+    "native-positive/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-positive/reference-markers.jsonl": "91506d2eed87363456b3d6b1caea55d968bc8ddda06807920dd0b4fcb0287595"
+  },
+  "new_major_or_blocker_security_findings": [],
+  "required_stop": "Keep exact named result mandatory. No negative/original comparison, fix, test rerun, comparator, Docker or remote activity inside stopped B1. Future diagnostics require a separate scope; no precise corrective proposal supported.",
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "reviewer_remote_operations": 0
+}

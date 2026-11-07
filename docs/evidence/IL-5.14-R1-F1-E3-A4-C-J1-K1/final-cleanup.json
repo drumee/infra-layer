@@ -1,0 +1,220 @@
+{
+  "recorded": "2026-10-29T08:20:00.519095+00:00",
+  "read_only": true,
+  "new_tests_after_failure": false,
+  "projects": [
+    {
+      "project": "drumee-il3-test-5dab5f8e",
+      "commands": [
+        [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il3-test-5dab5f8e"
+        ],
+        [
+          "docker",
+          "network",
+          "ls",
+          "-q",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il3-test-5dab5f8e"
+        ]
+      ],
+      "outputs": [
+        "",
+        ""
+      ]
+    },
+    {
+      "project": "drumee-il3-gateway-8cf2a2af",
+      "commands": [
+        [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il3-gateway-8cf2a2af"
+        ],
+        [
+          "docker",
+          "network",
+          "ls",
+          "-q",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il3-gateway-8cf2a2af"
+        ]
+      ],
+      "outputs": [
+        "",
+        ""
+      ]
+    },
+    {
+      "project": "drumee-il5-35341a09",
+      "commands": [
+        [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il5-35341a09"
+        ],
+        [
+          "docker",
+          "network",
+          "ls",
+          "-q",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il5-35341a09"
+        ]
+      ],
+      "outputs": [
+        "",
+        ""
+      ]
+    },
+    {
+      "project": "drumee-il5-35341a09-restored",
+      "commands": [
+        [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il5-35341a09-restored"
+        ],
+        [
+          "docker",
+          "network",
+          "ls",
+          "-q",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il5-35341a09-restored"
+        ]
+      ],
+      "outputs": [
+        "",
+        ""
+      ]
+    },
+    {
+      "project": "drumee-il5-35341a09-smtp",
+      "commands": [
+        [
+          "docker",
+          "ps",
+          "-aq",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il5-35341a09-smtp"
+        ],
+        [
+          "docker",
+          "network",
+          "ls",
+          "-q",
+          "--filter",
+          "label=com.docker.compose.project=drumee-il5-35341a09-smtp"
+        ]
+      ],
+      "outputs": [
+        "",
+        ""
+      ]
+    }
+  ],
+  "images": [
+    {
+      "tag": "drumee-il3-services:drumee-il3-test-5dab5f8e",
+      "command": [
+        "docker",
+        "image",
+        "ls",
+        "-q",
+        "--filter",
+        "reference=drumee-il3-services:drumee-il3-test-5dab5f8e"
+      ],
+      "output": ""
+    },
+    {
+      "tag": "drumee-il3-upgrade:drumee-il3-test-5dab5f8e",
+      "command": [
+        "docker",
+        "image",
+        "ls",
+        "-q",
+        "--filter",
+        "reference=drumee-il3-upgrade:drumee-il3-test-5dab5f8e"
+      ],
+      "output": ""
+    },
+    {
+      "tag": "drumee-il3-fixture:drumee-il3-gateway-8cf2a2af",
+      "command": [
+        "docker",
+        "image",
+        "ls",
+        "-q",
+        "--filter",
+        "reference=drumee-il3-fixture:drumee-il3-gateway-8cf2a2af"
+      ],
+      "output": ""
+    },
+    {
+      "tag": "drumee-il5-application:drumee-il5-1452bd38",
+      "command": [
+        "docker",
+        "image",
+        "ls",
+        "-q",
+        "--filter",
+        "reference=drumee-il5-application:drumee-il5-1452bd38"
+      ],
+      "output": ""
+    },
+    {
+      "tag": "drumee-il5-application:drumee-il5-35341a09",
+      "command": [
+        "docker",
+        "image",
+        "ls",
+        "-q",
+        "--filter",
+        "reference=drumee-il5-application:drumee-il5-35341a09"
+      ],
+      "output": ""
+    },
+    {
+      "tag": "drumee-il5-services:drumee-il5-35341a09",
+      "command": [
+        "docker",
+        "image",
+        "ls",
+        "-q",
+        "--filter",
+        "reference=drumee-il5-services:drumee-il5-35341a09"
+      ],
+      "output": ""
+    }
+  ],
+  "application_loopback": {
+    "command": [
+      "ss",
+      "-H",
+      "-ltn",
+      "sport",
+      "=",
+      ":35559"
+    ],
+    "output": ""
+  },
+  "application_temp_directories": [],
+  "canonical_cleanup_markers": true,
+  "all_mission_deployments_absent": true,
+  "artifact_and_consumer_retained_for_evidence": true,
+  "report_sha256": "9960912c3453619e73bca539f4086520d9d8ddb46cd840a9c08811408775271e",
+  "scope_limitation": "Original readbacks cover deployment containers/networks/images/listener/temp directories only, not all fixture anonymous volumes.",
+  "network_fixture_volume_cleanup": "K1-CLEAN-001; one explicitly proven owned orphan safely removed; full volume accounting not established.",
+  "all_resource_cleanup_qualified": false
+}

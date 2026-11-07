@@ -112,7 +112,7 @@ test("Redis AOF survives recreation with the same secret fingerprint and authent
 });
 test("revision-pinned Essentials RedisStore authenticates via redisUrl including duplicate pub/sub clients", () => {
   const directory = path.join(metadata.fixtures, "runtime-redis"); require("../../capabilities/redis").materializeClientConfiguration(store, metadata.keys.redis, { host: "127.0.0.1", port: metadata.ports.redis, transport: "tcp" }, directory, { authorized: true, owner: metadata.project });
-  const output = command([process.execPath, path.join(__dirname, "runtime-redis.js")], { env: { ...process.env, credential_dir: directory, instance_name: "", IL2_REDIS_STORE_SOURCE: metadata.runtime_redis }, timeout: 15000 }); assert.match(output, /PINNED_RUNTIME_REDIS_AUTH_PUBSUB_OK/);
+  const output = command([process.execPath, path.join(__dirname, "runtime-redis.js"), directory], { env: { IL2_REDIS_STORE_SOURCE: metadata.runtime_redis }, timeout: 15000 }); assert.match(output, /PINNED_RUNTIME_REDIS_AUTH_PUBSUB_OK/);
 });
 test("Redis ephemeral descriptor loses reconstructible state on recreation and rejects malformed configuration", () => {
   const inputs = JSON.parse(JSON.stringify(plan.inputs)); inputs.spec.dns = { mode: "none" }; delete inputs.spec.database; delete inputs.spec.mail; delete inputs.spec.tls;
@@ -127,6 +127,22 @@ test("Redis ephemeral descriptor loses reconstructible state on recreation and r
     run("up", "-d", "--force-recreate", "--wait"); container = run("ps", "-q", "redis").trim(); assert.equal(cli(container, "GET reconstructible").trim(), "");
     fs.appendFileSync(path.join(directory, "redis.conf"), "invalid_il2_option yes\n"); const result = spawnSync(trustedExecutable("docker"), ["compose", "-p", inputs.adapter_input.project, "-f", file, "run", "--rm", "--no-deps", "redis"], { encoding: "utf8", timeout: 15000, env: trustedEnvironment() }); assert.notEqual(result.status, 0);
   } finally { run("down"); }
+});
+test("lifecycle SMTP readiness authenticates and rejects an incorrect projected credential", () => {
+  const { protocolCheck } = require("../../lifecycle/activation");
+  const prepared = { composition: { plan } };
+  const driver = { compose(_prepared, args) {
+    const output = compose(...args);
+    if (args.some(value => typeof value === "string" && value.includes("openssl s_client"))) trace(metadata.project, "lifecycle.smtp.responses", { codes: [...output.matchAll(/(?:^|\n)(\d{3})[ -]/g)].map(match => Number(match[1])) });
+    return output;
+  } };
+  protocolCheck(prepared, "mail", driver);
+  const projection = path.join(metadata.fixtures, "projections/smtp"), before = fs.readFileSync(projection);
+  try {
+    fs.writeFileSync(projection, "deliberately-wrong");
+    assert.throws(() => protocolCheck(prepared, "mail", driver), { code: "SMTP_PROTOCOL_FAILED" });
+  } finally { fs.writeFileSync(projection, before); }
+  protocolCheck(prepared, "mail", driver);
 });
 test("SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails", async () => {
   const client = mailClient(); try { const result = await client.sendMail(message("authorized local capture")); assert.ok(result.accepted.includes("recipient@fixture.invalid")); } finally { client.close(); }

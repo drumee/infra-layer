@@ -1,0 +1,258 @@
+{
+  "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+  "source": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+  "campaign": "DIAGNOSTIC_CAMPAIGN_INVALID",
+  "overall_exit": 1,
+  "services_child_exit": 0,
+  "services_cases_pass": 17,
+  "services_cases_fail": 0,
+  "case_start_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "case_completed_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "pending_case_boundaries": [],
+  "cross_case_completions": [],
+  "client_counts": {
+    "process.start": 2,
+    "fixture.ready": 2,
+    "case.start": 17,
+    "command.start": 105,
+    "command.completed": 105,
+    "case.completed": 17,
+    "intentional.shutdown": 3,
+    "operation.start": 9,
+    "client.fetch.start": 9,
+    "client.request.create": 9,
+    "client.beforeConnect": 5,
+    "client.connected": 5,
+    "client.request.socket": 9,
+    "client.response.headers": 9,
+    "client.response.body.complete": 9,
+    "client.fetch.headers": 9,
+    "operation.headers": 9,
+    "operation.body.start": 9,
+    "operation.completed": 9,
+    "client.socket.end": 2,
+    "client.socket.error": 3,
+    "client.socket.close": 3,
+    "process.exit": 2,
+    "suite.pending.at.exit": 2
+  },
+  "server_counts": {
+    "process.start": 3,
+    "server.listening": 3,
+    "server.connection": 26,
+    "server.request": 30,
+    "server.handler.enter": 30,
+    "server.handler.return": 30,
+    "server.response.finish": 30,
+    "server.response.close": 30,
+    "server.socket.end": 23,
+    "server.socket.close": 23,
+    "process.sigterm": 3,
+    "server.close.requested": 3,
+    "server.close.completed": 3,
+    "process.exit": 3
+  },
+  "request_errors": [],
+  "socket_errors": [
+    {
+      "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "role": "suite-client",
+      "pid": 2453016,
+      "process_instance": "9adc0fb3-421a-4904-bf8c-c2ca1897ad7f",
+      "sequence": 233,
+      "mono_ns": "796213273748188",
+      "utc": "2026-10-28T13:28:18.708Z",
+      "event": "client.socket.error",
+      "current_case": 15,
+      "connection_id": 1,
+      "error": {
+        "name": "SocketError",
+        "code": "UND_ERR_SOCKET",
+        "socket": {
+          "localAddress": "127.0.0.1",
+          "localPort": 45884,
+          "remoteAddress": "127.0.0.1",
+          "remotePort": 46617,
+          "bytesRead": 684,
+          "bytesWritten": 510
+        }
+      },
+      "connection_activity": "idle_persistent_connection",
+      "active_requests": [],
+      "pending_application": []
+    },
+    {
+      "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "role": "suite-client",
+      "pid": 2453016,
+      "process_instance": "9adc0fb3-421a-4904-bf8c-c2ca1897ad7f",
+      "sequence": 306,
+      "mono_ns": "796222799565782",
+      "utc": "2026-10-28T13:28:28.234Z",
+      "event": "client.socket.error",
+      "current_case": 16,
+      "connection_id": 2,
+      "error": {
+        "name": "InformationalError",
+        "code": "UND_ERR_INFO"
+      },
+      "connection_activity": "idle_persistent_connection",
+      "active_requests": [],
+      "pending_application": []
+    },
+    {
+      "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "role": "suite-client",
+      "pid": 2453016,
+      "process_instance": "9adc0fb3-421a-4904-bf8c-c2ca1897ad7f",
+      "sequence": 308,
+      "mono_ns": "796222799839109",
+      "utc": "2026-10-28T13:28:28.234Z",
+      "event": "client.socket.error",
+      "current_case": 16,
+      "connection_id": 3,
+      "error": {
+        "name": "SocketError",
+        "code": "UND_ERR_SOCKET",
+        "socket": {
+          "localAddress": "127.0.0.1",
+          "localPort": 41028,
+          "remoteAddress": "127.0.0.1",
+          "remotePort": 46617,
+          "bytesRead": 228,
+          "bytesWritten": 170
+        }
+      },
+      "connection_activity": "idle_persistent_connection",
+      "active_requests": [],
+      "pending_application": []
+    }
+  ],
+  "shutdown_markers": [
+    {
+      "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "role": "suite-client",
+      "pid": 2453016,
+      "process_instance": "9adc0fb3-421a-4904-bf8c-c2ca1897ad7f",
+      "sequence": 186,
+      "mono_ns": "796206585755631",
+      "utc": "2026-10-28T13:28:12.020Z",
+      "event": "intentional.shutdown",
+      "current_case": 12,
+      "operation": "down",
+      "services": [],
+      "pending_application": []
+    },
+    {
+      "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "role": "suite-client",
+      "pid": 2453016,
+      "process_instance": "9adc0fb3-421a-4904-bf8c-c2ca1897ad7f",
+      "sequence": 229,
+      "mono_ns": "796212851303003",
+      "utc": "2026-10-28T13:28:18.285Z",
+      "event": "intentional.shutdown",
+      "current_case": 15,
+      "operation": "stop",
+      "services": [
+        "capture"
+      ],
+      "pending_application": []
+    },
+    {
+      "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "role": "suite-client",
+      "pid": 2453016,
+      "process_instance": "9adc0fb3-421a-4904-bf8c-c2ca1897ad7f",
+      "sequence": 303,
+      "mono_ns": "796217459374547",
+      "utc": "2026-10-28T13:28:22.893Z",
+      "event": "intentional.shutdown",
+      "current_case": 16,
+      "operation": "up",
+      "services": [
+        "capture",
+        "mail"
+      ],
+      "pending_application": []
+    }
+  ],
+  "collector_completion": {
+    "docker-main.jsonl": [
+      {
+        "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+        "role": "docker-observer",
+        "pid": 2450515,
+        "process_instance": "d9b89a9a-347b-4e5f-9549-1f2a648b6590",
+        "sequence": 646,
+        "mono_ns": "796228541181709",
+        "utc": "2026-10-28T13:28:33.975Z",
+        "event": "collector.completed",
+        "code": 143,
+        "signal": null,
+        "stopping": true,
+        "partial_line": false
+      }
+    ],
+    "docker-ephemeral.jsonl": [
+      {
+        "attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+        "role": "docker-observer",
+        "pid": 2450516,
+        "process_instance": "64d8c97a-a68b-4feb-8cc8-048c7bfab480",
+        "sequence": 35,
+        "mono_ns": "796228541353930",
+        "utc": "2026-10-28T13:28:33.975Z",
+        "event": "collector.completed",
+        "code": 143,
+        "signal": null,
+        "stopping": true,
+        "partial_line": false
+      }
+    ]
+  },
+  "docker_counts": {
+    "docker-main.jsonl": 646,
+    "docker-ephemeral.jsonl": 35
+  },
+  "first_campaign_failure": "Requested SIGTERM produces Docker CLI code143/signal:null; observer accepts code0 or signalSIGTERM only, exits1; orchestrator propagates1",
+  "historical_root_cause": "ROOT_CAUSE_UNDETERMINED",
+  "qualification_usable": false,
+  "second_campaign": "NOT_EXECUTED"
+}

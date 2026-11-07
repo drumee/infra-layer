@@ -1,0 +1,28 @@
+{
+  "name": "application",
+  "argv": [
+    "python3",
+    "/tmp/cq02r-remote-run.py",
+    "application",
+    "npm",
+    "run",
+    "test:application"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "76236faa85dd2cfdaf46646b28ce38fd41d26fb3",
+  "manifest_sha256": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd",
+  "lock_sha256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+  "started": "2026-11-04T20:47:30.224601+00:00",
+  "exit": 1,
+  "ended": "2026-11-04T20:52:39.895966+00:00",
+  "stdout": {
+    "file": "application.stdout",
+    "bytes": 933,
+    "sha256": "82a0e6cae2856b121584b01a18d2f53492a6f950bac5d4b16655aa35a1844502"
+  },
+  "stderr": {
+    "file": "application.stderr",
+    "bytes": 10281,
+    "sha256": "ab8979a007afc59b7825675c9c57e6f7663097acf9e52c442b52147eb82f46a4"
+  }
+}

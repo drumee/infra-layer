@@ -1,0 +1,14 @@
+# D1 source and qualification impact — Gate I PASS
+
+**PRODUCTION_EXECUTABLE_PRESERVED.** Source checkpoint `f6ec38e24d2504b3ed45fe4da94b4a00e785da4c`; unchanged comparator implementation `5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6`; diagnostic commit `57a451e8f7cea089385a618a96e0aa8e2af7eb24`. Installed /usr/bin/node v22.22.0; exact binary and diagnostic/comparator source hashes in baseline.json. Attempt ID `D1-02a026b2-8d7d-4d4d-b579-70d9a970be7f`. No comparator diagnostic attempt or Docker operation occurred.
+
+The source diff from checkpoint adds only six files under test/diagnostics/comparator-failure. All177 frozen original input hashes remain byte-equivalent to qualified source20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee. All six comparator harness hashes remain byte-equivalent to implementation5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6. Diagnostic source is frozen and unchanged after failed preflight. F2 evidence manifest and original failed decisions are intact.
+
+No network validator, rollback authorization, production ownership, application/Services orchestration, observer, Postfix/capture, package manifest/audit/exports/dependencies or public API changed. D1 adds diagnostic preload/reporters and invocation only; it makes no functional comparator correction. Source/hash evidence is in baseline.json and source-impact.json. Prior scoped package/unit/contracts/R5/lifecycle/Services/network-isolation qualification remains historical and applicable only through relevant unchanged inputs; no such qualification was rerun or upgraded.
+
+Recorded archive SHA256004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1 remains historical K1 evidence. Physical archive availability was checked without hashing; absent retained temporary file does not imply corruption or source change. No archive was rebuilt, rehashed or published.
+
+H01–H04 physical volume Names remain unknown; prior F2 historical-ledger.json and its timestamps remain the historical source. No Docker daemon/context, current volume existence or consumer state was queried. No resource was created/deleted/adopted and no owner historical decision is implied. Application acceptance stays failed and original R1 closure pending.
+
+Preserve V1_FAILED_QUALIFICATION; V1-F1-REC-001_OPEN; APPLICATION_ACCEPTANCE_FAILED_NETWORK_ATTACHMENT_MISMATCH; F1_FAILED_QUALIFICATION_APPLICATION_ACCEPTANCE; R1_FINAL_CLOSURE_PENDING; FIXTURE_VOLUME_CLEANUP_UNQUALIFIED. Also preserve APPLICATION_HISTORICAL_ROOT_CAUSE_UNDETERMINED, POSTFIX_HISTORICAL_ROOT_CAUSE_UNDETERMINED, POSTFIX_HISTORICAL_UNCERTAINTY_ACCEPTED_BY_OWNER, SMTP_RECOVERY_UNQUALIFIED, H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED and historical Debian H3 stability failure. Owner Option B covers only historical Postfix HTTP capture uncertainty. Four historical volume identities remain unresolved and protected; no new uncertainty is accepted.
+

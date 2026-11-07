@@ -1,0 +1,7 @@
+# Corrective scope — Gate J NOT_EXECUTED
+
+No concrete functional correction proposal is issued because Gate I remains ROOT_CAUSE_UNDETERMINED. No source behavior is modified. Current data does not justify a fixture, orchestration, recovery, validator or error-taxonomy change. No sleep/retry, broad network permission, identity bypass or readiness relaxation is proposed.
+
+The next justified work, if separately authorized, is additional evidence collection preserving the complete original canonical prefix and precise failure snapshots, with an independently reviewed observation design that addresses omitted interactions and timing overhead. Its purpose must be distinct from rerunning unchanged tests to obtain PASS. A1's one controlled-attempt authorization is exhausted.
+
+Only after a supported cause exists should an implementation mission define the smallest component boundary, deterministic negative/causal regression, real Docker verification, original complete application acceptance and affected security/R5/unit/contracts/Services/lifecycle requalification. If package-relevant runtime bytes change, the archive must be rebuilt/requalified and receive a new SHA256;004f0182… is not the identity of a modified artifact. If only test-only evidence changes, unaffected qualification may be retained through exact input comparison. Separate V1 resource qualification is required regardless; no historical unknown volume deletion is authorized by this document.

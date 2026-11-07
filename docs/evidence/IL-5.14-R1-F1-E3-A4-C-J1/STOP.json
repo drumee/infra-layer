@@ -1,0 +1,43 @@
+{
+  "name": "package-audit",
+  "command": [
+    "npm",
+    "run",
+    "test:package"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source": "0dd9a17d2fe63b98ba3fd6ef56c5252b595a60ec",
+  "executable": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "expected_returncode": 0,
+  "attempt": "A4-C-J1-drumee-a4-c-j1-03gugcyl",
+  "uid": 1000,
+  "gid": 1000,
+  "started": "2026-10-28T21:10:19.084806+00:00",
+  "ended": "2026-10-28T21:10:19.514951+00:00",
+  "exit_code": 1,
+  "process_returncode": 1,
+  "protected_before": [
+    {
+      "path": "/etc/docker",
+      "uid": 0,
+      "gid": 0,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_after": [
+    {
+      "path": "/etc/docker",
+      "uid": 0,
+      "gid": 0,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_unchanged": true,
+  "frozen_inputs_unchanged": true,
+  "log": "package-audit.log",
+  "log_sha256": "3ce70b9581edab7712ba680488b140773f6fe3828d6fa46b317b5ef81b93c308"
+}

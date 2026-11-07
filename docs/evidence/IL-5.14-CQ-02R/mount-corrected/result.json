@@ -1,0 +1,133 @@
+{
+  "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED",
+  "project": "drumee-v1-4d5f410196cf615450a91dd8",
+  "started": "2026-11-04T17:28:31.830Z",
+  "expected_refusals": [
+    {
+      "phase": "created-not-started",
+      "code": "VOLUME_IN_USE",
+      "snapshot": {
+        "daemon": {
+          "id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+          "context": "default",
+          "endpoint": "unix:///var/run/docker.sock"
+        },
+        "volume": {
+          "name": "drumee-v1-4d5f410196cf615450a91dd8-data",
+          "driver": "local",
+          "scope": "local",
+          "created": "2026-11-04T12:28:32-05:00",
+          "labels": {
+            "com.docker.compose.project": "drumee-v1-4d5f410196cf615450a91dd8",
+            "org.drumee.infra.owner": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED",
+            "org.drumee.qualification": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED",
+            "org.drumee.volume.nonce": "5a26c64bdc9775afe26876db57aceb98614a8470855a7301"
+          },
+          "options_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "mountpoint_hash": "5ed138886933098da737d8d93044202f0bd3c811cc72183d1fafbd5666a705b8"
+        },
+        "consumers": [
+          {
+            "id": "35c1959190c60e7ea4fd6b42249bd81a30c4fe90740cffad148444ede8f8c234",
+            "name": "/drumee-v1-4d5f410196cf615450a91dd8-consumer",
+            "state": "created",
+            "running": false,
+            "volume": "drumee-v1-4d5f410196cf615450a91dd8-data",
+            "owner": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED"
+          }
+        ]
+      }
+    },
+    {
+      "phase": "running",
+      "code": "VOLUME_IN_USE",
+      "snapshot": {
+        "daemon": {
+          "id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+          "context": "default",
+          "endpoint": "unix:///var/run/docker.sock"
+        },
+        "volume": {
+          "name": "drumee-v1-4d5f410196cf615450a91dd8-data",
+          "driver": "local",
+          "scope": "local",
+          "created": "2026-11-04T12:28:32-05:00",
+          "labels": {
+            "com.docker.compose.project": "drumee-v1-4d5f410196cf615450a91dd8",
+            "org.drumee.infra.owner": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED",
+            "org.drumee.qualification": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED",
+            "org.drumee.volume.nonce": "5a26c64bdc9775afe26876db57aceb98614a8470855a7301"
+          },
+          "options_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "mountpoint_hash": "5ed138886933098da737d8d93044202f0bd3c811cc72183d1fafbd5666a705b8"
+        },
+        "consumers": [
+          {
+            "id": "35c1959190c60e7ea4fd6b42249bd81a30c4fe90740cffad148444ede8f8c234",
+            "name": "/drumee-v1-4d5f410196cf615450a91dd8-consumer",
+            "state": "running",
+            "running": true,
+            "volume": "drumee-v1-4d5f410196cf615450a91dd8-data",
+            "owner": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED"
+          }
+        ]
+      }
+    },
+    {
+      "phase": "stopped",
+      "code": "VOLUME_IN_USE",
+      "snapshot": {
+        "daemon": {
+          "id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+          "context": "default",
+          "endpoint": "unix:///var/run/docker.sock"
+        },
+        "volume": {
+          "name": "drumee-v1-4d5f410196cf615450a91dd8-data",
+          "driver": "local",
+          "scope": "local",
+          "created": "2026-11-04T12:28:32-05:00",
+          "labels": {
+            "com.docker.compose.project": "drumee-v1-4d5f410196cf615450a91dd8",
+            "org.drumee.infra.owner": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED",
+            "org.drumee.qualification": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED",
+            "org.drumee.volume.nonce": "5a26c64bdc9775afe26876db57aceb98614a8470855a7301"
+          },
+          "options_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "mountpoint_hash": "5ed138886933098da737d8d93044202f0bd3c811cc72183d1fafbd5666a705b8"
+        },
+        "consumers": [
+          {
+            "id": "35c1959190c60e7ea4fd6b42249bd81a30c4fe90740cffad148444ede8f8c234",
+            "name": "/drumee-v1-4d5f410196cf615450a91dd8-consumer",
+            "state": "exited",
+            "running": false,
+            "volume": "drumee-v1-4d5f410196cf615450a91dd8-data",
+            "owner": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS-CORRECTED"
+          }
+        ]
+      }
+    }
+  ],
+  "volume_deletions": [
+    {
+      "name": "drumee-v1-4d5f410196cf615450a91dd8-data",
+      "disposition": "REMOVED"
+    }
+  ],
+  "historical_volume_deletions": 0,
+  "errors": [],
+  "failure_injection": {
+    "code": "CONTROLLED_REMOVE_FAILURE",
+    "visible": true,
+    "docker_remove_issued": false
+  },
+  "inventory_reconciliation": "EXACT_METADATA_MOUNT_MULTISET_MATCH",
+  "primary_error": null,
+  "cleanup_errors": [],
+  "cleanup": "PASS",
+  "campaign": "PASS",
+  "container_removed": true,
+  "finished": "2026-11-04T17:28:37.312Z",
+  "commands": 127
+}

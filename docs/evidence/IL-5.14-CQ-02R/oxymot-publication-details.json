@@ -1,0 +1,31 @@
+{
+  "oxymot-pull.service": [
+    {
+      "path": "/usr/bin/python3",
+      "sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9",
+      "kind": "binary; no source-token classification"
+    },
+    {
+      "path": "/opt/oxymot/deploy-pull.py",
+      "sha256": "8a0387bb810574b5a99ef27b6d133cfaf97e17d89b7f7b328bbc540fdae471b0",
+      "script_operations": [
+        "tar",
+        "git",
+        "rsync",
+        "HTTPS"
+      ]
+    }
+  ],
+  "oxymot-blog-backup.service": [
+    {
+      "path": "/usr/local/sbin/oxymot-blog-backup",
+      "sha256": "db0a9a949e85704dddd243162d3f93810fc9a761349ec349f8da491698414754",
+      "script_operations": [
+        "mysqldump",
+        "tar",
+        "restic",
+        "docker"
+      ]
+    }
+  ]
+}

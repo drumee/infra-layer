@@ -1,0 +1,51 @@
+{
+  "base_sha": "c23c86110634d691d6c52d80bc792edda21dd197",
+  "qualification": "Uncommitted candidate identified by exact member hashes; preserved in subsequent local checkpoint.",
+  "files": {
+    "lifecycle/activation.js": {
+      "candidate_sha256": "93f3631d482b6f822470d029c1a07690243b639d3c538374a2c51dac42b33716",
+      "baseline_sha256": "e2ed425d1df485866189be14ff6c581aa53557123d53483fc30f0b22d27ba4cd",
+      "changed": true
+    },
+    "lifecycle/docker.js": {
+      "candidate_sha256": "e2998a6b9fe4accb4ae1b13e8752792659536c4d40f8af074c92dfe6ecc58bc1",
+      "baseline_sha256": "b2ddc523aef50100f30dd7f20fb93e43715be36df88fe8cf671a1b88c13b41b6",
+      "changed": true
+    },
+    "lifecycle/recovery.js": {
+      "candidate_sha256": "67525625672a792b0e14b6bb7738a2688ff3bfb64bc632e0b0c76ea135a4589b",
+      "baseline_sha256": "67525625672a792b0e14b6bb7738a2688ff3bfb64bc632e0b0c76ea135a4589b",
+      "changed": false
+    },
+    "internal/rollback-authorization.js": {
+      "candidate_sha256": "c59c5924ca5ef877cbf3ac7134c3366b455efb8160eab235266647fbb4a3a3ed",
+      "baseline_sha256": "b29778657161e981acea8eef597c935a2a2ddc95b951b8c8e9a3f6659c3053ee",
+      "changed": true
+    },
+    "test/unit/rollback-authorization.test.js": {
+      "candidate_sha256": "b62af220ae692d0f2f77b1378efbf8453ddb1628dabb828bc670ddc6cbf23e7b",
+      "baseline_sha256": "a95c36e84bf330091b26d223c7e640390323a4a8f651ccdb52bc1f9f06ff25d4",
+      "changed": true
+    },
+    "test/unit/rollback-boundary.test.js": {
+      "candidate_sha256": "3e06188cde60e33f66cbb7333fa589980039efb6f9b1f7363fd038479eff606b",
+      "baseline_sha256": null,
+      "changed": true
+    },
+    "test/support/rollback-boundary-fixture.cjs": {
+      "candidate_sha256": "436a1328ad495873d881dbdfa3ea5625f11ffd12c1f7c0dc399d9c31460c3fed",
+      "baseline_sha256": null,
+      "changed": true
+    },
+    "test/support/harness-preservation.cjs": {
+      "candidate_sha256": "8c5aafae1780810707fec750b5dfb5e39fba665519b82f9c822d099a69772459",
+      "baseline_sha256": "8c5aafae1780810707fec750b5dfb5e39fba665519b82f9c822d099a69772459",
+      "changed": false
+    },
+    "test/network-attachments/real-docker.cjs": {
+      "candidate_sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+      "baseline_sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+      "changed": false
+    }
+  }
+}

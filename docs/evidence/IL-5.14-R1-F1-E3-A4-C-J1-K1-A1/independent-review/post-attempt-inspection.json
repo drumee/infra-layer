@@ -1,0 +1,749 @@
+{
+  "reviewer": "/root/a1_diagnostic_review",
+  "reviewed_at": "2026-10-29T18:32:54.736165+00:00",
+  "review_head": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+  "frozen_inputs_verified": 177,
+  "frozen_input_differences": [],
+  "production_and_application_blobs": {
+    "lifecycle/docker.js": "f7b1fbe11de16f90c7d73799531be9bcb7d5d7e4",
+    "lifecycle/recovery.js": "6bacfa9e15f62571b9752c5527de1be2fa33a86f",
+    "lifecycle/activation.js": "356e461a5dd0dae1168f938c82dbc4776100b0cf",
+    "internal/rollback-authorization.js": "0995bfe211a92478d9c0219a02bb7458b916e4a2",
+    "test/application/run.js": "60898471f3049edf8b8010444a6e5156f7ebcec8",
+    "test/application/Dockerfile": "cad0ad0366f387c1571e26394a9a1827f1b51914"
+  },
+  "attempt_id": "A1-8804ae28-d05a-4b13-b5d9-aaa763abac28",
+  "reviewed_attempt_result": {
+    "attempt": "A1-8804ae28-d05a-4b13-b5d9-aaa763abac28",
+    "project": "drumee-il5-8f39498a",
+    "pid": 1086384,
+    "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "steps": [
+      "prepare.initial",
+      "prepare.initial.repeat",
+      "activate.initial",
+      "stop",
+      "inspect.stopped",
+      "activate.restart",
+      "prepare.banner",
+      "activate.banner",
+      "rollback.banner",
+      "prepare.crash",
+      "inspect.degraded",
+      "rollback.crash"
+    ],
+    "expected_rejections": [
+      {
+        "operation": "activate.crash.expected",
+        "error": {
+          "name": "Error",
+          "code": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+          "frames": [
+            "    at Object.fail (/home/somanos/github/infra-layer/lib/filesystem-safety.js:5:43)",
+            "    at /home/somanos/github/infra-layer/lifecycle/activation.js:213:140",
+            "    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+            "    at async Object.lockAsync (/home/somanos/github/infra-layer/lib/filesystem-safety.js:54:16)"
+          ]
+        }
+      }
+    ],
+    "qualified_source_modified": false,
+    "started": "2026-10-29T18:27:17.222Z",
+    "functional_result": "PASS",
+    "functional_exit": 0,
+    "cleanup": "PASS",
+    "finished": "2026-10-29T18:27:46.879Z",
+    "event_rows": 67,
+    "diagnostic_errors": [],
+    "diagnostic_valid": true,
+    "result": "DIAGNOSTIC_PASS_ROOT_CAUSE_UNDETERMINED"
+  },
+  "trace_records": 267,
+  "selected_trace_records": {
+    "207": {
+      "sequence": 207,
+      "mono_ns": "23776900266",
+      "wall_time": "2026-10-29T18:27:40.912Z",
+      "pid": 1086384,
+      "phase": "activate.crash.expected",
+      "kind": "driver.throw",
+      "method": "compose",
+      "error": {
+        "name": "Error",
+        "code": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+        "exit_status": 1,
+        "frames": [
+          "    at docker (/home/somanos/github/infra-layer/lifecycle/docker.js:29:25)",
+          "    at Object.compose (/home/somanos/github/infra-layer/lifecycle/docker.js:41:52)",
+          "    at result.<computed> [as compose] (/tmp/drumee-app-a1-ym4dmo_w/observe.cjs:25:449)",
+          "    at /home/somanos/github/infra-layer/lifecycle/activation.js:191:18",
+          "    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+          "    at async Object.lockAsync (/home/somanos/github/infra-layer/lib/filesystem-safety.js:54:16)"
+        ]
+      }
+    },
+    "208": {
+      "sequence": 208,
+      "mono_ns": "23784850740",
+      "wall_time": "2026-10-29T18:27:40.920Z",
+      "pid": 1086384,
+      "phase": "activate.crash.expected",
+      "kind": "operation.failed",
+      "operation": "activate.crash.expected",
+      "expected": true,
+      "error": {
+        "name": "Error",
+        "code": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+        "frames": [
+          "    at Object.fail (/home/somanos/github/infra-layer/lib/filesystem-safety.js:5:43)",
+          "    at /home/somanos/github/infra-layer/lifecycle/activation.js:213:140",
+          "    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+          "    at async Object.lockAsync (/home/somanos/github/infra-layer/lib/filesystem-safety.js:54:16)"
+        ]
+      }
+    },
+    "214": {
+      "sequence": 214,
+      "mono_ns": "23997483966",
+      "wall_time": "2026-10-29T18:27:41.133Z",
+      "pid": 1086384,
+      "phase": "inspect.degraded",
+      "kind": "docker.inspection",
+      "verb": "container",
+      "observation": {
+        "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+        "name": "/drumee-il5-8f39498a-application-1",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "service": "application",
+        "role": "application",
+        "revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11",
+        "image_id": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "image": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "running": true,
+        "restarting": true,
+        "exit_code": 1,
+        "started_at": "2026-10-29T18:27:40.382013248Z",
+        "labels": {},
+        "mounts": [
+          {
+            "Type": "bind",
+            "Destination": "/app/state"
+          },
+          {
+            "Type": "bind",
+            "Destination": "/run/secrets/signing"
+          }
+        ]
+      },
+      "elapsed_ns": "10469738"
+    },
+    "219": {
+      "sequence": 219,
+      "mono_ns": "24393445792",
+      "wall_time": "2026-10-29T18:27:41.528Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "docker.inspection",
+      "verb": "container",
+      "observation": {
+        "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+        "name": "/drumee-il5-8f39498a-application-1",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "service": "application",
+        "role": "application",
+        "revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11",
+        "image_id": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "image": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "running": true,
+        "restarting": false,
+        "exit_code": 0,
+        "started_at": "2026-10-29T18:27:41.35930245Z",
+        "labels": {},
+        "mounts": [
+          {
+            "Type": "bind",
+            "Destination": "/app/state"
+          },
+          {
+            "Type": "bind",
+            "Destination": "/run/secrets/signing"
+          }
+        ]
+      },
+      "elapsed_ns": "11369799"
+    },
+    "227": {
+      "sequence": 227,
+      "mono_ns": "24900475621",
+      "wall_time": "2026-10-29T18:27:42.036Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "driver.enter",
+      "method": "authorizeRecoveryNetworks",
+      "declared": {
+        "project": "drumee-il5-8f39498a",
+        "networks": {
+          "kernel": {
+            "labels": {
+              "org.drumee.infra.owner": "drumee-il5-8f39498a"
+            },
+            "name": "drumee-il5-8f39498a-application"
+          }
+        },
+        "service_networks": [
+          "kernel"
+        ]
+      }
+    },
+    "228": {
+      "sequence": 228,
+      "mono_ns": "24922122304",
+      "wall_time": "2026-10-29T18:27:42.057Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "docker.inspection",
+      "verb": "network",
+      "observation": {
+        "id": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+        "name": "drumee-il5-8f39498a-application",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "labels": {},
+        "containers": {}
+      },
+      "elapsed_ns": "10457675"
+    },
+    "229": {
+      "sequence": 229,
+      "mono_ns": "24992829154",
+      "wall_time": "2026-10-29T18:27:42.128Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "docker.inspection",
+      "verb": "container",
+      "observation": {
+        "id": "fcb9d44e47b0f6fa584ceb177b8a2884bb578ff3cd7c1b309d30607b2f8ecd15",
+        "name": "/drumee-il5-8f39498a-application-1",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "service": "application",
+        "role": "application",
+        "revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11",
+        "image_id": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "image": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "running": true,
+        "restarting": true,
+        "exit_code": 1,
+        "started_at": "2026-10-29T18:27:41.35930245Z",
+        "labels": {},
+        "networks": {
+          "drumee-il5-8f39498a-application": {
+            "NetworkID": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+            "EndpointID": "",
+            "Aliases": [
+              "drumee-il5-8f39498a-application-1",
+              "application"
+            ],
+            "DNSNames": [
+              "drumee-il5-8f39498a-application-1",
+              "application",
+              "fcb9d44e47b0"
+            ],
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "Gateway": "",
+            "MacAddress": ""
+          }
+        },
+        "mounts": [
+          {
+            "Type": "bind",
+            "Destination": "/app/state"
+          },
+          {
+            "Type": "bind",
+            "Destination": "/run/secrets/signing"
+          }
+        ]
+      },
+      "elapsed_ns": "59775864"
+    },
+    "230": {
+      "sequence": 230,
+      "mono_ns": "24993045788",
+      "wall_time": "2026-10-29T18:27:42.128Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "driver.return",
+      "method": "authorizeRecoveryNetworks"
+    },
+    "240": {
+      "sequence": 240,
+      "mono_ns": "25302676169",
+      "wall_time": "2026-10-29T18:27:42.438Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "driver.enter",
+      "method": "compose",
+      "declared": {
+        "project": "drumee-il5-8f39498a",
+        "networks": {
+          "kernel": {
+            "labels": {
+              "org.drumee.infra.owner": "drumee-il5-8f39498a"
+            },
+            "name": "drumee-il5-8f39498a-application"
+          }
+        },
+        "service_networks": [
+          "kernel"
+        ]
+      },
+      "compose_action": "up"
+    },
+    "241": {
+      "sequence": 241,
+      "mono_ns": "28057435516",
+      "wall_time": "2026-10-29T18:27:45.192Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "driver.return",
+      "method": "compose"
+    },
+    "243": {
+      "sequence": 243,
+      "mono_ns": "28078551749",
+      "wall_time": "2026-10-29T18:27:45.214Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "docker.inspection",
+      "verb": "container",
+      "observation": {
+        "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+        "name": "/drumee-il5-8f39498a-application-1",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "service": "application",
+        "role": "application",
+        "revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280",
+        "image_id": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "image": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "running": true,
+        "restarting": false,
+        "exit_code": 0,
+        "started_at": "2026-10-29T18:27:42.521659567Z",
+        "labels": {},
+        "mounts": [
+          {
+            "Type": "bind",
+            "Destination": "/app/state"
+          },
+          {
+            "Type": "bind",
+            "Destination": "/run/secrets/signing"
+          }
+        ]
+      },
+      "elapsed_ns": "10584914"
+    },
+    "247": {
+      "sequence": 247,
+      "mono_ns": "28207388691",
+      "wall_time": "2026-10-29T18:27:45.342Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "driver.enter",
+      "method": "checkNetworks",
+      "declared": {
+        "project": "drumee-il5-8f39498a",
+        "networks": {
+          "kernel": {
+            "labels": {
+              "org.drumee.infra.owner": "drumee-il5-8f39498a"
+            },
+            "name": "drumee-il5-8f39498a-application"
+          }
+        },
+        "service_networks": [
+          "kernel"
+        ]
+      }
+    },
+    "248": {
+      "sequence": 248,
+      "mono_ns": "28228285234",
+      "wall_time": "2026-10-29T18:27:45.363Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "docker.inspection",
+      "verb": "network",
+      "observation": {
+        "id": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+        "name": "drumee-il5-8f39498a-application",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "labels": {},
+        "containers": {
+          "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031": {
+            "Name": "drumee-il5-8f39498a-application-1",
+            "EndpointID": "d116449feb652f81f3bee6d3eb6fff9ab49074eee45698848929fb8a2dc1356a",
+            "IPv4Address": "192.168.48.2/20",
+            "IPv6Address": "",
+            "MacAddress": "b6:d3:c9:77:cf:0c"
+          }
+        }
+      },
+      "elapsed_ns": "10232837"
+    },
+    "249": {
+      "sequence": 249,
+      "mono_ns": "28249589539",
+      "wall_time": "2026-10-29T18:27:45.385Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "docker.inspection",
+      "verb": "container",
+      "observation": {
+        "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+        "name": "/drumee-il5-8f39498a-application-1",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "service": "application",
+        "role": "application",
+        "revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280",
+        "image_id": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "image": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "running": true,
+        "restarting": false,
+        "exit_code": 0,
+        "started_at": "2026-10-29T18:27:42.521659567Z",
+        "labels": {},
+        "networks": {
+          "drumee-il5-8f39498a-application": {
+            "NetworkID": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+            "EndpointID": "d116449feb652f81f3bee6d3eb6fff9ab49074eee45698848929fb8a2dc1356a",
+            "Aliases": [
+              "drumee-il5-8f39498a-application-1",
+              "application"
+            ],
+            "DNSNames": [
+              "drumee-il5-8f39498a-application-1",
+              "application",
+              "d08cb6285a60"
+            ],
+            "IPAddress": "192.168.48.2",
+            "IPPrefixLen": 20,
+            "Gateway": "192.168.48.1",
+            "MacAddress": "b6:d3:c9:77:cf:0c"
+          }
+        },
+        "mounts": [
+          {
+            "Type": "bind",
+            "Destination": "/app/state"
+          },
+          {
+            "Type": "bind",
+            "Destination": "/run/secrets/signing"
+          }
+        ]
+      },
+      "elapsed_ns": "10889104"
+    },
+    "250": {
+      "sequence": 250,
+      "mono_ns": "28249674519",
+      "wall_time": "2026-10-29T18:27:45.385Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "driver.return",
+      "method": "checkNetworks"
+    },
+    "256": {
+      "sequence": 256,
+      "mono_ns": "28520861442",
+      "wall_time": "2026-10-29T18:27:45.656Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "driver.enter",
+      "method": "checkNetworks",
+      "declared": {
+        "project": "drumee-il5-8f39498a",
+        "networks": {
+          "kernel": {
+            "labels": {
+              "org.drumee.infra.owner": "drumee-il5-8f39498a"
+            },
+            "name": "drumee-il5-8f39498a-application"
+          }
+        },
+        "service_networks": [
+          "kernel"
+        ]
+      }
+    },
+    "257": {
+      "sequence": 257,
+      "mono_ns": "28542067007",
+      "wall_time": "2026-10-29T18:27:45.677Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "docker.inspection",
+      "verb": "network",
+      "observation": {
+        "id": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+        "name": "drumee-il5-8f39498a-application",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "labels": {},
+        "containers": {
+          "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031": {
+            "Name": "drumee-il5-8f39498a-application-1",
+            "EndpointID": "d116449feb652f81f3bee6d3eb6fff9ab49074eee45698848929fb8a2dc1356a",
+            "IPv4Address": "192.168.48.2/20",
+            "IPv6Address": "",
+            "MacAddress": "b6:d3:c9:77:cf:0c"
+          }
+        }
+      },
+      "elapsed_ns": "10468154"
+    },
+    "258": {
+      "sequence": 258,
+      "mono_ns": "28563800961",
+      "wall_time": "2026-10-29T18:27:45.699Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "docker.inspection",
+      "verb": "container",
+      "observation": {
+        "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+        "name": "/drumee-il5-8f39498a-application-1",
+        "owner": "drumee-il5-8f39498a",
+        "project": "drumee-il5-8f39498a",
+        "service": "application",
+        "role": "application",
+        "revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280",
+        "image_id": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "image": "sha256:196a65c1ccfec5133810d1180cb290074e9121d04ed3acc0eab7787542653904",
+        "running": true,
+        "restarting": false,
+        "exit_code": 0,
+        "started_at": "2026-10-29T18:27:42.521659567Z",
+        "labels": {},
+        "networks": {
+          "drumee-il5-8f39498a-application": {
+            "NetworkID": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+            "EndpointID": "d116449feb652f81f3bee6d3eb6fff9ab49074eee45698848929fb8a2dc1356a",
+            "Aliases": [
+              "drumee-il5-8f39498a-application-1",
+              "application"
+            ],
+            "DNSNames": [
+              "drumee-il5-8f39498a-application-1",
+              "application",
+              "d08cb6285a60"
+            ],
+            "IPAddress": "192.168.48.2",
+            "IPPrefixLen": 20,
+            "Gateway": "192.168.48.1",
+            "MacAddress": "b6:d3:c9:77:cf:0c"
+          }
+        },
+        "mounts": [
+          {
+            "Type": "bind",
+            "Destination": "/app/state"
+          },
+          {
+            "Type": "bind",
+            "Destination": "/run/secrets/signing"
+          }
+        ]
+      },
+      "elapsed_ns": "11269184"
+    },
+    "259": {
+      "sequence": 259,
+      "mono_ns": "28563887065",
+      "wall_time": "2026-10-29T18:27:45.699Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "driver.return",
+      "method": "checkNetworks"
+    },
+    "262": {
+      "sequence": 262,
+      "mono_ns": "28691122095",
+      "wall_time": "2026-10-29T18:27:45.826Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "operation.completed",
+      "operation": "rollback.crash"
+    },
+    "263": {
+      "sequence": 263,
+      "mono_ns": "28692916279",
+      "wall_time": "2026-10-29T18:27:45.828Z",
+      "pid": 1086384,
+      "phase": "rollback.crash",
+      "kind": "journal.tail",
+      "entries": [
+        {
+          "sequence": 28,
+          "phase": "recovery-required",
+          "revision": "6293603406c680117209bd62283a5ea9918d5b4d1d083b64edcaa118aee24f11",
+          "details": {
+            "service": "application",
+            "code": "DOCKER_LIFECYCLE_COMMAND_FAILED"
+          }
+        },
+        {
+          "sequence": 29,
+          "phase": "activation-intent",
+          "revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280",
+          "details": {
+            "service": "application",
+            "code": "ROLLBACK_RECOVERY_ADMITTED",
+            "prior_revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+          }
+        },
+        {
+          "sequence": 30,
+          "phase": "native-valid",
+          "revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280",
+          "details": {
+            "service": "application"
+          }
+        },
+        {
+          "sequence": 31,
+          "phase": "service-started",
+          "revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280",
+          "details": {
+            "service": "application"
+          }
+        },
+        {
+          "sequence": 32,
+          "phase": "functional-verified",
+          "revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280",
+          "details": {
+            "service": "application"
+          }
+        },
+        {
+          "sequence": 33,
+          "phase": "active",
+          "revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280",
+          "details": {}
+        }
+      ]
+    },
+    "265": {
+      "sequence": 265,
+      "mono_ns": "28714681227",
+      "wall_time": "2026-10-29T18:27:45.850Z",
+      "pid": 1086384,
+      "phase": "cleanup",
+      "kind": "docker.inspection",
+      "verb": "container",
+      "observation": {
+        "id": "d08cb6285a6088cd23aa5f83f3407e4be51115a6e0c8343288668800efaba031",
+        "name": "/drumee-il5-8f39498a-application-1",
+        "labels": {
+          "org.drumee.infra.owner": "drumee-il5-8f39498a",
+          "com.docker.compose.project": "drumee-il5-8f39498a",
+          "com.docker.compose.service": "application",
+          "org.drumee.infra.role": "application",
+          "org.drumee.infra.revision": "fb13315ef642a4c591450d46cd3f03da2312312259ac071db89408bd78878280"
+        },
+        "state": {
+          "Status": "running",
+          "Running": true,
+          "Restarting": false,
+          "ExitCode": 0,
+          "StartedAt": "2026-10-29T18:27:42.521659567Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "networks": {
+          "drumee-il5-8f39498a-application": {
+            "NetworkID": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+            "EndpointID": "d116449feb652f81f3bee6d3eb6fff9ab49074eee45698848929fb8a2dc1356a",
+            "Aliases": [
+              "drumee-il5-8f39498a-application-1",
+              "application"
+            ],
+            "DNSNames": [
+              "drumee-il5-8f39498a-application-1",
+              "application",
+              "d08cb6285a60"
+            ],
+            "IPAddress": "192.168.48.2",
+            "IPPrefixLen": 20,
+            "Gateway": "192.168.48.1",
+            "MacAddress": "b6:d3:c9:77:cf:0c"
+          }
+        },
+        "mounts": [
+          {
+            "Type": "bind",
+            "Destination": "/app/state"
+          },
+          {
+            "Type": "bind",
+            "Destination": "/run/secrets/signing"
+          }
+        ]
+      },
+      "elapsed_ns": "10665921"
+    },
+    "266": {
+      "sequence": 266,
+      "mono_ns": "29099898914",
+      "wall_time": "2026-10-29T18:27:46.235Z",
+      "pid": 1086384,
+      "phase": "cleanup",
+      "kind": "docker.inspection",
+      "verb": "network",
+      "observation": {
+        "id": "4db041238bba2e93832cc317a39c765f7c21c083ba14db73e3b15ebf389cbb0f",
+        "name": "drumee-il5-8f39498a-application",
+        "labels": {
+          "org.drumee.infra.owner": "drumee-il5-8f39498a",
+          "com.docker.compose.project": "drumee-il5-8f39498a"
+        },
+        "containers": {}
+      },
+      "elapsed_ns": "10395446"
+    },
+    "267": {
+      "sequence": 267,
+      "mono_ns": "29757630917",
+      "wall_time": "2026-10-29T18:27:46.893Z",
+      "pid": 1086384,
+      "phase": "cleanup",
+      "kind": "attempt.finished",
+      "functional_exit": 0,
+      "cleanup": "PASS"
+    }
+  },
+  "artifact_sha256": {
+    "/tmp/drumee-app-a1-ym4dmo_w/attempt-1/trace.jsonl": "5b3d857ae6c72795e8d4e57e959d6b51ba1bdc389b0f28c1d03415cad9964ffa",
+    "/tmp/drumee-app-a1-ym4dmo_w/attempt-1/journal.json": "6c959a810f3b0085e66291d23307c47e29312aa4db836489e2cfc263ea1f4b83",
+    "/tmp/drumee-app-a1-ym4dmo_w/attempt-1/docker-events.json": "430eef30f54db4961f46870317cee158f61933c5ca9b766f77a32b91cc7af957",
+    "/tmp/drumee-app-a1-ym4dmo_w/attempt-1/result.json": "782341c5c1b38d88586b17e9ec2526500ceaa0f7220c48f5726d325c67aad2c0"
+  },
+  "qualified_package_sha256_preserved": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "reviewer_ran_docker": false,
+  "reviewer_ran_reproduction": false,
+  "reviewer_ran_no_docker_preflight": true,
+  "historical_application_root_cause": "ROOT_CAUSE_UNDETERMINED",
+  "prior_historical_state_unavailable": true,
+  "new_controlled_attempt_root_cause": "not reproduced",
+  "new_controlled_attempt_applicable_scope": "instrumented canonical state-changing prefix only; no full application qualification",
+  "volume_cleanup": "FIXTURE_VOLUME_CLEANUP_UNQUALIFIED; no historical volume deletion authorized",
+  "pending": "Review investigator final A1 reports and V1 handoff before final written disposition"
+}

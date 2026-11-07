@@ -1,0 +1,102 @@
+[
+  {
+    "id": "H1",
+    "hypothesis": "Test not actually registered",
+    "classification": "UNRESOLVED",
+    "required_observations": "Need native acknowledgment of exact case registration.",
+    "existing_evidence": "Original D1 registration-complete marks code return; new source calls test(name,fn), but native individual acknowledgment absent.",
+    "contradicting_evidence": "No positive registration acknowledgment exists.",
+    "missing_evidence": "Inner registration state unknown.",
+    "discriminating_experiment": "A separately authorized native registration probe could discriminate; not executed after GateB stop."
+  },
+  {
+    "id": "H2",
+    "hypothesis": "Registered but not executed",
+    "classification": "UNRESOLVED",
+    "required_observations": "Need verified registration followed by callback-start/completion.",
+    "existing_evidence": "Both old and new expected individual events absent.",
+    "contradicting_evidence": "Registration itself not established.",
+    "missing_evidence": "Callback execution state unknown.",
+    "discriminating_experiment": "A future qualified callback observation could discriminate; not authorized beyond failed controls."
+  },
+  {
+    "id": "H3",
+    "hypothesis": "Native event emitted but not collected",
+    "classification": "UNRESOLVED",
+    "required_observations": "Need event present upstream and missing downstream.",
+    "existing_evidence": "Parent native TAP lacks named event even without D1.",
+    "contradicting_evidence": "No upstream child event captured in E1.",
+    "missing_evidence": "Exact native emission/transport boundary unknown.",
+    "discriminating_experiment": "Would require upstream native evidence in a new scope."
+  },
+  {
+    "id": "H4",
+    "hypothesis": "Reporter configuration defect",
+    "classification": "UNRESOLVED",
+    "required_observations": "Need proven incompatible reporter selection/format.",
+    "existing_evidence": "Supported native TAP selected directly; old D1 also used JSON reporter.",
+    "contradicting_evidence": "D1 custom reporter is not necessary for new symptom.",
+    "missing_evidence": "Native child/report configuration effect unknown.",
+    "discriminating_experiment": "Matched direct/wrapped pair would discriminate only after native controls pass; not executed."
+  },
+  {
+    "id": "H5",
+    "hypothesis": "Reporter parsing defect",
+    "classification": "CONTRADICTED",
+    "required_observations": "Need correct expected result in recorded input that parsing discards.",
+    "existing_evidence": "Expected case absent from raw new TAP and original D1 recorded events.",
+    "contradicting_evidence": "No correct named input exists for the examined parser to discard; summary substitution is rejected.",
+    "missing_evidence": "Earlier internal native parsing remains covered by H3, not established.",
+    "discriminating_experiment": "No rerun needed to reject loss solely at the inspected final name-match stage."
+  },
+  {
+    "id": "H6",
+    "hypothesis": "Subprocess stream capture defect",
+    "classification": "UNRESOLVED",
+    "required_observations": "Need bytes written by child but missing from parent/capture.",
+    "existing_evidence": "Direct redirect captures a complete file-level TAP stream, empty stderr; original D1 EOFs/no truncation.",
+    "contradicting_evidence": "D1 Python capture is not necessary for new symptom.",
+    "missing_evidence": "Native worker-to-parent bytes not independently captured.",
+    "discriminating_experiment": "Upstream stream boundary requires a separate qualified investigation."
+  },
+  {
+    "id": "H7",
+    "hypothesis": "Wrong ordinary-module invocation mode",
+    "classification": "CONTRADICTED",
+    "required_observations": "Need missing --test or another verified wrong mode.",
+    "existing_evidence": "Both exact commands explicitly include --test; native file-level TAP is emitted.",
+    "contradicting_evidence": "Commands are test-runner invocations, not plain module commands.",
+    "missing_evidence": "Unspecified native internal lifecycle is still unknown.",
+    "discriminating_experiment": "Existing argv/source sufficient for this narrow contradiction."
+  },
+  {
+    "id": "H8",
+    "hypothesis": "Discovery or filtering defect",
+    "classification": "UNRESOLVED",
+    "required_observations": "Need proof expected file/case was excluded.",
+    "existing_evidence": "Explicit existing .test.cjs file selected; file-level discovery acknowledged; no name/skip filter or source skip/todo.",
+    "contradicting_evidence": "Command-level file omission and explicit filters contradicted.",
+    "missing_evidence": "Individual case eligibility/registration unknown.",
+    "discriminating_experiment": "Native case acknowledgment is still required; no further control after failure."
+  },
+  {
+    "id": "H9",
+    "hypothesis": "Exit-status interpretation defect",
+    "classification": "CONTRADICTED",
+    "required_observations": "Need inconsistent process result or acceptance of absent case as success.",
+    "existing_evidence": "Native root0 and file-levelpass recorded separately; D1 validatorexit1 and E1 controlFAIL correctly reject absent case.",
+    "contradicting_evidence": "No observed exit is rewritten into success or used alone as execution proof.",
+    "missing_evidence": "Negative failure propagation is NOT_EXECUTED, not qualified.",
+    "discriminating_experiment": "No missing-case success substitution is authorized."
+  },
+  {
+    "id": "H10",
+    "hypothesis": "Other demonstrated cause",
+    "classification": "UNRESOLVED",
+    "required_observations": "Need exact responsible component and causal chain.",
+    "existing_evidence": "Native-only observation failure is demonstrated.",
+    "contradicting_evidence": "No precise responsible component is proved.",
+    "missing_evidence": "First causal event and native inner state missing.",
+    "discriminating_experiment": "New bounded diagnostic scope needed; no speculative fix."
+  }
+]

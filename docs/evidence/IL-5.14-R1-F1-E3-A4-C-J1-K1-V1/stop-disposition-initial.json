@@ -1,0 +1,32 @@
+{
+  "recorded": "2026-10-30T09:12:45.098159+00:00",
+  "source": "9797f80796c94c83ba8cdb2215f0775497f72b76",
+  "attempt": "V1-249c40f8-029c-45fc-b75c-e336ab60de19",
+  "qualification_stop": "Canonical ESLint exit1; no-useless-assignment in new test adapter",
+  "failing_location": "test/diagnostics/fixture-volumes/docker.cjs:11:9",
+  "lint_errors": 1,
+  "historical_visible_warnings": 28,
+  "new_findings": 1,
+  "safety_tests": {
+    "passed": 24,
+    "failed": 0,
+    "exit_code": 0,
+    "scope": "deterministic fake observations only; not real Docker qualification"
+  },
+  "subsequent_static_finding": "Partial creation success before inspect/ID validation can leave a resource absent from manifest and falsely report cleanup PASS; independent review pending severity/disposition",
+  "real_campaign": "NOT_EXECUTED",
+  "preflight_approval": "NOT_ISSUED",
+  "docker_commands": {
+    "initial_read_only": 9,
+    "historical_read_only": 13,
+    "all_exit_codes": 0,
+    "mutating_commands": 0
+  },
+  "new_fixture_volumes_created": 0,
+  "new_fixture_containers_created": 0,
+  "new_volume_deletions": 0,
+  "historical_volume_deletions": 0,
+  "source_correction_after_stop": false,
+  "reruns_after_stop": 0,
+  "parent_status": "F1_FAILED_QUALIFICATION_APPLICATION_ACCEPTANCE"
+}

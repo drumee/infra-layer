@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-10-26T09:06:26.733440+00:00",
+  "checkpoint": "dac28dbae8febabecfea5e0cdef7afb968487efd",
+  "branch": "fix/il514-c1-network-attachment-identity",
+  "working_tree": "",
+  "eslint_version": "10.13.0",
+  "node": "v22.22.0",
+  "npm": "11.18.0",
+  "scripts": {
+    "test": "node --test test/unit/*.test.js",
+    "test:integration": "node test/all-integration.js",
+    "test:package": "node test/package-audit.js",
+    "test:gateway": "node test/integration/run.js",
+    "test:services": "node test/services/run.js",
+    "test:lifecycle": "node test/lifecycle/run.js",
+    "test:lifecycle:gateway": "node test/lifecycle/gateway-run.js",
+    "test:application": "node test/application/run.js",
+    "test:system-tools": "node test/security/run.js",
+    "lint": "node tooling/lint.cjs",
+    "test:contracts": "node --test test/unit/application-contract.test.js test/unit/composition.test.js test/unit/distribution-isolation.test.js"
+  }
+}

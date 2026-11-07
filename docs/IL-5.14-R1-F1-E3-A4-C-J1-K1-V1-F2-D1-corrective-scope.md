@@ -1,0 +1,7 @@
+# D1 corrective implementation scope — Gate H NOT_EXECUTED
+
+Entry condition is unmet: the original cause remains ROOT_CAUSE_UNDETERMINED and diagnostic preflight failed. No concrete comparator/test-expectation/runtime correction is justified. Do not change an assertion merely because its event is absent. Do not replace required individual-case fidelity with file-level PASS, skip cases, disable isolation or retry unchanged commands for a favorable result.
+
+A separately scoped investigation must explain the missing native individual-event boundary and qualify collection before using any comparator diagnostic. Its exact implementation cannot be selected from current evidence. Once a first original causal operation/error/stack is established, a future proposal must name the smallest affected path and require focused failing-before/passing-after, the complete comparator matrix, ownership24 reference, refusal6 reference, preservation48 reference, canonical ESLint and independent comparator review. Actual new totals must be reported. A later Docker campaign requires its own explicit authorization and safe gates.
+
+Future correction invariants remain order-independent full mount multiset equality, significant duplicate counts, rejection of missing/additional/source/destination/access/malformed changes, non-mutation and original primary/cleanup error propagation. No source fix, dependency update, test selection change, archive rebuild, Docker run or historical deletion is authorized by this report.

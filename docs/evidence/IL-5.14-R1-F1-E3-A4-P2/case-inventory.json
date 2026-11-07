@@ -1,0 +1,155 @@
+[
+  {
+    "id": 1,
+    "name": "managed descriptors parse native configs, publish only test loopback ports and mount no secret-store root",
+    "services": "dns/database/redis/mail/dkim",
+    "purpose": "Native config, ownership/read-only/loopback/private mounts",
+    "resources": "All shared service containers, kernel and mail-control",
+    "lifecycle": "Synchronous inspect/exec; no teardown; service/config state retained",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 2,
+    "name": "real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion",
+    "services": "dns",
+    "purpose": "UDP/TCP A/SOA/TXT, NXDOMAIN/refused recursion",
+    "resources": "DNS host dynamic TCP/UDP port\u21921053; shared zone",
+    "lifecycle": "DNS Promises awaited; exec synchronous; no retained client",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 3,
+    "name": "real service observer separates protocol success, Docker revision labels and unverified loaded configuration",
+    "services": "dns/database/redis/mail/dkim/tls",
+    "purpose": "Protocol observation and wrong-container ownership refusal",
+    "resources": "Shared deployment plan/IDs/CA; Docker async execFile observer",
+    "lifecycle": "inspectInfrastructure awaited; no capture HTTP; no container mutation",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 4,
+    "name": "BIND9 restart and recreation preserve zone serial and TSIG fingerprint",
+    "services": "dns",
+    "purpose": "Restart/recreate and retain zone/key",
+    "resources": "Shared DNS container replaced; kernel; dns directory/port",
+    "lifecycle": "Compose synchronous; resolver/readiness awaited; new DNS container retained",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 5,
+    "name": "DNS port conflict and corrupt native configuration are rejected",
+    "services": "dns",
+    "purpose": "Occupied port and corrupt config refusal",
+    "resources": "Case-private labeled failed docker-run/Compose run --rm; shared DNS rendered config",
+    "lifecycle": "Synchronous negative exits asserted; config restored in finally",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 6,
+    "name": "MariaDB fresh initialization creates no kernel/application schema and rejects incompatible engines",
+    "services": "database",
+    "purpose": "Initialize service account, incompatible engine/config refusal",
+    "resources": "Shared DB volume/admin/account; temporary corrupt mariadb.cnf",
+    "lifecycle": "Account creation awaited; native run --rm; config restored; account retained",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 7,
+    "name": "MariaDB service account connects over TCP, rejects wrong credentials and owns no schema grants",
+    "services": "database",
+    "purpose": "TCP service account, grants and bad credential refusal",
+    "resources": "Dynamic host port\u21923306; case-private client",
+    "lifecycle": "Queries awaited; client.end awaited; rejected connection Promise awaited",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 8,
+    "name": "MariaDB existing-volume restart/recreation preserve data and credentials; repeated account provision does not rotate",
+    "services": "database",
+    "purpose": "Restart/recreate data/credential persistence",
+    "resources": "Shared DB container replaced; durable infra_probe table",
+    "lifecycle": "Compose synchronous/readiness awaited; data/account/new container retained",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 9,
+    "name": "Redis authenticated connection and pub/sub work, unauthenticated/wrong clients reject",
+    "services": "redis",
+    "purpose": "Authenticated ping/pubsub and unauthorized clients",
+    "resources": "Dynamic host port\u21926379; case-private pub/sub/anonymous clients",
+    "lifecycle": "Connect/publish/subscription outcome awaited; unsubscribe/quit awaited; reconnect disabled",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 10,
+    "name": "Redis AOF survives recreation with the same secret fingerprint and authenticated reconnection",
+    "services": "redis",
+    "purpose": "AOF recreation/key persistence",
+    "resources": "Shared Redis container replaced; persistent directory/key",
+    "lifecycle": "Compose synchronous; every readiness client quit in finally; durable key retained",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 11,
+    "name": "revision-pinned Essentials RedisStore authenticates via redisUrl including duplicate pub/sub clients",
+    "services": "redis",
+    "purpose": "Pinned actual Essentials RedisStore auth/pubsub",
+    "resources": "Case-private runtime-redis config and synchronous Node child",
+    "lifecycle": "Child15s bound; exit checked; its Promises/clients resolved/quit; directory retained to suite cleanup",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 12,
+    "name": "Redis ephemeral descriptor loses reconstructible state on recreation and rejects malformed configuration",
+    "services": "redis",
+    "purpose": "Ephemeral reconstruction and malformed config refusal",
+    "resources": "Private project suffix -ephemeral; external shared kernel; private config/container",
+    "lifecycle": "Compose --wait;15s negative run --rm; finally down removes private containers, not external kernel",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 13,
+    "name": "SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails",
+    "services": "mail/capture",
+    "purpose": "SMTP STARTTLS/auth submission and unauthorized relay refusal",
+    "resources": "Shared mail/capture; SMTP host port; first host HTTP capture GETs",
+    "lifecycle": "sendMail and capturedCount JSON awaited; Nodemailer.close initiates socket closure; .eml1 and host HTTP pool retained",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 14,
+    "name": "OpenDKIM signs captured bytes with the persistent key and valid public TXT material",
+    "services": "dkim/capture-files",
+    "purpose": "Verify DKIM signature/key then restart DKIM",
+    "resources": "Shared .eml/key; DKIM mail-control container restarted",
+    "lifecycle": "Synchronous crypto and Compose restart; no capture HTTP/teardown in this case; blocked host loop changes idle interval",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 15,
+    "name": "Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration",
+    "services": "mail/capture",
+    "purpose": "Queue during capture outage, mail recreation and local flush",
+    "resources": "Initial shared HTTP GET, capture stop/start; mail container replaced; same queue/key/port",
+    "lifecycle": "Initial GET JSON awaited before stop; SMTP awaited; bounded readiness/flush; capture/mail/HTTP pool and messages retained",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 16,
+    "name": "controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias",
+    "services": "mail/capture/dkim",
+    "purpose": "Verified TLS/auth outbound relay to capture alias",
+    "resources": "Shared plan/rendered Compose mutated; mail+capture recreated; kernel alias drumee.lan; auth env enabled",
+    "lifecycle": "Pre-recreation GET JSON awaited; Compose --wait; sendMail/count/final auth GET JSON awaited; generated plan retained",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  },
+  {
+    "id": 17,
+    "name": "BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses",
+    "services": "dns",
+    "purpose": "Advance zone serial and serve A/AAAA",
+    "resources": "Shared zone/config/plan; DNS container replaced; same dynamic DNS port",
+    "lifecycle": "Compose synchronous; resolver checks awaited; final zone/container retained until suite cleanup",
+    "shared_context": "Suite IL2_METADATA, plan/store, runner directory, same Node test child; no per-case root teardown; all labels/resource paths derive from suite project"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "identifier": "C-LINT-001",
+  "severity": "MINOR",
+  "mandatory_gate": "J",
+  "status": "OPEN \u2014 FAILED_QUALIFICATION",
+  "source": "8452b9be9cab7851ea058abd8b9bf90a4dd77f4e",
+  "executable": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "introduced_by": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "file": "test/diagnostics/observer-shutdown/matrix.test.cjs",
+  "line": 3,
+  "column": 26,
+  "rule": "no-unused-vars",
+  "binding": "drain",
+  "message": "'drain' is assigned a value but never used",
+  "gate_summary": {
+    "errors": 0,
+    "visible_warnings": 29,
+    "baseline_entries": 65,
+    "new_findings": 1,
+    "exit_code": 1
+  },
+  "attribution": "Read-only git blame and single identifier occurrence establish an unused destructured binding introduced in fd708aa. No functional or security exploit is demonstrated by this warning.",
+  "correction_performed": false,
+  "retry_performed": false,
+  "followup": "Remove only the unused destructured drain binding under a separately scoped corrective mission; preserve its model export and all assertions, guard/lint policy and observer lifecycle behavior."
+}

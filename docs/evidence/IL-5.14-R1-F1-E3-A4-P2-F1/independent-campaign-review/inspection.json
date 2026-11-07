@@ -1,0 +1,47 @@
+{
+  "source": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+  "coverage": {
+    "docker-main.jsonl": {
+      "rows": 684,
+      "event_rows": 668,
+      "created": 18,
+      "required_ids": 11,
+      "observer_pid": 2554111,
+      "cli_pid": 2554151,
+      "accepted": true
+    },
+    "docker-ephemeral.jsonl": {
+      "rows": 48,
+      "event_rows": 32,
+      "created": 3,
+      "required_ids": 0,
+      "observer_pid": 2554112,
+      "cli_pid": 2554152,
+      "accepted": true
+    }
+  },
+  "tests": {
+    "services": 17,
+    "unit": 354,
+    "contracts": 24
+  },
+  "operations": 9,
+  "case_order_verified": true,
+  "no_pending_or_request_failures": true,
+  "observer_error_rows": 0,
+  "campaign_result": {
+    "code": 0,
+    "first_failure": null
+  },
+  "independent_campaign_or_Docker_runs": 0,
+  "request_operation_owner_linkage": "9/9 verified",
+  "capture_processes": 3,
+  "finished_server_handlers": 30,
+  "idle_notifications": [
+    "UND_ERR_SOCKET",
+    "UND_ERR_INFO",
+    "UND_ERR_SOCKET"
+  ],
+  "residual_risk_package": "Accurate uncertainty and pending explicit A/B/C owner decision; no acceptance inferred"
+}

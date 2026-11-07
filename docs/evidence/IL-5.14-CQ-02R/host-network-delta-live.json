@@ -1,0 +1,28 @@
+{
+  "observed_at": "2026-11-04T21:10:51.817173+00:00",
+  "docker0": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Device \"docker0\" does not exist.\n"
+  },
+  "routes": {
+    "exit": 0,
+    "stdout": "[{\"dst\":\"default\",\"gateway\":\"192.168.5.1\",\"dev\":\"wlp2s0\",\"protocol\":\"static\",\"metric\":600,\"flags\":[]},{\"dst\":\"127.0.0.0/8\",\"dev\":\"lo\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"127.0.0.1\",\"metric\":30,\"flags\":[]},{\"dst\":\"172.18.0.0/16\",\"dev\":\"br-170923d8cded\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.18.0.1\",\"flags\":[\"linkdown\"]},{\"dst\":\"192.168.5.0/24\",\"dev\":\"wlp2s0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.5.202\",\"metric\":600,\"flags\":[]}]\n",
+    "stderr": ""
+  },
+  "default_network": {
+    "exit": 0,
+    "stdout": "[\n    {\n        \"Name\": \"bridge\",\n        \"Id\": \"1ebb81d2df9ca4b13a737991dac91f706df9be90f86f0cdd10608f1b4b1f6861\",\n        \"Created\": \"2026-10-13T08:16:03.13740289-04:00\",\n        \"Scope\": \"local\",\n        \"Driver\": \"bridge\",\n        \"EnableIPv4\": true,\n        \"EnableIPv6\": false,\n        \"IPAM\": {\n            \"Driver\": \"default\",\n            \"Options\": null,\n            \"Config\": [\n                {\n                    \"Subnet\": \"172.17.0.0/16\",\n                    \"Gateway\": \"172.17.0.1\"\n                }\n            ]\n        },\n        \"Internal\": false,\n        \"Attachable\": false,\n        \"Ingress\": false,\n        \"ConfigFrom\": {\n            \"Network\": \"\"\n        },\n        \"ConfigOnly\": false,\n        \"Options\": {\n            \"com.docker.network.bridge.default_bridge\": \"true\",\n            \"com.docker.network.bridge.enable_icc\": \"true\",\n            \"com.docker.network.bridge.enable_ip_masquerade\": \"true\",\n            \"com.docker.network.bridge.host_binding_ipv4\": \"0.0.0.0\",\n            \"com.docker.network.bridge.name\": \"docker0\",\n            \"com.docker.network.driver.mtu\": \"1500\"\n        },\n        \"Labels\": {},\n        \"Containers\": {},\n        \"Status\": {\n            \"IPAM\": {\n                \"Subnets\": {\n                    \"172.17.0.0/16\": {\n                        \"IPsInUse\": 3,\n                        \"DynamicIPsAvailable\": 65533\n                    }\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": ""
+  },
+  "docker_service": {
+    "exit": 0,
+    "stdout": "MainPID=1504\nNRestarts=0\nActiveEnterTimestamp=Tue 2026-10-13 08:16:11 EDT\n",
+    "stderr": ""
+  },
+  "network_journal": {
+    "exit": 0,
+    "stdout": "2026-11-04T12:08:20-05:00 minis avahi-daemon[767]: Interface docker0.IPv6 no longer relevant for mDNS.\n2026-11-04T12:08:20-05:00 minis avahi-daemon[767]: Leaving mDNS multicast group on interface docker0.IPv6 with address fe80::9854:f0ff:fecd:ea8f.\n2026-11-04T12:08:21-05:00 minis avahi-daemon[767]: Interface docker0.IPv4 no longer relevant for mDNS.\n2026-11-04T12:08:21-05:00 minis avahi-daemon[767]: Leaving mDNS multicast group on interface docker0.IPv4 with address 172.17.0.1.\n2026-11-04T12:08:21-05:00 minis avahi-daemon[767]: Withdrawing address record for fe80::9854:f0ff:fecd:ea8f on docker0.\n2026-11-04T12:08:21-05:00 minis avahi-daemon[767]: Withdrawing address record for 172.17.0.1 on docker0.\n2026-11-04T12:08:21-05:00 minis NetworkManager[814]: <info>  [1793812101.0198] device (docker0): state change: activated -> unmanaged (reason 'unmanaged', managed-type: 'removed')\n2026-11-04T16:10:51-05:00 minis sudo[670496]:  somanos : PWD=/home/somanos ; USER=root ; COMMAND=/usr/bin/journalctl --since '2026-11-04 16:55:00 UTC' --until '2026-11-04 21:15:00 UTC' --no-pager --grep 'docker0|Deleting bridge|delete bridge|Removing.*bridge' -o short-iso\n",
+    "stderr": ""
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "source": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+  "campaign": "CANONICAL_SERVICES_DIAGNOSTIC_PASS",
+  "campaign_result": {
+    "code": 0,
+    "first_failure": null
+  },
+  "services": {
+    "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+    "output": "/tmp/drumee-p2f1-ncv3fhrl/canonical-attempt-1",
+    "command": [
+      "/usr/bin/node",
+      "--require",
+      "/tmp/drumee-p2f1-ncv3fhrl/canonical-attempt-1/client-preload.cjs",
+      "--test",
+      "/home/somanos/github/infra-layer/test/services/services.test.js"
+    ],
+    "code": 0,
+    "signal": null
+  },
+  "case_starts": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "case_completions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "client_counts": {
+    "process.start": 2,
+    "fixture.ready": 2,
+    "case.start": 17,
+    "command.start": 119,
+    "command.completed": 119,
+    "case.completed": 17,
+    "intentional.shutdown": 3,
+    "operation.start": 9,
+    "client.fetch.start": 9,
+    "client.request.create": 9,
+    "client.beforeConnect": 5,
+    "client.connected": 5,
+    "client.request.socket": 9,
+    "client.response.headers": 9,
+    "client.response.body.complete": 9,
+    "client.fetch.headers": 9,
+    "operation.headers": 9,
+    "operation.body.start": 9,
+    "operation.completed": 9,
+    "client.socket.end": 2,
+    "client.socket.error": 3,
+    "client.socket.close": 3,
+    "process.exit": 2,
+    "suite.pending.at.exit": 2
+  },
+  "server_counts": {
+    "process.start": 3,
+    "server.listening": 3,
+    "server.connection": 26,
+    "server.request": 30,
+    "server.handler.enter": 30,
+    "server.handler.return": 30,
+    "server.response.finish": 30,
+    "server.response.close": 30,
+    "server.socket.end": 23,
+    "server.socket.close": 23,
+    "process.sigterm": 3,
+    "server.close.requested": 3,
+    "server.close.completed": 3,
+    "process.exit": 3
+  },
+  "request_errors": [],
+  "socket_errors": [
+    {
+      "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "role": "suite-client",
+      "pid": 2556608,
+      "process_instance": "5044e10e-3b4a-4937-87b3-a16d3b65bdd3",
+      "sequence": 261,
+      "mono_ns": "801645809874049",
+      "utc": "2026-10-28T14:58:51.244Z",
+      "event": "client.socket.error",
+      "current_case": 15,
+      "connection_id": 1,
+      "error": {
+        "name": "SocketError",
+        "code": "UND_ERR_SOCKET",
+        "socket": {
+          "localAddress": "127.0.0.1",
+          "localPort": 59538,
+          "remoteAddress": "127.0.0.1",
+          "remotePort": 46587,
+          "bytesRead": 684,
+          "bytesWritten": 510
+        }
+      },
+      "connection_activity": "idle_persistent_connection",
+      "active_requests": [],
+      "pending_application": []
+    },
+    {
+      "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "role": "suite-client",
+      "pid": 2556608,
+      "process_instance": "5044e10e-3b4a-4937-87b3-a16d3b65bdd3",
+      "sequence": 334,
+      "mono_ns": "801653963475012",
+      "utc": "2026-10-28T14:58:59.397Z",
+      "event": "client.socket.error",
+      "current_case": 16,
+      "connection_id": 2,
+      "error": {
+        "name": "InformationalError",
+        "code": "UND_ERR_INFO"
+      },
+      "connection_activity": "idle_persistent_connection",
+      "active_requests": [],
+      "pending_application": []
+    },
+    {
+      "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "role": "suite-client",
+      "pid": 2556608,
+      "process_instance": "5044e10e-3b4a-4937-87b3-a16d3b65bdd3",
+      "sequence": 336,
+      "mono_ns": "801653963853881",
+      "utc": "2026-10-28T14:58:59.398Z",
+      "event": "client.socket.error",
+      "current_case": 16,
+      "connection_id": 3,
+      "error": {
+        "name": "SocketError",
+        "code": "UND_ERR_SOCKET",
+        "socket": {
+          "localAddress": "127.0.0.1",
+          "localPort": 58532,
+          "remoteAddress": "127.0.0.1",
+          "remotePort": 46587,
+          "bytesRead": 228,
+          "bytesWritten": 170
+        }
+      },
+      "connection_activity": "idle_persistent_connection",
+      "active_requests": [],
+      "pending_application": []
+    }
+  ],
+  "pending_boundaries": [],
+  "cross_case": [],
+  "window": [
+    {
+      "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "role": "orchestrator",
+      "pid": 2553724,
+      "process_instance": "b1acd070-d9e4-4b7e-a622-c901520220a9",
+      "sequence": 23,
+      "mono_ns": "801659742188621",
+      "utc": "2026-10-28T14:59:05.176Z",
+      "event": "collection.window.completed",
+      "valid": true,
+      "reason": "REQUIRED_WINDOW_COMPLETE",
+      "cases": 17,
+      "operations": 9
+    }
+  ],
+  "observers": [
+    {
+      "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "role": "orchestrator",
+      "pid": 2553724,
+      "process_instance": "b1acd070-d9e4-4b7e-a622-c901520220a9",
+      "sequence": 35,
+      "mono_ns": "801660217139400",
+      "utc": "2026-10-28T14:59:05.651Z",
+      "event": "collector.closed",
+      "project": "drumee-il2-test-be22d37f-ephemeral",
+      "result": {
+        "accepted": true,
+        "reason": "CONTROLLED_SIGTERM_COMPLETE",
+        "pid": 2554152,
+        "code": 143,
+        "signal": null,
+        "controlled": true,
+        "signal_sent": true,
+        "collection_complete": true,
+        "streams": {
+          "stdout": {
+            "ended": true,
+            "closed": true
+          },
+          "stderr": {
+            "ended": true,
+            "closed": true
+          }
+        },
+        "observer_pid": 2554112,
+        "wrapper_exit": {
+          "code": 0,
+          "signal": null
+        },
+        "wrapper_close": {
+          "code": 0,
+          "signal": null
+        },
+        "wrapper_streams": {
+          "stdout": {
+            "ended": true,
+            "closed": true
+          },
+          "stderr": {
+            "ended": true,
+            "closed": true
+          }
+        }
+      }
+    },
+    {
+      "attempt": "P2-F1-SERVICES-44a15964-e61b-4347-9167-211df21937eb",
+      "role": "orchestrator",
+      "pid": 2553724,
+      "process_instance": "b1acd070-d9e4-4b7e-a622-c901520220a9",
+      "sequence": 36,
+      "mono_ns": "801660217207944",
+      "utc": "2026-10-28T14:59:05.651Z",
+      "event": "collector.closed",
+      "project": "drumee-il2-test-be22d37f",
+      "result": {
+        "accepted": true,
+        "reason": "CONTROLLED_SIGTERM_COMPLETE",
+        "pid": 2554151,
+        "code": 143,
+        "signal": null,
+        "controlled": true,
+        "signal_sent": true,
+        "collection_complete": true,
+        "streams": {
+          "stdout": {
+            "ended": true,
+            "closed": true
+          },
+          "stderr": {
+            "ended": true,
+            "closed": true
+          }
+        },
+        "observer_pid": 2554111,
+        "wrapper_exit": {
+          "code": 0,
+          "signal": null
+        },
+        "wrapper_close": {
+          "code": 0,
+          "signal": null
+        },
+        "wrapper_streams": {
+          "stdout": {
+            "ended": true,
+            "closed": true
+          },
+          "stderr": {
+            "ended": true,
+            "closed": true
+          }
+        }
+      }
+    }
+  ],
+  "historical_root_cause": "ROOT_CAUSE_UNDETERMINED",
+  "cleanup": "PASS"
+}

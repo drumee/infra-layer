@@ -1,0 +1,10 @@
+{
+  "scope": "Static logging allowlist, sentinel controls and retained logs; no scanner-policy change",
+  "files_checked": 27,
+  "sensitive_patterns_found": [],
+  "protected_configuration_unchanged": true,
+  "production_changes": false,
+  "network_isolation_changes": false,
+  "foreign_mutations": false,
+  "limitations": "Campaign invalid for qualification; source equivalence and read-only cleanup remain independent preservation evidence"
+}

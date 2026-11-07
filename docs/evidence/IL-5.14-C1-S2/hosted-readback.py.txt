@@ -1,0 +1,29 @@
+import json,pathlib,re,subprocess,sys,datetime,urllib.request
+sha=sys.argv[1]
+if not re.fullmatch(r'[0-9a-f]{40}',sha):raise ValueError('Exact head required')
+root=pathlib.Path(__file__).parent/'hosted';root.mkdir(mode=0o700,exist_ok=True)
+def get(path):return json.load(urllib.request.urlopen('https://sonarcloud.io/'+path))
+checks=json.loads(subprocess.check_output(['/usr/bin/gh','api','repos/drumee/infra-layer/commits/'+sha+'/check-runs?per_page=100'],text=True))
+required=['unit','contracts','eslint','dependencies','packaging','Analyze (actions)','Analyze (javascript-typescript)','Analyze (python)','CodeQL','SonarCloud Code Analysis']
+selected={c['name']:c for c in checks['check_runs'] if c['name'] in required}
+status='PENDING_HOSTED_CI'
+failed=[c['name'] for c in selected.values() if c['conclusion'] in ['failure','timed_out','cancelled','action_required','startup_failure']]
+record={'timestamp':datetime.datetime.now(datetime.timezone.utc).isoformat(),'head':sha,'checks':checks,'failed':failed}
+if failed:status='FAIL'
+elif all(n in selected and selected[n]['status']=='completed' and selected[n]['conclusion']=='success' for n in required):
+ pr=next(x for x in get('api/project_pull_requests/list?project=drumee_infra-layer')['pullRequests'] if x['key']=='20');record['sonarPullRequest']=pr
+ if pr['commit']['sha']==sha:
+  gate=get('api/qualitygates/project_status?projectKey=drumee_infra-layer&pullRequest=20');record['qualityGate']=gate
+  rules='javascript:S1523,jssecurity:S8704,javascript:S9383'
+  issues=get('api/issues/search?componentKeys=drumee_infra-layer&pullRequest=20&resolved=false&rules='+rules+'&ps=100');record['unresolvedBlockingRules']=issues
+  ids='AaF3kH4s1yc4XiDUvCPU,AaF3kH4s1yc4XiDUvCPV,AaF3kH4s1yc4XiDUvCPT,AaF3kH4t1yc4XiDUvCPY,AaF3kH4t1yc4XiDUvCPZ,AaF3kH4q1yc4XiDUvCPB'
+  record['originalIssues']=get('api/issues/search?componentKeys=drumee_infra-layer&pullRequest=20&issues='+ids+'&ps=100')
+  conditions={c['metricKey']:c for c in gate['projectStatus']['conditions']}
+  ratings=all(conditions.get(n,{}).get('actualValue')=='1' and conditions[n]['status']=='OK' for n in ['new_security_rating','new_reliability_rating'])
+  clean=gate['projectStatus']['status']=='OK' and not gate['projectStatus']['ignoredConditions'] and all(c['status']=='OK' for c in conditions.values()) and issues['total']==0 and pr['status']['qualityGateStatus']=='OK'
+  status='PASS' if ratings and clean else 'FAIL'
+record['status']=status
+name=sha+'-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%f')+'.json'
+with (root/name).open('x') as out:json.dump(record,out,indent=2);out.write('\n')
+print(json.dumps({'status':status,'head':sha,'failed':failed,'checks':[{n:c[n] for n in ['name','status','conclusion']} for c in selected.values()],'artifact':str(root/name)}))
+sys.exit(1 if status=='FAIL' else 0)

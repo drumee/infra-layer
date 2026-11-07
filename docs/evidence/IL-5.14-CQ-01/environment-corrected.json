@@ -1,0 +1,22 @@
+{
+  "name": "environment-corrected",
+  "argv": [
+    "python3",
+    "/tmp/cq01-environment.py"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5bb733b7f709547f928f87edf9a37fd7f31fe4be",
+  "started": "2026-11-04T15:48:47.895594+00:00",
+  "ended": "2026-11-04T15:48:48.161160+00:00",
+  "exit": 0,
+  "stdout": {
+    "file": "environment-corrected.stdout",
+    "bytes": 602,
+    "sha256": "216a240093526dcd9523393cf7f589dd2739ed6e0c02da367962982c69b3e3b7"
+  },
+  "stderr": {
+    "file": "environment-corrected.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

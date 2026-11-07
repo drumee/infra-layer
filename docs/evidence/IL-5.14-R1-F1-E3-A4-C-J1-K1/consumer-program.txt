@@ -1,0 +1,18 @@
+"use strict";
+const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path"),{createRequire}=require("node:module");
+const expected=path.join(process.cwd(),"node_modules/@drumee/infra-layer"), controls=[];
+assert.equal(fs.realpathSync(expected),expected);controls.push("installed archive, no source symlink");
+const api=require("@drumee/infra-layer"),L=require("@drumee/infra-layer/lifecycle");
+assert.deepEqual(Object.keys(api).sort(),["diagnoseInfrastructure","inspectInfrastructure","planInfrastructure","renderPlan","validateSpec"]);controls.push("CommonJS root API");
+assert.equal(typeof L.rollbackDeployment,"function");assert.equal(typeof L.activateDeployment,"function");controls.push("public lifecycle rollback API");
+for(const name of Object.keys(require("@drumee/infra-layer/package.json").exports).filter(name=>!name.includes("*"))){const specifier=name==="."?"@drumee/infra-layer":"@drumee/infra-layer"+name.slice(1);assert.ok(require.resolve(specifier).startsWith(expected+path.sep));require(specifier);}controls.push("public exports resolve inside installed package");
+const activation=require.resolve("@drumee/infra-layer/lifecycle/activation"),local=createRequire(activation);
+const helper=local("../internal/rollback-authorization");assert.equal(typeof helper.authorizeRollback,"function");controls.push("helper loads through actual activation module context");
+assert.throws(()=>helper.authorizeRollback({},[],null,null,{authorized:false}),{code:"ROLLBACK_OPERATION_NOT_AUTHORIZED"});controls.push("loaded helper preserves non-destructive refusal");
+assert.deepEqual(Object.keys(require("@drumee/infra-layer/package.json").dependencies||{}),[]);controls.push("empty production dependency graph");
+for(const file of Object.keys(require.cache).filter(file=>file.includes("infra-layer")))assert.ok(file.startsWith(expected+path.sep));controls.push("no source-tree module fallback");
+const broken=path.join(process.cwd(),"broken"),brokenPackage=path.join(broken,"node_modules/@drumee/infra-layer");
+fs.mkdirSync(path.dirname(brokenPackage),{recursive:true});fs.cpSync(expected,brokenPackage,{recursive:true});fs.unlinkSync(path.join(brokenPackage,"internal/rollback-authorization.js"));
+const brokenContext=createRequire(path.join(brokenPackage,"lifecycle/activation.js"));assert.throws(()=>brokenContext("../internal/rollback-authorization"),error=>error.code==="MODULE_NOT_FOUND"&&error.message.includes("rollback-authorization"));controls.push("missing-helper negative dependency control");
+fs.rmSync(broken,{recursive:true,force:true});controls.push("negative fixture cleanup");
+console.log(JSON.stringify({controls:controls.length,records:controls,installed_package:expected,activation}));

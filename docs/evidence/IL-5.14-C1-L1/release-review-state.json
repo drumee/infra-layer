@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-10-26T09:19:21.935786+00:00",
+  "open_pull_requests": [
+    {
+      "baseRefName": "main",
+      "headRefName": "docs/il511-alpha3-release",
+      "number": 11,
+      "title": "docs(IL-5.11): alpha.3 security assessment and release hold"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "docs/il510-release-evidence",
+      "number": 10,
+      "title": "docs(il5.10): record canonical integration and qualified alpha.3 candidate"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "dependabot/npm_and_yarn/nodemailer-10.1.2",
+      "number": 9,
+      "title": "chore(deps-dev): bump nodemailer from 10.1.1 to 10.1.2"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "dependabot/npm_and_yarn/smtp-server-3.19.23",
+      "number": 8,
+      "title": "chore(deps-dev): bump smtp-server from 3.19.22 to 3.19.23"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "dependabot/npm_and_yarn/jsonfile-6.2.1",
+      "number": 7,
+      "title": "chore(deps-dev): bump jsonfile from 5.0.0 to 6.2.1"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "dependabot/npm_and_yarn/test/application/nodemailer-10.1.2",
+      "number": 6,
+      "title": "chore(deps): bump nodemailer from 10.1.1 to 10.1.2 in /test/application"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "dependabot/npm_and_yarn/redis-6.3.0",
+      "number": 5,
+      "title": "chore(deps-dev): bump redis from 4.7.1 to 6.3.0"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "dependabot/github_actions/actions/checkout-7.0.1",
+      "number": 4,
+      "title": "chore(deps): bump actions/checkout from 6.1.0 to 7.0.1"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "dependabot/github_actions/actions/setup-node-7.1.0",
+      "number": 3,
+      "title": "chore(deps): bump actions/setup-node from 6.5.0 to 7.1.0"
+    }
+  ],
+  "recommended_next_prerelease": "0.1.0-alpha.4",
+  "rationale": "Registry lists alpha.1 through alpha.3 only; no alpha.4 release branch/PR identified. This is a recommendation for a separate release decision, not assignment/reservation/publication authorization. Existing alpha.3 documentation and dependency PRs remain open.",
+  "repository_manifest_version": "0.1.0-alpha.3",
+  "manifest_change": false
+}

@@ -1,0 +1,655 @@
+{
+  "mission": "IL-5.14-R1-F1-E3-A4-P2",
+  "status": "FAILED_QUALIFICATION",
+  "campaign": "DIAGNOSTIC_CAMPAIGN_INVALID",
+  "historical_root_cause": "ROOT_CAUSE_UNDETERMINED",
+  "independent_review": "CHANGES_REQUESTED",
+  "handoff": "RECOVERY_QUALIFIED_POSTFIX_BLOCKED_EVIDENCE",
+  "diagnostic_source": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+  "checkpoint": "ee53ed9448cd89f1cc84580863600aa47d9b335e",
+  "qualified_recovery": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "gates": [
+    {
+      "identifier": "A",
+      "status": "PASS",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [
+        [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        [
+          "git",
+          "diff",
+          "72f4c67",
+          "HEAD",
+          "--",
+          "lifecycle",
+          "adapters",
+          "capabilities",
+          "lib",
+          "internal",
+          "test/services",
+          "test/support",
+          "test/unit",
+          "package.json",
+          "package-lock.json"
+        ]
+      ],
+      "exit_codes": [
+        0,
+        0
+      ],
+      "test_counts": {},
+      "diagnostic_attempt": "See execution.jsonl/control JSONL; no additional execution",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "Checkpoint, source and historical evidence preserved",
+      "evidence_locations": [
+        "baseline.json",
+        "historical-integrity.json",
+        "pr-initial.json",
+        "pr-final.json"
+      ],
+      "remaining_limitations": "Original socket/server causal fields remain unavailable;139 accessible historical manifest entries match"
+    },
+    {
+      "identifier": "B",
+      "status": "PASS",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [
+        [
+          "cat",
+          "test/services/run.js"
+        ]
+      ],
+      "exit_codes": [
+        0
+      ],
+      "test_counts": {},
+      "diagnostic_attempt": "See execution.jsonl/control JSONL; no additional execution",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "All17 cases and shared lifecycle mapped",
+      "evidence_locations": [
+        "case-inventory.json",
+        "../../IL-5.14-R1-F1-E3-A4-P2-services-architecture.md"
+      ],
+      "remaining_limitations": "P2 omits earlier Gateway prefix from original aggregate; no shared Gateway JavaScript process assumed"
+    },
+    {
+      "identifier": "C",
+      "status": "PASS",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [],
+      "exit_codes": [],
+      "test_counts": {},
+      "diagnostic_attempt": "See execution.jsonl/control JSONL; no additional execution",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "Lifecycle audit complete; new observer defect explicitly added",
+      "evidence_locations": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-capture-lifecycle-audit.md"
+      ],
+      "remaining_limitations": "No verified historical capture defect; new diagnostic defect remains uncorrected under stop"
+    },
+    {
+      "identifier": "D",
+      "status": "PASS",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [],
+      "exit_codes": [],
+      "test_counts": {},
+      "diagnostic_attempt": "See execution.jsonl/control JSONL; no additional execution",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "Canonical/targeted differential and competing hypotheses established",
+      "evidence_locations": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-execution-differential.md",
+        "campaign-preflight.json"
+      ],
+      "remaining_limitations": "Plausible timing/resource effects remain hypotheses"
+    },
+    {
+      "identifier": "E",
+      "status": "FAIL",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [
+        [
+          "node",
+          "--check",
+          "test/diagnostics/services-capture/docker-events.cjs"
+        ]
+      ],
+      "exit_codes": [
+        0
+      ],
+      "test_counts": {},
+      "diagnostic_attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "Actual observer termination contract fails despite successful preflight mechanisms",
+      "evidence_locations": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-instrumentation.md",
+        "canonical-attempt-1/docker-main.jsonl",
+        "canonical-attempt-1/docker-ephemeral.jsonl"
+      ],
+      "remaining_limitations": "Controlled CLI143 return was not covered by HTTP preflight; code remains frozen for preservation"
+    },
+    {
+      "identifier": "F",
+      "status": "PASS",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [
+        [
+          "node",
+          "--test",
+          "test/diagnostics/postfix-http/diagnostic.test.cjs",
+          "test/diagnostics/services-capture/preflight.test.cjs"
+        ],
+        [
+          "node",
+          "--test",
+          "test/unit/harness-preservation.test.js",
+          "test/unit/harness-reachability.test.js",
+          "test/unit/refusal-effectiveness.test.js"
+        ]
+      ],
+      "exit_codes": [
+        0,
+        0
+      ],
+      "test_counts": {
+        "transport_lifecycle_controls": {
+          "pass": 18,
+          "fail": 0
+        },
+        "guards": {
+          "pass": 54,
+          "fail": 0
+        },
+        "nested_hook_probe": "2 cases inside control8, not additional top-level controls"
+      },
+      "diagnostic_attempt": "See execution.jsonl/control JSONL; no additional execution",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "Listed preflight controls/guards pass; not complete collector termination coverage",
+      "evidence_locations": [
+        "transport-preflight.log",
+        "assertion-guards.log",
+        "p1-controls/",
+        "p2-controls/",
+        "execution.jsonl"
+      ],
+      "remaining_limitations": "Does not override actual campaign invalidation or qualify external CLI143 shutdown branch"
+    },
+    {
+      "identifier": "G",
+      "status": "FAIL",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [
+        [
+          "node",
+          "test/diagnostics/services-capture/campaign.cjs",
+          "/tmp/drumee-p2-7ex9xczy/canonical-attempt-1"
+        ]
+      ],
+      "exit_codes": [
+        1
+      ],
+      "test_counts": {
+        "native_services_child": {
+          "pass": 17,
+          "fail": 0,
+          "exit": 0,
+          "qualification_usable": false
+        },
+        "overall_campaign": {
+          "exit": 1
+        }
+      },
+      "diagnostic_attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "DIAGNOSTIC_CAMPAIGN_INVALID",
+      "evidence_locations": [
+        "canonical-attempt-1.log",
+        "canonical-attempt-1/",
+        "campaign-summary.json",
+        "cleanup-readback.json"
+      ],
+      "remaining_limitations": "No rerun; native17/17 retained only as observation"
+    },
+    {
+      "identifier": "H",
+      "status": "BLOCKED",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [],
+      "exit_codes": [],
+      "test_counts": {},
+      "diagnostic_attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "ROOT_CAUSE_UNDETERMINED; qualified causal assessment blocked",
+      "evidence_locations": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-causal-assessment.md"
+      ],
+      "remaining_limitations": "Observer defect explains new campaign exit only, not historical GET"
+    },
+    {
+      "identifier": "I",
+      "status": "NOT_EXECUTED",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [],
+      "exit_codes": [],
+      "test_counts": {},
+      "diagnostic_attempt": "See execution.jsonl/control JSONL; no additional execution",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "No Postfix or observer correction after mandatory stop",
+      "evidence_locations": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-causal-assessment.md"
+      ],
+      "remaining_limitations": "Narrow termination-contract correction/regression remains required follow-up"
+    },
+    {
+      "identifier": "J",
+      "status": "NOT_EXECUTED",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [],
+      "exit_codes": [],
+      "test_counts": {},
+      "diagnostic_attempt": "See execution.jsonl/control JSONL; no additional execution",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "No corrective focused or full Services qualification",
+      "evidence_locations": [],
+      "remaining_limitations": "No corrected executable exists; no second campaign"
+    },
+    {
+      "identifier": "K",
+      "status": "PASS",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [
+        [
+          "git",
+          "diff",
+          "72f4c67",
+          "--",
+          "lifecycle"
+        ]
+      ],
+      "exit_codes": [
+        0
+      ],
+      "test_counts": {
+        "new_R5_Docker_runs": 0
+      },
+      "diagnostic_attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "R5_QUALIFIED_EXECUTABLE_PRESERVED",
+      "evidence_locations": [
+        "recovery-impact.json",
+        "../../IL-5.14-R1-F1-E3-A4-P2-recovery-impact.md",
+        "security-check.json",
+        "cleanup-readback.json"
+      ],
+      "remaining_limitations": "Historical55/354/24/38 tied to unchanged72f4c67; no new R5 execution"
+    },
+    {
+      "identifier": "L",
+      "status": "NOT_EXECUTED",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [],
+      "exit_codes": [],
+      "test_counts": {
+        "full_unit": 0,
+        "contracts": 0
+      },
+      "diagnostic_attempt": "See execution.jsonl/control JSONL; no additional execution",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "Full affected unit/contracts qualification stopped",
+      "evidence_locations": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-regression-qualification.md"
+      ],
+      "remaining_limitations": "Preflight18/54 executed separately; no historical totals borrowed"
+    },
+    {
+      "identifier": "M",
+      "status": "FAIL",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [],
+      "exit_codes": [],
+      "test_counts": {
+        "independent_tests": 0
+      },
+      "diagnostic_attempt": "P2-SERVICES-9db223fe-ad0c-469a-8e5c-1b17500358b7",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "CHANGES_REQUESTED; P2-IR-1 MAJOR diagnostic blocker",
+      "evidence_locations": [
+        "independent-review/decision.json",
+        "independent-review/independent-review.md",
+        "independent-review/read-only-commands.json"
+      ],
+      "remaining_limitations": "Independent review inspects evidence only; no closure or valid-campaign uncertainty confirmation"
+    },
+    {
+      "identifier": "N",
+      "status": "NOT_EXECUTED",
+      "source_revision": "7b5edbd9e9731a51d558a9e11c7def2cfa6c6acb",
+      "environment": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "tool_versions": {
+        "host": "Local Linux checkout, UID/GID1000; private loopback controls; mission-owned Docker main+ephemeral projects",
+        "node": "22.22.0",
+        "undici": "6.23.0",
+        "capture_node": "22.23.3",
+        "capture_undici": "6.28.1",
+        "docker": "29.2.0",
+        "details": "baseline.json, execution.jsonl and server process.start"
+      },
+      "exact_commands": [],
+      "exit_codes": [],
+      "test_counts": {},
+      "diagnostic_attempt": "See execution.jsonl/control JSONL; no additional execution",
+      "capture_lifecycle": "Native17 cases and9 application-completed GETs retained as observations only; no request failures; idle errors preserved; see campaign-summary.json",
+      "docker_state": "Owned lifecycle snapshots/streams retained; collector close143 mismatch; final owned cleanup empty",
+      "cleanup": "PASS read-only confirmation; overall diagnostic exit1 remains fatal",
+      "root_cause_conclusion": "ROOT_CAUSE_UNDETERMINED (historical); VERIFIED_P2_COLLECTOR_SHUTDOWN_CLASSIFICATION_DEFECT (new)",
+      "independent_review_conclusion": "CHANGES_REQUESTED; P2-IR-1 MAJOR test-only qualification reliability",
+      "disposition": "Residual-risk preparation prerequisites unmet; no owner decision requested",
+      "evidence_locations": [
+        "../../IL-5.14-R1-F1-E3-A4-P2-causal-assessment.md"
+      ],
+      "remaining_limitations": "Invalid campaign cannot support acceptance package; no risk accepted or implied"
+    }
+  ],
+  "post_failure_executable_changes": false,
+  "second_campaign": false,
+  "risk_acceptance": "NOT_EXECUTED; no owner decision requested",
+  "push": false
+}

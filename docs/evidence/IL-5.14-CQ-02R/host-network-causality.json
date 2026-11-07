@@ -1,0 +1,84 @@
+{
+  "finding": "CQ02R-SEC-001",
+  "severity": "MAJOR/BLOCKER",
+  "status": "ACTIVE",
+  "classification": "Qualification environment isolation / unauthorized foreign host-network mutation",
+  "cause": "Initial campaign dockerd startup with bridge:none ran in the shared host network namespace. Moby disables the default bridge by deleting the host interface docker0. Separate daemon state and a private CLI mount namespace did not isolate this host networking operation.",
+  "source": {
+    "url": "https://raw.githubusercontent.com/moby/moby/6a43e3d/daemon/daemon_unix.go",
+    "sha256": "4be5683cd0a1d526142fad1f8233052b7c4e9684a914c2af8e04e8443ca97b81",
+    "actual_dockerd_version": "29.7.2",
+    "actual_dockerd_commit": "6a43e3d",
+    "configuration_branch_lines": [
+      830,
+      837
+    ],
+    "default_bridge_deletion_lines": [
+      1167,
+      1174
+    ],
+    "verified_first_configuration_sha256": "6c203ced7ab7390ea3d802bbf938ac5991350f9c0ad2dd213d7b5c959fe54615",
+    "reconstruction": "Initial config reconstructed from final config: remove containerd setting and restore bridge:none; serialized bytes hash equals original engine creation receipt."
+  },
+  "before_interface": {
+    "ifindex": 6,
+    "ifname": "docker0",
+    "flags": [
+      "NO-CARRIER",
+      "BROADCAST",
+      "MULTICAST",
+      "UP"
+    ],
+    "mtu": 1500,
+    "qdisc": "noqueue",
+    "operstate": "DOWN",
+    "group": "default",
+    "link_type": "ether",
+    "address": "9a:54:f0:cd:ea:8f",
+    "broadcast": "ff:ff:ff:ff:ff:ff",
+    "addr_info": [
+      {
+        "family": "inet",
+        "local": "172.17.0.1",
+        "prefixlen": 16,
+        "broadcast": "172.17.255.255",
+        "scope": "global",
+        "label": "docker0",
+        "valid_life_time": 4294967295,
+        "preferred_life_time": 4294967295
+      },
+      {
+        "family": "inet6",
+        "local": "fe80::9854:f0ff:fecd:ea8f",
+        "prefixlen": 64,
+        "scope": "link",
+        "protocol": "kernel_ll",
+        "valid_life_time": 4294967295,
+        "preferred_life_time": 4294967295
+      }
+    ]
+  },
+  "before_route": {
+    "dst": "172.17.0.0/16",
+    "dev": "docker0",
+    "protocol": "kernel",
+    "scope": "link",
+    "prefsrc": "172.17.0.1",
+    "flags": [
+      "linkdown"
+    ]
+  },
+  "after_interface_present": false,
+  "after_route_present": false,
+  "attribution": [
+    "Initial engine creation 2026-11-04T17:08:19.764263+00:00",
+    "Journal docker0 IPv6/IPv4 removal 2026-11-04T12:08:20/21-05:00 (17:08:20/21 UTC)",
+    "Original default daemon still MainPID1504, NRestarts0, active since2026-10-13",
+    "Moby DisableBridge branch performs host LinkDel even with iptables management disabled"
+  ],
+  "impact": "Default daemon metadata still contains bridge network referencing missing docker0; there were no running default containers at baseline or after. Shared bridge function is not restored. No current production change or Infra Layer runtime-code security defect is inferred.",
+  "cleanup_scope": "Temporary campaign resources removed and protected Docker object metadata unchanged, but T5 global host noninterference FAILS. Earlier scoped PASS receipts do not establish T5.",
+  "discovery": "Consolidated independent reviewer compared host interfaces/routes after task cleanup. Interface/routes were not checked at initial readiness, so later campaigns proceeded before this failure was discovered.",
+  "action": "No further host mutation or retry. Obtain owner-authorized restoration of the existing bridge from recorded baseline, with protected-reference/current-state checks. Require a genuinely separate VM or host-network isolation before any fresh qualification campaign.",
+  "principal_disposition": "CQ02R_BLOCKED_SECURITY"
+}

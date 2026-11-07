@@ -1,0 +1,89 @@
+{
+  "created": "2026-10-30T19:12:46.862737+00:00",
+  "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+  "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+  "harness_sha256": {
+    "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+    "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+    "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+    "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+  },
+  "daemon": {
+    "id": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+    "context": "default",
+    "endpoint": "unix:///var/run/docker.sock"
+  },
+  "image": {
+    "reference": "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+    "id": "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7"
+  },
+  "static_qualification": {
+    "syntax": [
+      "docker.cjs",
+      "campaign.cjs"
+    ],
+    "focused_lint": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "canonical_lint": {
+      "errors": 0,
+      "historical_warnings": 28,
+      "new_findings": 0
+    },
+    "ownership_matrix": 24,
+    "assertion_preservation_and_reachability": 48,
+    "refusal_effectiveness": 6,
+    "all_command_exits": 0
+  },
+  "single_campaign_command": [
+    "node",
+    "test/diagnostics/fixture-volumes/campaign.cjs"
+  ],
+  "fresh_resource_scheme": "drumee-v1-<24 cryptographically random hex>-data/-consumer; new attempt UUID and 48-hex nonce; no pre-existing resource adoption",
+  "planned_resources": [
+    {
+      "type": "volume",
+      "driver": "local",
+      "lifecycle": "current-attempt disposable",
+      "creation_proof": "nonexisting exact random name, exact successful create, observed metadata fingerprint/nonce/owner/attempt/daemon plus receipt"
+    },
+    {
+      "type": "container",
+      "image": {
+        "reference": "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+        "id": "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7"
+      },
+      "lifecycle": "current-attempt interactive Node stdin holder with SIGTERM handler; network none, no host ports, read-only/non-root/cap-drop/no-new-privileges, read-only exact owned volume mount"
+    }
+  ],
+  "phases": [
+    "Capture immediate global metadata before mutation",
+    "Create and inspect exactly one local owned volume and persist manifest/creation receipt",
+    "Create exact owned container; verify actual Mounts and refuse cleanup in created state",
+    "Start owned container; verify running reference and refuse cleanup",
+    "Controlled stop owned container; verify stopped reference and refuse cleanup",
+    "Remove exact verified owned container non-force; assert no all-state consumer remains",
+    "Inject removal failure through test double before actual rm, retain original error and verify volume still exists",
+    "Re-read daemon, exact volume metadata and all-state references twice; exact non-force volume rm",
+    "Verify absence/no consumers; global before/after metadata equality; persist result/removal receipts"
+  ],
+  "refusal_requirement": "Harness must throw VOLUME_IN_USE before any Docker volume rm; daemon error alone insufficient",
+  "failure_policy": "Preserve primary failure and separate cleanup errors; perform only exact positively owned cleanup; no retry, broad selector or unverified deletion; stop after attempt",
+  "bounds": {
+    "per_command_ms": 30000,
+    "max_output_bytes": 8388608
+  },
+  "sensitive_data": "Container Env/volume option/label contents may be inspected in memory but only selected metadata or hashes retained; no volume content mount/read for unknown objects.",
+  "partial_creation_limitation": "LOW static auditability observation retained: structured manifest follows inspect/ID checks; command/start evidence plus global final inventory guard detects ordinary unmanifested survivors. No false successful campaign/security bypass demonstrated. No production or ownership-contract redesign. Unknown partially attributed resource remains protected and causes failed qualification.",
+  "historical_boundary": "H01-H04 never adopted/deleted; current inventory 682 volumes/35 containers/21 networks is not an ownership grant. Historical daemon ID unknown.",
+  "foreign_boundary": "No unrelated volume/container/network operation except read-only metadata; no host filesystem mounts or external network; no image build/pull",
+  "campaign_limit": 1,
+  "prior_V1_campaigns": 0,
+  "preflight_decision": "PENDING_INDEPENDENT_REVIEW",
+  "post_campaign_read_only_verification": {
+    "commands": "Re-read exact owned resource absence and same daemon; bounded past-window Docker container events filtered by exact org.drumee.qualification attempt label, no live observer/no future --until",
+    "required_evidence": "Correlate exact created container ID and die exitCode with owned lifecycle; preserve actual start/stop/destroy events and non-force deletion commands; no hidden transport/process exit accepted",
+    "boundary": "This adds read-only evidence retrieval, not a second campaign or fixture action. No source/harness change. Any missing mandatory termination evidence remains blocked rather than fabricated."
+  }
+}

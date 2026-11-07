@@ -1,0 +1,41 @@
+import base64, hashlib, json, pathlib, shutil, subprocess, tarfile, tempfile
+root=pathlib.Path('/home/somanos/github/infra-layer')
+out=root/'docs/evidence/IL-5.14-CQ-01'
+packed=json.loads((out/'pack-host.stdout').read_text())[0]
+archive=out/packed['filename']
+blob=archive.read_bytes()
+assert 'sha512-'+base64.b64encode(hashlib.sha512(blob).digest()).decode()==packed['integrity']
+members={}
+with tarfile.open(archive,'r:gz') as tar:
+    for item in tar.getmembers():
+        assert item.isfile() and item.name.startswith('package/')
+        name=item.name[len('package/'):]
+        assert name not in members and '..' not in pathlib.PurePosixPath(name).parts
+        contents=tar.extractfile(item).read()
+        assert contents==subprocess.check_output(['git','show','HEAD:'+name],cwd=root)
+        assert contents==(root/name).read_bytes()
+        members[name]={'bytes':len(contents),'sha256':hashlib.sha256(contents).hexdigest()}
+assert set(members)=={i['path'] for i in packed['files']}
+assert all(not x.startswith(('test/','docs/','tooling/')) for x in members)
+assert 'internal/rollback-authorization.js' in members
+identity={'source_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),
+          'archive':archive.name,'bytes':len(blob),'sha256':hashlib.sha256(blob).hexdigest(),
+          'integrity':packed['integrity'],'members':members,'member_count':len(members),
+          'all_members_match_git_and_worktree':True,'production_dependencies':[]}
+(out/'package-identity.json').write_text(json.dumps(identity,indent=2)+'\n')
+consumer=pathlib.Path(tempfile.mkdtemp(prefix='cq01-consumer-'))
+(consumer/'package.json').write_text('{"name":"cq01-consumer","version":"1.0.0","private":true}\n')
+subprocess.run(['/usr/bin/npm','install','--offline','--ignore-scripts','--no-audit','--no-fund',str(archive)],cwd=consumer,check=True)
+package=consumer/'node_modules/@drumee/infra-layer'
+assert set(str(p.relative_to(package)) for p in package.rglob('*') if p.is_file())==set(members)
+for name,meta in members.items(): assert hashlib.sha256((package/name).read_bytes()).hexdigest()==meta['sha256']
+shutil.copyfile(root/'test/application/consumer-refusals.cjs',consumer/'consumer-refusals.cjs')
+script='''const fs=require('node:fs'); const V=require('./test/support/application-inputs').applicationInputs(process.argv[1]+'/deployment','cq01-consumer','sha256:'+'a'.repeat(64)); const ref={resource:'application',key:'signing'}; V.spec.secrets.resources.push({ref,type:'application-secret',consumers:['application']}); V.requirements.secret_refs=[ref]; V.distribution.application.secret_mounts=[{ref,consumer:'application',target:'/run/secrets/signing',format:'raw'}]; fs.writeFileSync(process.argv[1]+'/inputs.json',JSON.stringify(V));'''
+subprocess.run(['/usr/bin/node','-e',script,str(consumer)],cwd=root,check=True)
+check='''const assert=require('node:assert/strict'),fs=require('node:fs'),p=require('@drumee/infra-layer/package.json'); assert.equal(Object.keys(p.dependencies||{}).length,0); for(const name of Object.keys(p.exports)){ if(!name.includes('*')) continue; const prefix=name.slice(2,-1),directory=prefix.slice(0,-1); for(const f of fs.readdirSync('node_modules/@drumee/infra-layer/'+directory)){if(f.endsWith('.js')) assert.ok(require('@drumee/infra-layer/'+prefix+f.slice(0,-3)));}} require('./consumer-refusals.cjs')(require('./inputs.json')).then(()=>console.log('CQ01_RETAINED_ARCHIVE_CONSUMER_PASS')).catch(e=>{console.error(e);process.exitCode=1;});'''
+subprocess.run(['/usr/bin/node','-e',check],cwd=consumer,check=True)
+identity['consumer_directory']=str(consumer)
+identity['consumer_inventory_matches_archive']=True
+identity['consumer_refusals']='PASS'
+(out/'package-identity.json').write_text(json.dumps(identity,indent=2)+'\n')
+print(json.dumps({k:v for k,v in identity.items() if k!='members'},indent=2))

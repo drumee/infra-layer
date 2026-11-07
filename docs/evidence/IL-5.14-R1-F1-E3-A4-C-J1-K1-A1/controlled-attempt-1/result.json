@@ -1,0 +1,45 @@
+{
+  "attempt": "A1-8804ae28-d05a-4b13-b5d9-aaa763abac28",
+  "project": "drumee-il5-8f39498a",
+  "pid": 1086384,
+  "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "steps": [
+    "prepare.initial",
+    "prepare.initial.repeat",
+    "activate.initial",
+    "stop",
+    "inspect.stopped",
+    "activate.restart",
+    "prepare.banner",
+    "activate.banner",
+    "rollback.banner",
+    "prepare.crash",
+    "inspect.degraded",
+    "rollback.crash"
+  ],
+  "expected_rejections": [
+    {
+      "operation": "activate.crash.expected",
+      "error": {
+        "name": "Error",
+        "code": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+        "frames": [
+          "    at Object.fail (/home/somanos/github/infra-layer/lib/filesystem-safety.js:5:43)",
+          "    at /home/somanos/github/infra-layer/lifecycle/activation.js:213:140",
+          "    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+          "    at async Object.lockAsync (/home/somanos/github/infra-layer/lib/filesystem-safety.js:54:16)"
+        ]
+      }
+    }
+  ],
+  "qualified_source_modified": false,
+  "started": "2026-10-29T18:27:17.222Z",
+  "functional_result": "PASS",
+  "functional_exit": 0,
+  "cleanup": "PASS",
+  "finished": "2026-10-29T18:27:46.879Z",
+  "event_rows": 67,
+  "diagnostic_errors": [],
+  "diagnostic_valid": true,
+  "result": "DIAGNOSTIC_PASS_ROOT_CAUSE_UNDETERMINED"
+}

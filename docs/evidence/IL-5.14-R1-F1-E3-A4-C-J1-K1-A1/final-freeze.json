@@ -1,0 +1,80 @@
+{
+  "recorded": "2026-10-29T18:50:46.123060+00:00",
+  "head_before_documentation_commit": "aef7a94e4d7f04de5eaefe16a88a39793e7aaeba",
+  "qualified_source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "branch": "fix/il514-c1-network-attachment-identity",
+  "frozen_input_count": 177,
+  "frozen_inputs_unchanged": true,
+  "non_documentation_diff_vs_qualified_source": [],
+  "original_K1_manifest_entries_reverified": 89,
+  "qualified_archive": {
+    "path": "/tmp/drumee-k1-l0h17j68/candidate/drumee-infra-layer-0.1.0-alpha.3.tgz",
+    "sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+    "unchanged": true
+  },
+  "diagnostic_script_sha256": {
+    "observer": "dd6cbfa2733c19ab22d976c117bc122560522c6299837288f40b42b24afbe452",
+    "preflight": "7e3aad9c45fdb5edcdfd7cfff44cf4fd97f9c62c6daf97a7ba316c06031b8798",
+    "diagnostic": "dadf3b1b184090d152a489703de6d0dafbe33d67fd6d78bbabb68d5d4a44bb9e"
+  },
+  "root_commands": [
+    {
+      "name": "observation-preflight",
+      "command": [
+        "node",
+        "/tmp/drumee-app-a1-ym4dmo_w/preflight.cjs"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f44950a515becaa23a72b32b9b1811f9426a75c42378ded99d90feff95dcac31"
+    },
+    {
+      "name": "diagnostic-syntax",
+      "command": [
+        "node",
+        "--check",
+        "/tmp/drumee-app-a1-ym4dmo_w/diagnostic.cjs"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "diagnostic-final-syntax",
+      "command": [
+        "node",
+        "--check",
+        "/tmp/drumee-app-a1-ym4dmo_w/diagnostic.cjs"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "controlled-diagnostic-1",
+      "command": [
+        "node",
+        "/tmp/drumee-app-a1-ym4dmo_w/diagnostic.cjs",
+        "/tmp/drumee-app-a1-ym4dmo_w/attempt-1"
+      ],
+      "exit_code": 0,
+      "log_sha256": "6861e56c2cd1d3b0b9cf57522e7cc227d5beb6789622b6a024b8df3804882e43"
+    }
+  ],
+  "attempt": "A1-8804ae28-d05a-4b13-b5d9-aaa763abac28",
+  "diagnostic_result": "DIAGNOSTIC_PASS_ROOT_CAUSE_UNDETERMINED",
+  "trace_records": 267,
+  "historical_exact_failed_operation": "UNAVAILABLE; static inference is not direct evidence",
+  "root_cause": "ROOT_CAUSE_UNDETERMINED",
+  "independent_disposition": "ROOT_CAUSE_UNDETERMINED_CONFIRMED",
+  "controlled_attempts": 1,
+  "additional_diagnostic_or_qualification_attempts": 0,
+  "new_production_changes": false,
+  "new_qualified_test_input_changes": false,
+  "A1_volume_deletions": 0,
+  "A1_scoped_cleanup": "PASS",
+  "historical_fixture_volume_cleanup": "CLEANUP_BLOCKED_OWNERSHIP",
+  "parent_application_qualification": "FAILED",
+  "R1_final_closure": "PENDING",
+  "new_archive_built": false,
+  "remote_mutation": false,
+  "hosted_ci": "HOSTED_CI_NOT_EXECUTED_NO_PUSH_AUTHORIZATION",
+  "checkpoint_identity_note": "The following local commit contains documentation/evidence only. Its SHA is recorded in the final owner handoff and private checkpoint-readback.json to avoid a self-referential commit hash."
+}

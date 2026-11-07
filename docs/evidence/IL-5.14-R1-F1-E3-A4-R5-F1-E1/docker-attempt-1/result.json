@@ -1,0 +1,591 @@
+{
+  "project": "drumee-il5-ce96c333",
+  "steps": [
+    "initial-operational",
+    "actual-restarting-rollback-final-ready",
+    "failed-recreation-never-ready",
+    "real-final-detachment-never-ready"
+  ],
+  "assertions": 38,
+  "attempt": "R5-F1-E1-DOCKER-1",
+  "operations": [
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:21.992Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:23.311Z",
+      "exit": 0
+    },
+    {
+      "method": "checkPorts",
+      "started": "2026-10-28T10:02:23.320Z",
+      "exit": 0
+    },
+    {
+      "method": "checkNetworks",
+      "started": "2026-10-28T10:02:23.351Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:23.370Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:23.394Z",
+      "args": [
+        "config",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:23.453Z",
+      "args": [
+        "up",
+        "-d",
+        "--no-deps",
+        "--force-recreate",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "application"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:26.230Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:26.253Z",
+      "args": [
+        "exec",
+        "-T",
+        "application",
+        "node",
+        "health.js"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "checkNetworks",
+      "started": "2026-10-28T10:02:26.399Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:26.674Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:26.695Z",
+      "exit": 0
+    },
+    {
+      "method": "checkNetworks",
+      "started": "2026-10-28T10:02:26.716Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:26.758Z",
+      "args": [
+        "exec",
+        "-T",
+        "application",
+        "node",
+        "health.js"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:27.651Z",
+      "code": "DEPLOYMENT_OWNERSHIP_MISMATCH",
+      "exit": null
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:28.167Z",
+      "code": "DEPLOYMENT_OWNERSHIP_MISMATCH",
+      "exit": null
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:28.979Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:29.859Z",
+      "exit": 0
+    },
+    {
+      "method": "checkPorts",
+      "started": "2026-10-28T10:02:29.880Z",
+      "exit": 0
+    },
+    {
+      "method": "checkNetworks",
+      "started": "2026-10-28T10:02:29.946Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:29.989Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:30.015Z",
+      "args": [
+        "config",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:30.053Z",
+      "args": [
+        "up",
+        "-d",
+        "--no-deps",
+        "--force-recreate",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "application"
+      ],
+      "code": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+      "exit": 1
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:32.839Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:32.859Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:33.454Z",
+      "exit": 0
+    },
+    {
+      "method": "checkPorts",
+      "started": "2026-10-28T10:02:33.697Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:33.955Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:34.165Z",
+      "exit": 0
+    },
+    {
+      "method": "authorizeRecoveryNetworks",
+      "started": "2026-10-28T10:02:34.186Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:34.227Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:34.422Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:34.443Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:34.468Z",
+      "args": [
+        "config",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:34.505Z",
+      "args": [
+        "up",
+        "-d",
+        "--no-deps",
+        "--force-recreate",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "application"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:37.245Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:37.269Z",
+      "args": [
+        "exec",
+        "-T",
+        "application",
+        "node",
+        "health.js"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "checkNetworks",
+      "started": "2026-10-28T10:02:37.406Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:37.649Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:37.669Z",
+      "exit": 0
+    },
+    {
+      "method": "checkNetworks",
+      "started": "2026-10-28T10:02:37.693Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:37.734Z",
+      "args": [
+        "exec",
+        "-T",
+        "application",
+        "node",
+        "health.js"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:38.105Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:38.125Z",
+      "args": [
+        "stop",
+        "application"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:38.930Z",
+      "exit": 0
+    },
+    {
+      "method": "checkPorts",
+      "started": "2026-10-28T10:02:38.951Z",
+      "exit": 0
+    },
+    {
+      "method": "checkNetworks",
+      "started": "2026-10-28T10:02:38.982Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:39.023Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:39.237Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:39.258Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:39.285Z",
+      "args": [
+        "config",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:39.581Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:39.601Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:39.988Z",
+      "exit": 0
+    },
+    {
+      "method": "checkPorts",
+      "started": "2026-10-28T10:02:40.008Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:40.261Z",
+      "exit": 0
+    },
+    {
+      "method": "authorizeRecoveryNetworks",
+      "started": "2026-10-28T10:02:40.281Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:40.322Z",
+      "exit": 0
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:40.516Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:40.537Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:40.563Z",
+      "args": [
+        "config",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:40.625Z",
+      "args": [
+        "up",
+        "-d",
+        "--no-deps",
+        "--force-recreate",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "application"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:43.366Z",
+      "exit": 0
+    },
+    {
+      "method": "compose",
+      "started": "2026-10-28T10:02:43.393Z",
+      "args": [
+        "exec",
+        "-T",
+        "application",
+        "node",
+        "health.js"
+      ],
+      "exit": 0
+    },
+    {
+      "method": "checkNetworks",
+      "started": "2026-10-28T10:02:43.796Z",
+      "code": "NETWORK_ATTACHMENT_MISMATCH",
+      "exit": null
+    },
+    {
+      "method": "checkImages",
+      "started": "2026-10-28T10:02:44.086Z",
+      "exit": 0
+    },
+    {
+      "method": "inspectProject",
+      "started": "2026-10-28T10:02:44.107Z",
+      "exit": 0
+    }
+  ],
+  "initial": {
+    "id": "085dfaa0c6d8d572aec5ae6adb6bf2e54338fc89e6ce76e4ca3526275575bf57",
+    "image_id": "sha256:0868466b9bc6ed9b7955a34965f5df8073d9b938cb7800d15ad4e155d14122a3",
+    "image": "sha256:0868466b9bc6ed9b7955a34965f5df8073d9b938cb7800d15ad4e155d14122a3",
+    "started_at": "2026-10-28T10:02:23.562086727Z",
+    "running": true,
+    "restarting": false,
+    "name": "/drumee-il5-ce96c333-application-1",
+    "exit_code": 0,
+    "health": "healthy",
+    "owner": "drumee-il5-ce96c333",
+    "role": "application",
+    "project": "drumee-il5-ce96c333",
+    "service": "application",
+    "revision": "1000a885c5b18b01bf2ea6c0b324c16eee7dd071374c00e085108239a15f41a9",
+    "ports": {
+      "3101/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "38789"
+        }
+      ]
+    },
+    "configured_ports": {
+      "3101/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "38789"
+        }
+      ]
+    },
+    "mounts": []
+  },
+  "degraded": {
+    "observed": {
+      "id": "254c5e7ec8deb509b9c711680a2a9b7f63796f96b2372baac73a8a5836b6fd67",
+      "image_id": "sha256:0868466b9bc6ed9b7955a34965f5df8073d9b938cb7800d15ad4e155d14122a3",
+      "image": "sha256:0868466b9bc6ed9b7955a34965f5df8073d9b938cb7800d15ad4e155d14122a3",
+      "started_at": "2026-10-28T10:02:32.118049519Z",
+      "running": true,
+      "restarting": true,
+      "name": "/drumee-il5-ce96c333-application-1",
+      "exit_code": 1,
+      "health": "unhealthy",
+      "owner": "drumee-il5-ce96c333",
+      "role": "application",
+      "project": "drumee-il5-ce96c333",
+      "service": "application",
+      "revision": "8323a394303bbf583e44c56ba84a5e07b703ba250b6ad011649ad53508ec8cfb",
+      "ports": {},
+      "configured_ports": {
+        "3101/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "38789"
+          }
+        ]
+      },
+      "mounts": []
+    },
+    "state": {
+      "Status": "restarting",
+      "Running": true,
+      "Paused": false,
+      "Restarting": true,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 1,
+      "Error": "",
+      "StartedAt": "2026-10-28T10:02:32.118049519Z",
+      "FinishedAt": "2026-10-28T10:02:32.619269893Z",
+      "Health": {
+        "Status": "unhealthy",
+        "FailingStreak": 0,
+        "Log": []
+      }
+    },
+    "networks": {
+      "drumee-il5-ce96c333-application": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "drumee-il5-ce96c333-application-1",
+          "application"
+        ],
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "d7ad0a46aedcd59d49619bcef7800f745c4b633e3b624fe266bbb3871c1911f1",
+        "EndpointID": "",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": [
+          "drumee-il5-ce96c333-application-1",
+          "application",
+          "254c5e7ec8de"
+        ]
+      }
+    }
+  },
+  "replaced": {
+    "id": "654c83a24f4758f81ce1324cfd5ce97e8facc6c6204f74ec290aa03f2f64e295",
+    "image_id": "sha256:0868466b9bc6ed9b7955a34965f5df8073d9b938cb7800d15ad4e155d14122a3",
+    "image": "sha256:0868466b9bc6ed9b7955a34965f5df8073d9b938cb7800d15ad4e155d14122a3",
+    "started_at": "2026-10-28T10:02:34.579888626Z",
+    "running": true,
+    "restarting": false,
+    "name": "/drumee-il5-ce96c333-application-1",
+    "exit_code": 0,
+    "health": "healthy",
+    "owner": "drumee-il5-ce96c333",
+    "role": "application",
+    "project": "drumee-il5-ce96c333",
+    "service": "application",
+    "revision": "1000a885c5b18b01bf2ea6c0b324c16eee7dd071374c00e085108239a15f41a9",
+    "ports": {
+      "3101/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "38789"
+        }
+      ]
+    },
+    "configured_ports": {
+      "3101/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "38789"
+        }
+      ]
+    },
+    "mounts": []
+  },
+  "status": "PASS",
+  "cleanup": "PASS"
+}

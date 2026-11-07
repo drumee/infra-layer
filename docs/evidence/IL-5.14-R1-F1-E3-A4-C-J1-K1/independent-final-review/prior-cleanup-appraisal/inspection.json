@@ -1,0 +1,205 @@
+{
+  "recorded": "2026-10-29T08:23:07.049085+00:00",
+  "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "review_status": "BLOCKED_EVIDENCE",
+  "source_comparisons": {
+    "production": {
+      "reference": "fd708aa",
+      "paths": [
+        "lifecycle",
+        "adapters",
+        "capabilities",
+        "internal",
+        "lib",
+        "package.json",
+        "package-lock.json",
+        "index.d.ts"
+      ],
+      "differences": []
+    },
+    "R5-runtime": {
+      "reference": "72f4c67",
+      "paths": [
+        "lifecycle",
+        "adapters",
+        "capabilities",
+        "internal",
+        "lib",
+        "test/network-attachments",
+        "test/support/rollback-boundary-fixture.cjs"
+      ],
+      "differences": []
+    },
+    "Gateway": {
+      "reference": "04a4fc9",
+      "paths": [
+        "test/integration",
+        "test/support/inputs.js",
+        "test/support/trusted-process.js",
+        "lib",
+        "adapters",
+        "capabilities",
+        "internal/system-tools.js",
+        "internal/network-readiness.js",
+        "package.json",
+        "package-lock.json"
+      ],
+      "differences": []
+    },
+    "Services-observer": {
+      "reference": "fd708aa",
+      "paths": [
+        "test/services",
+        "test/diagnostics/services-capture",
+        "test/diagnostics/postfix-http",
+        "test/support/service-inputs.js",
+        "test/support/trusted-process.js"
+      ],
+      "differences": []
+    }
+  },
+  "independent_probe_controls": 13,
+  "independent_network_guard_recovery_tests": 150,
+  "independent_test_exits": [
+    0,
+    0
+  ],
+  "implementing_ledger_entries_inspected": 22,
+  "implementing_command_names": [
+    "allowlist-regressions",
+    "canonical-package-audit",
+    "dry-inventory",
+    "construct-archive",
+    "verify-archive",
+    "archive-consumer",
+    "canonical-eslint",
+    "installed-consumer-security",
+    "full-unit",
+    "contracts",
+    "audit-production",
+    "audit-development",
+    "audit-application",
+    "trusted-tools",
+    "network-membership",
+    "network-redis",
+    "network-health",
+    "canonical-preparation-consumer",
+    "lifecycle",
+    "lifecycle-gateway",
+    "application-preflight",
+    "application"
+  ],
+  "network_Docker_evidence": {
+    "network-membership": {
+      "assertions": 21,
+      "status": "PASS",
+      "cleanup": "PASS",
+      "sha256": "74e40bdaa7ea9d1a69af430fd61e5dae7aae4e4e1ad0401e8bd5b039f3948e36"
+    },
+    "network-redis": {
+      "assertions": 42,
+      "status": "PASS",
+      "cleanup": "PASS",
+      "sha256": "7e8b440af4af8eec53ba7b384065191332ac91eb54d1d42b884958c7c3e70b66"
+    },
+    "network-health": {
+      "assertions": 15,
+      "status": "PASS",
+      "cleanup": "PASS",
+      "sha256": "362dd1fb2a9a12779ccd70b542a97b3625cdf535853a2ed776d215c46af2a45f"
+    }
+  },
+  "archive_member_count": 43,
+  "archive_source_equal": true,
+  "archive_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "package_review": "FINDING_CLOSED",
+  "Gateway_retention": "A2 exact relevant input closure verified;17/17/0 and cleanup precede independent Services failure",
+  "Services_retention": "P2-F1 exact operational source preserved,17/17/campaign0,independent CAMPAIGN_EVIDENCE_VALID",
+  "owner_decision": "IL-5.14-A4-POSTFIX-RISK-B; narrow historical uncertainty only; no current/future waiver",
+  "historical_Postfix": "ROOT_CAUSE_UNDETERMINED \u2014 OWNER_ACCEPTED",
+  "pending": [
+    "Successful complete application acceptance",
+    "Exact first causal event/API of NETWORK_ATTACHMENT_MISMATCH",
+    "Final local R1/convergence security closure"
+  ],
+  "implementing_exits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "all_inspected_log_hashes_valid": true,
+  "lifecycle": {
+    "tests": 16,
+    "exit_code": 0,
+    "cleanup": true
+  },
+  "lifecycle_gateway": {
+    "scenarios": 4,
+    "exit_code": 0,
+    "cleanup": true
+  },
+  "canonical_preparation_consumer": {
+    "preparation_assertions": 8,
+    "refusal_assertions": 37,
+    "strict_types": true,
+    "integrity_matches_current_archive": true,
+    "owned_image_cleanup": true
+  },
+  "current_application_failure": {
+    "id": "K1-APP-001",
+    "severity": "MAJOR",
+    "category": "Operational acceptance/reliability blocker; no independent security-weakening claim",
+    "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+    "project": "drumee-il5-35341a09",
+    "command": "env IL5_NETWORK_CLIENT=testbox IL5_LAN_ADDRESS=192.168.5.201 IL5_HOST_NGINX=/tmp/drumee-il513-c1-nginx/root/usr/sbin/nginx npm run test:application",
+    "exit_code": 1,
+    "error": "NETWORK_ATTACHMENT_MISMATCH",
+    "completed_groups": 6,
+    "reported_assertions": 36,
+    "last_completed_group": "controlled-configuration-update-and-canonical-rollback",
+    "first_incomplete_group": "failed-startup-does-not-reset-owned-application-state",
+    "first_failing_API": "UNAVAILABLE in preserved canonical report",
+    "root_cause": "UNDETERMINED",
+    "raw_report": "application-report.json",
+    "cleanup": "PASS / final-cleanup.json",
+    "historical_risk_waiver_applicable": false,
+    "retry": false,
+    "correction": false
+  },
+  "application_report_sha256": "9960912c3453619e73bca539f4086520d9d8ddb46cd840a9c08811408775271e",
+  "application_original_report_exact": true,
+  "post_failure_cleanup_readback": {
+    "projects_empty": 5,
+    "image_tags_absent": 6,
+    "loopback35559_absent": true,
+    "temp_directories_absent": true
+  },
+  "source_inputs_unchanged": true,
+  "current_material_findings": [
+    {
+      "id": "K1-APP-001",
+      "severity": "MAJOR",
+      "category": "Operational acceptance/reliability blocker; causal implementation severity and security impact not independently established"
+    }
+  ],
+  "new_independent_security_weakening_findings": []
+}

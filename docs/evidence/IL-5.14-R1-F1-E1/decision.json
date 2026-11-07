@@ -1,0 +1,67 @@
+{
+  "status": "FAILED_QUALIFICATION",
+  "executableRevision": "740d01f77b20358cee8b3cad4cb501b830bd0ce8",
+  "sourceIdentity": "docs/evidence/IL-5.14-R1-F1-E1/source-identity.json",
+  "targetedCounts": {
+    "tests": 47,
+    "pass": 47,
+    "fail": 0,
+    "skip": 0
+  },
+  "dockerLaunchExit": 1,
+  "dockerScenariosExecuted": 0,
+  "failureCode": "ENOENT",
+  "failurePath": "/tmp/drumee-il514-r1-f1-e1/membership",
+  "responsibleComponent": "qualification setup: supplied directory not prepared by implementing agent",
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "detail": "Saved34/35 failure traced statically; unchanged failing suite not rerun."
+    },
+    "B": {
+      "status": "PASS",
+      "detail": "Valid unknown role is semantic mismatch; malformed data stays distinct."
+    },
+    "C": {
+      "status": "PASS",
+      "detail": "Minimal classification split with deterministic validation traversal; no assertion changed."
+    },
+    "D": {
+      "status": "PASS",
+      "detail": "47 targeted tests pass,0 fail/skip; exit0."
+    },
+    "E": {
+      "status": "FAIL",
+      "detail": "Harness launch exit1: caller-supplied diagnostic directory absent; no Docker scenario executed."
+    },
+    "F": {
+      "status": "NOT_EXECUTED",
+      "detail": "Stopped before full canonical regression/lint/audits."
+    },
+    "G": {
+      "status": "NOT_EXECUTED",
+      "detail": "No package/security/consumer qualification."
+    },
+    "H": {
+      "status": "NOT_EXECUTED",
+      "detail": "No push/new hosted checks."
+    },
+    "I": {
+      "status": "NOT_EXECUTED",
+      "detail": "Original MAJOR finding still open; no independent signoff."
+    },
+    "J": {
+      "status": "PASS",
+      "detail": "Failed launch evidence and precise local decision preserved."
+    }
+  },
+  "independentFinding": "OPEN",
+  "pushed": false,
+  "published": false,
+  "merged": false,
+  "residualLimitations": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "Historical Debian H3 failed; downstream not qualified"
+  ]
+}

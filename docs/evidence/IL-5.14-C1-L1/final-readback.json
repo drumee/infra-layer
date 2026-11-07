@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-10-26T09:28:36.901033+00:00",
+  "sourceRevision": "ce1ba500d3775d1a7f6ac0156d26b60a4c6ccc4c",
+  "expectedNamespacedResources": {
+    "drumee-il1-test-da5ee876": {
+      "containers": "absent",
+      "namePrefixIncludingChildren": "absent"
+    },
+    "drumee-il2-test-dc7d90b5": {
+      "containers": "absent",
+      "namePrefixIncludingChildren": "absent"
+    },
+    "drumee-il3-gateway-4ee0cc42": {
+      "containers": "absent",
+      "namePrefixIncludingChildren": "absent"
+    },
+    "drumee-il3-test-3e0e5ccf": {
+      "containers": "absent",
+      "namePrefixIncludingChildren": "absent"
+    },
+    "drumee-il5-26864ca6": {
+      "containers": "absent",
+      "namePrefixIncludingChildren": "absent"
+    },
+    "drumee-il5-28f1fb86": {
+      "containers": "absent",
+      "namePrefixIncludingChildren": "absent"
+    },
+    "drumee-il514-net-0bb2eb17": {
+      "containers": "absent",
+      "namePrefixIncludingChildren": "absent"
+    },
+    "drumee-il514-net-51f206cf": {
+      "containers": "absent",
+      "namePrefixIncludingChildren": "absent"
+    }
+  },
+  "protectedDockerUnchangedAcrossAllReceipts": true,
+  "allPostBaselineCommandsPassed": true,
+  "rootLockSHA256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+  "dockerContext": "default",
+  "normalUID": 1000,
+  "normalGID": 1000,
+  "finalCIRevision": "03e63e114278ee24561847d3a7c88e910f293a08"
+}

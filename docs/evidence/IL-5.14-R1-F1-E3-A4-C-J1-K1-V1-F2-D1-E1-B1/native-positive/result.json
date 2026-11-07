@@ -1,0 +1,56 @@
+{
+  "source": "a62c6e3b04a0916c89b8891d78697240679eab99",
+  "reference_path": "/tmp/drumee-b1-native-s3r6yhe1/e1-native-positive.test.cjs",
+  "reference_sha256": "c32f3dc74a4feb035d6a3c22bf30540cb12ba854a4bd69f9dfa5bfe69016fd91",
+  "cwd": "/tmp/drumee-b1-native-s3r6yhe1",
+  "command": [
+    "/usr/bin/node",
+    "--test",
+    "--test-reporter=tap",
+    "./e1-native-positive.test.cjs"
+  ],
+  "started": "2026-11-04T14:59:43.096267+00:00",
+  "D1_layer_used": false,
+  "custom_reporter_used": false,
+  "marker_journal_initial_bytes": 0,
+  "receipt_recorded": "2026-11-04T15:00:02.196329+00:00",
+  "root_exit": 0,
+  "expected_named_Subtest_observed": false,
+  "expected_individual_PASS_observed": false,
+  "control_status": "FAIL",
+  "stdout_bytes": 347,
+  "stderr_bytes": 0,
+  "stdout_sha256": "3673576f185b57c08b4b70eab246fd8b428f2543805a6ace10038bea1631a835",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "marker_bytes": 260,
+  "marker_sha256": "91506d2eed87363456b3d6b1caea55d968bc8ddda06807920dd0b4fcb0287595",
+  "markers": [
+    {
+      "marker": "B1_BEFORE_REGISTRATION",
+      "pid": 13,
+      "bytes_written": 23
+    },
+    {
+      "marker": "B1_REGISTRATION_CALL_RETURNED",
+      "pid": 13,
+      "bytes_written": 30
+    },
+    {
+      "marker": "B1_CALLBACK_STARTED",
+      "pid": 13,
+      "bytes_written": 20
+    },
+    {
+      "marker": "B1_ASSERTION_COMPLETED",
+      "pid": 13,
+      "bytes_written": 23
+    }
+  ],
+  "callback_started_observed": true,
+  "assertion_completed_observed": true,
+  "registration_call_returned_observed": true,
+  "fd2_writes_full": true,
+  "named_registration_native_ack": "NOT_ESTABLISHED",
+  "positive_execution_count": 1,
+  "negative_execution_authorized": false
+}

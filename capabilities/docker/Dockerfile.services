@@ -1,12 +1,49 @@
-FROM debian@sha256:7b140f374b289a7c2befc338f42ebe6441b7ea838a042bbd5acbfca6ec875818
+FROM curlimages/curl@sha256:935d9100e9ba842cdb060de42472c7ca90cfe9a7c96e4dacb55e79e560b3ff40 AS bootstrap_ca
+FROM debian@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2
 # Capability tools only. No kernel, historical schemas, identities or applications.
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update -qq && apt-get install -y --no-install-recommends \
-    bind9=1:9.18.49-1~deb12u2 bind9-utils=1:9.18.49-1~deb12u2 bind9-dnsutils=1:9.18.49-1~deb12u2 \
-    postfix=3.7.11-0+deb12u1 libsasl2-modules=2.1.28+dfsg-10 sasl2-bin=2.1.28+dfsg-10 \
-    opendkim=2.11.0~beta2-8+deb12u1 opendkim-tools=2.11.0~beta2-8+deb12u1 \
-    openssl=3.0.22-1~deb12u1 ca-certificates=20250419~deb12u1 && \
+# The minimal Debian base has no CA bundle. Bootstrap only public trust anchors
+# from an immutable image; the pinned Debian CA package is installed below.
+COPY --from=bootstrap_ca /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+# Freeze dependency resolution as well as the direct package versions. Snapshot
+# expiry is scoped off; APT signatures and these exact signed-index hashes remain
+# mandatory, so neither an older signed index nor changed archive content is accepted.
+RUN printf '%s\n' \
+    'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] https://snapshot.debian.org/archive/debian/20261105T000000Z trixie main' \
+    'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] https://snapshot.debian.org/archive/debian/20261105T000000Z trixie-updates main' \
+    'deb [check-valid-until=no signed-by=/usr/share/keyrings/debian-archive-keyring.pgp] https://snapshot.debian.org/archive/debian-security/20261105T000000Z trixie-security main' \
+    > /etc/apt/sources.list && rm /etc/apt/sources.list.d/debian.sources && \
+    apt-get -o Acquire::https::CAInfo=/etc/ssl/certs/ca-certificates.crt update --error-on=any -qq && \
+    printf '%s\n' \
+    '0584fba32e13e0ab8285fb16c27adea1ec03a73669c18702821094fd6ca86675  /var/lib/apt/lists/snapshot.debian.org_archive_debian_20261105T000000Z_dists_trixie_InRelease' \
+    '4271d665e5b5670acea6c77e0e27b2d0d5a683734f7017db26b44cc0068831af  /var/lib/apt/lists/snapshot.debian.org_archive_debian_20261105T000000Z_dists_trixie-updates_InRelease' \
+    'ac28e06f2908a9ef13b9c36a45a7cea0c6f4e8ba5ec57e46696477f0fad1be96  /var/lib/apt/lists/snapshot.debian.org_archive_debian-security_20261105T000000Z_dists_trixie-security_InRelease' \
+    | sha256sum --check --strict - && \
+    set -- \
+    bind9=1:9.20.30-1~deb13u1 bind9-utils=1:9.20.30-1~deb13u1 bind9-dnsutils=1:9.20.30-1~deb13u1 \
+    postfix=3.10.13-0+deb13u1 libsasl2-modules=2.1.28+dfsg1-9 sasl2-bin=2.1.28+dfsg1-9 \
+    opendkim=2.11.0~beta2-9.1+b1 opendkim-tools=2.11.0~beta2-9.1+b1 \
+    openssl=3.5.7-1~deb13u3 ca-certificates=20250419+deb13u1 && \
+    apt-get -qq --print-uris --yes --download-only --no-install-recommends \
+    -o Acquire::ForceHash=SHA256 install "$@" > /tmp/infra-package-uris && \
+    install -d -o _apt -g root -m 0700 /var/cache/apt/archives/partial && \
+    while read -r infra_uri infra_file infra_size infra_hash; do \
+        case "$infra_hash" in SHA256:*) ;; *) exit 78 ;; esac; \
+        case "$infra_file" in */*|''|.|..) exit 78 ;; esac; \
+        infra_uri=${infra_uri#\'}; infra_uri=${infra_uri%\'}; \
+        case "$infra_uri" in \
+            https://snapshot.debian.org/archive/debian-security/20261105T000000Z/pool/*) \
+                infra_uri="https://deb.debian.org/debian-security/${infra_uri#https://snapshot.debian.org/archive/debian-security/20261105T000000Z/}" ;; \
+            https://snapshot.debian.org/archive/debian/20261105T000000Z/pool/*) \
+                infra_uri="https://deb.debian.org/debian/${infra_uri#https://snapshot.debian.org/archive/debian/20261105T000000Z/}" ;; \
+            *) exit 78 ;; \
+        esac; \
+        /usr/lib/apt/apt-helper -o Acquire::https::CAInfo=/etc/ssl/certs/ca-certificates.crt download-file "$infra_uri" \
+            "/var/cache/apt/archives/partial/$infra_file" "$infra_hash" || exit 1; \
+        mv "/var/cache/apt/archives/partial/$infra_file" "/var/cache/apt/archives/$infra_file" || exit 1; \
+    done < /tmp/infra-package-uris && \
+    apt-get install -y --no-download --no-install-recommends "$@" && \
     usermod -aG sasl postfix && useradd --uid 1000 --user-group --no-create-home --shell /usr/sbin/nologin infra && mkdir -p /opt/infra && \
     cp -a /var/spool/postfix /opt/infra/postfix-queue && \
     rm -f /etc/bind/rndc.key /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/certs/ssl-cert-snakeoil.pem && \
-    rm -rf /var/lib/apt/lists/*
+    rm -f /tmp/infra-package-uris && rm -rf /var/lib/apt/lists/*

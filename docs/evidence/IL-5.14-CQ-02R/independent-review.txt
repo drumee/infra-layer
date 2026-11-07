@@ -1,0 +1,55 @@
+IL-5.14-CQ-02R — consolidated independent review
+Reviewer: /root/cq02r_independent_review
+Date: 2026-11-04
+Review outcome: BLOCKED_SECURITY
+Recommended principal disposition: CQ02R_BLOCKED_SECURITY
+Final executable candidate: 76236faa85dd2cfdaf46646b28ce38fd41d26fb3
+PR #20 remains open at b67c48dbc8dd9e1f365a2259b12f90f62180b042, base main.
+
+This is one consolidated review. I inspected implementation and representative raw evidence, independently checked recorded bytes and reconciled inventories. I made no Docker, SSH, host, production or resource mutations. The only written output is this review. The final three CQ-02R reports correctly withdraw overall readiness and distinguish scoped successful assertions from failed mandatory gates.
+
+1. CQ02R-SEC-001 — MAJOR/BLOCKER, ACTIVE
+
+The qualification setup did not preserve the existing host-network boundary. testbox-before.json records docker0 ifindex 6, MAC 9a:54:f0:cd:ea:8f, address 172.17.0.1/16 and its connected route. testbox-after.json lacks that interface and route. I discovered this by comparing actual host inventory fields, separately from Docker-object metadata. host-network-delta-live.json independently confirms the interface is absent while the original daemon still records its bridge network and has not restarted.
+
+The journal records removal at 17:08:20/21 UTC, immediately after the initial campaign daemon startup at 17:08:19. I verified that serializing initial-daemon-config-reconstructed.json reproduces the original engine-creation.json configuration SHA256 6c203ced7ab7390ea3d802bbf938ac5991350f9c0ad2dd213d7b5c959fe54615. It selects bridge:none. I independently fetched the official source matching actual Docker commit 6a43e3d: configureNetworking calls removeDefaultBridgeInterface when the bridge is disabled; that function deletes the host default bridge through netlink.LinkDel.
+Source: https://github.com/moby/moby/blob/6a43e3d/daemon/daemon_unix.go#L830
+Deletion implementation: https://github.com/moby/moby/blob/6a43e3d/daemon/daemon_unix.go#L1167
+
+This establishes campaign-setup causality, not an Infra Layer production-code vulnerability. Separate daemon storage/containerd and a private CLI mount namespace protected object selection but did not isolate the privileged daemon's host networking. T1 readiness is withdrawn; T5 host noninterference FAILS. No running original containers were observed, but this does not excuse the unauthorized mutation or prove restored functionality. The bridge remains unrestored. Owner-authorized recovery, current ownership/reference checks and a genuinely separate VM or verified host-network boundary are required before further campaigns. Do not restart shared Docker or reconstruct its bridge as implicit cleanup.
+
+2. Source, security behavior and executed assertions
+
+The candidate differs from the PR only in three test files. I read their complete diff and actual lifecycle/docker.js, internal/rollback-authorization.js, relevant activation/recovery paths, network readiness, fixture ownership and mount comparison. Production/package inputs and dependency constraints are unchanged. All 191 recorded source hashes match the candidate Git objects.
+
+The network validator checks complete attachment sets, network IDs, endpoint/container identities and ownership; declared multihoming remains supported. Recovery admission rechecks immutable candidate and runtime identities before its narrow restart-state allowance, then final readiness remains strict. Docker errors retain fatal failure codes. Inspected paths establish no additional production security defect; this bounded review is not an assertion about all unexamined code.
+
+filesystem-security.stderr records all 25 cases passing. Actual foreign-UID helper output and test source show three successful UID65532 setups, distinct operator identity, UNTRUSTED_OWNER assertions, preserved sentinels/content and restored ownership. These are executed assertions, not setup failures mislabeled refusals. Membership reports 21 assertions, including extra-network refusal without validator mutation and real command failure. Rollback reports 38 assertions, actual recreation, unauthorized/foreign identity refusals, fatal recreation control and real final-detachment rejection. Their scoped observations remain useful; they do not waive failed campaign isolation.
+
+The independent asohka client is a different host, 192.168.5.201, with an actual LAN positive control to testbox 192.168.5.202 and loopback-only application denial. The temporary forced-command authorization and verified host keys are accounted for. The exact wrapper uses private mount propagation, checks private daemon97180776-3da5-479c-b9b6-b59a2211c28b and drops privileges. These mechanisms worked within their limited scope, but did not protect host networking.
+
+3. V1-F1-REC-001 — CLOSED_WITH_EVIDENCE for this candidate's mount comparison
+
+The first live fixture failure remains FAIL, including the exact Mode=z versus empty-mode mismatch and initially incomplete cleanup. Manual cleanup receipts identify the exact created container/volume, image, nonce, sole reference and observed mounts; historical resources were not adopted. The correction makes the fixture input explicitly :ro and requires mode:ro. It does not relax the unchanged strict multiset comparator.
+
+I inspected mount-corrected/result.json, creation/removal receipts and all four live two-mount observations. Independent local replay accepts their original and reversed arrays, rejects a changed rw attribute with MOUNT_MULTISET_MISMATCH and accepts the exact before/after inventory comparison. The comparator preserves duplicate counts and attributes without sorting inputs. Actual created/running/stopped VOLUME_IN_USE refusals and original-exception removal control execute. This supports narrow resolution of the comparator/live-reconciliation finding. It does not resolve CQ02R-SEC-001, historical incidents, full Docker campaign qualification or application acceptance.
+
+4. Cleanup and noninterference
+
+I independently counted both projected private event streams: 127 container, two volume and seven network creations have matching destruction IDs/counts, with no unmatched destruction. Private empty inventories, process argv/PID checks, no remaining mounts, exact bridge identity checks and exclusive directory/auth-file removal receipts account for campaign resources. I independently reconciled protected containers with copied full mount records as multisets; networks, volumes, daemon identity and images also match. Temporary firewall-rule cleanup initially halted on canonical serialization differences. The retained exact diff supports the bounded correction; final static IPv4/IPv6 rules match the recorded pre-rule baseline.
+
+The original pre-first-start IPv4 raw timestamp/counter hash cannot prove original static equality; reports disclose that monitoring limitation. More importantly, preserved Docker metadata and removed temporary resources do not prove kernel-interface preservation. The later docker0 finding overrides earlier scoped cleanup PASS as an overall T5 decision. H01–H04 remain protected and unresolved, not cleaned.
+
+5. Application, dependencies and package
+
+application.remote.json, application.stderr and application-result.json show one canonical npm run test:application invocation on the exact final candidate, exit1. Ten groups/62 assertions complete, including real HTTPS/RPC authorization, LAN controls, rollback/recovery and non-SMTP backup/restore. The SMTP group fails building capabilities/docker/Dockerfile.services: authenticated repository update completes, but pinned bind9 family, OpenSSL and ca-certificates versions are unavailable; installation exits100. This is an active image-build/functional blocker. SMTP behavior was not accepted. No unexpected NETWORK_ATTACHMENT_MISMATCH recurs in this application run; the historical root cause remains undetermined. The two failed APT metadata diagnostics do not establish replacement versions. No partial success substitutes for full acceptance.
+
+The required development audit remains exit1 with five moderate entries rooted in GHSA-g3hv-75wg-m249/minimatch10.2.6. Actual lock and current parent metadata require major10; patched major11 is not a supported resolution within those constraints. No compatible correction or risk disposition is established. Production dependencies are empty. Neither lower observed lint exposure nor a production-clean audit waives the failed development gate.
+
+I independently opened the retained CQ-02 archive: 43 regular members, 105706 bytes, SHA256004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1. Every member matches final-candidate Git bytes, including rollback authorization and public exports; no test helper is packaged. Prior unchanged unit369/contracts24 and consumer37 evidence remains applicable within scope. This is explicit archive reuse with measured equivalence, not a newly built artifact claim; the included services Dockerfile remains unbuildable. All 38 reviewed current receipt stream hashes and byte lengths match their files.
+
+6. Production handoff and final action
+
+I reviewed all three final reports and representative Oxymot baseline, route, Nginx process, publication and backup records. The plan correctly preserves static publication, existing Nginx/TLS, Ghost2368, MySQL/private storage and the separate existing8443 listener. Missing /-/ routes are not assumed ready. Backup scripts/timer metadata are not restoration acceptance. Ghost is foreign to managed Infra ownership: the plan requires a separately reviewed authenticated ingress contract and does not relax validators or authorize blog network/configuration changes. Actual application/Oxy-form compatibility, SMTP acceptance, exact images/release version, backups/rollback and explicit production authorization remain prerequisites. No production activation is approved.
+
+Keep historical Postfix incident-specific acceptance, SMTP_RECOVERY_UNQUALIFIED, H1 root-cause uncertainty and Debian H3 limitations unchanged. There is no global integration approval, dependency waiver or accepted residual security risk. The immediate next action is owner-reviewed recovery of the protected testbox bridge; then establish a valid qualification boundary, correct reproducible services-image inputs and remediate the dependency gate compatibly. Full applicable acceptance and independent approval remain required before any production handoff can be activated.

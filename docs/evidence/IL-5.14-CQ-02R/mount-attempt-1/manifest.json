@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "type": "V1_CURRENT_ATTEMPT",
+  "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+  "started": "2026-11-04T17:24:37.065Z",
+  "daemon": {
+    "id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+    "context": "default",
+    "endpoint": "unix:///var/run/docker.sock"
+  },
+  "volumes": [
+    {
+      "type": "volume",
+      "name": "drumee-v1-9213305836ce5e605b8d8f54-data",
+      "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+      "nonce": "6d043fad0b5da6ce767fecef4a07987eded9dd6321c2b17b",
+      "disposition": "disposable",
+      "fingerprint": "f988119985963cbd6443f24a1c0c96564cab4ea480f31dc44d34a3f1eb8dc065",
+      "identity": {
+        "name": "drumee-v1-9213305836ce5e605b8d8f54-data",
+        "driver": "local",
+        "scope": "local",
+        "created": "2026-11-04T12:24:37-05:00",
+        "labels": {
+          "com.docker.compose.project": "drumee-v1-9213305836ce5e605b8d8f54",
+          "org.drumee.infra.owner": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+          "org.drumee.qualification": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+          "org.drumee.volume.nonce": "6d043fad0b5da6ce767fecef4a07987eded9dd6321c2b17b"
+        },
+        "options_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "mountpoint_hash": "3331fc4c2ad79107c4e0be21e02d823c8fbee7e3aee25df733edfcf7dc7ab9d3"
+      },
+      "creation": {
+        "operation": "volume.create",
+        "name": "drumee-v1-9213305836ce5e605b8d8f54-data",
+        "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+        "nonce": "6d043fad0b5da6ce767fecef4a07987eded9dd6321c2b17b",
+        "daemon": {
+          "id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+          "context": "default",
+          "endpoint": "unix:///var/run/docker.sock"
+        },
+        "started": "2026-11-04T17:24:37.209Z",
+        "ended": "2026-11-04T17:24:37.682Z",
+        "exit_code": 0,
+        "command_seq": 11
+      }
+    }
+  ],
+  "containers": [
+    {
+      "id": "bcac2bab3a0b82ce702569c21a633ac00eb30123bb4690baecbed54b42f48f63",
+      "name": "drumee-v1-9213305836ce5e605b8d8f54-consumer",
+      "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397-MOUNTS",
+      "creation_command_seq": 20
+    }
+  ]
+}

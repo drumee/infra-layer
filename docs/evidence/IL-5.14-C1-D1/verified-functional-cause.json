@@ -1,0 +1,51 @@
+{
+  "timestamp": "2026-10-25T23:05:43.806897+00:00",
+  "classification": "OPTIONAL_HEALTH_TEMPLATE_LOOKUP",
+  "diagnostic_complete": true,
+  "source": "62fbaec7e4a60a1f55ce5a61989e67fb79e1bcd6",
+  "scenario": "drumee-il514-net-1dbb677f",
+  "step": "foreign-resource-refusal",
+  "assertion": "    at /home/somanos/github/infra-layer/test/network-attachments/real-docker.cjs:73:28",
+  "operator": "throws",
+  "actual": {
+    "name": "Error",
+    "code": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+    "message": "DOCKER_LIFECYCLE_COMMAND_FAILED",
+    "stack": "Error: DOCKER_LIFECYCLE_COMMAND_FAILED\n    at docker (/home/somanos/github/infra-layer/lifecycle/docker.js:29:25)\n    at networkObject (/home/somanos/github/infra-layer/lifecycle/docker.js:67:17)\n    at Object.checkNetworks (/home/somanos/github/infra-layer/lifecycle/docker.js:107:24)\n    at assert.throws.code (/home/somanos/github/infra-layer/test/network-attachments/real-docker.cjs:73:43)\n    at getActual (node:assert:609:5)\n    at Function.throws (node:assert:757:24)\n    at /home/somanos/github/infra-layer/test/network-attachments/real-docker.cjs:73:28\n    at async Object.run (/home/somanos/github/infra-layer/test/support/qualification-diagnostic.cjs:131:11)",
+    "exit_status": 1,
+    "signal": null
+  },
+  "expected": {
+    "code": "NETWORK_OWNERSHIP_MISMATCH"
+  },
+  "originating_command": {
+    "timestamp": "2026-10-25T23:02:38.851Z",
+    "scenario": "drumee-il514-net-1dbb677f",
+    "step": "foreign-resource-refusal",
+    "kind": "docker-failure",
+    "id": 127,
+    "command": [
+      "--host",
+      "unix:///var/run/docker.sock",
+      "container",
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"image_id\":{{json .Image}},\"image\":{{json .Config.Image}},\"started_at\":{{json .State.StartedAt}},\"running\":{{json .State.Running}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if .State.Health}}{{json .State.Health.Status}}{{else}}\"unknown\"{{end}},\"owner\":{{json (index .Config.Labels \"org.drumee.infra.owner\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"revision\":{{json (index .Config.Labels \"org.drumee.infra.revision\")}},\"ports\":{{json .NetworkSettings.Ports}},\"mounts\":{{json .Mounts}},\"name\":{{json .Name}},\"networks\":{{json .NetworkSettings.Networks}}}",
+      "ac41634e4b633cd979794223c4e7d720da169f40395131804f5ced263311d012"
+    ],
+    "exitCode": 1,
+    "signal": null,
+    "stdout": "\n",
+    "stderr": "template parsing error: template: :1:207: executing \"\" at <.State.Health>: map has no entry for key \"Health\"\n"
+  },
+  "original_reproduction_attempts": 1,
+  "cleanup_event": {
+    "timestamp": "2026-10-25T23:02:49.658Z",
+    "scenario": "drumee-il514-net-1dbb677f",
+    "step": "owned-cleanup",
+    "kind": "cleanup-complete",
+    "project": "drumee-il514-net-1dbb677f",
+    "cleanup": "PASS"
+  },
+  "network_source_sha256": "ce351c30398b14624cefc26da3adcce10cc2b9b9268e76134a654327abeac750"
+}

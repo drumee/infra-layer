@@ -1,0 +1,18 @@
+{
+  "candidate_sha": "76236faa85dd2cfdaf46646b28ce38fd41d26fb3",
+  "host": "testbox",
+  "command": [
+    "node",
+    "test/network-attachments/rollback-real.cjs"
+  ],
+  "environment": [
+    "npm_config_cache=/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/npm-cache",
+    "IL514_DIAGNOSTIC_DIR=/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/evidence/docker-rollback/diagnostic",
+    "IL5_NETWORK_CLIENT=192.168.5.201",
+    "IL5_LAN_ADDRESS=192.168.5.202",
+    "IL5_HOST_NGINX=/usr/sbin/nginx"
+  ],
+  "cwd": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/source",
+  "remote_evidence": "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/evidence/docker-rollback",
+  "exit": 0
+}

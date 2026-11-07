@@ -1,0 +1,28 @@
+{
+  "name": "isolated-helper-pull",
+  "argv": [
+    "python3",
+    "/tmp/cq02r-remote-run.py",
+    "helper-pull",
+    "docker",
+    "pull",
+    "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "49931e1e0de253f13b82c7ec3c2cb94bb199cea6",
+  "manifest_sha256": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd",
+  "lock_sha256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+  "started": "2026-11-04T17:18:48.034576+00:00",
+  "exit": 0,
+  "ended": "2026-11-04T17:20:25.514752+00:00",
+  "stdout": {
+    "file": "isolated-helper-pull.stdout",
+    "bytes": 1090,
+    "sha256": "7c2a879750f05238e04a7f73272dd3668d00acb126fab114564a46763a252258"
+  },
+  "stderr": {
+    "file": "isolated-helper-pull.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,11 @@
+# Owner decision IL-5.14-A4-POSTFIX-RISK-B — Gate B PASS
+
+Decision maker: project owner. Selected option: **B — OPTION_B_ACCEPTED**. Authority: the explicit owner instruction for mission IL-5.14-R1-F1-E3-A4-C in this session, recorded on 2026-10-28; no separate decision time is invented. Decision: RESUME_FULL_F1_LOCAL_QUALIFICATION.
+
+The owner accepts the documented residual uncertainty associated with the historical Postfix HTTP capture UND_ERR_SOCKET incident and authorizes resumption of full local F1 qualification. The historical root cause remains undetermined. This decision does not waive current or future test failures, security requirements, independent review, hosted CI, or release controls.
+
+Original canonical Services result remains 16/17 PASS with an active GET failing `fetch failed` / `UND_ERR_SOCKET`. A3 and P1 targeted 3/3 successes did not identify the cause. The intentional idle-socket shutdown observation remains distinct. No functional Postfix correction is claimed. P2's observer-invalid campaign remains invalid despite its Services child17/17. P2-F1 independently closed the observer defect, qualified its30-case shutdown matrix, and obtained a valid Services17/17 campaign with complete exit0 and favorable independent campaign review. R5 remains qualified. See [original decision package](IL-5.14-R1-F1-E3-A4-P2-F1-residual-risk-decision.md); its historical pending decision is preserved, superseded only by this new owner decision.
+
+Conditions: historical causality is unknown and the failed evidence remains archived; no current failure is waived; any recurrence is a new mandatory failure; network isolation, security, reliability and independent review remain mandatory; original R1 MAJOR requires independent local closure; hosted CI remains required on any later pushed candidate. No push to PR20, merge, publication, release tag or deployment is authorized. This decision does not accept another risk or authorize modification of Debian, Server Runtime, Oxy-form or published alpha.3.
+
+POSTFIX_HISTORICAL_ROOT_CAUSE_UNDETERMINED. POSTFIX_HISTORICAL_UNCERTAINTY_ACCEPTED_BY_OWNER. SMTP_RECOVERY_UNQUALIFIED. H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED. Prior Debian H3 remains failed. No Internet delivery, spool/queue recovery, general SMTP fault tolerance or downstream Debian qualification is claimed.

@@ -1,0 +1,21 @@
+{
+  "source": "fd708aaf914accc93aa42fcd705740db390721d5",
+  "reference": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "status": "R5_QUALIFIED_EXECUTABLE_PRESERVED",
+  "components": {
+    "lifecycle": true,
+    "adapters": true,
+    "capabilities": true,
+    "lib": true,
+    "internal": true,
+    "test/services": true,
+    "test/support": true,
+    "test/unit": true,
+    "test/network-attachments": true,
+    "package.json": true,
+    "package-lock.json": true,
+    "tooling": true,
+    ".github": true
+  },
+  "new_R5_Docker_run": false
+}

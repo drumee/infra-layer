@@ -1,0 +1,26 @@
+{
+  "context": "default",
+  "daemon": {
+    "ID": "f8cee57d-3923-46b6-8d55-6cd6490ec1db",
+    "Name": "asohka",
+    "Containers": 35,
+    "ContainersRunning": 1,
+    "ContainersStopped": 34,
+    "Images": 270,
+    "DockerRootDir": "/var/lib/docker",
+    "SecurityOptions": [
+      "name=apparmor",
+      "name=seccomp,profile=builtin",
+      "name=cgroupns"
+    ],
+    "Labels": [],
+    "ServerVersion": "29.2.0"
+  },
+  "volume_count": 682,
+  "application_prerequisites": {
+    "IL5_NETWORK_CLIENT": null,
+    "IL5_LAN_ADDRESS": null,
+    "IL5_HOST_NGINX": null
+  },
+  "isolation_established": false
+}

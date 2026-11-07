@@ -1,0 +1,22 @@
+{
+  "name": "retained-package-consumer",
+  "argv": [
+    "python3",
+    "/tmp/cq01-package.py"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "5bb733b7f709547f928f87edf9a37fd7f31fe4be",
+  "started": "2026-11-04T15:47:43.506093+00:00",
+  "ended": "2026-11-04T15:47:43.971861+00:00",
+  "exit": 0,
+  "stdout": {
+    "file": "retained-package-consumer.stdout",
+    "bytes": 830,
+    "sha256": "3ded1653d16f641061f2ecc6c84f3b0ffbfc82bb897d6d70536b2d0b3fe027bd"
+  },
+  "stderr": {
+    "file": "retained-package-consumer.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

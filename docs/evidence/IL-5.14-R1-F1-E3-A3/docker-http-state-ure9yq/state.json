@@ -1,0 +1,48 @@
+{
+  "connections": [
+    {
+      "id": 1,
+      "opened": 1793120041965,
+      "local": "172.26.0.2",
+      "localPort": 8025,
+      "remote": "172.26.0.1",
+      "remotePort": 39494,
+      "closed": true,
+      "closedAt": 1793120048184,
+      "bytesRead": 340,
+      "bytesWritten": 368
+    },
+    {
+      "id": 2,
+      "opened": 1793120048197,
+      "local": "172.26.0.2",
+      "localPort": 8025,
+      "remote": "172.26.0.1",
+      "remotePort": 59932,
+      "closed": false
+    }
+  ],
+  "requests": [
+    {
+      "time": 1793120041967,
+      "socket": 1,
+      "method": "GET"
+    },
+    {
+      "time": 1793120042184,
+      "socket": 1,
+      "method": "GET"
+    },
+    {
+      "time": 1793120048199,
+      "socket": 2,
+      "method": "GET"
+    }
+  ],
+  "server": {
+    "pid": 1,
+    "node": "v22.23.3",
+    "keepAliveTimeout": 5000,
+    "keepAliveTimeoutBuffer": 1000
+  }
+}

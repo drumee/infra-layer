@@ -1,0 +1,41 @@
+{
+  "name": "controlled-docker-campaign",
+  "command": [
+    "node",
+    "test/diagnostics/fixture-volumes/campaign.cjs"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+  "qualified_reference": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "attempt": "V1-F1-3fc8b481-011a-4fba-b735-f764ab3f1ece",
+  "uid": 1000,
+  "gid": 1000,
+  "started": "2026-10-30T19:15:33.481945+00:00",
+  "ended": "2026-10-30T19:15:35.906787+00:00",
+  "exit_code": 1,
+  "process_returncode": 1,
+  "protected_before": [
+    {
+      "path": "/etc/docker",
+      "uid": 0,
+      "gid": 0,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_after": [
+    {
+      "path": "/etc/docker",
+      "uid": 0,
+      "gid": 0,
+      "mode": 16877,
+      "link": null,
+      "sha256": null
+    }
+  ],
+  "protected_unchanged": true,
+  "frozen_inputs_unchanged": true,
+  "log": "controlled-docker-campaign.log",
+  "log_sha256": "b54f7af5009bdc23203810b76df6f03ddf8a5c02eeeaac50a7a0743c15b10b83"
+}

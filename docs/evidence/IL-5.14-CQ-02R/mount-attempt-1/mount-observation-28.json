@@ -1,0 +1,47 @@
+{
+  "container": "bcac2bab3a0b82ce702569c21a633ac00eb30123bb4690baecbed54b42f48f63",
+  "expected": [
+    {
+      "type": "volume",
+      "name": "drumee-v1-9213305836ce5e605b8d8f54-data",
+      "destination": "/fixture",
+      "source_hash": "3331fc4c2ad79107c4e0be21e02d823c8fbee7e3aee25df733edfcf7dc7ab9d3",
+      "driver": "local",
+      "rw": false,
+      "mode": "",
+      "propagation": ""
+    },
+    {
+      "type": "bind",
+      "name": null,
+      "destination": "/fixture-bind",
+      "source_hash": "9eda7c2beb9f129c5d78e3a7df5173821e95c0554c78dc002b39582fe7a63a66",
+      "driver": null,
+      "rw": false,
+      "mode": "",
+      "propagation": "rprivate"
+    }
+  ],
+  "observed": [
+    {
+      "type": "volume",
+      "name": "drumee-v1-9213305836ce5e605b8d8f54-data",
+      "destination": "/fixture",
+      "source_hash": "3331fc4c2ad79107c4e0be21e02d823c8fbee7e3aee25df733edfcf7dc7ab9d3",
+      "driver": "local",
+      "rw": false,
+      "mode": "z",
+      "propagation": ""
+    },
+    {
+      "type": "bind",
+      "name": null,
+      "destination": "/fixture-bind",
+      "source_hash": "9eda7c2beb9f129c5d78e3a7df5173821e95c0554c78dc002b39582fe7a63a66",
+      "driver": null,
+      "rw": false,
+      "mode": "",
+      "propagation": "rprivate"
+    }
+  ]
+}

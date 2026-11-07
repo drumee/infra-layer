@@ -1,0 +1,14 @@
+# Historical volume ledger — Gate B PASS
+
+The four identifiers below are investigation records, **not Docker volume names**. [Machine ledger](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-V1/historical-ledger.json) preserves exact creator IDs, project/name, original evidence paths, missing fields, current readback and per-entry dispositions. Source is unchanged `20c8a29`, exercised in original K1 and retained at the V1 baseline checkpoint.
+
+| Entry | Original creation context | Creator container ID | Attribution / disposition |
+|---|---|---|---|
+| V1-H01 | Membership Redis, `drumee-e1-membership-fd8cad7a699e` | `a9cd40872104064968b682fea7af420a215b0577070cf80a25c4f900b1df58ab` | RESOURCE_IDENTITY_UNRESOLVED / UNRESOLVED_HISTORICAL_EVIDENCE |
+| V1-H02 | Redis cycle 1 controlled intruder, `drumee-il514-net-0d7e88d0` | `95d91746379216a69c303c2d20157e5f2cf1c2736fb4676ac26dfc93915e7b72` | RESOURCE_IDENTITY_UNRESOLVED / UNRESOLVED_HISTORICAL_EVIDENCE |
+| V1-H03 | Redis cycle 2 controlled intruder, `drumee-il514-net-2c96556f` | `5e2db80b8d968c369bfdc344dd73c6c055e28ab30ef36b5dfa5dd2f8a245877a` | RESOURCE_IDENTITY_UNRESOLVED / UNRESOLVED_HISTORICAL_EVIDENCE |
+| V1-H04 | Health controlled unauthorized fixture, `drumee-il514-health-bbba2c51` | `b6244e7b91cff88047f76adc0c1b637fa873c53799388b8b985175b90e4fa45c` | RESOURCE_IDENTITY_UNRESOLVED / UNRESOLVED_HISTORICAL_EVIDENCE |
+
+For each entry, the physical volume Name, driver, labels, original Mounts association, creation/deletion sequence and current exact consumer references are **UNAVAILABLE**. Redis's pinned image declares `/data`; this explains a creation obligation, not a current volume identity. The fixture contract expects ephemeral data cleanup only after exact ownership and non-use are proven. K1 records container removal, not corresponding volume removal. None of these exact creator containers is present in the current inventory. Both exact-project label searches return empty for each entry. Anonymous volumes cannot be identified or declared removed from these facts. Current existence remains UNVERIFIABLE_WITHOUT_EXACT_VOLUME_IDENTITY. Similar names, timestamps, driver matches and dangling status are not attribution.
+
+Separately, volume `a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b` has **ALREADY_REMOVED_WITH_EVIDENCE**: K1 preserved an exact `/data` Mounts association to owned Health container `63a8cf61c39ba32dc221d5a91a6bc607b253e8e0f696d36e38f3cab7925cfa26`, local driver/anonymous label, zero all-state references, exact `docker volume rm <name>` exit 0 and absent name readback. The original [K1 removal receipt](evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1/volume-cleanup-finding.json) remains unchanged; A1 and current inventory separately show the name absent. The historical sequence, not today's absence alone, supports that disposition. V1 does not delete it again or gain authority over a future same-name object.

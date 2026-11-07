@@ -1,0 +1,38 @@
+/home/somanos/github/infra-layer/test/diagnostics/fixture-volumes/mounts.cjs:43
+    throw Object.assign(new Error("MOUNT_MULTISET_MISMATCH " + JSON.stringify(details)), { code: "MOUNT_MULTISET_MISMATCH", details });
+    ^
+
+Error: MOUNT_MULTISET_MISMATCH {"missing":[{"mount_hash":"edb462d9956267b66f6c6b877db49803105ef47f9a9557cab5971172ab5ebc7c","expected_count":1,"observed_count":0}],"additional":[{"mount_hash":"bfd162c3dd056782b2a95602996f05fa0579d3b4faee42630444e7a2eab21ebf","expected_count":0,"observed_count":1}],"missing_identities":1,"additional_identities":1,"changed_fields":["rw"]}
+    at compare (/home/somanos/github/infra-layer/test/diagnostics/fixture-volumes/mounts.cjs:43:25)
+    at Object.assertMountsEqual (/home/somanos/github/infra-layer/test/diagnostics/fixture-volumes/mounts.cjs:46:50)
+    at [eval]:1:264
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:446:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:444:60)
+    at evalFunction (node:internal/process/execution:279:30)
+    at evalTypeScript (node:internal/process/execution:291:3)
+    at node:internal/main/eval_string:74:3 {
+  code: 'MOUNT_MULTISET_MISMATCH',
+  details: {
+    missing: [
+      {
+        mount_hash: 'edb462d9956267b66f6c6b877db49803105ef47f9a9557cab5971172ab5ebc7c',
+        expected_count: 1,
+        observed_count: 0
+      }
+    ],
+    additional: [
+      {
+        mount_hash: 'bfd162c3dd056782b2a95602996f05fa0579d3b4faee42630444e7a2eab21ebf',
+        expected_count: 0,
+        observed_count: 1
+      }
+    ],
+    missing_identities: 1,
+    additional_identities: 1,
+    changed_fields: [ 'rw' ]
+  }
+}
+
+Node.js v22.22.0

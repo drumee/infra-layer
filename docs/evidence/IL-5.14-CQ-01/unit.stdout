@@ -1,0 +1,767 @@
+
+> @drumee/infra-layer@0.1.0-alpha.3 test
+> node --test test/unit/*.test.js
+
+TAP version 13
+# Subtest: test/unit/application-contract.test.js
+not ok 1 - test/unit/application-contract.test.js
+  ---
+  duration_ms: 311.290736
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/application-contract.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/application-probe.test.js
+ok 2 - test/unit/application-probe.test.js
+  ---
+  duration_ms: 120.13973
+  type: 'test'
+  ...
+# Subtest: test/unit/application-smtp-tls.test.js
+not ok 3 - test/unit/application-smtp-tls.test.js
+  ---
+  duration_ms: 167.244285
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/application-smtp-tls.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/composition-equivalence.test.js
+ok 4 - test/unit/composition-equivalence.test.js
+  ---
+  duration_ms: 226.991994
+  type: 'test'
+  ...
+# Subtest: test/unit/composition.test.js
+ok 5 - test/unit/composition.test.js
+  ---
+  duration_ms: 441.181412
+  type: 'test'
+  ...
+# Subtest: test/unit/distribution-isolation.test.js
+ok 6 - test/unit/distribution-isolation.test.js
+  ---
+  duration_ms: 135.850942
+  type: 'test'
+  ...
+# Subtest: test/unit/dns-capability.test.js
+ok 7 - test/unit/dns-capability.test.js
+  ---
+  duration_ms: 156.679933
+  type: 'test'
+  ...
+# Subtest: test/unit/foundation.test.js
+not ok 8 - test/unit/foundation.test.js
+  ---
+  duration_ms: 271.053338
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/foundation.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:child_process:955
+#     throw err;
+#     ^
+# <ref *1> Error: spawnSync /usr/bin/git EPERM
+#     at Object.spawnSync (node:internal/child_process:1120:20)
+#     at spawnSync (node:child_process:902:24)
+#     at execFileSync (node:child_process:945:15)
+#     at Object.<anonymous> (/home/somanos/github/infra-layer/test/unit/harness-preservation.test.js:4:16)
+#     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+#     at Object..js (node:internal/modules/cjs/loader:1839:10)
+#     at Module.load (node:internal/modules/cjs/loader:1441:32)
+#     at Function._load (node:internal/modules/cjs/loader:1263:12)
+#     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24) {
+#   errno: -1,
+#   code: 'EPERM',
+#   syscall: 'spawnSync /usr/bin/git',
+#   path: '/usr/bin/git',
+#   spawnargs: [
+#     'show',
+#     '703b637425487286632e741045a1b96591e90c62:test/network-attachments/real-docker.cjs'
+#   ],
+#   error: [Circular *1],
+#   status: 0,
+#   signal: null,
+#   output: [
+#     null,
+#     '"use strict";\\n' +
+#       'const assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path"), os = require("node:os"), crypto = require("node:crypto");\\n' +
+#       'const { spawn } = require("node:child_process"), D = require("../../lifecycle/docker"), T = require("../../internal/system-tools");\\n' +
+#       'const image = require("../support/service-inputs").serviceInputs().adapter_input.services.redis.image;\\n' +
+#       'const records = [], runs = []; let assertions = 0;\\n' +
+#       'const check = (actual, expected) => { assertions++; assert.deepEqual(actual, expected); };\\n' +
+#       'function docker(args) {\\n' +
+#       '  const start = Date.now();\\n' +
+#       '  try { const result = D.docker(args); records.push({ args, exit_status: 0, duration_ms: Date.now() - start }); return result.trim(); }\\n' +
+#       '  catch (error) { records.push({ args, exit_status: error.exit_status, code: error.code }); throw error; }\\n' +
+#       '}\\n' +
+#       `const inspect = id => JSON.parse(docker(["container", "inspect", "--format", '{{json .}}', id]));\\n` +
+#       `const network = name => JSON.parse(docker(["network", "inspect", "--format", '{{json .}}', name]));\\n` +
+#       'const wait = async predicate => { const deadline = performance.now() + 10000; for (;;) { if (predicate()) return; if (performance.now() >= deadline) throw Error("NETWORK_TEST_READINESS_TIMEOUT"); await new Promise(resolve => setTimeout(resolve, 25)); } };\\n' +
+#       'async function validate(composition, pending) {\\n' +
+#       '  await wait(() => {\\n' +
+#       '    try { D.checkNetworks(composition, { require_existing: true }); return true; }\\n' +
+#       '    catch (error) { if (error.code !== "NETWORK_ATTACHMENT_UNSETTLED") throw error; pending.push(error.attachments); return false; }\\n' +
+#       '  });\\n' +
+#       '}\\n' +
+#       'async function start(id) {\\n' +
+#       '  const result = await new Promise((resolve, reject) => {\\n' +
+#       '    const child = spawn(T.resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", "start", id], { env: T.systemEnvironment("docker"), stdio: ["ignore", "pipe", "pipe"] });\\n' +
+#       '    let stderr = ""; child.stdout.resume(); child.stderr.on("data", bytes => { stderr += bytes; }); child.on("error", reject); child.on("exit", (status, signal) => resolve({ status, signal, stderr }));\\n' +
+#       '  });\\n' +
+#       '  records.push({ args: ["start", id], exit_status: result.status, signal: result.signal }); assert.equal(result.status, 0, result.stderr); assert.equal(result.signal, null);\\n' +
+#       '}\\n' +
+#       '(async () => {\\n' +
+#       '  const versions = JSON.parse(docker(["version", "--format", "{{json .}}"]));\\n' +
+#       '  for (let cycle = 1; cycle <= 2; cycle++) {\\n' +
+#       '    const project = "drumee-il514-net-" + crypto.randomBytes(4).toString("hex"), netname = project + "-kernel", directory = fs.mkdtempSync(path.join(os.tmpdir(), project + "-")); fs.chmodSync(directory, 0o700);\\n' +
+#       '    const marker = "org.drumee.qualification", containers = [], pending = [], labels = ["--label", marker + "=" + project, "--label", "org.drumee.infra.owner=" + project, "--label", "com.docker.compose.project=" + project];\\n' +
+#       '    const composition = { project, compose: { services: { redis: { networks: ["kernel"] } }, networks: { kernel: { name: netname } } } };\\n' +
+#       '    const report = { cycle, project, pending, source_revision: require("node:child_process").execFileSync("/usr/bin/git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim() }; let created = false;\\n' +
+#       '    try {\\n' +
+#       '      check(docker(["ps", "-aq", "--filter", "label=" + marker + "=" + project]), "");\\n' +
+#       '      check(docker(["network", "ls", "-q", "--filter", "name=^" + netname + "$"]), "");\\n' +
+#       '      const nid = docker(["network", "create", ...labels, netname]); created = true;\\n' +
+#       '      const password = crypto.randomBytes(32).toString("hex"), data = path.join(directory, "data"); fs.mkdirSync(data, { mode: 0o700 });\\n' +
+#       `      fs.writeFileSync(path.join(directory, "redis.conf"), 'bind 0.0.0.0\\\\nport 6379\\\\nprotected-mode yes\\\\nrequirepass ' + password + '\\\\nappendonly yes\\\\nappendfsync always\\\\ndir /data\\\\n', { mode: 0o600 });\\n` +
+#       `      const auth = 'export REDISCLI_AUTH="$(sed -n \\\\'s/^requirepass //p\\\\' /config/redis.conf)"; exec redis-cli "$@"';\\n` +
+#       `      const health = 'export REDISCLI_AUTH="$(sed -n \\\\'s/^requirepass //p\\\\' /config/redis.conf)"; test "$(redis-cli ping)" = PONG';\\n` +
+#       '      const id = docker(["create", "--name", project + "-redis-1", ...labels, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", netname, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "64", "--memory", "128m", "--mount", "type=bind,source=" + directory + "/redis.conf,target=/config/redis.conf,readonly", "--mount", "type=bind,source=" + data + ",target=/data", "--health-cmd", health, "--health-interval", "1s", "--health-timeout", "1s", "--health-retries", "10", image, "redis-server", "/config/redis.conf"]); containers.push(id);\\n' +
+#       '      await start(id); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy");\\n' +
+#       '      const redis = args => docker(["exec", id, "/bin/sh", "-c", auth, "redis-cli", ...args]);\\n' +
+#       '      check(redis(["PING"]), "PONG"); check(redis(["SET", "qualification-key", "persisted"]), "OK");\\n' +
+#       '      const initial = network(netname); report.network_id = nid; report.container_id = id; report.initial_attachments = initial.Containers;\\n' +
+#       '      check(inspect(id).NetworkSettings.Networks[netname].NetworkID, nid); check(initial.Containers[id].EndpointID, inspect(id).NetworkSettings.Networks[netname].EndpointID);\\n' +
+#       '      docker(["kill", "--signal", "KILL", id]); await wait(() => inspect(id).State.Running === false);\\n' +
+#       '      await start(id); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy"); check(redis(["GET", "qualification-key"]), "persisted");\\n' +
+#       '      report.redis_recovery = "PASS"; report.recovered_attachments = network(netname).Containers;\\n' +
+#       '      assertions++; assert.notEqual(report.recovered_attachments[id].EndpointID, initial.Containers[id].EndpointID);\\n' +
+#       '      docker(["restart", id]); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy"); check(redis(["GET", "qualification-key"]), "persisted");\\n' +
+#       '      docker(["network", "disconnect", netname, id]); await validate(composition, pending); check(network(netname).Containers[id], undefined);\\n' +
+#       '      docker(["network", "connect", netname, id]); await validate(composition, pending);\\n' +
+#       '      const foreign = docker(["run", "-d", "--name", project + "-intruder-1", "--label", marker + "=" + project, "--label", "org.drumee.infra.owner=unauthorized-fixture", "--label", "com.docker.compose.project=" + project, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", netname, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--entrypoint", "/bin/sh", image, "-c", "sleep 600"]); containers.push(foreign);\\n' +
+#       '      assertions++; assert.throws(() => D.checkNetworks(composition), { code: "NETWORK_OWNERSHIP_MISMATCH" }); check(inspect(foreign).State.Running, true);\\n' +
+#       '      docker(["stop", foreign]); docker(["rm", foreign]); containers.pop(); await validate(composition, pending);\\n' +
+#       '      const missing = structuredClone(composition); missing.compose.networks.kernel.name += "-missing";\\n' +
+#       '      assertions++; assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: "REQUIRED_NETWORK_MISSING" }); check(D.checkNetworks(missing), undefined);\\n' +
+#       '      docker(["stop", id]); await validate(composition, pending); report.stopped_attachments = network(netname).Containers; report.status = "PASS";\\n' +
+#       '    } finally {\\n' +
+#       '      for (const id of containers.reverse()) {\\n' +
+#       '        const value = inspect(id); check(value.Config.Labels[marker], project);\\n' +
+#       '        if (value.State.Running) docker(["stop", id]); docker(["rm", id]);\\n' +
+#       '      }\\n' +
+#       '      if (created) { check(network(netname).Labels[marker], project); docker(["network", "rm", netname]); }\\n' +
+#       '      fs.rmSync(directory, { recursive: true, force: true });\\n' +
+#       '      check(docker(["ps", "-aq", "--filter", "label=" + marker + "=" + project]), ""); check(docker(["network", "ls", "-q", "--filter", "name=^" + netname + "$"]), "");\\n' +
+#       '      report.cleanup = "PASS";\\n' +
+#       '    }\\n' +
+#       '    assertions++; assert.throws(() => D.docker(["container", "inspect", report.container_id]), error => error.code === "DOCKER_LIFECYCLE_COMMAND_FAILED" && error.exit_status === 1 && error.object_missing === true);\\n' +
+#       '    report.actual_missing_object_exit = 1; runs.push(report);\\n' +
+#       '  }\\n' +
+#       '  check(new Set(runs.map(r => r.network_id)).size, 2); check(new Set(runs.map(r => r.container_id)).size, 2);\\n' +
+#       '  console.log(JSON.stringify({ status: "PASS", versions, image, assertions, runs, commands: records, note: "Sandbox-less timing is daemon-dependent; deterministic typed metadata/refusal/deadline cases are separately covered by actual-code fixtures. No failed lifecycle operation is retried." }, null, 2));\\n' +
+#       '})().catch(error => { console.error(error.code || error.message); process.exitCode = 1; });\\n',
+#     ''
+#   ],
+#   pid: 99,
+#   stdout: '"use strict";\\n' +
+#     'const assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path"), os = require("node:os"), crypto = require("node:crypto");\\n' +
+#     'const { spawn } = require("node:child_process"), D = require("../../lifecycle/docker"), T = require("../../internal/system-tools");\\n' +
+#     'const image = require("../support/service-inputs").serviceInputs().adapter_input.services.redis.image;\\n' +
+#     'const records = [], runs = []; let assertions = 0;\\n' +
+#     'const check = (actual, expected) => { assertions++; assert.deepEqual(actual, expected); };\\n' +
+#     'function docker(args) {\\n' +
+#     '  const start = Date.now();\\n' +
+#     '  try { const result = D.docker(args); records.push({ args, exit_status: 0, duration_ms: Date.now() - start }); return result.trim(); }\\n' +
+#     '  catch (error) { records.push({ args, exit_status: error.exit_status, code: error.code }); throw error; }\\n' +
+#     '}\\n' +
+#     `const inspect = id => JSON.parse(docker(["container", "inspect", "--format", '{{json .}}', id]));\\n` +
+#     `const network = name => JSON.parse(docker(["network", "inspect", "--format", '{{json .}}', name]));\\n` +
+#     'const wait = async predicate => { const deadline = performance.now() + 10000; for (;;) { if (predicate()) return; if (performance.now() >= deadline) throw Error("NETWORK_TEST_READINESS_TIMEOUT"); await new Promise(resolve => setTimeout(resolve, 25)); } };\\n' +
+#     'async function validate(composition, pending) {\\n' +
+#     '  await wait(() => {\\n' +
+#     '    try { D.checkNetworks(composition, { require_existing: true }); return true; }\\n' +
+#     '    catch (error) { if (error.code !== "NETWORK_ATTACHMENT_UNSETTLED") throw error; pending.push(error.attachments); return false; }\\n' +
+#     '  });\\n' +
+#     '}\\n' +
+#     'async function start(id) {\\n' +
+#     '  const result = await new Promise((resolve, reject) => {\\n' +
+#     '    const child = spawn(T.resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", "start", id], { env: T.systemEnvironment("docker"), stdio: ["ignore", "pipe", "pipe"] });\\n' +
+#     '    let stderr = ""; child.stdout.resume(); child.stderr.on("data", bytes => { stderr += bytes; }); child.on("error", reject); child.on("exit", (status, signal) => resolve({ status, signal, stderr }));\\n' +
+#     '  });\\n' +
+#     '  records.push({ args: ["start", id], exit_status: result.status, signal: result.signal }); assert.equal(result.status, 0, result.stderr); assert.equal(result.signal, null);\\n' +
+#     '}\\n' +
+#     '(async () => {\\n' +
+#     '  const versions = JSON.parse(docker(["version", "--format", "{{json .}}"]));\\n' +
+#     '  for (let cycle = 1; cycle <= 2; cycle++) {\\n' +
+#     '    const project = "drumee-il514-net-" + crypto.randomBytes(4).toString("hex"), netname = project + "-kernel", directory = fs.mkdtempSync(path.join(os.tmpdir(), project + "-")); fs.chmodSync(directory, 0o700);\\n' +
+#     '    const marker = "org.drumee.qualification", containers = [], pending = [], labels = ["--label", marker + "=" + project, "--label", "org.drumee.infra.owner=" + project, "--label", "com.docker.compose.project=" + project];\\n' +
+#     '    const composition = { project, compose: { services: { redis: { networks: ["kernel"] } }, networks: { kernel: { name: netname } } } };\\n' +
+#     '    const report = { cycle, project, pending, source_revision: require("node:child_process").execFileSync("/usr/bin/git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim() }; let created = false;\\n' +
+#     '    try {\\n' +
+#     '      check(docker(["ps", "-aq", "--filter", "label=" + marker + "=" + project]), "");\\n' +
+#     '      check(docker(["network", "ls", "-q", "--filter", "name=^" + netname + "$"]), "");\\n' +
+#     '      const nid = docker(["network", "create", ...labels, netname]); created = true;\\n' +
+#     '      const password = crypto.randomBytes(32).toString("hex"), data = path.join(directory, "data"); fs.mkdirSync(data, { mode: 0o700 });\\n' +
+#     `      fs.writeFileSync(path.join(directory, "redis.conf"), 'bind 0.0.0.0\\\\nport 6379\\\\nprotected-mode yes\\\\nrequirepass ' + password + '\\\\nappendonly yes\\\\nappendfsync always\\\\ndir /data\\\\n', { mode: 0o600 });\\n` +
+#     `      const auth = 'export REDISCLI_AUTH="$(sed -n \\\\'s/^requirepass //p\\\\' /config/redis.conf)"; exec redis-cli "$@"';\\n` +
+#     `      const health = 'export REDISCLI_AUTH="$(sed -n \\\\'s/^requirepass //p\\\\' /config/redis.conf)"; test "$(redis-cli ping)" = PONG';\\n` +
+#     '      const id = docker(["create", "--name", project + "-redis-1", ...labels, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", netname, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "64", "--memory", "128m", "--mount", "type=bind,source=" + directory + "/redis.conf,target=/config/redis.conf,readonly", "--mount", "type=bind,source=" + data + ",target=/data", "--health-cmd", health, "--health-interval", "1s", "--health-timeout", "1s", "--health-retries", "10", image, "redis-server", "/config/redis.conf"]); containers.push(id);\\n' +
+#     '      await start(id); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy");\\n' +
+#     '      const redis = args => docker(["exec", id, "/bin/sh", "-c", auth, "redis-cli", ...args]);\\n' +
+#     '      check(redis(["PING"]), "PONG"); check(redis(["SET", "qualification-key", "persisted"]), "OK");\\n' +
+#     '      const initial = network(netname); report.network_id = nid; report.container_id = id; report.initial_attachments = initial.Containers;\\n' +
+#     '      check(inspect(id).NetworkSettings.Networks[netname].NetworkID, nid); check(initial.Containers[id].EndpointID, inspect(id).NetworkSettings.Networks[netname].EndpointID);\\n' +
+#     '      docker(["kill", "--signal", "KILL", id]); await wait(() => inspect(id).State.Running === false);\\n' +
+#     '      await start(id); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy"); check(redis(["GET", "qualification-key"]), "persisted");\\n' +
+#     '      report.redis_recovery = "PASS"; report.recovered_attachments = network(netname).Containers;\\n' +
+#     '      assertions++; assert.notEqual(report.recovered_attachments[id].EndpointID, initial.Containers[id].EndpointID);\\n' +
+#     '      docker(["restart", id]); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy"); check(redis(["GET", "qualification-key"]), "persisted");\\n' +
+#     '      docker(["network", "disconnect", netname, id]); await validate(composition, pending); check(network(netname).Containers[id], undefined);\\n' +
+#     '      docker(["network", "connect", netname, id]); await validate(composition, pending);\\n' +
+#     '      const foreign = docker(["run", "-d", "--name", project + "-intruder-1", "--label", marker + "=" + project, "--label", "org.drumee.infra.owner=unauthorized-fixture", "--label", "com.docker.compose.project=" + project, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", netname, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--entrypoint", "/bin/sh", image, "-c", "sleep 600"]); containers.push(foreign);\\n' +
+#     '      assertions++; assert.throws(() => D.checkNetworks(composition), { code: "NETWORK_OWNERSHIP_MISMATCH" }); check(inspect(foreign).State.Running, true);\\n' +
+#     '      docker(["stop", foreign]); docker(["rm", foreign]); containers.pop(); await validate(composition, pending);\\n' +
+#     '      const missing = structuredClone(composition); missing.compose.networks.kernel.name += "-missing";\\n' +
+#     '      assertions++; assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: "REQUIRED_NETWORK_MISSING" }); check(D.checkNetworks(missing), undefined);\\n' +
+#     '      docker(["stop", id]); await validate(composition, pending); report.stopped_attachments = network(netname).Containers; report.status = "PASS";\\n' +
+#     '    } finally {\\n' +
+#     '      for (const id of containers.reverse()) {\\n' +
+#     '        const value = inspect(id); check(value.Config.Labels[marker], project);\\n' +
+#     '        if (value.State.Running) docker(["stop", id]); docker(["rm", id]);\\n' +
+#     '      }\\n' +
+#     '      if (created) { check(network(netname).Labels[marker], project); docker(["network", "rm", netname]); }\\n' +
+#     '      fs.rmSync(directory, { recursive: true, force: true });\\n' +
+#     '      check(docker(["ps", "-aq", "--filter", "label=" + marker + "=" + project]), ""); check(docker(["network", "ls", "-q", "--filter", "name=^" + netname + "$"]), "");\\n' +
+#     '      report.cleanup = "PASS";\\n' +
+#     '    }\\n' +
+#     '    assertions++; assert.throws(() => D.docker(["container", "inspect", report.container_id]), error => error.code === "DOCKER_LIFECYCLE_COMMAND_FAILED" && error.exit_status === 1 && error.object_missing === true);\\n' +
+#     '    report.actual_missing_object_exit = 1; runs.push(report);\\n' +
+#     '  }\\n' +
+#     '  check(new Set(runs.map(r => r.network_id)).size, 2); check(new Set(runs.map(r => r.container_id)).size, 2);\\n' +
+#     '  console.log(JSON.stringify({ status: "PASS", versions, image, assertions, runs, commands: records, note: "Sandbox-less timing is daemon-dependent; deterministic typed metadata/refusal/deadline cases are separately covered by actual-code fixtures. No failed lifecycle operation is retried." }, null, 2));\\n' +
+#     '})().catch(error => { console.error(error.code || error.message); process.exitCode = 1; });\\n',
+#   stderr: ''
+# }
+# Node.js v22.22.0
+# Subtest: test/unit/harness-preservation.test.js
+not ok 9 - test/unit/harness-preservation.test.js
+  ---
+  duration_ms: 89.391922
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/harness-preservation.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:child_process:955
+#     throw err;
+#     ^
+# <ref *1> Error: spawnSync /usr/bin/git EPERM
+#     at Object.spawnSync (node:internal/child_process:1120:20)
+#     at spawnSync (node:child_process:902:24)
+#     at execFileSync (node:child_process:945:15)
+#     at Object.<anonymous> (/home/somanos/github/infra-layer/test/unit/harness-reachability.test.js:4:16)
+#     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+#     at Object..js (node:internal/modules/cjs/loader:1839:10)
+#     at Module.load (node:internal/modules/cjs/loader:1441:32)
+#     at Function._load (node:internal/modules/cjs/loader:1263:12)
+#     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24) {
+#   errno: -1,
+#   code: 'EPERM',
+#   syscall: 'spawnSync /usr/bin/git',
+#   path: '/usr/bin/git',
+#   spawnargs: [
+#     'show',
+#     '703b637425487286632e741045a1b96591e90c62:test/network-attachments/real-docker.cjs'
+#   ],
+#   error: [Circular *1],
+#   status: 0,
+#   signal: null,
+#   output: [
+#     null,
+#     '"use strict";\\n' +
+#       'const assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path"), os = require("node:os"), crypto = require("node:crypto");\\n' +
+#       'const { spawn } = require("node:child_process"), D = require("../../lifecycle/docker"), T = require("../../internal/system-tools");\\n' +
+#       'const image = require("../support/service-inputs").serviceInputs().adapter_input.services.redis.image;\\n' +
+#       'const records = [], runs = []; let assertions = 0;\\n' +
+#       'const check = (actual, expected) => { assertions++; assert.deepEqual(actual, expected); };\\n' +
+#       'function docker(args) {\\n' +
+#       '  const start = Date.now();\\n' +
+#       '  try { const result = D.docker(args); records.push({ args, exit_status: 0, duration_ms: Date.now() - start }); return result.trim(); }\\n' +
+#       '  catch (error) { records.push({ args, exit_status: error.exit_status, code: error.code }); throw error; }\\n' +
+#       '}\\n' +
+#       `const inspect = id => JSON.parse(docker(["container", "inspect", "--format", '{{json .}}', id]));\\n` +
+#       `const network = name => JSON.parse(docker(["network", "inspect", "--format", '{{json .}}', name]));\\n` +
+#       'const wait = async predicate => { const deadline = performance.now() + 10000; for (;;) { if (predicate()) return; if (performance.now() >= deadline) throw Error("NETWORK_TEST_READINESS_TIMEOUT"); await new Promise(resolve => setTimeout(resolve, 25)); } };\\n' +
+#       'async function validate(composition, pending) {\\n' +
+#       '  await wait(() => {\\n' +
+#       '    try { D.checkNetworks(composition, { require_existing: true }); return true; }\\n' +
+#       '    catch (error) { if (error.code !== "NETWORK_ATTACHMENT_UNSETTLED") throw error; pending.push(error.attachments); return false; }\\n' +
+#       '  });\\n' +
+#       '}\\n' +
+#       'async function start(id) {\\n' +
+#       '  const result = await new Promise((resolve, reject) => {\\n' +
+#       '    const child = spawn(T.resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", "start", id], { env: T.systemEnvironment("docker"), stdio: ["ignore", "pipe", "pipe"] });\\n' +
+#       '    let stderr = ""; child.stdout.resume(); child.stderr.on("data", bytes => { stderr += bytes; }); child.on("error", reject); child.on("exit", (status, signal) => resolve({ status, signal, stderr }));\\n' +
+#       '  });\\n' +
+#       '  records.push({ args: ["start", id], exit_status: result.status, signal: result.signal }); assert.equal(result.status, 0, result.stderr); assert.equal(result.signal, null);\\n' +
+#       '}\\n' +
+#       '(async () => {\\n' +
+#       '  const versions = JSON.parse(docker(["version", "--format", "{{json .}}"]));\\n' +
+#       '  for (let cycle = 1; cycle <= 2; cycle++) {\\n' +
+#       '    const project = "drumee-il514-net-" + crypto.randomBytes(4).toString("hex"), netname = project + "-kernel", directory = fs.mkdtempSync(path.join(os.tmpdir(), project + "-")); fs.chmodSync(directory, 0o700);\\n' +
+#       '    const marker = "org.drumee.qualification", containers = [], pending = [], labels = ["--label", marker + "=" + project, "--label", "org.drumee.infra.owner=" + project, "--label", "com.docker.compose.project=" + project];\\n' +
+#       '    const composition = { project, compose: { services: { redis: { networks: ["kernel"] } }, networks: { kernel: { name: netname } } } };\\n' +
+#       '    const report = { cycle, project, pending, source_revision: require("node:child_process").execFileSync("/usr/bin/git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim() }; let created = false;\\n' +
+#       '    try {\\n' +
+#       '      check(docker(["ps", "-aq", "--filter", "label=" + marker + "=" + project]), "");\\n' +
+#       '      check(docker(["network", "ls", "-q", "--filter", "name=^" + netname + "$"]), "");\\n' +
+#       '      const nid = docker(["network", "create", ...labels, netname]); created = true;\\n' +
+#       '      const password = crypto.randomBytes(32).toString("hex"), data = path.join(directory, "data"); fs.mkdirSync(data, { mode: 0o700 });\\n' +
+#       `      fs.writeFileSync(path.join(directory, "redis.conf"), 'bind 0.0.0.0\\\\nport 6379\\\\nprotected-mode yes\\\\nrequirepass ' + password + '\\\\nappendonly yes\\\\nappendfsync always\\\\ndir /data\\\\n', { mode: 0o600 });\\n` +
+#       `      const auth = 'export REDISCLI_AUTH="$(sed -n \\\\'s/^requirepass //p\\\\' /config/redis.conf)"; exec redis-cli "$@"';\\n` +
+#       `      const health = 'export REDISCLI_AUTH="$(sed -n \\\\'s/^requirepass //p\\\\' /config/redis.conf)"; test "$(redis-cli ping)" = PONG';\\n` +
+#       '      const id = docker(["create", "--name", project + "-redis-1", ...labels, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", netname, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "64", "--memory", "128m", "--mount", "type=bind,source=" + directory + "/redis.conf,target=/config/redis.conf,readonly", "--mount", "type=bind,source=" + data + ",target=/data", "--health-cmd", health, "--health-interval", "1s", "--health-timeout", "1s", "--health-retries", "10", image, "redis-server", "/config/redis.conf"]); containers.push(id);\\n' +
+#       '      await start(id); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy");\\n' +
+#       '      const redis = args => docker(["exec", id, "/bin/sh", "-c", auth, "redis-cli", ...args]);\\n' +
+#       '      check(redis(["PING"]), "PONG"); check(redis(["SET", "qualification-key", "persisted"]), "OK");\\n' +
+#       '      const initial = network(netname); report.network_id = nid; report.container_id = id; report.initial_attachments = initial.Containers;\\n' +
+#       '      check(inspect(id).NetworkSettings.Networks[netname].NetworkID, nid); check(initial.Containers[id].EndpointID, inspect(id).NetworkSettings.Networks[netname].EndpointID);\\n' +
+#       '      docker(["kill", "--signal", "KILL", id]); await wait(() => inspect(id).State.Running === false);\\n' +
+#       '      await start(id); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy"); check(redis(["GET", "qualification-key"]), "persisted");\\n' +
+#       '      report.redis_recovery = "PASS"; report.recovered_attachments = network(netname).Containers;\\n' +
+#       '      assertions++; assert.notEqual(report.recovered_attachments[id].EndpointID, initial.Containers[id].EndpointID);\\n' +
+#       '      docker(["restart", id]); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy"); check(redis(["GET", "qualification-key"]), "persisted");\\n' +
+#       '      docker(["network", "disconnect", netname, id]); await validate(composition, pending); check(network(netname).Containers[id], undefined);\\n' +
+#       '      docker(["network", "connect", netname, id]); await validate(composition, pending);\\n' +
+#       '      const foreign = docker(["run", "-d", "--name", project + "-intruder-1", "--label", marker + "=" + project, "--label", "org.drumee.infra.owner=unauthorized-fixture", "--label", "com.docker.compose.project=" + project, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", netname, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--entrypoint", "/bin/sh", image, "-c", "sleep 600"]); containers.push(foreign);\\n' +
+#       '      assertions++; assert.throws(() => D.checkNetworks(composition), { code: "NETWORK_OWNERSHIP_MISMATCH" }); check(inspect(foreign).State.Running, true);\\n' +
+#       '      docker(["stop", foreign]); docker(["rm", foreign]); containers.pop(); await validate(composition, pending);\\n' +
+#       '      const missing = structuredClone(composition); missing.compose.networks.kernel.name += "-missing";\\n' +
+#       '      assertions++; assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: "REQUIRED_NETWORK_MISSING" }); check(D.checkNetworks(missing), undefined);\\n' +
+#       '      docker(["stop", id]); await validate(composition, pending); report.stopped_attachments = network(netname).Containers; report.status = "PASS";\\n' +
+#       '    } finally {\\n' +
+#       '      for (const id of containers.reverse()) {\\n' +
+#       '        const value = inspect(id); check(value.Config.Labels[marker], project);\\n' +
+#       '        if (value.State.Running) docker(["stop", id]); docker(["rm", id]);\\n' +
+#       '      }\\n' +
+#       '      if (created) { check(network(netname).Labels[marker], project); docker(["network", "rm", netname]); }\\n' +
+#       '      fs.rmSync(directory, { recursive: true, force: true });\\n' +
+#       '      check(docker(["ps", "-aq", "--filter", "label=" + marker + "=" + project]), ""); check(docker(["network", "ls", "-q", "--filter", "name=^" + netname + "$"]), "");\\n' +
+#       '      report.cleanup = "PASS";\\n' +
+#       '    }\\n' +
+#       '    assertions++; assert.throws(() => D.docker(["container", "inspect", report.container_id]), error => error.code === "DOCKER_LIFECYCLE_COMMAND_FAILED" && error.exit_status === 1 && error.object_missing === true);\\n' +
+#       '    report.actual_missing_object_exit = 1; runs.push(report);\\n' +
+#       '  }\\n' +
+#       '  check(new Set(runs.map(r => r.network_id)).size, 2); check(new Set(runs.map(r => r.container_id)).size, 2);\\n' +
+#       '  console.log(JSON.stringify({ status: "PASS", versions, image, assertions, runs, commands: records, note: "Sandbox-less timing is daemon-dependent; deterministic typed metadata/refusal/deadline cases are separately covered by actual-code fixtures. No failed lifecycle operation is retried." }, null, 2));\\n' +
+#       '})().catch(error => { console.error(error.code || error.message); process.exitCode = 1; });\\n',
+#     ''
+#   ],
+#   pid: 100,
+#   stdout: '"use strict";\\n' +
+#     'const assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path"), os = require("node:os"), crypto = require("node:crypto");\\n' +
+#     'const { spawn } = require("node:child_process"), D = require("../../lifecycle/docker"), T = require("../../internal/system-tools");\\n' +
+#     'const image = require("../support/service-inputs").serviceInputs().adapter_input.services.redis.image;\\n' +
+#     'const records = [], runs = []; let assertions = 0;\\n' +
+#     'const check = (actual, expected) => { assertions++; assert.deepEqual(actual, expected); };\\n' +
+#     'function docker(args) {\\n' +
+#     '  const start = Date.now();\\n' +
+#     '  try { const result = D.docker(args); records.push({ args, exit_status: 0, duration_ms: Date.now() - start }); return result.trim(); }\\n' +
+#     '  catch (error) { records.push({ args, exit_status: error.exit_status, code: error.code }); throw error; }\\n' +
+#     '}\\n' +
+#     `const inspect = id => JSON.parse(docker(["container", "inspect", "--format", '{{json .}}', id]));\\n` +
+#     `const network = name => JSON.parse(docker(["network", "inspect", "--format", '{{json .}}', name]));\\n` +
+#     'const wait = async predicate => { const deadline = performance.now() + 10000; for (;;) { if (predicate()) return; if (performance.now() >= deadline) throw Error("NETWORK_TEST_READINESS_TIMEOUT"); await new Promise(resolve => setTimeout(resolve, 25)); } };\\n' +
+#     'async function validate(composition, pending) {\\n' +
+#     '  await wait(() => {\\n' +
+#     '    try { D.checkNetworks(composition, { require_existing: true }); return true; }\\n' +
+#     '    catch (error) { if (error.code !== "NETWORK_ATTACHMENT_UNSETTLED") throw error; pending.push(error.attachments); return false; }\\n' +
+#     '  });\\n' +
+#     '}\\n' +
+#     'async function start(id) {\\n' +
+#     '  const result = await new Promise((resolve, reject) => {\\n' +
+#     '    const child = spawn(T.resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", "start", id], { env: T.systemEnvironment("docker"), stdio: ["ignore", "pipe", "pipe"] });\\n' +
+#     '    let stderr = ""; child.stdout.resume(); child.stderr.on("data", bytes => { stderr += bytes; }); child.on("error", reject); child.on("exit", (status, signal) => resolve({ status, signal, stderr }));\\n' +
+#     '  });\\n' +
+#     '  records.push({ args: ["start", id], exit_status: result.status, signal: result.signal }); assert.equal(result.status, 0, result.stderr); assert.equal(result.signal, null);\\n' +
+#     '}\\n' +
+#     '(async () => {\\n' +
+#     '  const versions = JSON.parse(docker(["version", "--format", "{{json .}}"]));\\n' +
+#     '  for (let cycle = 1; cycle <= 2; cycle++) {\\n' +
+#     '    const project = "drumee-il514-net-" + crypto.randomBytes(4).toString("hex"), netname = project + "-kernel", directory = fs.mkdtempSync(path.join(os.tmpdir(), project + "-")); fs.chmodSync(directory, 0o700);\\n' +
+#     '    const marker = "org.drumee.qualification", containers = [], pending = [], labels = ["--label", marker + "=" + project, "--label", "org.drumee.infra.owner=" + project, "--label", "com.docker.compose.project=" + project];\\n' +
+#     '    const composition = { project, compose: { services: { redis: { networks: ["kernel"] } }, networks: { kernel: { name: netname } } } };\\n' +
+#     '    const report = { cycle, project, pending, source_revision: require("node:child_process").execFileSync("/usr/bin/git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim() }; let created = false;\\n' +
+#     '    try {\\n' +
+#     '      check(docker(["ps", "-aq", "--filter", "label=" + marker + "=" + project]), "");\\n' +
+#     '      check(docker(["network", "ls", "-q", "--filter", "name=^" + netname + "$"]), "");\\n' +
+#     '      const nid = docker(["network", "create", ...labels, netname]); created = true;\\n' +
+#     '      const password = crypto.randomBytes(32).toString("hex"), data = path.join(directory, "data"); fs.mkdirSync(data, { mode: 0o700 });\\n' +
+#     `      fs.writeFileSync(path.join(directory, "redis.conf"), 'bind 0.0.0.0\\\\nport 6379\\\\nprotected-mode yes\\\\nrequirepass ' + password + '\\\\nappendonly yes\\\\nappendfsync always\\\\ndir /data\\\\n', { mode: 0o600 });\\n` +
+#     `      const auth = 'export REDISCLI_AUTH="$(sed -n \\\\'s/^requirepass //p\\\\' /config/redis.conf)"; exec redis-cli "$@"';\\n` +
+#     `      const health = 'export REDISCLI_AUTH="$(sed -n \\\\'s/^requirepass //p\\\\' /config/redis.conf)"; test "$(redis-cli ping)" = PONG';\\n` +
+#     '      const id = docker(["create", "--name", project + "-redis-1", ...labels, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", netname, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--pids-limit", "64", "--memory", "128m", "--mount", "type=bind,source=" + directory + "/redis.conf,target=/config/redis.conf,readonly", "--mount", "type=bind,source=" + data + ",target=/data", "--health-cmd", health, "--health-interval", "1s", "--health-timeout", "1s", "--health-retries", "10", image, "redis-server", "/config/redis.conf"]); containers.push(id);\\n' +
+#     '      await start(id); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy");\\n' +
+#     '      const redis = args => docker(["exec", id, "/bin/sh", "-c", auth, "redis-cli", ...args]);\\n' +
+#     '      check(redis(["PING"]), "PONG"); check(redis(["SET", "qualification-key", "persisted"]), "OK");\\n' +
+#     '      const initial = network(netname); report.network_id = nid; report.container_id = id; report.initial_attachments = initial.Containers;\\n' +
+#     '      check(inspect(id).NetworkSettings.Networks[netname].NetworkID, nid); check(initial.Containers[id].EndpointID, inspect(id).NetworkSettings.Networks[netname].EndpointID);\\n' +
+#     '      docker(["kill", "--signal", "KILL", id]); await wait(() => inspect(id).State.Running === false);\\n' +
+#     '      await start(id); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy"); check(redis(["GET", "qualification-key"]), "persisted");\\n' +
+#     '      report.redis_recovery = "PASS"; report.recovered_attachments = network(netname).Containers;\\n' +
+#     '      assertions++; assert.notEqual(report.recovered_attachments[id].EndpointID, initial.Containers[id].EndpointID);\\n' +
+#     '      docker(["restart", id]); await validate(composition, pending); await wait(() => inspect(id).State.Health.Status === "healthy"); check(redis(["GET", "qualification-key"]), "persisted");\\n' +
+#     '      docker(["network", "disconnect", netname, id]); await validate(composition, pending); check(network(netname).Containers[id], undefined);\\n' +
+#     '      docker(["network", "connect", netname, id]); await validate(composition, pending);\\n' +
+#     '      const foreign = docker(["run", "-d", "--name", project + "-intruder-1", "--label", marker + "=" + project, "--label", "org.drumee.infra.owner=unauthorized-fixture", "--label", "com.docker.compose.project=" + project, "--label", "com.docker.compose.service=redis", "--user", process.getuid() + ":" + process.getgid(), "--network", netname, "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--entrypoint", "/bin/sh", image, "-c", "sleep 600"]); containers.push(foreign);\\n' +
+#     '      assertions++; assert.throws(() => D.checkNetworks(composition), { code: "NETWORK_OWNERSHIP_MISMATCH" }); check(inspect(foreign).State.Running, true);\\n' +
+#     '      docker(["stop", foreign]); docker(["rm", foreign]); containers.pop(); await validate(composition, pending);\\n' +
+#     '      const missing = structuredClone(composition); missing.compose.networks.kernel.name += "-missing";\\n' +
+#     '      assertions++; assert.throws(() => D.checkNetworks(missing, { require_existing: true }), { code: "REQUIRED_NETWORK_MISSING" }); check(D.checkNetworks(missing), undefined);\\n' +
+#     '      docker(["stop", id]); await validate(composition, pending); report.stopped_attachments = network(netname).Containers; report.status = "PASS";\\n' +
+#     '    } finally {\\n' +
+#     '      for (const id of containers.reverse()) {\\n' +
+#     '        const value = inspect(id); check(value.Config.Labels[marker], project);\\n' +
+#     '        if (value.State.Running) docker(["stop", id]); docker(["rm", id]);\\n' +
+#     '      }\\n' +
+#     '      if (created) { check(network(netname).Labels[marker], project); docker(["network", "rm", netname]); }\\n' +
+#     '      fs.rmSync(directory, { recursive: true, force: true });\\n' +
+#     '      check(docker(["ps", "-aq", "--filter", "label=" + marker + "=" + project]), ""); check(docker(["network", "ls", "-q", "--filter", "name=^" + netname + "$"]), "");\\n' +
+#     '      report.cleanup = "PASS";\\n' +
+#     '    }\\n' +
+#     '    assertions++; assert.throws(() => D.docker(["container", "inspect", report.container_id]), error => error.code === "DOCKER_LIFECYCLE_COMMAND_FAILED" && error.exit_status === 1 && error.object_missing === true);\\n' +
+#     '    report.actual_missing_object_exit = 1; runs.push(report);\\n' +
+#     '  }\\n' +
+#     '  check(new Set(runs.map(r => r.network_id)).size, 2); check(new Set(runs.map(r => r.container_id)).size, 2);\\n' +
+#     '  console.log(JSON.stringify({ status: "PASS", versions, image, assertions, runs, commands: records, note: "Sandbox-less timing is daemon-dependent; deterministic typed metadata/refusal/deadline cases are separately covered by actual-code fixtures. No failed lifecycle operation is retried." }, null, 2));\\n' +
+#     '})().catch(error => { console.error(error.code || error.message); process.exitCode = 1; });\\n',
+#   stderr: ''
+# }
+# Node.js v22.22.0
+# Subtest: test/unit/harness-reachability.test.js
+not ok 10 - test/unit/harness-reachability.test.js
+  ---
+  duration_ms: 113.654939
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/harness-reachability.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/hosted-node-preparation.test.js
+ok 11 - test/unit/hosted-node-preparation.test.js
+  ---
+  duration_ms: 153.381049
+  type: 'test'
+  ...
+# Subtest: test/unit/il58-harness-safety.test.js
+not ok 12 - test/unit/il58-harness-safety.test.js
+  ---
+  duration_ms: 157.408108
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/il58-harness-safety.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/image-validation.test.js
+not ok 13 - test/unit/image-validation.test.js
+  ---
+  duration_ms: 254.699846
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/image-validation.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/journal.test.js
+not ok 14 - test/unit/journal.test.js
+  ---
+  duration_ms: 98.380155
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/journal.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/lifecycle-safety.test.js
+not ok 15 - test/unit/lifecycle-safety.test.js
+  ---
+  duration_ms: 136.536251
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/lifecycle-safety.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/network-attachments.test.js
+not ok 16 - test/unit/network-attachments.test.js
+  ---
+  duration_ms: 146.591672
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/network-attachments.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/network-loader.test.js
+not ok 17 - test/unit/network-loader.test.js
+  ---
+  duration_ms: 187.120812
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/network-loader.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/network-membership.test.js
+not ok 18 - test/unit/network-membership.test.js
+  ---
+  duration_ms: 147.635339
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/network-membership.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/network-qualification.test.js
+not ok 19 - test/unit/network-qualification.test.js
+  ---
+  duration_ms: 163.057088
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/network-qualification.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/nodemailer-compatibility.test.js
+not ok 20 - test/unit/nodemailer-compatibility.test.js
+  ---
+  duration_ms: 447.399005
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/nodemailer-compatibility.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/observation.test.js
+not ok 21 - test/unit/observation.test.js
+  ---
+  duration_ms: 267.548287
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/observation.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# /home/somanos/github/infra-layer/test/support/trusted-process.js:7
+#   if (![0, process.getuid()].includes(stat.uid) || (!stat.isSymbolicLink() && (stat.mode & 0o022) && !stickyRoot)) throw Object.assign(new Error("UNSAFE_QUALIFICATION_EXECUTABLE"), { path: file, owner_uid: stat.uid, mode: (stat.mode & 0o7777).toString(8) });
+#                                                                                                                    ^
+# Error: UNSAFE_QUALIFICATION_EXECUTABLE
+#     at safeMetadata (/home/somanos/github/infra-layer/test/support/trusted-process.js:7:136)
+#     at trustedExecutable (/home/somanos/github/infra-layer/test/support/trusted-process.js:18:5)
+#     at trustedExecutable (/home/somanos/github/infra-layer/test/support/trusted-process.js:11:60)
+#     at Object.<anonymous> (/home/somanos/github/infra-layer/test/unit/package-inventory.test.js:7:43)
+#     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+#     at Object..js (node:internal/modules/cjs/loader:1839:10)
+#     at Module.load (node:internal/modules/cjs/loader:1441:32)
+#     at Function._load (node:internal/modules/cjs/loader:1263:12)
+#     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24) {
+#   path: '/usr',
+#   owner_uid: 65534,
+#   mode: '755'
+# }
+# Node.js v22.22.0
+# Subtest: test/unit/package-inventory.test.js
+not ok 22 - test/unit/package-inventory.test.js
+  ---
+  duration_ms: 53.336155
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/package-inventory.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/qualification-diagnostic.test.js
+not ok 23 - test/unit/qualification-diagnostic.test.js
+  ---
+  duration_ms: 583.900974
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/qualification-diagnostic.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/recovery-error-contract.test.js
+not ok 24 - test/unit/recovery-error-contract.test.js
+  ---
+  duration_ms: 127.821517
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/recovery-error-contract.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/refusal-effectiveness.test.js
+not ok 25 - test/unit/refusal-effectiveness.test.js
+  ---
+  duration_ms: 398.284545
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/refusal-effectiveness.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/render-lock.test.js
+not ok 26 - test/unit/render-lock.test.js
+  ---
+  duration_ms: 280.638233
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/render-lock.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/rollback-authorization.test.js
+not ok 27 - test/unit/rollback-authorization.test.js
+  ---
+  duration_ms: 184.820487
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/rollback-authorization.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/rollback-boundary.test.js
+not ok 28 - test/unit/rollback-boundary.test.js
+  ---
+  duration_ms: 168.575757
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/rollback-boundary.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/secrets.test.js
+not ok 29 - test/unit/secrets.test.js
+  ---
+  duration_ms: 205.207021
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/secrets.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/security-tooling.test.js
+ok 30 - test/unit/security-tooling.test.js
+  ---
+  duration_ms: 387.836965
+  type: 'test'
+  ...
+# Subtest: test/unit/services-contract.test.js
+not ok 31 - test/unit/services-contract.test.js
+  ---
+  duration_ms: 204.869702
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/services-contract.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/services-state.test.js
+ok 32 - test/unit/services-state.test.js
+  ---
+  duration_ms: 240.939567
+  type: 'test'
+  ...
+# Subtest: test/unit/system-tools.test.js
+not ok 33 - test/unit/system-tools.test.js
+  ---
+  duration_ms: 147.082087
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/system-tools.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: test/unit/tls.test.js
+not ok 34 - test/unit/tls.test.js
+  ---
+  duration_ms: 104.062514
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/tls.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 8
+# fail 26
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 890.817223

@@ -1,0 +1,130 @@
+{
+  "initial_status": "",
+  "receipt_status": "?? docs/evidence/IL-5.14-R1-F1-E3-A4-P2/\n?? test/diagnostics/services-capture/",
+  "repository": "git@github.com:drumee/infra-layer.git",
+  "branch": "fix/il514-c1-network-attachment-identity",
+  "head": "ee53ed9448cd89f1cc84580863600aa47d9b335e",
+  "qualified_recovery": "72f4c67254561ca5c4c47a6a65e9620e57da7841",
+  "p1_executable": "5954bc121b3790d405aa48bf724a624c259f30a2",
+  "source_relationship": "ee53ed9 Preserve P1 transport diagnostics and independently blocked causal handoff\n5954bc1 Add bounded Postfix HTTP causal diagnostics and preserve P1 baseline\n9d8eebb Record independently qualified local R5 recovery acceptance",
+  "runtime_equivalent_to_R5": true,
+  "private_directory": "/tmp/drumee-p2-7ex9xczy",
+  "time": "2026-10-28T13:14:31.988459+00:00",
+  "node": {
+    "node": "22.22.0",
+    "acorn": "8.15.0",
+    "ada": "2.9.2",
+    "amaro": "1.1.4",
+    "ares": "1.34.6",
+    "brotli": "1.1.0",
+    "cjs_module_lexer": "2.1.0",
+    "cldr": "47.0",
+    "icu": "77.1",
+    "llhttp": "9.3.0",
+    "modules": "127",
+    "napi": "10",
+    "nbytes": "0.1.1",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.64.0",
+    "openssl": "3.5.4",
+    "simdjson": "3.13.0",
+    "simdutf": "6.4.2",
+    "sqlite": "3.50.4",
+    "tz": "2025b",
+    "undici": "6.23.0",
+    "unicode": "16.0",
+    "uv": "1.51.0",
+    "uvwasi": "0.0.23",
+    "v8": "12.4.254.21-node.33",
+    "zlib": "1.3.1-470d3a2",
+    "zstd": "1.5.7"
+  },
+  "docker": {
+    "Client": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "DefaultAPIVersion": "1.53",
+      "GitCommit": "0b9d198",
+      "GoVersion": "go1.25.6",
+      "Os": "linux",
+      "Arch": "amd64",
+      "BuildTime": "Mon Jan 26 19:26:07 2026",
+      "Context": "default"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.2.0",
+      "ApiVersion": "1.53",
+      "MinAPIVersion": "1.44",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.2.0",
+          "Details": {
+            "ApiVersion": "1.53",
+            "Arch": "amd64",
+            "BuildTime": "Mon Jan 26 19:26:07 2026",
+            "Experimental": "false",
+            "GitCommit": "9c62384",
+            "GoVersion": "go1.25.6",
+            "KernelVersion": "6.1.0-41-amd64",
+            "MinAPIVersion": "1.44",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.2.1",
+          "Details": {
+            "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.3.4",
+          "Details": {
+            "GitCommit": "v1.3.4-0-gd6d73eb8"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "9c62384",
+      "GoVersion": "go1.25.6",
+      "KernelVersion": "6.1.0-41-amd64",
+      "BuildTime": "2026-01-26T19:26:07.000000000+00:00"
+    }
+  },
+  "historical_manifest_entries": 139,
+  "canonical_names": [
+    "managed descriptors parse native configs, publish only test loopback ports and mount no secret-store root",
+    "real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion",
+    "real service observer separates protocol success, Docker revision labels and unverified loaded configuration",
+    "BIND9 restart and recreation preserve zone serial and TSIG fingerprint",
+    "DNS port conflict and corrupt native configuration are rejected",
+    "MariaDB fresh initialization creates no kernel/application schema and rejects incompatible engines",
+    "MariaDB service account connects over TCP, rejects wrong credentials and owns no schema grants",
+    "MariaDB existing-volume restart/recreation preserve data and credentials; repeated account provision does not rotate",
+    "Redis authenticated connection and pub/sub work, unauthenticated/wrong clients reject",
+    "Redis AOF survives recreation with the same secret fingerprint and authenticated reconnection",
+    "revision-pinned Essentials RedisStore authenticates via redisUrl including duplicate pub/sub clients",
+    "Redis ephemeral descriptor loses reconstructible state on recreation and rejects malformed configuration",
+    "SMTP STARTTLS/authenticated submission reaches only the local capture sink; unauthorized relay fails",
+    "OpenDKIM signs captured bytes with the persistent key and valid public TXT material",
+    "Postfix queue survives capture outage and mail container recreation, then retries locally without key regeneration",
+    "controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias",
+    "BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses"
+  ]
+}

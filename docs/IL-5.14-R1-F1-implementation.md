@@ -1,0 +1,9 @@
+# Implementation checkpoint — NOT QUALIFIED
+
+Local correction inventories project-labelled containers, including stopped/disconnected objects, and validates service-specific complete membership sets, network IDs and reverse endpoint relations. Array/object multihoming declarations are supported. Recognized synthetic endpoint metadata remains a refusal with bounded readiness. Ownership, trusted executable selection and Docker errors remain enforced; no repair/disconnect or retry was introduced. Public API/dependency locks/scanner policies are unchanged.
+
+The sixteen new actual-checkNetworks fixture cases passed in the first focused execution, but an existing negative contract failed. Unknown declared service role previously produced `NETWORK_ATTACHMENT_MISMATCH`; the new declaration helper instead emits `INVALID_NETWORK_ATTACHMENT`. This is an unresolved error-taxonomy compatibility change. It must be reconciled against the established public/lifecycle contract before qualification resumes. Do not weaken the existing assertion merely to obtain green. No post-failure source edit or rerun was performed.
+
+The real-Docker fixture source was updated to assert refusal on full detachment and on missing configured networks for an existing container, consistent with the newly specified contract. These changes have NOT been executed; they do not establish acceptance. Real stopped/created-state semantics in the proposed contract also remain unqualified against the corrected implementation.
+
+Exact tested bytes and diff: [source identity](evidence/IL-5.14-R1-F1/tested-source-identity.json), [tracked diff](evidence/IL-5.14-R1-F1/tested.patch). The added unit file is retained directly in source. Gate C remains NOT_EXECUTED as a completed qualification; implementation is a failed-qualification checkpoint.

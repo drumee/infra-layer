@@ -1,0 +1,21 @@
+{
+  "id": "K1-APP-001",
+  "severity": "MAJOR",
+  "category": "Operational acceptance/reliability blocker; no independent security-weakening claim",
+  "source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "project": "drumee-il5-35341a09",
+  "command": "env IL5_NETWORK_CLIENT=testbox IL5_LAN_ADDRESS=192.168.5.201 IL5_HOST_NGINX=/tmp/drumee-il513-c1-nginx/root/usr/sbin/nginx npm run test:application",
+  "exit_code": 1,
+  "error": "NETWORK_ATTACHMENT_MISMATCH",
+  "completed_groups": 6,
+  "reported_assertions": 36,
+  "last_completed_group": "controlled-configuration-update-and-canonical-rollback",
+  "first_incomplete_group": "failed-startup-does-not-reset-owned-application-state",
+  "first_failing_API": "UNAVAILABLE in preserved canonical report",
+  "root_cause": "UNDETERMINED",
+  "raw_report": "application-report.json",
+  "cleanup": "PASS / final-cleanup.json",
+  "historical_risk_waiver_applicable": false,
+  "retry": false,
+  "correction": false
+}

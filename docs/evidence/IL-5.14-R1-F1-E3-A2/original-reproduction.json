@@ -1,0 +1,61 @@
+{
+  "source": "2b08fe118a8268154d8797e4c7097795e763cf19",
+  "guardSHA256": "174586571877b31fc70073992e54b58a377397d02a31fb8ac7bbfe15ba642d4d",
+  "mutatedSourceExecuted": false,
+  "outcomes": [
+    {
+      "from": "check(redis([\"PING\"]), \"PONG\")",
+      "to": "false && check(redis([\"PING\"]), \"PONG\")",
+      "expected": "REFUSE",
+      "actual": "ACCEPT",
+      "astParent": {
+        "type": "LogicalExpression",
+        "operator": "&&",
+        "left": false,
+        "childRole": "right"
+      },
+      "result": {
+        "historicalExpressions": 52,
+        "currentExpressions": 54,
+        "replacements": 1,
+        "additions": 1
+      }
+    },
+    {
+      "from": "assert.throws(() => D.checkNetworks(missing), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "to": "false && assert.throws(() => D.checkNetworks(missing), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "expected": "REFUSE",
+      "actual": "ACCEPT",
+      "astParent": {
+        "type": "LogicalExpression",
+        "operator": "&&",
+        "left": false,
+        "childRole": "right"
+      },
+      "result": {
+        "historicalExpressions": 52,
+        "currentExpressions": 54,
+        "replacements": 1,
+        "additions": 1
+      }
+    },
+    {
+      "from": "assert.throws(() => D.checkNetworks(composition, { require_existing: true }), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "to": "false && assert.throws(() => D.checkNetworks(composition, { require_existing: true }), { code: \"NETWORK_ATTACHMENT_MISMATCH\" })",
+      "expected": "REFUSE",
+      "actual": "ACCEPT",
+      "astParent": {
+        "type": "LogicalExpression",
+        "operator": "&&",
+        "left": false,
+        "childRole": "right"
+      },
+      "result": {
+        "historicalExpressions": 52,
+        "currentExpressions": 54,
+        "replacements": 1,
+        "additions": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "reviewer": "/root/v1_cleanup_review",
+  "read_at": "2026-10-30T09:06:35.511445+00:00",
+  "source": "9797f80796c94c83ba8cdb2215f0775497f72b76",
+  "mode": "Read-only independent source/artifact audit; no Docker commands or tests",
+  "historical_missing_volume_identities": 4,
+  "exact_container_ids_are_not_volume_ids": true,
+  "known_prior_volume": "a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b",
+  "known_prior_proof": "Exact /data Mounts association in network-health.log, exact K1 volume rm exit0, references empty and post-rm absence; A1 absent readback",
+  "unknown_historical_volumes_deletable": false,
+  "legacy_fixture_cleanup": "Exact marked container/network removal; implicit Redis volumes not inventoried/accounted. Legacy PASS is scoped only. A new controlled mechanism does not silently repair or requalify legacy fixture cleanup.",
+  "identity_limit": "Original Unix socket endpoint preserved, but no demonstrated historical daemon engine ID. Current same endpoint does not independently prove historical daemon identity.",
+  "hashes": {
+    "AGENTS.md": "b732b5276504e532caa8b13889a9d63f8f03b1e7a3fd504a8ed0eafc8cb917f2",
+    "docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1-A1/volume-context-inventory.json": "c2e9d28120470a835278fe08e6f5f0b1fbcf698877325be659951bb3f3cd0ca4",
+    "docs/evidence/IL-5.14-R1-F1-E3-A4-C-J1-K1/volume-cleanup-finding.json": "b32013ede3cf5a5db3e1b15417bbff62bc7f3e4c442015bebb38448766fde569",
+    "test/network-attachments/membership-real.cjs": "adb7847262cfa1e4856c0fd16c42628f46853b08543ac40a20ebe996c3e7986f",
+    "test/network-attachments/container-health.cjs": "1dda911ca1505a53194920cb257022385c0aca095867f9eeebb6f5dc20d768c4",
+    "test/network-attachments/real-docker.cjs": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4"
+  }
+}

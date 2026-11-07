@@ -1,0 +1,152 @@
+{
+  "attempt": "CQ02R-6ce32480-5cce-4512-a6a1-27872271b397",
+  "started": "2026-11-04T21:04:05.966124+00:00",
+  "operations": [
+    {
+      "operation": "verify-private-empty-workloads",
+      "daemon_id": "97180776-3da5-479c-b9b6-b59a2211c28b",
+      "containers": [],
+      "volumes": [],
+      "networks": [
+        {
+          "Name": "bridge",
+          "Id": "7fcaf6d3f8becbe2661a22f650f5105f07af0af06a22fb9bde5504c26d1daf33",
+          "Created": "2026-11-04T15:46:32.215396047-05:00",
+          "Scope": "local",
+          "Driver": "bridge",
+          "EnableIPv4": true,
+          "EnableIPv6": false,
+          "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+              {
+                "Subnet": "10.247.254.0/24",
+                "Gateway": "10.247.254.1"
+              }
+            ]
+          },
+          "Internal": false,
+          "Attachable": false,
+          "Ingress": false,
+          "ConfigFrom": {
+            "Network": ""
+          },
+          "ConfigOnly": false,
+          "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "false",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "br-cq6ce32480",
+            "com.docker.network.driver.mtu": "1500"
+          },
+          "Labels": {},
+          "Containers": {},
+          "Status": {
+            "IPAM": {
+              "Subnets": {
+                "10.247.254.0/24": {
+                  "IPsInUse": 3,
+                  "DynamicIPsAvailable": 253
+                }
+              }
+            }
+          }
+        },
+        {
+          "Name": "host",
+          "Id": "408ad3e37a512172e6caae129e6e4cd801804bc05e5e8e229bc5d97e76405d6e",
+          "Created": "2026-11-04T12:08:20.906210613-05:00",
+          "Scope": "local",
+          "Driver": "host",
+          "EnableIPv4": true,
+          "EnableIPv6": false,
+          "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": null
+          },
+          "Internal": false,
+          "Attachable": false,
+          "Ingress": false,
+          "ConfigFrom": {
+            "Network": ""
+          },
+          "ConfigOnly": false,
+          "Options": {},
+          "Labels": {},
+          "Containers": {},
+          "Status": {
+            "IPAM": {}
+          }
+        },
+        {
+          "Name": "none",
+          "Id": "757a6597dd388cb1d92da874518e91ede6d1cd6d715e6025db7ad0f6f925ae1e",
+          "Created": "2026-11-04T12:08:20.785486561-05:00",
+          "Scope": "local",
+          "Driver": "null",
+          "EnableIPv4": true,
+          "EnableIPv6": false,
+          "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": null
+          },
+          "Internal": false,
+          "Attachable": false,
+          "Ingress": false,
+          "ConfigFrom": {
+            "Network": ""
+          },
+          "ConfigOnly": false,
+          "Options": {},
+          "Labels": {},
+          "Containers": {},
+          "Status": {
+            "IPAM": {}
+          }
+        }
+      ],
+      "private_images": []
+    },
+    {
+      "operation": "SIGTERM",
+      "pid": 653653,
+      "verified_argv": [
+        "/usr/bin/python3",
+        "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/events-app.py",
+        "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397"
+      ],
+      "stopped": true
+    },
+    {
+      "operation": "SIGTERM",
+      "pid": 653537,
+      "verified_argv": [
+        "/usr/bin/dockerd",
+        "--config-file",
+        "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/daemon.json"
+      ],
+      "stopped": true
+    },
+    {
+      "operation": "SIGTERM",
+      "pid": 640745,
+      "verified_argv": [
+        "/usr/bin/containerd",
+        "--config",
+        "/data/drumee-cq02r-6ce32480-5cce-4512-a6a1-27872271b397/containerd.toml"
+      ],
+      "stopped": true
+    },
+    {
+      "operation": "verify-no-private-mounts",
+      "result": "PASS"
+    }
+  ],
+  "status": "FAIL",
+  "error": "AssertionError('UNEXPECTED_STATIC_FIREWALL_DIFFERENCE')",
+  "ended": "2026-11-04T21:04:06.432747+00:00"
+}

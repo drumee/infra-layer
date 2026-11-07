@@ -1,0 +1,19 @@
+"use strict";
+const assert=require("node:assert/strict"),path=require("node:path"),fs=require("node:fs"),{createRequire}=require("node:module");
+const consumer=process.argv[2], mode=process.argv[3],load=createRequire(path.join(consumer,"package.json"));
+const installed=path.join(consumer,"node_modules/@drumee/infra-layer");
+assert.equal(fs.realpathSync(installed),installed);
+const api=load("@drumee/infra-layer"),lifecycle=load("@drumee/infra-layer/lifecycle");
+assert.deepEqual(Object.keys(api).sort(),["diagnoseInfrastructure","inspectInfrastructure","planInfrastructure","renderPlan","validateSpec"]);
+assert.equal(typeof lifecycle.rollbackDeployment,"function");
+for(const name of Object.keys(load("@drumee/infra-layer/package.json").exports).filter(name=>!name.includes("*"))){const specifier=name==="."?"@drumee/infra-layer":"@drumee/infra-layer"+name.slice(1);assert.ok(load.resolve(specifier).startsWith(installed+path.sep));load(specifier);}
+const activation=load.resolve("@drumee/infra-layer/lifecycle/activation"),context=createRequire(activation);
+if(mode==="missing"){
+ assert.throws(()=>context("../internal/rollback-authorization"),error=>error.code==="MODULE_NOT_FOUND"&&error.message.includes("rollback-authorization"));
+ console.log("CONTROLLED_MISSING_ARCHIVE_HELPER_DETECTED");
+}else{
+ const helper=context("../internal/rollback-authorization");assert.equal(typeof helper.authorizeRollback,"function");
+ assert.throws(()=>helper.authorizeRollback({},[],null,null,{authorized:false}),{code:"ROLLBACK_OPERATION_NOT_AUTHORIZED"});
+ for(const file of Object.keys(require.cache).filter(file=>file.includes("/infra-layer/")))assert.ok(file.startsWith(installed+path.sep));
+ console.log("INDEPENDENT_INSTALLED_PUBLIC_API_AND_ROLLBACK_CLOSURE_PASS");
+}

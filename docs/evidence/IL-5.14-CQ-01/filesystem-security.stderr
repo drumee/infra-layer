@@ -1,0 +1,60 @@
+test_D10_historical_two_primitives (evidence_helpers_test.EvidenceTests.test_D10_historical_two_primitives) ... ok
+test_D1_root_symlink (evidence_helpers_test.EvidenceTests.test_D1_root_symlink) ... ok
+test_D2_log_symlink (evidence_helpers_test.EvidenceTests.test_D2_log_symlink) ... ok
+test_D3_existing_root_and_output (evidence_helpers_test.EvidenceTests.test_D3_existing_root_and_output) ... ok
+test_D4_foreign_ownership_real_uid (evidence_helpers_test.EvidenceTests.test_D4_foreign_ownership_real_uid) ... ERROR
+test_D5_untrusted_permissions (evidence_helpers_test.EvidenceTests.test_D5_untrusted_permissions) ... ok
+test_D6_fifo_nonblocking (evidence_helpers_test.EvidenceTests.test_D6_fifo_nonblocking) ... ok
+test_D7_concurrent_processes (evidence_helpers_test.EvidenceTests.test_D7_concurrent_processes) ... ok
+test_D8_close_never_cleans_foreign_resources (evidence_helpers_test.EvidenceTests.test_D8_close_never_cleans_foreign_resources) ... ok
+test_D9_result_identity_and_modes (evidence_helpers_test.EvidenceTests.test_D9_result_identity_and_modes) ... ok
+test_hardlink_and_closed_descriptor_refused (evidence_helpers_test.EvidenceTests.test_hardlink_and_closed_descriptor_refused) ... ok
+test_bootstrap_uses_selected_repository_and_import_has_no_side_effects (evidence_utilities_test.EvidenceUtilityTests.test_bootstrap_uses_selected_repository_and_import_has_no_side_effects) ... ok
+test_export_does_not_follow_output_or_input_symlinks (evidence_utilities_test.EvidenceUtilityTests.test_export_does_not_follow_output_or_input_symlinks) ... ok
+test_export_preserves_bytes_and_hashes (evidence_utilities_test.EvidenceUtilityTests.test_export_preserves_bytes_and_hashes) ... ok
+test_private_input_foreign_uid_is_rejected_by_helper (evidence_utilities_test.EvidenceUtilityTests.test_private_input_foreign_uid_is_rejected_by_helper) ... ERROR
+test_private_input_refuses_links_and_writable_directories (evidence_utilities_test.EvidenceUtilityTests.test_private_input_refuses_links_and_writable_directories) ... ok
+test_concurrent_exclusive_creation_and_retained_cleanup_boundary (release_utilities_test.ReleaseUtilityTests.test_concurrent_exclusive_creation_and_retained_cleanup_boundary) ... ok
+test_excessive_permissions_are_rejected_before_output (release_utilities_test.ReleaseUtilityTests.test_excessive_permissions_are_rejected_before_output) ... ok
+test_foreign_uid_rejected_for_output_and_checkout (release_utilities_test.ReleaseUtilityTests.test_foreign_uid_rejected_for_output_and_checkout) ... ERROR
+test_output_file_symlinks_are_refused_by_both_actual_writers (release_utilities_test.ReleaseUtilityTests.test_output_file_symlinks_are_refused_by_both_actual_writers) ... ok
+test_root_symlink_and_existing_output_parents (release_utilities_test.ReleaseUtilityTests.test_root_symlink_and_existing_output_parents) ... ok
+test_source_archive_validates_real_git_objects_and_rejects_invalid_members (release_utilities_test.ReleaseUtilityTests.test_source_archive_validates_real_git_objects_and_rejects_invalid_members) ... ok
+test_special_output_files_are_refused_without_blocking (release_utilities_test.ReleaseUtilityTests.test_special_output_files_are_refused_without_blocking) ... ok
+test_untrusted_checkout_links_are_rejected (release_utilities_test.ReleaseUtilityTests.test_untrusted_checkout_links_are_rejected) ... ok
+test_verifier_records_real_command_results_and_original_log_hashes (release_utilities_test.ReleaseUtilityTests.test_verifier_records_real_command_results_and_original_log_hashes) ... ok
+
+======================================================================
+ERROR: test_D4_foreign_ownership_real_uid (evidence_helpers_test.EvidenceTests.test_D4_foreign_ownership_real_uid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/somanos/github/infra-layer/test/security/evidence_helpers_test.py", line 146, in test_D4_foreign_ownership_real_uid
+    self._chown(parent, 65532, 65532)
+  File "/home/somanos/github/infra-layer/test/security/evidence_helpers_test.py", line 136, in _chown
+    raise D4SetupFailed('D4_SETUP_FAILED: ' + json.dumps(diagnostic))
+evidence_helpers_test.D4SetupFailed: D4_SETUP_FAILED: {"date": "2026-11-04T15:45:05.838740+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-r6s-test-7exk3irp/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "65532", "65532"], "exit_code": 1, "stdout": "", "stderr": "permission denied while trying to connect to the docker API at unix:///var/run/docker.sock\n"}
+
+======================================================================
+ERROR: test_private_input_foreign_uid_is_rejected_by_helper (evidence_utilities_test.EvidenceUtilityTests.test_private_input_foreign_uid_is_rejected_by_helper)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/somanos/github/infra-layer/test/security/evidence_utilities_test.py", line 61, in test_private_input_foreign_uid_is_rejected_by_helper
+    original_tests.EvidenceTests._chown(self, source.path, 65532, 65532)
+  File "/home/somanos/github/infra-layer/test/security/evidence_helpers_test.py", line 136, in _chown
+    raise D4SetupFailed('D4_SETUP_FAILED: ' + json.dumps(diagnostic))
+evidence_helpers_test.D4SetupFailed: D4_SETUP_FAILED: {"date": "2026-11-04T15:45:06.097735+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-evidence-05f879cae244bf851ad2f62ba674dfd3/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "65532", "65532"], "exit_code": 1, "stdout": "", "stderr": "permission denied while trying to connect to the docker API at unix:///var/run/docker.sock\n"}
+
+======================================================================
+ERROR: test_foreign_uid_rejected_for_output_and_checkout (release_utilities_test.ReleaseUtilityTests.test_foreign_uid_rejected_for_output_and_checkout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/somanos/github/infra-layer/test/security/release_utilities_test.py", line 95, in test_foreign_uid_rejected_for_output_and_checkout
+    original_tests.EvidenceTests._chown(self, foreign.path, 65532, 65532)
+  File "/home/somanos/github/infra-layer/test/security/evidence_helpers_test.py", line 136, in _chown
+    raise D4SetupFailed('D4_SETUP_FAILED: ' + json.dumps(diagnostic))
+evidence_helpers_test.D4SetupFailed: D4_SETUP_FAILED: {"date": "2026-11-04T15:45:06.244299+00:00", "command": ["/usr/bin/docker", "run", "--rm", "--network", "none", "--read-only", "--cap-drop=ALL", "--cap-add=CHOWN", "--user", "0:0", "--mount", "type=bind,source=/tmp/il511-evidence-8050bfc343d4bdc0c14f51f652ee0bc8/foreign,target=/fixture", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "/usr/local/bin/node", "-e", "const fs=require(\"node:fs\");console.log(JSON.stringify({uid:process.getuid(),gid:process.getgid(),uid_map:fs.readFileSync(\"/proc/self/uid_map\",\"utf8\"),before:fs.statSync(\"/fixture\").uid}));fs.chownSync(\"/fixture\",+process.argv[1],+process.argv[2]);console.log(JSON.stringify({after:fs.statSync(\"/fixture\").uid}));", "65532", "65532"], "exit_code": 1, "stdout": "", "stderr": "permission denied while trying to connect to the docker API at unix:///var/run/docker.sock\n"}
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.696s
+
+FAILED (errors=3)

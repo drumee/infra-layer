@@ -1,0 +1,137 @@
+{
+  "recorded": "2026-10-29T18:37:11.946106+00:00",
+  "image": "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+  "immutable_image_volume_query": {
+    "command": [
+      "/usr/bin/docker",
+      "image",
+      "inspect",
+      "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+      "--format",
+      "{{json .Config.Volumes}}"
+    ],
+    "exit_code": 0,
+    "declared_volumes": {
+      "/data": {}
+    }
+  },
+  "contexts": [
+    {
+      "context": "K1 membership Redis fixture",
+      "project": "drumee-e1-membership-fd8cad7a699e",
+      "container_name": "drumee-e1-membership-fd8cad7a699e-redis-1",
+      "volume_name": null,
+      "classification": "OWNERSHIP_UNDETERMINED",
+      "mountpoint": "/data",
+      "container_creator": "Verified mission fixture",
+      "volume_identity_recorded": false,
+      "expected_lifecycle": "Ephemeral diagnostic data; remove only once exact volume ownership/no foreign references established",
+      "deletion": "Only container rm recorded; no volume removal recorded",
+      "driver": "UNAVAILABLE",
+      "labels": "UNAVAILABLE",
+      "container_id": "a9cd40872104064968b682fea7af420a215b0577070cf80a25c4f900b1df58ab",
+      "volume_project_label_observation": "UNAVAILABLE",
+      "required_cleanup": "Ephemeral fixture volume, if created and exact ownership established",
+      "current_existence": "UNAVAILABLE",
+      "volume_delete_attempted_in_K1": false,
+      "volume_delete_attempted_in_A1": false,
+      "container_id_evidence": {
+        "path": "../IL-5.14-R1-F1-E3-A4-C-J1-K1/real-network/membership/trace.jsonl",
+        "line_or_lines": 24,
+        "source": "Preserved K1 trace; read-only review recovery. Not a physical volume identity."
+      }
+    },
+    {
+      "context": "K1 Redis cycle1 foreign-looking controlled fixture",
+      "project": "drumee-il514-net-0d7e88d0",
+      "container_name": "drumee-il514-net-0d7e88d0-intruder-1",
+      "container_id": "95d91746379216a69c303c2d20157e5f2cf1c2736fb4676ac26dfc93915e7b72",
+      "volume_name": null,
+      "classification": "OWNERSHIP_UNDETERMINED",
+      "container_creator": "Mission qualification marker/explicit creation; not a real foreign deployment",
+      "volume_identity_recorded": false,
+      "removal_command_index": 107,
+      "deletion": "Container rm only; no volume removal recorded",
+      "other_consumers": "UNAVAILABLE for unrecorded volume identity",
+      "driver": "UNAVAILABLE",
+      "labels": "UNAVAILABLE",
+      "volume_project_label_observation": "UNAVAILABLE",
+      "required_cleanup": "Ephemeral fixture volume, if created and exact ownership established",
+      "current_existence": "UNAVAILABLE",
+      "volume_delete_attempted_in_K1": false,
+      "volume_delete_attempted_in_A1": false
+    },
+    {
+      "context": "K1 Redis cycle2 foreign-looking controlled fixture",
+      "project": "drumee-il514-net-2c96556f",
+      "container_name": "drumee-il514-net-2c96556f-intruder-1",
+      "container_id": "5e2db80b8d968c369bfdc344dd73c6c055e28ab30ef36b5dfa5dd2f8a245877a",
+      "volume_name": null,
+      "classification": "OWNERSHIP_UNDETERMINED",
+      "container_creator": "Mission qualification marker/explicit creation; not a real foreign deployment",
+      "volume_identity_recorded": false,
+      "removal_command_index": 224,
+      "deletion": "Container rm only; no volume removal recorded",
+      "other_consumers": "UNAVAILABLE for unrecorded volume identity",
+      "driver": "UNAVAILABLE",
+      "labels": "UNAVAILABLE",
+      "volume_project_label_observation": "UNAVAILABLE",
+      "required_cleanup": "Ephemeral fixture volume, if created and exact ownership established",
+      "current_existence": "UNAVAILABLE",
+      "volume_delete_attempted_in_K1": false,
+      "volume_delete_attempted_in_A1": false
+    },
+    {
+      "context": "K1 owned Health fixture",
+      "project": "drumee-il514-health-bbba2c51",
+      "container_id": "63a8cf61c39ba32dc221d5a91a6bc607b253e8e0f696d36e38f3cab7925cfa26",
+      "volume_name": "a67daa2d7b54a825811fbe83f0ab065a7d612e0c847d02d7ba1c7b0e0d9e8c1b",
+      "driver": "local",
+      "labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "classification": "ALREADY_REMOVED",
+      "prior_owner_proof": "Exact container mount association preserved in network-health.log; metadata and zero references before exact rm",
+      "deletion_exit": 0,
+      "current_observation": "Absent by A1 readback in volume-evidence.json",
+      "another_consumer": "None at removal, recorded by K1; do not assume ownership if name reappears",
+      "volume_project_label_observation": "No compose/owner label; attribution from exact container Mounts",
+      "required_cleanup": "Ephemeral fixture volume, if created and exact ownership established",
+      "current_existence": false,
+      "volume_delete_attempted_in_K1": true,
+      "volume_delete_attempted_in_A1": false
+    },
+    {
+      "context": "K1 foreign-looking Health controlled fixture",
+      "project": "drumee-il514-health-bbba2c51",
+      "container_name": "drumee-il514-health-bbba2c51-unauthorized-1",
+      "volume_name": null,
+      "classification": "OWNERSHIP_UNDETERMINED",
+      "volume_identity_recorded": false,
+      "deletion": "Container rm only; no volume removal recorded",
+      "other_consumers": "UNAVAILABLE for unrecorded volume identity",
+      "driver": "UNAVAILABLE",
+      "labels": "UNAVAILABLE",
+      "container_id": "b6244e7b91cff88047f76adc0c1b637fa873c53799388b8b985175b90e4fa45c",
+      "volume_project_label_observation": "UNAVAILABLE",
+      "required_cleanup": "Ephemeral fixture volume, if created and exact ownership established",
+      "current_existence": "UNAVAILABLE",
+      "volume_delete_attempted_in_K1": false,
+      "volume_delete_attempted_in_A1": false,
+      "container_id_evidence": {
+        "path": "../IL-5.14-R1-F1-E3-A4-C-J1-K1/real-network/health/trace.jsonl",
+        "line_or_lines": [
+          12,
+          18,
+          24
+        ],
+        "source": "Preserved K1 trace; read-only review recovery. Not a physical volume identity."
+      }
+    }
+  ],
+  "scope": "Five source-demonstrated implicit-volume creation contexts, not five currently observed volume objects. Four names/current states unrecorded; do not fabricate IDs or assume existence/foreignness.",
+  "actual_application": "No named/anonymous Docker volumes declared by original or A1 application model; bind/tmpfs only. Original actual Docker mounts unavailable.",
+  "cleanup_classification": "CLEANUP_BLOCKED_OWNERSHIP",
+  "deletions_in_A1": 0,
+  "causal_relationship_to_original_mismatch": "NOT_DETERMINED; no evidenced shared volume dependency"
+}

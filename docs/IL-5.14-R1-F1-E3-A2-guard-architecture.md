@@ -1,0 +1,9 @@
+# Fail-closed two-barrier guard
+
+The original hash-pinned703b637 historical inventory, exact call identities/order/counts/selected ancestor contexts, frozen A1 replacement and F1 detachment addition are retained. A2 derives that expected protected sequence from historical source independently of the source under test. No replacement permission is added.
+
+A second barrier compares the normalized complete program AST to a fixed qualified execution frame from Git2ec85bcd16219f592ee40836728493584bbd170a, independently hash-verified7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4. It is not generated from current input. Only node position/range/raw-spelling metadata is removed; actual syntax/values/array order/operators/calls/declarations remain. ProgramFingerprint binds every ancestor and sibling statement, including early returns/throws and the paths invoking protected functions, even when those paths are not protected calls themselves. The limited historical/additions modes compare only their explicitly derived historical program. Candidate mode requires both barriers and its exact reviewed frame.
+
+Historical/subtree violations retain earlier bounded error categories. Otherwise a changed frame emits EXECUTION_CONTEXT_CHANGED. No source or credential-bearing payload is dumped. Fixed Git retrieval uses existing trusted executable/environment handling; no arbitrary filename/commit comes from CLI. Git bytes are parsed, never executed. No eval/vm/Function or new dependency is introduced. The helper/fixtures are test-only and excluded from package members.
+
+This intentionally rejects unreviewed harmless-looking structural changes too: a changed program requires explicit review rather than a simplistic branch reachability inference. It does not prove arbitrary JavaScript reachability or dependency correctness. Actual refusal-effectiveness fixtures and source-specific Docker acceptance complement source integrity.

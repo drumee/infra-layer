@@ -1,0 +1,27 @@
+{
+  "name": "docker-membership",
+  "argv": [
+    "python3",
+    "/tmp/cq02r-remote-run.py",
+    "docker-membership",
+    "node",
+    "test/network-attachments/membership-real.cjs"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "source_sha": "49931e1e0de253f13b82c7ec3c2cb94bb199cea6",
+  "manifest_sha256": "3c38023367e7189a9dbf380ef9ae7488e3b92266327362b64eca0dd6708d26dd",
+  "lock_sha256": "29656a3b8e09e4cf640c9b5f5519d47b95bc960abbe5ce33639a93b3a7cd23f3",
+  "started": "2026-11-04T17:23:22.963143+00:00",
+  "exit": 0,
+  "ended": "2026-11-04T17:23:38.663022+00:00",
+  "stdout": {
+    "file": "docker-membership.stdout",
+    "bytes": 7663,
+    "sha256": "000aa0a4264ef98a53ebac48cb5e614ef09ef9d87cec6c26494616350ff4a2e9"
+  },
+  "stderr": {
+    "file": "docker-membership.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

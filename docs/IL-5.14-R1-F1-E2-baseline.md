@@ -1,0 +1,5 @@
+# E2 baseline and historical classification
+
+Gate A PASS. Clean initial repository on fix/il514-c1-network-attachment-identity at `2ec85bcd16219f592ee40836728493584bbd170a`; PR20 open, main base `c218811effc83da25cf71a914e27accc96101329`, published PR head `cd9b8322bd7eef3b4094710ec4ea26be94f08922`. E1's recorded ENOENT occurs at createDiagnostics/lstatSync while requiring membership-real.cjs, before observeDocker, diagnostic.run and its first Docker version call. Its overall FAILED_QUALIFICATION is preserved, but the Docker scenario itself is NOT_EXECUTED, not a Docker functional failure. No historical report was rewritten.
+
+Executable/test hashes exactly match E1 qualified focused source `740d01f77b20358cee8b3cad4cb501b830bd0ce8`; commits afterward contain reports/evidence only. E2 made no production, harness, test or dependency source edit. The47/47 E1 focused results remain applicable to those unchanged bytes. New full-unit results are reported separately and do not inherit a PASS.

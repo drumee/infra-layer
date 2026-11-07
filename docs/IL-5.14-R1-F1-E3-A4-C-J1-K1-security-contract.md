@@ -1,0 +1,7 @@
+# Strict package contract — Gate C PASS
+
+The internal allowlist stays a closed enumeration: system-tools, network-readiness and the specific required rollback-authorization .js file. All other historical patterns are unchanged. No directory-wide internal prefix/wildcard is introduced. Unknown and nested internal modules, test fixtures and other unapproved paths remain refused.
+
+The original assertion predicates for unexpected members, prohibited private-key/credential/path/file: content and undeclared literal external imports are preserved, extracted intact into a test-only synchronous function invoked by the canonical audit. A mandatory helper-presence assertion operates on the actual inventory, not filesystem existence. Each relative require target must exist in that same inventory; the known computed capability dispatch has explicit finite targets. These checks complement archive/source/integrity comparison and isolated public/runtime consumer tests. They are not a general JavaScript parser or a new runtime module loader.
+
+Negative regressions use controlled in-memory inventory/content overrides and a failing child process. No unauthorized file is injected into production. No assertion branch is skipped or swallowed. Canonical audit manifest/license/dependency/integrity/install/API assertions remain in place, executed after the shared inventory contract. Test helpers are excluded from the package by unchanged files/exports settings and the audit's path rules.

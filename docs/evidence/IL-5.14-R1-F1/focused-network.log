@@ -1,0 +1,257 @@
+TAP version 13
+# Subtest: E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+ok 1 - E1 normal attachment uses actual container ID and verifies endpoint/network relationship
+  ---
+  duration_ms: 10.577455
+  type: 'test'
+  ...
+# Subtest: E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+ok 2 - E2 sandbox-less metadata is preserved as unsettled and never inspected as a container
+  ---
+  duration_ms: 2.762818
+  type: 'test'
+  ...
+# Subtest: E3 missing referenced container remains a failure with original nonzero status
+ok 3 - E3 missing referenced container remains a failure with original nonzero status
+  ---
+  duration_ms: 2.765884
+  type: 'test'
+  ...
+# Subtest: E4 endpoint outside the declared namespace is explicitly unexpected
+ok 4 - E4 endpoint outside the declared namespace is explicitly unexpected
+  ---
+  duration_ms: 1.089377
+  type: 'test'
+  ...
+# Subtest: E5 unsettled endpoint cannot mask a foreign container or network
+ok 5 - E5 unsettled endpoint cannot mask a foreign container or network
+  ---
+  duration_ms: 2.142932
+  type: 'test'
+  ...
+# Subtest: E6 malformed endpoint metadata and inconsistent keys fail explicitly
+ok 6 - E6 malformed endpoint metadata and inconsistent keys fail explicitly
+  ---
+  duration_ms: 3.727831
+  type: 'test'
+  ...
+# Subtest: E7 genuine Docker failure escapes once without exposing raw diagnostics
+ok 7 - E7 genuine Docker failure escapes once without exposing raw diagnostics
+  ---
+  duration_ms: 1.010323
+  type: 'test'
+  ...
+# Subtest: E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+ok 8 - E8/E11 required network absence fails; explicit creation/cleanup absence is permitted
+  ---
+  duration_ms: 1.767602
+  type: 'test'
+  ...
+# Subtest: network object identity, isolation and actual membership cannot be substituted
+not ok 9 - network object identity, isolation and actual membership cannot be substituted
+  ---
+  duration_ms: 7.079186
+  type: 'test'
+  location: '/home/somanos/github/infra-layer/test/unit/network-attachments.test.js:69:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      Comparison {
+    +   code: 'INVALID_NETWORK_ATTACHMENT'
+    -   code: 'NETWORK_ATTACHMENT_MISMATCH'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    code: 'NETWORK_ATTACHMENT_MISMATCH'
+  actual:
+  error: 'INVALID_NETWORK_ATTACHMENT'
+  stack: |-
+    Object.fail (/home/somanos/github/infra-layer/lib/filesystem-safety.js:5:43)
+    serviceNetworks (/home/somanos/github/infra-layer/lifecycle/docker.js:87:138)
+    containerNetworks (/home/somanos/github/infra-layer/lifecycle/docker.js:108:20)
+    Object.checkNetworks (/home/somanos/github/infra-layer/lifecycle/docker.js:153:25)
+    assert.throws.code.code (/home/somanos/github/infra-layer/test/unit/network-attachments.test.js:77:76)
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (/home/somanos/github/infra-layer/test/unit/network-attachments.test.js:77:59)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/home/somanos/github/infra-layer/test/unit/network-attachments.test.js:77:59)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: E12 stale container identity and invalid object keys are rejected without fallback
+ok 10 - E12 stale container identity and invalid object keys are rejected without fallback
+  ---
+  duration_ms: 2.436445
+  type: 'test'
+  ...
+# Subtest: E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+ok 11 - E9/E10 bounded readiness re-observes only unsettled metadata then validates resolution
+  ---
+  duration_ms: 5.451055
+  type: 'test'
+  ...
+# Subtest: unsettled deadline refuses permanently unresolved attachment and retains metadata
+ok 12 - unsettled deadline refuses permanently unresolved attachment and retains metadata
+  ---
+  duration_ms: 0.684046
+  type: 'test'
+  ...
+# Subtest: readiness never retries command failures, missing objects or ownership refusals
+ok 13 - readiness never retries command failures, missing objects or ownership refusals
+  ---
+  duration_ms: 0.349153
+  type: 'test'
+  ...
+# Subtest: secure loader loads only the actual canonical module and restores builtin/cache state
+ok 14 - secure loader loads only the actual canonical module and restores builtin/cache state
+  ---
+  duration_ms: 5.005774
+  type: 'test'
+  ...
+# Subtest: source strings, filenames, alternate source and invalid executors fail before substitution
+ok 15 - source strings, filenames, alternate source and invalid executors fail before substitution
+  ---
+  duration_ms: 0.435819
+  type: 'test'
+  ...
+# Subtest: separate module instances retain only their own command fixture and never fall back
+ok 16 - separate module instances retain only their own command fixture and never fall back
+  ---
+  duration_ms: 2.358463
+  type: 'test'
+  ...
+# Subtest: historical regression pins real alpha.3 source and fixture without executing either
+ok 17 - historical regression pins real alpha.3 source and fixture without executing either
+  ---
+  duration_ms: 30.342319
+  type: 'test'
+  ...
+# Subtest: historical source/fixture bytes and metadata reject substitution before parsing
+ok 18 - historical source/fixture bytes and metadata reject substitution before parsing
+  ---
+  duration_ms: 2.977077
+  type: 'test'
+  ...
+# Subtest: historical CLI preserves the invalid-object negative proof and rejects extra input nonzero
+ok 19 - historical CLI preserves the invalid-object negative proof and rejects extra input nonzero
+  ---
+  duration_ms: 89.709382
+  type: 'test'
+  ...
+# Subtest: F1-D1 exact single-network membership passes actual checkNetworks
+ok 20 - F1-D1 exact single-network membership passes actual checkNetworks
+  ---
+  duration_ms: 10.297349
+  type: 'test'
+  ...
+# Subtest: F1-D2 extra undeclared network is a fatal non-transient mismatch
+ok 21 - F1-D2 extra undeclared network is a fatal non-transient mismatch
+  ---
+  duration_ms: 2.5943
+  type: 'test'
+  ...
+# Subtest: F1-D3 matching owner cannot authorize an extra network
+ok 22 - F1-D3 matching owner cannot authorize an extra network
+  ---
+  duration_ms: 2.03824
+  type: 'test'
+  ...
+# Subtest: F1-D4 array and object declarations preserve legitimate multihoming
+ok 23 - F1-D4 array and object declarations preserve legitimate multihoming
+  ---
+  duration_ms: 3.540143
+  type: 'test'
+  ...
+# Subtest: F1-D5 incomplete declared multihoming is rejected
+ok 24 - F1-D5 incomplete declared multihoming is rejected
+  ---
+  duration_ms: 1.721364
+  type: 'test'
+  ...
+# Subtest: F1-D6 project inventory detects entirely disconnected running and stopped containers
+ok 25 - F1-D6 project inventory detects entirely disconnected running and stopped containers
+  ---
+  duration_ms: 3.193897
+  type: 'test'
+  ...
+# Subtest: F1-D7 not-yet-created service and empty preparation preserve absence contract
+ok 26 - F1-D7 not-yet-created service and empty preparation preserve absence contract
+  ---
+  duration_ms: 1.970237
+  type: 'test'
+  ...
+# Subtest: F1-D8 network names cannot substitute a different ID
+ok 27 - F1-D8 network names cannot substitute a different ID
+  ---
+  duration_ms: 1.572448
+  type: 'test'
+  ...
+# Subtest: F1-D9 endpoint ID mismatch is rejected
+ok 28 - F1-D9 endpoint ID mismatch is rejected
+  ---
+  duration_ms: 2.089467
+  type: 'test'
+  ...
+# Subtest: F1-D10 inventoried foreign ownership and service/name substitution are refused
+ok 29 - F1-D10 inventoried foreign ownership and service/name substitution are refused
+  ---
+  duration_ms: 5.191988
+  type: 'test'
+  ...
+# Subtest: F1-D11 sandbox-less endpoint cannot mask extra connectivity
+ok 30 - F1-D11 sandbox-less endpoint cannot mask extra connectivity
+  ---
+  duration_ms: 2.96068
+  type: 'test'
+  ...
+# Subtest: F1-D12 Docker inventory/inspection errors remain fatal
+ok 31 - F1-D12 Docker inventory/inspection errors remain fatal
+  ---
+  duration_ms: 1.594474
+  type: 'test'
+  ...
+# Subtest: F1-D13 stopped configured membership and Redis-style fresh endpoint recovery pass
+ok 32 - F1-D13 stopped configured membership and Redis-style fresh endpoint recovery pass
+  ---
+  duration_ms: 1.945966
+  type: 'test'
+  ...
+# Subtest: F1-D14 disconnect is invalid and reconnection restores exact membership
+ok 33 - F1-D14 disconnect is invalid and reconnection restores exact membership
+  ---
+  duration_ms: 2.161072
+  type: 'test'
+  ...
+# Subtest: F1-D15 service-specific declarations cannot use the project-wide union
+ok 34 - F1-D15 service-specific declarations cannot use the project-wide union
+  ---
+  duration_ms: 1.486735
+  type: 'test'
+  ...
+# Subtest: F1-D16 aliases, duplicate identities and inconsistent reverse attachments fail closed
+ok 35 - F1-D16 aliases, duplicate identities and inconsistent reverse attachments fail closed
+  ---
+  duration_ms: 2.310129
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 34
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 182.429469

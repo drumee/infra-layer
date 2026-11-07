@@ -1,0 +1,991 @@
+{
+  "observed_at": "2026-11-04T17:21:12.476489+00:00",
+  "host": "vps-c5f4cd75",
+  "role": "PRODUCTION_READ_ONLY",
+  "daemon_id": "b9c382a6-6e0e-458c-8690-4e4797190106",
+  "docker_version": "29.9.2",
+  "compose_version": "Docker Compose version v5.6.1",
+  "nginx_syntax_exit": 0,
+  "nginx_config_baseline": [
+    {
+      "path": "/etc/nginx/nginx.conf",
+      "realpath": "/etc/nginx/nginx.conf",
+      "sha256": "c66fbe205bf46b5d125502e35605938ed37feef6e2b24325b1c088665caaf477",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644"
+    },
+    {
+      "path": "/etc/nginx/mime.types",
+      "realpath": "/etc/nginx/mime.types",
+      "sha256": "b12cd90b120d4b97e76a7b857eb4a2bf0b6df37c4b246d471f37e6493dc191ac",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644"
+    },
+    {
+      "path": "/etc/nginx/sites-enabled/oxymot",
+      "realpath": "/etc/nginx/sites-available/oxymot",
+      "sha256": "b21486ef86997e58f4d5e81c9d8d56df863d5db0a5427aa07be6ff389ca1b7ea",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o644"
+    }
+  ],
+  "routing_directives": [
+    "listen 80;",
+    "listen [::]:80;",
+    "server_name oxymot.fr;",
+    "root /var/www/oxymot/public;",
+    "location ^~ /.well-known/acme-challenge/ { try_files $uri =404; }",
+    "location / { return 301 https://$host$request_uri; }",
+    "listen 443 ssl;",
+    "listen [::]:443 ssl;",
+    "server_name oxymot.fr;",
+    "root /var/www/oxymot/public;",
+    "index index.html;",
+    "ssl_certificate /etc/ssl/oxymot/fullchain.pem;",
+    "location ~ /\\. { deny all; }",
+    "location ~* \\.(?:bak|old|orig|swp|sql|log|env)$ { deny all; }",
+    "location / { try_files $uri $uri/ =404; }",
+    "location ~* \\.(?:css|js|svg|png|jpg|jpeg|webp|gif|ico|woff2?)$ {",
+    "try_files $uri =404;"
+  ],
+  "public_certificates": [
+    {
+      "path": "/etc/ssl/oxymot/fullchain.pem",
+      "public_certificate": "subject=CN=oxymot.fr\nissuer=C=US, O=Let's Encrypt, CN=YE2\nnotBefore=Oct 11 14:41:55 2026 GMT\nnotAfter=Jan  9 14:41:54 2027 GMT\nsha256 Fingerprint=5A:AB:98:96:2B:BA:FF:D8:D2:65:33:AB:95:71:B8:6E:1E:18:2E:C1:66:C7:39:55:2C:B9:3F:ED:6A:C0:EC:D6\n"
+    }
+  ],
+  "static_roots": [
+    {
+      "root": "/var/www/oxymot/public",
+      "realpath": "/var/www/oxymot/public",
+      "uid": 1002,
+      "entries": [
+        "a-propos",
+        "approche",
+        "blog",
+        "cas-usage",
+        "confidentialite",
+        "contact",
+        "faq",
+        "index.html",
+        "industrie",
+        "mentions-legales",
+        "methode",
+        "offre-integrale",
+        "offres",
+        "redaction-commerciale-b2b",
+        "ressources",
+        "robots.txt",
+        "sitemap.xml",
+        "src",
+        "technologies"
+      ]
+    }
+  ],
+  "listeners": "Netid State  Recv-Q Send-Q       Local Address:Port Peer Address:PortProcess                                                                               \nudp   UNCONN 0      0               127.0.0.54:53        0.0.0.0:*    users:((\"systemd-resolve\",pid=1695971,fd=17))                                        \nudp   UNCONN 0      0            127.0.0.53%lo:53        0.0.0.0:*    users:((\"systemd-resolve\",pid=1695971,fd=15))                                        \nudp   UNCONN 0      0      15.235.100.230%ens3:68        0.0.0.0:*    users:((\"systemd-network\",pid=25686,fd=32))                                          \ntcp   LISTEN 0      4096             127.0.0.1:2368      0.0.0.0:*    users:((\"docker-proxy\",pid=719847,fd=8))                                             \ntcp   LISTEN 0      511              127.0.0.1:8443      0.0.0.0:*    users:((\"nginx\",pid=435360,fd=4),(\"nginx\",pid=435359,fd=4))                          \ntcp   LISTEN 0      511                0.0.0.0:80        0.0.0.0:*    users:((\"nginx\",pid=275870,fd=5),(\"nginx\",pid=275869,fd=5),(\"nginx\",pid=275866,fd=5))\ntcp   LISTEN 0      128                0.0.0.0:22        0.0.0.0:*    users:((\"sshd\",pid=867,fd=6))                                                        \ntcp   LISTEN 0      511                0.0.0.0:443       0.0.0.0:*    users:((\"nginx\",pid=275870,fd=7),(\"nginx\",pid=275869,fd=7),(\"nginx\",pid=275866,fd=7))\ntcp   LISTEN 0      4096            127.0.0.54:53        0.0.0.0:*    users:((\"systemd-resolve\",pid=1695971,fd=18))                                        \ntcp   LISTEN 0      4096         127.0.0.53%lo:53        0.0.0.0:*    users:((\"systemd-resolve\",pid=1695971,fd=16))                                        \ntcp   LISTEN 0      511                   [::]:80           [::]:*    users:((\"nginx\",pid=275870,fd=6),(\"nginx\",pid=275869,fd=6),(\"nginx\",pid=275866,fd=6))\ntcp   LISTEN 0      128                   [::]:22           [::]:*    users:((\"sshd\",pid=867,fd=7))                                                        \ntcp   LISTEN 0      511                   [::]:443          [::]:*    users:((\"nginx\",pid=275870,fd=8),(\"nginx\",pid=275869,fd=8),(\"nginx\",pid=275866,fd=8))\n",
+  "containers": [
+    {
+      "id": "348624f1ab687a7a7f7ce6b23d905b037bdd9170d76cce5799963a674158963d",
+      "name": "/oxymot-blog-ghost-1",
+      "image_id": "sha256:3656324ad804308b9ef39571b15b41465cdee64f6a78d1807719b5ea379688fd",
+      "image_reference": "ghost:6.73.0-bookworm@sha256:3656324ad804308b9ef39571b15b41465cdee64f6a78d1807719b5ea379688fd",
+      "labels": {
+        "com.docker.compose.config-hash": "1d13d81153baace127fa66986a8c3f36d52c124f2d6f6ab663ffffa42a07ba17",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:3656324ad804308b9ef39571b15b41465cdee64f6a78d1807719b5ea379688fd",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "oxymot-blog",
+        "com.docker.compose.project.config_files": "/opt/oxymot-blog/compose.yaml",
+        "com.docker.compose.project.working_dir": "/opt/oxymot-blog",
+        "com.docker.compose.replace": "ghost-1",
+        "com.docker.compose.service": "ghost",
+        "com.docker.compose.version": "5.6.1"
+      },
+      "state": "running",
+      "health": "healthy",
+      "ports": {
+        "2368/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "2368"
+          }
+        ]
+      },
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/opt/oxymot-blog/secrets/db_password",
+          "Destination": "/run/secrets/db_password",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/opt/oxymot-blog/secrets/ghost-config.production.json",
+          "Destination": "/var/lib/ghost/config.production.json",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "volume",
+          "Name": "oxymot_blog_content",
+          "Source": "/var/lib/docker/volumes/oxymot_blog_content/_data",
+          "Destination": "/var/lib/ghost/content",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": {
+        "oxymot-blog_backend": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": [
+            "oxymot-blog-ghost-1",
+            "ghost"
+          ],
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "ad96940955972005bb66f827b59b3baaf1c98c7d4f6dda393bea05667ea7a5c3",
+          "EndpointID": "228b342849bc9cf73880966c3d59698d7fc753e6f832fb602256d404cd97a656",
+          "Gateway": "",
+          "IPAddress": "172.18.0.3",
+          "MacAddress": "06:65:5d:7e:61:c4",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "oxymot-blog-ghost-1",
+            "ghost",
+            "348624f1ab68"
+          ]
+        },
+        "oxymot-blog_egress": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": [
+            "oxymot-blog-ghost-1",
+            "ghost"
+          ],
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "9f157059dd2d5c2f8e0a9f2be62e7c51a82be819c861e29c53ebb5c9e743b30c",
+          "EndpointID": "132d1612fd2a35a9539720935bc3e64fa62e403ddfa8d4879971954ab18bab7d",
+          "Gateway": "172.19.0.1",
+          "IPAddress": "172.19.0.2",
+          "MacAddress": "ae:07:3d:a9:99:f8",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "oxymot-blog-ghost-1",
+            "ghost",
+            "348624f1ab68"
+          ]
+        }
+      }
+    },
+    {
+      "id": "3683a81734ac04ddddef7c7cb0023f58ebfc6dc1b6359465a23dd2bf57ba5920",
+      "name": "/oxymot-blog-db-1",
+      "image_id": "sha256:5cf1e1293ea42e077e6a22114e6773b9aae3bb8f9933a2acd5a9721518ff8f5b",
+      "image_reference": "mysql:8.4.13@sha256:5cf1e1293ea42e077e6a22114e6773b9aae3bb8f9933a2acd5a9721518ff8f5b",
+      "labels": {
+        "com.docker.compose.config-hash": "d475e0e1523e32cfbaaa17456fa01b8bd8018d967e5c2113b5e61979bd55464d",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:5cf1e1293ea42e077e6a22114e6773b9aae3bb8f9933a2acd5a9721518ff8f5b",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "oxymot-blog",
+        "com.docker.compose.project.config_files": "/opt/oxymot-blog/compose.yaml",
+        "com.docker.compose.project.working_dir": "/opt/oxymot-blog",
+        "com.docker.compose.service": "db",
+        "com.docker.compose.version": "5.6.1"
+      },
+      "state": "running",
+      "health": "healthy",
+      "ports": {
+        "3306/tcp": null,
+        "33060/tcp": null
+      },
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/opt/oxymot-blog/secrets/db_password",
+          "Destination": "/run/secrets/db_password",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/opt/oxymot-blog/secrets/db_root_password",
+          "Destination": "/run/secrets/db_root_password",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "volume",
+          "Name": "oxymot_blog_mysql_data",
+          "Source": "/var/lib/docker/volumes/oxymot_blog_mysql_data/_data",
+          "Destination": "/var/lib/mysql",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": {
+        "oxymot-blog_backend": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": [
+            "oxymot-blog-db-1",
+            "db"
+          ],
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "ad96940955972005bb66f827b59b3baaf1c98c7d4f6dda393bea05667ea7a5c3",
+          "EndpointID": "3c241b2e1e72597a6f9cdd6bf57170ec8a7d50f83f6ed221a773069b68873c57",
+          "Gateway": "",
+          "IPAddress": "172.18.0.2",
+          "MacAddress": "f2:2f:9b:ab:c2:77",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "oxymot-blog-db-1",
+            "db",
+            "3683a81734ac"
+          ]
+        }
+      }
+    }
+  ],
+  "networks": [
+    {
+      "Name": "bridge",
+      "Id": "c91b6effbe74a48ac823ea51e7fdfb5680f32a034211947b42ae0a36bdba0906",
+      "Created": "2026-10-31T18:15:20.422721848Z",
+      "Scope": "local",
+      "Driver": "bridge",
+      "EnableIPv4": true,
+      "EnableIPv6": false,
+      "IPAM": {
+        "Driver": "default",
+        "Options": null,
+        "Config": [
+          {
+            "Subnet": "172.17.0.0/16",
+            "Gateway": "172.17.0.1"
+          }
+        ]
+      },
+      "Internal": false,
+      "Attachable": false,
+      "Ingress": false,
+      "ConfigFrom": {
+        "Network": ""
+      },
+      "ConfigOnly": false,
+      "Options": {
+        "com.docker.network.bridge.default_bridge": "true",
+        "com.docker.network.bridge.enable_icc": "true",
+        "com.docker.network.bridge.enable_ip_masquerade": "true",
+        "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+        "com.docker.network.bridge.name": "docker0",
+        "com.docker.network.driver.mtu": "1500"
+      },
+      "Labels": {},
+      "Containers": {},
+      "Status": {
+        "IPAM": {
+          "Subnets": {
+            "172.17.0.0/16": {
+              "IPsInUse": 3,
+              "DynamicIPsAvailable": 65533
+            }
+          }
+        }
+      }
+    },
+    {
+      "Name": "host",
+      "Id": "0f857ef9a5a54f173457eb85cf01768a74661b08b5a4133ad50dd4eb6649783c",
+      "Created": "2026-10-31T18:14:17.313772672Z",
+      "Scope": "local",
+      "Driver": "host",
+      "EnableIPv4": true,
+      "EnableIPv6": false,
+      "IPAM": {
+        "Driver": "default",
+        "Options": null,
+        "Config": null
+      },
+      "Internal": false,
+      "Attachable": false,
+      "Ingress": false,
+      "ConfigFrom": {
+        "Network": ""
+      },
+      "ConfigOnly": false,
+      "Options": {},
+      "Labels": {},
+      "Containers": {},
+      "Status": {
+        "IPAM": {}
+      }
+    },
+    {
+      "Name": "none",
+      "Id": "5fb1f24e812f056bc2fd84e9e9e91c3ce660c95eac797276109d2d7e36222e58",
+      "Created": "2026-10-31T18:14:17.311376864Z",
+      "Scope": "local",
+      "Driver": "null",
+      "EnableIPv4": true,
+      "EnableIPv6": false,
+      "IPAM": {
+        "Driver": "default",
+        "Options": null,
+        "Config": null
+      },
+      "Internal": false,
+      "Attachable": false,
+      "Ingress": false,
+      "ConfigFrom": {
+        "Network": ""
+      },
+      "ConfigOnly": false,
+      "Options": {},
+      "Labels": {},
+      "Containers": {},
+      "Status": {
+        "IPAM": {}
+      }
+    },
+    {
+      "Name": "oxymot-blog_backend",
+      "Id": "ad96940955972005bb66f827b59b3baaf1c98c7d4f6dda393bea05667ea7a5c3",
+      "Created": "2026-10-31T18:15:41.92319978Z",
+      "Scope": "local",
+      "Driver": "bridge",
+      "EnableIPv4": true,
+      "EnableIPv6": false,
+      "IPAM": {
+        "Driver": "default",
+        "Options": null,
+        "Config": [
+          {
+            "Subnet": "172.18.0.0/16",
+            "Gateway": "172.18.0.1"
+          }
+        ]
+      },
+      "Internal": true,
+      "Attachable": false,
+      "Ingress": false,
+      "ConfigFrom": {
+        "Network": ""
+      },
+      "ConfigOnly": false,
+      "Options": {},
+      "Labels": {
+        "com.docker.compose.config-hash": "88ecfd1649b892834b7fa1a2831000cfa607b9d44a462a389bfffb4a9ea56ff9",
+        "com.docker.compose.network": "backend",
+        "com.docker.compose.project": "oxymot-blog",
+        "com.docker.compose.version": "5.6.1"
+      },
+      "Containers": {
+        "348624f1ab687a7a7f7ce6b23d905b037bdd9170d76cce5799963a674158963d": {
+          "Name": "oxymot-blog-ghost-1",
+          "EndpointID": "228b342849bc9cf73880966c3d59698d7fc753e6f832fb602256d404cd97a656",
+          "MacAddress": "06:65:5d:7e:61:c4",
+          "IPv4Address": "172.18.0.3/16",
+          "IPv6Address": ""
+        },
+        "3683a81734ac04ddddef7c7cb0023f58ebfc6dc1b6359465a23dd2bf57ba5920": {
+          "Name": "oxymot-blog-db-1",
+          "EndpointID": "3c241b2e1e72597a6f9cdd6bf57170ec8a7d50f83f6ed221a773069b68873c57",
+          "MacAddress": "f2:2f:9b:ab:c2:77",
+          "IPv4Address": "172.18.0.2/16",
+          "IPv6Address": ""
+        }
+      },
+      "Status": {
+        "IPAM": {
+          "Subnets": {
+            "172.18.0.0/16": {
+              "IPsInUse": 5,
+              "DynamicIPsAvailable": 65531
+            }
+          }
+        }
+      }
+    },
+    {
+      "Name": "oxymot-blog_egress",
+      "Id": "9f157059dd2d5c2f8e0a9f2be62e7c51a82be819c861e29c53ebb5c9e743b30c",
+      "Created": "2026-10-31T18:16:41.169489998Z",
+      "Scope": "local",
+      "Driver": "bridge",
+      "EnableIPv4": true,
+      "EnableIPv6": false,
+      "IPAM": {
+        "Driver": "default",
+        "Options": null,
+        "Config": [
+          {
+            "Subnet": "172.19.0.0/16",
+            "Gateway": "172.19.0.1"
+          }
+        ]
+      },
+      "Internal": false,
+      "Attachable": false,
+      "Ingress": false,
+      "ConfigFrom": {
+        "Network": ""
+      },
+      "ConfigOnly": false,
+      "Options": {},
+      "Labels": {
+        "com.docker.compose.config-hash": "7d7702528d54ff2f50fc4ed43e2b7d94d20d11a2616b99e16bced59b983bc242",
+        "com.docker.compose.network": "egress",
+        "com.docker.compose.project": "oxymot-blog",
+        "com.docker.compose.version": "5.6.1"
+      },
+      "Containers": {
+        "348624f1ab687a7a7f7ce6b23d905b037bdd9170d76cce5799963a674158963d": {
+          "Name": "oxymot-blog-ghost-1",
+          "EndpointID": "132d1612fd2a35a9539720935bc3e64fa62e403ddfa8d4879971954ab18bab7d",
+          "MacAddress": "ae:07:3d:a9:99:f8",
+          "IPv4Address": "172.19.0.2/16",
+          "IPv6Address": ""
+        }
+      },
+      "Status": {
+        "IPAM": {
+          "Subnets": {
+            "172.19.0.0/16": {
+              "IPsInUse": 4,
+              "DynamicIPsAvailable": 65532
+            }
+          }
+        }
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "CreatedAt": "2026-11-01T10:20:35Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/2cf7c1e1673df53d29406b8331ba35f6e08bfb4a3c187ad3a4d45693d8b61ae9/_data",
+      "Name": "2cf7c1e1673df53d29406b8331ba35f6e08bfb4a3c187ad3a4d45693d8b61ae9",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-11-01T10:30:14Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/3ed331ac21bdcfa49229d0e740107b6708c9f478f44f73bd5e14bb0cd79ccf39/_data",
+      "Name": "3ed331ac21bdcfa49229d0e740107b6708c9f478f44f73bd5e14bb0cd79ccf39",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-11-01T10:10:53Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/7e2ac73e423db7f25466c07638abddfa279e7b7091af044d16ae13e71d8a8cb1/_data",
+      "Name": "7e2ac73e423db7f25466c07638abddfa279e7b7091af044d16ae13e71d8a8cb1",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-11-01T10:14:26Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/25f90257328a43c9c8415045bee1f1843a0b7bc1a2370b8984f8c94380abea12/_data",
+      "Name": "25f90257328a43c9c8415045bee1f1843a0b7bc1a2370b8984f8c94380abea12",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-11-01T10:07:10Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/658ec01c4d53dd463441ee2c8bcd1f17993f344e9c5a56435681e07b4f0cd948/_data",
+      "Name": "658ec01c4d53dd463441ee2c8bcd1f17993f344e9c5a56435681e07b4f0cd948",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-11-01T10:06:41Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/909a8d1f40536b2e85eba2da8fbbfb0c02c6486d2262ff0f348073f717fd5a77/_data",
+      "Name": "909a8d1f40536b2e85eba2da8fbbfb0c02c6486d2262ff0f348073f717fd5a77",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-11-01T10:04:08Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/3196a4e6bc1b2185499f21df12af69681fb142717efe416470d397034bf4519a/_data",
+      "Name": "3196a4e6bc1b2185499f21df12af69681fb142717efe416470d397034bf4519a",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-11-01T10:29:07Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/19706afc23589231ecf660f9d4d6e0e432d5568c7576ac08ce41d7634d051680/_data",
+      "Name": "19706afc23589231ecf660f9d4d6e0e432d5568c7576ac08ce41d7634d051680",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-11-01T10:07:47Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/df92bfd4c9f6adb7e8a45ceeceb3ce6d8b5df3211b262cbab8fa0c1f91cc8f8d/_data",
+      "Name": "df92bfd4c9f6adb7e8a45ceeceb3ce6d8b5df3211b262cbab8fa0c1f91cc8f8d",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-11-01T10:30:51Z",
+      "Driver": "local",
+      "Labels": {
+        "com.docker.volume.anonymous": ""
+      },
+      "Mountpoint": "/var/lib/docker/volumes/e03979c028a6a9816d1024c148916cc8365237d0bd1509be524575ac9e2d0fc1/_data",
+      "Name": "e03979c028a6a9816d1024c148916cc8365237d0bd1509be524575ac9e2d0fc1",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-10-31T18:15:20Z",
+      "Driver": "local",
+      "Labels": null,
+      "Mountpoint": "/var/lib/docker/volumes/oxymot_blog_content/_data",
+      "Name": "oxymot_blog_content",
+      "Options": null,
+      "Scope": "local"
+    },
+    {
+      "CreatedAt": "2026-10-31T18:15:20Z",
+      "Driver": "local",
+      "Labels": null,
+      "Mountpoint": "/var/lib/docker/volumes/oxymot_blog_mysql_data/_data",
+      "Name": "oxymot_blog_mysql_data",
+      "Options": null,
+      "Scope": "local"
+    }
+  ],
+  "firewall_rules": "table inet oxymot_guard {\n\tcomment \"Oxymot B1 host ingress filter\"\n\tchain input {\n\t\ttype filter hook input priority filter; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tct state invalid drop\n\t\tip saddr 82.65.69.164 tcp dport 22 accept\n\t\ttcp dport { 80, 443 } accept\n\t\tip protocol icmp accept\n\t\tmeta l4proto ipv6-icmp accept\n\t\tudp sport 67 udp dport 68 accept\n\t}\n}\ntable ip nat {\n\tchain PREROUTING {\n\t\ttype nat hook prerouting priority dstnat; policy accept;\n\t\tfib daddr type local counter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER\n\t}\n\n\tchain OUTPUT {\n\t\ttype nat hook output priority dstnat; policy accept;\n\t\tip daddr != 127.0.0.0/8 fib daddr type local counter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER\n\t}\n\n\tchain POSTROUTING {\n\t\ttype nat hook postrouting priority srcnat; policy accept;\n\t\tip saddr 172.19.0.0/16 oifname != \"br-9f157059dd2d\" counter packets [DYNAMIC] bytes [DYNAMIC] masquerade\n\t\tip saddr 172.17.0.0/16 oifname != \"docker0\" counter packets [DYNAMIC] bytes [DYNAMIC] masquerade\n\t}\n\n\tchain DOCKER {\n\t\tip daddr 127.0.0.1 iifname != \"br-9f157059dd2d\" tcp dport 2368 counter packets [DYNAMIC] bytes [DYNAMIC] dnat to 172.19.0.2:2368\n\t}\n}\ntable ip filter {\n\tchain DOCKER-FORWARD {\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-CT\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-INTERNAL\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-BRIDGE\n\t\tiifname \"docker0\" counter packets [DYNAMIC] bytes [DYNAMIC] accept\n\t\tiifname \"br-ad9694095597\" oifname \"br-ad9694095597\" counter packets [DYNAMIC] bytes [DYNAMIC] accept\n\t\tiifname \"br-9f157059dd2d\" counter packets [DYNAMIC] bytes [DYNAMIC] accept\n\t}\n\n\tchain FORWARD {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-USER\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-FORWARD\n\t}\n\n\tchain DOCKER-USER {\n\t}\n\n\tchain DOCKER {\n\t\tip daddr 172.19.0.2 iifname != \"br-9f157059dd2d\" oifname \"br-9f157059dd2d\" tcp dport 2368 counter packets [DYNAMIC] bytes [DYNAMIC] accept\n\t\tiifname != \"docker0\" oifname \"docker0\" counter packets [DYNAMIC] bytes [DYNAMIC] drop\n\t\tiifname != \"br-9f157059dd2d\" oifname \"br-9f157059dd2d\" counter packets [DYNAMIC] bytes [DYNAMIC] drop\n\t}\n\n\tchain DOCKER-BRIDGE {\n\t\toifname \"docker0\" counter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER\n\t\toifname \"br-9f157059dd2d\" counter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER\n\t}\n\n\tchain DOCKER-CT {\n\t\toifname \"docker0\" ct state related,established counter packets [DYNAMIC] bytes [DYNAMIC] accept\n\t\toifname \"br-9f157059dd2d\" ct state related,established counter packets [DYNAMIC] bytes [DYNAMIC] accept\n\t}\n\n\tchain DOCKER-INTERNAL {\n\t\tip saddr != 172.18.0.0/16 oifname \"br-ad9694095597\" counter packets [DYNAMIC] bytes [DYNAMIC] drop\n\t\tip daddr != 172.18.0.0/16 iifname \"br-ad9694095597\" counter packets [DYNAMIC] bytes [DYNAMIC] drop\n\t}\n}\ntable ip6 nat {\n\tchain PREROUTING {\n\t\ttype nat hook prerouting priority dstnat; policy accept;\n\t\tfib daddr type local counter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER\n\t}\n\n\tchain OUTPUT {\n\t\ttype nat hook output priority dstnat; policy accept;\n\t\tip6 daddr != ::1 fib daddr type local counter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER\n\t}\n\n\tchain DOCKER {\n\t}\n}\ntable ip6 filter {\n\tchain DOCKER-FORWARD {\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-CT\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-INTERNAL\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-BRIDGE\n\t}\n\n\tchain FORWARD {\n\t\ttype filter hook forward priority filter; policy accept;\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-USER\n\t\tcounter packets [DYNAMIC] bytes [DYNAMIC] jump DOCKER-FORWARD\n\t}\n\n\tchain DOCKER-USER {\n\t}\n\n\tchain DOCKER {\n\t}\n\n\tchain DOCKER-BRIDGE {\n\t}\n\n\tchain DOCKER-CT {\n\t}\n\n\tchain DOCKER-INTERNAL {\n\t}\n}\ntable ip raw {\n\tchain PREROUTING {\n\t\ttype filter hook prerouting priority raw; policy accept;\n\t\tip daddr 172.19.0.2 iifname != \"br-9f157059dd2d\" counter packets [DYNAMIC] bytes [DYNAMIC] drop\n\t\tip daddr 127.0.0.1 iifname != \"lo\" tcp dport 2368 counter packets [DYNAMIC] bytes [DYNAMIC] drop\n\t}\n}",
+  "firewall_exit": 0,
+  "timers": "NEXT                            LEFT LAST                              PASSED UNIT                         ACTIVATES\nWed 2026-11-04 17:24:04 UTC 2min 52s Wed 2026-11-04 17:19:04 UTC  2min 7s ago oxymot-blog-monitor.timer    oxymot-blog-monitor.service\nWed 2026-11-04 17:25:35 UTC 4min 23s Wed 2026-11-04 17:20:24 UTC      48s ago oxymot-pull.timer            oxymot-pull.service\nWed 2026-11-04 18:47:02 UTC 1h 25min Wed 2026-11-04 07:57:36 UTC       9h ago apt-daily.timer              apt-daily.service\nThu 2026-11-05 00:00:00 UTC       6h Wed 2026-11-04 00:00:02 UTC      17h ago dpkg-db-backup.timer         dpkg-db-backup.service\nThu 2026-11-05 01:46:48 UTC       8h Wed 2026-11-04 01:23:18 UTC      15h ago oxymot-acme-renew.timer      oxymot-acme-renew.service\nThu 2026-11-05 06:56:46 UTC      13h Wed 2026-11-04 06:46:36 UTC      10h ago apt-daily-upgrade.timer      apt-daily-upgrade.service\nThu 2026-11-05 11:25:34 UTC      18h Wed 2026-11-04 02:06:04 UTC      15h ago man-db.timer                 man-db.service\nThu 2026-11-05 17:17:24 UTC      23h Wed 2026-11-04 17:17:24 UTC 3min 48s ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service\nSun 2026-11-08 03:10:13 UTC   3 days Sun 2026-11-01 03:10:36 UTC   3 days ago e2scrub_all.timer            e2scrub_all.service\nMon 2026-11-09 00:11:29 UTC   4 days Mon 2026-11-02 00:34:24 UTC   2 days ago fstrim.timer                 fstrim.service\n\n10 timers listed.\n",
+  "backup_and_publication_file_metadata": [
+    {
+      "path": "/opt/oxymot-blog/compose.yaml",
+      "sha256": "341e099f25bde7ea0648597bc38cb6434a305f6f7069bf992febcb0d7e86101c",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 3116
+    },
+    {
+      "path": "/etc/systemd/system/oxymot-acme-renew.service",
+      "sha256": "0197bde9b16b17565490b75524576680cac3c913d9586c00d90c1c0c966d2f8b",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 281
+    },
+    {
+      "path": "/etc/systemd/system/oxymot-acme-renew.timer",
+      "sha256": "b3286c4de048b1a20ec23dc45f1f64d88a01dab496ab389dfababc6387238c33",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 161
+    },
+    {
+      "path": "/etc/systemd/system/oxymot-blog-backup.service",
+      "sha256": "c6f0b7c2c75ea5a05c87cd6021e954491f962ba577d79388354198963cf67018",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 306
+    },
+    {
+      "path": "/etc/systemd/system/oxymot-blog-backup.timer",
+      "sha256": "fdc0e306d063b7d0addc03d6e8e7ae2947fe88a40b7518fe803fbb408b1fb49e",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 178
+    },
+    {
+      "path": "/etc/systemd/system/oxymot-blog-monitor.service",
+      "sha256": "4edb299f8e0f1866f061940dc1dec2c93ffcbb302a142f34a871444e543de802",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 299
+    },
+    {
+      "path": "/etc/systemd/system/oxymot-blog-monitor.timer",
+      "sha256": "b6f64dca8de8f0b208c03861606371f178ebdc49f6e75b85335535ca62ae16ae",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 190
+    },
+    {
+      "path": "/etc/systemd/system/oxymot-nft-guard.service",
+      "sha256": "d5246b3b2329f4dfd3c4928c7aa5b0e0e23132eec8c9aaee61ac4554f367be72",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 324
+    },
+    {
+      "path": "/etc/systemd/system/oxymot-pull.service",
+      "sha256": "ecf6a69d21e27e0fc211e59d8670f47a2ad69222f563625f60eedac3dc4a60ad",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 674
+    },
+    {
+      "path": "/etc/systemd/system/oxymot-pull.timer",
+      "sha256": "800b07d8ecbd5bb5d0bb4a756320c2a578865d0da8eae32e390512951553ef87",
+      "uid": 0,
+      "mode": "0o644",
+      "bytes": 210
+    }
+  ],
+  "resources": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        40G  7.1G   31G  19% /\n/dev/sda1        40G  7.1G   31G  19% /\n/dev/sda1        40G  7.1G   31G  19% /\n\n               total        used        free      shared  buff/cache   available\nMem:            3826        1481         219           1        2472        2344\nSwap:              0           0           0\n",
+  "infra_packages": "postfix\t\n",
+  "commands": [
+    {
+      "argv": [
+        "/usr/sbin/nginx",
+        "-T"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/openssl",
+        "x509",
+        "-in",
+        "/etc/ssl/oxymot/fullchain.pem",
+        "-noout",
+        "-subject",
+        "-issuer",
+        "-dates",
+        "-fingerprint",
+        "-sha256"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "ps",
+        "-aq",
+        "--no-trunc"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "container",
+        "inspect",
+        "348624f1ab687a7a7f7ce6b23d905b037bdd9170d76cce5799963a674158963d"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "container",
+        "inspect",
+        "3683a81734ac04ddddef7c7cb0023f58ebfc6dc1b6359465a23dd2bf57ba5920"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "network",
+        "ls",
+        "-q",
+        "--no-trunc"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "network",
+        "inspect",
+        "c91b6effbe74a48ac823ea51e7fdfb5680f32a034211947b42ae0a36bdba0906"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "network",
+        "inspect",
+        "0f857ef9a5a54f173457eb85cf01768a74661b08b5a4133ad50dd4eb6649783c"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "network",
+        "inspect",
+        "5fb1f24e812f056bc2fd84e9e9e91c3ce660c95eac797276109d2d7e36222e58"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "network",
+        "inspect",
+        "ad96940955972005bb66f827b59b3baaf1c98c7d4f6dda393bea05667ea7a5c3"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "network",
+        "inspect",
+        "9f157059dd2d5c2f8e0a9f2be62e7c51a82be819c861e29c53ebb5c9e743b30c"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "ls",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "2cf7c1e1673df53d29406b8331ba35f6e08bfb4a3c187ad3a4d45693d8b61ae9"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "3ed331ac21bdcfa49229d0e740107b6708c9f478f44f73bd5e14bb0cd79ccf39"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "7e2ac73e423db7f25466c07638abddfa279e7b7091af044d16ae13e71d8a8cb1"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "25f90257328a43c9c8415045bee1f1843a0b7bc1a2370b8984f8c94380abea12"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "658ec01c4d53dd463441ee2c8bcd1f17993f344e9c5a56435681e07b4f0cd948"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "909a8d1f40536b2e85eba2da8fbbfb0c02c6486d2262ff0f348073f717fd5a77"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "3196a4e6bc1b2185499f21df12af69681fb142717efe416470d397034bf4519a"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "19706afc23589231ecf660f9d4d6e0e432d5568c7576ac08ce41d7634d051680"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "df92bfd4c9f6adb7e8a45ceeceb3ce6d8b5df3211b262cbab8fa0c1f91cc8f8d"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "e03979c028a6a9816d1024c148916cc8365237d0bd1509be524575ac9e2d0fc1"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "oxymot_blog_content"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "volume",
+        "inspect",
+        "oxymot_blog_mysql_data"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/sbin/nft",
+        "list",
+        "ruleset"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "info",
+        "--format",
+        "{{json .}}"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "compose",
+        "version"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "ss",
+        "-lntup"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "systemctl",
+        "list-timers",
+        "--all",
+        "--no-pager",
+        "--plain"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "df",
+        "-h",
+        "/",
+        "/opt",
+        "/var"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "free",
+        "-m"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\n",
+        "*infra-layer*",
+        "*postfix*"
+      ],
+      "exit": 1
+    }
+  ],
+  "mutations": [],
+  "secret_material_collected": false,
+  "restore_acceptance": "NOT_DEMONSTRATED"
+}

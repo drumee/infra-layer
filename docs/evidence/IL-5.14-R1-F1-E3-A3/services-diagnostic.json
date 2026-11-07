@@ -1,0 +1,22 @@
+{
+  "attempt": "A3-POSTFIX-FOCUSED-DIAGNOSTIC-1",
+  "source": "964e3a4a09be14f7951246d65dcc936bc29ab1c3",
+  "tests": [
+    "SMTP STARTTLS/authenticated submission",
+    "OpenDKIM signs captured bytes",
+    "Postfix queue survives capture outage"
+  ],
+  "assertionsChanged": false,
+  "dockerCommandsChanged": false,
+  "retry": false,
+  "testCommand": [
+    "/usr/bin/node",
+    "--require",
+    "/tmp/drumee-il514-r1-f1-e3-a3-pw32_qs8/services-observer.cjs",
+    "--test",
+    "--test-name-pattern=SMTP STARTTLS/authenticated|OpenDKIM signs|Postfix queue survives",
+    "/home/somanos/github/infra-layer/test/services/services.test.js"
+  ],
+  "exit": 0,
+  "signal": null
+}

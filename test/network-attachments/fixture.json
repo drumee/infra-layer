@@ -1,0 +1,37 @@
+{
+  "provenance": {
+    "producer": "https://github.com/moby/moby/blob/9c623849a9e6ce2add344fa1453c454dce75340f/daemon/network.go#L747-L763",
+    "meaning": "Attachments with a sandbox use its container ID; an endpoint without a sandbox is keyed by ep- plus EndpointID."
+  },
+  "composition": {
+    "project": "drumee-il514-fixture",
+    "compose": {
+      "services": { "redis": {}, "provisioner": {} },
+      "networks": { "kernel": { "name": "drumee-il514-fixture-kernel" } }
+    }
+  },
+  "network": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "name": "drumee-il514-fixture-kernel",
+    "owner": "drumee-il514-fixture",
+    "project": "drumee-il514-fixture",
+    "driver": "bridge",
+    "internal": false,
+    "containers": {
+      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc": {
+        "Name": "drumee-il514-fixture-redis-1",
+        "EndpointID": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "MacAddress": "02:42:ac:12:00:02",
+        "IPv4Address": "172.18.0.2/16",
+        "IPv6Address": ""
+      },
+      "ep-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb": {
+        "Name": "drumee-il514-fixture-provisioner-1",
+        "EndpointID": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "MacAddress": "02:42:ac:12:00:03",
+        "IPv4Address": "172.18.0.3/16",
+        "IPv6Address": ""
+      }
+    }
+  }
+}

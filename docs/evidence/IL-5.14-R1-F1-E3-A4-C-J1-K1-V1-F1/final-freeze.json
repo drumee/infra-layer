@@ -1,0 +1,48 @@
+{
+  "recorded": "2026-10-30T19:23:17.531801+00:00",
+  "resume_checkpoint": "af888a0bb51d837e40479bd69d7aec797dbf6767",
+  "test_candidate_revision": "a5c61911c62dd2e48f4c87330f1d84990c1069e3",
+  "qualified_production_and_package_source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "source_diff_since_V1": [
+    "test/diagnostics/fixture-volumes/campaign.cjs: fixed evidence root V1-F1",
+    "test/diagnostics/fixture-volumes/docker.cjs: remove empty initializer"
+  ],
+  "original_frozen_inputs_preserved": 177,
+  "current_harness_sha256": {
+    "test/diagnostics/fixture-volumes/campaign.cjs": "a3df253ed38b65f48672448b2be8854d2e13616932d4cf0eb198e21c87c7697a",
+    "test/diagnostics/fixture-volumes/docker.cjs": "a9a344d598d49b779894d1c57f048973d368479a6e712876bf1b679f22021af5",
+    "test/diagnostics/fixture-volumes/ownership.cjs": "a460ac77850fe9c2cc25ccef58de5c69c48f231a4cbbe6aec793633933597acb",
+    "test/diagnostics/fixture-volumes/safety.test.cjs": "0b9f5fd8e755375c14e6cbf46303e239548ec9bb446ed004bbac7a784c28b6ce"
+  },
+  "source_changes_after_failure": false,
+  "qualified_archive_sha256": "004f018288018f678ed044c56ee4b9de520ab9ec9bc0e7deb3b6d59c172f99e1",
+  "qualified_archive_unchanged": true,
+  "historical_K1_A1_V1_manifests_unchanged": true,
+  "corrected_qualification_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "expected_original_lint_replay": "exit1 before correction, separately recorded baseline-reproduction.json",
+  "real_campaigns": 1,
+  "unchanged_reruns": 0,
+  "first_failure": "Final ordered inventory comparison campaign.cjs:73; Mounts permutations from docker.cjs:49",
+  "program_cleanup_result": "INCOMPLETE",
+  "program_campaign_result": "FAIL",
+  "exact_owned_disposal": "owned container and exact volume removed; no references; actual die exitCode0",
+  "historical_deletions": 0,
+  "foreign_mutating_commands": 0,
+  "controlled_cleanup_mechanism": "NOT_QUALIFIED",
+  "independent_disposition": "CHANGES_REQUESTED",
+  "finding": "V1-F1-REC-001 MODERATE",
+  "historical_entries": "H01-H04 remain RESOURCE_IDENTITY_UNRESOLVED/HISTORICAL_EVIDENCE_INSUFFICIENT",
+  "application_acceptance": "FAILED NETWORK_ATTACHMENT_MISMATCH root cause undetermined",
+  "R1_closure": "PENDING",
+  "remote_mutations": false,
+  "checkpoint_note": "The following documentation-only commit is recorded in owner handoff/private checkpoint-readback.json; executable inputs remain candidatea5c61911."
+}

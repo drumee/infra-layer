@@ -1,0 +1,95 @@
+{
+  "reviewer": "/root/v1_f2_review",
+  "created": "2026-11-04T09:27:47.017Z",
+  "scope": "Installed Node internal-source read only. No test or comparator execution.",
+  "node_version": "v22.22.0",
+  "node_executable": "/usr/bin/node",
+  "source_checkpoint": "f6ec38e24d2504b3ed45fe4da94b4a00e785da4c",
+  "comparator_source": "5699ab0ca9bed36aa00fa9b3692c4e64b7119ee6",
+  "internal_sources": {
+    "internal/test_runner/runner": {
+      "sha256": "d253edfed7fbcedf5851b7148e33af3968f2a13ae4c004a8ee450cae98a7ac3f",
+      "lines": 818
+    },
+    "internal/test_runner/reporter/v8-serializer": {
+      "sha256": "703c91cd034964dfb41deed5e79971fe061ab154220d8a8bb5adcc9af48b06bc",
+      "lines": 46
+    },
+    "internal/test_runner/reporter/tap": {
+      "sha256": "ec4c8ff12b8302e0dbe70c7dcd3d3fe79cb4bee1a29dc05f86aaed7b32df15c1",
+      "lines": 282
+    },
+    "internal/test_runner/harness": {
+      "sha256": "3a0cafefbcdf86e725329d1b7f7277e697da50376172f41cb404c5f2bd46da7f",
+      "lines": 355
+    },
+    "internal/test_runner/utils": {
+      "sha256": "8e26ca0a8081317ec2ec9418a98a2a94063f2a699df7be92a991a4d292a753e2",
+      "lines": 608
+    }
+  },
+  "observations": [
+    {
+      "location": "internal/test_runner/runner:177-242",
+      "fact": "FileTest counts reporter pass/fail messages; failedSubtests becomes true only for a parsed top-level test:fail."
+    },
+    {
+      "location": "internal/test_runner/runner:363-400",
+      "fact": "Test file is launched in a child process with NODE_TEST_CONTEXT=child-v8; child stdout parsed as v8-framed reporter transport."
+    },
+    {
+      "location": "internal/test_runner/runner:402-421",
+      "fact": "Child stderr is converted to test:stderr messages; parent awaits child exit and stdout completion."
+    },
+    {
+      "location": "internal/test_runner/runner:439-452",
+      "fact": "Nonzero child exit or signal with no child error creates ERR_TEST_FAILURE(test failed). Failure type is subtestsFailed only if failedSubtests was set, otherwise testCodeFailure. Error has exitCode/signal and deliberately stack undefined."
+    },
+    {
+      "location": "internal/test_runner/reporter/v8-serializer:16-43",
+      "fact": "Each test event serializes its error through internal/error_serdes and v8 DefaultSerializer before emission."
+    },
+    {
+      "location": "internal/test_runner/harness:93-107",
+      "fact": "Errors during test bootstrap or reporter scope are rethrown; ordinary test failure handling is distinct."
+    },
+    {
+      "location": "internal/test_runner/reporter/tap:31-64",
+      "fact": "TAP prints child stdout/stderr as comments and test:fail details, but cannot reconstruct an original error absent from supplied events."
+    }
+  ],
+  "inference": "F2 generic file-level error is consistent with child exit1 without a parsed per-test failure, but these static paths do not establish the reason for missing child evidence or historical causality.",
+  "hypotheses": [
+    {
+      "id": "D1-HYP-01",
+      "status": "UNPROVEN",
+      "text": "Module-load/registration/bootstrap exception before useful serialized test events."
+    },
+    {
+      "id": "D1-HYP-02",
+      "status": "UNPROVEN",
+      "text": "Reporter or v8 error serialization failure interrupts delivery of actual test events."
+    },
+    {
+      "id": "D1-HYP-03",
+      "status": "UNPROVEN",
+      "text": "Child exits or uncaught asynchronous failure without complete reporter output."
+    },
+    {
+      "id": "D1-HYP-04",
+      "status": "UNPROVEN",
+      "text": "Actual adapter double still traverses trusted executable/config path validation before serving Docker data; environment metadata may differ from earlier qualification."
+    }
+  ],
+  "diagnostic_review_requirements": [
+    "Observe module-load boundaries and exceptions through bounded side channel; rethrow exact exceptions.",
+    "Observe uncaughtExceptionMonitor without installing a swallowing uncaughtException listener.",
+    "Any unhandledRejection observer must preserve original failure semantics rather than convert process failure to success.",
+    "Preserve stdout/stderr separately and capture complete error name/code/message/stack/cause chains with explicit bounds/truncation flags.",
+    "Capture events and phase/case identity without changing comparator, assertions, registration order or source fixtures.",
+    "Preflight E1-E10 must pass before the single actual comparator diagnostic; no second attempt or correction inside D1."
+  ],
+  "reviewer_tests": 0,
+  "reviewer_Docker_commands": 0,
+  "disposition": "STATIC_HYPOTHESES_ONLY; no causal disposition or qualification"
+}

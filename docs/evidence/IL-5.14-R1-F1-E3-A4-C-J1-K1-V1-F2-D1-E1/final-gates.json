@@ -1,0 +1,551 @@
+{
+  "mission": "IL-5.14-R1-F1-E3-A4-C-J1-K1-V1-F2-D1-E1",
+  "status": "FAILED_DIAGNOSTIC",
+  "common": {
+    "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+    "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+    "node_version": "v22.22.0",
+    "node_executable": "/usr/bin/node",
+    "fixture_sha256": {
+      "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+      "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+    },
+    "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+    "command": [
+      "/usr/bin/node",
+      "--test",
+      "--test-reporter=tap",
+      "test/diagnostics/test-events-e1/positive.test.cjs"
+    ],
+    "process_exit_status": 0,
+    "raw_stdout": "native-positive/stdout.txt",
+    "raw_stderr": "native-positive/stderr.txt",
+    "registered_individual_test_count": "NOT_ESTABLISHED",
+    "executed_individual_test_count": "NOT_ESTABLISHED",
+    "observed_expected_named_PASS_count": 0,
+    "observed_expected_named_FAIL_count": 0,
+    "file_level_TAP_counts": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0
+    },
+    "reporter": "native TAP",
+    "D1_wrapper_used": false,
+    "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+    "root_cause": "ROOT_CAUSE_UNDETERMINED",
+    "independent_review": "BLOCKED_EVIDENCE",
+    "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation."
+  },
+  "gates": [
+    {
+      "id": "A",
+      "status": "PASS",
+      "reason": "Exact checkpoint/D1 source/invocation/missing evidence verified",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    },
+    {
+      "id": "B",
+      "status": "FAIL",
+      "reason": "Native positive root0 but exact named individual PASS absent; mandatory stop",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    },
+    {
+      "id": "C",
+      "status": "NOT_EXECUTED",
+      "reason": "Native prerequisite failed; no matched wrapper pair",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    },
+    {
+      "id": "D",
+      "status": "BLOCKED",
+      "reason": "Code/file selection known; actual individual lifecycle not established",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    },
+    {
+      "id": "E",
+      "status": "BLOCKED",
+      "reason": "No expected event in raw output; inner reporter/stream boundary unresolved",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    },
+    {
+      "id": "F",
+      "status": "BLOCKED",
+      "reason": "ROOT_CAUSE_UNDETERMINED; first missing boundary has no upstream presence proof",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    },
+    {
+      "id": "G",
+      "status": "NOT_EXECUTED",
+      "reason": "No exact cause, no concrete correction",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    },
+    {
+      "id": "H",
+      "status": "PASS",
+      "reason": "Original177/comparator6/D1diagnostic6 preserved; only two isolated fixtures",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    },
+    {
+      "id": "I",
+      "status": "BLOCKED",
+      "reason": "Independent BLOCKED_EVIDENCE, recommend FAILED_DIAGNOSTIC",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    },
+    {
+      "id": "J",
+      "status": "PASS",
+      "reason": "Auditable failed baseline conclusion, not causal success",
+      "source": "0a6ecb0fd90a4d5aaf21e1c092467c85f2e56a7a",
+      "checkpoint": "9c70b7563eb898379d1d3a3d26f97694bb03d6d6",
+      "node_version": "v22.22.0",
+      "node_executable": "/usr/bin/node",
+      "fixture_sha256": {
+        "test/diagnostics/test-events-e1/negative.test.cjs": "7ad845400d2a0ee9d4d202115ad37799eef7307875952219d05d87a42a00d2ab",
+        "test/diagnostics/test-events-e1/positive.test.cjs": "78f8745189795dd0b371863ab90aae85b9a36f48966b9359e34f36764ebe171e"
+      },
+      "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+      "command": [
+        "/usr/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "test/diagnostics/test-events-e1/positive.test.cjs"
+      ],
+      "process_exit_status": 0,
+      "raw_stdout": "native-positive/stdout.txt",
+      "raw_stderr": "native-positive/stderr.txt",
+      "registered_individual_test_count": "NOT_ESTABLISHED",
+      "executed_individual_test_count": "NOT_ESTABLISHED",
+      "observed_expected_named_PASS_count": 0,
+      "observed_expected_named_FAIL_count": 0,
+      "file_level_TAP_counts": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0
+      },
+      "reporter": "native TAP",
+      "D1_wrapper_used": false,
+      "first_verified_missing_boundary": "Parent native CLI TAP lacks expected named result; upstream emission not established",
+      "root_cause": "ROOT_CAUSE_UNDETERMINED",
+      "independent_review": "BLOCKED_EVIDENCE",
+      "limits": "Native positive fails; negative/wrapped comparisons not executed; no exact native layer diagnosis; no comparator/Docker/remote operation.",
+      "evidence": [
+        "baseline.json",
+        "experiment-plan.json",
+        "native-positive/start.json",
+        "native-positive/tool-result.json",
+        "native-positive/result.json",
+        "native-positive/stdout.txt",
+        "native-positive/stderr.txt",
+        "STOP.json",
+        "hypotheses.json",
+        "source-impact.json",
+        "independent-review/decision.json"
+      ]
+    }
+  ]
+}

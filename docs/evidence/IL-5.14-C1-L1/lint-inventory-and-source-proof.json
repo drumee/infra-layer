@@ -1,0 +1,245 @@
+{
+  "sourceRevision": "ce1ba500d3775d1a7f6ac0156d26b60a4c6ccc4c",
+  "classification": "EXISTING_FINDING_MOVED",
+  "offendingExpression": "catch (_) { F.fail(\"ACTIVE_STATE_CORRUPTED\"); }",
+  "historical": [
+    {
+      "file": "lifecycle/activation.js",
+      "line": 13,
+      "column": 65,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    }
+  ],
+  "current": [
+    {
+      "file": "adapters/docker/nginx.js",
+      "line": 4,
+      "column": 11,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'spec' is assigned a value but never used."
+    },
+    {
+      "file": "capabilities/database/index.js",
+      "line": 2,
+      "column": 7,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'S' is assigned a value but never used."
+    },
+    {
+      "file": "capabilities/dns/index.js",
+      "line": 22,
+      "column": 76,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/redis/index.js",
+      "line": 26,
+      "column": 75,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/secrets/index.js",
+      "line": 17,
+      "column": 520,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "capabilities/secrets/index.js",
+      "line": 18,
+      "column": 14,
+      "rule": "no-control-regex",
+      "severity": 1,
+      "message": "Unexpected control character(s) in regular expression: \\x00, \\x1f."
+    },
+    {
+      "file": "capabilities/secrets/index.js",
+      "line": 70,
+      "column": 145,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lib/plan-v2.js",
+      "line": 3,
+      "column": 25,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'cidr' is assigned a value but never used."
+    },
+    {
+      "file": "lib/plan-v2.js",
+      "line": 58,
+      "column": 112,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lib/rendering.js",
+      "line": 67,
+      "column": 64,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/activation.js",
+      "line": 5,
+      "column": 7,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'crypto' is assigned a value but never used."
+    },
+    {
+      "file": "lifecycle/composition.js",
+      "line": 9,
+      "column": 155,
+      "rule": "no-control-regex",
+      "severity": 1,
+      "message": "Unexpected control character(s) in regular expression: \\x00."
+    },
+    {
+      "file": "lifecycle/composition.js",
+      "line": 41,
+      "column": 254,
+      "rule": "no-control-regex",
+      "severity": 1,
+      "message": "Unexpected control character(s) in regular expression: \\x00."
+    },
+    {
+      "file": "lifecycle/composition.js",
+      "line": 120,
+      "column": 15,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'name' is assigned a value but never used."
+    },
+    {
+      "file": "lifecycle/external-gateway.js",
+      "line": 42,
+      "column": 96,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/external-gateway.js",
+      "line": 42,
+      "column": 99,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "lifecycle/journal.js",
+      "line": 12,
+      "column": 95,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/preparation.js",
+      "line": 15,
+      "column": 90,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/preparation.js",
+      "line": 21,
+      "column": 82,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 12,
+      "column": 108,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 15,
+      "column": 180,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 54,
+      "column": 168,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 84,
+      "column": 73,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "lifecycle/transitions.js",
+      "line": 89,
+      "column": 69,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/application/run.js",
+      "line": 7,
+      "column": 7,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'api' is assigned a value but never used."
+    },
+    {
+      "file": "test/application/run.js",
+      "line": 11,
+      "column": 535,
+      "rule": "no-unused-vars",
+      "severity": 1,
+      "message": "'_' is defined but never used."
+    },
+    {
+      "file": "test/application/run.js",
+      "line": 11,
+      "column": 538,
+      "rule": "no-empty",
+      "severity": 1,
+      "message": "Empty block statement."
+    },
+    {
+      "file": "test/unit/composition.test.js",
+      "line": 25,
+      "column": 41,
+      "rule": "getter-return",
+      "severity": 1,
+      "message": "Expected to return a value in getter 'contract_version'."
+    }
+  ],
+  "newFindings": [],
+  "proof": "Byte-for-byte identical production file after replacing this one unused catch binding; no AST location offsets used",
+  "initialAnalysisNote": "An initial AST equality analysis included source offsets; removing four characters shifts offsets and made that analysis unsuitable. Exact single-edit string equality is the corrected analysis, not a rerun of any functional acceptance.",
+  "baselineSHA256": "4ed3ffda318796bda37b65deda058240d0d8926b866ffc46c7bd678b68cfbfb2"
+}

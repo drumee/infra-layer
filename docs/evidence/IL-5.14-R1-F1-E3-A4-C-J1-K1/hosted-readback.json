@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/usr/bin/gh",
+    "api",
+    "repos/drumee/infra-layer/commits/cd9b8322bd7eef3b4094710ec4ea26be94f08922/check-runs?per_page=100"
+  ],
+  "exit_code": 0,
+  "recorded": "2026-10-29T08:14:12.231991+00:00",
+  "remote_head": "cd9b8322bd7eef3b4094710ec4ea26be94f08922",
+  "local_source": "20c8a2931dc95f6beca1eb7ac2c0fbe5282194ee",
+  "local_hosted_status": "HOSTED_CI_NOT_EXECUTED_NO_PUSH_AUTHORIZATION",
+  "reason": "Read-only existing remote checks; no PR update or workflow dispatch"
+}

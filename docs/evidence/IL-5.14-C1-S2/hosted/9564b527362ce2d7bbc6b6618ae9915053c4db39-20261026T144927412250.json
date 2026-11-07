@@ -1,0 +1,1694 @@
+{
+  "timestamp": "2026-10-26T14:49:25.723891+00:00",
+  "head": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+  "checks": {
+    "total_count": 10,
+    "check_runs": [
+      {
+        "id": 121642927169,
+        "name": "SonarCloud Code Analysis",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnvEQQ",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642927169",
+        "html_url": "https://github.com/drumee/infra-layer/runs/121642927169",
+        "details_url": "https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=20",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:47:56Z",
+        "completed_at": "2026-10-26T14:48:46Z",
+        "output": {
+          "title": "Quality Gate passed",
+          "summary": "Issues  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/passed.svg '') [49 New issues](https://sonarcloud.io/project/issues?id=drumee_infra-layer&pullRequest=20&issueStatuses=OPEN,CONFIRMED&sinceLeakPeriod=true)  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/accepted.svg '') [0 Accepted issues](https://sonarcloud.io/project/issues?id=drumee_infra-layer&pullRequest=20&issueStatuses=ACCEPTED)\n\nMeasures  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/passed.svg '') [0 Security Hotspots](https://sonarcloud.io/project/security_hotspots?id=drumee_infra-layer&pullRequest=20&issueStatuses=OPEN,CONFIRMED&sinceLeakPeriod=true)  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/passed.svg '') [0.0% Coverage on New Code](https://sonarcloud.io/component_measures?id=drumee_infra-layer&pullRequest=20&metric=new_coverage&view=list)  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/passed.svg '') [0.6% Duplication on New Code](https://sonarcloud.io/component_measures?id=drumee_infra-layer&pullRequest=20&metric=new_duplicated_lines_density&view=list)  \n  \n[See analysis details on SonarQube Cloud](https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=20)\n\n",
+          "text": null,
+          "annotations_count": 49,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642927169/annotations"
+        },
+        "check_suite": {
+          "id": 109341661584
+        },
+        "app": {
+          "id": 12526,
+          "client_id": "Iv1.dc610988574d1724",
+          "slug": "sonarqubecloud",
+          "node_id": "MDM6QXBwMTI1MjY=",
+          "owner": {
+            "login": "SonarSource",
+            "id": 545988,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjU0NTk4OA==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/545988?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/SonarSource",
+            "html_url": "https://github.com/SonarSource",
+            "followers_url": "https://api.github.com/users/SonarSource/followers",
+            "following_url": "https://api.github.com/users/SonarSource/following{/other_user}",
+            "gists_url": "https://api.github.com/users/SonarSource/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/SonarSource/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/SonarSource/subscriptions",
+            "organizations_url": "https://api.github.com/users/SonarSource/orgs",
+            "repos_url": "https://api.github.com/users/SonarSource/repos",
+            "events_url": "https://api.github.com/users/SonarSource/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/SonarSource/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "SonarQubeCloud",
+          "description": "\r\nSonarQube Cloud (formerly SonarCloud) is a SaaS code analysis tool designed to detect coding issues in 30+ languages, frameworks, and IaC platforms. Your code is checked against an extensive set of rules that cover many attributes of code, such as maintainability, reliability, and security issues, on each merge/pull request.\r\n\r\nFor those requiring US-based hosting, [SonarQube Cloud US](https://sonarqube.us/) offers the perfect alternative. If you need data residency outside the US or within the EU, [SonarQube Cloud](https://sonarcloud.io/) with this GitHub app is the ideal solution.\r\n\r\nSonarQube Cloud integrates seamlessly into your GitHub workflow and provides clear guidance for resolving any code quality and security issues detected. The majority of popular languages can be analyzed automatically; no configuration is required!\r\n\r\nWith [SonarQube Cloud](https://sonarcloud.io/github), you get:\r\n\r\n-   Fast, precise static analysis and feedback on your code\r\n    \r\n-   Support for popular languages, frameworks, and IaC tools\r\n    \r\n-   Free analysis for open-source projects and private projects up to max 50k LoC\r\n    \r\n-   Automatic analysis of pull requests and branches with results reported inline\r\n    \r\n-   IDE Support with [SonarQube for IDE](https://www.sonarsource.com/products/sonarlint/) integration\r\n    \r\n-   Quality Gate (added as a GitHub check) acting at two different levels - first, preventing you from merging pull requests that contain issues - and later, helping you to release only clean, safe code\r\n    \r\n-   Sign up for SonarQube free tier and begin scanning your private and public repositories\r\n    \r\n\r\nA [GitHub Action](https://github.com/marketplace/actions/sonarcloud-scan) is available in the marketplace to make it easy for you (for projects where automatic analysis isn't available). SonarQube Cloud also integrates smoothly with Jenkins, CircleCI, TravisCI, CirrusCI, and many other tools.\r\n\r\nA free tier is available that allows you to explore the benefits of SonarQube Cloud using your public and private repositories. We also provide a no-commitment, [14-day trial](https://www.sonarsource.com/products/sonarcloud/signup/) of SonarQube Cloud Team for unlimited team members, up to 1.9M LoC, AI CodeFix recommendations, and more. No need to speak with a sales rep or request a license key - get automatic code analysis results on your private projects in minutes! Want to see more examples of SonarCloud in action? You can [explore current Open Source projects in SonarCloud](https://sonarcloud.io/explore/projects?sort=-analysis_date) that are using the [Clean as You Code](https://www.sonarsource.com/solutions/our-unique-approach/) methodology.\r\n\r\nWhat are you waiting for? SonarQube Cloud helps you consistently deliver cleaner, secure software that future developers will appreciate and your users will love. Start writing Clean Code. [Now](https://www.sonarsource.com/products/sonarcloud/signup/)!",
+          "external_url": "https://sonarcloud.io",
+          "html_url": "https://github.com/apps/sonarqubecloud",
+          "created_at": "2018-05-22T07:36:37Z",
+          "updated_at": "2026-10-15T11:45:30Z",
+          "permissions": {
+            "checks": "write",
+            "contents": "read",
+            "emails": "read",
+            "members": "read",
+            "metadata": "read",
+            "organization_copilot_seat_management": "read",
+            "pull_requests": "write",
+            "security_events": "write",
+            "statuses": "write"
+          },
+          "events": [
+            "code_scanning_alert",
+            "organization",
+            "pull_request",
+            "push",
+            "repository"
+          ]
+        },
+        "pull_requests": [
+          {
+            "url": "https://api.github.com/repos/drumee/infra-layer/pulls/20",
+            "id": 5015170427,
+            "number": 20,
+            "head": {
+              "ref": "fix/il514-c1-network-attachment-identity",
+              "sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            },
+            "base": {
+              "ref": "main",
+              "sha": "c218811effc83da25cf71a914e27accc96101329",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 121642708715,
+        "name": "CodeQL",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnhu6w",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642708715",
+        "html_url": "https://github.com/drumee/infra-layer/runs/121642708715",
+        "details_url": "https://github.com/drumee/infra-layer/runs/121642708715",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:48:24Z",
+        "completed_at": "2026-10-26T14:48:28Z",
+        "output": {
+          "title": "No new alerts in code changed by this pull request",
+          "summary": "[View all branch alerts](/drumee/infra-layer/security/code-scanning?query=pr%3A20+tool%3ACodeQL+is%3Aopen).",
+          "text": null,
+          "annotations_count": 0,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642708715/annotations"
+        },
+        "check_suite": {
+          "id": 109341925079
+        },
+        "app": {
+          "id": 57789,
+          "client_id": "Iv1.4643383dd86f00de",
+          "slug": "github-advanced-security",
+          "node_id": "MDM6QXBwNTc3ODk=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Advanced Security",
+          "description": "",
+          "external_url": "https://github.com/features/security",
+          "html_url": "https://github.com/apps/github-advanced-security",
+          "created_at": "2020-03-17T21:25:09Z",
+          "updated_at": "2026-09-14T08:13:48Z",
+          "permissions": {
+            "actions": "read",
+            "checks": "write",
+            "contents": "read",
+            "copilot_requests": "write",
+            "metadata": "read",
+            "pull_requests": "read"
+          },
+          "events": []
+        },
+        "pull_requests": [
+          {
+            "url": "https://api.github.com/repos/drumee/infra-layer/pulls/20",
+            "id": 5015170427,
+            "number": 20,
+            "head": {
+              "ref": "fix/il514-c1-network-attachment-identity",
+              "sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            },
+            "base": {
+              "ref": "main",
+              "sha": "c218811effc83da25cf71a914e27accc96101329",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 121642440209,
+        "name": "dependencies",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnRWEQ",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "d8a56de1-1006-5715-9abb-33074229ed8f",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642440209",
+        "html_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642440209",
+        "details_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642440209",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:47:57Z",
+        "completed_at": "2026-10-26T14:48:15Z",
+        "output": {
+          "title": null,
+          "summary": null,
+          "text": null,
+          "annotations_count": 0,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642440209/annotations"
+        },
+        "check_suite": {
+          "id": 109341708088
+        },
+        "app": {
+          "id": 15368,
+          "client_id": "Iv1.05c79e9ad1f6bdfa",
+          "slug": "github-actions",
+          "node_id": "MDM6QXBwMTUzNjg=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Actions",
+          "description": "Automate your workflow from idea to production",
+          "external_url": "https://help.github.com/en/actions",
+          "html_url": "https://github.com/apps/github-actions",
+          "created_at": "2018-07-30T09:30:17Z",
+          "updated_at": "2026-06-18T16:17:48Z",
+          "permissions": {
+            "actions": "write",
+            "administration": "read",
+            "artifact_metadata": "write",
+            "attestations": "write",
+            "checks": "write",
+            "code_quality": "write",
+            "contents": "write",
+            "copilot_requests": "write",
+            "deployments": "write",
+            "discussions": "write",
+            "drives": "write",
+            "issues": "write",
+            "merge_queues": "write",
+            "metadata": "read",
+            "models": "read",
+            "packages": "write",
+            "pages": "write",
+            "pull_requests": "write",
+            "repository_hooks": "write",
+            "repository_projects": "write",
+            "security_events": "write",
+            "statuses": "write",
+            "vulnerability_alerts": "read"
+          },
+          "events": [
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_dispatch",
+            "status",
+            "watch",
+            "workflow_dispatch",
+            "workflow_run"
+          ]
+        },
+        "pull_requests": [
+          {
+            "url": "https://api.github.com/repos/drumee/infra-layer/pulls/20",
+            "id": 5015170427,
+            "number": 20,
+            "head": {
+              "ref": "fix/il514-c1-network-attachment-identity",
+              "sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            },
+            "base": {
+              "ref": "main",
+              "sha": "c218811effc83da25cf71a914e27accc96101329",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 121642440102,
+        "name": "unit",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnRVpg",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "9cf9192e-c5a4-5bb7-a056-c33f732b0897",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642440102",
+        "html_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642440102",
+        "details_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642440102",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:47:57Z",
+        "completed_at": "2026-10-26T14:48:17Z",
+        "output": {
+          "title": null,
+          "summary": null,
+          "text": null,
+          "annotations_count": 0,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642440102/annotations"
+        },
+        "check_suite": {
+          "id": 109341708088
+        },
+        "app": {
+          "id": 15368,
+          "client_id": "Iv1.05c79e9ad1f6bdfa",
+          "slug": "github-actions",
+          "node_id": "MDM6QXBwMTUzNjg=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Actions",
+          "description": "Automate your workflow from idea to production",
+          "external_url": "https://help.github.com/en/actions",
+          "html_url": "https://github.com/apps/github-actions",
+          "created_at": "2018-07-30T09:30:17Z",
+          "updated_at": "2026-06-18T16:17:48Z",
+          "permissions": {
+            "actions": "write",
+            "administration": "read",
+            "artifact_metadata": "write",
+            "attestations": "write",
+            "checks": "write",
+            "code_quality": "write",
+            "contents": "write",
+            "copilot_requests": "write",
+            "deployments": "write",
+            "discussions": "write",
+            "drives": "write",
+            "issues": "write",
+            "merge_queues": "write",
+            "metadata": "read",
+            "models": "read",
+            "packages": "write",
+            "pages": "write",
+            "pull_requests": "write",
+            "repository_hooks": "write",
+            "repository_projects": "write",
+            "security_events": "write",
+            "statuses": "write",
+            "vulnerability_alerts": "read"
+          },
+          "events": [
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_dispatch",
+            "status",
+            "watch",
+            "workflow_dispatch",
+            "workflow_run"
+          ]
+        },
+        "pull_requests": [
+          {
+            "url": "https://api.github.com/repos/drumee/infra-layer/pulls/20",
+            "id": 5015170427,
+            "number": 20,
+            "head": {
+              "ref": "fix/il514-c1-network-attachment-identity",
+              "sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            },
+            "base": {
+              "ref": "main",
+              "sha": "c218811effc83da25cf71a914e27accc96101329",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 121642439941,
+        "name": "eslint",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnRVBQ",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "021615a1-04f5-58a0-8ac0-de631ddfa8c4",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642439941",
+        "html_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642439941",
+        "details_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642439941",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:47:57Z",
+        "completed_at": "2026-10-26T14:48:13Z",
+        "output": {
+          "title": null,
+          "summary": null,
+          "text": null,
+          "annotations_count": 10,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642439941/annotations"
+        },
+        "check_suite": {
+          "id": 109341708088
+        },
+        "app": {
+          "id": 15368,
+          "client_id": "Iv1.05c79e9ad1f6bdfa",
+          "slug": "github-actions",
+          "node_id": "MDM6QXBwMTUzNjg=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Actions",
+          "description": "Automate your workflow from idea to production",
+          "external_url": "https://help.github.com/en/actions",
+          "html_url": "https://github.com/apps/github-actions",
+          "created_at": "2018-07-30T09:30:17Z",
+          "updated_at": "2026-06-18T16:17:48Z",
+          "permissions": {
+            "actions": "write",
+            "administration": "read",
+            "artifact_metadata": "write",
+            "attestations": "write",
+            "checks": "write",
+            "code_quality": "write",
+            "contents": "write",
+            "copilot_requests": "write",
+            "deployments": "write",
+            "discussions": "write",
+            "drives": "write",
+            "issues": "write",
+            "merge_queues": "write",
+            "metadata": "read",
+            "models": "read",
+            "packages": "write",
+            "pages": "write",
+            "pull_requests": "write",
+            "repository_hooks": "write",
+            "repository_projects": "write",
+            "security_events": "write",
+            "statuses": "write",
+            "vulnerability_alerts": "read"
+          },
+          "events": [
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_dispatch",
+            "status",
+            "watch",
+            "workflow_dispatch",
+            "workflow_run"
+          ]
+        },
+        "pull_requests": [
+          {
+            "url": "https://api.github.com/repos/drumee/infra-layer/pulls/20",
+            "id": 5015170427,
+            "number": 20,
+            "head": {
+              "ref": "fix/il514-c1-network-attachment-identity",
+              "sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            },
+            "base": {
+              "ref": "main",
+              "sha": "c218811effc83da25cf71a914e27accc96101329",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 121642439867,
+        "name": "contracts",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnRUuw",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "1213afa7-f09f-52bd-bdd2-7c285af2d62c",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642439867",
+        "html_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642439867",
+        "details_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642439867",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:47:57Z",
+        "completed_at": "2026-10-26T14:48:28Z",
+        "output": {
+          "title": null,
+          "summary": null,
+          "text": null,
+          "annotations_count": 0,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642439867/annotations"
+        },
+        "check_suite": {
+          "id": 109341708088
+        },
+        "app": {
+          "id": 15368,
+          "client_id": "Iv1.05c79e9ad1f6bdfa",
+          "slug": "github-actions",
+          "node_id": "MDM6QXBwMTUzNjg=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Actions",
+          "description": "Automate your workflow from idea to production",
+          "external_url": "https://help.github.com/en/actions",
+          "html_url": "https://github.com/apps/github-actions",
+          "created_at": "2018-07-30T09:30:17Z",
+          "updated_at": "2026-06-18T16:17:48Z",
+          "permissions": {
+            "actions": "write",
+            "administration": "read",
+            "artifact_metadata": "write",
+            "attestations": "write",
+            "checks": "write",
+            "code_quality": "write",
+            "contents": "write",
+            "copilot_requests": "write",
+            "deployments": "write",
+            "discussions": "write",
+            "drives": "write",
+            "issues": "write",
+            "merge_queues": "write",
+            "metadata": "read",
+            "models": "read",
+            "packages": "write",
+            "pages": "write",
+            "pull_requests": "write",
+            "repository_hooks": "write",
+            "repository_projects": "write",
+            "security_events": "write",
+            "statuses": "write",
+            "vulnerability_alerts": "read"
+          },
+          "events": [
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_dispatch",
+            "status",
+            "watch",
+            "workflow_dispatch",
+            "workflow_run"
+          ]
+        },
+        "pull_requests": [
+          {
+            "url": "https://api.github.com/repos/drumee/infra-layer/pulls/20",
+            "id": 5015170427,
+            "number": 20,
+            "head": {
+              "ref": "fix/il514-c1-network-attachment-identity",
+              "sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            },
+            "base": {
+              "ref": "main",
+              "sha": "c218811effc83da25cf71a914e27accc96101329",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 121642439450,
+        "name": "packaging",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnRTGg",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "29ca2420-03e3-5993-b083-59d69d6f819e",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642439450",
+        "html_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642439450",
+        "details_url": "https://github.com/drumee/infra-layer/actions/runs/40343014747/job/121642439450",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:47:57Z",
+        "completed_at": "2026-10-26T14:48:19Z",
+        "output": {
+          "title": null,
+          "summary": null,
+          "text": null,
+          "annotations_count": 0,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642439450/annotations"
+        },
+        "check_suite": {
+          "id": 109341708088
+        },
+        "app": {
+          "id": 15368,
+          "client_id": "Iv1.05c79e9ad1f6bdfa",
+          "slug": "github-actions",
+          "node_id": "MDM6QXBwMTUzNjg=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Actions",
+          "description": "Automate your workflow from idea to production",
+          "external_url": "https://help.github.com/en/actions",
+          "html_url": "https://github.com/apps/github-actions",
+          "created_at": "2018-07-30T09:30:17Z",
+          "updated_at": "2026-06-18T16:17:48Z",
+          "permissions": {
+            "actions": "write",
+            "administration": "read",
+            "artifact_metadata": "write",
+            "attestations": "write",
+            "checks": "write",
+            "code_quality": "write",
+            "contents": "write",
+            "copilot_requests": "write",
+            "deployments": "write",
+            "discussions": "write",
+            "drives": "write",
+            "issues": "write",
+            "merge_queues": "write",
+            "metadata": "read",
+            "models": "read",
+            "packages": "write",
+            "pages": "write",
+            "pull_requests": "write",
+            "repository_hooks": "write",
+            "repository_projects": "write",
+            "security_events": "write",
+            "statuses": "write",
+            "vulnerability_alerts": "read"
+          },
+          "events": [
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_dispatch",
+            "status",
+            "watch",
+            "workflow_dispatch",
+            "workflow_run"
+          ]
+        },
+        "pull_requests": [
+          {
+            "url": "https://api.github.com/repos/drumee/infra-layer/pulls/20",
+            "id": 5015170427,
+            "number": 20,
+            "head": {
+              "ref": "fix/il514-c1-network-attachment-identity",
+              "sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            },
+            "base": {
+              "ref": "main",
+              "sha": "c218811effc83da25cf71a914e27accc96101329",
+              "repo": {
+                "id": 1417095613,
+                "url": "https://api.github.com/repos/drumee/infra-layer",
+                "name": "infra-layer"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 121642420617,
+        "name": "Analyze (javascript-typescript)",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnQJiQ",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "e51d523a-70ba-5d5c-aab3-48e46b318387",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642420617",
+        "html_url": "https://github.com/drumee/infra-layer/actions/runs/40343006050/job/121642420617",
+        "details_url": "https://github.com/drumee/infra-layer/actions/runs/40343006050/job/121642420617",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:47:55Z",
+        "completed_at": "2026-10-26T14:48:54Z",
+        "output": {
+          "title": null,
+          "summary": null,
+          "text": null,
+          "annotations_count": 1,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642420617/annotations"
+        },
+        "check_suite": {
+          "id": 109341684075
+        },
+        "app": {
+          "id": 15368,
+          "client_id": "Iv1.05c79e9ad1f6bdfa",
+          "slug": "github-actions",
+          "node_id": "MDM6QXBwMTUzNjg=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Actions",
+          "description": "Automate your workflow from idea to production",
+          "external_url": "https://help.github.com/en/actions",
+          "html_url": "https://github.com/apps/github-actions",
+          "created_at": "2018-07-30T09:30:17Z",
+          "updated_at": "2026-06-18T16:17:48Z",
+          "permissions": {
+            "actions": "write",
+            "administration": "read",
+            "artifact_metadata": "write",
+            "attestations": "write",
+            "checks": "write",
+            "code_quality": "write",
+            "contents": "write",
+            "copilot_requests": "write",
+            "deployments": "write",
+            "discussions": "write",
+            "drives": "write",
+            "issues": "write",
+            "merge_queues": "write",
+            "metadata": "read",
+            "models": "read",
+            "packages": "write",
+            "pages": "write",
+            "pull_requests": "write",
+            "repository_hooks": "write",
+            "repository_projects": "write",
+            "security_events": "write",
+            "statuses": "write",
+            "vulnerability_alerts": "read"
+          },
+          "events": [
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_dispatch",
+            "status",
+            "watch",
+            "workflow_dispatch",
+            "workflow_run"
+          ]
+        },
+        "pull_requests": []
+      },
+      {
+        "id": 121642420340,
+        "name": "Analyze (actions)",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnQIdA",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "813f7d77-6e3c-52ae-b8c1-3b07585ca8fa",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642420340",
+        "html_url": "https://github.com/drumee/infra-layer/actions/runs/40343006050/job/121642420340",
+        "details_url": "https://github.com/drumee/infra-layer/actions/runs/40343006050/job/121642420340",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:47:56Z",
+        "completed_at": "2026-10-26T14:48:34Z",
+        "output": {
+          "title": null,
+          "summary": null,
+          "text": null,
+          "annotations_count": 1,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642420340/annotations"
+        },
+        "check_suite": {
+          "id": 109341684075
+        },
+        "app": {
+          "id": 15368,
+          "client_id": "Iv1.05c79e9ad1f6bdfa",
+          "slug": "github-actions",
+          "node_id": "MDM6QXBwMTUzNjg=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Actions",
+          "description": "Automate your workflow from idea to production",
+          "external_url": "https://help.github.com/en/actions",
+          "html_url": "https://github.com/apps/github-actions",
+          "created_at": "2018-07-30T09:30:17Z",
+          "updated_at": "2026-06-18T16:17:48Z",
+          "permissions": {
+            "actions": "write",
+            "administration": "read",
+            "artifact_metadata": "write",
+            "attestations": "write",
+            "checks": "write",
+            "code_quality": "write",
+            "contents": "write",
+            "copilot_requests": "write",
+            "deployments": "write",
+            "discussions": "write",
+            "drives": "write",
+            "issues": "write",
+            "merge_queues": "write",
+            "metadata": "read",
+            "models": "read",
+            "packages": "write",
+            "pages": "write",
+            "pull_requests": "write",
+            "repository_hooks": "write",
+            "repository_projects": "write",
+            "security_events": "write",
+            "statuses": "write",
+            "vulnerability_alerts": "read"
+          },
+          "events": [
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_dispatch",
+            "status",
+            "watch",
+            "workflow_dispatch",
+            "workflow_run"
+          ]
+        },
+        "pull_requests": []
+      },
+      {
+        "id": 121642420029,
+        "name": "Analyze (python)",
+        "node_id": "CR_kwDOVHcpvc8AAAAcUnQHPQ",
+        "head_sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+        "external_id": "a759395a-6f37-50b5-a132-e54369e91a2e",
+        "url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642420029",
+        "html_url": "https://github.com/drumee/infra-layer/actions/runs/40343006050/job/121642420029",
+        "details_url": "https://github.com/drumee/infra-layer/actions/runs/40343006050/job/121642420029",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-26T14:47:56Z",
+        "completed_at": "2026-10-26T14:48:47Z",
+        "output": {
+          "title": null,
+          "summary": null,
+          "text": null,
+          "annotations_count": 1,
+          "annotations_url": "https://api.github.com/repos/drumee/infra-layer/check-runs/121642420029/annotations"
+        },
+        "check_suite": {
+          "id": 109341684075
+        },
+        "app": {
+          "id": 15368,
+          "client_id": "Iv1.05c79e9ad1f6bdfa",
+          "slug": "github-actions",
+          "node_id": "MDM6QXBwMTUzNjg=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Actions",
+          "description": "Automate your workflow from idea to production",
+          "external_url": "https://help.github.com/en/actions",
+          "html_url": "https://github.com/apps/github-actions",
+          "created_at": "2018-07-30T09:30:17Z",
+          "updated_at": "2026-06-18T16:17:48Z",
+          "permissions": {
+            "actions": "write",
+            "administration": "read",
+            "artifact_metadata": "write",
+            "attestations": "write",
+            "checks": "write",
+            "code_quality": "write",
+            "contents": "write",
+            "copilot_requests": "write",
+            "deployments": "write",
+            "discussions": "write",
+            "drives": "write",
+            "issues": "write",
+            "merge_queues": "write",
+            "metadata": "read",
+            "models": "read",
+            "packages": "write",
+            "pages": "write",
+            "pull_requests": "write",
+            "repository_hooks": "write",
+            "repository_projects": "write",
+            "security_events": "write",
+            "statuses": "write",
+            "vulnerability_alerts": "read"
+          },
+          "events": [
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_dispatch",
+            "status",
+            "watch",
+            "workflow_dispatch",
+            "workflow_run"
+          ]
+        },
+        "pull_requests": []
+      }
+    ]
+  },
+  "failed": [],
+  "sonarPullRequest": {
+    "key": "20",
+    "title": "fix: distinguish Docker network attachments and preserve lifecycle failures",
+    "branch": "fix/il514-c1-network-attachment-identity",
+    "base": "main",
+    "status": {
+      "qualityGateStatus": "OK",
+      "bugs": 0,
+      "vulnerabilities": 0,
+      "codeSmells": 49
+    },
+    "analysisDate": "2026-10-26T14:47:56+0000",
+    "url": "https://github.com/drumee/infra-layer/pull/20",
+    "target": "main",
+    "commit": {
+      "sha": "9564b527362ce2d7bbc6b6618ae9915053c4db39",
+      "author": {
+        "name": "Anonymous User"
+      },
+      "date": "2026-10-26T14:47:42+0000",
+      "message": "test(qualification): preserve S2 security, reliability and full local acceptance evidence"
+    },
+    "contributors": [],
+    "pullRequestUuidV1": "AaF3j_EFfhCkI9bIvWQ1",
+    "pullRequestId": "ff1ead0c-682d-479f-a582-62edd8c1bd95"
+  },
+  "qualityGate": {
+    "projectStatus": {
+      "status": "OK",
+      "conditions": [
+        {
+          "status": "OK",
+          "metricKey": "new_reliability_rating",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "1",
+          "actualValue": "1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_security_rating",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "1",
+          "actualValue": "1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_maintainability_rating",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "1",
+          "actualValue": "1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_duplicated_lines_density",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "3",
+          "actualValue": "0.6"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_security_hotspots_reviewed",
+          "comparator": "LT",
+          "periodIndex": 1,
+          "errorThreshold": "100",
+          "actualValue": "100.0"
+        }
+      ],
+      "periods": [],
+      "ignoredConditions": false
+    }
+  },
+  "unresolvedBlockingRules": {
+    "total": 0,
+    "p": 1,
+    "ps": 100,
+    "paging": {
+      "pageIndex": 1,
+      "pageSize": 100,
+      "total": 0
+    },
+    "effortTotal": 0,
+    "debtTotal": 0,
+    "issues": [],
+    "components": [],
+    "organizations": [],
+    "facets": []
+  },
+  "originalIssues": {
+    "total": 6,
+    "p": 1,
+    "ps": 100,
+    "paging": {
+      "pageIndex": 1,
+      "pageSize": 100,
+      "total": 6
+    },
+    "effortTotal": 80,
+    "debtTotal": 80,
+    "issues": [
+      {
+        "key": "AaF3kH4s1yc4XiDUvCPT",
+        "rule": "javascript:S9383",
+        "severity": "MAJOR",
+        "component": "drumee_infra-layer:test/network-attachments/container-health.cjs",
+        "project": "drumee_infra-layer",
+        "hash": "fbe123a821535096f3875ce3c8163c14",
+        "textRange": {
+          "startLine": 6,
+          "endLine": 37,
+          "startOffset": 0,
+          "endOffset": 3
+        },
+        "flows": [],
+        "resolution": "FIXED",
+        "status": "CLOSED",
+        "message": "Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator.",
+        "effort": "5min",
+        "debt": "5min",
+        "tags": [
+          "async",
+          "es2017",
+          "promise",
+          "type-dependent"
+        ],
+        "creationDate": "2026-10-25T23:08:08+0000",
+        "updateDate": "2026-10-26T14:47:56+0000",
+        "closeDate": "2026-10-26T14:47:56+0000",
+        "type": "BUG",
+        "organization": "drumee",
+        "pullRequest": "20",
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "FIXED",
+        "projectName": "infra-layer",
+        "internalTags": [],
+        "lastChangeAnalysisUuid": "1e54b0b7-6ce7-4f38-8fec-9931d6956967",
+        "lastChangeSource": "ANALYSIS"
+      },
+      {
+        "key": "AaF3kH4t1yc4XiDUvCPY",
+        "rule": "javascript:S9383",
+        "severity": "MAJOR",
+        "component": "drumee_infra-layer:test/diagnostics/fixture.cjs",
+        "project": "drumee_infra-layer",
+        "hash": "9701b938e1969e5abe8ef21c8d127863",
+        "textRange": {
+          "startLine": 12,
+          "endLine": 12,
+          "startOffset": 2,
+          "endOffset": 273
+        },
+        "flows": [],
+        "resolution": "FIXED",
+        "status": "CLOSED",
+        "message": "Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator.",
+        "effort": "5min",
+        "debt": "5min",
+        "tags": [
+          "async",
+          "es2017",
+          "promise",
+          "type-dependent"
+        ],
+        "creationDate": "2026-10-25T22:58:18+0000",
+        "updateDate": "2026-10-26T14:47:56+0000",
+        "closeDate": "2026-10-26T14:47:56+0000",
+        "type": "BUG",
+        "organization": "drumee",
+        "pullRequest": "20",
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "FIXED",
+        "projectName": "infra-layer",
+        "internalTags": [],
+        "lastChangeAnalysisUuid": "1e54b0b7-6ce7-4f38-8fec-9931d6956967",
+        "lastChangeSource": "ANALYSIS"
+      },
+      {
+        "key": "AaF3kH4t1yc4XiDUvCPZ",
+        "rule": "javascript:S9383",
+        "severity": "MAJOR",
+        "component": "drumee_infra-layer:test/diagnostics/fixture.cjs",
+        "project": "drumee_infra-layer",
+        "hash": "fbe123a821535096f3875ce3c8163c14",
+        "textRange": {
+          "startLine": 15,
+          "endLine": 40,
+          "startOffset": 2,
+          "endOffset": 5
+        },
+        "flows": [],
+        "resolution": "FIXED",
+        "status": "CLOSED",
+        "message": "Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator.",
+        "effort": "5min",
+        "debt": "5min",
+        "tags": [
+          "async",
+          "es2017",
+          "promise",
+          "type-dependent"
+        ],
+        "creationDate": "2026-10-25T22:58:18+0000",
+        "updateDate": "2026-10-26T14:47:56+0000",
+        "closeDate": "2026-10-26T14:47:56+0000",
+        "type": "BUG",
+        "organization": "drumee",
+        "pullRequest": "20",
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "FIXED",
+        "projectName": "infra-layer",
+        "internalTags": [],
+        "lastChangeAnalysisUuid": "1e54b0b7-6ce7-4f38-8fec-9931d6956967",
+        "lastChangeSource": "ANALYSIS"
+      },
+      {
+        "key": "AaF3kH4q1yc4XiDUvCPB",
+        "rule": "javascript:S9383",
+        "severity": "MAJOR",
+        "component": "drumee_infra-layer:test/network-attachments/real-docker.cjs",
+        "project": "drumee_infra-layer",
+        "hash": "fbe123a821535096f3875ce3c8163c14",
+        "textRange": {
+          "startLine": 32,
+          "endLine": 102,
+          "startOffset": 0,
+          "endOffset": 3
+        },
+        "flows": [],
+        "resolution": "FIXED",
+        "status": "CLOSED",
+        "message": "Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator.",
+        "effort": "5min",
+        "debt": "5min",
+        "tags": [
+          "async",
+          "es2017",
+          "promise",
+          "type-dependent"
+        ],
+        "creationDate": "2026-10-25T22:58:18+0000",
+        "updateDate": "2026-10-26T14:47:56+0000",
+        "closeDate": "2026-10-26T14:47:56+0000",
+        "type": "BUG",
+        "organization": "drumee",
+        "pullRequest": "20",
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "FIXED",
+        "projectName": "infra-layer",
+        "internalTags": [],
+        "lastChangeAnalysisUuid": "1e54b0b7-6ce7-4f38-8fec-9931d6956967",
+        "lastChangeSource": "ANALYSIS"
+      },
+      {
+        "key": "AaF3kH4s1yc4XiDUvCPU",
+        "rule": "javascript:S1523",
+        "severity": "CRITICAL",
+        "component": "drumee_infra-layer:test/network-attachments/load.cjs",
+        "project": "drumee_infra-layer",
+        "hash": "f9bcec36aa81c4734c506d8cb9848203",
+        "textRange": {
+          "startLine": 15,
+          "endLine": 15,
+          "startOffset": 2,
+          "endOffset": 20
+        },
+        "flows": [],
+        "resolution": "FIXED",
+        "status": "CLOSED",
+        "message": "Make sure that this dynamic injection or execution of code is safe.",
+        "effort": "30min",
+        "debt": "30min",
+        "tags": [
+          "cwe",
+          "former-hotspot"
+        ],
+        "creationDate": "2026-10-25T11:38:24+0000",
+        "updateDate": "2026-10-26T14:47:56+0000",
+        "closeDate": "2026-10-26T14:47:56+0000",
+        "type": "VULNERABILITY",
+        "organization": "drumee",
+        "pullRequest": "20",
+        "cleanCodeAttribute": "TRUSTWORTHY",
+        "cleanCodeAttributeCategory": "RESPONSIBLE",
+        "impacts": [
+          {
+            "softwareQuality": "SECURITY",
+            "severity": "HIGH"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "LOW"
+          }
+        ],
+        "issueStatus": "FIXED",
+        "projectName": "infra-layer",
+        "internalTags": [],
+        "lastChangeAnalysisUuid": "1e54b0b7-6ce7-4f38-8fec-9931d6956967",
+        "lastChangeSource": "ANALYSIS"
+      },
+      {
+        "key": "AaF3kH4s1yc4XiDUvCPV",
+        "rule": "jssecurity:S8704",
+        "severity": "MAJOR",
+        "component": "drumee_infra-layer:test/network-attachments/load.cjs",
+        "project": "drumee_infra-layer",
+        "hash": "f9bcec36aa81c4734c506d8cb9848203",
+        "textRange": {
+          "startLine": 15,
+          "endLine": 15,
+          "startOffset": 5,
+          "endOffset": 20
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "drumee_infra-layer:test/network-attachments/load.cjs",
+                "textRange": {
+                  "startLine": 15,
+                  "endLine": 15,
+                  "startOffset": 5,
+                  "endOffset": 20
+                },
+                "msg": "Source: an llm can pass malicious data through command-line arguments"
+              }
+            ]
+          }
+        ],
+        "resolution": "FIXED",
+        "status": "CLOSED",
+        "message": "Code Injection via faulty LLM-supplied CLI arguments",
+        "effort": "30min",
+        "debt": "30min",
+        "tags": [
+          "cwe"
+        ],
+        "creationDate": "2026-10-25T11:38:24+0000",
+        "updateDate": "2026-10-26T14:47:56+0000",
+        "closeDate": "2026-10-26T14:47:56+0000",
+        "type": "VULNERABILITY",
+        "organization": "drumee",
+        "pullRequest": "20",
+        "cleanCodeAttribute": "COMPLETE",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "SECURITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "FIXED",
+        "projectName": "infra-layer",
+        "internalTags": [],
+        "lastChangeAnalysisUuid": "1e54b0b7-6ce7-4f38-8fec-9931d6956967",
+        "lastChangeSource": "ANALYSIS"
+      }
+    ],
+    "components": [
+      {
+        "organization": "drumee",
+        "key": "drumee_infra-layer:test/diagnostics/fixture.cjs",
+        "uuid": "AaF3kHrc1yc4XiDUvCN6",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "fixture.cjs",
+        "longName": "test/diagnostics/fixture.cjs",
+        "path": "test/diagnostics/fixture.cjs",
+        "pullRequest": "20"
+      },
+      {
+        "organization": "drumee",
+        "key": "drumee_infra-layer",
+        "uuid": "AaF3j_EFfhCkI9bIvWQ1",
+        "enabled": true,
+        "qualifier": "TRK",
+        "name": "infra-layer",
+        "longName": "infra-layer",
+        "pullRequest": "20"
+      },
+      {
+        "organization": "drumee",
+        "key": "drumee_infra-layer:test/network-attachments/real-docker.cjs",
+        "uuid": "AaF3kHrc1yc4XiDUvCNl",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "real-docker.cjs",
+        "longName": "test/network-attachments/real-docker.cjs",
+        "path": "test/network-attachments/real-docker.cjs",
+        "pullRequest": "20"
+      },
+      {
+        "organization": "drumee",
+        "key": "drumee_infra-layer:test/network-attachments/container-health.cjs",
+        "uuid": "AaF3kHrc1yc4XiDUvCNn",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "container-health.cjs",
+        "longName": "test/network-attachments/container-health.cjs",
+        "path": "test/network-attachments/container-health.cjs",
+        "pullRequest": "20"
+      },
+      {
+        "organization": "drumee",
+        "key": "drumee_infra-layer:test/network-attachments/load.cjs",
+        "uuid": "AaF3kHrc1yc4XiDUvCNo",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "load.cjs",
+        "longName": "test/network-attachments/load.cjs",
+        "path": "test/network-attachments/load.cjs",
+        "pullRequest": "20"
+      }
+    ],
+    "organizations": [
+      {
+        "key": "drumee",
+        "name": "Drumee"
+      }
+    ],
+    "facets": []
+  },
+  "status": "PASS"
+}

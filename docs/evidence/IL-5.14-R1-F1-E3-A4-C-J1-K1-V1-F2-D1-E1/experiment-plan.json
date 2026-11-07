@@ -1,0 +1,52 @@
+{
+  "attempt": "E1-3cc9baeb-b576-46ca-b5d1-3903e7757815",
+  "purpose": "Establish exact named native TAP positive/negative results before any D1 wrapper experiment.",
+  "positive_command": [
+    "/usr/bin/node",
+    "--test",
+    "--test-reporter=tap",
+    "test/diagnostics/test-events-e1/positive.test.cjs"
+  ],
+  "negative_command": [
+    "/usr/bin/node",
+    "--test",
+    "--test-reporter=tap",
+    "test/diagnostics/test-events-e1/negative.test.cjs"
+  ],
+  "cwd": "/home/somanos/github/infra-layer",
+  "positive_requires": [
+    "exit0",
+    "exact individual Subtest e1-native-positive",
+    "exact individual ok result for e1-native-positive",
+    "one-test native summary"
+  ],
+  "negative_requires": [
+    "nonzero exit",
+    "exact individual Subtest e1-native-negative",
+    "exact individual not ok result for e1-native-negative",
+    "ERR_ASSERTION, expected5/actual4 and fixture stack"
+  ],
+  "capture": "Direct native CLI via shell redirects to distinct raw stdout/stderr files; original command exit retained by tool result. No D1 recorder/preload/reporter or name filters.",
+  "execution_budget": {
+    "native_positive": 1,
+    "native_negative": 1,
+    "matched_wrapper_positive": 1,
+    "matched_wrapper_negative": 1
+  },
+  "stop_policy": "Stop immediately at first missing mandatory native result/incorrect exit. Do not execute later controls after failure. Do not rerun unchanged controls.",
+  "source_hypotheses": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7",
+    "H8",
+    "H9",
+    "H10"
+  ],
+  "remote_operations": false,
+  "comparator_execution": false,
+  "Docker_operations": false
+}

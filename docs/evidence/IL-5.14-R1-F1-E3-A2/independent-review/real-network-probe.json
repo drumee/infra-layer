@@ -1,0 +1,618 @@
+{
+  "sourceRevision": "04a4fc9f1196ef42aec9428144609735e00ceb4a",
+  "project": "drumee-a2-ir-735bec51dec2",
+  "image": "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+  "commands": [
+    {
+      "args": [
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.drumee.qualification=drumee-a2-ir-735bec51dec2"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "name=^drumee-a2-ir-735bec51dec2-kernel$"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "create",
+        "--label",
+        "org.drumee.qualification=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "org.drumee.infra.owner=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "com.docker.compose.project=drumee-a2-ir-735bec51dec2",
+        "drumee-a2-ir-735bec51dec2-kernel"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "name=^drumee-a2-ir-735bec51dec2-secondary$"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "create",
+        "--label",
+        "org.drumee.qualification=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "org.drumee.infra.owner=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "com.docker.compose.project=drumee-a2-ir-735bec51dec2",
+        "drumee-a2-ir-735bec51dec2-secondary"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "name=^drumee-a2-ir-735bec51dec2-external$"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "create",
+        "--label",
+        "org.drumee.qualification=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "org.drumee.infra.owner=external-network-fixture",
+        "--label",
+        "com.docker.compose.project=drumee-a2-ir-735bec51dec2",
+        "drumee-a2-ir-735bec51dec2-external"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-kernel"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "run",
+        "-d",
+        "--name",
+        "drumee-a2-ir-735bec51dec2-redis-1",
+        "--label",
+        "org.drumee.qualification=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "org.drumee.infra.owner=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "com.docker.compose.project=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "com.docker.compose.service=redis",
+        "--user",
+        "1000:1000",
+        "--network",
+        "drumee-a2-ir-735bec51dec2-kernel",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "32",
+        "--memory",
+        "64m",
+        "--entrypoint",
+        "/bin/sh",
+        "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+        "-c",
+        "sleep 300"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-external"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "connect",
+        "drumee-a2-ir-735bec51dec2-external",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-external"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "disconnect",
+        "drumee-a2-ir-735bec51dec2-external",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-secondary"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "connect",
+        "drumee-a2-ir-735bec51dec2-secondary",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-kernel"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "disconnect",
+        "drumee-a2-ir-735bec51dec2-kernel",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-secondary"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "disconnect",
+        "drumee-a2-ir-735bec51dec2-secondary",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-kernel"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "connect",
+        "drumee-a2-ir-735bec51dec2-kernel",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-kernel"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "run",
+        "-d",
+        "--name",
+        "drumee-a2-ir-735bec51dec2-redis-2",
+        "--label",
+        "org.drumee.qualification=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "org.drumee.infra.owner=foreign-owner-fixture",
+        "--label",
+        "com.docker.compose.project=drumee-a2-ir-735bec51dec2",
+        "--label",
+        "com.docker.compose.service=redis",
+        "--user",
+        "1000:1000",
+        "--network",
+        "drumee-a2-ir-735bec51dec2-kernel",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--pids-limit",
+        "32",
+        "--memory",
+        "64m",
+        "--entrypoint",
+        "/bin/sh",
+        "redis@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+        "-c",
+        "sleep 300"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "8adb0abd63abd0a10be913caca0afc5b3205813a58b731a8e550b3fd93308b36"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "8adb0abd63abd0a10be913caca0afc5b3205813a58b731a8e550b3fd93308b36"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "8adb0abd63abd0a10be913caca0afc5b3205813a58b731a8e550b3fd93308b36"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "stop",
+        "--time",
+        "1",
+        "8adb0abd63abd0a10be913caca0afc5b3205813a58b731a8e550b3fd93308b36"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "rm",
+        "8adb0abd63abd0a10be913caca0afc5b3205813a58b731a8e550b3fd93308b36"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "stop",
+        "--time",
+        "1",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "container",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "rm",
+        "6825a59303dafb774731b33c4ad62cf2e3d9597832cb07356449eeb9a5cea442"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-external"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "rm",
+        "53f81def2496651c8f3d3be5260f84af658d892c46a0a1e2b4f4af80e38ad4b0"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-secondary"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "rm",
+        "d68da609419b8a60429fa9ed29e731dfc95e3acd331bf5daa8367661df9aba5a"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .}}",
+        "drumee-a2-ir-735bec51dec2-kernel"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "rm",
+        "b942f13fcf623341cab00dc392c6a33e4b09d0083d758b3cceb68f1a7c009c41"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.drumee.qualification=drumee-a2-ir-735bec51dec2"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "label=org.drumee.qualification=drumee-a2-ir-735bec51dec2"
+      ],
+      "exit": 0
+    }
+  ],
+  "cases": [
+    {
+      "label": "nominal declared membership",
+      "expected": null,
+      "actual": "ACCEPTED"
+    },
+    {
+      "label": "original R1 differently owned undeclared network rejected",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "actual": "NETWORK_ATTACHMENT_MISMATCH"
+    },
+    {
+      "label": "restored nominal membership",
+      "expected": null,
+      "actual": "ACCEPTED"
+    },
+    {
+      "label": "same-owner but undeclared network rejected",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "actual": "NETWORK_ATTACHMENT_MISMATCH"
+    },
+    {
+      "label": "valid declared multihoming with object role mapping",
+      "expected": null,
+      "actual": "ACCEPTED"
+    },
+    {
+      "label": "missing one declared network rejected",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "actual": "NETWORK_ATTACHMENT_MISMATCH"
+    },
+    {
+      "label": "missing all memberships caught through project inventory",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "actual": "NETWORK_ATTACHMENT_MISMATCH"
+    },
+    {
+      "label": "reconnected nominal membership",
+      "expected": null,
+      "actual": "ACCEPTED"
+    },
+    {
+      "label": "required missing network",
+      "expected": "REQUIRED_NETWORK_MISSING",
+      "actual": "REQUIRED_NETWORK_MISSING"
+    },
+    {
+      "label": "optional missing network still mismatches owned container",
+      "expected": "NETWORK_ATTACHMENT_MISMATCH",
+      "actual": "NETWORK_ATTACHMENT_MISMATCH"
+    },
+    {
+      "label": "owned review fixture with foreign owner rejected",
+      "expected": "NETWORK_OWNERSHIP_MISMATCH",
+      "actual": "NETWORK_OWNERSHIP_MISMATCH"
+    },
+    {
+      "label": "nominal remains after foreign fixture removal",
+      "expected": null,
+      "actual": "ACCEPTED"
+    },
+    {
+      "label": "stopped configured declared membership remains valid",
+      "expected": null,
+      "actual": "ACCEPTED"
+    }
+  ],
+  "extraNetworkState": [
+    "drumee-a2-ir-735bec51dec2-external",
+    "drumee-a2-ir-735bec51dec2-kernel"
+  ],
+  "fullyDetachedState": [],
+  "foreignFixtureAfterRefusal": {
+    "running": true,
+    "owner": "foreign-owner-fixture"
+  },
+  "status": "PASS",
+  "cleanupErrors": [],
+  "leftoverContainers": "",
+  "leftoverNetworks": "",
+  "cleanup": "OWNED_RESOURCES_REMOVED"
+}

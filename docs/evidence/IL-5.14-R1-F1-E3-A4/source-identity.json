@@ -1,0 +1,46 @@
+{
+  "base_commit": "51cfd7b9839d45f6423fdb0f2be0d240ee8c114a",
+  "qualification": "UNCOMMITTED_CANDIDATE_IDENTIFIED_BY_FILE_HASHES; subsequent checkpoint preserves these bytes",
+  "files": {
+    "lifecycle/docker.js": {
+      "a4_sha256": "b2ddc523aef50100f30dd7f20fb93e43715be36df88fe8cf671a1b88c13b41b6",
+      "baseline_sha256": "2a72f5bca8d8494141eca7b597d52a820643cb0dcf04c9c2dd9bfd2b01ca2650",
+      "changed": true
+    },
+    "lifecycle/activation.js": {
+      "a4_sha256": "e2ed425d1df485866189be14ff6c581aa53557123d53483fc30f0b22d27ba4cd",
+      "baseline_sha256": "09bd15d0a9bc6bb53907acc0a38598a3b19586589eed9b86b832814442b1e965",
+      "changed": true
+    },
+    "lifecycle/recovery.js": {
+      "a4_sha256": "67525625672a792b0e14b6bb7738a2688ff3bfb64bc632e0b0c76ea135a4589b",
+      "baseline_sha256": "f1b43df0b1c710715cf3f7fbae2834725702d01a85058f5801379366249538bc",
+      "changed": true
+    },
+    "internal/rollback-authorization.js": {
+      "a4_sha256": "b29778657161e981acea8eef597c935a2a2ddc95b951b8c8e9a3f6659c3053ee",
+      "baseline_sha256": null,
+      "changed": true
+    },
+    "test/network-attachments/rollback-real.cjs": {
+      "a4_sha256": "5b18e531d0b44fda3c103ff0e747400fa8e1776fb0176aa5116cb112470ce076",
+      "baseline_sha256": null,
+      "changed": true
+    },
+    "test/unit/rollback-authorization.test.js": {
+      "a4_sha256": "a95c36e84bf330091b26d223c7e640390323a4a8f651ccdb52bc1f9f06ff25d4",
+      "baseline_sha256": null,
+      "changed": true
+    },
+    "test/network-attachments/real-docker.cjs": {
+      "a4_sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+      "baseline_sha256": "7529d2820ae2205df4877e5ebd65852368300f003083a6a873164552a332c4f4",
+      "changed": false
+    },
+    "test/support/harness-preservation.cjs": {
+      "a4_sha256": "8c5aafae1780810707fec750b5dfb5e39fba665519b82f9c822d099a69772459",
+      "baseline_sha256": "8c5aafae1780810707fec750b5dfb5e39fba665519b82f9c822d099a69772459",
+      "changed": false
+    }
+  }
+}

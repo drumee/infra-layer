@@ -1,0 +1,94 @@
+{
+  "status": "BLOCKED_EVIDENCE",
+  "source": "964e3a4a09be14f7951246d65dcc936bc29ab1c3",
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "detail": "Both original failures, commands/source/known and missing evidence reconstructed separately; hashes verified."
+    },
+    "B": {
+      "status": "PASS",
+      "detail": "Application restart-backoff endpoint mismatch reproduced on actual canonical image/policy; original historical exact snapshot absent."
+    },
+    "C": {
+      "status": "BLOCKED",
+      "detail": "Postfix/control HTTP first causal event unverified; hypothesis did not reproduce, focused actual-source3/3 success is not a fix."
+    },
+    "D": {
+      "status": "BLOCKED",
+      "detail": "Relationship UNDETERMINED; individual HTTP cause insufficient for a cross-failure correction."
+    },
+    "E": {
+      "status": "BLOCKED",
+      "detail": "Only application design direction supported; no safe HTTP corrective design."
+    },
+    "F": {
+      "status": "NOT_EXECUTED",
+      "detail": "No implementation or corrected targeted tests."
+    },
+    "G": {
+      "status": "NOT_EXECUTED",
+      "detail": "No complete application/services acceptance rerun."
+    },
+    "H": {
+      "status": "PASS",
+      "detail": "Implementation unchanged; E2 source-specific Docker evidence preserved, no corrected-runtime qualification."
+    },
+    "I": {
+      "status": "NOT_EXECUTED",
+      "detail": "Remaining local qualification not resumed."
+    },
+    "J": {
+      "status": "NOT_EXECUTED",
+      "detail": "No fresh security/package candidate qualification."
+    },
+    "K": {
+      "status": "NOT_EXECUTED",
+      "detail": "No push/new hosted qualification."
+    },
+    "L": {
+      "status": "NOT_EXECUTED",
+      "detail": "No independent final closure."
+    },
+    "M": {
+      "status": "PASS",
+      "detail": "Evidence-based blocked diagnosis and original failures preserved."
+    }
+  },
+  "applicationClassification": "B \u2014 Lifecycle contract defect",
+  "applicationMechanism": "Running=true/Restarting=true/Pid0 with correct network set/NetworkID but empty endpoint blocks pre-recreation validation",
+  "postfixClassification": "BLOCKED_EVIDENCE",
+  "relationship": "UNDETERMINED",
+  "productionChanged": false,
+  "canonicalTestsChanged": false,
+  "pushed": false,
+  "correctedQualificationPerformed": false,
+  "diagnostics": [
+    {
+      "name": "application-diagnostic",
+      "exit": 0,
+      "outcome": "Mechanism reproduced; not complete app acceptance"
+    },
+    {
+      "name": "http-diagnostic",
+      "exit": 1,
+      "outcome": "Expectation failed: original UND_ERR_SOCKET not reproduced; second GET succeeded"
+    },
+    {
+      "name": "http-container-diagnostic",
+      "exit": 0,
+      "outcome": "hypothesisReproduced=false, no cause established"
+    },
+    {
+      "name": "services-focused-diagnostic",
+      "exit": 0,
+      "outcome": "3/3 diagnostic cases, original failure not reproduced; not17/17 qualification"
+    }
+  ],
+  "cleanup": "PASS",
+  "residuals": [
+    "SMTP_RECOVERY_UNQUALIFIED",
+    "H1_DOCKER_LIFECYCLE_ROOT_CAUSE_UNDETERMINED",
+    "Historical Debian H3 failed; no downstream qualification"
+  ]
+}
