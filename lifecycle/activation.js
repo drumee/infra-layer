@@ -125,8 +125,8 @@ function classifyChanges(active, prepared) {
 function checkObserved(prepared, observed, images) {
   const service = prepared.compose.services[observed.service];
   if (!service || observed.owner !== prepared.project || observed.project !== prepared.project || observed.image !== service.image || observed.image_id !== images[service.image] || observed.revision !== prepared.revision) F.fail("RUNTIME_IDENTITY_MISMATCH");
-  const actual = Object.entries(observed.ports || {}).flatMap(([target, ports]) => (ports || []).map((value) => `${target}:${value.HostIp}:${value.HostPort}`)).sort();
-  const expected = (service.ports || []).map((value) => `${value.target}/${value.protocol}:${value.host_ip}:${value.published}`).sort(); if (S.serialize(actual) !== S.serialize(expected)) F.fail("UNEXPECTED_SERVICE_EXPOSURE");
+  const actual = Object.entries(observed.ports || {}).flatMap(([target, ports]) => (ports || []).map((value) => `${target}:${value.HostIp}:${value.HostPort}`)).sort(S.lexical);
+  const expected = (service.ports || []).map((value) => `${value.target}/${value.protocol}:${value.host_ip}:${value.published}`).sort(S.lexical); if (S.serialize(actual) !== S.serialize(expected)) F.fail("UNEXPECTED_SERVICE_EXPOSURE");
   for (const mount of service.volumes || []) { const source = mount.source.startsWith("./") ? path.join(prepared.candidate, mount.source.slice(2)) : mount.source; const actual_mount = observed.mounts?.find((value) => value.Destination === mount.target); if (!actual_mount || actual_mount.Source !== source || actual_mount.RW !== !mount.read_only) F.fail("RUNTIME_MOUNT_MISMATCH"); }
 }
 function verifyImageUpgrade(prior, candidate, driver) {

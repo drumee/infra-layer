@@ -6,7 +6,7 @@ const image = (value) => typeof value === "string" && /^(?:[a-zA-Z0-9._/:/-]+@)?
 function keys(value, allowed, code = "INVALID_DISTRIBUTION_CONTRACT") {
   if (!S.record(value) || Object.keys(value).some((key) => !allowed.includes(key))) F.fail(code);
 }
-function strings(value) { return Array.isArray(value) && value.length > 0 && value.every((entry) => typeof entry === "string" && entry.length <= 4096 && !/[\x00\r\n]/.test(entry)); }
+function strings(value) { return Array.isArray(value) && value.length > 0 && value.every((entry) => typeof entry === "string" && entry.length <= 4096 && !entry.includes("\0") && !entry.includes("\r") && !entry.includes("\n")); }
 function checkedPlan(plan) {
   if (!S.plainTree(plan) || plan?.contract_version !== "2" || !plan.applicable || !plan.inputs) F.fail("INAPPLICABLE_DEPLOYMENT_PLAN");
   const expected = require("../lib/plan").planInfrastructure(plan.inputs.spec, plan.inputs.requirements, plan.inputs.adapter_input);
@@ -38,7 +38,7 @@ function appendSecretVolumes(value, plan, projections, volumes) {
 function validateServiceIdentity(value, compose, application) {
   keys(value, ["id", "image", "uid", "gid", "command", "entrypoint", "environment", "mounts", "secret_mounts", "healthcheck", "listener_ports", "requires", "validation_command", "effect", "artifact_revision", ...(application ? ["plugins"] : [])]);
   if (!S.identifier(value.id) || compose.services[value.id] || !image(value.image) || !Number.isInteger(value.uid) || value.uid <= 0 || !Number.isInteger(value.gid) || value.gid < 0 || !strings(value.command) || (value.entrypoint !== undefined && !strings(value.entrypoint)) || !Array.isArray(value.requires) || !Array.isArray(value.mounts) || !Array.isArray(value.secret_mounts)) F.fail(compose.services[value.id] ? "DUPLICATE_SERVICE_IDENTITY" : "INVALID_DISTRIBUTION_SERVICE");
-  if (value.environment !== undefined && (!S.record(value.environment) || Object.entries(value.environment).some(([key, text]) => !/^[a-zA-Z_][a-zA-Z0-9_]{0,79}$/.test(key) || /password|secret|token|credential/i.test(key) || typeof text !== "string" || /[\x00\r\n]/.test(text)))) F.fail("SECRET_VALUE_FORBIDDEN");
+  if (value.environment !== undefined && (!S.record(value.environment) || Object.entries(value.environment).some(([key, text]) => !/^[a-zA-Z_][a-zA-Z0-9_]{0,79}$/.test(key) || /password|secret|token|credential/i.test(key) || typeof text !== "string" || (text.includes("\0") || text.includes("\r") || text.includes("\n"))))) F.fail("SECRET_VALUE_FORBIDDEN");
 }
 function validateServiceReadiness(value, job) {
   if (!job && (!S.record(value.healthcheck) || !Array.isArray(value.healthcheck.test) || value.healthcheck.test[0] !== "CMD" || !strings(value.healthcheck.test) || !Array.isArray(value.listener_ports) || value.listener_ports.some((port) => !S.port(port) || port < 1024))) F.fail("KERNEL_READINESS_CONTRACT_REQUIRED");

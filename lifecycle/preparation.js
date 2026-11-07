@@ -18,7 +18,7 @@ function contextRoot(composition, context, create = false) {
 }
 function resources(composition, root, context) {
   const file = path.join(root, "resources.json"); let existing = [];
-  if (fs.existsSync(file)) { try { existing = JSON.parse(F.read(file)); } catch (_) { F.fail("RESOURCE_OWNERSHIP_MISMATCH"); } if (!S.plainTree(existing) || !Array.isArray(existing) || existing.some((value) => !S.record(value) || Object.keys(value).sort().join(",") !== "id,owner,source" || !S.identifier(value.id) || !S.resourcePath(value.source) || value.owner !== composition.instance_id) || new Set(existing.map(value => value.id)).size !== existing.length) F.fail("RESOURCE_OWNERSHIP_MISMATCH"); }
+  if (fs.existsSync(file)) { try { existing = JSON.parse(F.read(file)); } catch (_) { F.fail("RESOURCE_OWNERSHIP_MISMATCH"); } if (!S.plainTree(existing) || !Array.isArray(existing) || existing.some((value) => !S.record(value) || Object.keys(value).sort(S.lexical).join(",") !== "id,owner,source" || !S.identifier(value.id) || !S.resourcePath(value.source) || value.owner !== composition.instance_id) || new Set(existing.map(value => value.id)).size !== existing.length) F.fail("RESOURCE_OWNERSHIP_MISMATCH"); }
   for (const resource of composition.resources) {
     if (!S.contains(root, resource.source) || resource.source === root || !S.contains(path.join(root, "durable"), resource.source)) F.fail("RESOURCE_OUTSIDE_DEPLOYMENT_ROOT");
     const record = existing.find((value) => value.id === resource.id);
