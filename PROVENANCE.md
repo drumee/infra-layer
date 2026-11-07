@@ -269,3 +269,20 @@ The package still has 41 members, but its distributed bytes and integrity differ
 from IL-5.11R. The selected executable-source commit and recalculated source/npm
 receipts are recorded in `docs/IL-5.11-resume-artifact-qualification.md`.
 No alpha.3 publication, release tag or consumer realignment is implied.
+
+
+## IL-5.14-VER-01 — alpha.4 release identity, unpublished
+
+Qualified DIST-01 source: `07b7e4fb51499bff22c40089a99d1fe5829bebb4`.
+Registry alpha.3 belongs to earlier source
+`c218811effc83da25cf71a914e27accc96101329` and remains unchanged.
+Alpha.4 assigns a new, registry-verified unused identity to the integrated
+implementation. Only root package identity and current release documentation
+change; runtime, declarations, dependency resolution and Docker inputs remain
+those of the qualified baseline. Historical source and npm receipts above
+retain their original meanings and do not identify the new archive.
+
+The version-metadata commit and freshly measured alpha.4 npm archive identity
+are recorded separately in the VER-01 qualification report. No self-referential
+commit or artifact checksum is embedded here. Publication, release tagging,
+Debian source-lock changes and any quality-policy exception remain unauthorized.

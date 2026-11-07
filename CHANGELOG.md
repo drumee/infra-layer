@@ -1,4 +1,11 @@
-# 0.1.0-alpha.3 — IL-5 development, unpublished
+# 0.1.0-alpha.4 — IL-5.14 release-identity candidate, unpublished
+
+- Assign a distinct npm identity to the integrated IL-5.14 candidate because
+  alpha.3 is already published with different bytes.
+- Preserve runtime implementation, public APIs, dependencies and Docker inputs.
+- Keep publication unauthorized and the main-branch SonarCloud policy blocker open.
+
+## Historical IL-5 development notes — alpha.3 candidates
 
 - Replace ambiguous image-reference backtracking with deterministic validation;
   preserve pinned SHA256/numeric-suffix formats and reject trailing controls.
