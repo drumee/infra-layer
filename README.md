@@ -1,4 +1,9 @@
-# Drumee Infra Layer — IL-5 development (alpha.3, unpublished)
+# Drumee Infra Layer — IL-5.14 candidate (alpha.4, unpublished)
+
+Alpha.4 assigns a distinct release identity to the integrated IL-5.14 implementation;
+alpha.3 is already published with different bytes. This candidate does not change
+runtime APIs or behavior. Publication remains unauthorized, and the outstanding
+main-branch SonarCloud quality-policy blocker remains unresolved.
 
 ## IL-5 application distribution
 
