@@ -1,0 +1,86 @@
+{
+  "preflight": "PASS subject to immediate head/base/policy recheck and audit exits",
+  "head": "aa9057f224f4ae5cf80d777e3cb2fad092193fb1",
+  "base": "bef9a379754bcf9a46fed8bcb6f88fe1f775c739",
+  "checks": {
+    "CodeQL": {
+      "id": 117694357674,
+      "conclusion": "success",
+      "title": "No new alerts in code changed by this pull request",
+      "annotations": 0
+    },
+    "SonarCloud Code Analysis": {
+      "id": 117694341945,
+      "conclusion": "failure",
+      "title": "Quality Gate failed",
+      "annotations": 3
+    },
+    "dependencies": {
+      "id": 117694221110,
+      "conclusion": "success",
+      "title": null,
+      "annotations": 0
+    },
+    "contracts": {
+      "id": 117694221107,
+      "conclusion": "success",
+      "title": null,
+      "annotations": 0
+    },
+    "eslint": {
+      "id": 117694221063,
+      "conclusion": "success",
+      "title": null,
+      "annotations": 10
+    },
+    "packaging": {
+      "id": 117694221056,
+      "conclusion": "success",
+      "title": null,
+      "annotations": 0
+    },
+    "unit": {
+      "id": 117694220998,
+      "conclusion": "success",
+      "title": null,
+      "annotations": 0
+    },
+    "Analyze (javascript-typescript)": {
+      "id": 117694214997,
+      "conclusion": "success",
+      "title": null,
+      "annotations": 1
+    }
+  },
+  "sonar_open": [
+    {
+      "key": "AaFPQwg-CiUwZk3hfrD2",
+      "rule": "javascript:S7780",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "line": 42,
+      "status": "OPEN"
+    },
+    {
+      "key": "AaFOFe0GZ2pN_ZCiPhee",
+      "rule": "javascript:S9382",
+      "component": "drumee_infra-layer:test/application/run.js",
+      "line": 74,
+      "status": "OPEN"
+    },
+    {
+      "key": "AaFGj__57h-_7ZHL5nVs",
+      "rule": "javascript:S5332",
+      "component": "drumee_infra-layer:test/application/plugins/qualification/worker.js",
+      "line": 11,
+      "status": "OPEN"
+    }
+  ],
+  "sonar_open_matches_reviewed_closing_snapshot": true,
+  "global_security_inventory": "HTTP403; not represented as zero alerts",
+  "dependabot_inventory": "HTTP403",
+  "protection": {
+    "protected": false,
+    "effective_rules": [],
+    "classic_details": "HTTP403"
+  }
+}

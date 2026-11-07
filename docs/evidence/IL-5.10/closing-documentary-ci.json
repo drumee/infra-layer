@@ -1,0 +1,57 @@
+{
+  "head": "da42c0f3e1ce46419ec4895815a540f592e6b4d8",
+  "documentary_pr": 10,
+  "checks": [
+    {
+      "id": 118218268166,
+      "name": "CodeQL",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/runs/118218268166"
+    },
+    {
+      "id": 118217973006,
+      "name": "SonarCloud Code Analysis",
+      "conclusion": "success",
+      "details_url": "https://sonarcloud.io/dashboard?id=drumee_infra-layer&pullRequest=10"
+    },
+    {
+      "id": 118217821107,
+      "name": "Analyze (javascript-typescript)",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39298669234/job/118217821107"
+    },
+    {
+      "id": 118217773040,
+      "name": "dependencies",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39298673235/job/118217773040"
+    },
+    {
+      "id": 118217772950,
+      "name": "packaging",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39298673235/job/118217772950"
+    },
+    {
+      "id": 118217772922,
+      "name": "eslint",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39298673235/job/118217772922"
+    },
+    {
+      "id": 118217772706,
+      "name": "contracts",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39298673235/job/118217772706"
+    },
+    {
+      "id": 118217772445,
+      "name": "unit",
+      "conclusion": "success",
+      "details_url": "https://github.com/drumee/infra-layer/actions/runs/39298673235/job/118217772445"
+    }
+  ],
+  "sonar_success_scope": "documentary PR only; canonical main historical gate still ERROR",
+  "new_security_issue_in_changed_code": false,
+  "shipped_bytes_changed": false
+}
