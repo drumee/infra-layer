@@ -2,7 +2,7 @@
 // Real Docker qualification against an explicitly installed unpublished archive.
 // Frozen consumer code is copied into an owned fixture; no consumer lock is edited.
 const fs = require("node:fs"), path = require("node:path"), os = require("node:os"), crypto = require("node:crypto"), net = require("node:net"), http = require("node:http"), assert = require("node:assert/strict"), { createRequire } = require("node:module"), { execFileSync } = require("node:child_process");
-const DEBIAN = "175e6fd1c1500a05192ad367dca95ebd1fcecdbb", OXY = "9f558e505fef5e16bcc3246fbef93f0e513264da";
+const DEBIAN = "2d2fd20d7a8116ae5023088cc4129246afe09c24", OXY = "0cce3e7869ea08adc991891c00bc69238ca03d62";
 const command = (program, args, options = {}) => execFileSync(program, args, { encoding: "utf8", stdio: "pipe", timeout: 300000, ...options });
 async function freePort() { const server = net.createServer(); await new Promise(resolve => server.listen(0, "127.0.0.1", resolve)); const port = server.address().port; await new Promise(resolve => server.close(resolve)); return port; }
 function post(port, fields) { return new Promise((resolve, reject) => { const req = http.request({ host: "127.0.0.1", port, path: "/-/svc/oxyform.submit", method: "POST", headers: { "content-type": "application/json" }, agent: false }, res => { let body = ""; res.on("data", b => { body += b; }); res.on("end", () => resolve({ status: res.statusCode, body: JSON.parse(body) })); }); req.on("error", reject); req.setTimeout(12000, () => req.destroy()); req.end(JSON.stringify(fields)); }); }
@@ -24,7 +24,9 @@ async function main() {
   const L = requireCandidate("@drumee/infra-layer/lifecycle"), D = require(profile + "/node_modules/@drumee/infra-layer/lifecycle/docker"), A = require(profile + "/node_modules/@drumee/infra-layer/lifecycle/activation"), { compose } = require(profile + "/lib/config"), { configuration } = require(oxy + "/scripts/configure.cjs");
   const images = JSON.parse(fs.readFileSync(input.images)); assert.equal(images.plugins[0].id, "oxyform"); assert.equal(images.revision, DEBIAN);
   const password = crypto.randomBytes(32).toString("base64url"), submission = base + "/submission"; fs.writeFileSync(submission, password, { mode: 0o600 });
-  const cfg = configuration({ directory: consumer, profile }, { root, project, uid: process.getuid(), gid: process.getgid(), host_port: await freePort(), mail_hostname: "forms.example.invalid", recipient: "operator@example.invalid", sender: "forms@example.invalid", submission_file: submission, upstream: { host: "capture", port: 2525 }, qualification: true, enabled: true }, images);
+  const external = input.synthetic_relay === true ? await require("./external-fixture.cjs")(base, project) : null;
+  const cfg = configuration({ directory: consumer, profile }, { root, project, uid: process.getuid(), gid: process.getgid(), host_port: await freePort(), mail_hostname: "forms.example.invalid", recipient: "operator@example.invalid", sender: "forms@example.invalid", submission_file: submission, upstream: { host: "capture", port: 2525 }, qualification: true, enabled: true, ...(external ? external.settings : {}) }, images);
+  if (external) cfg.infrastructure.spec.secrets.resources.find(x => x.ref.key === "upstream").type = "smtp-external-credential";
   const report = { producer_source: input.producer_source, installed_version: metadata.version, archive: { sha256, integrity, bytes: data.length }, consumer_kind: "owned explicit candidate dependency with frozen CLI/configuration sources; not the released Debian dependency graph", debian_code: DEBIAN, oxy_code: OXY, image: images.image, tools_image: images.tools.image, plugin: images.plugins[0], expected: input.expect, groups: [], assertions: 0, external_smtp: false, real_mailbox: false, published_alpha4_requalified: false };
   const check = (value, expected) => { assert.deepEqual(value, expected); report.assertions++; };
   const step = async (name, fn) => { report.current_group = name; await fn(); report.groups.push(name); delete report.current_group; console.log("ROLLBACK_ROLE_OK " + name); };
@@ -92,17 +94,23 @@ async function main() {
         const wrong = structuredClone(cfg); wrong.deployment.owner_uid++; wrong.manifest.persistent_resources.find(x => x.id === "operator-state").uid++; check(cli("stop", write(wrong, "wrong-owner"), ["--execute"], false).code, "APPLICATION_OWNER_MISMATCH");
         // Docker logs has distinct stdout/stderr streams; both are inspected.
         const spawnSync = require("node:child_process").spawnSync;
-        for (const value of owns()) { const result = spawnSync("docker", ["logs", value.id], { encoding: "utf8", timeout: 30000 }); check(result.status, 0); const logs = result.stdout + result.stderr; check(logs.includes(password), false); for (const text of Object.values(fields)) check(logs.includes(text), false); check(/-----BEGIN (?:RSA |EC )?PRIVATE KEY-----/.test(logs), false); }
+        for (const value of owns()) { const result = spawnSync("docker", ["logs", value.id], { encoding: "utf8", timeout: 30000 }); check(result.status, 0); const logs = result.stdout + result.stderr; check(logs.includes(password), false); for (const credential of external?.sensitive || []) check(logs.includes(credential), false); for (const text of Object.values(fields)) check(logs.includes(text), false); check(/-----BEGIN (?:RSA |EC )?PRIVATE KEY-----/.test(logs), false); }
+      });
+      if (external) await step("synthetic-provider-authenticates-and-receives-after-recovery", async () => {
+        external.allowDelivery(); command("docker", ["exec", owns().find(x => x.service === "mail").id, "postqueue", "-f"]);
+        for (let i = 0; i < 150 && external.proof.sink_messages === 0; i++) await new Promise(resolve => setTimeout(resolve, 200));
+        report.synthetic_upstream = { ...external.proof }; check(external.proof.sink_messages, 1); check(external.proof.authentications > 0, true); check(external.proof.account_exact, true); check(external.proof.password_exact, true); check(external.proof.authentication_only_after_tls, true); check(queue().length, 0);
       });
       report.status = "candidate-recovery-qualified";
     }
-  } catch (error) { report.status = "failed"; report.failure = { code: /^[A-Z][A-Z0-9_]+$/.test(error.code || "") ? error.code : "QUALIFICATION_FAILED", operation: error.operation }; process.exitCode = 1; console.error(JSON.stringify(report.failure)); }
+  } catch (error) { report.status = "failed"; report.failure = { code: /^[A-Z][A-Z0-9_]+$/.test(error.code || "") ? error.code : "QUALIFICATION_FAILED", operation: error.operation, frame: String(error.stack).split("\n").find(line => line.includes("run.cjs:")) }; process.exitCode = 1; console.error(JSON.stringify(report.failure)); }
   finally {
     if (fs.existsSync(root + "/deployment-owner.json")) {
       for (const resource of owns()) command("docker", ["rm", "-f", resource.id]);
       for (const value of Object.values(compose(cfg).compose.networks)) { const id = command("docker", ["network", "ls", "--filter", "name=^" + value.name + "$", "-q"]).trim(); if (id) { const n = JSON.parse(command("docker", ["network", "inspect", id]))[0]; check(n.Labels["org.drumee.infra.owner"], project); check(Object.keys(n.Containers).length, 0); command("docker", ["network", "rm", id]); } }
     }
     if (extraCreated) { const n = JSON.parse(command("docker", ["network", "inspect", extraNetwork]))[0]; check(n.Labels["org.drumee.qualification"], project); check(Object.keys(n.Containers).length, 0); command("docker", ["network", "rm", extraNetwork]); }
+    if (external) await external.close();
     check(fs.lstatSync(base).uid, process.getuid()); command("docker", ["run", "--rm", "--network", "none", "--user", "0:0", "--mount", "type=bind,source=" + base + ",target=/work", cfg.manifest.helper_image, "node", "-e", "const f=require('fs');for(const x of f.readdirSync('/work'))f.rmSync('/work/'+x,{recursive:true,force:true})"]); fs.rmdirSync(base);
     fs.writeFileSync(input.output, JSON.stringify(report, null, 2), { mode: 0o600 }); console.log("ROLLBACK_ROLE_REPORT_WRITTEN");
   }

@@ -1,17 +1,16 @@
-# Drumee Infra Layer — alpha.5 rollback recovery candidate (unpublished)
+# Drumee Infra Layer — alpha.6 external SMTP authentication candidate (unpublished)
 
-Alpha.5 corrects authorized failed-start rollback for mixed application/SMTP/DKIM
-compositions. The Docker observation template now explicitly represents an absent
-infrastructure role label as an empty string, independent of optional health
-lookup behavior; recovery normalizes only that representation before exact role
-comparison. Required application roles and the other identity/network guards
-remain enforced. Recovery compares complete mount records independently of Docker
-observation order, preserving duplicates and rejecting any content difference.
-Public APIs, dependencies and Docker build inputs are unchanged.
+Alpha.6 separates external SMTP authentication accounts from internal resource
+identifiers. It adds import-only smtp-external-credential secrets and a byte-faithful,
+private Postfix map writer. Full-address accounts and representable UTF-8 secrets
+are supported without shell expansion, argument disclosure or silent trimming.
+Submission identifiers and legacy secret validation stay restricted.
 
-Alpha.4 is published and remains immutable. This candidate requires its own
-artifact receipt and qualification; publication and consumer realignment remain
-separate actions. See [the recovery qualification](docs/rollback-infrastructure-role-alpha5.md).
+Published alpha.5 remains immutable. This candidate also retains its qualified
+mixed application/SMTP/DKIM recovery correction. Public lifecycle APIs, CommonJS,
+dependencies, TLS verification and SMTP_RECOVERY_UNQUALIFIED remain unchanged.
+See [the exact authentication contract](docs/smtp-external-auth-alpha6.md).
+Publication and downstream Debian/Oxy-form convergence require separate actions.
 
 ## IL-5 application distribution
 

@@ -20,6 +20,7 @@ const allowed = [
 
 function validatePackageInventory(files, read) {
   const names = new Set(files.map(entry => entry.path)), edges = [];
+  assert.ok(names.has("lib/smtp-auth.js"), "Required package member missing: lib/smtp-auth.js");
   assert.ok(names.has("internal/rollback-authorization.js"), "Required package member missing: internal/rollback-authorization.js");
   for (const entry of files) {
     assert.ok(allowed.some(pattern => pattern.test(entry.path)), "Unexpected package member");

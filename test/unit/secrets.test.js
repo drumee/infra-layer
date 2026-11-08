@@ -45,7 +45,7 @@ test("consumer projections are narrow, exclusive and private; path/symlink/hardl
 test("all declared secret types validate; imported relay/DNS credentials are never invented", (t) => {
   const { store } = fixture(t);
   for (const type of types) { const descriptor = { ref: { resource: "types", key: type }, type, consumers: ["service"] };
-    if (["acme-dns-credential", "smtp-relay-credential"].includes(type)) { assert.throws(() => store.ensure(descriptor, { authorized: true }), { code: "SECRET_IMPORT_REQUIRED" }); store.import(descriptor, Buffer.from("operator-provided-credential"), { authorized: true }); }
+    if (["acme-dns-credential", "smtp-relay-credential", "smtp-external-credential"].includes(type)) { assert.throws(() => store.ensure(descriptor, { authorized: true }), { code: "SECRET_IMPORT_REQUIRED" }); store.import(descriptor, Buffer.from("operator-provided-credential"), { authorized: true }); }
     else store.ensure(descriptor, { authorized: true });
     assert.equal(store.inspect(descriptor.ref).type, type);
   }

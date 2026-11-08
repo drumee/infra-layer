@@ -64,7 +64,7 @@ export interface InfrastructureState {
 export type CapabilityName = "http-gateway" | "tls" | "dns" | "database" | "redis" | "smtp";
 export interface SecretDescriptor {
   ref: SecretRef;
-  type: "database-admin" | "database-service" | "redis-auth" | "tls-ca-key" | "tls-leaf-key" | "acme-account-key" | "acme-dns-credential" | "dkim-key" | "smtp-relay-credential" | "dns-tsig" | "application-secret";
+  type: "database-admin" | "database-service" | "redis-auth" | "tls-ca-key" | "tls-leaf-key" | "acme-account-key" | "acme-dns-credential" | "dkim-key" | "smtp-relay-credential" | "smtp-external-credential" | "dns-tsig" | "application-secret";
   consumers: string[];
 }
 export type DnsSpec = { mode: "none" | "localhost" } | {
