@@ -1,4 +1,14 @@
-# 0.1.0-alpha.5 — failed-start rollback recovery candidate, unpublished
+# 0.1.0-alpha.6 — external SMTP authentication candidate, unpublished
+
+- Validate provider authentication accounts separately from internal identifiers.
+- Add import-only smtp-external-credential with an explicit UTF-8 byte contract.
+- Stream one exact account:secret record into a private indexed Postfix map,
+  without secret shell substitution, argument exposure or silent whitespace loss.
+- Preserve TLS verification, consumer ACLs, private permissions, submission
+  identifiers, lifecycle recovery and SMTP_RECOVERY_UNQUALIFIED.
+- Alpha.5 is published and immutable. Alpha.6 is not published by this change.
+
+## 0.1.0-alpha.5 — historical rollback recovery preparation
 
 - Serialize absent Docker role labels explicitly as empty strings, independent
   of optional health lookup behavior.

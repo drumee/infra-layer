@@ -303,3 +303,17 @@ The qualified candidate commit, new archive identity, before/after Docker proof
 and post-merge receipt are recorded in the separate qualification report.
 Historical source/npm integrity values above retain their original meanings.
 Alpha.4 is not replaced; alpha.5 publication is not authorized by this preparation.
+
+
+## Alpha.6 — external SMTP authentication preparation
+
+Starting qualified producer: `6b04a883484beb5d8ec274bbef75cd1a254ddb54`.
+The alpha.5 artifact is published and immutable. This candidate changes the
+external account contract, introduces a distinct imported secret type and ships
+lib/smtp-auth.js for shared validation plus the generated native map writer.
+The package gains that required runtime member; it has a new artifact identity.
+No npm dependency or services Dockerfile is changed. The pinned native image's
+core Perl and Postfix are verified by executable qualification.
+Exact candidate/merged source, archive and test receipts are recorded separately
+to avoid self-referential provenance. No publication, release tag, consumer-lock
+update, external provider send or production action is authorized here.
