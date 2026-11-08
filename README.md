@@ -1,8 +1,9 @@
 # Drumee Infra Layer — alpha.5 rollback recovery candidate (unpublished)
 
 Alpha.5 corrects authorized failed-start rollback for mixed application/SMTP/DKIM
-compositions. Docker represents an absent infrastructure role label as an empty
-string; recovery now normalizes only that representation before exact role
+compositions. The Docker observation template now explicitly represents an absent
+infrastructure role label as an empty string, independent of optional health
+lookup behavior; recovery normalizes only that representation before exact role
 comparison. Required application roles and the other identity/network guards
 remain enforced. Public APIs, dependencies and Docker build inputs are unchanged.
 

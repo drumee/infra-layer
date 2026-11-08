@@ -1,5 +1,7 @@
 # 0.1.0-alpha.5 — failed-start rollback recovery candidate, unpublished
 
+- Serialize absent Docker role labels explicitly as empty strings, independent
+  of optional health lookup behavior.
 - Normalize only Docker's empty-string observation of an absent infrastructure
   role before comparing it with the prepared candidate's missing label.
 - Preserve required application roles and every authorization, identity, exposure,

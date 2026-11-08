@@ -294,7 +294,9 @@ Starting producer source: `a8037dd62a50ae4bcb8ab0b36f6a8e1b5f23a0a6`,
 which identifies the published alpha.4 implementation consumed by Debian
 `175e6fd1c1500a05192ad367dca95ebd1fcecdbb`. OF-01R exposed a mixed
 application/SMTP/DKIM failed-start recovery refusal; normal rollback succeeded.
-Only the confirmed empty-string/missing-role comparison is corrected here.
+The adapter explicitly serializes absent role labels as empty strings; recovery
+normalizes only that empty-string/missing-role comparison. Optional health
+lookup no longer changes the observed absence representation.
 The qualified candidate commit, new archive identity, before/after Docker proof
 and post-merge receipt are recorded in the separate qualification report.
 Historical source/npm integrity values above retain their original meanings.
