@@ -17,7 +17,9 @@ function authorizeRollback(prepared, observed, prior, pending, context, driver, 
   for (const resource of observed) {
     const candidate = candidates.get(resource.revision);
     if (!candidate || resource.name !== `/${prepared.project}-${resource.service}-1` || !Object.hasOwn(prepared.compose.services, resource.service)) F.fail("RUNTIME_IDENTITY_MISMATCH");
-    if (resource.role !== candidate.source.compose.services[resource.service]?.labels?.["org.drumee.infra.role"]) F.fail("RUNTIME_IDENTITY_MISMATCH");
+    const declaredRole = candidate.source.compose.services[resource.service]?.labels?.["org.drumee.infra.role"];
+    const observedRole = resource.role === "" ? undefined : resource.role;
+    if (observedRole !== declaredRole) F.fail("RUNTIME_IDENTITY_MISMATCH");
     checkObserved(candidate.source, { ...resource, ports: resource.configured_ports }, candidate.images);
     // Live bindings may disappear in restart backoff, but never expand exposure.
     for (const [port, bindings] of Object.entries(resource.ports || {})) {

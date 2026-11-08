@@ -40,7 +40,7 @@ function helper(composition, directory, script, args = [], writable = false) {
   return docker(["run", "--rm", "--network", "none", "--read-only", "--cap-drop", "ALL", "--cap-add", "DAC_OVERRIDE", ...(writable ? ["--cap-add", "CHOWN", "--cap-add", "FOWNER"] : []), "--security-opt", "no-new-privileges:true", "--pids-limit", "32", "--memory", "128m", "--label", `org.drumee.infra.owner=${composition.project}`, "--label", "org.drumee.infra.role=lifecycle-helper", "--mount", `type=bind,source=${directory},target=/work${writable ? "" : ",readonly"}`, composition.distribution.helper_image, "node", "-e", script, ...args]);
 }
 function compose(prepared, args, options) { return docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args], options); }
-const format = '{"id":{{json .Id}},"image_id":{{json .Image}},"image":{{json .Config.Image}},"started_at":{{json .State.StartedAt}},"running":{{json .State.Running}},"restarting":{{json .State.Restarting}},"name":{{json .Name}},"exit_code":{{json .State.ExitCode}},"health":{{if index .State "Health"}}{{json .State.Health.Status}}{{else}}"unknown"{{end}},"owner":{{json (index .Config.Labels "org.drumee.infra.owner")}},"role":{{json (index .Config.Labels "org.drumee.infra.role")}},"project":{{json (index .Config.Labels "com.docker.compose.project")}},"service":{{json (index .Config.Labels "com.docker.compose.service")}},"revision":{{json (index .Config.Labels "org.drumee.infra.revision")}},"ports":{{json .NetworkSettings.Ports}},"configured_ports":{{json .HostConfig.PortBindings}},"mounts":{{json .Mounts}}}';
+const format = '{"id":{{json .Id}},"image_id":{{json .Image}},"image":{{json .Config.Image}},"started_at":{{json .State.StartedAt}},"running":{{json .State.Running}},"restarting":{{json .State.Restarting}},"name":{{json .Name}},"exit_code":{{json .State.ExitCode}},"health":{{if index .State "Health"}}{{json .State.Health.Status}}{{else}}"unknown"{{end}},"owner":{{json (index .Config.Labels "org.drumee.infra.owner")}},"role":{{if index .Config.Labels "org.drumee.infra.role"}}{{json (index .Config.Labels "org.drumee.infra.role")}}{{else}}""{{end}},"project":{{json (index .Config.Labels "com.docker.compose.project")}},"service":{{json (index .Config.Labels "com.docker.compose.service")}},"revision":{{json (index .Config.Labels "org.drumee.infra.revision")}},"ports":{{json .NetworkSettings.Ports}},"configured_ports":{{json .HostConfig.PortBindings}},"mounts":{{json .Mounts}}}';
 function inspectProject(project, allowed_services) {
   if (!S.identifier(project)) F.fail("INVALID_DEPLOYMENT_IDENTITY");
   const ids = docker(["ps", "-a", "--filter", `label=com.docker.compose.project=${project}`, "--format", "{{.ID}}"] ).trim().split("\n").filter(Boolean);
@@ -102,6 +102,11 @@ function observedNetwork(composition, role, network) {
   if (observed.owner !== composition.project || observed.project !== composition.project || observed.driver !== "bridge" || observed.internal !== (role === "mail-control")) F.fail("NETWORK_OWNERSHIP_MISMATCH");
   return observed;
 }
+function mountIdentity(mounts) {
+  if (!Array.isArray(mounts)) F.fail("RUNTIME_IDENTITY_MISMATCH");
+  // Docker does not promise mount-array order; retain every record and duplicate.
+  return S.serialize(mounts.map(value => S.serialize(value)).sort(compareOrdinal));
+}
 function containerNetworks(composition, id, networks, recovery) {
   if (!/^[a-f0-9]{64}$/.test(id)) F.fail("INVALID_DOCKER_OBJECT_IDENTITY");
   const resource = networkObject(["container", "inspect", "--format", format.slice(0, -1) + ',"networks":{{json .NetworkSettings.Networks}}}', id], "REQUIRED_CONTAINER_MISSING");
@@ -110,7 +115,7 @@ function containerNetworks(composition, id, networks, recovery) {
   if (resource.id !== id || typeof resource.name !== "string" || !serviceName(composition.project, resource.service, resource.name?.slice(1)) || resource.name[0] !== "/" || typeof resource.running !== "boolean") F.fail("INVALID_NETWORK_ATTACHMENT");
   if (recovery) {
     const target = recovery.get(id);
-    if (!target || ["id", "name", "service", "revision", "image", "image_id", "role"].some(key => resource[key] !== target[key]) || ["running", "restarting"].some(key => typeof resource[key] !== "boolean" || typeof target[key] !== "boolean") || resource.name !== `/${composition.project}-${resource.service}-1` || S.serialize(resource.configured_ports) !== S.serialize(target.configured_ports) || S.serialize(resource.mounts) !== S.serialize(target.mounts)) F.fail("RUNTIME_IDENTITY_MISMATCH");
+    if (!target || ["id", "name", "service", "revision", "image", "image_id", "role"].some(key => resource[key] !== target[key]) || ["running", "restarting"].some(key => typeof resource[key] !== "boolean" || typeof target[key] !== "boolean") || resource.name !== `/${composition.project}-${resource.service}-1` || S.serialize(resource.configured_ports) !== S.serialize(target.configured_ports) || mountIdentity(resource.mounts) !== mountIdentity(target.mounts)) F.fail("RUNTIME_IDENTITY_MISMATCH");
   }
   const expected = serviceNetworks(composition, resource.service), actual = resource.networks;
   if (!actual || typeof actual !== "object" || Array.isArray(actual)) F.fail("INVALID_NETWORK_ATTACHMENT");

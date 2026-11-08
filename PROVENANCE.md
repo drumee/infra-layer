@@ -286,3 +286,20 @@ The version-metadata commit and freshly measured alpha.4 npm archive identity
 are recorded separately in the VER-01 qualification report. No self-referential
 commit or artifact checksum is embedded here. Publication, release tagging,
 Debian source-lock changes and any quality-policy exception remain unauthorized.
+
+
+## Alpha.5 — infrastructure-role recovery candidate
+
+Starting producer source: `a8037dd62a50ae4bcb8ab0b36f6a8e1b5f23a0a6`,
+which identifies the published alpha.4 implementation consumed by Debian
+`175e6fd1c1500a05192ad367dca95ebd1fcecdbb`. OF-01R exposed a mixed
+application/SMTP/DKIM failed-start recovery refusal; normal rollback succeeded.
+The adapter explicitly serializes absent role labels as empty strings; recovery
+normalizes only that empty-string/missing-role comparison. Optional health
+lookup no longer changes the observed absence representation. Real qualification
+also exposed unstable mount-array ordering; the complete-record comparison now
+preserves the multiset rather than requiring Docker enumeration order.
+The qualified candidate commit, new archive identity, before/after Docker proof
+and post-merge receipt are recorded in the separate qualification report.
+Historical source/npm integrity values above retain their original meanings.
+Alpha.4 is not replaced; alpha.5 publication is not authorized by this preparation.

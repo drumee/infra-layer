@@ -1,9 +1,17 @@
-# Drumee Infra Layer — IL-5.14 candidate (alpha.4, unpublished)
+# Drumee Infra Layer — alpha.5 rollback recovery candidate (unpublished)
 
-Alpha.4 assigns a distinct release identity to the integrated IL-5.14 implementation;
-alpha.3 is already published with different bytes. This candidate does not change
-runtime APIs or behavior. Publication remains unauthorized, and the outstanding
-main-branch SonarCloud quality-policy blocker remains unresolved.
+Alpha.5 corrects authorized failed-start rollback for mixed application/SMTP/DKIM
+compositions. The Docker observation template now explicitly represents an absent
+infrastructure role label as an empty string, independent of optional health
+lookup behavior; recovery normalizes only that representation before exact role
+comparison. Required application roles and the other identity/network guards
+remain enforced. Recovery compares complete mount records independently of Docker
+observation order, preserving duplicates and rejecting any content difference.
+Public APIs, dependencies and Docker build inputs are unchanged.
+
+Alpha.4 is published and remains immutable. This candidate requires its own
+artifact receipt and qualification; publication and consumer realignment remain
+separate actions. See [the recovery qualification](docs/rollback-infrastructure-role-alpha5.md).
 
 ## IL-5 application distribution
 
