@@ -42,8 +42,10 @@ test("R5 E18 unrelated restarting service cannot inherit failed-service endpoint
   f.secondary = { ...structuredClone(f.resource), id: "7".repeat(64), name: "/" + f.project + "-worker-1", service: "worker", configured_ports: {} }; f.inventory.push(f.secondary.id);
   await rejected(f, "NETWORK_ATTACHMENT_MISMATCH");
 }));
-test("R5 changed configured bindings or mounts at authoritative reinspection cannot be substituted", () => run(async f => {
-  const authorize = f.driver.authorizeRecoveryNetworks;
-  f.driver.authorizeRecoveryNetworks = (composition, targets) => { f.resource.configured_ports["3101/tcp"][0].HostPort = "39999"; return authorize(composition, targets); };
-  await rejected(f, "RUNTIME_IDENTITY_MISMATCH");
-}));
+test("R5 changed configured bindings or mounts at authoritative reinspection cannot be substituted", async () => {
+  for (const mutate of [f => { f.resource.configured_ports["3101/tcp"][0].HostPort = "39999"; }, f => { f.resource.mounts.push({ Source: "/unexpected", Destination: "/extra", RW: true }); }]) await run(async f => {
+    const authorize = f.driver.authorizeRecoveryNetworks;
+    f.driver.authorizeRecoveryNetworks = (composition, targets) => { mutate(f); return authorize(composition, targets); };
+    await rejected(f, "RUNTIME_IDENTITY_MISMATCH");
+  });
+});

@@ -1,4 +1,15 @@
-# 0.1.0-alpha.4 — IL-5.14 release-identity candidate, unpublished
+# 0.1.0-alpha.5 — failed-start rollback recovery candidate, unpublished
+
+- Normalize only Docker's empty-string observation of an absent infrastructure
+  role before comparing it with the prepared candidate's missing label.
+- Preserve required application roles and every authorization, identity, exposure,
+  mount and network refusal. Regress mixed application/SMTP/DKIM recovery.
+- Alpha.4 remains an immutable published baseline. No publication, release tag,
+  Debian lock update or Oxy-form merge is authorized by this candidate.
+
+## 0.1.0-alpha.4 — historical release-identity preparation
+
+The following notes describe its unpublished preparation; alpha.4 has since been published.
 
 - Assign a distinct npm identity to the integrated IL-5.14 candidate because
   alpha.3 is already published with different bytes.
