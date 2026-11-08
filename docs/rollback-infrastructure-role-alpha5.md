@@ -100,3 +100,34 @@ do not execute it in this mission. Only after authorized publication should
 Debian receive a targeted registry/lock convergence, followed by a full OF-01R
 replay. Oxy-form PR #3 stays draft; real upstream SMTP and mailbox reception remain
 separate work. SMTP spool backup/restore remains unsupported and explicitly refused.
+
+## Qualified local receipt
+
+Executable/archive source: `25dca4695976545f51f34504f071c80e15a1d9d1`.
+Subsequent test-only fixture completion does not change any archive member.
+Node 22.22.0 / npm 11.18.0 / Docker 29.2.0 were used.
+
+- Published alpha.4 real-adapter baseline: ordinary rollback succeeds; failed
+  plugin-provenance recovery is refused as RUNTIME_IDENTITY_MISMATCH.
+- Alpha.5 real adapter: all six groups pass, including actual post-recovery
+  readiness/RPC, unchanged durable ledger, queued message IDs and secret
+  generations, real unexpected-network refusal and retained SMTP recovery refusal.
+- Unit tests: 399; contracts: 24; mount/ownership regressions: 63; Python security:
+  31; isolated system-tool permission scenarios: 12. All pass without skips.
+- ESLint: zero errors/new findings; 26 existing warnings remain visible.
+- Production/development audits: zero vulnerabilities at qualification time.
+- Canonical package audit, isolated installed consumer (8 + 37 assertions),
+  strict NodeNext public declaration checks: pass. No production npm dependencies.
+- Two independent clean-source archive builds are byte-identical: 43 members,
+  108632 compressed bytes, 386015 unpacked bytes. The member inventory is identical
+  to alpha.4; changed members are the manifest, three release documents and the
+  two corrected implementation files.
+
+SHA256: `d714ea7fcce17041a4c6c9509add14c52c735169a4d6660d55ff570fc64fc75f`
+
+SRI: `sha512-NmHYfb/n83s2iY7MEpqNBU7W6xMGAiUHaUfzcm8C57ooPMR2oQeB6Q9O37ip0/Mb3O+/Oa4vx3n7ONLEcE2IVQ==`
+
+Exact-head hosted PR/main checks and merged-source archive comparison are required
+before the final publication-readiness recommendation. The local report and raw
+receipts remain outside the published inventory. No external SMTP delivery or
+mailbox receipt is claimed by this isolated capture qualification.
