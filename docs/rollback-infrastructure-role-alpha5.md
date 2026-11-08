@@ -15,6 +15,14 @@ to undefined for this comparison. No other falsy value is normalized, required
 roles remain exact, and the other authorization/identity/network logic is unchanged.
 Infrastructure labels are not rewritten to hide the mismatch.
 
+Real Docker 29.2.0 also exposed a template-specific distinction: inspecting only
+the missing label yields `""`, but the complete adapter template yields `null`
+after the optional health lookup. The adapter now explicitly serializes an absent
+or empty string label as `""`, independently of that template evaluation detail.
+Docker labels are strings; a nonempty value remains exact. The rollback guard
+still rejects a supplied null observation. The baseline runner records the actual
+full-adapter null value rather than substituting the reduced-template observation.
+
 ## Frozen evidence inputs
 
 - Debian CLI/configuration code: `175e6fd1c1500a05192ad367dca95ebd1fcecdbb`.
@@ -72,8 +80,8 @@ added mount. The change does not provide a new general identity or mount policy.
 
 ## Release and downstream handoff
 
-The dependency graph, public exports/declarations, Dockerfile and other production
-JavaScript are unchanged. The version/root lock and current release metadata are
+The dependency graph, public exports/declarations, Dockerfile and production
+JavaScript outside the Docker observation template and rollback guard are unchanged. The version/root lock and current release metadata are
 updated; historical receipts retain their original meanings. The alpha.5 tarball
 has new bytes and requires its own inventory/SHA256/SRI/consumer/type qualification.
 No alpha.4 archive checksum is reused for it.

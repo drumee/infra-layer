@@ -67,7 +67,7 @@ async function main() {
       check(cli("install", write(broken, "broken"), ["--execute"], false).code, "DOCKER_LIFECYCLE_COMMAND_FAILED"); check(cli("status").ready, false);
       const events = fs.readdirSync(root + "/journal").filter(x => /^\d{8}\.json$/.test(x)).sort().map(x => JSON.parse(fs.readFileSync(root + "/journal/" + x))), pending = events.filter(x => x.phase === "recovery-required").at(-1);
       check(pending.details.service, "application"); report.failed_candidate_roles = identities();
-      check(report.failed_candidate_roles.filter(x => !x.declared_role_present).map(x => [x.service, x.observed_role]).sort(), [["dkim", ""], ["mail", ""]]);
+      check(report.failed_candidate_roles.filter(x => !x.declared_role_present).map(x => [x.service, x.observed_role]).sort(), [["dkim", input.expect === "blocked" ? null : ""], ["mail", input.expect === "blocked" ? null : ""]]);
       check(cli("rollback", file, ["--revision", initial], false).code, "APPLICATION_EXECUTION_AUTHORIZATION_REQUIRED");
       await assert.rejects(L.rollbackDeployment(root, initial, { root, authorized: false }), { code: "ROLLBACK_OPERATION_NOT_AUTHORIZED" }); report.assertions++;
     });
