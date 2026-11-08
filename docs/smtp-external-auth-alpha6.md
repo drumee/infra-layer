@@ -14,10 +14,12 @@ New external credentials use an explicitly imported secret descriptor:
 {"ref":{"resource":"mail","key":"upstream"},"type":"smtp-external-credential","consumers":["mail"]}
 ```
 
-Only mail.relay_secret_ref accepts this new type. Internal submission still
+Among SMTP reference fields, only mail.relay_secret_ref accepts this new type. Internal submission still
 requires smtp-relay-credential, and all existing reference/consumer guards apply.
-The old external smtp-relay-credential descriptor remains accepted for previously
-supported values, but retains its restrictive import validation. Consumers needing
+The old external smtp-relay-credential descriptor remains accepted and retains
+its restrictive import validation. The native serializer also applies the new
+255-byte external limit to that legacy descriptor; longer values now fail before
+connection rather than being claimed interoperable. Consumers needing
 provider punctuation/UTF-8 must select the new type for their upstream secret;
 they must not change the internal submission secret type or bypass the store.
 Generation is forbidden for either imported external type: the provider's exact
@@ -74,6 +76,12 @@ produce SMTP_RELAY_AUTH_MAP_FAILED and remove newly created map files/directory.
 Validation errors create no map. Controlled failures are qualified explicitly;
 SIGKILL can prevent cleanup but cannot make the private tmpfs map public or durable.
 No table or credential-bearing query output is exported as evidence.
+
+This is a byte-representation contract, not a guarantee that every provider permits
+every representable account character. The test SMTP server independently refuses
+control characters in account names; that provider-side policy is distinguished
+from native map/SASL serialization. Password control-byte fidelity is exercised
+separately with an ordinary account. No provider policy is bypassed.
 
 TLS remains required with certificate and peer-name verification before SMTP AUTH.
 Submission TLS/auth-only policy, open-relay refusal and scoped secret mounts remain.

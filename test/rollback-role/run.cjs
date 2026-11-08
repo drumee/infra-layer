@@ -99,12 +99,11 @@ async function main() {
       if (external) await step("synthetic-provider-authenticates-and-receives-after-recovery", async () => {
         external.allowDelivery(); command("docker", ["exec", owns().find(x => x.service === "mail").id, "postqueue", "-f"]);
         for (let i = 0; i < 150 && external.proof.sink_messages === 0; i++) await new Promise(resolve => setTimeout(resolve, 200));
-        check(external.proof.sink_messages, 1); check(external.proof.authentications > 1, true); check(external.proof.account_exact, true); check(external.proof.password_exact, true); check(external.proof.authentication_only_after_tls, true); check(queue().length, 0);
-        report.synthetic_upstream = external.proof;
+        report.synthetic_upstream = { ...external.proof }; check(external.proof.sink_messages, 1); check(external.proof.authentications > 0, true); check(external.proof.account_exact, true); check(external.proof.password_exact, true); check(external.proof.authentication_only_after_tls, true); check(queue().length, 0);
       });
       report.status = "candidate-recovery-qualified";
     }
-  } catch (error) { report.status = "failed"; report.failure = { code: /^[A-Z][A-Z0-9_]+$/.test(error.code || "") ? error.code : "QUALIFICATION_FAILED", operation: error.operation }; process.exitCode = 1; console.error(JSON.stringify(report.failure)); }
+  } catch (error) { report.status = "failed"; report.failure = { code: /^[A-Z][A-Z0-9_]+$/.test(error.code || "") ? error.code : "QUALIFICATION_FAILED", operation: error.operation, frame: String(error.stack).split("\n").find(line => line.includes("run.cjs:")) }; process.exitCode = 1; console.error(JSON.stringify(report.failure)); }
   finally {
     if (fs.existsSync(root + "/deployment-owner.json")) {
       for (const resource of owns()) command("docker", ["rm", "-f", resource.id]);

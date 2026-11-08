@@ -23,6 +23,7 @@ async function main() {
     { name: "address-and-shell-punctuation", user: "qa-alpha6@example.invalid", password: ' !#$%&*()[]{};:,?`"\\=+/@ $(touch /tmp/SMTP_CODE_EXECUTED) END' },
     { name: "opaque-and-unicode", user: 'Opaque +/$`" name-é', password: " leading\tspa:ces-café-🔒" },
     { name: "unicode-not-normalized", user: "User\u00a0e\u0301", password: "soft\u00adhyphen-nbsp\u00a0e\u0301END" },
+    { name: "password-ascii-controls", user: "opaque-account", password: "prefix" + Array.from({ length: 127 }, (_, n) => n + 1).filter(n => ![10, 13].includes(n)).map(n => String.fromCharCode(n)).join("") + "END" },
     { name: "255-byte-boundary", user: "u".repeat(255), password: "p".repeat(255) },
     { name: "wrong-password", user: "qa-alpha6@example.invalid", password: "synthetic!bad-auth", mode: "wrong-password" },
     { name: "untrusted-ca", user: "qa-alpha6@example.invalid", password: "synthetic!ca", mode: "untrusted-ca" },
