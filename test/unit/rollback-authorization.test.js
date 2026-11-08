@@ -5,7 +5,7 @@ function fixture() {
   const project = "drumee-recovery", id = "a".repeat(64), nid = "b".repeat(64), eid = "c".repeat(64);
   const composition = { project, compose: { services: { application: { networks: ["kernel"] } }, networks: { kernel: { name: project + "-kernel" } } } };
   const network = { id: nid, name: project + "-kernel", owner: project, project, driver: "bridge", internal: false, containers: {} };
-  const resource = { id, name: "/" + project + "-application-1", service: "application", owner: project, project, revision: "d".repeat(64), image: "sha256:" + "e".repeat(64), image_id: "sha256:" + "e".repeat(64), running: true, restarting: true, networks: { [network.name]: { NetworkID: nid, EndpointID: "" } } };
+  const resource = { id, name: "/" + project + "-application-1", service: "application", owner: project, project, revision: "d".repeat(64), image: "sha256:" + "e".repeat(64), image_id: "sha256:" + "e".repeat(64), running: true, restarting: true, mounts: [], networks: { [network.name]: { NetworkID: nid, EndpointID: "" } } };
   const state = { composition, network, resource, targets: [{ ...structuredClone(resource), recovery_endpoint: true }], error: false, inventory: [id] };
   state.D = load((_program, argv) => {
     const a = argv.slice(2);
