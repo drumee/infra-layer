@@ -76,7 +76,7 @@ async function main() {
       report.status = "baseline-defect-reproduced-not-qualified";
     } else {
       await step("candidate-authorized-recovery-is-actually-ready-and-functional", async () => {
-        const state = cli("rollback", file, ["--execute", "--revision", initial]); check(state.ready, true); check(state.active_revision, initial);
+        let state; try { state = await L.rollbackDeployment(root, initial, { root, authorized: true, imports: cfg.imports || [] }); } catch (error) { report.rollback_failure_frames = String(error.stack).split("\n").slice(1, 7).map(line => line.replaceAll(base, "<owned-fixture>")); throw error; } check(state.ready, true); check(state.active_revision, initial);
         check((await post(port, fields)).body.data.duplicate, true); check(queue(), initialQueue); check(await fingerprints(), secretFingerprints);
         check(crypto.createHash("sha256").update(fs.readFileSync(root + "/durable/forms-state/ledger.json")).digest("hex"), ledgerDigest);
         report.recovered_roles = identities(); report.data_queue_and_secret_generations_preserved = true;

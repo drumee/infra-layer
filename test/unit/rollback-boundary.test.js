@@ -49,3 +49,18 @@ test("R5 changed configured bindings or mounts at authoritative reinspection can
     await rejected(f, "RUNTIME_IDENTITY_MISMATCH");
   });
 });
+
+test("R5 mount observation ordering is irrelevant while every record remains exact", () => run(async f => {
+  f.resource.mounts = [{ Source: "/a", Destination: "/one", RW: false }, { Source: "/b", Destination: "/two", RW: true }];
+  const authorize = f.driver.authorizeRecoveryNetworks;
+  f.driver.authorizeRecoveryNetworks = (composition, targets) => { f.resource.mounts.reverse(); return authorize(composition, targets); };
+  assert.equal((await f.run()).ready, true);
+}));
+test("R5 mount field changes, removals, additions and multiplicity differences still refuse", async () => {
+  for (const mutate of [x => x[0].RW = true, x => x[0].Source = "/foreign", x => x[0].Destination = "/foreign", x => x.pop(), x => x.push({ ...x[0] }), x => x.push({ Source: "/extra", Destination: "/extra", RW: false })]) await run(async f => {
+    f.resource.mounts = [{ Source: "/a", Destination: "/one", RW: false }, { Source: "/b", Destination: "/two", RW: true }];
+    const authorize = f.driver.authorizeRecoveryNetworks;
+    f.driver.authorizeRecoveryNetworks = (composition, targets) => { mutate(f.resource.mounts); return authorize(composition, targets); };
+    await rejected(f, "RUNTIME_IDENTITY_MISMATCH");
+  });
+});

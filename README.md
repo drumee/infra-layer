@@ -5,7 +5,9 @@ compositions. The Docker observation template now explicitly represents an absen
 infrastructure role label as an empty string, independent of optional health
 lookup behavior; recovery normalizes only that representation before exact role
 comparison. Required application roles and the other identity/network guards
-remain enforced. Public APIs, dependencies and Docker build inputs are unchanged.
+remain enforced. Recovery compares complete mount records independently of Docker
+observation order, preserving duplicates and rejecting any content difference.
+Public APIs, dependencies and Docker build inputs are unchanged.
 
 Alpha.4 is published and remains immutable. This candidate requires its own
 artifact receipt and qualification; publication and consumer realignment remain

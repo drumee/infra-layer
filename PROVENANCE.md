@@ -296,7 +296,9 @@ which identifies the published alpha.4 implementation consumed by Debian
 application/SMTP/DKIM failed-start recovery refusal; normal rollback succeeded.
 The adapter explicitly serializes absent role labels as empty strings; recovery
 normalizes only that empty-string/missing-role comparison. Optional health
-lookup no longer changes the observed absence representation.
+lookup no longer changes the observed absence representation. Real qualification
+also exposed unstable mount-array ordering; the complete-record comparison now
+preserves the multiset rather than requiring Docker enumeration order.
 The qualified candidate commit, new archive identity, before/after Docker proof
 and post-merge receipt are recorded in the separate qualification report.
 Historical source/npm integrity values above retain their original meanings.

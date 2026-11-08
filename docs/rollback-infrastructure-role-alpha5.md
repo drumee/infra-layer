@@ -23,6 +23,13 @@ Docker labels are strings; a nonempty value remains exact. The rollback guard
 still rejects a supplied null observation. The baseline runner records the actual
 full-adapter null value rather than substituting the reduced-template observation.
 
+The complete real replay exposed another representation-only mismatch: Docker
+returns the same SMTP mount records in different array orders across inspections.
+The authoritative comparison now sorts serialized complete records ordinally,
+without mutating either observation or removing duplicates. Added, missing,
+duplicated or changed mount records still refuse. No mount authorization policy
+or network condition is relaxed.
+
 ## Frozen evidence inputs
 
 - Debian CLI/configuration code: `175e6fd1c1500a05192ad367dca95ebd1fcecdbb`.

@@ -102,6 +102,11 @@ function observedNetwork(composition, role, network) {
   if (observed.owner !== composition.project || observed.project !== composition.project || observed.driver !== "bridge" || observed.internal !== (role === "mail-control")) F.fail("NETWORK_OWNERSHIP_MISMATCH");
   return observed;
 }
+function mountIdentity(mounts) {
+  if (!Array.isArray(mounts)) F.fail("RUNTIME_IDENTITY_MISMATCH");
+  // Docker does not promise mount-array order; retain every record and duplicate.
+  return S.serialize(mounts.map(value => S.serialize(value)).sort(compareOrdinal));
+}
 function containerNetworks(composition, id, networks, recovery) {
   if (!/^[a-f0-9]{64}$/.test(id)) F.fail("INVALID_DOCKER_OBJECT_IDENTITY");
   const resource = networkObject(["container", "inspect", "--format", format.slice(0, -1) + ',"networks":{{json .NetworkSettings.Networks}}}', id], "REQUIRED_CONTAINER_MISSING");
@@ -110,7 +115,7 @@ function containerNetworks(composition, id, networks, recovery) {
   if (resource.id !== id || typeof resource.name !== "string" || !serviceName(composition.project, resource.service, resource.name?.slice(1)) || resource.name[0] !== "/" || typeof resource.running !== "boolean") F.fail("INVALID_NETWORK_ATTACHMENT");
   if (recovery) {
     const target = recovery.get(id);
-    if (!target || ["id", "name", "service", "revision", "image", "image_id", "role"].some(key => resource[key] !== target[key]) || ["running", "restarting"].some(key => typeof resource[key] !== "boolean" || typeof target[key] !== "boolean") || resource.name !== `/${composition.project}-${resource.service}-1` || S.serialize(resource.configured_ports) !== S.serialize(target.configured_ports) || S.serialize(resource.mounts) !== S.serialize(target.mounts)) F.fail("RUNTIME_IDENTITY_MISMATCH");
+    if (!target || ["id", "name", "service", "revision", "image", "image_id", "role"].some(key => resource[key] !== target[key]) || ["running", "restarting"].some(key => typeof resource[key] !== "boolean" || typeof target[key] !== "boolean") || resource.name !== `/${composition.project}-${resource.service}-1` || S.serialize(resource.configured_ports) !== S.serialize(target.configured_ports) || mountIdentity(resource.mounts) !== mountIdentity(target.mounts)) F.fail("RUNTIME_IDENTITY_MISMATCH");
   }
   const expected = serviceNetworks(composition, resource.service), actual = resource.networks;
   if (!actual || typeof actual !== "object" || Array.isArray(actual)) F.fail("INVALID_NETWORK_ATTACHMENT");

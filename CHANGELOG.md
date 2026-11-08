@@ -4,6 +4,8 @@
   of optional health lookup behavior.
 - Normalize only Docker's empty-string observation of an absent infrastructure
   role before comparing it with the prepared candidate's missing label.
+- Compare complete runtime mount records independently of Docker observation
+  order while preserving multiplicity and rejecting every content difference.
 - Preserve required application roles and every authorization, identity, exposure,
   mount and network refusal. Regress mixed application/SMTP/DKIM recovery.
 - Alpha.4 remains an immutable published baseline. No publication, release tag,
