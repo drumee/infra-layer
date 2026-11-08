@@ -32,6 +32,7 @@ async function main() {
   try {
     report.serializer = require("./serializer.cjs")({ installed: directory, tools: input.tools_image, directory: base + "/serializer-checks", check });
     for (let index = 0; index < cases.length; index++) {
+      report.active_case = cases[index].name; report.phase = "prepare-input";
       const c = cases[index], project = "smtp-auth-" + suffix + "-" + index, owned = base + "/case-" + index, root = owned + "/deployment", keys = owned + "/keys"; fs.mkdirSync(owned); fs.mkdirSync(keys);
       const openssl = args => command("openssl", args, { stdio: "ignore" });
       for (const name of ["relay", "provider"]) openssl(["req", "-x509", "-newkey", "rsa:2048", "-nodes", "-days", "1", "-subj", "/CN=synthetic-" + name, "-addext", "basicConstraints=critical,CA:TRUE", "-keyout", keys + "/" + name + "-ca.key", "-out", keys + "/" + name + "-ca.pem"]);
@@ -53,6 +54,7 @@ async function main() {
       const composition = L.composeDeployment(plan, distribution); let prepared;
       const file = owned + "/qualification-compose.json";
       try {
+        report.phase = "canonical-preparation";
         prepared = await L.prepareDeployment(composition, { root, authorized: true, create_resources: true, imports: [{ ref: x.keys.leaf, file: keys + "/relay.key" }, { ref: x.keys.smtp, file: keys + "/submission" }, { ref: external, file: keys + "/external" }] });
         const fixture = structuredClone(prepared.compose), primary = Object.keys(fixture.networks).find(k => k !== "mail-control"), service = fixture.services.mail;
         // Separate test orchestration adds only the isolated TLS sink and a
@@ -62,14 +64,18 @@ async function main() {
         for (const [role, net] of Object.entries(fixture.networks)) { delete net.external; net.labels = { "org.drumee.infra.owner": project }; net.internal = role === "mail-control"; }
         fixture.services.provider = { image: providerImage, user: process.getuid() + ":" + process.getgid(), read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], networks: { [primary]: { aliases: ["provider"] } }, volumes: ["provider.key", "provider.pem", "provider.json"].map(name => ({ type: "bind", source: keys + "/" + name, target: "/keys/" + name, read_only: true })), ports: [{ target: 8025, published: control, host_ip: "127.0.0.1", protocol: "tcp" }], labels: { "org.drumee.infra.owner": project } };
         fs.writeFileSync(file, JSON.stringify(fixture), { mode: 0o600 });
+        report.phase = "native-startup";
         command("docker", ["compose", "-p", project, "-f", file, "up", "-d", "--wait", "--wait-timeout", "45"]);
+        report.phase = "inspect-auth-map";
         const mail = D.inspectProject(project, ["mail", "dkim", "provider"]).find(v => v.service === "mail");
         const expected = Buffer.from(c.user + ":" + c.password + "\n");
         const result = command("docker", ["exec", mail.id, "postmap", "-q", "[provider]:2525", "hash:/run/infra-mail/auth/sasl_passwd"], { encoding: null }); check(result.equals(expected), true);
         const rows = command("docker", ["exec", mail.id, "postmap", "-s", "hash:/run/infra-mail/auth/sasl_passwd"], { encoding: null }); check(rows.toString().split("\n").filter(Boolean).length, 1);
         check(command("docker", ["exec", mail.id, "stat", "-c", "%a %u", "/run/infra-mail/auth"]).trim(), "700 0"); check(command("docker", ["exec", mail.id, "stat", "-c", "%a %u", "/run/infra-mail/auth/sasl_passwd.db"]).trim(), "600 0");
+        report.phase = "smtp-submission";
         const client = require("nodemailer").createTransport({ host: "127.0.0.1", port: inbound, requireTLS: true, auth: { user: "fixture", pass: submission }, tls: { ca: fs.readFileSync(keys + "/relay-ca.pem"), servername: "relay.fixture.invalid", rejectUnauthorized: true }, logger: false });
         try { const sent = await client.sendMail({ from: "sender@fixture.invalid", to: "sink@fixture.invalid", subject: "Synthetic SMTP auth qualification", text: nonce }); check(sent.accepted.length, 1); } finally { client.close(); }
+        report.phase = "upstream-authentication";
         let upstream; for (let i = 0; i < 100; i++) { upstream = await status(control); if (c.mode ? upstream.connections > 0 : upstream.messages > 0) break; await sleep(100); }
         if (!c.mode) { check(upstream.messages, 1); check(upstream.authentications > 0, true); check(upstream.account_exact, true); check(upstream.password_exact, true); check(upstream.envelope_exact, true); check(upstream.body_exact, true); }
         else if (c.mode === "wrong-password") { for (let i = 0; i < 50 && upstream.authentications === 0; i++) { await sleep(100); upstream = await status(control); } check(upstream.authentications > 0, true); check(upstream.messages, 0); }
@@ -79,6 +85,15 @@ async function main() {
         check(command("docker", ["exec", mail.id, "test", "!", "-e", "/tmp/SMTP_CODE_EXECUTED"]), "");
         report.cases.push({ name: c.name, passed: true, table_exact: true, entries: 1, private_permissions: true, relay_accepted: true, sink_received: upstream.messages === 1, auth_attempts: upstream.authentications, no_plaintext_auth: upstream.authentication_only_after_tls });
         console.log("SMTP_AUTH_OK " + c.name);
+      } catch (error) {
+        const found = command("docker", ["ps", "-aq", "--filter", "label=com.docker.compose.project=" + project]).trim().split("\n").filter(Boolean);
+        report.native_failure = found.map(id => {
+          const o = JSON.parse(command("docker", ["inspect", id]))[0], r = require("node:child_process").spawnSync("docker", ["logs", id], { encoding: "utf8" });
+          const redact = value => [c.user, c.password, submission].reduce((text, secret) => text.replaceAll(secret, "<redacted>"), String(value));
+          const logs = redact(r.stdout + r.stderr);
+          return { service: o.Config.Labels["com.docker.compose.service"], status: o.State.Status, exit: o.State.ExitCode, restarts: o.RestartCount, health: o.State.Health?.Status, health_output: redact(o.State.Health?.Log?.at(-1)?.Output || ""), log: logs.slice(-1800) };
+        });
+        throw error;
       } finally {
         const ids = command("docker", ["ps", "-aq", "--filter", "label=com.docker.compose.project=" + project]).trim().split("\n").filter(Boolean);
         for (const id of ids) { const o = JSON.parse(command("docker", ["inspect", id]))[0]; check(o.Config.Labels["org.drumee.infra.owner"], project); command("docker", ["rm", "-f", id]); }
@@ -86,7 +101,7 @@ async function main() {
       }
     }
     report.status = "passed";
-  } catch (error) { report.status = "failed"; report.failure = { code: /^[A-Z_]+$/.test(error.code || "") ? error.code : "SMTP_AUTH_QUALIFICATION_FAILED", completed_cases: report.cases.length }; process.exitCode = 1; console.error(JSON.stringify(report.failure)); }
+  } catch (error) { report.status = "failed"; report.failure = { code: /^[A-Z_]+$/.test(error.code || "") ? error.code : "SMTP_AUTH_QUALIFICATION_FAILED", completed_cases: report.cases.length, frames: String(error.stack).split("\n").filter(x => /^\s+at /.test(x)).slice(0, 4).map(x => x.replaceAll(base, "<owned-fixture>")) }; process.exitCode = 1; console.error(JSON.stringify(report.failure)); }
   finally {
     check(fs.lstatSync(base).uid, process.getuid());
     command("docker", ["run", "--rm", "--network", "none", "--user", "0:0", "--mount", "type=bind,source=" + base + ",target=/work", "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392", "node", "-e", "const f=require('fs');for(const x of f.readdirSync('/work'))f.rmSync('/work/'+x,{recursive:true,force:true})"]); fs.rmdirSync(base);

@@ -62,6 +62,10 @@ key TAB account:secret LF entry to fixed /usr/sbin/postmap -i arguments. Credent
 never enter program source, process arguments or environment. No eval or user
 shell interpolation is used. Validation does not normalize credential bytes.
 
+postmap -i creates its initial database with mode 0644 even under umask 077. The
+0700 enclosing directory protects creation; the writer sets and verifies 0600
+before allowing Postfix startup. Controlled failures remove newly created files.
+
 The indexed hash database is /run/infra-mail/auth/sasl_passwd.db, not a password
 hash: it contains sensitive authentication material. Its directory is 0700, map
 0600, owned by the executing mail principal; /run is disposable tmpfs. No populated
