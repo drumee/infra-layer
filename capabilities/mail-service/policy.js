@@ -42,8 +42,31 @@ function authorMailbox(value) {
   const address = (left === -1 ? clean : clean.slice(left + 1, right)).trim().toLowerCase();
   return /^[a-z0-9][a-z0-9._-]{0,63}@[a-z0-9.-]+$/.test(address) && !address.includes("..") ? address : null;
 }
-function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0") {
+function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0", stateDirectory = null) {
+  let counters = { accounts: {}, rate_limited: 0 };
+  if (stateDirectory && fs.existsSync(stateDirectory + "/counters.json")) counters = JSON.parse(fs.readFileSync(stateDirectory + "/counters.json"));
+  function admit() {
+    if (!stateDirectory) return;
+    for (const name of ["spool", "mailboxes"]) {
+      const stat = fs.statfsSync("/storage/" + name);
+      if (stat.bavail * stat.bsize < 67108864 || stat.bavail / stat.blocks < 0.1) throw Error("disk pressure");
+    }
+  }
+  function accountRate(token) {
+    token = token.replace(/-g[0-9]+$/, "");
+    const now = Date.now();
+    for (const key of Object.keys(counters.accounts)) if (!counters.accounts[key].some(at => at > now - 60000)) delete counters.accounts[key];
+    const attempts = (counters.accounts[token] || []).filter(at => at > now - 60000), permitted = attempts.length < 60;
+    if (permitted) attempts.push(now); else counters.rate_limited++;
+    counters.accounts[token] = attempts;
+    if (stateDirectory) {
+      fs.writeFileSync(stateDirectory + "/.counters-new", JSON.stringify(counters), { mode: 0o600 });
+      fs.renameSync(stateDirectory + "/.counters-new", stateDirectory + "/counters.json");
+    }
+    return permitted;
+  }
   function registry() {
+    admit();
     if (fs.existsSync(directory + "/admission-closed")) throw Error("barrier");
     const r = JSON.parse(fs.readFileSync(directory + "/current.json"));
     if (r.contract !== "drumee.mail-registry/1" || !Number.isSafeInteger(r.generation)) throw Error("registry");
@@ -105,7 +128,7 @@ function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0")
           if (cmd === "O") { const opts = Buffer.alloc(12); opts.writeUInt32BE(6); if (!(data.readUInt32BE(4) & 0x10)) { socket.destroy(); continue; } opts.writeUInt32BE(0x10, 4); reply("O", opts); continue; }
           if (cmd === "Q") { socket.end(); continue; }
           if (cmd === "A") { envelope = ""; headers = []; headerSize = 0; continue; }
-          if (cmd === "M") { envelope = data.toString().split("\0")[0].replace(/^<|>$/g, "").toLowerCase(); headers = []; headerSize = 0; const a = current(); if (!a) { reject("421 4.7.0 Credential generation revoked"); continue; } if (!envelope || !a.envelope.includes(envelope)) { reject("550 5.7.1 Envelope sender unauthorized"); continue; } }
+          if (cmd === "M") { envelope = data.toString().split("\0")[0].replace(/^<|>$/g, "").toLowerCase(); headers = []; headerSize = 0; const a = current(); if (!a) { reject("421 4.7.0 Credential generation revoked"); continue; } if (!envelope || !a.envelope.includes(envelope)) { reject("550 5.7.1 Envelope sender unauthorized"); continue; } if (!accountRate(a.token)) { reject("451 4.7.0 Account submission rate exceeded"); continue; } }
           if (cmd === "L") { const [name, value] = data.toString().split("\0"); headerSize += data.length; if (headerSize > 65536 || headers.length >= 128) { reject("550 5.6.0 Header limit"); continue; } headers.push([name.toLowerCase(), value]); }
           if (["T", "N", "E"].includes(cmd) && !current()) { reject("421 4.7.0 Credential generation revoked"); continue; }
           if (cmd === "E") {
@@ -130,7 +153,7 @@ function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0")
       }
     }); socket.on("error", () => {});
   });
-  const servers = [socketmap, access, milter]; servers.forEach((server, i) => server.listen(ports[i], host)); return servers;
+  const servers = [socketmap, access, milter]; servers.forEach((server, i) => { server.maxConnections = 64; server.listen(ports[i], host); }); return servers;
 }
-if (require.main === module) startPolicy("/registry");
+if (require.main === module) startPolicy("/registry", [10001, 10002, 10003], "0.0.0.0", "/state");
 module.exports = { startPolicy, authenticationService, authorMailbox };

@@ -12,6 +12,10 @@ inet_protocols = ipv4
 smtputf8_enable = no
 recipient_delimiter =
 queue_directory = /var/spool/postfix
+queue_minfree = 67108864
+smtpd_client_connection_count_limit = 20
+smtpd_client_connection_rate_limit = 120
+anvil_rate_time_unit = 60s
 data_directory = /var/spool/postfix/infra-data
 mail_owner = postfix
 setgid_group = postdrop
@@ -28,12 +32,12 @@ smtpd_sasl_path = /run/mail-sockets/auth
 smtpd_sasl_security_options = noanonymous
 smtpd_tls_security_level = may
 smtpd_tls_auth_only = yes
-smtpd_tls_cert_file = /keys/certificate.pem
-smtpd_tls_key_file = /keys/key.pem
+smtpd_tls_cert_file = /keys/current/certificate.pem
+smtpd_tls_key_file = /keys/current/key.pem
 smtpd_tls_mandatory_protocols = >=TLSv1.2
 smtpd_tls_protocols = >=TLSv1.2
 smtp_tls_security_level = ${q.tls === "required-verify" ? "verify" : "may"}
-smtp_tls_CAfile = /keys/ca.pem
+smtp_tls_CAfile = /keys/current/ca.pem
 smtp_tls_policy_maps = texthash:/config/tls-policy
 smtp_sasl_auth_enable = no
 smtpd_milters =
@@ -101,8 +105,8 @@ protocols = imap lmtp
 listen = *
 log_path = /dev/stderr
 ssl = required
-ssl_server_cert_file = /keys/certificate.pem
-ssl_server_key_file = /keys/key.pem
+ssl_server_cert_file = /keys/current/certificate.pem
+ssl_server_key_file = /keys/current/key.pem
 ssl_min_protocol = TLSv1.2
 auth_mechanisms = plain login
 auth_cache_size = 0

@@ -16,12 +16,17 @@ export interface MailServiceSpec {
 }
 export interface Diagnostic { code: string; path: string; severity: 'error'|'warning' }
 export interface MailPlan { contract: 'drumee.mail-plan/1'; implementation: string; applicable: true; revision: string; spec: MailServiceSpec; registry: Registry; secret_sources: { ref: string; file: string }[]; artifacts: Record<string,string>; diagnostics: Diagnostic[] }
-export interface PreparedMail { contract: 'drumee.mail-prepared/1'; root: string; project: string; revision: string; compose: object; compose_file: string; certificate_fingerprint: string; registry_generation: number; transport_digest: string; files: Record<string,string>; private_files: Record<string,string>; storage: Record<string,{dev:number;ino:number}> }
+export interface PreparedMail { contract: 'drumee.mail-prepared/1'; hostname: string; private_port: number; root: string; project: string; revision: string; compose: object; compose_file: string; certificate_fingerprint: string; registry_generation: number; transport_digest: string; files: Record<string,string>; private_files: Record<string,string>; storage: Record<string,{dev:number;ino:number}> }
 export function validateMailService(spec: unknown): { valid: boolean; normalized?: MailServiceSpec; diagnostics: Diagnostic[] };
 export function validateRegistry(registry: unknown, spec: MailServiceSpec): Registry;
 export function planMailService(spec: MailServiceSpec, resources?: { registry?: Registry; secret_sources?: { ref: string; file: string }[] }): MailPlan | { applicable: false; diagnostics: Diagnostic[] };
-export function composeMailService(plan: MailPlan, distribution?: { acceptance?: boolean }): object;
-export function prepareMailService(plan: MailPlan, context: { authorized: boolean; acceptance?: boolean; verifiers?: Record<string,string> }): PreparedMail;
+export function composeMailService(plan: MailPlan, distribution?: { acceptance?: boolean; private_bind?: boolean }): object;
+export function prepareMailService(plan: MailPlan, context: { authorized: boolean; acceptance?: boolean; private_bind?: boolean; verifiers?: Record<string,string> }): PreparedMail;
 export function operateMailService(prepared: PreparedMail, operation: 'start'|'stop'|'restart'|'status', context: { authorized: boolean; acceptance?: boolean }): { revision: string; operation: string; native_output: string };
 
 export function activateMailRegistry(prepared: PreparedMail, context: { authorized: boolean; expected_generation: number }): { applied: true; changed: boolean; generation: number; smtp_revocation?: string; imap_affected_sessions_kicked?: boolean };
+
+export function observeMailService(prepared: PreparedMail, context: { authorized: boolean; queue_age_seconds?: number; auth_failures?: number }): { contract: 'drumee.mail-observation/1'; queue: {count:number;oldest_age_seconds:number}; disks: Record<string,{available_bytes:number;total_bytes:number}>; quotas: {id:string;used_bytes:number;limit_bytes:number}[]; authentication_failures_10m:number; certificate_expires_at:string; alerts: {code:string;resource?:string;mailbox_id?:string}[] };
+
+export function rotateMailTLS(prepared: PreparedMail, sources: {certificate_file:string;key_file:string;ca_file:string}, context:{authorized:boolean}): {changed:boolean;fingerprint:string;endpoints?:object[]};
+export function reconcileMailTLS(prepared: PreparedMail, context:{authorized:boolean}): {reconciled:true;fingerprint:string;endpoints:object[]};
