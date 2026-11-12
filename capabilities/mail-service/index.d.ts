@@ -15,7 +15,7 @@ export interface MailServiceSpec {
   registry: { schema: 'drumee.mail-registry/1'; bootstrap: 'empty' };
 }
 export interface Diagnostic { code: string; path: string; severity: 'error'|'warning' }
-export interface MailPlan { contract: 'drumee.mail-plan/1'; implementation: string; applicable: true; revision: string; spec: MailServiceSpec; registry: Registry; secret_sources: { ref: string; file: string }[]; artifacts: Record<string,string>; diagnostics: Diagnostic[] }
+export interface MailPlan { private_endpoint: { address:string;hostname:string;port:number;network:string }; contract: 'drumee.mail-plan/1'; implementation: string; applicable: true; revision: string; spec: MailServiceSpec; registry: Registry; secret_sources: { ref: string; file: string }[]; artifacts: Record<string,string>; diagnostics: Diagnostic[] }
 export interface PreparedMail { contract: 'drumee.mail-prepared/1'; hostname: string; private_port: number; root: string; project: string; revision: string; compose: object; compose_file: string; certificate_fingerprint: string; registry_generation: number; transport_digest: string; files: Record<string,string>; private_files: Record<string,string>; storage: Record<string,{dev:number;ino:number;uid:number;gid:number;mode:number}>; mailbox_identities: Record<string,Record<string,{dev:number;ino:number}>> }
 export function validateMailService(spec: unknown): { valid: boolean; normalized?: MailServiceSpec; diagnostics: Diagnostic[] };
 export function validateRegistry(registry: unknown, spec: MailServiceSpec): Registry;

@@ -207,3 +207,18 @@ Primary design basis (checked during MAIL-01): [Postfix access controls](https:/
 [Ghost mail configuration](https://docs.ghost.org/config#mail).
 These describe mechanisms; the lab/MAIL-02 evidence determines compatibility of
 the exact pinned binaries and generated config.
+
+## MAIL-02 Docker source-preservation amendment
+
+Docker26 inter-bridge NAT hides client sources at the published gateway; disabling
+masquerade alone is insufficient because bridge isolation then blocks the route.
+Docker application clients therefore join the mail-owned frontal network as an
+external network, retaining their independent backend networks. They use the
+stable server address and hostname in `plan.private_endpoint`, without host DNAT.
+The address is derived from the edge subnet and pinned in runtime preflight.
+Private CIDRs apply to frontal source addresses; the gateway is denied and server
+self-probes are separately allowed. TLS/auth/sender checks remain mandatory.
+The canonical read-only Debian client descriptor creates no resource. Client
+projects never own the mail network and mail joins no application backend.
+Both earlier failed routes and the rationale are retained in Debian's
+`profiles/mail/native/NETWORK-AMENDMENT.md`. Target integration remains MAIL04.

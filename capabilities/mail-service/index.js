@@ -12,7 +12,8 @@ function planMailService(spec, resources = {}) {
   if (resources.secret_sources !== undefined && (!Array.isArray(resources.secret_sources) || resources.secret_sources.some(x => !x || Object.keys(x).sort().join(",") !== "file,ref" || !/^secret:[a-z][a-z0-9-]*\/[a-z][a-z0-9-]*$/.test(x.ref) || typeof x.file !== "string" || !path.isAbsolute(x.file) || path.normalize(x.file) !== x.file) || new Set(resources.secret_sources.map(x => x.ref)).size !== resources.secret_sources.length)) V.fail("MAIL_SECRET_SOURCES_INVALID");
   const artifacts = R.render(normalized, registry);
   const implementation = V.digest({ artifacts, policy: fs.readFileSync(__dirname + "/policy.js", "utf8"), api: fs.readFileSync(__filename, "utf8"), validation: fs.readFileSync(__dirname + "/validation.js", "utf8"), schema: fs.readFileSync(__dirname + "/schema.json", "utf8"), version: require("../../package.json").version });
-  const body = { implementation, contract: "drumee.mail-plan/1", spec: normalized, registry, secret_sources: resources.secret_sources || [] };
+  const private_endpoint = { address: V.privateServiceAddress(normalized), hostname: normalized.hostname, port: normalized.networks.private_submission.port, network: normalized.deployment.project + "-edge" };
+  const body = { private_endpoint, implementation, contract: "drumee.mail-plan/1", spec: normalized, registry, secret_sources: resources.secret_sources || [] };
   return { ...body, revision: V.digest(body), applicable: true, diagnostics: [], artifacts };
 }
 function checkedPlan(plan) {
@@ -29,6 +30,7 @@ function composeMailService(plan, distribution = {}) {
   const service = (role, networks) => ({ image: images[role === "policy" ? "helper" : role].split("@").at(-1), read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], networks, restart: "no", labels: { "org.drumee.mail.owner": s.deployment.id, "org.drumee.mail.revision": plan.revision, "org.drumee.mail.role": role }, tmpfs: ["/run:rw,nosuid,size=64m", "/tmp:rw,noexec,nosuid,size=32m"], volumes: [] });
   const postfix = service("postfix", ["edge", "control"]), dovecot = service("dovecot", ["edge"]), opendkim = service("opendkim", ["control"]), policy = service("policy", ["control"]);
   for (const value of [postfix, dovecot]) value.cap_add = ["CHOWN", "SETUID", "SETGID", "DAC_OVERRIDE", "FOWNER", "KILL", "NET_BIND_SERVICE"];
+  postfix.networks = { edge: { ipv4_address: plan.private_endpoint.address, aliases: [s.hostname] }, control: {} };
   dovecot.cap_add.push("SYS_CHROOT");
   postfix.cap_add.push("NET_ADMIN", "SETPCAP"); // fixed namespace-only rule install; dropped before exec
   postfix.tmpfs.push("/config:rw,noexec,nosuid,size=16777216");
@@ -312,8 +314,13 @@ function verifyRuntimeRole(prepared, role, actual) {
   if (!equal(actual.Config.Entrypoint, expected.entrypoint) || !equal(actual.Config.Cmd || [], expected.command || []) || actual.Config.User !== (expected.user ?? imageConfig.User ?? "") || !actual.HostConfig.ReadonlyRootfs || actual.HostConfig.Privileged || actual.HostConfig.PidMode || actual.HostConfig.Devices?.length || actual.HostConfig.DeviceRequests?.length) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
   const caps = a => sorted((a || []).map(x => x.replace(/^CAP_/, "").toUpperCase()));
   if (!equal(caps(actual.HostConfig.CapDrop), caps(expected.cap_drop)) || !equal(caps(actual.HostConfig.CapAdd), caps(expected.cap_add)) || !equal(sorted(actual.HostConfig.SecurityOpt), sorted(expected.security_opt))) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
-  const networks = Object.keys(actual.NetworkSettings.Networks).sort(), expectedNetworks = expected.networks.map(name => prepared.compose.networks[name].name).sort();
+  const networks = Object.keys(actual.NetworkSettings.Networks).sort(), expectedNetworks = (Array.isArray(expected.networks) ? expected.networks : Object.keys(expected.networks)).map(name => prepared.compose.networks[name].name).sort();
   if (!equal(networks, expectedNetworks)) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
+  if (!Array.isArray(expected.networks)) for (const [name, endpoint] of Object.entries(expected.networks)) {
+    const observed=actual.NetworkSettings.Networks[prepared.compose.networks[name].name];
+    if ((observed.IPAMConfig?.IPv4Address || null) !== (endpoint.ipv4_address || null)) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
+    if (actual.State.Running && endpoint.ipv4_address && observed.IPAddress !== endpoint.ipv4_address) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
+  }
   const ports = {};
   for (const p of expected.ports || []) (ports[p.target + "/tcp"] ||= []).push({ HostIp: p.host_ip, HostPort: String(p.published) });
   if (!equal(actual.HostConfig.PortBindings || {}, ports)) V.fail("MAIL_RUNTIME_LISTENER_MISMATCH");

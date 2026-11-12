@@ -13,6 +13,11 @@ function cidr(value) {
   return n % size === 0 ? [n, n + size - 1] : null;
 }
 const privateIP = ip => net.isIP(ip) === 4 && (ip.startsWith("10.") || ip.startsWith("192.168.") || /^172\.(?:1[6-9]|2\d|3[01])\./.test(ip));
+function privateServiceAddress(spec) {
+  const range=cidr(spec.networks.edge_subnet),gateway=spec.networks.edge_gateway.split(".").reduce((a,b)=>a*256+Number(b),0);
+  let n=range[1]-1;if(n===gateway)n=range[0]+1;
+  return [Math.floor(n/16777216),Math.floor(n/65536)%256,Math.floor(n/256)%256,n%256].join(".");
+}
 function validateMailService(input) {
   const diagnostics = [];
   const error = (code, field) => diagnostics.push({ code, path: field, severity: "error" });
@@ -45,7 +50,7 @@ function validateMailService(input) {
   const root = x => path.isAbsolute(x) && path.normalize(x) === x && x.split("/").length >= 3;
   if (![d.root, d.backup_root].every(root) || d.root === d.backup_root || d.root.startsWith(d.backup_root + "/") || d.backup_root.startsWith(d.root + "/")) error("MAIL_STORAGE_OVERLAP", "deployment");
   const gateway = s.networks.edge_gateway.split(".").reduce((a, x) => a * 256 + Number(x), 0);
-  if (!subnet || gateway <= subnet[0] || gateway >= subnet[1] || !privateIP(s.networks.edge_gateway) || s.networks.private_submission.address !== s.networks.edge_gateway) error("MAIL_NETWORK_INVALID", "networks");
+  if (!subnet || subnet[1]-subnet[0]<7 || gateway <= subnet[0] || gateway >= subnet[1] || !privateIP(s.networks.edge_gateway) || s.networks.private_submission.address !== s.networks.edge_gateway) error("MAIL_NETWORK_INVALID", "networks");
   for (const source of s.networks.private_submission.allowed_sources) if (!cidr(source) || !privateIP(source.split("/")[0])) error("MAIL_SOURCE_INVALID", "networks.private_submission.allowed_sources");
   if (s.outbound.minimal_backoff_seconds > s.outbound.maximal_backoff_seconds || s.outbound.queue_run_delay_seconds > s.outbound.maximal_backoff_seconds) error("MAIL_BACKOFF_INVALID", "outbound");
   if (s.delivery.message_size_bytes > s.delivery.default_quota_bytes) error("MAIL_QUOTA_INVALID", "delivery");
@@ -75,4 +80,4 @@ function validateRegistry(registry, spec) {
   }
   return structuredClone(registry);
 }
-module.exports = { validateMailService, validateRegistry, hostname, address, digest, canonical, fail };
+module.exports = { privateServiceAddress, validateMailService, validateRegistry, hostname, address, digest, canonical, fail };
