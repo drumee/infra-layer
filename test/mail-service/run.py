@@ -58,7 +58,7 @@ def wait(fn):
 try:
     for directory in ['keys','control','witness']:(base/directory).mkdir(mode=0o700)
     keys=base/'keys'
-    run(['openssl','req','-x509','-newkey','rsa:2048','-nodes','-days','2','-subj','/CN=MAIL02 lab CA','-addext','basicConstraints=critical,CA:TRUE','-addext','keyUsage=critical,keyCertSign,cRLSign','-keyout',str(keys/'ca.key'),'-out',str(keys/'ca.pem')])
+    run(['openssl','req','-x509','-newkey','rsa:2048','-nodes','-days','60','-subj','/CN=MAIL02 lab CA','-addext','basicConstraints=critical,CA:TRUE','-addext','keyUsage=critical,keyCertSign,cRLSign','-keyout',str(keys/'ca.key'),'-out',str(keys/'ca.pem')])
     for name,hostname in [('mail','mail.oxymot.fr'),('receiver','mx.dest.invalid')]:
         run(['openssl','req','-newkey','rsa:2048','-nodes','-subj','/CN='+hostname,'-keyout',str(keys/(name+'.key')),'-out',str(keys/(name+'.csr'))])
         write(keys/(name+'.ext'),'subjectAltName=DNS:'+hostname+'\nbasicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth\n')
