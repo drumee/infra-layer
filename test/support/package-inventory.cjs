@@ -8,6 +8,8 @@ const allowed = [
   /^lifecycle\/index\.d\.ts$/,
   /^capabilities\/http\/nginx\/[a-z]+\.js$/,
   /^capabilities\/(?:secrets|tls|dns|database|redis|mail)\/[a-z-]+\.js$/,
+  /^capabilities\/mail-service\/(?:index|validation|render|policy)\.js$/,
+  /^capabilities\/mail-service\/(?:index\.d\.ts|schema\.json)$/,
   /^capabilities\/docker\/Dockerfile\.services$/,
   /^adapters\/docker\/[a-z-]+\.js$/,
   /^index\.d\.ts$/,

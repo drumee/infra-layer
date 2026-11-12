@@ -1,6 +1,6 @@
 {
   "name": "@drumee/infra-layer",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0-alpha.7-mail02.0",
   "private": false,
   "description": "Docker infrastructure planning, secret projections, isolated application composition and lifecycle recovery.",
   "license": "AGPL-3.0-only",
@@ -83,7 +83,12 @@
     "./capabilities/redis": "./capabilities/redis/index.js",
     "./capabilities/mail": "./capabilities/mail/index.js",
     "./capabilities/http/nginx": "./capabilities/http/nginx/index.js",
-    "./capabilities/tls/acme": "./capabilities/tls/acme.js"
+    "./capabilities/tls/acme": "./capabilities/tls/acme.js",
+    "./mail-service": {
+      "types": "./capabilities/mail-service/index.d.ts",
+      "require": "./capabilities/mail-service/index.js",
+      "default": "./capabilities/mail-service/index.js"
+    }
   },
   "overrides": {
     "minimatch": "11.0.4"

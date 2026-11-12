@@ -1,3 +1,10 @@
+# 0.1.0-alpha.7-mail02.0 — unpublished isolated mail-service candidate
+
+- Add the MAIL-01 mail-service validator, types, native planning and isolated lifecycle.
+- Add native SMTP/DKIM/LMTP/IMAPS laboratory and generation revocation evidence.
+- Preserve capture/relay and the no-production-dependency package policy.
+- MAIL-02 is not fully qualified; production activation and recovery remain refused.
+
 # 0.1.0-alpha.6 — external SMTP authentication candidate, unpublished
 
 - Validate provider authentication accounts separately from internal identifiers.
