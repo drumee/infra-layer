@@ -198,8 +198,8 @@ exec setpriv --bounding-set=-net_admin,-setpcap --inh-caps=-net_admin --ambient-
   const privateInput = `table inet drumee_mail_private {
  chain input {
   type filter hook input priority -10; policy accept;
-  tcp dport ${m.networks.private_submission.port} ip saddr { ${m.networks.private_submission.allowed_sources.join(", ")} } accept
-  tcp dport ${m.networks.private_submission.port} drop
+  tcp dport ${m.networks.private_submission.port} ip saddr { ${m.networks.private_submission.allowed_sources.join(", ")} } counter accept
+  tcp dport ${m.networks.private_submission.port} counter drop
  }
 }
 `;
