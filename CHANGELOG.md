@@ -83,9 +83,9 @@ The following notes describe its unpublished preparation; alpha.4 has since been
 
 # Changelog
 
-## 0.1.0-alpha.7-mail02.12 (unpublished qualification candidate)
+## 0.1.0-alpha.7-mail02.13 (unpublished qualification candidate)
 
-- Match private-bind acceptance networking to the routed canonical edge.
+- Declare a static mail-owned frontal endpoint for independent source-preserving Docker client attachments.
 - Install a fixed private-source packet filter inside the Postfix namespace, dropping NET_ADMIN before execution.
 - Requalify against the separately built atomic native quota module; no production dependency is added.
 

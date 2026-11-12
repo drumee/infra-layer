@@ -317,3 +317,24 @@ core Perl and Postfix are verified by executable qualification.
 Exact candidate/merged source, archive and test receipts are recorded separately
 to avoid self-referential provenance. No publication, release tag, consumer-lock
 update, external provider send or production action is authorized here.
+
+
+## MAIL-02 standalone service qualification candidates
+
+The mail-service export is additive and dependency-free; existing capture/relay
+code remains unchanged. The autonomous native quota module is built separately
+in Debian's mail profile from pinned Dovecot2.4.1 quota sources plus the reviewed
+transaction lock/recount/fail-closed patch. Its source lock, compiler/native package
+identity, module hash and exact image config ID are separate qualification inputs.
+A source audit compares all15 locked quota files to the pinned Debian source
+package and checks that Debian's patch set changes none of them. No distribution
+quota source change is silently discarded.
+
+The versioned plan declares a static source-preserving frontal endpoint and exact
+owned resource identities. Native packet filtering is installed only inside the
+Postfix namespace; startup network capabilities are dropped before Postfix exec.
+Exact candidate commits, archive/member hashes, image/module receipts and measured
+PASS/FAIL/BLOCKED scenarios live outside this archive in docs/mail-02, avoiding
+self-referential artifact hashes. These are unpublished lab candidates, not release,
+production, restoration or exactly-once attestations. Complete new-profile and
+coordinated Oxy-form restoration remain SMTP_RECOVERY_UNQUALIFIED.

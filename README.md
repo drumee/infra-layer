@@ -458,9 +458,13 @@ and prepares an independently owned acceptance-only project. Types accompany the
 CommonJS export. The candidate includes immutable TLS generations, explicit
 rollback/reconciliation, managed registry projections and nonsecret observations.
 
-This is **not a qualified release**. Native concurrent LMTP/IMAP writes have
-exceeded a mailbox's zero-grace count quota; do not infer a hard concurrent quota
-guarantee from the individual-write tests. Read the
+This remains an **unpublished acceptance candidate**, not a production release.
+Stock count quota permits concurrent overflow; the reviewed native module/image
+in the dossier serializes capacity through commit and recounts committed Maildir
+messages. Individual-write tests are insufficient. Docker clients use the stable
+`plan.private_endpoint` on a mail-owned external frontend while retaining their
+independent backend networks. Connect to its private address and verify its TLS
+hostname; do not rely on an Internet DNS fallback. Read the
 [qualification matrix](https://github.com/drumee/infra-layer/blob/feat/mail-02-service/docs/mail-02/qualification.md)
 and [reproduction procedure](https://github.com/drumee/infra-layer/blob/feat/mail-02-service/docs/mail-02/reproduction.md).
 Public activation and recovery remain refused. Administrative mailbox, alias,
