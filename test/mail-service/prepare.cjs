@@ -8,7 +8,7 @@ spec.networks.edge_subnet = "10.243.47.0/24"; spec.networks.edge_gateway = "10.2
 spec.networks.private_submission.allowed_sources = ["10.243.47.0/25"];
 const registry = { contract: "drumee.mail-registry/1", generation: 1,
   mailboxes: [{ id: "11111111-1111-4111-8111-111111111111", address: "contact@oxymot.fr", quota_bytes: 1048576, receive_enabled: true, imap_enabled: true, submission_enabled: false }, { id: "22222222-2222-4222-8222-222222222222", address: "second@oxymot.fr", quota_bytes: 1048576, receive_enabled: true, imap_enabled: true, submission_enabled: false }],
-  aliases: [{ address: "hello@oxymot.fr", mailbox_id: "11111111-1111-4111-8111-111111111111", receive_enabled: true }],
+  aliases: [{ address: "hello@oxymot.fr", mailbox_id: "11111111-1111-4111-8111-111111111111", receive_enabled: true }, ...["postmaster", "abuse"].map(name => ({ address: name + "@oxymot.fr", mailbox_id: "22222222-2222-4222-8222-222222222222", receive_enabled: true }))],
   accounts: [{ id: "ghost", enabled: true, credential_generation: 1, envelope_from: ["contact@oxymot.fr"], header_from: ["contact@oxymot.fr"] }, { id: "oxymotion", enabled: true, credential_generation: 1, envelope_from: ["second@oxymot.fr"], header_from: ["second@oxymot.fr"] }]
 };
 const sources = ["certificate", "key", "ca"].map(k => ({ ref: "secret:mail-tls/" + k, file: i.keys + "/" + ({ certificate: "certificate.pem", key: "key.pem", ca: "ca.pem" })[k] }));

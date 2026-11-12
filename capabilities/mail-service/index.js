@@ -52,6 +52,34 @@ function docker(args, combine = false) {
   const result = spawnSync(resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", ...args], { env: systemEnvironment("docker"), encoding: "utf8", timeout: 120000, maxBuffer: 1048576 });
   if (result.error || result.status !== 0) V.fail("MAIL_NATIVE_OPERATION_FAILED"); return combine ? result.stdout + result.stderr : result.stdout;
 }
+// Serialized into a fixed, image-locked metadata helper. It never reads messages.
+function maildirMetadata(ids, required, create) {
+  const fs = require("node:fs"), paths = ["", "/home", "/Maildir", "/Maildir/cur", "/Maildir/new", "/Maildir/tmp"];
+  const safe = file => { const s = fs.lstatSync(file); return s.isDirectory() && !s.isSymbolicLink() && s.uid === 5000 && s.gid === 5000 && (s.mode & 0o777) === 0o700; };
+  // Validate every existing object before creating any new directory.
+  for (const id of ids) for (const suffix of paths) {
+    const file = "/mailboxes/" + id + suffix;
+    if (fs.lstatSync(file, { throwIfNoEntry: false }) ? !safe(file) : required.includes(id)) { console.log(JSON.stringify({ valid: false })); return; }
+  }
+  if (create) for (const id of ids) for (const suffix of paths) {
+    const file = "/mailboxes/" + id + suffix;
+    if (!fs.existsSync(file)) { fs.mkdirSync(file, { mode: 0o700 }); fs.chownSync(file, 5000, 5000); }
+  }
+  const identities = {};
+  for (const id of ids) {
+    identities[id] = {};
+    for (const suffix of paths) { const s = fs.lstatSync("/mailboxes/" + id + suffix); identities[id][suffix] = { dev: s.dev, ino: s.ino }; }
+  }
+  console.log(JSON.stringify({ valid: true, identities }));
+}
+function inspectMaildirs(root, image, ids, required, create = false) {
+  const args = ["run", "--rm", "--network", "none", "--read-only", "--user", "0:0", "--security-opt", "no-new-privileges:true", "--cap-drop", "ALL", "--cap-add", "DAC_OVERRIDE"];
+  if (create) args.push("--cap-add", "CHOWN", "--cap-add", "FOWNER");
+  args.push("--mount", `type=bind,source=${root}/durable/mailboxes,target=/mailboxes${create ? "" : ",readonly"}`, "--entrypoint", "node", image, "-e", `(${maildirMetadata.toString()})(JSON.parse(process.argv[1]), JSON.parse(process.argv[2]), process.argv[3] === "true")`, JSON.stringify(ids), JSON.stringify(required), String(create));
+  const result = JSON.parse(docker(args));
+  if (!result.valid) V.fail("MAIL_MAILBOX_IDENTITY_MISMATCH");
+  return result.identities;
+}
 function prepareMailService(plan, context) {
   checkedPlan(plan);
   if (context?.authorized !== true || process.getuid() !== plan.spec.deployment.owner_uid || process.getgid() !== plan.spec.deployment.owner_gid) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
@@ -82,7 +110,7 @@ function prepareMailService(plan, context) {
   const keys = { "certificate.pem": secret(plan.spec.tls.certificate_ref), "key.pem": secret(plan.spec.tls.key_ref), "ca.pem": secret(plan.spec.tls.client_ca_ref) };
   plan.spec.dkim.forEach((d, i) => { keys[`dkim-${i}.pem`] = secret(d.key_ref); });
   const crypto = require("node:crypto"), certificate = new crypto.X509Certificate(keys["certificate.pem"]);
-  if (!certificate.checkHost(plan.spec.hostname) || Date.parse(certificate.validFrom) > Date.now() || Date.parse(certificate.validTo) <= Date.now() || !certificate.checkPrivateKey(crypto.createPrivateKey(keys["key.pem"]))) V.fail("MAIL_CERTIFICATE_INVALID");
+  if (!certificate.checkHost(plan.spec.hostname, { subject: "never" }) || Date.parse(certificate.validFrom) > Date.now() || Date.parse(certificate.validTo) <= Date.now() || !certificate.checkPrivateKey(crypto.createPrivateKey(keys["key.pem"]))) V.fail("MAIL_CERTIFICATE_INVALID");
   const passwd = R.credentials(plan.registry, context.verifiers || {});
   // A prepared candidate is immutable. Validate every supplied input before
   // returning its seal; never rewrite live key material behind unchanged refs.
@@ -121,7 +149,9 @@ function prepareMailService(plan, context) {
   if (!fs.existsSync(root + "/durable/tls/current")) switchTLS(root, tls.target);
   const compose = composeMailService(plan, { acceptance: context.acceptance === true, private_bind: context.private_bind === true });
   // Initialize only the new empty, marker-owned mailbox tree with fixed image IDs.
-  docker(["run", "--rm", "--network", "none", "--user", "0:0", "--mount", `type=bind,source=${root}/durable/mailboxes,target=/mailboxes`, "--entrypoint", "node", plan.spec.deployment.images.helper.split("@").at(-1), "-e", 'const f=require("node:fs"),ids=JSON.parse(process.argv[1]);f.chmodSync("/mailboxes",493);for(const id of ids){const p="/mailboxes/"+id;if(!f.existsSync(p)){f.mkdirSync(p,{mode:448});f.chownSync(p,5000,5000);}const h=p+"/home";if(!f.existsSync(h)){f.mkdirSync(h,{mode:448});f.chownSync(h,5000,5000);}}', JSON.stringify(plan.registry.mailboxes.map(b => b.id))]);
+  if (initializing) fs.chmodSync(root + "/durable/mailboxes", 0o755);
+  const required = initializing ? [] : JSON.parse(F.read(root + "/durable/registry/public/current.json")).mailboxes.map(x => x.id);
+  const mailboxIdentities = inspectMaildirs(root, plan.spec.deployment.images.helper.split("@").at(-1), plan.registry.mailboxes.map(b => b.id), required, true);
   if (initializing) {
     const queueMarker = JSON.stringify({ owner: plan.spec.deployment.id, resource: "mail-queue" });
     docker(["run", "--rm", "--network", "none", "--user", "0:0", "--mount", `type=bind,source=${root}/durable/spool,target=/queue`, "--entrypoint", "/bin/sh", plan.spec.deployment.images.postfix.split("@").at(-1), "-ec", 'test -z "$(ls -A /queue)"; cp -a /opt/infra/postfix-queue/. /queue/; printf %s "$1" > /queue/.infra-owner', "mail-init", queueMarker]);
@@ -132,7 +162,7 @@ function prepareMailService(plan, context) {
   files["policy.js"] = V.digest(fs.readFileSync(candidate + "/policy.js").toString());
   files["registry.json"] = V.digest(JSON.stringify(plan.registry));
   for (const name of Object.keys(keys)) { const file = "keys/" + (name.startsWith("dkim-") ? "dkim/" : "tls/") + name; files[file] = V.digest(fs.readFileSync(candidate + "/" + file).toString()); }
-  const prepared = { contract: "drumee.mail-prepared/1", revision: plan.revision, root, hostname: plan.spec.hostname, private_port: plan.spec.networks.private_submission.port, project: plan.spec.deployment.project, compose, compose_file: candidate + "/compose.json", certificate_fingerprint: certificate.fingerprint256, storage: Object.fromEntries(["spool", "mailboxes", "registry", "registry/private", "registry/public", "operator-state", "policy-state", "tls"].map(name => { const stat = fs.lstatSync(root + "/durable/" + name); return [name, { dev: stat.dev, ino: stat.ino }]; })), private_files: Object.fromEntries(Object.entries(passwd).map(([name, content]) => [name, V.digest(content)])), registry_generation: plan.registry.generation, transport_digest: V.digest(plan.spec), files };
+  const prepared = { contract: "drumee.mail-prepared/1", revision: plan.revision, root, hostname: plan.spec.hostname, private_port: plan.spec.networks.private_submission.port, project: plan.spec.deployment.project, compose, compose_file: candidate + "/compose.json", certificate_fingerprint: certificate.fingerprint256, mailbox_identities: mailboxIdentities, storage: Object.fromEntries(["spool", "mailboxes", "registry", "registry/private", "registry/public", "operator-state", "policy-state", "tls"].map(name => { const stat = fs.lstatSync(root + "/durable/" + name); return [name, { dev: stat.dev, ino: stat.ino }]; })), private_files: Object.fromEntries(Object.entries(passwd).map(([name, content]) => [name, V.digest(content)])), registry_generation: plan.registry.generation, transport_digest: V.digest(plan.spec), files };
   F.atomic(prepared.compose_file, JSON.stringify(compose, null, 2));
   const publicRegistry = root + "/durable/registry/public";
   if (!fs.existsSync(publicRegistry + "/current.json")) F.atomic(publicRegistry + "/current.json", JSON.stringify(plan.registry));
@@ -147,6 +177,17 @@ function verifyPrepared(prepared) {
   const directory = path.dirname(prepared.compose_file), stored = JSON.parse(F.read(directory + "/prepared.json"));
   if (V.digest(JSON.parse(F.read(prepared.compose_file))) !== V.digest(prepared.compose)) V.fail("MAIL_PREPARED_TAMPERED");
   if (V.digest(stored) !== V.digest(prepared)) V.fail("MAIL_PREPARED_TAMPERED");
+  const found = [];
+  function walk(folder, prefix = "") {
+    for (const name of fs.readdirSync(folder)) {
+      const file = folder + "/" + name, stat = fs.lstatSync(file), relative = prefix + name;
+      if (stat.isSymbolicLink()) V.fail("MAIL_PREPARED_TAMPERED");
+      if (stat.isDirectory()) { F.privateDirectory(file); walk(file, relative + "/"); }
+      else found.push(relative);
+    }
+  }
+  walk(directory);
+  if (V.digest(found.sort()) !== V.digest([...Object.keys(prepared.files), "compose.json", "prepared.json"].sort())) V.fail("MAIL_PREPARED_TAMPERED");
   for (const [file, digest] of Object.entries(prepared.private_files)) if (V.digest(F.read(prepared.root + "/durable/registry/private/generation-" + prepared.registry_generation + "/" + file).toString()) !== digest) V.fail("MAIL_PREPARED_TAMPERED");
   for (const [file, digest] of Object.entries(prepared.files)) {
     const full = directory + "/" + file, stat = fs.lstatSync(full), secret = file.startsWith("keys/");
@@ -162,6 +203,7 @@ function activateMailRegistry(prepared, context) {
     const previous = JSON.parse(F.read(pub + "/current.json")), next = JSON.parse(F.read(path.dirname(prepared.compose_file) + "/registry.json"));
     if (previous.generation === next.generation && V.digest(previous) === V.digest(next) && !fs.existsSync(pub + "/admission-closed")) return { applied: true, changed: false, generation: next.generation };
     if (previous.generation !== context.expected_generation || next.generation <= previous.generation) V.fail("MAIL_REGISTRY_REVISION_CONFLICT");
+    if (previous.mailboxes.some(box => !next.mailboxes.some(x => x.id === box.id))) V.fail("MAIL_RETAINED_DELIVERY_IDENTITY_REQUIRED");
     const accountFile = state + "/account-generations.json", generations = JSON.parse(F.read(accountFile));
     const oldSMTP = F.read(priv + "/generation-" + previous.generation + "/smtp.passwd").toString().split("\n"), newSMTP = F.read(priv + "/generation-" + next.generation + "/smtp.passwd").toString().split("\n");
     for (const account of next.accounts) {
@@ -245,12 +287,15 @@ function verifyStorage(prepared) {
   for (const file of Object.keys(prepared.private_files)) F.read(privateRoot + "/" + fs.readlinkSync(privateRoot + "/current") + "/" + file);
   const barrier = prepared.root + "/durable/registry/public/admission-closed", current = JSON.parse(F.read(prepared.root + "/durable/registry/public/current.json"));
   if (current.service_hostname !== prepared.hostname || !fs.existsSync(barrier) && fs.readlinkSync(privateRoot + "/current") !== "generation-" + current.generation) V.fail("MAIL_SECRET_PROJECTION_MISMATCH");
+  let expectedMailboxes = prepared.mailbox_identities;
   const intentFile = prepared.root + "/durable/operator-state/registry-intent.json";
   if (!fs.existsSync(barrier) && fs.existsSync(intentFile)) {
     const intent = JSON.parse(F.read(intentFile));
     if (intent.phase !== "applied" || intent.to !== current.generation || !/^[a-f0-9]{64}$/.test(intent.revision)) V.fail("MAIL_SECRET_PROJECTION_MISMATCH");
-    verifyPrepared(JSON.parse(F.read(prepared.root + "/candidates/" + intent.revision + "/prepared.json")));
+    const active = JSON.parse(F.read(prepared.root + "/candidates/" + intent.revision + "/prepared.json")); verifyPrepared(active); expectedMailboxes = active.mailbox_identities;
   }
+  const observed = inspectMaildirs(prepared.root, prepared.compose.services.policy.image, Object.keys(expectedMailboxes), Object.keys(expectedMailboxes));
+  if (V.digest(observed) !== V.digest(expectedMailboxes)) V.fail("MAIL_MAILBOX_IDENTITY_MISMATCH");
   readTLS(prepared.root);
   return owner;
 }
@@ -258,10 +303,12 @@ function verifyRuntimeRole(prepared, role, actual) {
   const expected = prepared.compose.services[role], owner = JSON.parse(F.read(prepared.root + "/owner.json"));
   if (!expected || actual.Config.Labels["org.drumee.mail.owner"] !== owner.id || actual.Config.Labels["org.drumee.mail.revision"] !== prepared.revision || actual.Config.Labels["org.drumee.mail.role"] !== role) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
   if (actual.Image !== expected.image) V.fail("MAIL_RUNTIME_IMAGE_MISMATCH");
+  const imageConfig = JSON.parse(docker(["image", "inspect", expected.image]))[0].Config;
+  if (V.digest([...(actual.Config.Env || [])].sort()) !== V.digest([...(imageConfig.Env || [])].sort())) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
   if (actual.HostConfig.RestartPolicy.Name !== expected.restart) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
   const equal = (a, b) => V.digest(a) === V.digest(b), sorted = a => [...(a || [])].sort();
   if (!equal(actual.HostConfig.Dns || [], expected.dns || []) || !equal(actual.HostConfig.DnsOptions || [], expected.dns_opt || []) || !equal(actual.HostConfig.DnsSearch || [], expected.dns_search || []) || actual.HostConfig.ExtraHosts?.length || actual.HostConfig.GroupAdd?.length || Object.keys(actual.HostConfig.Sysctls || {}).length) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
-  if (!equal(actual.Config.Entrypoint, expected.entrypoint) || !equal(actual.Config.Cmd || [], expected.command || []) || actual.Config.User !== (expected.user ?? JSON.parse(docker(["image", "inspect", expected.image]))[0].Config.User ?? "") || !actual.HostConfig.ReadonlyRootfs || actual.HostConfig.Privileged || actual.HostConfig.PidMode || actual.HostConfig.Devices?.length || actual.HostConfig.DeviceRequests?.length) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
+  if (!equal(actual.Config.Entrypoint, expected.entrypoint) || !equal(actual.Config.Cmd || [], expected.command || []) || actual.Config.User !== (expected.user ?? imageConfig.User ?? "") || !actual.HostConfig.ReadonlyRootfs || actual.HostConfig.Privileged || actual.HostConfig.PidMode || actual.HostConfig.Devices?.length || actual.HostConfig.DeviceRequests?.length) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
   const caps = a => sorted((a || []).map(x => x.replace(/^CAP_/, "").toUpperCase()));
   if (!equal(caps(actual.HostConfig.CapDrop), caps(expected.cap_drop)) || !equal(caps(actual.HostConfig.CapAdd), caps(expected.cap_add)) || !equal(sorted(actual.HostConfig.SecurityOpt), sorted(expected.security_opt))) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
   const networks = Object.keys(actual.NetworkSettings.Networks).sort(), expectedNetworks = expected.networks.map(name => prepared.compose.networks[name].name).sort();
@@ -304,7 +351,7 @@ function readTLS(root) {
 }
 function stageTLS(root, hostname, keys) {
   const crypto = require("node:crypto"), leaf = new crypto.X509Certificate(keys["certificate.pem"]);
-  if (!leaf.checkHost(hostname) || Date.parse(leaf.validFrom) > Date.now() || Date.parse(leaf.validTo) <= Date.now() || !leaf.checkPrivateKey(crypto.createPrivateKey(keys["key.pem"]))) V.fail("MAIL_CERTIFICATE_INVALID");
+  if (!leaf.checkHost(hostname, { subject: "never" }) || Date.parse(leaf.validFrom) > Date.now() || Date.parse(leaf.validTo) <= Date.now() || !leaf.checkPrivateKey(crypto.createPrivateKey(keys["key.pem"]))) V.fail("MAIL_CERTIFICATE_INVALID");
   const target = "generation-" + V.digest(Object.fromEntries(Object.entries(keys).map(([name, data]) => [name, data.toString()]))), directory = root + "/durable/tls/" + target;
   F.privateDirectory(directory, true);
   for (const [name, data] of Object.entries(keys)) {
@@ -394,6 +441,10 @@ function observeMailService(prepared, context) {
   verifyPrepared(prepared); verifyStorage(prepared);
   const registry = JSON.parse(F.read(prepared.root + "/durable/registry/public/current.json"));
   const roles = {}, running = {}, alerts = [];
+  for (const prefix of ["postmaster", "abuse"]) for (const domain of registry.domains) {
+    const address = prefix + "@" + domain, box = registry.mailboxes.find(x => x.address === address) || registry.mailboxes.find(x => x.id === registry.aliases.find(a => a.address === address && a.receive_enabled)?.mailbox_id);
+    if (!box?.receive_enabled) alerts.push({ code: "MAIL_" + prefix.toUpperCase() + "_ROUTE_MISSING" });
+  }
   for (const role of ["postfix", "dovecot"]) {
     const ids = docker(["ps", "-aq", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=" + role]).trim().split("\n").filter(Boolean);
     if (ids.length !== 1) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH"); roles[role] = ids[0];
@@ -428,6 +479,7 @@ function observeMailService(prepared, context) {
       if (String(normalized.type).toUpperCase() !== "STORAGE") continue;
       const used = Number(normalized.value) * 1024, limit = Number(normalized.limit) * 1024;
       quotas.push({ id: mailbox.id, used_bytes: used, limit_bytes: limit });
+      if (limit > 0 && used >= limit * 0.75) alerts.push({ code: "MAIL_QUOTA_HIGH", mailbox_id: mailbox.id });
       if (limit > 0 && used >= limit) alerts.push({ code: "MAIL_QUOTA_AT_LIMIT", mailbox_id: mailbox.id });
     }
   }

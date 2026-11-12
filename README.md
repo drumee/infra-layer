@@ -448,3 +448,21 @@ The Debian compatibility dependency remains explicitly
 `@drumee/server-runtime@0.1.0-alpha.4`, whose KB-01A authority is consumed by
 canonical KB-01B enrollment. Infra Layer does not implement those capabilities.
 
+
+## Standalone mail service candidate
+
+The unpublished MAIL-02 candidate adds `@drumee/infra-layer/mail-service` alongside
+existing capture/relay contracts. Its dependency-free API validates
+`drumee.mail-service/1`, renders native Postfix/OpenDKIM/Dovecot 2.4 configuration,
+and prepares an independently owned acceptance-only project. Types accompany the
+CommonJS export. The candidate includes immutable TLS generations, explicit
+rollback/reconciliation, managed registry projections and nonsecret observations.
+
+This is **not a qualified release**. Native concurrent LMTP/IMAP writes have
+exceeded a mailbox's zero-grace count quota; do not infer a hard concurrent quota
+guarantee from the individual-write tests. Read the
+[qualification matrix](https://github.com/drumee/infra-layer/blob/feat/mail-02-service/docs/mail-02/qualification.md)
+and [reproduction procedure](https://github.com/drumee/infra-layer/blob/feat/mail-02-service/docs/mail-02/reproduction.md).
+Public activation and recovery remain refused. Administrative mailbox, alias,
+account and password CLI verbs belong to MAIL-03. Complete standalone recovery
+and coordinated Oxy-form recovery remain `SMTP_RECOVERY_UNQUALIFIED`.

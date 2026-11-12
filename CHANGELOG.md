@@ -1,3 +1,13 @@
+# 0.1.0-alpha.7-mail02.4 — unpublished follow-up candidate
+
+- Remove forged local Authentication-Results, preserving external transit results.
+- Seal key inputs and stage TLS generations with endpoint probes and rollback.
+- Guard runtime identity, projections and Maildir ownership/inodes before exposure.
+- Add guarded boot, credential high-water marks, disk admission and observations.
+- Preserve capture/relay, zero production dependencies and recovery refusals.
+- Native count quota still fails the concurrent LMTP/IMAP hard-limit requirement;
+  MAIL-02 remains blocked pending complete evidence and a qualified correction.
+
 # 0.1.0-alpha.7-mail02.0 — unpublished isolated mail-service candidate
 
 - Add the MAIL-01 mail-service validator, types, native planning and isolated lifecycle.
