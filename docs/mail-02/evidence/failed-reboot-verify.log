@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/lab/work/test/mail-service/vm-check.py", line 44, in <module>
+    state=json.loads(run('docker','inspect',project+'-postfix-1').stdout)[0]['State'];assert not state['Running'] and state['ExitCode']==78
+                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

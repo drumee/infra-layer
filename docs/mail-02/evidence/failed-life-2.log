@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/lab/work/test/mail-service/life-check.py", line 37, in <module>
+    docker(*cmd,'stop');send(other,target+'-stopped');checks.append(target+'-stop-does-not-interrupt-peer-or-mx')
+                        ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lab/work/test/mail-service/life-check.py", line 32, in send
+    raise AssertionError('mail runtime identity changed; inspect life-identity-diff.json')
+AssertionError: mail runtime identity changed; inspect life-identity-diff.json
