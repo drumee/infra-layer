@@ -1,0 +1,55 @@
+{
+  "verified_at_utc": "2026-11-12T07:34:18.952705+00:00",
+  "durable_message_files": 6,
+  "checks": [
+    {
+      "index": 4,
+      "message_id": "<definite-3@fixture.invalid>",
+      "sha256": "72358f49f8b9052ec8a0ce53b96c0e4ff3ff2437c4e13a9b6a302562ed5add11",
+      "bytes": 402,
+      "mode": "accept",
+      "file_verified_after_receiver_stopped": true
+    },
+    {
+      "index": 5,
+      "message_id": "<definite-2@fixture.invalid>",
+      "sha256": "e8cf1e45f3ff6adaddaa513d55637de91569baf7a8cb7552898b7781f7b5beeb",
+      "bytes": 402,
+      "mode": "accept",
+      "file_verified_after_receiver_stopped": true
+    },
+    {
+      "index": 6,
+      "message_id": "<definite-1@fixture.invalid>",
+      "sha256": "a24934af851734aad36c57bd0117e30878dd6ecbf2c5ca72a13b48b84a9c9263",
+      "bytes": 402,
+      "mode": "accept",
+      "file_verified_after_receiver_stopped": true
+    },
+    {
+      "index": 7,
+      "message_id": "<uncertain-1@fixture.invalid>",
+      "sha256": "51b388cb40cbe2f1983eec285883287b54298aa7fbcd36731faf4ee1b14319f6",
+      "bytes": 404,
+      "mode": "uncertain",
+      "file_verified_after_receiver_stopped": true
+    },
+    {
+      "index": 8,
+      "message_id": "<uncertain-1@fixture.invalid>",
+      "sha256": "51b388cb40cbe2f1983eec285883287b54298aa7fbcd36731faf4ee1b14319f6",
+      "bytes": 404,
+      "mode": "accept",
+      "file_verified_after_receiver_stopped": true
+    },
+    {
+      "index": 9,
+      "message_id": "<definite-1@fixture.invalid>",
+      "sha256": "a24934af851734aad36c57bd0117e30878dd6ecbf2c5ca72a13b48b84a9c9263",
+      "bytes": 402,
+      "mode": "accept",
+      "file_verified_after_receiver_stopped": true
+    }
+  ],
+  "runtime_source_hashes_match": true
+}

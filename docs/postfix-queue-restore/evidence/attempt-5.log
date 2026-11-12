@@ -1,0 +1,21 @@
+PASS pqr-45bdd175d3-kernel-internal
+PASS pqr-45bdd175d3-kernel-mail-control-internal
+PASS no-published-ports
+PASS normal-starttls-auth-submission-accepted
+PASS all-three-deferred-after-receiver-451
+PASS independent-witness-no-durable-delivery-before-capture
+PASS pqr-45bdd175d3-mail-1-clean-stop-no-processes
+PASS pqr-45bdd175d3-mail-1-no-running-writable-spool-mount
+PASS archive-sha256-verified-before-restore
+PASS restored-to-distinct-volume-inode
+PASS source-unchanged-after-restoration
+PASS offline-postcat-DD0281A06804
+PASS offline-postcat-E886F1A06805
+PASS offline-postcat-F33A71A06807
+PASS replacement-numeric-metadata-and-file-hashes-exact
+FAIL COMMAND_FAILED ['docker', 'run', '--rm'] postsuper: fatal: setgid(103): Operation not permitted
+
+PASS pqr-45bdd175d3-mail-1-stopped-before-removal
+PASS pqr-45bdd175d3-dkim-1-stopped-before-removal
+PASS pqr-45bdd175d3-receiver-1-stopped-before-removal
+REPORT /tmp/postfix-queue-artifacts/attempt-5.json

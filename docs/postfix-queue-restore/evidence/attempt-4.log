@@ -1,0 +1,13 @@
+PASS pqr-ab4f948bab-kernel-internal
+PASS pqr-ab4f948bab-kernel-mail-control-internal
+PASS no-published-ports
+PASS normal-starttls-auth-submission-accepted
+PASS all-three-deferred-after-receiver-451
+PASS independent-witness-no-durable-delivery-before-capture
+PASS pqr-ab4f948bab-mail-1-clean-stop-no-processes
+PASS pqr-ab4f948bab-mail-1-no-running-writable-spool-mount
+FAIL [Errno 13] Permission denied: '/tmp/postfix-restore-04f0hhul/spool.receipt.json'
+PASS pqr-ab4f948bab-mail-1-stopped-before-removal
+PASS pqr-ab4f948bab-dkim-1-stopped-before-removal
+PASS pqr-ab4f948bab-receiver-1-stopped-before-removal
+REPORT /tmp/postfix-queue-artifacts/attempt-4.json

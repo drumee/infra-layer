@@ -1,0 +1,4161 @@
+{
+  "project": "pqr-fc78e3c123",
+  "retained_private_root": "/tmp/postfix-restore-6i77suwz",
+  "source": "09b7f28bce99ba3744e31a0ee5b2dde868a9a86a",
+  "postfix_image_config_digest": "sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843",
+  "helper_image": "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+  "production_mutations": false,
+  "real_smtp_messages": 0,
+  "checks": [
+    {
+      "name": "pqr-fc78e3c123-kernel-internal",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-kernel-mail-control-internal",
+      "pass": true
+    },
+    {
+      "name": "no-published-ports",
+      "pass": true
+    },
+    {
+      "name": "normal-starttls-auth-submission-accepted",
+      "pass": true
+    },
+    {
+      "name": "all-three-deferred-after-receiver-451",
+      "pass": true,
+      "detail": [
+        {
+          "queue_name": "deferred",
+          "queue_id": "C652E1A06A96",
+          "arrival_time": 1794468733,
+          "message_size": 436,
+          "forced_expire": false,
+          "sender": "sender@fixture.invalid",
+          "recipients": [
+            {
+              "address": "sink@fixture.invalid",
+              "delay_reason": "host receiver[192.168.80.2] said: 451 4.3.0 Synthetic temporary refusal (in reply to end of DATA command)"
+            }
+          ]
+        },
+        {
+          "queue_name": "deferred",
+          "queue_id": "AF4E21A06A93",
+          "arrival_time": 1794468733,
+          "message_size": 436,
+          "forced_expire": false,
+          "sender": "sender@fixture.invalid",
+          "recipients": [
+            {
+              "address": "sink@fixture.invalid",
+              "delay_reason": "host receiver[192.168.80.2] said: 451 4.3.0 Synthetic temporary refusal (in reply to end of DATA command)"
+            }
+          ]
+        },
+        {
+          "queue_name": "deferred",
+          "queue_id": "BAA761A06A94",
+          "arrival_time": 1794468733,
+          "message_size": 436,
+          "forced_expire": false,
+          "sender": "sender@fixture.invalid",
+          "recipients": [
+            {
+              "address": "sink@fixture.invalid",
+              "delay_reason": "host receiver[192.168.80.2] said: 451 4.3.0 Synthetic temporary refusal (in reply to end of DATA command)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "independent-witness-no-durable-delivery-before-capture",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-mail-1-clean-stop-no-processes",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-mail-1-no-running-writable-spool-mount",
+      "pass": true
+    },
+    {
+      "name": "archive-sha256-verified-before-restore",
+      "pass": true
+    },
+    {
+      "name": "restored-to-distinct-volume-inode",
+      "pass": true
+    },
+    {
+      "name": "source-unchanged-after-restoration",
+      "pass": true
+    },
+    {
+      "name": "offline-postcat-AF4E21A06A93",
+      "pass": true
+    },
+    {
+      "name": "offline-postcat-BAA761A06A94",
+      "pass": true
+    },
+    {
+      "name": "offline-postcat-C652E1A06A96",
+      "pass": true
+    },
+    {
+      "name": "replacement-numeric-metadata-and-file-hashes-exact",
+      "pass": true
+    },
+    {
+      "name": "single-running-queue-instance",
+      "pass": true
+    },
+    {
+      "name": "restored-started-with-all-messages-held",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-restored-1-one-to-one-correlation-map",
+      "pass": true
+    },
+    {
+      "name": "no-delivery-before-explicit-resume",
+      "pass": true
+    },
+    {
+      "name": "definite-nondeliveries-restored-once-each",
+      "pass": true,
+      "detail": {
+        "<definite-3@fixture.invalid>": 1,
+        "<definite-2@fixture.invalid>": 1,
+        "<definite-1@fixture.invalid>": 1
+      }
+    },
+    {
+      "name": "uncertain-durable-receipt-plus-deferred-queue",
+      "pass": true,
+      "detail": {
+        "queue_name": "deferred",
+        "queue_id": "0456D4EAA747",
+        "arrival_time": 1794468742,
+        "message_size": 438,
+        "forced_expire": false,
+        "sender": "sender@fixture.invalid",
+        "recipients": [
+          {
+            "address": "sink@fixture.invalid",
+            "delay_reason": "lost connection with receiver[192.168.80.2] while sending end of data -- message may be sent more than once"
+          }
+        ]
+      }
+    },
+    {
+      "name": "uncertain-queue-held-for-operator-review",
+      "pass": true,
+      "detail": {
+        "observed_seconds": 45
+      }
+    },
+    {
+      "name": "lost-final-ack-retry-observed-duplicate",
+      "pass": true,
+      "detail": [
+        {
+          "index": 7,
+          "at_ns": 1794468742154106791,
+          "message_id": "<uncertain-1@fixture.invalid>",
+          "sha256": "51b388cb40cbe2f1983eec285883287b54298aa7fbcd36731faf4ee1b14319f6",
+          "bytes": 404,
+          "mode": "uncertain",
+          "durable_acceptance": true,
+          "final_250_sent": false
+        },
+        {
+          "index": 8,
+          "at_ns": 1794468787668227613,
+          "message_id": "<uncertain-1@fixture.invalid>",
+          "sha256": "51b388cb40cbe2f1983eec285883287b54298aa7fbcd36731faf4ee1b14319f6",
+          "bytes": 404,
+          "mode": "accept",
+          "durable_acceptance": true,
+          "final_250_sent": true
+        }
+      ]
+    },
+    {
+      "name": "pqr-fc78e3c123-restored-1-clean-stop-no-processes",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-restored-1-no-running-writable-spool-mount",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-stale-1-one-to-one-correlation-map",
+      "pass": true
+    },
+    {
+      "name": "old-checkpoint-starts-held-not-auto-replayed",
+      "pass": true
+    },
+    {
+      "name": "old-checkpoint-can-reintroduce-completed-message",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-stale-1-clean-stop-no-processes",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-stale-1-no-running-writable-spool-mount",
+      "pass": true
+    },
+    {
+      "name": "altered-archive-refused-before-activation",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "code": "ARCHIVE_INTEGRITY_FAILURE"
+      }
+    },
+    {
+      "name": "altered-archive-source-and-existing-target-preserved",
+      "pass": true
+    },
+    {
+      "name": "occupied-target-refused-before-activation",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "code": "TARGET_EXISTS"
+      }
+    },
+    {
+      "name": "occupied-target-source-and-existing-target-preserved",
+      "pass": true
+    },
+    {
+      "name": "wrong-owner-refused-before-activation",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "code": "OWNER_MARKER_MISMATCH"
+      }
+    },
+    {
+      "name": "wrong-owner-source-and-existing-target-preserved",
+      "pass": true
+    },
+    {
+      "name": "wrong-image-refused-before-activation",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "code": "COMPATIBILITY_MISMATCH"
+      }
+    },
+    {
+      "name": "wrong-image-source-and-existing-target-preserved",
+      "pass": true
+    },
+    {
+      "name": "source-as-target-refused-before-activation",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "code": "TARGET_SCOPE_INVALID"
+      }
+    },
+    {
+      "name": "source-as-target-source-and-existing-target-preserved",
+      "pass": true
+    },
+    {
+      "name": "incomplete-archive-refused-before-activation",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "code": "ARCHIVE_COVERAGE_FAILURE"
+      }
+    },
+    {
+      "name": "incomplete-archive-source-and-existing-target-preserved",
+      "pass": true
+    },
+    {
+      "name": "wrong-payload-marker-refused-before-activation",
+      "pass": true,
+      "detail": {
+        "ok": false,
+        "code": "OWNER_MARKER_MISMATCH"
+      }
+    },
+    {
+      "name": "wrong-payload-marker-source-and-existing-target-preserved",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-stale-1-stopped-before-removal",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-restored-1-stopped-before-removal",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-mail-1-stopped-before-removal",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-dkim-1-stopped-before-removal",
+      "pass": true
+    },
+    {
+      "name": "pqr-fc78e3c123-receiver-1-stopped-before-removal",
+      "pass": true
+    }
+  ],
+  "prepared_revision": "ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9",
+  "generated_config_sha256": {
+    "postfix-main.cf": "3db22f156ded37072e1c52a7e6fefb144da3a4b3875092d067a896e40d809cdd",
+    "postfix-master.cf": "8e132b4ecfafb62a29c0fb4c0f4829d3e20d8f1fd44c75cdd92c22af64243099",
+    "postfix-sasl.conf": "adfa41286a6208ca184b13f37e60d759794587964555729ec8cc34a38b9f01c0",
+    "mail-entrypoint.sh": "5b723d81e552884a136504288a16dd268f7e4c33d4972e5834c4a26af1ea8c1f",
+    "smtp-relay-auth.pl": "2ba493f5d81fbd27f45d59f43786fbddd227ad1b073dedb08df64b579d23aefa",
+    "opendkim.conf": "a6679583eff6930071316f7f566e0f5818a7f29b87407e9038b06b38d347b316"
+  },
+  "native_versions": [
+    "mail_version = 3.10.13",
+    "uid=102(postfix) gid=103(postfix) groups=103(postfix),45(sasl)",
+    "postdrop:x:104:",
+    "uid=1000(infra) gid=1000(infra) groups=1000(infra)"
+  ],
+  "submissions": [
+    {
+      "message_id": "<definite-1@fixture.invalid>",
+      "queue_id": "AF4E21A06A93",
+      "smtp_code": 250
+    },
+    {
+      "message_id": "<definite-2@fixture.invalid>",
+      "queue_id": "BAA761A06A94",
+      "smtp_code": 250
+    },
+    {
+      "message_id": "<definite-3@fixture.invalid>",
+      "queue_id": "C652E1A06A96",
+      "smtp_code": 250
+    }
+  ],
+  "quiescence": [
+    {
+      "container": "pqr-fc78e3c123-mail-1",
+      "pid": 0,
+      "running": false,
+      "exit": 0,
+      "restart_policy": "no",
+      "running_writers": []
+    },
+    {
+      "container": "pqr-fc78e3c123-restored-1",
+      "pid": 0,
+      "running": false,
+      "exit": 0,
+      "restart_policy": "no",
+      "running_writers": []
+    },
+    {
+      "container": "pqr-fc78e3c123-stale-1",
+      "pid": 0,
+      "running": false,
+      "exit": 0,
+      "restart_policy": "no",
+      "running_writers": []
+    }
+  ],
+  "source_inventory_sha256": "57e3cf9f629631a884699fa72030442ee7b45f8421f77c900cc0d6eb0f8c0254",
+  "snapshot": {
+    "ok": true,
+    "archive_sha256": "5da705effedd5d7d252621d1d919700bb04e226bec8a25b5c406fdd5c2eab3f6",
+    "receipt_sha256": "f2326e8749a872af64f358310dd5e6bc1684c708fcb005a38722d088087ac046",
+    "entries": 45,
+    "owner": {
+      "owner": "pqr-fc78e3c123",
+      "resource": "mail-queue"
+    },
+    "omitted_runtime_sockets": [
+      "private/anvil",
+      "private/bounce",
+      "private/defer",
+      "private/discard",
+      "private/error",
+      "private/lmtp",
+      "private/local",
+      "private/proxymap",
+      "private/proxywrite",
+      "private/relay",
+      "private/retry",
+      "private/rewrite",
+      "private/scache",
+      "private/smtp",
+      "private/tlsmgr",
+      "private/trace",
+      "private/verify",
+      "private/virtual",
+      "public/cleanup",
+      "public/flush",
+      "public/pickup",
+      "public/postlog",
+      "public/qmgr",
+      "public/showq"
+    ],
+    "source_identity": {
+      "device": 2050,
+      "inode": 27290163
+    }
+  },
+  "restore": {
+    "ok": true,
+    "restored": true,
+    "entries": 45,
+    "metadata_exact": true,
+    "target_identity": {
+      "device": 2050,
+      "inode": 82486999
+    }
+  },
+  "restored_queue_id_map": [
+    {
+      "message_id": "<definite-3@fixture.invalid>",
+      "source_queue_id": "C652E1A06A96",
+      "restored_queue_id": "C652E4EAA711"
+    },
+    {
+      "message_id": "<definite-2@fixture.invalid>",
+      "source_queue_id": "BAA761A06A94",
+      "restored_queue_id": "BAA764EAA710"
+    },
+    {
+      "message_id": "<definite-1@fixture.invalid>",
+      "source_queue_id": "AF4E21A06A93",
+      "restored_queue_id": "AF4E24EAA70F"
+    }
+  ],
+  "uncertain_submission": {
+    "message_id": "<uncertain-1@fixture.invalid>",
+    "queue_id": "0456D4EAA747",
+    "smtp_code": 250
+  },
+  "stale_queue_id_map": [
+    {
+      "message_id": "<definite-2@fixture.invalid>",
+      "source_queue_id": "BAA761A06A94",
+      "restored_queue_id": "BAA764EAA782"
+    },
+    {
+      "message_id": "<definite-1@fixture.invalid>",
+      "source_queue_id": "AF4E21A06A93",
+      "restored_queue_id": "AF4E24EAA781"
+    },
+    {
+      "message_id": "<definite-3@fixture.invalid>",
+      "source_queue_id": "C652E1A06A96",
+      "restored_queue_id": "C652E4EAA783"
+    }
+  ],
+  "receiver_events": [
+    {
+      "index": 1,
+      "at_ns": 1794468733874184811,
+      "message_id": "<definite-1@fixture.invalid>",
+      "sha256": "a24934af851734aad36c57bd0117e30878dd6ecbf2c5ca72a13b48b84a9c9263",
+      "bytes": 402,
+      "mode": "defer",
+      "durable_acceptance": false,
+      "final_250_sent": false
+    },
+    {
+      "index": 2,
+      "at_ns": 1794468733930678815,
+      "message_id": "<definite-2@fixture.invalid>",
+      "sha256": "e8cf1e45f3ff6adaddaa513d55637de91569baf7a8cb7552898b7781f7b5beeb",
+      "bytes": 402,
+      "mode": "defer",
+      "durable_acceptance": false,
+      "final_250_sent": false
+    },
+    {
+      "index": 3,
+      "at_ns": 1794468733970715205,
+      "message_id": "<definite-3@fixture.invalid>",
+      "sha256": "72358f49f8b9052ec8a0ce53b96c0e4ff3ff2437c4e13a9b6a302562ed5add11",
+      "bytes": 402,
+      "mode": "defer",
+      "durable_acceptance": false,
+      "final_250_sent": false
+    },
+    {
+      "index": 4,
+      "at_ns": 1794468741484773152,
+      "message_id": "<definite-3@fixture.invalid>",
+      "sha256": "72358f49f8b9052ec8a0ce53b96c0e4ff3ff2437c4e13a9b6a302562ed5add11",
+      "bytes": 402,
+      "mode": "accept",
+      "durable_acceptance": true,
+      "final_250_sent": true
+    },
+    {
+      "index": 5,
+      "at_ns": 1794468741556380830,
+      "message_id": "<definite-2@fixture.invalid>",
+      "sha256": "e8cf1e45f3ff6adaddaa513d55637de91569baf7a8cb7552898b7781f7b5beeb",
+      "bytes": 402,
+      "mode": "accept",
+      "durable_acceptance": true,
+      "final_250_sent": true
+    },
+    {
+      "index": 6,
+      "at_ns": 1794468741616340133,
+      "message_id": "<definite-1@fixture.invalid>",
+      "sha256": "a24934af851734aad36c57bd0117e30878dd6ecbf2c5ca72a13b48b84a9c9263",
+      "bytes": 402,
+      "mode": "accept",
+      "durable_acceptance": true,
+      "final_250_sent": true
+    },
+    {
+      "index": 7,
+      "at_ns": 1794468742154106791,
+      "message_id": "<uncertain-1@fixture.invalid>",
+      "sha256": "51b388cb40cbe2f1983eec285883287b54298aa7fbcd36731faf4ee1b14319f6",
+      "bytes": 404,
+      "mode": "uncertain",
+      "durable_acceptance": true,
+      "final_250_sent": false
+    },
+    {
+      "index": 8,
+      "at_ns": 1794468787668227613,
+      "message_id": "<uncertain-1@fixture.invalid>",
+      "sha256": "51b388cb40cbe2f1983eec285883287b54298aa7fbcd36731faf4ee1b14319f6",
+      "bytes": 404,
+      "mode": "accept",
+      "durable_acceptance": true,
+      "final_250_sent": true
+    },
+    {
+      "index": 9,
+      "at_ns": 1794468794788456932,
+      "message_id": "<definite-1@fixture.invalid>",
+      "sha256": "a24934af851734aad36c57bd0117e30878dd6ecbf2c5ca72a13b48b84a9c9263",
+      "bytes": 402,
+      "mode": "accept",
+      "durable_acceptance": true,
+      "final_250_sent": true
+    }
+  ],
+  "source_queue_ids": [
+    "AF4E21A06A93",
+    "BAA761A06A94",
+    "C652E1A06A96"
+  ],
+  "retained_volumes": [
+    "pqr-fc78e3c123-replacement",
+    "pqr-fc78e3c123-stale-checkpoint"
+  ],
+  "scope": "Cold spool only, exact alpha.6 relay/image; no coordinated Oxy-form state or autonomous Maildir restoration",
+  "verdict": "POSTFIX_QUEUE_RESTORE_QUALIFIED",
+  "cleanup": [
+    {
+      "container": "pqr-fc78e3c123-stale-1",
+      "removed": true
+    },
+    {
+      "container": "pqr-fc78e3c123-restored-1",
+      "removed": true
+    },
+    {
+      "container": "pqr-fc78e3c123-mail-1",
+      "removed": true
+    },
+    {
+      "container": "pqr-fc78e3c123-dkim-1",
+      "removed": true
+    },
+    {
+      "container": "pqr-fc78e3c123-receiver-1",
+      "removed": true
+    }
+  ],
+  "finished_at": "2026-11-12T07:33:42.931644+00:00",
+  "command_ledger": [
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-x509",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-days",
+        "2",
+        "-subj",
+        "/CN=relay-synthetic-ca",
+        "-addext",
+        "basicConstraints=critical,CA:TRUE",
+        "-addext",
+        "keyUsage=critical,keyCertSign,cRLSign",
+        "-keyout",
+        "/tmp/postfix-restore-6i77suwz/keys/relay-ca.key",
+        "-out",
+        "/tmp/postfix-restore-6i77suwz/keys/relay-ca.pem"
+      ],
+      "started_at": "2026-11-12T07:32:06.284385+00:00",
+      "ended_at": "2026-11-12T07:32:06.487544+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4be633da70154aa954d09e3c0b6acd47a004df278b449e2933c2a3367367d0d9"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=relay.fixture.invalid",
+        "-keyout",
+        "/tmp/postfix-restore-6i77suwz/keys/relay.key",
+        "-out",
+        "/tmp/postfix-restore-6i77suwz/keys/relay.csr"
+      ],
+      "started_at": "2026-11-12T07:32:06.487600+00:00",
+      "ended_at": "2026-11-12T07:32:06.785104+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a140d8de03078055a4d876d3925354fabea4b1eb97b04837705d8fbc17f00fba"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/postfix-restore-6i77suwz/keys/relay.csr",
+        "-CA",
+        "/tmp/postfix-restore-6i77suwz/keys/relay-ca.pem",
+        "-CAkey",
+        "/tmp/postfix-restore-6i77suwz/keys/relay-ca.key",
+        "-set_serial",
+        "1",
+        "-days",
+        "2",
+        "-extfile",
+        "/tmp/postfix-restore-6i77suwz/keys/relay.ext",
+        "-out",
+        "/tmp/postfix-restore-6i77suwz/keys/relay.pem"
+      ],
+      "started_at": "2026-11-12T07:32:06.785258+00:00",
+      "ended_at": "2026-11-12T07:32:06.813431+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3048c1d4085837d7a5a7bb55304a831fdeb23031afa0576c3158e06a789b1cdb"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-x509",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-days",
+        "2",
+        "-subj",
+        "/CN=receiver-synthetic-ca",
+        "-addext",
+        "basicConstraints=critical,CA:TRUE",
+        "-addext",
+        "keyUsage=critical,keyCertSign,cRLSign",
+        "-keyout",
+        "/tmp/postfix-restore-6i77suwz/keys/receiver-ca.key",
+        "-out",
+        "/tmp/postfix-restore-6i77suwz/keys/receiver-ca.pem"
+      ],
+      "started_at": "2026-11-12T07:32:06.813474+00:00",
+      "ended_at": "2026-11-12T07:32:06.931904+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "583d69b9985e64cb6987b3a75356ab113408874289c036f90e09259fd7774d6e"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=receiver",
+        "-keyout",
+        "/tmp/postfix-restore-6i77suwz/keys/receiver.key",
+        "-out",
+        "/tmp/postfix-restore-6i77suwz/keys/receiver.csr"
+      ],
+      "started_at": "2026-11-12T07:32:06.931956+00:00",
+      "ended_at": "2026-11-12T07:32:07.366234+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "0e04f6c6108f85232b52d33d1db00b18ec1f155b8401f3627d99a33cf12ac676"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/postfix-restore-6i77suwz/keys/receiver.csr",
+        "-CA",
+        "/tmp/postfix-restore-6i77suwz/keys/receiver-ca.pem",
+        "-CAkey",
+        "/tmp/postfix-restore-6i77suwz/keys/receiver-ca.key",
+        "-set_serial",
+        "1",
+        "-days",
+        "2",
+        "-extfile",
+        "/tmp/postfix-restore-6i77suwz/keys/receiver.ext",
+        "-out",
+        "/tmp/postfix-restore-6i77suwz/keys/receiver.pem"
+      ],
+      "started_at": "2026-11-12T07:32:07.366386+00:00",
+      "ended_at": "2026-11-12T07:32:07.394893+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "00b6feb3a2537dff46225c85ccf72e4386ec59f327d325327fc73c453ada933e"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/postfix-queue-restore/test/queue-restore/prepare.cjs",
+        "/tmp/postfix-restore-6i77suwz/prepare-input.json"
+      ],
+      "started_at": "2026-11-12T07:32:07.395379+00:00",
+      "ended_at": "2026-11-12T07:32:08.505486+00:00",
+      "exit": 0,
+      "stdout_sha256": "f3e09431c06abf19270931ef791fcca2d4822da985833778d3e78391076f4917",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--internal",
+        "--label",
+        "org.drumee.queue-restore.owner=pqr-fc78e3c123",
+        "pqr-fc78e3c123-kernel"
+      ],
+      "started_at": "2026-11-12T07:32:08.506655+00:00",
+      "ended_at": "2026-11-12T07:32:08.529149+00:00",
+      "exit": 0,
+      "stdout_sha256": "4688342ca2fdaa594fba3373c3c91b8ade67745f6ad8279fb8ab305f8e0217f0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "pqr-fc78e3c123-kernel"
+      ],
+      "started_at": "2026-11-12T07:32:08.529187+00:00",
+      "ended_at": "2026-11-12T07:32:08.585412+00:00",
+      "exit": 0,
+      "stdout_sha256": "04d5bf07f66813ed7f9e71cfeaec3bcb72a12786fe13fa37917d0b35ce5baabe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--internal",
+        "--label",
+        "org.drumee.queue-restore.owner=pqr-fc78e3c123",
+        "pqr-fc78e3c123-kernel-mail-control"
+      ],
+      "started_at": "2026-11-12T07:32:08.585501+00:00",
+      "ended_at": "2026-11-12T07:32:08.607419+00:00",
+      "exit": 0,
+      "stdout_sha256": "49a591214c19126337cc632cd2799b1484daef80b8cd426d73ac421071ac381e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "pqr-fc78e3c123-kernel-mail-control"
+      ],
+      "started_at": "2026-11-12T07:32:08.607454+00:00",
+      "ended_at": "2026-11-12T07:32:08.616619+00:00",
+      "exit": 0,
+      "stdout_sha256": "5a851626488b60f9bc4a1ef67015f9463222c3a1e8dedc720e550f8b63a416b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "pqr-fc78e3c123",
+        "-f",
+        "/tmp/postfix-restore-6i77suwz/fixture.compose.json",
+        "up",
+        "-d",
+        "receiver",
+        "dkim"
+      ],
+      "started_at": "2026-11-12T07:32:08.616742+00:00",
+      "ended_at": "2026-11-12T07:32:08.892066+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e818418b30d5be07ce4fe1bbc7e3b1b23d1d09e4c3b2f746f6265e0e0a4fb342"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "pqr-fc78e3c123",
+        "-f",
+        "/tmp/postfix-restore-6i77suwz/fixture.compose.json",
+        "up",
+        "-d",
+        "--no-deps",
+        "mail"
+      ],
+      "started_at": "2026-11-12T07:32:08.892119+00:00",
+      "ended_at": "2026-11-12T07:32:09.159665+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a0aa377b5db764b3d0db6b6da005b1b6c18b93a333b690a8f6d50975bf9631f0"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:09.159702+00:00",
+      "ended_at": "2026-11-12T07:32:09.169333+00:00",
+      "exit": 0,
+      "stdout_sha256": "a10d61cfa111650266c1f049f96438b0b367764ca577bab7a0a984959b912d1a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:09.369624+00:00",
+      "ended_at": "2026-11-12T07:32:09.379192+00:00",
+      "exit": 0,
+      "stdout_sha256": "073f4223eb19ed1014c7b2a8f7381cb404b4f40246c671ae5ccdb8cbd4c3689d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:09.579477+00:00",
+      "ended_at": "2026-11-12T07:32:09.589434+00:00",
+      "exit": 0,
+      "stdout_sha256": "97c951205bec6bc2524d0aff2707c4a8dc54681cc6d9b9f0c19368fc5680d278",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:09.789780+00:00",
+      "ended_at": "2026-11-12T07:32:09.799747+00:00",
+      "exit": 0,
+      "stdout_sha256": "75fb91292798838292bf87c1e44603a082d1e389beb51b0c46d9dca582a368ee",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:10.000087+00:00",
+      "ended_at": "2026-11-12T07:32:10.010431+00:00",
+      "exit": 0,
+      "stdout_sha256": "f1cb4a257bdfb9dc351a0163dea6864528f1a1aa5516c90db9c343cc105bf28e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:10.210768+00:00",
+      "ended_at": "2026-11-12T07:32:10.221318+00:00",
+      "exit": 0,
+      "stdout_sha256": "621df41c3551b21e7d19bb980f3576a3ba6f92f18c33ff5a3d7728d59587f984",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:10.421597+00:00",
+      "ended_at": "2026-11-12T07:32:10.431098+00:00",
+      "exit": 0,
+      "stdout_sha256": "ccff963ff08839f9e11f3648dfe0b8ec4130c8f5c93988541f70ea8b38cb800a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:10.631427+00:00",
+      "ended_at": "2026-11-12T07:32:10.641293+00:00",
+      "exit": 0,
+      "stdout_sha256": "621df41c3551b21e7d19bb980f3576a3ba6f92f18c33ff5a3d7728d59587f984",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:10.841569+00:00",
+      "ended_at": "2026-11-12T07:32:10.851170+00:00",
+      "exit": 0,
+      "stdout_sha256": "073f4223eb19ed1014c7b2a8f7381cb404b4f40246c671ae5ccdb8cbd4c3689d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:11.051444+00:00",
+      "ended_at": "2026-11-12T07:32:11.060925+00:00",
+      "exit": 0,
+      "stdout_sha256": "84fdead0b037c1612a2211174463c13b702608690c7ee05049cc42319e46d829",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:11.261256+00:00",
+      "ended_at": "2026-11-12T07:32:11.270886+00:00",
+      "exit": 0,
+      "stdout_sha256": "d6a3aee6400123e452042a6f8cbeb8bc1025ee3e52ef37168d999dac52690328",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:11.471135+00:00",
+      "ended_at": "2026-11-12T07:32:11.480941+00:00",
+      "exit": 0,
+      "stdout_sha256": "be0a3b0db33534c8b3f6606b4a7431f58fcd5a0817c1f73fef0241264588e620",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:11.681194+00:00",
+      "ended_at": "2026-11-12T07:32:11.690686+00:00",
+      "exit": 0,
+      "stdout_sha256": "7060d69b16a3f6e1685d268d32b0cce9513a0e11a357746ccd37547783afd6f3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:11.890964+00:00",
+      "ended_at": "2026-11-12T07:32:11.901009+00:00",
+      "exit": 0,
+      "stdout_sha256": "a9e75ae685e76837f1bfde79d5dee2a990cc1614f18ed753b603564e3e7fcef8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:12.101339+00:00",
+      "ended_at": "2026-11-12T07:32:12.111373+00:00",
+      "exit": 0,
+      "stdout_sha256": "3482a6190350b3aa1578711c187f94d6e348346dca9a028918515115e041d53d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:12.311729+00:00",
+      "ended_at": "2026-11-12T07:32:12.321419+00:00",
+      "exit": 0,
+      "stdout_sha256": "60945f196bd46210b5534ec4616f5c978a8a693923bdfd19d4b8aed43ab2b6da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:12.521781+00:00",
+      "ended_at": "2026-11-12T07:32:12.531772+00:00",
+      "exit": 0,
+      "stdout_sha256": "0272b650f2e9672529844ce28766660a216efcb4414d1ad5ee2197f0634274c7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:12.732048+00:00",
+      "ended_at": "2026-11-12T07:32:12.741406+00:00",
+      "exit": 0,
+      "stdout_sha256": "be0a3b0db33534c8b3f6606b4a7431f58fcd5a0817c1f73fef0241264588e620",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:12.941807+00:00",
+      "ended_at": "2026-11-12T07:32:12.952243+00:00",
+      "exit": 0,
+      "stdout_sha256": "e0ad49853e8d0be1a3523315e13545d634cdc2d37426d26332fe85fb3f4d89a7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:13.152519+00:00",
+      "ended_at": "2026-11-12T07:32:13.162465+00:00",
+      "exit": 0,
+      "stdout_sha256": "be0a3b0db33534c8b3f6606b4a7431f58fcd5a0817c1f73fef0241264588e620",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:13.362790+00:00",
+      "ended_at": "2026-11-12T07:32:13.372685+00:00",
+      "exit": 0,
+      "stdout_sha256": "fec7baf1b0c5700634bf8f2be131841de38dbddc8f21d1f8fd9f2063080dfc4c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-receiver-1"
+      ],
+      "started_at": "2026-11-12T07:32:13.372871+00:00",
+      "ended_at": "2026-11-12T07:32:13.382158+00:00",
+      "exit": 0,
+      "stdout_sha256": "61c4056e4362be5de50e9811949ba71fed64cb574fa417048186f1199e19621a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-dkim-1"
+      ],
+      "started_at": "2026-11-12T07:32:13.382284+00:00",
+      "ended_at": "2026-11-12T07:32:13.420542+00:00",
+      "exit": 0,
+      "stdout_sha256": "acd4625efbcd57c64c5a0c7e928f7d395efc0a79a943fadecea3ba56a28d1b3d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:13.420727+00:00",
+      "ended_at": "2026-11-12T07:32:13.430736+00:00",
+      "exit": 0,
+      "stdout_sha256": "77f8458fa53525ca5498dc393e908539e753514efc3dd1348a8d0374ec571870",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-mail-1",
+        "sh",
+        "-c",
+        "postconf mail_version; id postfix; getent group postdrop; id infra"
+      ],
+      "started_at": "2026-11-12T07:32:13.430945+00:00",
+      "ended_at": "2026-11-12T07:32:13.474668+00:00",
+      "exit": 0,
+      "stdout_sha256": "ae73a42b1ab2eef7a006278791cf61bebf95f7ffab151237bed23f0af0a82158",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "pqr-fc78e3c123-kernel",
+        "--user",
+        "1000:1000",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/submit.py",
+        "definite-1",
+        "definite-2",
+        "definite-3"
+      ],
+      "started_at": "2026-11-12T07:32:13.474730+00:00",
+      "ended_at": "2026-11-12T07:32:14.053214+00:00",
+      "exit": 0,
+      "stdout_sha256": "387f98a028d74d40b672a5fcf26f39c8570b6f09cbfa6d665e01667cd41e9f78",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-mail-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-j"
+      ],
+      "started_at": "2026-11-12T07:32:14.053305+00:00",
+      "ended_at": "2026-11-12T07:32:14.113933+00:00",
+      "exit": 0,
+      "stdout_sha256": "f1149b3a1fe5030a2079a358526a2adfa46afe55164d48b1c36833565b1ad21f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "update",
+        "--restart=no",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:14.114448+00:00",
+      "ended_at": "2026-11-12T07:32:14.132767+00:00",
+      "exit": 0,
+      "stdout_sha256": "729705c1b3f7c4d4c7c458cc7e81c6558721ccf34a8f50b84ff5ca1473516f34",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-d",
+        "pqr-fc78e3c123-mail-1",
+        "postfix",
+        "-c",
+        "/run/infra-mail/config",
+        "stop"
+      ],
+      "started_at": "2026-11-12T07:32:14.132798+00:00",
+      "ended_at": "2026-11-12T07:32:14.205376+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:14.205411+00:00",
+      "ended_at": "2026-11-12T07:32:14.214793+00:00",
+      "exit": 0,
+      "stdout_sha256": "971285944fa4e87ff2b7d66140cf821f7da40d77fb1983d72e3dcb8b651b67da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:14.415094+00:00",
+      "ended_at": "2026-11-12T07:32:14.559508+00:00",
+      "exit": 0,
+      "stdout_sha256": "85ae8c604e0a5708796459d4055c38d8e0a764655f3ab5573ef880aa667bf9f0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:14.559685+00:00",
+      "ended_at": "2026-11-12T07:32:14.568855+00:00",
+      "exit": 0,
+      "stdout_sha256": "85ae8c604e0a5708796459d4055c38d8e0a764655f3ab5573ef880aa667bf9f0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q"
+      ],
+      "started_at": "2026-11-12T07:32:14.569048+00:00",
+      "ended_at": "2026-11-12T07:32:14.578122+00:00",
+      "exit": 0,
+      "stdout_sha256": "d4ee23a86bd0c146a5ae1f0f389fd15b3c94dc20f821a3d980f6fc4198609b59",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "70d914c634c5"
+      ],
+      "started_at": "2026-11-12T07:32:14.578160+00:00",
+      "ended_at": "2026-11-12T07:32:14.586915+00:00",
+      "exit": 0,
+      "stdout_sha256": "acd4625efbcd57c64c5a0c7e928f7d395efc0a79a943fadecea3ba56a28d1b3d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "04334a63e5e7"
+      ],
+      "started_at": "2026-11-12T07:32:14.587050+00:00",
+      "ended_at": "2026-11-12T07:32:14.596163+00:00",
+      "exit": 0,
+      "stdout_sha256": "3275f36f717ffc6acb097938acc20f7a42e499d2db1ba1133e1e4e33997c2fd5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "ad54c9ae4370"
+      ],
+      "started_at": "2026-11-12T07:32:14.596294+00:00",
+      "ended_at": "2026-11-12T07:32:14.605844+00:00",
+      "exit": 0,
+      "stdout_sha256": "fff996cf5bf2d6e8473544fd0fb79b37c38894b3abf05262861b9c57487fab35",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-658f065f2bd547f6bb39ebbb05058f1d.json"
+      ],
+      "started_at": "2026-11-12T07:32:14.606172+00:00",
+      "ended_at": "2026-11-12T07:32:14.781994+00:00",
+      "exit": 0,
+      "stdout_sha256": "8214698b5f25b0ea683f1e9cd4e714a27618aa40cf85be7e021a66f3eb22f70d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-b55e0eb885e340ad8aa8e2408e3bce01.json"
+      ],
+      "started_at": "2026-11-12T07:32:14.782452+00:00",
+      "ended_at": "2026-11-12T07:32:15.052942+00:00",
+      "exit": 0,
+      "stdout_sha256": "b2259425e68c50d4858be5bf51561b3441022dfcb1ca63523cfd446475600767",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "org.drumee.queue-restore.owner=pqr-fc78e3c123",
+        "pqr-fc78e3c123-replacement"
+      ],
+      "started_at": "2026-11-12T07:32:15.053391+00:00",
+      "ended_at": "2026-11-12T07:32:15.069823+00:00",
+      "exit": 0,
+      "stdout_sha256": "cc78869e7e4ae71266ef802b4cc1d9a60a6282d7d70202ba65219756deff605a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-068a68dac2f64e8c939da310dbd6ca16.json"
+      ],
+      "started_at": "2026-11-12T07:32:15.070006+00:00",
+      "ended_at": "2026-11-12T07:32:15.272742+00:00",
+      "exit": 0,
+      "stdout_sha256": "863be45a6e532d8a75f732a9dd9a924f00a7dee0e1f50db3ab88bcc7a6bbeb10",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-083d5dd4731e45ebae8acfe9f72936b5.json"
+      ],
+      "started_at": "2026-11-12T07:32:15.272936+00:00",
+      "ended_at": "2026-11-12T07:32:15.488675+00:00",
+      "exit": 0,
+      "stdout_sha256": "8214698b5f25b0ea683f1e9cd4e714a27618aa40cf85be7e021a66f3eb22f70d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "pqr-fc78e3c123-replacement"
+      ],
+      "started_at": "2026-11-12T07:32:15.488835+00:00",
+      "ended_at": "2026-11-12T07:32:15.516505+00:00",
+      "exit": 0,
+      "stdout_sha256": "9e9f16d2f768acca18a243bad1fd33833e2e216d3bd46d3912be58336188c077",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-main.cf,target=/config/main.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-master.cf,target=/config/master.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-sasl.conf,target=/config/postfix-sasl.conf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/mail-entrypoint.sh,target=/config/mail-entrypoint.sh,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement,readonly",
+        "--mount",
+        "type=bind,source=/var/lib/docker/volumes/pqr-fc78e3c123-replacement/_data/spool,target=/var/spool/postfix,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-605d78cb8115aeab6208edd2.value,target=/run/secrets/mail-certificate,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-5c058a515bddc7d5952f9e9e.value,target=/run/secrets/mail-key,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-bc697c442256ab398c082190.value,target=/run/secrets/mail-ca,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-94da303e4bfcb8040607b726.value,target=/run/secrets/mail-submission,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-6164798dfa447a028bdfd469.value,target=/run/secrets/mail-relay,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-user,target=/config/postfix-relay-user,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-destination,target=/config/postfix-relay-destination,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/smtp-relay-auth.pl,target=/config/smtp-relay-auth.pl,readonly",
+        "--entrypoint",
+        "postcat",
+        "sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843",
+        "-c",
+        "/config",
+        "-q",
+        "AF4E21A06A93"
+      ],
+      "started_at": "2026-11-12T07:32:15.516566+00:00",
+      "ended_at": "2026-11-12T07:32:15.663066+00:00",
+      "exit": 0,
+      "stdout_sha256": "2dc6d4d4d513a180183c93b62ea4baffe3cc2663e71f532ee1f275d4fe22f61f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "pqr-fc78e3c123-replacement"
+      ],
+      "started_at": "2026-11-12T07:32:15.663131+00:00",
+      "ended_at": "2026-11-12T07:32:15.671832+00:00",
+      "exit": 0,
+      "stdout_sha256": "9e9f16d2f768acca18a243bad1fd33833e2e216d3bd46d3912be58336188c077",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-main.cf,target=/config/main.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-master.cf,target=/config/master.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-sasl.conf,target=/config/postfix-sasl.conf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/mail-entrypoint.sh,target=/config/mail-entrypoint.sh,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement,readonly",
+        "--mount",
+        "type=bind,source=/var/lib/docker/volumes/pqr-fc78e3c123-replacement/_data/spool,target=/var/spool/postfix,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-605d78cb8115aeab6208edd2.value,target=/run/secrets/mail-certificate,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-5c058a515bddc7d5952f9e9e.value,target=/run/secrets/mail-key,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-bc697c442256ab398c082190.value,target=/run/secrets/mail-ca,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-94da303e4bfcb8040607b726.value,target=/run/secrets/mail-submission,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-6164798dfa447a028bdfd469.value,target=/run/secrets/mail-relay,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-user,target=/config/postfix-relay-user,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-destination,target=/config/postfix-relay-destination,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/smtp-relay-auth.pl,target=/config/smtp-relay-auth.pl,readonly",
+        "--entrypoint",
+        "postcat",
+        "sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843",
+        "-c",
+        "/config",
+        "-q",
+        "BAA761A06A94"
+      ],
+      "started_at": "2026-11-12T07:32:15.671891+00:00",
+      "ended_at": "2026-11-12T07:32:15.897705+00:00",
+      "exit": 0,
+      "stdout_sha256": "78d6889799ba29269c91ff7304ad162fc6de986c92fcebec1b7190a9e7163c1c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "pqr-fc78e3c123-replacement"
+      ],
+      "started_at": "2026-11-12T07:32:15.897767+00:00",
+      "ended_at": "2026-11-12T07:32:15.906529+00:00",
+      "exit": 0,
+      "stdout_sha256": "9e9f16d2f768acca18a243bad1fd33833e2e216d3bd46d3912be58336188c077",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-main.cf,target=/config/main.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-master.cf,target=/config/master.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-sasl.conf,target=/config/postfix-sasl.conf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/mail-entrypoint.sh,target=/config/mail-entrypoint.sh,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement,readonly",
+        "--mount",
+        "type=bind,source=/var/lib/docker/volumes/pqr-fc78e3c123-replacement/_data/spool,target=/var/spool/postfix,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-605d78cb8115aeab6208edd2.value,target=/run/secrets/mail-certificate,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-5c058a515bddc7d5952f9e9e.value,target=/run/secrets/mail-key,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-bc697c442256ab398c082190.value,target=/run/secrets/mail-ca,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-94da303e4bfcb8040607b726.value,target=/run/secrets/mail-submission,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-6164798dfa447a028bdfd469.value,target=/run/secrets/mail-relay,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-user,target=/config/postfix-relay-user,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-destination,target=/config/postfix-relay-destination,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/smtp-relay-auth.pl,target=/config/smtp-relay-auth.pl,readonly",
+        "--entrypoint",
+        "postcat",
+        "sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843",
+        "-c",
+        "/config",
+        "-q",
+        "C652E1A06A96"
+      ],
+      "started_at": "2026-11-12T07:32:15.906589+00:00",
+      "ended_at": "2026-11-12T07:32:16.053288+00:00",
+      "exit": 0,
+      "stdout_sha256": "a07f937cd7ddaa5f3482bf2f626a90783de0b3b68cf071d49615b3edb4a313fc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-9a85228135174d99b5787748202b3223.json"
+      ],
+      "started_at": "2026-11-12T07:32:16.053523+00:00",
+      "ended_at": "2026-11-12T07:32:16.251383+00:00",
+      "exit": 0,
+      "stdout_sha256": "083bb26815f7b1b09eb1ee5330109c72cbe1809232066500522476db7e822c20",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "pqr-fc78e3c123-replacement"
+      ],
+      "started_at": "2026-11-12T07:32:16.251530+00:00",
+      "ended_at": "2026-11-12T07:32:16.260202+00:00",
+      "exit": 0,
+      "stdout_sha256": "9e9f16d2f768acca18a243bad1fd33833e2e216d3bd46d3912be58336188c077",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "SETUID",
+        "--cap-add",
+        "SETGID",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-main.cf,target=/config/main.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-master.cf,target=/config/master.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-sasl.conf,target=/config/postfix-sasl.conf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/mail-entrypoint.sh,target=/config/mail-entrypoint.sh,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--mount",
+        "type=bind,source=/var/lib/docker/volumes/pqr-fc78e3c123-replacement/_data/spool,target=/var/spool/postfix",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-605d78cb8115aeab6208edd2.value,target=/run/secrets/mail-certificate,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-5c058a515bddc7d5952f9e9e.value,target=/run/secrets/mail-key,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-bc697c442256ab398c082190.value,target=/run/secrets/mail-ca,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-94da303e4bfcb8040607b726.value,target=/run/secrets/mail-submission,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-6164798dfa447a028bdfd469.value,target=/run/secrets/mail-relay,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-user,target=/config/postfix-relay-user,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-destination,target=/config/postfix-relay-destination,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/smtp-relay-auth.pl,target=/config/smtp-relay-auth.pl,readonly",
+        "--entrypoint",
+        "postsuper",
+        "sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843",
+        "-c",
+        "/config",
+        "-h",
+        "ALL"
+      ],
+      "started_at": "2026-11-12T07:32:16.260267+00:00",
+      "ended_at": "2026-11-12T07:32:16.482995+00:00",
+      "exit": 0,
+      "stdout_sha256": "ea0dc950ca6fdf874d1923154573b4dfd8f01dcf0c09fdef674c5f367906c09b",
+      "stderr_sha256": "88e93a4de1f2783bb46ce310d57b2e023172e2be41351bae399f97fac51dd404"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "pqr-fc78e3c123-replacement"
+      ],
+      "started_at": "2026-11-12T07:32:16.483113+00:00",
+      "ended_at": "2026-11-12T07:32:16.491575+00:00",
+      "exit": 0,
+      "stdout_sha256": "9e9f16d2f768acca18a243bad1fd33833e2e216d3bd46d3912be58336188c077",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "pqr-fc78e3c123",
+        "-f",
+        "/tmp/postfix-restore-6i77suwz/restored.compose.json",
+        "up",
+        "-d",
+        "--no-deps",
+        "restored"
+      ],
+      "started_at": "2026-11-12T07:32:16.492128+00:00",
+      "ended_at": "2026-11-12T07:32:16.739543+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ef5b6c2adbe25ea94f7c96ee1b6fd1d9f2288e78625a19bf1dfd6793aace6bdb"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:16.739581+00:00",
+      "ended_at": "2026-11-12T07:32:16.748965+00:00",
+      "exit": 0,
+      "stdout_sha256": "db0b347c3bb164aab809f64711db6ee080f588d4cfc01f61d6bd496693c1b23d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:16.949393+00:00",
+      "ended_at": "2026-11-12T07:32:16.962171+00:00",
+      "exit": 0,
+      "stdout_sha256": "211afd1ca0b9d7418ac9e1f0d7e691b91a9b12ba48a2b02f77685ca69cd81e9e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:17.162420+00:00",
+      "ended_at": "2026-11-12T07:32:17.171671+00:00",
+      "exit": 0,
+      "stdout_sha256": "61aee6d95b18d09acb9141f598e31863b09fdc2de77a8337cc639cefe94981ce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:17.371996+00:00",
+      "ended_at": "2026-11-12T07:32:17.382288+00:00",
+      "exit": 0,
+      "stdout_sha256": "db0b347c3bb164aab809f64711db6ee080f588d4cfc01f61d6bd496693c1b23d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:17.582529+00:00",
+      "ended_at": "2026-11-12T07:32:17.597070+00:00",
+      "exit": 0,
+      "stdout_sha256": "61aee6d95b18d09acb9141f598e31863b09fdc2de77a8337cc639cefe94981ce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:17.797400+00:00",
+      "ended_at": "2026-11-12T07:32:17.807358+00:00",
+      "exit": 0,
+      "stdout_sha256": "4c48d2736a5fa067c1af811b6da60000bab88e8bfea5dd62546bdc84a94f8b69",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:18.007688+00:00",
+      "ended_at": "2026-11-12T07:32:18.017381+00:00",
+      "exit": 0,
+      "stdout_sha256": "4c48d2736a5fa067c1af811b6da60000bab88e8bfea5dd62546bdc84a94f8b69",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:18.217649+00:00",
+      "ended_at": "2026-11-12T07:32:18.227529+00:00",
+      "exit": 0,
+      "stdout_sha256": "db0b347c3bb164aab809f64711db6ee080f588d4cfc01f61d6bd496693c1b23d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:18.427859+00:00",
+      "ended_at": "2026-11-12T07:32:18.437782+00:00",
+      "exit": 0,
+      "stdout_sha256": "6ad1e92aba08b0a87986af37ca22f715be35088f3e0adc1f3f505adb0fcf3e9b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:18.638073+00:00",
+      "ended_at": "2026-11-12T07:32:18.647736+00:00",
+      "exit": 0,
+      "stdout_sha256": "f46039b9c329b25453dc6568ffc300a0638cd33f0f826168d5de151717221ebb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:18.848016+00:00",
+      "ended_at": "2026-11-12T07:32:18.857678+00:00",
+      "exit": 0,
+      "stdout_sha256": "786297367851aa3f680a65cf7653fcedb524a2608a25169e33cebeecd1a60aa1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:19.057955+00:00",
+      "ended_at": "2026-11-12T07:32:19.067645+00:00",
+      "exit": 0,
+      "stdout_sha256": "786297367851aa3f680a65cf7653fcedb524a2608a25169e33cebeecd1a60aa1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:19.267890+00:00",
+      "ended_at": "2026-11-12T07:32:19.277728+00:00",
+      "exit": 0,
+      "stdout_sha256": "7cdf5f2e088c2ca10330529027a13a7ec0485ff1a78388a1887cfba89bb90bb2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:19.478062+00:00",
+      "ended_at": "2026-11-12T07:32:19.487981+00:00",
+      "exit": 0,
+      "stdout_sha256": "786297367851aa3f680a65cf7653fcedb524a2608a25169e33cebeecd1a60aa1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:19.688228+00:00",
+      "ended_at": "2026-11-12T07:32:19.698473+00:00",
+      "exit": 0,
+      "stdout_sha256": "4fd401accb51e8377806bb287f14a0c106a1ec57da4aa00ac255a9399d77dc68",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:19.898725+00:00",
+      "ended_at": "2026-11-12T07:32:19.908351+00:00",
+      "exit": 0,
+      "stdout_sha256": "786297367851aa3f680a65cf7653fcedb524a2608a25169e33cebeecd1a60aa1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:20.108692+00:00",
+      "ended_at": "2026-11-12T07:32:20.118808+00:00",
+      "exit": 0,
+      "stdout_sha256": "674c711bddea11621076530a0b17b63eeee81fefb3d45aa4d027b0f3010bda7d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:20.319141+00:00",
+      "ended_at": "2026-11-12T07:32:20.329345+00:00",
+      "exit": 0,
+      "stdout_sha256": "674c711bddea11621076530a0b17b63eeee81fefb3d45aa4d027b0f3010bda7d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:20.529681+00:00",
+      "ended_at": "2026-11-12T07:32:20.540080+00:00",
+      "exit": 0,
+      "stdout_sha256": "4fd401accb51e8377806bb287f14a0c106a1ec57da4aa00ac255a9399d77dc68",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:20.740329+00:00",
+      "ended_at": "2026-11-12T07:32:20.750014+00:00",
+      "exit": 0,
+      "stdout_sha256": "5d0e0efa6d7b9b90c71ea1e662fac0a99b479efd68f3c9d400bf02986ab4cb92",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:20.950339+00:00",
+      "ended_at": "2026-11-12T07:32:20.960188+00:00",
+      "exit": 0,
+      "stdout_sha256": "e4b5f31971f466ab8ad594cee3c61e5b01d19a43d6e72416801b3f379fd81224",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:32:20.960384+00:00",
+      "ended_at": "2026-11-12T07:32:20.969576+00:00",
+      "exit": 0,
+      "stdout_sha256": "6b19ab7913a25008ffa0eebcbb1fffa319f2709828487861f9770b9c7048a990",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:32:20.969769+00:00",
+      "ended_at": "2026-11-12T07:32:20.978890+00:00",
+      "exit": 0,
+      "stdout_sha256": "b22b903b88e0fb112ab8e5d86fe3d3ed5be76fb12c96587e872c2d2e98cf14a8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-j"
+      ],
+      "started_at": "2026-11-12T07:32:20.979093+00:00",
+      "ended_at": "2026-11-12T07:32:21.045665+00:00",
+      "exit": 0,
+      "stdout_sha256": "c545a88aa0170503f5911c8b8d774446bf82932a0c04eacff641df35d4afb92b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-j"
+      ],
+      "started_at": "2026-11-12T07:32:21.045734+00:00",
+      "ended_at": "2026-11-12T07:32:21.111200+00:00",
+      "exit": 0,
+      "stdout_sha256": "c545a88aa0170503f5911c8b8d774446bf82932a0c04eacff641df35d4afb92b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-j"
+      ],
+      "started_at": "2026-11-12T07:32:21.111285+00:00",
+      "ended_at": "2026-11-12T07:32:21.183843+00:00",
+      "exit": 0,
+      "stdout_sha256": "c545a88aa0170503f5911c8b8d774446bf82932a0c04eacff641df35d4afb92b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postcat",
+        "-c",
+        "/run/infra-mail/config",
+        "-q",
+        "C652E4EAA711"
+      ],
+      "started_at": "2026-11-12T07:32:21.183910+00:00",
+      "ended_at": "2026-11-12T07:32:21.222337+00:00",
+      "exit": 0,
+      "stdout_sha256": "aaf050cd5a62535975ad6d72701edfb6c73e75e98f72adadb93e4593e31ce101",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postcat",
+        "-c",
+        "/run/infra-mail/config",
+        "-q",
+        "BAA764EAA710"
+      ],
+      "started_at": "2026-11-12T07:32:21.222382+00:00",
+      "ended_at": "2026-11-12T07:32:21.259157+00:00",
+      "exit": 0,
+      "stdout_sha256": "78f130d46613b8c59a00f5e327c102544b36e8e854edfd72423b9f2f9432bebb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postcat",
+        "-c",
+        "/run/infra-mail/config",
+        "-q",
+        "AF4E24EAA70F"
+      ],
+      "started_at": "2026-11-12T07:32:21.259204+00:00",
+      "ended_at": "2026-11-12T07:32:21.297311+00:00",
+      "exit": 0,
+      "stdout_sha256": "8dd7fdf34115728ab930ea89098b1bac7f96fd9efcf5c2e7bd7921382c571d71",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postsuper",
+        "-c",
+        "/run/infra-mail/config",
+        "-H",
+        "C652E4EAA711"
+      ],
+      "started_at": "2026-11-12T07:32:21.297668+00:00",
+      "ended_at": "2026-11-12T07:32:21.334553+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b75c8486d5c2df508eec09c1df8bab42b4148c1db5348913834809fc7c1e7bf1"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-i",
+        "C652E4EAA711"
+      ],
+      "started_at": "2026-11-12T07:32:21.334584+00:00",
+      "ended_at": "2026-11-12T07:32:21.375527+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postsuper",
+        "-c",
+        "/run/infra-mail/config",
+        "-H",
+        "BAA764EAA710"
+      ],
+      "started_at": "2026-11-12T07:32:21.375560+00:00",
+      "ended_at": "2026-11-12T07:32:21.414552+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f3149e9868f762a97c804372027c568cf3bae3b822d0fd6c1b375ed6677e8e75"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-i",
+        "BAA764EAA710"
+      ],
+      "started_at": "2026-11-12T07:32:21.414585+00:00",
+      "ended_at": "2026-11-12T07:32:21.452043+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postsuper",
+        "-c",
+        "/run/infra-mail/config",
+        "-H",
+        "AF4E24EAA70F"
+      ],
+      "started_at": "2026-11-12T07:32:21.452076+00:00",
+      "ended_at": "2026-11-12T07:32:21.489651+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8aad8cdfc38c5004e80f5deb6521d4294ac6648a5273ed0b7169f04da7bb3b3c"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-i",
+        "AF4E24EAA70F"
+      ],
+      "started_at": "2026-11-12T07:32:21.489691+00:00",
+      "ended_at": "2026-11-12T07:32:21.527356+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-j"
+      ],
+      "started_at": "2026-11-12T07:32:21.727961+00:00",
+      "ended_at": "2026-11-12T07:32:21.780796+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "pqr-fc78e3c123-kernel",
+        "--user",
+        "1000:1000",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/submit.py",
+        "uncertain-1"
+      ],
+      "started_at": "2026-11-12T07:32:21.781231+00:00",
+      "ended_at": "2026-11-12T07:32:22.252856+00:00",
+      "exit": 0,
+      "stdout_sha256": "c16ab84b8edbb44f4ce35c2df1ef523040f1ae4fc8f386cccda039e53fbd5427",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-j"
+      ],
+      "started_at": "2026-11-12T07:32:22.253170+00:00",
+      "ended_at": "2026-11-12T07:32:22.327303+00:00",
+      "exit": 0,
+      "stdout_sha256": "0cde9d73f29b070c4b2e5af17f562b42bd81dd4c8f5705a542e70da595c67bfd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postsuper",
+        "-c",
+        "/run/infra-mail/config",
+        "-h",
+        "0456D4EAA747"
+      ],
+      "started_at": "2026-11-12T07:32:22.327362+00:00",
+      "ended_at": "2026-11-12T07:32:22.391062+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "5e3a24e1b2bfb4e3a25367d5fa2d9edbd01ca1c653e2f85659f13da73600b313"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-j"
+      ],
+      "started_at": "2026-11-12T07:33:07.391792+00:00",
+      "ended_at": "2026-11-12T07:33:07.463796+00:00",
+      "exit": 0,
+      "stdout_sha256": "653ef5fc743664972d9e3146d4d6688ca7f3b62db166cac97e356c8a8e061c26",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postsuper",
+        "-c",
+        "/run/infra-mail/config",
+        "-H",
+        "0456D4EAA747"
+      ],
+      "started_at": "2026-11-12T07:33:07.463998+00:00",
+      "ended_at": "2026-11-12T07:33:07.503383+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "74e32f5a217940e39e48ec41f907a4cb02550d256c937373fa746042d500a350"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-i",
+        "0456D4EAA747"
+      ],
+      "started_at": "2026-11-12T07:33:07.503415+00:00",
+      "ended_at": "2026-11-12T07:33:07.576139+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-restored-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-j"
+      ],
+      "started_at": "2026-11-12T07:33:07.776848+00:00",
+      "ended_at": "2026-11-12T07:33:07.851810+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "update",
+        "--restart=no",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:33:07.852163+00:00",
+      "ended_at": "2026-11-12T07:33:07.870642+00:00",
+      "exit": 0,
+      "stdout_sha256": "aa468d6dd8cdfa46e5e4f3ab3f3407e2b099368e5096f45c1fd4d18c301fe3f9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-d",
+        "pqr-fc78e3c123-restored-1",
+        "postfix",
+        "-c",
+        "/run/infra-mail/config",
+        "stop"
+      ],
+      "started_at": "2026-11-12T07:33:07.870674+00:00",
+      "ended_at": "2026-11-12T07:33:07.945442+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:33:07.945476+00:00",
+      "ended_at": "2026-11-12T07:33:07.955389+00:00",
+      "exit": 0,
+      "stdout_sha256": "710f996bdfee96e6555a66cd6395c6831fec9f6bf73399445bf1e05fa9713e09",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:33:08.155734+00:00",
+      "ended_at": "2026-11-12T07:33:08.292687+00:00",
+      "exit": 0,
+      "stdout_sha256": "7309a0f8569e7252e449f43837cb8de996576534431dbc1fa782b30fedecd946",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:33:08.292872+00:00",
+      "ended_at": "2026-11-12T07:33:08.302676+00:00",
+      "exit": 0,
+      "stdout_sha256": "c87efb4cd94850549d1cff593df65903aa17d98b54f8786e3abd31c2c4efbbda",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q"
+      ],
+      "started_at": "2026-11-12T07:33:08.302876+00:00",
+      "ended_at": "2026-11-12T07:33:08.311940+00:00",
+      "exit": 0,
+      "stdout_sha256": "d4ee23a86bd0c146a5ae1f0f389fd15b3c94dc20f821a3d980f6fc4198609b59",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "70d914c634c5"
+      ],
+      "started_at": "2026-11-12T07:33:08.311973+00:00",
+      "ended_at": "2026-11-12T07:33:08.321375+00:00",
+      "exit": 0,
+      "stdout_sha256": "77a7c6570c528a25d9c26b1050273b9caecf3b91dd817dc45c90ecb8193d9ac8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "04334a63e5e7"
+      ],
+      "started_at": "2026-11-12T07:33:08.321513+00:00",
+      "ended_at": "2026-11-12T07:33:08.330083+00:00",
+      "exit": 0,
+      "stdout_sha256": "ace13d35f259e0b93e2c954701e62486aaac2ac99587e8d8c784eb2e96a1ce92",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "ad54c9ae4370"
+      ],
+      "started_at": "2026-11-12T07:33:08.330220+00:00",
+      "ended_at": "2026-11-12T07:33:08.339374+00:00",
+      "exit": 0,
+      "stdout_sha256": "3aa3fabbf55b9846ddc125df68d0e1c2edc7ac4beed02fb224cb3537a999ef79",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "org.drumee.queue-restore.owner=pqr-fc78e3c123",
+        "pqr-fc78e3c123-stale-checkpoint"
+      ],
+      "started_at": "2026-11-12T07:33:08.339560+00:00",
+      "ended_at": "2026-11-12T07:33:08.349479+00:00",
+      "exit": 0,
+      "stdout_sha256": "022ae8973b77b28ea30a2a93109a1463d1001d0dcac40d7af97b5280d9d78448",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-stale-checkpoint,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-a863c78c902f474f9ec5a4440b104d14.json"
+      ],
+      "started_at": "2026-11-12T07:33:08.349667+00:00",
+      "ended_at": "2026-11-12T07:33:08.595824+00:00",
+      "exit": 0,
+      "stdout_sha256": "2ccfced829bf71e11c1a2c3b704d77ecaa6258d639ce5a19671c67b887c9ff22",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "pqr-fc78e3c123-stale-checkpoint"
+      ],
+      "started_at": "2026-11-12T07:33:08.595885+00:00",
+      "ended_at": "2026-11-12T07:33:08.604211+00:00",
+      "exit": 0,
+      "stdout_sha256": "eb02d1e3251bb884c0101fca72bcd664436fcc9cd4f75af59bde35c5fdc2ee50",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "SETUID",
+        "--cap-add",
+        "SETGID",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-main.cf,target=/config/main.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-master.cf,target=/config/master.cf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-sasl.conf,target=/config/postfix-sasl.conf,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/mail-entrypoint.sh,target=/config/mail-entrypoint.sh,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-stale-checkpoint,target=/replacement",
+        "--mount",
+        "type=bind,source=/var/lib/docker/volumes/pqr-fc78e3c123-stale-checkpoint/_data/spool,target=/var/spool/postfix",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-605d78cb8115aeab6208edd2.value,target=/run/secrets/mail-certificate,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-5c058a515bddc7d5952f9e9e.value,target=/run/secrets/mail-key,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-bc697c442256ab398c082190.value,target=/run/secrets/mail-ca,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-94da303e4bfcb8040607b726.value,target=/run/secrets/mail-submission,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/secrets/mail-6164798dfa447a028bdfd469.value,target=/run/secrets/mail-relay,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-user,target=/config/postfix-relay-user,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/postfix-relay-destination,target=/config/postfix-relay-destination,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz/source/candidates/ebd9b05df6389e90f5c58ea39584df9351e52e05b3d2afc1fbd62c1896afd4c9/smtp-relay-auth.pl,target=/config/smtp-relay-auth.pl,readonly",
+        "--entrypoint",
+        "postsuper",
+        "sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843",
+        "-c",
+        "/config",
+        "-h",
+        "ALL"
+      ],
+      "started_at": "2026-11-12T07:33:08.604271+00:00",
+      "ended_at": "2026-11-12T07:33:08.801616+00:00",
+      "exit": 0,
+      "stdout_sha256": "534cd6db18968f96c6894facb7c3b5574dd6ea67e55e5e9555cf63b1c33bde09",
+      "stderr_sha256": "88e93a4de1f2783bb46ce310d57b2e023172e2be41351bae399f97fac51dd404"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "pqr-fc78e3c123-stale-checkpoint"
+      ],
+      "started_at": "2026-11-12T07:33:08.801741+00:00",
+      "ended_at": "2026-11-12T07:33:08.810895+00:00",
+      "exit": 0,
+      "stdout_sha256": "eb02d1e3251bb884c0101fca72bcd664436fcc9cd4f75af59bde35c5fdc2ee50",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "pqr-fc78e3c123",
+        "-f",
+        "/tmp/postfix-restore-6i77suwz/stale.compose.json",
+        "up",
+        "-d",
+        "--no-deps",
+        "stale"
+      ],
+      "started_at": "2026-11-12T07:33:08.811425+00:00",
+      "ended_at": "2026-11-12T07:33:09.065573+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ebfeb6287a9a1c3f209793332e53a3408f6ffb31a57beb6fc65d43bf113b251f"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:09.065609+00:00",
+      "ended_at": "2026-11-12T07:33:09.075315+00:00",
+      "exit": 0,
+      "stdout_sha256": "7e3382e7987102bef4b6f76866fe4e8576158b8eff3d31747592ed3aaad10e55",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:09.275565+00:00",
+      "ended_at": "2026-11-12T07:33:09.285363+00:00",
+      "exit": 0,
+      "stdout_sha256": "5070b85c5efba0bf472e77dadb0bb582d4f354e6d18c9ecb97ae186da734abbd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:09.485636+00:00",
+      "ended_at": "2026-11-12T07:33:09.495966+00:00",
+      "exit": 0,
+      "stdout_sha256": "60dd8bc603dd395da413a2e75b8e1aa99e3673ea4bafe20b35ddf6dc5127558a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:09.696292+00:00",
+      "ended_at": "2026-11-12T07:33:09.706446+00:00",
+      "exit": 0,
+      "stdout_sha256": "64a5743e86c308df76d271ec538058e42e0f34ba15d3f497b1f0b971f24adb43",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:09.906697+00:00",
+      "ended_at": "2026-11-12T07:33:09.915998+00:00",
+      "exit": 0,
+      "stdout_sha256": "8e079f3378467db3b079894e0e855661ff817e0c8a727ad0fdf30d5b6a37b608",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:10.116325+00:00",
+      "ended_at": "2026-11-12T07:33:10.126970+00:00",
+      "exit": 0,
+      "stdout_sha256": "60dd8bc603dd395da413a2e75b8e1aa99e3673ea4bafe20b35ddf6dc5127558a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:10.327263+00:00",
+      "ended_at": "2026-11-12T07:33:10.337452+00:00",
+      "exit": 0,
+      "stdout_sha256": "7e3382e7987102bef4b6f76866fe4e8576158b8eff3d31747592ed3aaad10e55",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:10.537678+00:00",
+      "ended_at": "2026-11-12T07:33:10.593400+00:00",
+      "exit": 0,
+      "stdout_sha256": "4e740e75ca7823ebc9136a806df178fd6cbc51b9cf479e375a352b3d4660b611",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:10.793734+00:00",
+      "ended_at": "2026-11-12T07:33:10.803792+00:00",
+      "exit": 0,
+      "stdout_sha256": "7e3382e7987102bef4b6f76866fe4e8576158b8eff3d31747592ed3aaad10e55",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:11.004127+00:00",
+      "ended_at": "2026-11-12T07:33:11.013783+00:00",
+      "exit": 0,
+      "stdout_sha256": "c0ab28b6c99c49f875ca5593e4255eca0dae3e847a3ca56a40572b973ed86978",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:11.214034+00:00",
+      "ended_at": "2026-11-12T07:33:11.223254+00:00",
+      "exit": 0,
+      "stdout_sha256": "c6827ac629d02d9f6c07d5d587a053215f9b9fe95f1f2581673e20d485f625cf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:11.423588+00:00",
+      "ended_at": "2026-11-12T07:33:11.433723+00:00",
+      "exit": 0,
+      "stdout_sha256": "c6827ac629d02d9f6c07d5d587a053215f9b9fe95f1f2581673e20d485f625cf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:11.633971+00:00",
+      "ended_at": "2026-11-12T07:33:11.644158+00:00",
+      "exit": 0,
+      "stdout_sha256": "6e29077ecf0c5cdfedc9d5ff4dfc63da308d5e9c45dd3db58b8cb42ae9e9506b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:11.844490+00:00",
+      "ended_at": "2026-11-12T07:33:11.854332+00:00",
+      "exit": 0,
+      "stdout_sha256": "d22d90fa4d032c2151c5ab15dd3503285788a2d1b78e59d1280dac5a55363e86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:12.054657+00:00",
+      "ended_at": "2026-11-12T07:33:12.064862+00:00",
+      "exit": 0,
+      "stdout_sha256": "7d647cad8d0d7779e41e5697de7d1292fc5be8c083ea2757659a8ba7b7c4d3d9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:12.265194+00:00",
+      "ended_at": "2026-11-12T07:33:12.274787+00:00",
+      "exit": 0,
+      "stdout_sha256": "c7874e26f0a0266f7d20e3e6e52a5790c4ccafae0620f56b43bf5ae44632fa0b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:12.475129+00:00",
+      "ended_at": "2026-11-12T07:33:12.485369+00:00",
+      "exit": 0,
+      "stdout_sha256": "c6827ac629d02d9f6c07d5d587a053215f9b9fe95f1f2581673e20d485f625cf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:12.685619+00:00",
+      "ended_at": "2026-11-12T07:33:12.695476+00:00",
+      "exit": 0,
+      "stdout_sha256": "6e13a4965bea0ced849797954abef83175226cd42c13d4092007d6493982cfeb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:12.895793+00:00",
+      "ended_at": "2026-11-12T07:33:12.906526+00:00",
+      "exit": 0,
+      "stdout_sha256": "bcd7e23e2172e17adae78e24c8af50dfc2f1e4fbbe7dee3cf73f6e44f6126a10",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:13.106857+00:00",
+      "ended_at": "2026-11-12T07:33:13.116490+00:00",
+      "exit": 0,
+      "stdout_sha256": "59a8680e6c289c0ab819c09ebdd120d6f8e17d9247d4dbf2cb97c453f940cc82",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:13.316817+00:00",
+      "ended_at": "2026-11-12T07:33:13.326532+00:00",
+      "exit": 0,
+      "stdout_sha256": "2d6583e33c4219e7965bf6bc204e429c3023077018f2e815ea77a41230bd5155",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-stale-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-j"
+      ],
+      "started_at": "2026-11-12T07:33:13.326765+00:00",
+      "ended_at": "2026-11-12T07:33:13.418996+00:00",
+      "exit": 0,
+      "stdout_sha256": "396d01668b7842d9121f451a50b44d782c1e5e18c789a6c3b4851beb720c7212",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-stale-1",
+        "postcat",
+        "-c",
+        "/run/infra-mail/config",
+        "-q",
+        "BAA764EAA782"
+      ],
+      "started_at": "2026-11-12T07:33:13.419060+00:00",
+      "ended_at": "2026-11-12T07:33:13.456638+00:00",
+      "exit": 0,
+      "stdout_sha256": "5a9ad8bcbd062631c323dc0256b4f3a922bc4129671472cf028444ec98c80f25",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-stale-1",
+        "postcat",
+        "-c",
+        "/run/infra-mail/config",
+        "-q",
+        "AF4E24EAA781"
+      ],
+      "started_at": "2026-11-12T07:33:13.456686+00:00",
+      "ended_at": "2026-11-12T07:33:13.493780+00:00",
+      "exit": 0,
+      "stdout_sha256": "9b24df9d5a9be66be40e4b268715be1f394712d7c73b99299f1af2005f76ee1b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-stale-1",
+        "postcat",
+        "-c",
+        "/run/infra-mail/config",
+        "-q",
+        "C652E4EAA783"
+      ],
+      "started_at": "2026-11-12T07:33:13.493825+00:00",
+      "ended_at": "2026-11-12T07:33:13.560475+00:00",
+      "exit": 0,
+      "stdout_sha256": "c0d0e7de4c15763a3d25a07ebf0c1584415abc9c3e67fe01303fc7e68293901c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-stale-1",
+        "postsuper",
+        "-c",
+        "/run/infra-mail/config",
+        "-H",
+        "AF4E24EAA781"
+      ],
+      "started_at": "2026-11-12T07:33:14.561283+00:00",
+      "ended_at": "2026-11-12T07:33:14.615549+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a5cd99aa1a469c87ea83d8d7eca4a67784f24d32060837f2b6b1610666c54f08"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "pqr-fc78e3c123-stale-1",
+        "postqueue",
+        "-c",
+        "/run/infra-mail/config",
+        "-i",
+        "AF4E24EAA781"
+      ],
+      "started_at": "2026-11-12T07:33:14.615580+00:00",
+      "ended_at": "2026-11-12T07:33:14.686807+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "update",
+        "--restart=no",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:14.887764+00:00",
+      "ended_at": "2026-11-12T07:33:14.906694+00:00",
+      "exit": 0,
+      "stdout_sha256": "b1e4d354694e1583c66c294038c12b615bcfec062c9cd84c52b7dfe083cf7053",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-d",
+        "pqr-fc78e3c123-stale-1",
+        "postfix",
+        "-c",
+        "/run/infra-mail/config",
+        "stop"
+      ],
+      "started_at": "2026-11-12T07:33:14.906727+00:00",
+      "ended_at": "2026-11-12T07:33:14.966021+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:14.966056+00:00",
+      "ended_at": "2026-11-12T07:33:14.975358+00:00",
+      "exit": 0,
+      "stdout_sha256": "8877f7524083cdbf0fe352711c26dde57a35cf6c044136fd2a85137264cde2a8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:15.175615+00:00",
+      "ended_at": "2026-11-12T07:33:15.398952+00:00",
+      "exit": 0,
+      "stdout_sha256": "40801069166baf5cf94cd0ade50785e931d0c3637f6f8ffd9d0ace0c75a274d2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:15.399131+00:00",
+      "ended_at": "2026-11-12T07:33:15.408412+00:00",
+      "exit": 0,
+      "stdout_sha256": "ad5786df58818c198a7387322fee9d202c8a6448140b4f7c4c55992f237e43ff",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q"
+      ],
+      "started_at": "2026-11-12T07:33:15.408607+00:00",
+      "ended_at": "2026-11-12T07:33:15.417332+00:00",
+      "exit": 0,
+      "stdout_sha256": "d4ee23a86bd0c146a5ae1f0f389fd15b3c94dc20f821a3d980f6fc4198609b59",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "70d914c634c5"
+      ],
+      "started_at": "2026-11-12T07:33:15.417366+00:00",
+      "ended_at": "2026-11-12T07:33:15.426536+00:00",
+      "exit": 0,
+      "stdout_sha256": "efb4b1bf1dc0aa71690f9c1108ecbae18b32d886c87dec62cc93e59f45520dcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "04334a63e5e7"
+      ],
+      "started_at": "2026-11-12T07:33:15.426675+00:00",
+      "ended_at": "2026-11-12T07:33:15.435723+00:00",
+      "exit": 0,
+      "stdout_sha256": "ace13d35f259e0b93e2c954701e62486aaac2ac99587e8d8c784eb2e96a1ce92",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "ad54c9ae4370"
+      ],
+      "started_at": "2026-11-12T07:33:15.435859+00:00",
+      "ended_at": "2026-11-12T07:33:15.444821+00:00",
+      "exit": 0,
+      "stdout_sha256": "2033103c5e3cc03f4023b57662052935ce4a866e46ad61a330fd987ae0955b08",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-39bffb5176714246b53b14fdce0984cf.json"
+      ],
+      "started_at": "2026-11-12T07:33:15.455992+00:00",
+      "ended_at": "2026-11-12T07:33:15.620910+00:00",
+      "exit": 0,
+      "stdout_sha256": "6aff92e2c487d757b999ef89954f933049126b266aa55eebd79f68a9e35fcd93",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-a651339dd01f437c9ec93608b38721e3.json"
+      ],
+      "started_at": "2026-11-12T07:33:15.621164+00:00",
+      "ended_at": "2026-11-12T07:33:15.850777+00:00",
+      "exit": 78,
+      "stdout_sha256": "26f8767952aa3e31bea228430e42869fa3a11bc23c7a5ab328791141fae27420",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-771a144d41a24417823e7ab84b5b7df9.json"
+      ],
+      "started_at": "2026-11-12T07:33:15.850964+00:00",
+      "ended_at": "2026-11-12T07:33:16.038784+00:00",
+      "exit": 0,
+      "stdout_sha256": "8214698b5f25b0ea683f1e9cd4e714a27618aa40cf85be7e021a66f3eb22f70d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-0204e4701d994225b265119184907150.json"
+      ],
+      "started_at": "2026-11-12T07:33:16.039039+00:00",
+      "ended_at": "2026-11-12T07:33:16.221121+00:00",
+      "exit": 0,
+      "stdout_sha256": "6aff92e2c487d757b999ef89954f933049126b266aa55eebd79f68a9e35fcd93",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-f0e20c7fb6874b13bba6d965a667d282.json"
+      ],
+      "started_at": "2026-11-12T07:33:16.221379+00:00",
+      "ended_at": "2026-11-12T07:33:16.413751+00:00",
+      "exit": 78,
+      "stdout_sha256": "33b49e61caa13847f5eae6f977336803358bdb040e0671a65923196fe90fd3fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-b32f2a0d73d4475b9e10ed1e363e983c.json"
+      ],
+      "started_at": "2026-11-12T07:33:16.413939+00:00",
+      "ended_at": "2026-11-12T07:33:16.587740+00:00",
+      "exit": 0,
+      "stdout_sha256": "8214698b5f25b0ea683f1e9cd4e714a27618aa40cf85be7e021a66f3eb22f70d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-dba4f7cd91b34efaa498e4d7987a810c.json"
+      ],
+      "started_at": "2026-11-12T07:33:16.587995+00:00",
+      "ended_at": "2026-11-12T07:33:16.771944+00:00",
+      "exit": 0,
+      "stdout_sha256": "6aff92e2c487d757b999ef89954f933049126b266aa55eebd79f68a9e35fcd93",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-3dd856b06f1a42eb854998dd972fa0e8.json"
+      ],
+      "started_at": "2026-11-12T07:33:16.772204+00:00",
+      "ended_at": "2026-11-12T07:33:16.950617+00:00",
+      "exit": 78,
+      "stdout_sha256": "be89cf00d9a3b1c1bbaff75ca4ccce8acb9ddbb21bb4eea40827a2a2ae95f9ef",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-5abae3a9b86646d0ac752c5b10bc20ea.json"
+      ],
+      "started_at": "2026-11-12T07:33:16.950812+00:00",
+      "ended_at": "2026-11-12T07:33:17.139741+00:00",
+      "exit": 0,
+      "stdout_sha256": "8214698b5f25b0ea683f1e9cd4e714a27618aa40cf85be7e021a66f3eb22f70d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-9b6409efacff49f39010859cfdf36f1b.json"
+      ],
+      "started_at": "2026-11-12T07:33:17.139993+00:00",
+      "ended_at": "2026-11-12T07:33:17.322067+00:00",
+      "exit": 0,
+      "stdout_sha256": "6aff92e2c487d757b999ef89954f933049126b266aa55eebd79f68a9e35fcd93",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-ac308e164849479f82d88528fe52f966.json"
+      ],
+      "started_at": "2026-11-12T07:33:17.322324+00:00",
+      "ended_at": "2026-11-12T07:33:17.490896+00:00",
+      "exit": 78,
+      "stdout_sha256": "d5de9c8df1965b320c42ee11617425c1c7cd7f01ed54deb57699e907a16087cb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-6d3c5776576d41d9b52f01247bd3cef3.json"
+      ],
+      "started_at": "2026-11-12T07:33:17.491079+00:00",
+      "ended_at": "2026-11-12T07:33:17.664251+00:00",
+      "exit": 0,
+      "stdout_sha256": "8214698b5f25b0ea683f1e9cd4e714a27618aa40cf85be7e021a66f3eb22f70d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-5190d79bf927423680ce84f666105733.json"
+      ],
+      "started_at": "2026-11-12T07:33:17.664503+00:00",
+      "ended_at": "2026-11-12T07:33:17.840990+00:00",
+      "exit": 0,
+      "stdout_sha256": "6aff92e2c487d757b999ef89954f933049126b266aa55eebd79f68a9e35fcd93",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-cb6e481dcf274876a476c72c1b4a6c8d.json"
+      ],
+      "started_at": "2026-11-12T07:33:17.841244+00:00",
+      "ended_at": "2026-11-12T07:33:18.114484+00:00",
+      "exit": 78,
+      "stdout_sha256": "7f3b23e706f56e33c214493b3538786c5599211fa4a79631745abcd8cbc66be4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-720f5be4d8794268b03438c029bd5a87.json"
+      ],
+      "started_at": "2026-11-12T07:33:18.114668+00:00",
+      "ended_at": "2026-11-12T07:33:18.281302+00:00",
+      "exit": 0,
+      "stdout_sha256": "8214698b5f25b0ea683f1e9cd4e714a27618aa40cf85be7e021a66f3eb22f70d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-78b3436e6de74a2b8c083aadddfd6df8.json"
+      ],
+      "started_at": "2026-11-12T07:33:18.281550+00:00",
+      "ended_at": "2026-11-12T07:33:18.471812+00:00",
+      "exit": 0,
+      "stdout_sha256": "6aff92e2c487d757b999ef89954f933049126b266aa55eebd79f68a9e35fcd93",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-e9ea6dc9a4224b83b7162621e77009b1.json"
+      ],
+      "started_at": "2026-11-12T07:33:18.472076+00:00",
+      "ended_at": "2026-11-12T07:33:18.661432+00:00",
+      "exit": 78,
+      "stdout_sha256": "d25369023832061a105b55fd29ca0dc25754e0af4cc158968ec6aa84622aa4c9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-98cac7a55899461b8dd3d948a2edfb5f.json"
+      ],
+      "started_at": "2026-11-12T07:33:18.661618+00:00",
+      "ended_at": "2026-11-12T07:33:18.897958+00:00",
+      "exit": 0,
+      "stdout_sha256": "8214698b5f25b0ea683f1e9cd4e714a27618aa40cf85be7e021a66f3eb22f70d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-ba8001f480574af9b03de3c840d9b165.json"
+      ],
+      "started_at": "2026-11-12T07:33:18.898277+00:00",
+      "ended_at": "2026-11-12T07:33:19.089809+00:00",
+      "exit": 0,
+      "stdout_sha256": "6aff92e2c487d757b999ef89954f933049126b266aa55eebd79f68a9e35fcd93",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-bea9f69988a44e0fb77d1e85870325a4.json"
+      ],
+      "started_at": "2026-11-12T07:33:19.090070+00:00",
+      "ended_at": "2026-11-12T07:33:19.274218+00:00",
+      "exit": 78,
+      "stdout_sha256": "be89cf00d9a3b1c1bbaff75ca4ccce8acb9ddbb21bb4eea40827a2a2ae95f9ef",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-21a10c403ea54ff4987c9b29037b9c55.json"
+      ],
+      "started_at": "2026-11-12T07:33:19.274405+00:00",
+      "ended_at": "2026-11-12T07:33:19.457373+00:00",
+      "exit": 0,
+      "stdout_sha256": "8214698b5f25b0ea683f1e9cd4e714a27618aa40cf85be7e021a66f3eb22f70d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--cap-add",
+        "CHOWN",
+        "--cap-add",
+        "DAC_OVERRIDE",
+        "--cap-add",
+        "FOWNER",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-replacement,target=/replacement",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/request-565aa83026d24e92949125e3eb277436.json"
+      ],
+      "started_at": "2026-11-12T07:33:19.457624+00:00",
+      "ended_at": "2026-11-12T07:33:19.645496+00:00",
+      "exit": 0,
+      "stdout_sha256": "6aff92e2c487d757b999ef89954f933049126b266aa55eebd79f68a9e35fcd93",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.645954+00:00",
+      "ended_at": "2026-11-12T07:33:19.655447+00:00",
+      "exit": 0,
+      "stdout_sha256": "b4a19239bff8f66f7ba82abfc71ab41bb34e075594921d50320d05ee1357b89e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.655628+00:00",
+      "ended_at": "2026-11-12T07:33:19.665041+00:00",
+      "exit": 0,
+      "stdout_sha256": "1b5c9ea3d8af2ecb4f5badec9853edbfee496ae11d9f2c7f6f5025eb6265c67a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "pqr-fc78e3c123-stale-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.665242+00:00",
+      "ended_at": "2026-11-12T07:33:19.678127+00:00",
+      "exit": 0,
+      "stdout_sha256": "b1e4d354694e1583c66c294038c12b615bcfec062c9cd84c52b7dfe083cf7053",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.678161+00:00",
+      "ended_at": "2026-11-12T07:33:19.687440+00:00",
+      "exit": 0,
+      "stdout_sha256": "7309a0f8569e7252e449f43837cb8de996576534431dbc1fa782b30fedecd946",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.687630+00:00",
+      "ended_at": "2026-11-12T07:33:19.697161+00:00",
+      "exit": 0,
+      "stdout_sha256": "b350cbc3145963b995c5417333d977e2dd2b84083f4ffe9596c5b4c622e31820",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "pqr-fc78e3c123-restored-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.697375+00:00",
+      "ended_at": "2026-11-12T07:33:19.709896+00:00",
+      "exit": 0,
+      "stdout_sha256": "aa468d6dd8cdfa46e5e4f3ab3f3407e2b099368e5096f45c1fd4d18c301fe3f9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.709930+00:00",
+      "ended_at": "2026-11-12T07:33:19.719561+00:00",
+      "exit": 0,
+      "stdout_sha256": "a23e441b115fc01f0b3e5d4c94ca38d22c62a49e9f841382168571be86e7a6dd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.719744+00:00",
+      "ended_at": "2026-11-12T07:33:19.729195+00:00",
+      "exit": 0,
+      "stdout_sha256": "a23e441b115fc01f0b3e5d4c94ca38d22c62a49e9f841382168571be86e7a6dd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "pqr-fc78e3c123-mail-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.729388+00:00",
+      "ended_at": "2026-11-12T07:33:19.742539+00:00",
+      "exit": 0,
+      "stdout_sha256": "729705c1b3f7c4d4c7c458cc7e81c6558721ccf34a8f50b84ff5ca1473516f34",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-dkim-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.742573+00:00",
+      "ended_at": "2026-11-12T07:33:19.751910+00:00",
+      "exit": 0,
+      "stdout_sha256": "0a9e44448127df9853410f2dcabc9f9acaae8e76e4bfa24ccc53011dec6ffeb7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "stop",
+        "--time",
+        "20",
+        "pqr-fc78e3c123-dkim-1"
+      ],
+      "started_at": "2026-11-12T07:33:19.752056+00:00",
+      "ended_at": "2026-11-12T07:33:22.238272+00:00",
+      "exit": 0,
+      "stdout_sha256": "5155b1e060ee90adc7adfd51f5d69c0b6f7acca28e6db9fd1d27ba0f3504e567",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-dkim-1"
+      ],
+      "started_at": "2026-11-12T07:33:22.238302+00:00",
+      "ended_at": "2026-11-12T07:33:22.247105+00:00",
+      "exit": 0,
+      "stdout_sha256": "49607acca72ad6e991c7299568ef1eb111f9573dc498ea7ec3e581bcf2ecfe3e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "pqr-fc78e3c123-dkim-1"
+      ],
+      "started_at": "2026-11-12T07:33:22.247263+00:00",
+      "ended_at": "2026-11-12T07:33:22.259383+00:00",
+      "exit": 0,
+      "stdout_sha256": "2ea5abba5b4ea509a6f0c1d8dd2f4d6fcc9e95a7bcaa053fd29eb7af7d15d809",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-receiver-1"
+      ],
+      "started_at": "2026-11-12T07:33:22.259415+00:00",
+      "ended_at": "2026-11-12T07:33:22.268429+00:00",
+      "exit": 0,
+      "stdout_sha256": "3275f36f717ffc6acb097938acc20f7a42e499d2db1ba1133e1e4e33997c2fd5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "stop",
+        "--time",
+        "20",
+        "pqr-fc78e3c123-receiver-1"
+      ],
+      "started_at": "2026-11-12T07:33:22.268556+00:00",
+      "ended_at": "2026-11-12T07:33:42.498954+00:00",
+      "exit": 0,
+      "stdout_sha256": "a8b011cfd32ad63f9eceff3ab6026b72085116dd716e1f0bd3fdd0b7d7e892e0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "pqr-fc78e3c123-receiver-1"
+      ],
+      "started_at": "2026-11-12T07:33:42.498984+00:00",
+      "ended_at": "2026-11-12T07:33:42.508482+00:00",
+      "exit": 0,
+      "stdout_sha256": "96a1d1aaad41c94007bec92a48adda9c76ef528debe41a68c4030b89e157f7ee",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "pqr-fc78e3c123-receiver-1"
+      ],
+      "started_at": "2026-11-12T07:33:42.508623+00:00",
+      "ended_at": "2026-11-12T07:33:42.521008+00:00",
+      "exit": 0,
+      "stdout_sha256": "5d2430af46adc7a6ac183c3f573364d41c6867de1ee862b6a47decd934291291",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "pqr-fc78e3c123-kernel-mail-control"
+      ],
+      "started_at": "2026-11-12T07:33:42.521042+00:00",
+      "ended_at": "2026-11-12T07:33:42.529914+00:00",
+      "exit": 0,
+      "stdout_sha256": "5a851626488b60f9bc4a1ef67015f9463222c3a1e8dedc720e550f8b63a416b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "pqr-fc78e3c123-kernel-mail-control"
+      ],
+      "started_at": "2026-11-12T07:33:42.529976+00:00",
+      "ended_at": "2026-11-12T07:33:42.719184+00:00",
+      "exit": 0,
+      "stdout_sha256": "9aff0f55e885d00894b02c3ddfea464645d041848858045be062e13e7f4f6382",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "pqr-fc78e3c123-kernel"
+      ],
+      "started_at": "2026-11-12T07:33:42.719214+00:00",
+      "ended_at": "2026-11-12T07:33:42.728155+00:00",
+      "exit": 0,
+      "stdout_sha256": "04d5bf07f66813ed7f9e71cfeaec3bcb72a12786fe13fa37917d0b35ce5baabe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "pqr-fc78e3c123-kernel"
+      ],
+      "started_at": "2026-11-12T07:33:42.728217+00:00",
+      "ended_at": "2026-11-12T07:33:42.931614+00:00",
+      "exit": 0,
+      "stdout_sha256": "e9eabb50440d0101fe49fdf32e8bf7d6fded3b2e75dba56ed620e26f1188217a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "test_source_sha256": {
+    "receiver.py": "3c7e9ab7826e22fb0f02c635a6f0ab9773c2ed2449a8c8192be997a530d75ab3",
+    "storage.py": "292967f835cae7478090328b35f7d1c85f2d2bce530840a20e9e71cbd310b653",
+    "submit.py": "289b280ec54eccea24db2fa44bd26e175f7d4e166694146892366750529fa3de",
+    "prepare.cjs": "b7643015b96b83dabad912bf1f61ceeb93cec2836de9a39db47adedc9e4c413d",
+    "run.py": "a486f7df9af40057a989704e9b6d290b56f0f22a3708ea67bd069a13ac469311"
+  }
+}

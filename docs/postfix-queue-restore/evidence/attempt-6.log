@@ -1,0 +1,21 @@
+PASS pqr-f1e3397d53-kernel-internal
+PASS pqr-f1e3397d53-kernel-mail-control-internal
+PASS no-published-ports
+PASS normal-starttls-auth-submission-accepted
+PASS all-three-deferred-after-receiver-451
+PASS independent-witness-no-durable-delivery-before-capture
+PASS pqr-f1e3397d53-mail-1-clean-stop-no-processes
+PASS pqr-f1e3397d53-mail-1-no-running-writable-spool-mount
+PASS archive-sha256-verified-before-restore
+PASS restored-to-distinct-volume-inode
+PASS source-unchanged-after-restoration
+PASS offline-postcat-E02821A0689A
+PASS offline-postcat-EC6451A0689B
+PASS offline-postcat-030451A0689D
+PASS replacement-numeric-metadata-and-file-hashes-exact
+FAIL COMMAND_FAILED ['docker', 'compose', '-p'] service "restored" depends on undefined service "dkim": invalid compose project
+
+PASS pqr-f1e3397d53-mail-1-stopped-before-removal
+PASS pqr-f1e3397d53-dkim-1-stopped-before-removal
+PASS pqr-f1e3397d53-receiver-1-stopped-before-removal
+REPORT /tmp/postfix-queue-artifacts/attempt-6.json
