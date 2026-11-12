@@ -1,194 +1,199 @@
-# MAIL-02 qualification record
+# MAIL-02 requalification record
 
-**Verdict: MAIL-02_BLOCKED.** This candidate demonstrates functioning isolated
-SMTP/DKIM/LMTP/IMAPS paths, but does not satisfy every MAIL-01 gate. In particular,
-the controlled receiver proves that a forged locally authoritative
-Authentication-Results header survives submission. Do not promote this candidate.
-Public activation remains refused. Missing engineering work below is not an
-owner DNS decision or an alleged runner failure.
+**MAIL-02_BLOCKED.** The forged Authentication-Results defect is corrected and
+verified on delivered, DKIM-valid messages. The repeated native transport suite
+passes. Two implementation failures still prohibit qualification: concurrent
+Dovecot count quota permits an overflow, and the private host endpoint is not
+reachable from an authorized independent client network in the qualified VM.
+Additional incomplete controls are explicitly BLOCKED below. No failed gate is
+waived and public activation remains refused.
 
-## Frozen identities
+## References and integrity
 
-| Item | Qualified reference |
+The continuation preserves the requested Infra `490525d6bc330e2a63a42555cc192c1bf35ccef1`
+and Debian `b5a9c70369be9bbf0deaffbb21e1c794eb598059` as ancestors. Remote heads were
+fetched and compared before work and again before pushing: no remote-only commits
+were discarded. The later checkpoints `e837811fb05aa33c1f530156e34332891f92258a`
+and `e29df56df1a253dc14c814e65918707764526a0b` are preserved.
+
+| Item | Exact reference |
 | --- | --- |
-| Debian profile functional source | `bdba1ebf7a541c05d2f24428c4d90343950b8c46` |
-| Producer code/package source | `c2552ac7b57771d72e61901582563112e2c3c26d` |
-| Package | `@drumee/infra-layer@0.1.0-alpha.7-mail02.0`, local archive only, never published |
-| Archive SHA256 | `635926f7a51c276cf3ce28c93954dcabfb07d3c1451c8e0991752240688f75c1` |
-| Archive SRI | `sha512-Yk7hmTUzirnA4Im1HHpyxcpuCjGceWhkLd4SmDWJnFOW2SZD7ktp8AeCWeJINvpLhoHTFfoxp7WZnrGp+FolOA==` |
-| Package inventory | 50 exact files, zero production dependencies; [complete member hashes](evidence/archive.json) |
+| Immutable producer/package source | `4a73f8984fc1c0f884a8735d741551d8721d31d9` |
+| Producer test checkpoint | `168498d130a35ea7e2fccef46987cf2a9f5b4b71` (same 50 packed bytes) |
+| Debian consumer/runtime/test checkpoint | `47634b1c4c1b882f3c9fc11e997cde7cfd8e2bec` |
+| Package | `@drumee/infra-layer@0.1.0-alpha.7-mail02.4`, unpublished local archive |
+| Archive SHA256 | `3332f762399dc9a482447ca1e021ba197c733ff83502ce9f99eb1ea4c8fea1a8` |
+| Archive SRI | `sha512-3aWhxwC7wi6VHlVs/9b6EzvbETzlEIIUqPq6eJLY+UVmZ+KhnQ1uezrGGp7rxZs0qQHbMLQEbSLwt8IjCzb0OQ==` |
+| Package inventory | [50 exact member hashes](evidence/requalification-2026-11-12/archive.json), zero production dependencies |
 | Native engine OCI config ID | `sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b` |
-| Native base config ID | `sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843` |
-| Historical base distribution manifest | `sha256:c9d6b4d5a69d7c53272ff13a4b90679422d61428a6f868a0463e3bdcfbe58236` (distinct from config ID) |
+| Native base OCI config ID | `sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843` |
+| Historical base manifest | `sha256:c9d6b4d5a69d7c53272ff13a4b90679422d61428a6f868a0463e3bdcfbe58236` |
+| Python client/MX helper config ID | `sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8` |
 | Node helper manifest | `node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392` |
-| Same Node config ID | `sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7` |
-| Python client/MX witness helper config ID | `sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8` |
-| Engines | Postfix 3.10.13; Dovecot 2.4.1-4; OpenDKIM 2.11.0; [native version/package/UID receipt](evidence/native-versions.log) |
-| Guest | Debian 13; kernel `6.12.116+deb13-amd64`; Docker `26.1.5+dfsg1`; Compose v5.0.2; Node v22.22.0 |
+| Same Node helper config ID | `sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7` |
+| Native binaries | Postfix 3.10.13, Dovecot 2.4.1-4, OpenDKIM 2.11.0; [version/package/UID receipt](evidence/native-versions.log) |
+| Numeric identities | Postfix 102:103, postdrop group 104; Dovecot auth 103:106; mail workers 5000:5000; mailbox directories 0700 |
+| Workstation | Node 22.22.0, Docker 29.2, Compose 5.0.2 |
+| Dedicated guest | Debian 13, kernel `6.12.116+deb13-amd64`, Docker `26.1.5+dfsg1`, Compose 5.0.2, Node 22.22.0; operator 1000:1001 |
 | QEMU helper config ID | `sha256:a594e38e7304ac6553154ac2228f9b2e2c8e60fc96066cfb6f97c6546d798d8f` |
-| Guest base qcow2 SHA512 | `ec8c175e39d59e711798c3a2f22ba11b9aee9bca1887c7e505a800aeffd5d7616099bd0e9fad869efba96100fe09d2c8b49d6d7001d501f0056c556bdc25b605` |
+| Retained Debian guest base SHA512 | `ec8c175e39d59e711798c3a2f22ba11b9aee9bca1887c7e505a800aeffd5d7616099bd0e9fad869efba96100fe09d2c8b49d6d7001d501f0056c556bdc25b605` |
+| Frozen image export SHA256 | `e0832f1b65935328eef05360887c47dacbb52e7ef65775deb5b3e2ff4905f7f3` |
 
-The guest base was downloaded from Debian's `trixie/latest` directory on this run,
-and matched that directory's SHA512SUMS. The retained file, not a future mutable
-`latest` download, is the reproducibility input. The QEMU container exposes no
-host port; SSH forwarding listens on its own loopback only. Its outer bridge was
-disconnected before mail testing. Mail networks are internal, DNS has no forwarder,
-and every SMTP destination is a controlled lab receiver.
+These local image identities are OCI config IDs, not invented registry manifest
+digests. A published acquisition/manifest attestation path is still unqualified.
+No package or image was published. Documentation-only commits do not change the
+frozen archive. The Debian lock, packed member hashes and
+[Debian file hashes](evidence/requalification-2026-11-12/debian-member-hashes.json)
+allow independent comparison with the final PR tips.
 
-Local image references above identify immutable OCI **config IDs**. They are not
-fabricated registry manifest digests. The current preparer resolves this local-ID
-qualification convention. Published-registry acquisition/manifest-to-config
-attestation still needs a qualified release path before target installation.
-
-The Debian profile locks the unpublished archive and verifies every installed
-member, rejects extras/symlinks/corruption and has no sibling-source fallback.
-Subsequent documentation/test-only commits do not replace the frozen producer
-source. Exact fixture file hashes are embedded in each native report.
+MAIL-01 references remain Infra PR [#36](https://github.com/drumee/infra-layer/pull/36)
+`2328b28b126355e40f18815e74c20e203ca6388f` and Debian PR
+[#12](https://github.com/drumee/debian/pull/12)
+`3c91036f95528e3f9baa04cb78b2b74ae96f63a1`; Debian distribution base is
+`ff6e6b399128e6332c984fc2e8e60f660bd5f881`. The unavailable historical `74f72c9`
+is not attributed to this implementation. Alpha.6 recovery PR
+[#37](https://github.com/drumee/infra-layer/pull/37) source
+`6cc3483991b95d0f0c68e46ef9d62d1ca917c5f5` covers its own artifacts only.
 
 ## Measured results
 
-- Baseline `npm test` at MAIL-01 `2328b28…`: **405/405 PASS**, twice in the same
-  workstation environment. Candidate: **407/407 PASS**, zero skips. The reported
-  executable refusals and TLS failures did not reproduce in this command. This
-  is not a claim that all separate historical Docker integration runners passed.
-- Candidate contract regression suite: **24/24 PASS**; package audit:
-  **PACKED_CONSUMER_OK**, closed 50-file inventory and no production dependencies.
-  Lint: zero errors/new findings, 23 existing warnings. Installed CommonJS export
-  and a strict TypeScript 5.9.3 Node16-resolution consumer compile pass.
-- Debian general suite: **331 PASS, zero FAIL**. New locked-profile tests:
-  **3/3 PASS**, including installed-member tamper/extra/symlink rejection and
-  corrupt-archive refusal without replacing the consumer.
-- [Frozen workstation native report](evidence/native-frozen.json): **42 checks
-  PASS**, 98 recorded commands, installed package above, source fixtures unchanged.
-- [Dedicated VM native report](evidence/vm-native.json): the same **42 checks
-  PASS**, 95 commands. These are repeated checks, not 84 distinct requirements.
-- [VM reboot and spool guards](evidence/vm-reboot.json): **PASS** for a nonempty
-  deferred queue, 46 preserved registry/candidate/Maildir-body files, IMAP read,
-  recreated Unix sockets, missing spool refusal and foreign-marker exit 78.
-  Queue ID `DF4F444626` survives. Source storage is restored intact after each
-  negative test. This does not claim a pre-Docker systemd mount guard or recovery
-  from a backup archive.
-- [Independent synthetic application lifecycles](evidence/application-lifecycles.json):
-  **8 PASS**, 74 commands. Separate Ghost-account and Oxymotion-account projects
-  undergo stop/update/failed-start/rollback while their peer submits and MX mail
-  reaches the service. All four mail container IDs, start times, complete mount
-  multisets and network records stay unchanged. Their backend networks are never
-  attached to the mail service. This is not real Ghost/Oxy application integration.
-- [Debian operator native report](evidence/debian-profile-native.json): **5 PASS**:
-  validate, start/status of four owned services, repeated install retains container
-  identities, undeclared network attachment refuses, stop retains owned storage.
-- [Forged authentication header probe](evidence/header-negative.json): **FAIL**.
-  The durable controlled receiver retains a client-supplied
-  `Authentication-Results: mail.oxymot.fr; ...` after successful authenticated
-  submission. No message body or credential is included in the evidence.
+Evidence links in this section refer to
+[`evidence/requalification-2026-11-12`](evidence/requalification-2026-11-12/).
+Each native report records argv, exit statuses and stdout/stderr hashes; no
+password, verifier, key or message body is included.
 
-## MAIL-01 matrix disposition
-
-PASS applies only to the stated isolated scenario. BLOCKED means the complete
-MAIL-02 portion is not demonstrated. MAIL-03/04/05/06-specific work is not silently
-counted as a MAIL-02 success or as a production readiness requirement.
-
-| ID | Status | Observations and precise remaining MAIL-02 gate |
+| Scenario | Status | Native evidence / reproduction driver |
 | --- | --- | --- |
-| RX-01 | PASS | Primary and alias traverse native SMTP/LMTP to the intended UUID; IMAP reads both correlations; second mailbox remains separate. |
-| RX-02 | BLOCKED | Unknown recipient RCPT denial and missing-registry temporary refusal pass. Retired/disabled address transitions and absence from queue/sink need a dedicated generation scenario. |
-| RX-03 | BLOCKED | Anonymous relay refusal from the internal client network and AUTH absence on25 pass. Explicit loopback and independent private-network sources still need negative controls. |
-| RX-04 | BLOCKED | Independent receive/IMAP/submission flag changes and completion of prior accepted local recipients after disable/delete are not exercised. MAIL-03 tombstones must retain UUID delivery lookup. |
-| AUTH-01 | BLOCKED | Verified 587 auth, plaintext-auth denial and unauthenticated submission refusal pass. Private gateway endpoint and source policy, bad/missing-password matrix and authorization-identity impersonation remain. |
-| AUTH-02 | BLOCKED | 465 implicit TLS, plaintext failure and IMAPS work. Native TLS<1.2 negative controls are not yet executed. |
-| AUTH-03 | BLOCKED | Envelope/From/Sender/Resent/duplicate From denial and stale credential-generation refusal pass. Grant-only changes and complete bounded RFC5322 parser qualification remain. |
-| AUTH-04 | BLOCKED | Ghost SMTP principal cannot IMAP. Exercise Oxymotion, mailbox SMTP-disabled credentials and alias login explicitly. |
-| TLS-01 | BLOCKED | Wrong peer name and untrusted CA fail. Expired chain, missing STARTTLS and the actual private-IP endpoint are not yet exercised. |
-| TLS-02 | BLOCKED | Certificate-generation activation/rollback is not implemented or qualified. No renewal fingerprint/session/bad-reload PASS is claimed. |
-| OUT-01 | BLOCKED | Native DNS MX lookup/direct SMTP25 works, relayhost empty/SASL off. Alternate MX, NXDOMAIN and null MX remain. |
-| OUT-02 | BLOCKED | DNS SERVFAIL, MX451 defer/retry, recipient550 local DSN, global strict no-clear fallback and opportunistic fallback pass. Domain-specific verify, certificate failure, expiry and multi-recipient partial success remain. |
-| SIGN-01 | FAIL | Both originating accounts produce independently verified DKIM; incoming messages are not signed. Locally authoritative forged authentication headers survive. Separate DKIM-milter outage control also remains. Live SPF/DMARC is MAIL-06. |
-| IMAP-01 | BLOCKED | Two principals, foreign path denial, UUID Maildir and SMTP-app separation pass. Full LIST/shared namespace and optional human-SMTP flag matrix remain. |
-| QUOTA-01 | BLOCKED | Zero-grace APPEND limit and full-quota LMTP452 with queued message pass, including restart/reboot persistence. Concurrent LMTP/APPEND/COPY across folders, quota changes and disk-pressure admission remain. Existing-worker quota-change propagation is not guaranteed by the current kick predicate. |
-| ROT-01 | BLOCKED | Old SMTP password fails, new password submits; stale SMTP session refuses, affected IMAP session is kicked and other IMAP session survives; engines are not restarted. In-flight acceptance-boundary reconciliation and mailbox/session edge cases remain. Actual Oxy ledger projection is MAIL-04. |
-| LIFE-01 | PASS | Both separate synthetic application projects stop/update/fail/rollback without changing the mail runtime; peer SMTP and local reception continue. Actual client versions remain MAIL-04. |
-| LIFE-02 | BLOCKED | Real guest reboot, pending queue, registry/verifiers/keys/body files, sockets and IMAP pass; missing/wrong spool refuses. Whole-service pre-Docker mount identity guard and all missing/wrong durable-resource cases remain. |
-| NET-01 | FAIL | Internal networks/no host publication and extra runtime network refusal pass. Declared private `allowed_sources` is not enforced by a separate private listener. Full runtime image/mount/foreign-network ownership negative controls remain. |
-| OBS-01 | FAIL | Raw native queue/status/log observations exist. Required bounded per-account abuse controls, disk high-water admission, queue/quota/certificate/incomplete-generation alerts and monitored postmaster signals are not implemented/qualified. |
+| Original 42 checks plus three header/policy checks, workstation | PASS 45 | `native-workstation.json`; Infra `test/mail-service/run.py` |
+| Same installed package and native images, isolated VM | PASS 45 | `vm-native.json`; repeat of the same checks, not 90 distinct requirements |
+| Delivered Authentication-Results filtering and DKIM | PASS | Three local assertions removed, including repeated/folded/quoted service identities; two external assertions retained as untrusted metadata. Receiver message verifies with `opendkim-testmsg`. Policy stopped after DATA354 returns 4xx before final acceptance. Included in both 45-check reports. |
+| Native alternate MX, NXDOMAIN, Null MX, partial recipients, domain-strict TLS, forced expiry | PASS 6 | `mx.json`; Infra `mx-check.py`. DSN recipient disposition and durable receiver witness checked. Expiry uses `postsuper -e` on a specific synthetic queue ID, not a five-day wall-clock run. |
+| Separate synthetic Ghost/Oxymotion client lifecycles | PASS 8 | `application-lifecycles.json`; Infra `life-check.py`. Core IDs, start times, complete mount multisets and networks unchanged during stop/update/failed-start/rollback of either client. |
+| Independent Debian profile lifecycle | PASS 5 | `debian-profile.json`, `vm-profile.json`; Debian `native-lifecycle.py`. Repeat install, runtime extra-network refusal and retained storage. |
+| TLS staging, bad material, all five native listener fingerprints and rollback | PASS 5 | `tls.json`; Debian `tls-native.py`. Wrong SAN, mismatched key and same-ref sealed-input replacement refused. New verified fingerprints on25/587/465/1587/993; existing SMTP TLS session retains its negotiated certificate, native Dovecot SIGHUP retires IMAP sessions after its shutdown interval. Deliberately killed Dovecot during reload leaves admission closed until explicit successful reconciliation. Queue and old mailbox content survive. |
+| Image/config/listener/mount/owner/marker/secret-projection drift | PASS 16 | `identity.json`; Debian `identity-controls.py`. Each guarded start refuses before any core is running; full data/metadata snapshot unchanged; source and pre-existing replacement-target sentinel retained. Includes numeric mailbox owner, closed config inventory, TLS file mode, copied spool marker on wrong inode, foreign pointer, changed verifier, wrong image/user/env/port/mount/restart/network. |
+| SMTP/IMAP/TLS negatives and control-network isolation | PASS 25 | `protocol.json`; Debian `protocol-native.py`. Each authentication negative gets a fresh source IP so native Dovecot penalties remain active. Includes loopback relay denial, authzid impersonation, both SMTP-only accounts, alias and human SMTP-disabled login, shared/path/LIST denial, TLS1.1 server alerts, no143, inaccessible10001–10003/8891. |
+| Independent registry flags, alias retirement, grants and retained delivery | PASS 8 | `registry.json`; Debian `registry-native.py`. Receive disable rejects primary/alias while IMAP/app SMTP continue; IMAP disable preserves receive/app SMTP; optional human SMTP restricted; raw UUID removal refuses; grants require credential-generation bump; quota changes/alerts; message accepted before receive-disable completes to retained UUID after quota increase. |
+| Bounded per-account submission attempts | PASS | `rate.json`; Debian `rate-native.py`: 60 MAIL attempts then451, other account250; policy restart preserves temporary refusal. No DATA/message emitted. |
+| Bounded disk pressure and recovery | PASS | `vm-bounded-disk.json`, `vm-disk-observation.json`; Debian `disk-native.py`: dedicated 256MiB loop ext4, 50,330,624 bytes available; SMTP MAIL452, pending queue unchanged, disk/queue-age alerts; deleting only synthetic allocation file recovers old mail and exactly one observed held-message delivery. |
+| Signer unavailable and operational alias routes | PASS | `signing.json`; Debian `signing-native.py`. Postfix454 before acceptance, unchanged queue; postmaster/abuse each read once in second UUID via IMAP. |
+| Whole-service guarded guest reboot with nonempty queue | PASS | `vm-guarded-reboot.json`; Debian `boot-native.py`. Mail-owned unit has mount requirements, preflight and guarded start. Changed guest boot ID, pending local message delivered once, prior content retained and runtime/registry/secrets preflight pass. No physical host reboot. |
+| Concurrent LMTP + IMAP APPEND, zero grace | **FAIL** | `vm-concurrent-quota.json` and independent physical-file witness `vm-quota-independent.json`; Infra `quota-race.py`. Both accepted, RFC822 total1,150,509 > quota1,048,576. Three physical message files total1,150,492 bytes. No message removed. |
+| Private authorized/forbidden independent client networks, recreated and after reboot | **FAIL** | `vm-private-after-reboot.json`; Debian `private-network.py`. Authorized source `10.243.48.10` cannot reach gateway `10.243.47.1:1587` (ECONNREFUSED); forbidden49 source also blocked. All sources being blocked is not a successful source-filter qualification. |
 
-CLI-01/02 and authoritative transaction recovery TX-01 remain MAIL-03; APP-01 is
-MAIL-04; BK-01/02 is MAIL-05; MIG-01 and public Internet/DNS readiness are later
-lots. None has been claimed as qualified by this candidate.
+The TLS private-port fingerprint test reaches the native listener from its own
+mail edge. It does **not** demonstrate the separate host-gateway access path.
+The [native runtime inspection](evidence/requalification-2026-11-12/vm-private-runtime.json) confirms the guest Docker26 recorded HostConfig port1587 binding but runtime Ports was
+empty; no host listener/NAT rule was present for the internal edge network.
+An initial client fixture used an internal client network without a gateway
+route (`vm-private-without-route.json`); the corrected, separately routed client
+fixture still failed with connection refused before and after recreation/reboot.
+The VM's outer network was disconnected throughout, including for that routed
+client fixture. No host firewall exception, host networking or foreign application
+backend attachment was introduced to conceal the failure.
 
-## Bounded failed attempts and corrections
+## Complete MAIL-01 matrix disposition
 
-Earlier private attempts are retained; representative machine reports are in
-`evidence/`. The first subnet overlapped a foreign Docker network: the lab moved
-to `10.243.47.0/24`, without changing the foreign resource. Native failures exposed
-protected auth-file access, missing IMAP chroot capability, missing Date in the
-synthetic DKIM fixture and an ineffective per-user quota override. Corrections
-use root auth file access, the narrow SYS_CHROOT capability, a proper Date header
-and `userdb_quota/Mailbox/storage_size`; no TLS/trust guard was removed.
+A PASS below applies to this isolated lot and named checks only. The unchanged
+[MAIL-01 matrix](../mail-01/qualification.md) remains authoritative. A row stays
+BLOCKED if any required MAIL-02 observation is missing.
 
-A reload-based credential experiment accepted the old SMTP password despite a new
-lookup generation; a subsequent service-stop/reload attempt failed with the
-admission barrier retained. Neither was relabeled PASS. Dovecot 2.4.1 reload also
-retires unrelated workers after its shutdown interval. The final tested mechanism
-atomically switches the immutable credential directory without SIGHUP, flushes
-auth cache, verifies generation and kicks only affected users; native old/new
-password and existing-session tests then pass.
+| ID | Status | Evidence and precise residual gate |
+| --- | --- | --- |
+| RX-01 | PASS | Native primary/alias LMTP and IMAP, exact UUID and foreign-box isolation in45-check reports. |
+| RX-02 | PASS | Unknown/retired RCPT550, missing registry temporary refusal; retirement in registry.json. |
+| RX-03 | PASS | Native edge and explicit loopback external relay5xx; AUTH absent before/after TLS on25; private networks confer no relay grant. Public Internet replay remains MAIL06. |
+| RX-04 | BLOCKED | Independent flags and prior accepted delivery after receive disable pass. Combined `all` disable and retained administrative deletion projection need an explicit native scenario; raw removal is deliberately refused. MAIL03 must supply retained tombstones. |
+| AUTH-01 | FAIL | Verified587/465 and missing/wrong/authzid negatives pass; authorized independent private endpoint is unreachable. |
+| AUTH-02 | PASS | Implicit465/993, plaintext negatives and native TLS1.1 refusal on587/465/993. |
+| AUTH-03 | BLOCKED | Envelope/From/Sender/Resent/duplicate checks, bounded parser tests, stale generation and grant-bump requirement pass. Grant-only change with an already authenticated SMTP session still needs a dedicated native acceptance-boundary proof. |
+| AUTH-04 | PASS | Correct app passwords fail IMAP for both accounts; alias has no login; mailbox submission=false refuses and optional true is restricted. |
+| TLS-01 | BLOCKED | Wrong CA/name and verified native endpoints pass. Expired chain and missing-STARTTLS client refusal are not yet exercised; private host-gateway hostname verification is blocked by access failure. |
+| TLS-02 | PASS | tls.json five cases; all native listener fingerprints and existing sessions accounted, failed reload retains barrier/alert until reconciliation. Separate private routing failure remains AUTH-01/NET-01. |
+| OUT-01 | PASS | Real native MX routing, alternate421 fallback, NXDOMAIN/Null MX; no relayhost/outgoing SASL. |
+| OUT-02 | PASS | DNS SERVFAIL/MX451 and permanent DSN in45 checks; strict global/domain no-clear fallback, opportunistic clear witness and partial recipient dispositions; forced native expiry in mx.json. Natural five-day timer is not claimed. |
+| SIGN-01 | PASS | Delivered local-assertion stripping plus external metadata retention, both accounts' DKIM, incoming unsigned; before-queue policy and signer outages temporarily refuse. Live alignment remains MAIL06. |
+| IMAP-01 | PASS | Two UUID principals, content/LIST/shared/path denial, numeric ownership, optional human SMTP independent. |
+| QUOTA-01 | **FAIL** | Proven simultaneous LMTP/APPEND overflow. Sequential full-quota defer/retry, quota changes and bounded disk pass, but APPEND/COPY across folders, crash/reboot accounting and no-overflow contract cannot be declared qualified. |
+| ROT-01 | BLOCKED | Password old/new and pre-existing SMTP/IMAP invalidation pass in45 checks; unrelated IMAP survives. In-flight acceptance-boundary fault proof remains. Real Oxy projection/ledger is MAIL04. |
+| LIFE-01 | PASS | Eight two-client lifecycle controls; real client-version integration remains MAIL04. |
+| LIFE-02 | BLOCKED | New guarded unit + actual reboot/queue/content pass; spool replacement and identity negatives pass. Missing/replaced cases for every durable resource and a missing actual mount at boot require exhaustive replay. No restoration claim. |
+| NET-01 | **FAIL** | Exact role image/mount/port/network guards and control isolation pass; positive independent-network endpoint fails. Foreign pre-existing edge/control ownership/IPAM and Unix-volume ownership need dedicated activation negatives. |
+| OBS-01 | BLOCKED | Queue age/count, bounded disk, quota high/limit, actual auth failures, seven-day certificate warning, incomplete generation, failed TLS rotation and per-account rate alerts pass. Fourteen/thirty-day certificate windows and leaf/chain-expiry refusal need native coverage; external operator notification remains later-lot work. Operational postmaster/abuse routes are tested locally. |
 
-The first VM bootstrap had missing Compose support and a group-writable private
-parent. It was repaired with the pinned local Compose binary, Node22 and protected
-owner directories, retaining the safety checks. The first reboot verifier sampled
-Docker during `unless-stopped` restart transition; the corrected verifier observes
-exit78, stops the restart loop, then checks absence of a writer. A second real
-reboot passes. A lifecycle test compared Docker Mounts array order; the diagnostic
-proved identical complete mount multisets. Canonical sorting preserves all fields
-and multiplicity, and the rerun passes. These are explicit test corrections, not
-blanket runner waivers.
+CLI-01/02 and TX-01 remain MAIL03; APP-01 MAIL04; BK-01/02 MAIL05;
+MIG-01 and authorized public/DNS/PTR work remain later lots. They are not silently
+counted as transport PASS.
 
-## Required continuation before MAIL-02 qualification
+## Regression suites and hosted checks
 
-1. Remove untrusted locally authoritative authentication headers before signing
-   (native cleanup rule or correctly negotiated Milter header-change action), and
-   make `header-probe.py`/`header-check.py` pass while DKIM still verifies. Complete
-   bounded author parsing and authorization-identity negative tests.
-2. Add a distinct private submission service with its declared source CIDR policy,
-   the same TLS/auth/grant rules and verified server name. Qualify independent
-   application networks without adopting their backend networks. Add complete
-   runtime image/mount/network/resource ownership checks before activation.
-3. Add staged certificate generations with key/SAN/chain checks, native syntax
-   checks, all-endpoint fingerprint probes and rollback/fail-closed handling.
-   The current preparer must not be used to rotate material behind unchanged
-   secret references: it can rewrite candidate key files before an operator-state
-   conflict is reported. Seal-check existing candidate bytes before any write and
-   include producer/artifact identity in revision selection. This is an inspected
-   implementation gap, not a qualified rotation method.
-   Account for Dovecot 2.4.1's actual reload effects separately from the proven
-   password rotation path. Never overwrite an already sealed prepared generation.
-4. Finish DNS/MX/TLS/per-recipient/expiry fault cases, disabled identity transitions,
-   quotas under concurrent operations, dynamic quota changes and disk exhaustion.
-   Quota changes must also update or revoke existing affected IMAP workers.
-5. Implement bounded per-account limits, disk admission/alerts and structured
-   nonsecret operational status. Add an explicit mount identity guard before the
-   mail service's reboot activation, with all wrong/missing storage negative cases.
-6. Freeze new source/archive/image/config identities and rerun the entire MAIL-02
-   matrix. Current PASS evidence covers only the exact artifacts above.
+MAIL-01 `2328b28…` unit baseline was reproduced twice in the same environment:
+405/405 PASS. Historical executable/TLS failures did not reproduce in that exact
+command; this does not waive separate integration scripts. Final local producer:
+408/408 unit PASS, contracts24/24 PASS, package `PACKED_CONSUMER_OK` with identical
+archive SRI/50 members/zero production dependencies, strict TypeScript5.9.3
+installed-consumer compile PASS, lint0 errors/0 new findings/23 existing warnings.
+Debian general suite331 PASS, locked profile3/3 PASS, zero skipped in those
+reported suites. Their complete sanitized logs and type consumer are in evidence.
 
-No owner DNS/PTR/firewall change is needed to fix these lab gates. The IPv4-only
-choice and real provider port25/DNS/certificate decisions remain later-lot work.
+[Hosted receipts](evidence/requalification-2026-11-12/ci.json): Infra checkpoint
+[run43258242213](https://github.com/drumee/infra-layer/actions/runs/43258242213)
+passes unit/contracts/eslint/packaging/dependencies. Debian checkpoint
+[run43258259894](https://github.com/drumee/debian/actions/runs/43258259894)
+passes suite and minimal-application-contract but **fails** ShellCheck and
+packaging. Compared with requested Debian b5a9c70 baseline
+[run43230189927](https://github.com/drumee/debian/actions/runs/43230189927), all91
+ShellCheck diagnostic lines and15 selected packaging diagnostic lines are
+unchanged, with zero added/removed lines. This is repository debt, not a runner
+waiver. Packaging includes this profile's `FROM ${MAIL_TOOLS_IMAGE}` without a
+manifest digest, plus legacy Dockerfiles/global npm installations. The builder's
+local config-ID precheck does not make that static gate pass. Fix the acquisition
+recipe and replay it without weakening the check; publication is outside this lot.
+Final documentation commits must retain these observations and do not imply green
+Debian CI.
+
+## Required corrections and next qualification
+
+1. Replace/review the quota mechanism. The native count backend's check/update is
+   not atomic across LMTP and IMAP workers. `lmtp_user_concurrency_limit=1` does not
+   serialize IMAP; disabling APPEND/COPY, reducing nominal quotas or allowing grace
+   would weaken the contract. Implement an atomic per-UUID reservation/enforcement
+   path covering LMTP, APPEND, COPY/MOVE, rollback and crash reconciliation, or
+   qualify a reviewed alternative backend. Rerun concurrent multi-folder writes,
+   quota increase/decrease, queue retry, other-user isolation and reboot accounting.
+2. Resolve private ingress with explicit service-owned network/interface semantics
+   supported by the selected Docker engine. Preserve source enforcement, TLS,
+   mandatory auth, sender policy and independent project ownership. Requalify both
+   positive and negative sources, recreated projects and reboot. Do not add a
+   foreign backend, wildcard bind, host networking or firewall bypass as a test fix.
+3. Execute each BLOCKED row's residual native tests above, including storage/network
+   identity failures, in-flight grants/rotation, all-disable/retained deletion,
+   expired/missing TLS and complete expiry alerts. Stop on failed assertions.
+4. Resolve or explicitly retain the failing hosted Debian gates, freeze new
+   package/profile/image identities for any behavioral change, and replay all
+   MAIL-02 controls. Syntax/render tests cannot replace these paths.
+
+Earlier reports under `evidence/` retain the original .0 header failure; they are
+historical, not the current result. A first registry test attempted to reuse the
+number of a failed immutable staged generation and correctly hit
+`MAIL_REGISTRY_GENERATION_CONFLICT` (`registry-first-attempt.json`). The corrected
+test advances beyond every staged generation; no guard or failed evidence was
+removed. A first signer-outage probe expected to reach DATA, but native Postfix refused STARTTLS454 because its signing milter was unavailable (`signer-first-attempt.log`). The corrected assertion accepts an explicit4xx at this earlier boundary and still requires an unchanged queue; it does not permit message acceptance. Initial network-collision attempts preserved foreign networks and moved
+only the owned lab. Native auth delays were retained, with distinct IPs used to
+avoid one negative test penalizing another.
 
 ## Recovery and MAIL-03 handoff
 
-The alpha.6 queue qualification is reused only as a method/reference. This lot
-proves persistence over stop/start and guest reboot, not standalone backup/restore.
-`SMTP_RECOVERY_UNQUALIFIED` remains mandatory for the new profile's coordinated
-queue/registry/Maildir/IMAP/key restoration and for coordinated Oxy-form restoration.
-Preserve the Oxy ledger and deduplication key; local `accepted` is not recipient
-receipt. No queue purge, ledger reset, exactly-once or cross-artifact recovery claim
-is introduced.
+**SMTP_RECOVERY_UNQUALIFIED** remains for coordinated Oxy-form restoration and for
+the new profile's queue/registry/Maildir/IMAP/secret/key restoration. A nonempty
+same-storage reboot proves restart persistence only. Alpha.6 cold restore does not
+cover this profile. Preserve each instance's accepted queue, Oxy ledger and
+deduplication key; `accepted` is not recipient receipt and there is no exactly-once
+claim. No queue purge or real-recipient SMTP occurred.
 
-MAIL-03 retains its CLI/database/protected-password scope. Its authoritative state
-must project retained disabled delivery identities, CAS generations, protected
-verifiers and an idempotent crash-reconcilable apply protocol. The current JSON
-projection and acceptance-only lifecycle are not a replacement for that database.
-Do not merge/publish/deploy these drafts or infer MAIL-02 completion from the
-transport subset or from the prior alpha.6 restore verdict.
+[MAIL-03 handoff](mail-03-handoff.md) records the APIs and guards to preserve. The
+CLI administrative verbs remain unimplemented in MAIL02. Both PRs remain drafts;
+no merge, release, deployment, DNS/PTR or production port/firewall change is
+included.
 
 **MAIL-02_BLOCKED**

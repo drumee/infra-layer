@@ -1,0 +1,16 @@
+{
+  "docker_version": "26.1.5+dfsg1",
+  "image": "sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b",
+  "hostconfig_bindings": {
+    "1587/tcp": [
+      {
+        "HostIp": "10.243.47.1",
+        "HostPort": "1587"
+      }
+    ]
+  },
+  "runtime_ports": {},
+  "internal_edge": true,
+  "listening_1587": false,
+  "context": "owned isolated guest only; no firewall changes"
+}

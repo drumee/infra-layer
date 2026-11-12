@@ -38,7 +38,7 @@ Postfix, OpenDKIM, Dovecot 2.4 and a bounded Node socketmap/policy/Milter helper
 The runtime has no application-container dependencies. Control ports 10001–10003
 and DKIM are confined to its internal control network; LMTP and SASL use a shared
 Unix-socket volume. Mailbox UUID directories use vmail 5000:5000 with mode 0700.
-The helper does not receive password verifiers or TLS/DKIM private keys.
+The helper does not receive password verifiers or TLS/DKIM private keys. It enforces bounded per-account submission attempts and disk high-water admission through marker-file-only storage views.
 
 Port 25 has no AUTH, optional STARTTLS, local primary/alias recipient maps and no
 CIDR relay bypass. Maps fail temporarily when unavailable. Ports 587/465 require
@@ -49,23 +49,25 @@ passdb. Incoming mail bypasses the originating signing chain. Direct MX delivery
 has an empty relayhost and no outgoing SASL; global/domain TLS policies select
 `may` or `verify`. Dovecot delivers over LMTP to stable UUID Maildirs with count
 quota, zero grace and temporary full-quota refusal. No forwarding/catch-all is
-introduced.
+introduced. Count quota has a measured concurrent LMTP/IMAP overflow and is not qualified. A distinct1587 native listener enforces declared source CIDRs, but its independent host-gateway access path fails in the tested Docker26 topology.
 
 `prepareMailService` enforces owner identity, protected paths, exact local OCI
 config IDs, key/host/chain validity, immutable credential generations and durable
 resource markers. Native startup refuses a missing/wrong queue or Maildir marker;
 only explicit initial preparation seeds a new spool. It retains all durable data
-on stop. Config and verifier digests are checked before lifecycle operations.
+on stop. Runtime activation additionally checks complete image/execution/network/port/mount identities, stable Maildir owners, storage inodes and closed secret projections. All core services use restart=no; a mail-owned guarded boot unit is supplied by Debian. Config and verifier digests are checked before lifecycle operations.
 Public-port activation is deliberately refused by the candidate: only isolated
 acceptance composition may start. This is a protection for unfinished gates.
 
 `activateMailRegistry` uses a lock, expected-generation comparison, admission
 barrier and durable intent record. It atomically switches a complete immutable
 private projection through a relative symlink, verifies native auth generation,
-kicks affected IMAP users and publishes the public registry before removing the
+kicks affected IMAP users (including quota changes) and publishes the public registry before removing the
 barrier. Exceptions retain the barrier. It does not implement the authoritative
 MAIL-03 database, request-id journal or crash reconciliation. An incomplete
 activation requires inspection; do not remove its barrier blindly.
+
+Before signing, the Milter removes only Authentication-Results assertions claiming the local service identity. The delivered receiver message retains external results as untrusted metadata and still verifies DKIM. TLS rotation/reconciliation and nonsecret observation APIs are documented in the updated qualification and reproduction files.
 
 The public APIs consume Argon2id verifier strings, never plaintext passwords.
 The laboratory sends synthetic passwords to `doveadm pw` through stdin only;
@@ -105,7 +107,7 @@ not a claim that two distinct release artifacts were qualified.
 
 ## Handoff
 
-See `qualification.md` for unfinished MAIL-02 gates. MAIL-03 may review the API and
+See [qualification.md](qualification.md) for unfinished MAIL-02 gates and [MAIL-03 handoff](mail-03-handoff.md) for the detailed administrative boundary. MAIL-03 may review the API and
 protocol but must not infer MAIL-02 completion. Keep the MAIL-01 administrative
 semantics and implement an authoritative transactional registry, protected password
 input, request-id/CAS/idempotency, crash recovery and purge guards there. MAIL-04

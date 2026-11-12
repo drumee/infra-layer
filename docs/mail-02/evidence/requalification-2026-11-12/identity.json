@@ -1,0 +1,2738 @@
+{
+  "status": "PASS_NATIVE_IDENTITY_CONTROLS",
+  "checks": [
+    {
+      "name": "prepared-compose-listener-injection",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_PREPARED_TAMPERED",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "closed-candidate-config-inventory",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_PREPARED_TAMPERED",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "unsafe-private-key-permissions",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_PREPARED_TAMPERED",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "foreign-resource-owner",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RESOURCE_IDENTITY_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "foreign-spool-marker",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_STORAGE_GUARD_FAILED",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "replacement-directory-with-copied-owner-marker",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_STORAGE_GUARD_FAILED",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "foreign-secret-projection-pointer",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_SECRET_PROJECTION_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "changed-verifier-projection",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_PREPARED_TAMPERED",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "foreign-mailbox-numeric-owner",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_MAILBOX_IDENTITY_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "wrong-native-image",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RUNTIME_IMAGE_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "unreviewed-environment",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RUNTIME_EXECUTION_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "wrong-runtime-user",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RUNTIME_EXECUTION_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "undeclared-listener",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RUNTIME_LISTENER_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "writable-configuration-mount",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RUNTIME_MOUNT_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "automatic-start-cannot-bypass-boot-guard",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RUNTIME_EXECUTION_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    },
+    {
+      "name": "extra-runtime-network",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RUNTIME_NETWORK_MISMATCH",
+        "before_exposure": true,
+        "data_unchanged": true
+      }
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "stop",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 0,
+      "stdout_sha256": "cccd5e22f6f112593d23e91d7d40f42c54c9eb1bd0a8fd3e302ce72c9b788783",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "be63a6246b3470d9b190019bd70a55137e4aa53e08459d3608a8232f19bd589e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "b53e26768f59c93e35361dac38684b96000c9189c771513f062bc99077198671",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "be63a6246b3470d9b190019bd70a55137e4aa53e08459d3608a8232f19bd589e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c115ad2ace61834714ad44739f17614ba42c75daae8d066ac72881a8c049516f"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8d6c83fefc6c0213bbb25bc60ddbbc0e40d9c0c6715e9baa4dcd173e70ceb68f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "b53e26768f59c93e35361dac38684b96000c9189c771513f062bc99077198671",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8d6c83fefc6c0213bbb25bc60ddbbc0e40d9c0c6715e9baa4dcd173e70ceb68f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b90b8692d6121e27f44e0da15c2ddae9a5b807c53e59846e54ed419cd39957f3"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ea5208065a4b7cdf5ebbc075313ef94af895eeaa736db6924644cc53d5092956",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "b53e26768f59c93e35361dac38684b96000c9189c771513f062bc99077198671",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ea5208065a4b7cdf5ebbc075313ef94af895eeaa736db6924644cc53d5092956",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "208f37c96cfa4c641a2a2ca457a1111b801b31174160e4bf92c2d38984c0cef6"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f7d267e126bce76dc9a0dbf2dd3add3ef9b07f913f13d309c003164cfd7027e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "2f2b33c53a37e9678ad426af4072f92b091cce5d5424f6e4fa839f25b7f64e37",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f7d267e126bce76dc9a0dbf2dd3add3ef9b07f913f13d309c003164cfd7027e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "90504cb85b8ed287864189e04e91c3a57ad23ba89e80bcdac30a42ab2d27d729"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "0:0",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data",
+        "--entrypoint",
+        "node",
+        "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7",
+        "-e",
+        "const f=require('node:fs'),p='/data/'+process.argv[1];if(process.argv[2]==='write')f.writeFileSync(p,process.argv[3]);else if(process.argv[2]==='chown')f.chownSync(p,Number(process.argv[3]),Number(process.argv[4]));",
+        "durable/spool/.infra-owner",
+        "write",
+        "{\"owner\":\"foreign\",\"resource\":\"mail-queue\"}"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5ce746b49d112bf491c3de7c38273474b0b5801201840f504dd88cd788788623",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "890d7d78f10332df3a2af3bd8d41e8dbec863229865722652bf8808ed7db1471",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5ce746b49d112bf491c3de7c38273474b0b5801201840f504dd88cd788788623",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "0:0",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data",
+        "--entrypoint",
+        "node",
+        "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7",
+        "-e",
+        "const f=require('node:fs'),p='/data/'+process.argv[1];if(process.argv[2]==='write')f.writeFileSync(p,process.argv[3]);else if(process.argv[2]==='chown')f.chownSync(p,Number(process.argv[3]),Number(process.argv[4]));",
+        "durable/spool/.infra-owner",
+        "write",
+        "{\"owner\":\"mail02-profile-d5749ba5\",\"resource\":\"mail-queue\"}"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6cb4b5e80c9e1d41ec1a8b4fd2652f68279d10bb1c89a9113de611972d3aff40"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4551788c3758a7c3cbe4e6f338230c83589cd8390e4ad049f0446c31252a21d7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "890d7d78f10332df3a2af3bd8d41e8dbec863229865722652bf8808ed7db1471",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4551788c3758a7c3cbe4e6f338230c83589cd8390e4ad049f0446c31252a21d7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "59e52a1ad622456b54e67589abb74198f7b6893bbd62d6d744cc2812381d8ac4"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0c80b547cc25717bd71b284f1b6a1719f268e7e32672349d735fc832458fc8ca",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "2f67d2d10fd82cf525ce4b792e37031dfd3772ac924222bad661583382096568",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0c80b547cc25717bd71b284f1b6a1719f268e7e32672349d735fc832458fc8ca",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6eff3bbc4de0ef86ed90028c27d69b4035d47486599a3fa4a76f229b25a602cf"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a546c27490b39d49d917d6c7f4e73b523b07b3e90dd9ae57149b6a601c560fee",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "b53e26768f59c93e35361dac38684b96000c9189c771513f062bc99077198671",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a546c27490b39d49d917d6c7f4e73b523b07b3e90dd9ae57149b6a601c560fee",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a4db567a11a1be92fbfc41cdaa85200ac6a6b85dd99bd4316c4a0cd48118c215"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "0:0",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data",
+        "--entrypoint",
+        "node",
+        "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7",
+        "-e",
+        "const f=require('node:fs'),p='/data/'+process.argv[1];if(process.argv[2]==='write')f.writeFileSync(p,process.argv[3]);else if(process.argv[2]==='chown')f.chownSync(p,Number(process.argv[3]),Number(process.argv[4]));",
+        "durable/mailboxes/11111111-1111-4111-8111-111111111111",
+        "chown",
+        "5001",
+        "5000"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "460b2f5e2e5d091016198d4b49ee05b250f00904fa9a5e096ee0cd94c5997e71",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "ad1eeb77f43b9886c049d9a409648f4bc3b37fcd4c55883df57472f45c28e1de",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "460b2f5e2e5d091016198d4b49ee05b250f00904fa9a5e096ee0cd94c5997e71",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "0:0",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data",
+        "--entrypoint",
+        "node",
+        "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7",
+        "-e",
+        "const f=require('node:fs'),p='/data/'+process.argv[1];if(process.argv[2]==='write')f.writeFileSync(p,process.argv[3]);else if(process.argv[2]==='chown')f.chownSync(p,Number(process.argv[3]),Number(process.argv[4]));",
+        "durable/mailboxes/11111111-1111-4111-8111-111111111111",
+        "chown",
+        "5000",
+        "5000"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3962b770992859181e7754e444fff1062759ed6f7f96e0db0219594aa473e4d8"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/create-negative-e4e8c87c9291415e98f77c75e8431ff2.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "0fb805a41b6f8d40f7f144c1ebb9364b2ee96b7e6d24cd9e16a8eab25c9da0a7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "d9de17448b7df16a086a46aaf00fd89330d21547caab66f2b06672d2d49c0aa6"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/create-negative-8b872fa15482471d8de5da0d07c5bb16.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "b44240875e43c929ebffab7f5df70d53f1067463ed88ba19637f962db84bdf2d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2499ae3916199e0c7766e9260e90b4cc4bb045a4f94911d3ee694c09cc885e1f"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "dovecot"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c33b69e225ee79320f49263665c9aa2624452d6d36af2131be7a1a7be07553fc",
+      "stderr_sha256": "5be8c8ab395b7539684bed37a893122e4673db3539e1545c3bb68d07a28d1dfc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/create-negative-aaa27ace7b9349eda2a206b1de7fcaf4.json",
+        "create",
+        "dovecot"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e4c307060decab22e1fc74077210f6984cc9b0ee772024ddfaf358aeb73f2dd2"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "b44240875e43c929ebffab7f5df70d53f1067463ed88ba19637f962db84bdf2d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "dovecot"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c33b69e225ee79320f49263665c9aa2624452d6d36af2131be7a1a7be07553fc",
+      "stderr_sha256": "5be8c8ab395b7539684bed37a893122e4673db3539e1545c3bb68d07a28d1dfc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "create",
+        "dovecot"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e4c307060decab22e1fc74077210f6984cc9b0ee772024ddfaf358aeb73f2dd2"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "519b2c0b25d88dbfeb4127ae90e28e9f0f900b01997f3b27bfb42b29f17a3154"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/create-negative-43a7d2c9977b4a35a6ca5e5684e8b83a.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "c8c2b0728df14f94c5ce365195ba4fa420ee1b2ee32fab96a448b554d55f2da6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2fef2e5a6efb6baaf4e9d7f614d49fbd803863693637491ac312fd114c245862"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/create-negative-60a8612e11854e4e8c1672fae0d2e641.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "559a9e47dab21b14f49d3a40b857705359e601d67c4367f057df50eed238fd6c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6c89c0baeb8e3f38aca10349f427d0810e5ecab65569d633091af68a1b36eb79"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/create-negative-fb7c400cc8584640aad533d404545ed4.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "b44240875e43c929ebffab7f5df70d53f1067463ed88ba19637f962db84bdf2d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "rm",
+        "-f",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1260c41ac62130ad20e01ccee568cccd0e99cde489e0d7199dd8062b9185f3a9",
+      "stderr_sha256": "89d0dfadaae9a151ba129e1e2b9f1ae2615e8b3c916be420844505e07a7281cc"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "create",
+        "postfix"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95b44be0895cd6514a4576357c6f0fdb77a1bc85f290be13fc7c1a1b5697f3d3"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e8061ec81dc9d8b409681e98a438eec0512a6e1e7ae1256b1a426c8d0e46e890"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--internal",
+        "mail02-profile-d5749ba5-negative-extra"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e15a1243e12629946bc04ab252086ad673d9ef90e4ef3da82a9330ad42c8e5a2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "connect",
+        "mail02-profile-d5749ba5-negative-extra",
+        "mail02-profile-d5749ba5-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "3836fa641be2ade55f03d3c61f315fec2562e220d48c81ab771eea19132eb80a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-d5749ba5"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "disconnect",
+        "mail02-profile-d5749ba5-negative-extra",
+        "mail02-profile-d5749ba5-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "mail02-profile-d5749ba5-negative-extra"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1ceab657ba2222c4c6c4c26c83f5e6f3abd30001cbff52c3ea3c55a795df7fc3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-770kpico/service,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os,stat,json,hashlib;r=pathlib.Path('/data');o={};[(o.update({str(p.relative_to(r)):{'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'ino':s.st_ino,'link':os.readlink(p) if stat.S_ISLNK(s.st_mode) else None,'sha256':hashlib.sha256(p.read_bytes()).hexdigest() if stat.S_ISREG(s.st_mode) else None}})) for p in r.rglob('*') for s in [p.lstat()]];print(hashlib.sha256(json.dumps(o,sort_keys=True).encode()).hexdigest())"
+      ],
+      "exit": 0,
+      "stdout_sha256": "525054afc263680298cf325b63b620822551a7987ecc81c7de14e5f84c668f0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-d5749ba5",
+        "-f",
+        "/tmp/mail02-profile-770kpico/service/candidates/e39c226e7fae193db49a52611ec4c47d58e1bb410b497f8264069c5a559c2235/compose.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e8061ec81dc9d8b409681e98a438eec0512a6e1e7ae1256b1a426c8d0e46e890"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "preflight",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f47fa40af6e339d9b687ab24481ba46c9f61f8351b12ccd0a31c5fe363cb5794",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "--execute"
+      ],
+      "exit": 0,
+      "stdout_sha256": "10711dc0389c435a0f602e62073ad25ef2882f15b9dd9fcf6e29d311ddc8264b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "source_sha256": "e8c495e636850b850a63e5d1fa39562cad24f5ab682f4156fe02afd734e28ae9"
+}
