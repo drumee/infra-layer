@@ -190,10 +190,20 @@ mkdir -p /config
 cp -a /source/. /config/
 chown root:root /config /config/*
 chmod 755 /config
+nft -f /source/private-input.nft
 postfix -c /config check
-exec postfix -c /config start-fg
+exec setpriv --bounding-set=-net_admin --inh-caps=-net_admin --ambient-caps=-net_admin postfix -c /config start-fg
 `;
-  return { "main.cf": base, "master.cf": master, "dovecot.conf": dovecot, "opendkim.conf": opendkim, "key-table": keytable, "signing-table": signing, "private-sources": m.networks.private_submission.allowed_sources.map(cidr => `${cidr} OK`).join("\n") + "\n0.0.0.0/0 REJECT Private submission source forbidden\n", "tls-policy": q.require_verify_domains.map(d => `${d} verify`).join("\n") + "\n", "postfix-entrypoint.sh": entrypoint, "dovecot-entrypoint.sh": `#!/bin/sh
+  const privateInput = `destroy table inet drumee_mail_private
+table inet drumee_mail_private {
+ chain input {
+  type filter hook input priority -10; policy accept;
+  tcp dport ${m.networks.private_submission.port} ip saddr { ${m.networks.private_submission.allowed_sources.join(", ")} } accept
+  tcp dport ${m.networks.private_submission.port} drop
+ }
+}
+`;
+  return { "private-input.nft": privateInput, "main.cf": base, "master.cf": master, "dovecot.conf": dovecot, "opendkim.conf": opendkim, "key-table": keytable, "signing-table": signing, "private-sources": m.networks.private_submission.allowed_sources.map(cidr => `${cidr} OK`).join("\n") + "\n0.0.0.0/0 REJECT Private submission source forbidden\n", "tls-policy": q.require_verify_domains.map(d => `${d} verify`).join("\n") + "\n", "postfix-entrypoint.sh": entrypoint, "dovecot-entrypoint.sh": `#!/bin/sh
 set -eu
 test -f /mailboxes/.infra-owner || exit 78
 test "$(cat /mailboxes/.infra-owner)" = '${JSON.stringify({ owner: m.deployment.id, resource: "mailboxes" })}' || exit 78

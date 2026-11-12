@@ -30,6 +30,7 @@ function composeMailService(plan, distribution = {}) {
   const postfix = service("postfix", ["edge", "control"]), dovecot = service("dovecot", ["edge"]), opendkim = service("opendkim", ["control"]), policy = service("policy", ["control"]);
   for (const value of [postfix, dovecot]) value.cap_add = ["CHOWN", "SETUID", "SETGID", "DAC_OVERRIDE", "FOWNER", "KILL", "NET_BIND_SERVICE"];
   dovecot.cap_add.push("SYS_CHROOT");
+  postfix.cap_add.push("NET_ADMIN"); // fixed namespace-only rule install; dropped before exec
   postfix.tmpfs.push("/config:rw,noexec,nosuid,size=16777216");
   postfix.volumes = [bind(candidate + "/config", "/source"), bind(root + "/durable/tls", "/keys"), bind(root + "/durable/spool", "/var/spool/postfix", false), "sockets:/run/mail-sockets"];
   postfix.entrypoint = ["/bin/sh", "/source/postfix-entrypoint.sh"];
@@ -46,7 +47,7 @@ function composeMailService(plan, distribution = {}) {
     for (const [name, [value, port]] of Object.entries(ports)) if (s.listeners[name].enabled) (value.ports ||= []).push({ target: port, published: port, host_ip: s.listeners[name].address });
     (postfix.ports ||= []).push({ target: s.networks.private_submission.port, published: s.networks.private_submission.port, host_ip: s.networks.private_submission.address });
   }
-  return { name: s.deployment.project, services: { postfix, dovecot, opendkim, policy }, networks: { edge: { name: s.deployment.project + "-edge", internal: distribution.acceptance === true, ipam: { config: [{ subnet: s.networks.edge_subnet, gateway: s.networks.edge_gateway }] }, labels: { "org.drumee.mail.owner": s.deployment.id } }, control: { name: s.deployment.project + "-control", internal: true, labels: { "org.drumee.mail.owner": s.deployment.id } } }, volumes: { sockets: { name: s.deployment.project + "-sockets", driver_opts: { type: "tmpfs", device: "tmpfs", o: "size=16777216,mode=0755" }, labels: { "org.drumee.mail.owner": s.deployment.id } } } };
+  return { name: s.deployment.project, services: { postfix, dovecot, opendkim, policy }, networks: { edge: { name: s.deployment.project + "-edge", internal: distribution.acceptance === true && !distribution.private_bind, ipam: { config: [{ subnet: s.networks.edge_subnet, gateway: s.networks.edge_gateway }] }, labels: { "org.drumee.mail.owner": s.deployment.id } }, control: { name: s.deployment.project + "-control", internal: true, labels: { "org.drumee.mail.owner": s.deployment.id } } }, volumes: { sockets: { name: s.deployment.project + "-sockets", driver_opts: { type: "tmpfs", device: "tmpfs", o: "size=16777216,mode=0755" }, labels: { "org.drumee.mail.owner": s.deployment.id } } } };
 }
 function docker(args, combine = false) {
   const result = spawnSync(resolveTrustedExecutable("docker"), ["--host", "unix:///var/run/docker.sock", ...args], { env: systemEnvironment("docker"), encoding: "utf8", timeout: 120000, maxBuffer: 1048576 });

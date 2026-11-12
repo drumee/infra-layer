@@ -35,3 +35,12 @@ test("Originating author parser and Authentication-Results identity boundaries",
   assert.equal(authorMailbox('group:contact@oxymot.fr;'), null);
   assert.equal(authorMailbox('"ignored <address>" <contact@oxymot.fr>'), "contact@oxymot.fr");
 });
+test("Private acceptance uses canonical routing and an exact source packet filter before capability drop", () => {
+  const plan=api.planMailService(example), compose=api.composeMailService(plan,{acceptance:true,private_bind:true});
+  assert.equal(compose.networks.edge.internal,false);assert.equal(compose.networks.control.internal,true);
+  assert.equal(compose.services.postfix.ports.length,1);
+  assert.equal(compose.services.postfix.ports[0].host_ip,plan.spec.networks.private_submission.address);
+  assert.match(plan.artifacts["private-input.nft"],/tcp dport .* drop/);
+  assert.match(plan.artifacts["postfix-entrypoint.sh"],/nft -f \/source\/private-input.nft/);
+  assert.match(plan.artifacts["postfix-entrypoint.sh"],/setpriv --bounding-set=-net_admin/);
+});

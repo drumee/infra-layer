@@ -83,6 +83,13 @@ The following notes describe its unpublished preparation; alpha.4 has since been
 
 # Changelog
 
+## 0.1.0-alpha.7-mail02.5 (unpublished qualification candidate)
+
+- Match private-bind acceptance networking to the routed canonical edge.
+- Install a fixed private-source packet filter inside the Postfix namespace, dropping NET_ADMIN before execution.
+- Requalify against the separately built atomic native quota module; no production dependency is added.
+
+
 ## 0.1.0-alpha.2 — release candidate, unpublished
 
 - Include the IL-2 native capabilities and IL-3 lifecycle APIs absent from
