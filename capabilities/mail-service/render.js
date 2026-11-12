@@ -116,6 +116,7 @@ auth_debug_passwords = no
 auth_verbose_passwords = no
 auth_username_format = %{user | lower}
 mail_driver = maildir
+mailbox_list_index = no
 mail_home = /mailboxes/unassigned
 mail_path = ~/Maildir
 first_valid_uid = 5000
