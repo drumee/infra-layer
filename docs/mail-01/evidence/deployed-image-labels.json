@@ -1,0 +1,28 @@
+{
+  "observed_at_utc": "2026-11-12T06:25:57.896628+00:00",
+  "method": "read-only image label projection",
+  "images": [
+    {
+      "container": "oxy-form-oxymot-application-1",
+      "image_id": "sha256:cacd8333accebb96ad8d08d206fc92852af5a1f0d986519dd38c023f9aa9333d",
+      "labels": {
+        "org.drumee.infra.version": "0.1.0-alpha.6",
+        "org.drumee.infra.revision": "09b7f28bce99ba3744e31a0ee5b2dde868a9a86a",
+        "org.drumee.infra.package-integrity": "sha512-ZuGENEDYE1Ug6FJYzvSR+MG8zzOaBMBkYhgx+5nNR5OKMDBHpOvCfdzDe1XNfNz7fKqRfCHFQZGlxvYQzEm+YQ==",
+        "org.opencontainers.image.revision": "ff6e6b399128e6332c984fc2e8e60f660bd5f881",
+        "org.opencontainers.image.source": "https://github.com/drumee/debian"
+      }
+    },
+    {
+      "container": "oxy-form-oxymot-mail-1",
+      "image_id": "sha256:c9d6b4d5a69d7c53272ff13a4b90679422d61428a6f868a0463e3bdcfbe58236",
+      "labels": {
+        "org.drumee.infra.version": null,
+        "org.drumee.infra.revision": null,
+        "org.drumee.infra.package-integrity": null,
+        "org.opencontainers.image.revision": "09b7f28bce99ba3744e31a0ee5b2dde868a9a86a",
+        "org.opencontainers.image.source": "https://github.com/drumee/infra-layer"
+      }
+    }
+  ]
+}

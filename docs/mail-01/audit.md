@@ -75,6 +75,15 @@ The [sanitized observation](evidence/observations.json) records the relevant fac
   `relay_tls:required`, submission login `forms`, trusted list loopback only.
   Queue observation was zero entries. Existing provided certificate expires
   `2027-02-07T07:54:12Z`; neither it nor its private key was copied.
+  Deployed application image is
+  `sha256:cacd8333accebb96ad8d08d206fc92852af5a1f0d986519dd38c023f9aa9333d`;
+  deployed mail/DKIM image is
+  `sha256:c9d6b4d5a69d7c53272ff13a4b90679422d61428a6f868a0463e3bdcfbe58236`.
+  These differ from the historical local qualification image IDs, which are not
+  presented as deployed images. Read-only image labels assert Infra alpha.6,
+  producer SHA/package SRI and Debian revision matching the pins above; this is
+  deployment metadata corroboration, not a fresh byte comparison/rebuild of those
+  deployed images. [Image-label projection](evidence/deployed-image-labels.json).
 - Ghost `ghost:6.73.0-bookworm`, MySQL `8.4.13`, healthy; loopback `2368`.
   Networks `oxymot-blog_backend` and `oxymot-blog_egress`. Content volume
   `oxymot_blog_content_c1r_20261105` at `/var/lib/ghost/content`. Protected
