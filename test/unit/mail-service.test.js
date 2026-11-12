@@ -38,6 +38,8 @@ test("Originating author parser and Authentication-Results identity boundaries",
 test("Private acceptance uses canonical routing and an exact source packet filter before capability drop", () => {
   const plan=api.planMailService(example), compose=api.composeMailService(plan,{acceptance:true,private_bind:true});
   assert.equal(compose.networks.edge.internal,false);assert.equal(compose.networks.control.internal,true);
+  assert.equal(compose.services.postfix.networks.edge.ipv4_address,plan.private_endpoint.address);
+  assert.ok(compose.services.postfix.networks.edge.aliases.includes(plan.spec.hostname));
   assert.equal(compose.services.postfix.ports.length,1);
   assert.equal(compose.services.postfix.ports[0].host_ip,plan.spec.networks.private_submission.address);
   assert.match(plan.artifacts["private-input.nft"],/tcp dport .* drop/);

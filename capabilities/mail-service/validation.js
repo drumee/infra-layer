@@ -15,7 +15,7 @@ function cidr(value) {
 const privateIP = ip => net.isIP(ip) === 4 && (ip.startsWith("10.") || ip.startsWith("192.168.") || /^172\.(?:1[6-9]|2\d|3[01])\./.test(ip));
 function privateServiceAddress(spec) {
   const range=cidr(spec.networks.edge_subnet),gateway=spec.networks.edge_gateway.split(".").reduce((a,b)=>a*256+Number(b),0);
-  let n=range[1]-1;if(n===gateway)n=range[0]+1;
+  let n=range[1]-1;if(n===gateway)n=range[1]-2;
   return [Math.floor(n/16777216),Math.floor(n/65536)%256,Math.floor(n/256)%256,n%256].join(".");
 }
 function validateMailService(input) {

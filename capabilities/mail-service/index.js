@@ -58,7 +58,7 @@ function docker(args, combine = false) {
 // Serialized into a fixed, image-locked metadata helper. It never reads messages.
 function maildirMetadata(ids, required, create) {
   const fs = require("node:fs"), paths = ["", "/home", "/Maildir", "/Maildir/cur", "/Maildir/new", "/Maildir/tmp"];
-  const safe = file => { const s = fs.lstatSync(file); return s.isDirectory() && !s.isSymbolicLink() && s.uid === 5000 && s.gid === 5000 && (s.mode & 0o777) === 0o700; };
+  const safe = file => { const s = fs.lstatSync(file); return s.isDirectory() && !s.isSymbolicLink() && s.uid === 5000 && s.gid === 5000 && (s.mode & 0o7777) === 0o700; };
   // Validate every existing object before creating any new directory.
   for (const id of ids) for (const suffix of paths) {
     const file = "/mailboxes/" + id + suffix;
@@ -165,7 +165,7 @@ function prepareMailService(plan, context) {
   files["policy.js"] = V.digest(fs.readFileSync(candidate + "/policy.js").toString());
   files["registry.json"] = V.digest(JSON.stringify(plan.registry));
   for (const name of Object.keys(keys)) { const file = "keys/" + (name.startsWith("dkim-") ? "dkim/" : "tls/") + name; files[file] = V.digest(fs.readFileSync(candidate + "/" + file).toString()); }
-  const prepared = { contract: "drumee.mail-prepared/1", revision: plan.revision, root, hostname: plan.spec.hostname, private_port: plan.spec.networks.private_submission.port, project: plan.spec.deployment.project, compose, compose_file: candidate + "/compose.json", certificate_fingerprint: certificate.fingerprint256, mailbox_identities: mailboxIdentities, storage: Object.fromEntries(["spool", "mailboxes", "registry", "registry/private", "registry/public", "operator-state", "policy-state", "tls"].map(name => { const stat = fs.lstatSync(root + "/durable/" + name); return [name, { dev: stat.dev, ino: stat.ino, uid: stat.uid, gid: stat.gid, mode: stat.mode & 0o777 }]; })), private_files: Object.fromEntries(Object.entries(passwd).map(([name, content]) => [name, V.digest(content)])), registry_generation: plan.registry.generation, transport_digest: V.digest(plan.spec), files };
+  const prepared = { contract: "drumee.mail-prepared/1", revision: plan.revision, root, hostname: plan.spec.hostname, private_port: plan.spec.networks.private_submission.port, project: plan.spec.deployment.project, compose, compose_file: candidate + "/compose.json", certificate_fingerprint: certificate.fingerprint256, mailbox_identities: mailboxIdentities, storage: Object.fromEntries(["spool", "mailboxes", "registry", "registry/private", "registry/public", "operator-state", "policy-state", "tls"].map(name => { const stat = fs.lstatSync(root + "/durable/" + name); return [name, { dev: stat.dev, ino: stat.ino, uid: stat.uid, gid: stat.gid, mode: stat.mode & 0o7777 }]; })), private_files: Object.fromEntries(Object.entries(passwd).map(([name, content]) => [name, V.digest(content)])), registry_generation: plan.registry.generation, transport_digest: V.digest(plan.spec), files };
   F.atomic(prepared.compose_file, JSON.stringify(compose, null, 2));
   const publicRegistry = root + "/durable/registry/public";
   if (!fs.existsSync(publicRegistry + "/current.json")) F.atomic(publicRegistry + "/current.json", JSON.stringify(plan.registry));
@@ -277,7 +277,7 @@ function verifyStorage(prepared) {
     const file = prepared.root + "/durable/" + name;
     F.directory(file);
     const stat = fs.lstatSync(file);
-    if (stat.dev !== identity.dev || stat.ino !== identity.ino || stat.uid !== identity.uid || stat.gid !== identity.gid || (stat.mode & 0o777) !== identity.mode || stat.mode & 0o022) V.fail("MAIL_STORAGE_GUARD_FAILED");
+    if (stat.dev !== identity.dev || stat.ino !== identity.ino || stat.uid !== identity.uid || stat.gid !== identity.gid || (stat.mode & 0o7777) !== identity.mode || stat.mode & 0o022) V.fail("MAIL_STORAGE_GUARD_FAILED");
   }
   for (const [name, resource] of [["spool", "mail-queue"], ["mailboxes", "mailboxes"]]) {
     const file = prepared.root + "/durable/" + name + "/.infra-owner", stat = fs.lstatSync(file);
@@ -318,6 +318,8 @@ function verifyRuntimeRole(prepared, role, actual) {
   if (!equal(networks, expectedNetworks)) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
   if (!Array.isArray(expected.networks)) for (const [name, endpoint] of Object.entries(expected.networks)) {
     const observed=actual.NetworkSettings.Networks[prepared.compose.networks[name].name];
+    const aliases=observed.Aliases || [], allowedAliases=[role,actual.Name.slice(1),...(endpoint.aliases || [])];
+    if ((endpoint.aliases || []).some(name=>!aliases.includes(name)) || aliases.some(name=>!allowedAliases.includes(name))) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
     if ((observed.IPAMConfig?.IPv4Address || null) !== (endpoint.ipv4_address || null)) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
     if (actual.State.Running && endpoint.ipv4_address && observed.IPAddress !== endpoint.ipv4_address) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
   }

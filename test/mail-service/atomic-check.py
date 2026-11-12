@@ -21,15 +21,18 @@ def cleanup(s,folders):
   if ids:s.store(ids.replace(b' ',b','),'+FLAGS','(\\Deleted)');s.expunge()
   s.select('INBOX');s.delete(folder)
 action=sys.argv[1]
-if action in ['high','fits']:
- folders=[tag+'-seed',tag+'-append'];seed=650000 if action=='high' else 300000
+if action in ['high','fits','copy-race','move-race']:
+ folders=[tag+'-seed',tag+'-append'];seed=650000 if action=='high' else 400000 if action.endswith('-race') else 300000
+ if action.endswith('-race'):folders.append(tag+'-source')
  with login() as s:
   for f in folders:assert s.create(f)[0]=='OK'
   assert s.append(folders[0],None,None,body(seed,'seed'))[0]=='OK'
+  if action.endswith('-race'):assert s.append(folders[2],None,None,body(250000,'source'))[0]=='OK'
  barrier=threading.Barrier(2);timings={}
  def append():
   with login() as s:
-   barrier.wait();timings['append_start']=time.monotonic();r=s.append(folders[1],None,None,body(250000,'append'))[0];timings['append_end']=time.monotonic();return r
+   if action.endswith('-race'):s.select(folders[2])
+   barrier.wait();timings['append_start']=time.monotonic();r=(s.copy('1',folders[1]) if action=='copy-race' else s.xatom('MOVE','1',folders[1]) if action=='move-race' else s.append(folders[1],None,None,body(250000,'append')))[0];timings['append_end']=time.monotonic();return r
  def lmtp():
   with smtplib.LMTP('/run/mail-sockets/lmtp',timeout=20) as s:
    s.ehlo();s.mail('outside@dest.invalid');assert s.rcpt('mbx-22222222-2222-4222-8222-222222222222@local.invalid')[0]==250;assert s.docmd('DATA')[0]==354
@@ -38,7 +41,7 @@ if action in ['high','fits']:
   a=pool.submit(append);b=pool.submit(lmtp);a,b=a.result(),b.result()
  with login() as s:
   size=usage(s,['INBOX',*folders]);assert size<=1048576
-  assert (a=='OK' and b==250) if action=='fits' else ((a=='OK')+(b==250)==1)
+  assert (a=='OK' and b==250) if action=='fits' else ((a=='OK')+(b==250)>=1) if action=='move-race' else ((a=='OK')+(b==250)==1)
   assert max(timings['append_start'],timings['lmtp_start'])<min(timings['append_end'],timings['lmtp_end'])
   result={'status':'PASS_ATOMIC_'+action.upper(),'append':a,'lmtp':b,'virtual_bytes':size,'quota_bytes':1048576,'overlap_observed':True,'timings':timings};cleanup(s,folders)
  print(json.dumps(result))
