@@ -14,7 +14,7 @@ HERE=pathlib.Path(__file__).resolve().parent
 IMAGE='sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b'
 CLIENT_IMAGE='sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8'
 NODE='sha256:4a'  # Resolved from an immutable available Node image below.
-NODE_REF='node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392'
+NODE_REF=os.environ.get('MAIL02_NODE_IMAGE','node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392')
 base=pathlib.Path(tempfile.mkdtemp(prefix='mail02-native-'));project='mail02-'+uuid.uuid4().hex[:8]
 consumer=pathlib.Path(os.environ['MAIL02_CONSUMER']).resolve()
 frozen_sources={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in HERE.iterdir() if p.is_file()}
@@ -82,7 +82,7 @@ try:
     compose['services']['dns']={'image':NODE,'entrypoint':['node','/lab/dns.cjs'],'volumes':[str(HERE)+':/lab:ro',str(base/'control')+':/control:ro'],'networks':{'edge':{'ipv4_address':'10.243.47.53'}},'read_only':True}
     compose['services']['mx']={'image':CLIENT_IMAGE,'user':'1000:1000','entrypoint':['python3','/lab/mx.py'],'volumes':[str(HERE)+':/lab:ro',str(keys)+':/keys:ro',str(base/'control')+':/control:ro',str(base/'witness')+':/witness'],'networks':{'edge':{'ipv4_address':'10.243.47.54'}},'read_only':True}
     compose['services']['postfix']['dns']=['10.243.47.53']
-    for service in compose['services'].values():service['restart']='no'
+    for service in compose['services'].values():service['restart']='unless-stopped' if os.environ.get('MAIL02_RETAIN_RUNTIME')=='1' else 'no'
     write(file,compose)
     d('compose','-p',project,'-f',str(file),'up','-d')
     wait(lambda:json.loads(d('inspect',project+'-postfix-1').stdout)[0]['State'].get('Health',{}).get('Status')=='healthy')
@@ -174,7 +174,8 @@ finally:
         for name in ['postfix','dovecot','opendkim','policy','mx','dns']:
             output=d('compose','-p',project,'-f',str(file),'logs','--no-color',name,ok=False)
             (base/(name+'.log')).write_bytes(output.stdout+output.stderr)
-        d('compose','-p',project,'-f',str(file),'down',ok=False)
+        if os.environ.get('MAIL02_RETAIN_RUNTIME')!='1':d('compose','-p',project,'-f',str(file),'down',ok=False)
+        report['runtime_retained']=os.environ.get('MAIL02_RETAIN_RUNTIME')=='1'
     report['source_sha256']=frozen_sources
     report['sources_unchanged']=frozen_sources=={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in HERE.iterdir() if p.is_file()}
     if not report['sources_unchanged']:report['status']='FAIL';report['failure']='lab sources changed during execution'

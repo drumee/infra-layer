@@ -1,0 +1,75 @@
+{
+  "contract": "drumee.mail02-evidence/1",
+  "producer_source": "c2552ac7b57771d72e61901582563112e2c3c26d",
+  "node": "22.22.0",
+  "npm": "11.18.0",
+  "workstation_docker": "29.2.0",
+  "compose": "5.0.2",
+  "images": [
+    {
+      "Id": "sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b",
+      "Architecture": "amd64",
+      "Os": "linux",
+      "RootFS": {
+        "Type": "layers",
+        "Layers": [
+          "sha256:dd57f90311a2567b55ff22eeacff1602fd04ad7566e315957731359eab173b90",
+          "sha256:41f4c58f0a3a4cb5d3211cdf5a4f2dc047c9f93a8dae6801f1838f7706816164",
+          "sha256:b6265ae0ead7639f56443a34c88f0be8abe7904cf1316b521c0c8593db43b1bf",
+          "sha256:21899637bed77a5ca710e2e13db92ba196d5fc5af4d626174aca00f75d9df4b9"
+        ]
+      }
+    },
+    {
+      "Id": "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+      "Architecture": "amd64",
+      "Os": "linux",
+      "RootFS": {
+        "Type": "layers",
+        "Layers": [
+          "sha256:dd57f90311a2567b55ff22eeacff1602fd04ad7566e315957731359eab173b90",
+          "sha256:41f4c58f0a3a4cb5d3211cdf5a4f2dc047c9f93a8dae6801f1838f7706816164",
+          "sha256:b6265ae0ead7639f56443a34c88f0be8abe7904cf1316b521c0c8593db43b1bf",
+          "sha256:1c31f92d2166b1e3a15baa185fb47d15fe9f0b6d2060f26eb14d999803e18dac"
+        ]
+      }
+    },
+    {
+      "Id": "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7",
+      "Architecture": "amd64",
+      "Os": "linux",
+      "RootFS": {
+        "Type": "layers",
+        "Layers": [
+          "sha256:e58989146fcec76699871403b9897b5c014af1ccd85f5a9300a215e7975525d7",
+          "sha256:4990a62cab1587a2ed690c9d4f41675b9216d68120e99033d664b558662e90c8",
+          "sha256:3714bbaf32038e259cddcddea09e13fc9aaa1a86a644274a6c6e263b00972240",
+          "sha256:f6becc1249c39a0f6d687460220dcfcf9f2a46d01770a70fc0a8ed4c98a6fd49",
+          "sha256:cae24708e29a74f04cc1ec51fc52e2d283c35f243ab21912e036095a2b50dbde"
+        ]
+      }
+    }
+  ],
+  "image_export_sha256": "e0832f1b65935328eef05360887c47dacbb52e7ef65775deb5b3e2ff4905f7f3",
+  "node_binary_sha256": "1bec56ef7cfa9a76f3e0b7c0a87f220eb73f23102b9c0b4c7529a3f7c3ce7c31",
+  "compose_binary_sha256": "2d880f723d3da7c779c54fdaea91a842fca8af55d1397f1ed8d7cbab3dd7af67",
+  "fixture_files": {
+    "client.py": "a796d9b5c8c3e916cff9d893ef81d16741d21fbdce28b126f2abb1a7e732446f",
+    "header-check.py": "57e5a22c32f2729f3821938bc8e695b252954e9ed8998efcbd42cd2d85d481cd",
+    "dns.cjs": "c0fda6c5efa2c9f2cd8ba46c0589a7ff075cb6f7fb7ce890dfd7c0cce203cc7f",
+    "vm-check.py": "0fb1e3362c7efac3c8f889609d1743c90e48f46ee781cba2155ea8b2bea59676",
+    "mx.py": "9822fccf1f42f6f3a2f62426ae7ab5824a9059bae91d82aebd62c445b4c12e17",
+    "life-check.py": "8789cdbfe3ca75c501250b847bf7ec353af1db113187e8f4e49c3774afe422e1",
+    "prepare.cjs": "63868c7a8fc578e3d7f8712a26151c9b78b7c28473cd3543925ef0383a3aec1b",
+    "run.py": "e40ab4c85814d8867656dec7265e786631795908ab613c16b1748eaa56909a70",
+    "rotate.cjs": "a35f06845c2bcf60221278975d83a8e8bbe5431bee57b9b6f72ddb0903a6ba1b",
+    "header-probe.py": "d3d380ce60320637f824b8c07a19fe12d7d970266df75a10323f9578d67d3711"
+  },
+  "debian_native_dockerfile_sha256": "7fa7a1cdb0621f99f8ae7464d35625072ff8e493c32d0d845da2041f6c16c35a",
+  "typecheck": {
+    "compiler": "5.9.3",
+    "strict": true,
+    "module": "Node16",
+    "exit": 0
+  }
+}
