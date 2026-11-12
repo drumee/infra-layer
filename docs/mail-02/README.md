@@ -1,5 +1,8 @@
 # MAIL-02 isolated service candidate
 
+Draft delivery: [Infra PR #38](https://github.com/drumee/infra-layer/pull/38) and
+[Debian PR #13](https://github.com/drumee/debian/pull/13). Both remain unqualified.
+
 This is an unpublished implementation candidate, not a production activation or
 an overall MAIL-02 qualification. The authoritative gate remains the unchanged
 [MAIL-01 matrix](../mail-01/qualification.md). See `qualification.md` for measured

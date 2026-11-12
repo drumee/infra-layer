@@ -11,6 +11,7 @@ owner DNS decision or an alleged runner failure.
 
 | Item | Qualified reference |
 | --- | --- |
+| Debian profile functional source | `bdba1ebf7a541c05d2f24428c4d90343950b8c46` |
 | Producer code/package source | `c2552ac7b57771d72e61901582563112e2c3c26d` |
 | Package | `@drumee/infra-layer@0.1.0-alpha.7-mail02.0`, local archive only, never published |
 | Archive SHA256 | `635926f7a51c276cf3ce28c93954dcabfb07d3c1451c8e0991752240688f75c1` |
