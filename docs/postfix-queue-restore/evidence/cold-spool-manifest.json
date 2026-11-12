@@ -1,0 +1,440 @@
+{
+  "archive_sha256": "5da705effedd5d7d252621d1d919700bb04e226bec8a25b5c406fdd5c2eab3f6",
+  "config_sha256": "c4f283836add1c629fd2d659679c8618540585163c7cb8bda7ffaf609e186167",
+  "contract": "postfix-cold-spool/1",
+  "entries": [
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 493,
+      "mtime_ns": 1794468731733427521,
+      "path": ".",
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468729153500426,
+      "path": ".infra-owner",
+      "sha256": "d7de4da9a338afc17d8cad6d7c137a7d2dcf8617f46b30f0a9954226faffda5a",
+      "size": 50,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733973364227,
+      "path": "active",
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468731681428991,
+      "path": "bounce",
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468731681428991,
+      "path": "corrupt",
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733969364340,
+      "path": "defer",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733929365470,
+      "path": "defer/A",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468733929365470,
+      "path": "defer/A/AF4E21A06A93",
+      "sha256": "3412d67396c02949a2a8d5f5e58b25cd1a8d0d37f569656281b999c46763bc3d",
+      "size": 452,
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733933365357,
+      "path": "defer/B",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468733933365357,
+      "path": "defer/B/BAA761A06A94",
+      "sha256": "3412d67396c02949a2a8d5f5e58b25cd1a8d0d37f569656281b999c46763bc3d",
+      "size": 452,
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733969364340,
+      "path": "defer/C",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468733969364340,
+      "path": "defer/C/C652E1A06A96",
+      "sha256": "3412d67396c02949a2a8d5f5e58b25cd1a8d0d37f569656281b999c46763bc3d",
+      "size": 452,
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733973364227,
+      "path": "deferred",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733929365470,
+      "path": "deferred/A",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "file",
+      "mode": 448,
+      "mtime_ns": 1794468743000000000,
+      "path": "deferred/A/AF4E21A06A93",
+      "sha256": "16839614679d4639818950ad240c3957956a15bc0da61cf94e6ae47afd3a42e3",
+      "size": 1445,
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733933365357,
+      "path": "deferred/B",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "file",
+      "mode": 448,
+      "mtime_ns": 1794468743000000000,
+      "path": "deferred/B/BAA761A06A94",
+      "sha256": "840979486ca8c2cc55808241b70f93fe87e67b27a15b3dd48afb55c8613bdbcc",
+      "size": 1445,
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733973364227,
+      "path": "deferred/C",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "file",
+      "mode": 448,
+      "mtime_ns": 1794468743000000000,
+      "path": "deferred/C/C652E1A06A96",
+      "sha256": "89bcd9b9eb89a3af67f45a50faf9f6d052efdbebb228bc8c7633e07613535f58",
+      "size": 1445,
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 493,
+      "mtime_ns": 1786379704000000000,
+      "path": "dev",
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 493,
+      "mtime_ns": 1794468731733427521,
+      "path": "etc",
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 420,
+      "mtime_ns": 1784307900000000000,
+      "path": "etc/host.conf",
+      "sha256": "380f5fe21d755923b44203b58ca3c8b9681c485d152bd5d7e3914f67d821d32a",
+      "size": 9,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 420,
+      "mtime_ns": 1794468729000000000,
+      "path": "etc/hosts",
+      "sha256": "552860239e94d5f8a574c64d0a1faefce6ed6a24a9eb6a61e96bc08c199f5821",
+      "size": 200,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 420,
+      "mtime_ns": 1793221079000000000,
+      "path": "etc/localtime",
+      "sha256": "8b85846791ab2c8a5463c83a5be3c043e2570d7448434d41398969ed47e3e6f2",
+      "size": 114,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 420,
+      "mtime_ns": 1782769072000000000,
+      "path": "etc/nsswitch.conf",
+      "sha256": "eec30745bade42a3f3f792e4d4192e57d2bcfe8e472433b1de426fe39a39cddb",
+      "size": 494,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 420,
+      "mtime_ns": 1794468729000000000,
+      "path": "etc/resolv.conf",
+      "sha256": "09e71b30d87c7632ff5987b95f6d45624d8de74d4340d46796509a00547df4ed",
+      "size": 327,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 420,
+      "mtime_ns": 1742079322000000000,
+      "path": "etc/services",
+      "sha256": "20c48954659cf753baa383ecde0e6f026fadc06c2c9fbe29d88d928188c3ec17",
+      "size": 12990,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468731689428764,
+      "path": "flush",
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468731689428764,
+      "path": "hold",
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733853367618,
+      "path": "incoming",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468733701371913,
+      "path": "infra-data",
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468731953421304,
+      "path": "infra-data/master.lock",
+      "sha256": "2f6566e061be052a8b34f06bb0484ab81d083f3e2adede5933504cd4bf576605",
+      "size": 33,
+      "uid": 102
+    },
+    {
+      "gid": 103,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468733701371913,
+      "path": "infra-data/prng_exch",
+      "sha256": "a2d4e03485cb2f747af69f9b98b10fada9c51678584f13e2773e430b8d72e628",
+      "size": 1024,
+      "uid": 102
+    },
+    {
+      "gid": 104,
+      "kind": "directory",
+      "mode": 472,
+      "mtime_ns": 1794468731693428651,
+      "path": "maildrop",
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 493,
+      "mtime_ns": 1794468734109360384,
+      "path": "pid",
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468733693372138,
+      "path": "pid/inet.2525",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468731953421304,
+      "path": "pid/master.pid",
+      "sha256": "2f6566e061be052a8b34f06bb0484ab81d083f3e2adede5933504cd4bf576605",
+      "size": 33,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468733717371460,
+      "path": "pid/unix.cleanup",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468733929365470,
+      "path": "pid/unix.defer",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468734109360384,
+      "path": "pid/unix.showq",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "file",
+      "mode": 384,
+      "mtime_ns": 1794468733765370104,
+      "path": "pid/unix.smtp",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468731953421304,
+      "path": "private",
+      "uid": 102
+    },
+    {
+      "gid": 104,
+      "kind": "directory",
+      "mode": 456,
+      "mtime_ns": 1794468731953421304,
+      "path": "public",
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468731697428539,
+      "path": "saved",
+      "uid": 102
+    },
+    {
+      "gid": 0,
+      "kind": "directory",
+      "mode": 448,
+      "mtime_ns": 1794468731701428425,
+      "path": "trace",
+      "uid": 102
+    }
+  ],
+  "image": "sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843",
+  "omitted_runtime_sockets": [
+    "private/anvil",
+    "private/bounce",
+    "private/defer",
+    "private/discard",
+    "private/error",
+    "private/lmtp",
+    "private/local",
+    "private/proxymap",
+    "private/proxywrite",
+    "private/relay",
+    "private/retry",
+    "private/rewrite",
+    "private/scache",
+    "private/smtp",
+    "private/tlsmgr",
+    "private/trace",
+    "private/verify",
+    "private/virtual",
+    "public/cleanup",
+    "public/flush",
+    "public/pickup",
+    "public/postlog",
+    "public/qmgr",
+    "public/showq"
+  ],
+  "owner": {
+    "owner": "pqr-fc78e3c123",
+    "resource": "mail-queue"
+  }
+}

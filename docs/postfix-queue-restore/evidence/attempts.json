@@ -1,0 +1,92 @@
+[
+  {
+    "attempt": 1,
+    "verdict": "SMTP_RECOVERY_UNQUALIFIED",
+    "failure": "COMMAND_FAILED ['docker', 'run', '--rm'] Traceback (most recent call last):\n  File \"/lab/submit.py\", line 9, in <module>\n    cfg = json.loads(pathlib.Path('/keys/client.json').read_text())\n                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/usr/lib/python3.13/pathlib/_local.py\", line 548, in read_text\n    return PathBase.read_text(self, encoding, errors, newline)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/pathlib/_abc.py\", line 632, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/pathlib/_local.py\", line 539, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/keys/client.json'\n",
+    "passed_checks": 6,
+    "log_sha256": "336e3bd66312ae372d3168579879098f569fb26ae08731e807b0ee43523c85ba",
+    "report_sha256": "e5719365bc31b918d38569484f88273de4606ebf49637e0c72e8e364cdf74775",
+    "finished_at": "2026-11-12T07:15:31.363206+00:00",
+    "cleanup_errors": []
+  },
+  {
+    "attempt": 2,
+    "verdict": "SMTP_RECOVERY_UNQUALIFIED",
+    "failure": "COMMAND_FAILED ['docker', 'run', '--rm'] Traceback (most recent call last):\n  File \"/lab/submit.py\", line 16, in <module>\n    client.starttls(context=context)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/smtplib.py\", line 779, in starttls\n    self.sock = context.wrap_socket(self.sock,\n                ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^\n                                    server_hostname=self._host)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/ssl.py\", line 455, in wrap_socket\n    return self.sslsocket_class._create(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        sock=sock,\n        ^^^^^^^^^^\n    ...<5 lines>...\n        session=session\n        ^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/usr/lib/python3.13/ssl.py\", line 1076, in _create\n    self.do_handshake()\n    ~~~~~~~~~~~~~~~~~^^\n  File \"/usr/lib/python3.13/ssl.py\", line 1372, in do_handshake\n    self._sslobj.do_handshake()\n    ~~~~~~~~~~~~~~~~~~~~~~~~~^^\nssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: CA cert does not include key usage extension (_ssl.c:1029)\n",
+    "passed_checks": 6,
+    "log_sha256": "c898e45f6698d8399b71ca5102a597e8aab86636f4f065140cc0c6457d4c079e",
+    "report_sha256": "d0f996100bf1d4ec5d5687410d2f5720419ffbc2baa07014caff6a4752a2f179",
+    "finished_at": "2026-11-12T07:16:10.046583+00:00",
+    "cleanup_errors": []
+  },
+  {
+    "attempt": 3,
+    "verdict": "SMTP_RECOVERY_UNQUALIFIED",
+    "failure": "COMMAND_FAILED ['docker', 'exec', 'pqr-6c8ad0fbc8-mail-1'] postfix/postlog: stopping the Postfix mail system\n",
+    "passed_checks": 9,
+    "log_sha256": "24e1f20c1f7df9d6d797de27bb63a43f8942ca1885371e60581390bdb4ac82bf",
+    "report_sha256": "a03423f1cf2aadaf451dd35af3c8add4cc833be2c2a26be6297787b8ac9df0b2",
+    "finished_at": "2026-11-12T07:16:43.055432+00:00",
+    "cleanup_errors": []
+  },
+  {
+    "attempt": 4,
+    "verdict": "SMTP_RECOVERY_UNQUALIFIED",
+    "failure": "[Errno 13] Permission denied: '/tmp/postfix-restore-04f0hhul/spool.receipt.json'",
+    "passed_checks": 11,
+    "log_sha256": "53db5b6b5843da2f7d106c75ef500eef4dd56bba68ef70fe087fc39f7830a939",
+    "report_sha256": "85558afa70e1f63dd8161566bd81c17ffd7f24a8b561fce072d09e612c1c6a24",
+    "finished_at": "2026-11-12T07:17:26.083092+00:00",
+    "cleanup_errors": []
+  },
+  {
+    "attempt": 5,
+    "verdict": "SMTP_RECOVERY_UNQUALIFIED",
+    "failure": "COMMAND_FAILED ['docker', 'run', '--rm'] postsuper: fatal: setgid(103): Operation not permitted\n",
+    "passed_checks": 18,
+    "log_sha256": "35fd16fbe7e7129ccbe69201f5d6b42ee7a29488cbbbcc1b85086c591ad8bbca",
+    "report_sha256": "05ef458d34d3dcda54ec9f264bf4ecd3d0f8770755c1a55163ea268356dd1af2",
+    "finished_at": "2026-11-12T07:18:25.867199+00:00",
+    "cleanup_errors": []
+  },
+  {
+    "attempt": 6,
+    "verdict": "SMTP_RECOVERY_UNQUALIFIED",
+    "failure": "COMMAND_FAILED ['docker', 'compose', '-p'] service \"restored\" depends on undefined service \"dkim\": invalid compose project\n",
+    "passed_checks": 18,
+    "log_sha256": "a4bc5d5dbc9dbbd87f185c294cbb7668f49e14bf55845a3af25f89f5983f1983",
+    "report_sha256": "9aabdbf4e90ac8d0b62b192dc74debe7b418c0ae434d8c68dce8a017e2d58b23",
+    "finished_at": "2026-11-12T07:19:59.803240+00:00",
+    "cleanup_errors": []
+  },
+  {
+    "attempt": 7,
+    "verdict": "SMTP_RECOVERY_UNQUALIFIED",
+    "failure": "ISOLATED_OBSERVATION_TIMEOUT",
+    "passed_checks": 22,
+    "log_sha256": "2f2eb1f9c01eb086e67faa5530517c72ce84e5f5053cefcf0805a42d873986a8",
+    "report_sha256": "f731a13aaca98abcd29b246cf09142459c0f495c3f353403a8a3f284a6a88239",
+    "finished_at": "2026-11-12T07:23:02.635591+00:00",
+    "cleanup_errors": []
+  },
+  {
+    "attempt": 8,
+    "verdict": "POSTFIX_QUEUE_RESTORE_QUALIFIED",
+    "failure": null,
+    "passed_checks": 49,
+    "log_sha256": "3200e07fc216e98fd6f26a39899706eb79cf30affdc2168ff3e2d7f369baa260",
+    "report_sha256": "4b0a7a568af3def0ed1ebc81bac15c47b9800e865c2e2573c92513f53a7e625d",
+    "finished_at": "2026-11-12T07:24:40.015402+00:00",
+    "cleanup_errors": []
+  },
+  {
+    "attempt": 9,
+    "verdict": "POSTFIX_QUEUE_RESTORE_QUALIFIED",
+    "failure": null,
+    "passed_checks": 49,
+    "log_sha256": "f42343c48561fcc6577ceae83c12562416d83761a3bedac77753d8ccefd0f6e6",
+    "report_sha256": "82346c76f26152d58549f4f4800e6db7ea98eeb7b8f72a8f72fcff37eb4b6cd4",
+    "finished_at": "2026-11-12T07:33:42.931644+00:00",
+    "cleanup_errors": []
+  }
+]

@@ -1,0 +1,145 @@
+{
+  "at_utc": "2026-11-12T07:35:56.858156+00:00",
+  "target_volume": "pqr-fc78e3c123-stale-checkpoint",
+  "held_messages_before_after": [
+    "hold/BAA764EAA782",
+    "hold/C652E4EAA783"
+  ],
+  "complete_inventory_unchanged": true,
+  "refused_before_activation": true,
+  "checks": [
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-stale-checkpoint,target=/replacement",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/occupied-proof-0.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "be5b8fe531657e9892a944b35d1277302eb63d58254d198b0eebdddaaf5cc524",
+      "result": {
+        "ok": true,
+        "sha256": "a9b0b8e7c17444e6cd98b8a568a8bb898f82877b57edf8ba0809c13dd8a6ff9e",
+        "omitted": [
+          "private/anvil",
+          "private/bounce",
+          "private/defer",
+          "private/discard",
+          "private/error",
+          "private/lmtp",
+          "private/local",
+          "private/proxymap",
+          "private/proxywrite",
+          "private/relay",
+          "private/retry",
+          "private/rewrite",
+          "private/scache",
+          "private/smtp",
+          "private/tlsmgr",
+          "private/trace",
+          "private/verify",
+          "private/virtual",
+          "public/cleanup",
+          "public/flush",
+          "public/pickup",
+          "public/postlog",
+          "public/qmgr",
+          "public/showq"
+        ]
+      }
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-stale-checkpoint,target=/replacement",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/occupied-proof-1.json"
+      ],
+      "exit": 78,
+      "stdout_sha256": "33b49e61caa13847f5eae6f977336803358bdb040e0671a65923196fe90fd3fd",
+      "result": {
+        "ok": false,
+        "code": "TARGET_EXISTS"
+      }
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-stale-checkpoint,target=/replacement",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/occupied-proof-2.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "be5b8fe531657e9892a944b35d1277302eb63d58254d198b0eebdddaaf5cc524",
+      "result": {
+        "ok": true,
+        "sha256": "a9b0b8e7c17444e6cd98b8a568a8bb898f82877b57edf8ba0809c13dd8a6ff9e",
+        "omitted": [
+          "private/anvil",
+          "private/bounce",
+          "private/defer",
+          "private/discard",
+          "private/error",
+          "private/lmtp",
+          "private/local",
+          "private/proxymap",
+          "private/proxywrite",
+          "private/relay",
+          "private/retry",
+          "private/rewrite",
+          "private/scache",
+          "private/smtp",
+          "private/tlsmgr",
+          "private/trace",
+          "private/verify",
+          "private/virtual",
+          "public/cleanup",
+          "public/flush",
+          "public/pickup",
+          "public/postlog",
+          "public/qmgr",
+          "public/showq"
+        ]
+      }
+    }
+  ]
+}

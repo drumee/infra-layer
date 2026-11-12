@@ -1,0 +1,16 @@
+{
+  "source_operation": "read-only docker image save via existing SSH access",
+  "source_oci_manifest_digest": "sha256:c9d6b4d5a69d7c53272ff13a4b90679422d61428a6f868a0463e3bdcfbe58236",
+  "loaded_config_digest": "sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843",
+  "rootfs_diff_ids": [
+    "sha256:dd57f90311a2567b55ff22eeacff1602fd04ad7566e315957731359eab173b90",
+    "sha256:41f4c58f0a3a4cb5d3211cdf5a4f2dc047c9f93a8dae6801f1838f7706816164",
+    "sha256:b6265ae0ead7639f56443a34c88f0be8abe7904cf1316b521c0c8593db43b1bf"
+  ],
+  "archive_sha256": "10165c24d3fa461151cea68cd97e7251b43835f733c206e107cf7346eb0adc8a",
+  "labels": {
+    "org.opencontainers.image.revision": "09b7f28bce99ba3744e31a0ee5b2dde868a9a86a",
+    "org.opencontainers.image.source": "https://github.com/drumee/infra-layer"
+  },
+  "manifest_config_link_verified": true
+}

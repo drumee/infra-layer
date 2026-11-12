@@ -1,0 +1,55 @@
+{
+  "at_utc": "2026-11-12T07:34:19.352538+00:00",
+  "source_unchanged_after_cleanup": true,
+  "stale_messages_still_held": 2,
+  "checks": [
+    {
+      "scope": "source",
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/postflight-source.json"
+      ],
+      "exit": 0,
+      "inventory_sha256": "57e3cf9f629631a884699fa72030442ee7b45f8421f77c900cc0d6eb0f8c0254",
+      "held_files": null
+    },
+    {
+      "scope": "stale",
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/postfix-restore-6i77suwz,target=/work,readonly",
+        "--mount",
+        "type=bind,source=/tmp/postfix-queue-restore/test/queue-restore,target=/lab,readonly",
+        "--mount",
+        "type=volume,source=pqr-fc78e3c123-stale-checkpoint,target=/replacement,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/storage.py",
+        "/work/postflight-stale.json"
+      ],
+      "exit": 0,
+      "inventory_sha256": "a9b0b8e7c17444e6cd98b8a568a8bb898f82877b57edf8ba0809c13dd8a6ff9e",
+      "held_files": 2
+    }
+  ]
+}

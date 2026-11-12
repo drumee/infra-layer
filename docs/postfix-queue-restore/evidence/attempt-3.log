@@ -1,0 +1,12 @@
+PASS pqr-6c8ad0fbc8-kernel-internal
+PASS pqr-6c8ad0fbc8-kernel-mail-control-internal
+PASS no-published-ports
+PASS normal-starttls-auth-submission-accepted
+PASS all-three-deferred-after-receiver-451
+PASS independent-witness-no-durable-delivery-before-capture
+FAIL COMMAND_FAILED ['docker', 'exec', 'pqr-6c8ad0fbc8-mail-1'] postfix/postlog: stopping the Postfix mail system
+
+PASS pqr-6c8ad0fbc8-mail-1-stopped-before-removal
+PASS pqr-6c8ad0fbc8-dkim-1-stopped-before-removal
+PASS pqr-6c8ad0fbc8-receiver-1-stopped-before-removal
+REPORT /tmp/postfix-queue-artifacts/attempt-3.json
