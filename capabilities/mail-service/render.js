@@ -1,5 +1,5 @@
 "use strict";
-function render(spec, registry) {
+function render(spec) {
   const m = spec, q = m.outbound;
   const base = `compatibility_level = 3.6
 myhostname = ${m.hostname}
