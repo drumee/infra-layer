@@ -1,0 +1,123 @@
+{
+  "observed_at_utc": "2026-11-12T06:23:47.707851+00:00",
+  "method": "existing SSH read-only bounded projections",
+  "active_revision": "dfd68d908337c69ae0d23cfae6cdd35033e8b5212af2022de2ee5a1ff7f8bc5a",
+  "project": "oxy-form-oxymot",
+  "root": "/srv/oxy-form/deployment",
+  "plugin_source": "39f8dac04c3e986d0bd614265bff9a86b72bfb0a",
+  "mail": {
+    "mode": "relay",
+    "hostname": "forms.oxymot.fr",
+    "endpoint": {
+      "host": "mail",
+      "port": 2525,
+      "transport": "tcp"
+    },
+    "relay_endpoint": {
+      "host": "mail.drumee.com",
+      "port": 587,
+      "transport": "tcp"
+    },
+    "relay_tls": "required",
+    "submission_user": "forms",
+    "clients": [
+      "127.0.0.1/32"
+    ],
+    "queue_resource": "mail-queue"
+  },
+  "smtp_certificate_expires": "2027-02-07T07:54:12.000Z",
+  "ghost_mail_configured": false,
+  "containers": [
+    {
+      "name": "oxy-form-oxymot-application-1",
+      "image_name": "sha256:cacd8333accebb96ad8d08d206fc92852af5a1f0d986519dd38c023f9aa9333d",
+      "image_id": "sha256:cacd8333accebb96ad8d08d206fc92852af5a1f0d986519dd38c023f9aa9333d",
+      "running": true,
+      "health": "healthy",
+      "networks": [
+        "oxy-form-oxymot-application"
+      ],
+      "bindings": {
+        "3101/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "28971"
+          }
+        ]
+      }
+    },
+    {
+      "name": "oxy-form-oxymot-mail-1",
+      "image_name": "sha256:c9d6b4d5a69d7c53272ff13a4b90679422d61428a6f868a0463e3bdcfbe58236",
+      "image_id": "sha256:c9d6b4d5a69d7c53272ff13a4b90679422d61428a6f868a0463e3bdcfbe58236",
+      "running": true,
+      "health": "healthy",
+      "networks": [
+        "oxy-form-oxymot-application",
+        "oxy-form-oxymot-application-mail-control"
+      ],
+      "bindings": {}
+    },
+    {
+      "name": "oxy-form-oxymot-dkim-1",
+      "image_name": "sha256:c9d6b4d5a69d7c53272ff13a4b90679422d61428a6f868a0463e3bdcfbe58236",
+      "image_id": "sha256:c9d6b4d5a69d7c53272ff13a4b90679422d61428a6f868a0463e3bdcfbe58236",
+      "running": true,
+      "health": "healthy",
+      "networks": [
+        "oxy-form-oxymot-application-mail-control"
+      ],
+      "bindings": {}
+    },
+    {
+      "name": "oxymot-blog-ghost-1",
+      "image_name": "ghost:6.73.0-bookworm@sha256:3656324ad804308b9ef39571b15b41465cdee64f6a78d1807719b5ea379688fd",
+      "image_id": "sha256:3656324ad804308b9ef39571b15b41465cdee64f6a78d1807719b5ea379688fd",
+      "running": true,
+      "health": "healthy",
+      "networks": [
+        "oxymot-blog_backend",
+        "oxymot-blog_egress"
+      ],
+      "bindings": {
+        "2368/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "2368"
+          }
+        ]
+      }
+    },
+    {
+      "name": "oxymot-blog-db-1",
+      "image_name": "mysql:8.4.13@sha256:5cf1e1293ea42e077e6a22114e6773b9aae3bb8f9933a2acd5a9721518ff8f5b",
+      "image_id": "sha256:5cf1e1293ea42e077e6a22114e6773b9aae3bb8f9933a2acd5a9721518ff8f5b",
+      "running": true,
+      "health": "healthy",
+      "networks": [
+        "oxymot-blog_backend"
+      ],
+      "bindings": {}
+    }
+  ],
+  "native-reattestation.json": {
+    "at": "2026-11-09T21:41:39.286136+00:00",
+    "status": "PASS",
+    "active_revision": "dfd68d908337c69ae0d23cfae6cdd35033e8b5212af2022de2ee5a1ff7f8bc5a",
+    "configuration_unchanged": true,
+    "ledger_bytes_unchanged": true,
+    "key_bytes_unchanged": true,
+    "secret_generations_unchanged": true,
+    "queue_count": 0,
+    "messages_sent": 0
+  },
+  "postboot-auto-start.json": {
+    "at": "2026-11-09T21:39:54.406435+00:00"
+  },
+  "final-storage-routing-observation.json": {
+    "at": "2026-11-09T21:51:37.390015+00:00",
+    "messages_sent": 0
+  },
+  "queue_entry_count": 0,
+  "messages_sent_by_mail01": 0
+}

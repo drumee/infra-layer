@@ -1,0 +1,9 @@
+oxymot.fr.		3600	IN	MX	1 mx1.mail.ovh.net.
+oxymot.fr.		3600	IN	MX	5 mx2.mail.ovh.net.
+oxymot.fr.		3600	IN	MX	100 mx3.mail.ovh.net.
+oxymot.fr.		3600	IN	TXT	"1|www.oxymot.fr"
+oxymot.fr.		3600	IN	TXT	"v=spf1 include:mx.ovh.com -all"
+oxymot.fr.		60	IN	SOA	dns111.ovh.net. tech.ovh.net. 2093893148 86400 3600 3600000 60
+mail.oxymot.fr.		3600	IN	A	15.235.100.230
+mail.oxymot.fr.		3600	IN	AAAA	2607:5300:205:200::d222
+230.100.235.15.in-addr.arpa. 86400 IN	PTR	vps-c5f4cd75.vps.ovh.ca.

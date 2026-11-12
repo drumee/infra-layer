@@ -1,0 +1,31 @@
+{
+  "scope": "MAIL-01 isolated native hypotheses; not end-to-end Postfix qualification",
+  "network": "none",
+  "published_ports": [],
+  "versions": [
+    "dovecot-core=1:2.4.1+dfsg1-6+deb13u7",
+    "dovecot-imapd=1:2.4.1+dfsg1-6+deb13u7",
+    "dovecot-lmtpd=1:2.4.1+dfsg1-6+deb13u7",
+    "opendkim=2.11.0~beta2-9.1+b1",
+    "postfix=3.10.13-0+deb13u1"
+  ],
+  "checks": [
+    "argon2id-supported",
+    "dovecot-2.4-config-parses",
+    "lmtp-unix-socket-created",
+    "lmtp-unknown-recipient-rejected",
+    "lmtp-maildir-delivery",
+    "maildir-created-by-stable-identity",
+    "other-mailbox-empty",
+    "smtp-only-account-denied-imap",
+    "imaps-mailbox-login",
+    "imaps-message-visible",
+    "imap-foreign-path-denied",
+    "lmtp-quota-failure-temporary",
+    "smtp-account-authenticates-only-smtp-path",
+    "smtp-auth-returns-generation-identity",
+    "smtp-auth-observes-generation-after-explicit-reload",
+    "mailbox-without-submission-denied-smtp"
+  ],
+  "status": "PASS"
+}
