@@ -9,8 +9,8 @@ or passwords into this harness.
 
 ## 1. Establish immutable artifacts
 
-Use a normal operator account with access to the local Docker daemon, Node22,
-Python3, OpenSSL, curl, the exact local image payload and the pre-existing helper
+Use a normal operator account with access to the local Docker daemon, Node 22,
+Python 3, OpenSSL, curl, the exact local image payload and the pre-existing helper
 images. All work is in a new private directory; no host root installation.
 Check out this qualification branch/commit in a clean isolated worktree.
 
@@ -97,7 +97,7 @@ publishes no port and uses only `--internal` networks. Offline helpers use
 never argv/env. Do not enable debug logging or export populated authentication maps.
 
 The seven negative restoration cases are part of this command. They must return
-exit78 with the expected code **before activation**, and preserve the cold source
+exit 78 with the expected code **before activation**, and preserve the cold source
 and pre-existing target inventory. The receiver's durable `.eml`/event files are
 retained in the private witness directory; only synthetic IDs/digests/results are
 exported as evidence. No archive, TLS private key or message body is committed.
@@ -108,8 +108,8 @@ The complete campaign automates the following sequence, with observed preconditi
 
 1. Isolate the receiver from real recipients; set its private control file to
    `defer`. Submit three messages through normal SMTP EHLO/verified STARTTLS/AUTH/
-   MAIL/RCPT/DATA. Record each final submission250, queue ID, Message-ID and time.
-2. Wait for all three native `postqueue -j` entries to be **deferred with451**.
+   MAIL/RCPT/DATA. Record each final submission 250, queue ID, Message-ID and time.
+2. Wait for all three native `postqueue -j` entries to be **deferred with 451**.
    Independently require receiver durable acceptance count zero and at least
    one refusal event per synthetic message. Postfix submission acceptance alone
    is insufficient to establish non-delivery; the controlled witness supplies it.
@@ -124,7 +124,7 @@ The complete campaign automates the following sequence, with observed preconditi
 
    Detached exec avoids losing the control transport when the daemon PID1 exits.
    Do **not** treat exec launch success as shutdown proof. Wait for `Running=false`,
-   PID0, exit0, and no running container with any overlapping writable spool mount.
+   PID 0, exit 0, and no running container with any overlapping writable spool mount.
    There must also be no host submission tool, service manager, scheduled job,
    container restart or other host writer capable of changing this private spool.
    Record the maintenance/fencing owner. A live Docker daemon or a stopped process
@@ -206,7 +206,7 @@ source regardless of success; it is not restarted in parallel.
 
 The independent witness has a specific `uncertain` mode: durably write/fsync the
 complete message and acceptance event, then cut the TLS/SMTP connection **before
-the final250**. The campaign observes a durable receiver copy and a deferred
+the final 250**. The campaign observes a durable receiver copy and a deferred
 Postfix queue entry with lost end-of-DATA acknowledgement. It immediately holds
 that queue ID. This is not a451 rejection: the receiver has accepted responsibility
 but the sending MTA does not know it.

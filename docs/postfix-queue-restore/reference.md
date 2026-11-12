@@ -38,12 +38,12 @@ does not represent a producer version or Postfix binary substitution.
 `test/queue-restore/prepare.cjs` obtains the unmodified alpha.6 native renderer
 through the installed package and real `prepareDeployment`. It selects
 `profile:infrastructure`, Postfix + OpenDKIM, provided TLS, authenticated
-submission on2525, `mode:relay`, authenticated `[receiver]:2525`,
+submission on 2525, `mode:relay`, authenticated `[receiver]:2525`,
 `relay_tls:required` (native `smtp_tls_security_level=verify`), loopback-only trusted
 CIDR and persistent `mail-queue`. No TLS verification is disabled. Certificates
 have explicit CA key usage and server SAN/EKU; credentials are generated synthetic
 private files, never arguments. Signing is enabled with a generated fixture DKIM
-key. Queue expiry/backoff retain canonical 1day / 10–30seconds defaults.
+key. Queue expiry/backoff retain canonical 1 day / 10–30 seconds defaults.
 
 The test-only orchestration changes **only** resource placement and fixture
 transport topology: both networks are internal, the receiver is a synthetic TLS/
@@ -63,7 +63,7 @@ deployed canonical distribution or a generic lifecycle API recovery result.
 | `/var/spool/postfix/infra-data` | Persistent Postfix auxiliary state; owned by postfix after native initialization. Included, not regenerated independently of checkpoint. |
 | `/run/infra-mail`, `/tmp` | Disposable tmpfs. TLS leaf copy, runtime config, internal SASL DB and external SASL password map are reconstructed from protected references by the unchanged entrypoint. Do not archive/replay live tmpfs auth maps. |
 | Spool `private/*` / `public/*` Unix sockets | Runtime endpoints, not messages. The cold inventory records and excludes only socket nodes in these two directories; preserves the directories and their metadata. Native startup recreates sockets. Any other special node/hardlink/symlink or extended metadata refuses this limited procedure. |
-| Postfix identity | UID102/GID103 in the exact image; root bootstrap; postdrop is a **group**, not a user. Numeric group identity is recorded by the native probe in the result. DKIM fixture service UID/GID1000. No renumbering/chown-to-current-user of spool files. |
+| Postfix identity | UID 102/GID 103 in the exact image; root bootstrap; postdrop is a **group**, not a user. Numeric group identity is recorded by the native probe in the result. DKIM fixture service UID/GID 1000. No renumbering/chown-to-current-user of spool files. |
 | TLS/CA, SMTP submission/upstream credentials, DKIM key | Separate protected store/projections and provided cert references. Preserve exact generations, descriptor types/consumers, trusted CA chain, leaf/key/SAN/expiry and DKIM selector/public key. The spool archive alone cannot recover these dependencies. |
 | Oxy forms-state ledger + 32-byte HMAC key | Separate application resource; not in the spool. Never reset either to facilitate recovery. No actual application ledger is read or restored by this lot. |
 | Future Maildir/IMAP registry | Absent from alpha.6 relay. No local mailbox/LMTP/IMAP restoration is claimed. |
@@ -75,7 +75,7 @@ storage resources on the same qualification host. No physical disk failure,
 offsite retrieval, filesystem migration, encryption restore or replacement-host
 boot is claimed.
 
-Archives/receipts are mode0600 under a mode0700 owner directory; file contents
+Archives/receipts are mode 0600 under a mode 0700 owner directory; file contents
 and credential-bearing projections remain local. The independently retained
 receipt hash is the trust anchor; archive self-checksum alone is insufficient.
 In operations, encrypt message archives and credential backups under separately

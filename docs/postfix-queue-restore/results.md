@@ -3,7 +3,7 @@
 2026-11-12. **POSTFIX_QUEUE_RESTORE_QUALIFIED** for the cold-spool procedure and
 exact alpha.6 relay/image/configuration described in [reference](reference.md).
 Final campaign: `pqr-fc78e3c123`, **49 passing checks / 202 recorded commands**,
-exit0, no skipped case. [Full report](evidence/qualification.json),
+exit 0, no skipped case. [Full report](evidence/qualification.json),
 [execution log](evidence/qualification.log), [45-entry checkpoint manifest](evidence/cold-spool-manifest.json).
 
 Archive SHA256:
@@ -17,16 +17,16 @@ these exact synthetic artifacts, not any later production archive.
 
 | Case | Observed result |
 | --- | --- |
-| Immutable acquisition | Published alpha.6 archive SHA256/SRI and all44 member hashes equal the exact Debian consumer lock. Imported server image manifest/config/rootfs identities match. |
+| Immutable acquisition | Published alpha.6 archive SHA256/SRI and all 44 member hashes equal the exact Debian consumer lock. Imported server image manifest/config/rootfs identities match. |
 | Isolation | Two internal Docker networks, no published ports; offline storage/native checks use network none. No recipient route beyond the synthetic TLS/SASL witness. |
 | Normal submission | Three EHLO/verified STARTTLS/authenticated SMTP submissions receive250 and distinct queue IDs through unchanged canonical Postfix/OpenDKIM. |
-| Non-empty capture boundary | All three deferred after receiver451; independent receiver acceptance count zero. Source clean native stop, PID0, exit0, restart disabled, no running overlapping writable spool mount. |
+| Non-empty capture boundary | All three deferred after receiver 451; independent receiver acceptance count zero. Source clean native stop, PID 0, exit 0, restart disabled, no running overlapping writable spool mount. |
 | Complete cold archive | 45 persistent metadata/content entries; runtime socket nodes explicitly recorded and excluded. Full source inventory stable across capture. |
 | Replacement | New labeled Docker volume, distinct spool inode; UID/GID/modes/mtime_ns/file digests and marker exactly equal before maintenance; original bind-backed source intact. |
 | Offline/native validation | Every original queue file parsed with exact-image postcat before startup. Replacement placed on hold with no network; startup keeps all three held and performs expected native ID repair. |
 | Exclusivity/gate | Original source remains stopped; one replacement processes the queue. No durable receiver acceptance until explicit review/release. |
 | Primary restoration delivery | Three proven non-deliveries arrive once each during the primary resume phase; independent durable file proof and empty replacement queue. No loss or duplicate observed in that phase. |
-| Uncertain final acknowledgement | Receiver durably commits a fourth message then drops before250; Postfix defers it. A 45-second hold observation stops retries during review; explicit retry causes two identical durable copies and queue completion. |
+| Uncertain final acknowledgement | Receiver durably commits a fourth message then drops before 250; Postfix defers it. A 45-second hold observation stops retries during review; explicit retry causes two identical durable copies and queue completion. |
 | Old-checkpoint replay | Restore initial archive again after definite completion; starts held. Deliberate release of one completed message produces another copy. Two other stale entries remain held, preserved. |
 | Altered archive | Exit78 `ARCHIVE_INTEGRITY_FAILURE`, before extraction/activation; source and occupied replacement unchanged. |
 | Incomplete archive, recomputed outer checksum | Exit78 `ARCHIVE_COVERAGE_FAILURE`; demonstrates member completeness independently of the outer checksum. Source/target preserved. |
@@ -57,12 +57,12 @@ duplicates; the primary restoration assertion is explicitly phase-bounded.
 
 `<uncertain-1@fixture.invalid>` used queue ID `0456D4EAA747` on the live
 replacement. The two controlled receiver copies have identical complete-message
-SHA256 values, recorded in the full report. The first has no final250; the second
+SHA256 values, recorded in the full report. The first has no final 250; the second
 completes after explicit release. No exactly-once guarantee follows.
 
 Short queue IDs contain inode-dependent information and can change when a cold
 queue is restored. The failed first resume attempt exposed this: releasing old
-IDs released zero messages even with command exit0. The corrected procedure
+IDs released zero messages even with command exit 0. The corrected procedure
 keeps the queue held and builds a one-to-one current-ID map before release. This
 is documented [Postfix structure repair behavior](https://www.postfix.org/postsuper.1.html),
 not a reason to disable native repair or change alpha.6 to long IDs during the
@@ -75,13 +75,13 @@ count, cleanup outcome, timestamp and raw report/log hash. Sanitized original lo
 are retained alongside the final log. Attempts1–7 remain failures:
 
 1. The client inherited root with all capabilities dropped and could not read
-   an operator-owned0600 file. Run that fixture client as the matching UID1000;
+   an operator-owned 0600 file. Run that fixture client as the matching UID 1000;
    do not weaken file permissions.
-2. Python3.13 strict certificate verification refused a fixture CA without key
+2. Python 3.13 strict certificate verification refused a fixture CA without key
    usage. Generate proper CA/leaf extensions; do not relax verification.
 3. Synchronous Docker exec lost its transport when native shutdown exited PID1.
-   Use detached native stop and independently verify PID0/exit0/writer absence.
-4. Root-created archive/receipt0600 files were unreadable by the operator. Set
+   Use detached native stop and independently verify PID 0/exit 0/writer absence.
+4. Root-created archive/receipt 0600 files were unreadable by the operator. Set
    explicit operator numerical ownership on these new outputs, without changing
    source metadata.
 5. Offline native postsuper required SETUID/SETGID capabilities. Supply the bounded
