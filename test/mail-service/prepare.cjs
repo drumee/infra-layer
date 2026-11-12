@@ -5,6 +5,7 @@ const api = createRequire(process.env.MAIL02_CONSUMER + "/package.json")("@drume
 const i = JSON.parse(fs.readFileSync(process.argv[2])), spec = require("../../docs/mail-01/examples/service.valid.json");
 spec.deployment = { ...spec.deployment, root: i.root, backup_root: i.root + "-backups", id: i.project, project: i.project, owner_uid: process.getuid(), owner_gid: process.getgid(), images: Object.fromEntries(["postfix", "dovecot", "opendkim", "helper"].map(k => [k, "local/mail@" + (k === "helper" ? i.node_image : i.image)])) };
 spec.networks.edge_subnet = "10.243.47.0/24"; spec.networks.edge_gateway = "10.243.47.1"; spec.networks.private_submission.address = "10.243.47.1";
+spec.networks.private_submission.allowed_sources = ["10.243.47.0/25"];
 const registry = { contract: "drumee.mail-registry/1", generation: 1,
   mailboxes: [{ id: "11111111-1111-4111-8111-111111111111", address: "contact@oxymot.fr", quota_bytes: 1048576, receive_enabled: true, imap_enabled: true, submission_enabled: false }, { id: "22222222-2222-4222-8222-222222222222", address: "second@oxymot.fr", quota_bytes: 1048576, receive_enabled: true, imap_enabled: true, submission_enabled: false }],
   aliases: [{ address: "hello@oxymot.fr", mailbox_id: "11111111-1111-4111-8111-111111111111", receive_enabled: true }],

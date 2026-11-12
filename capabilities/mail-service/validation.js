@@ -57,7 +57,8 @@ function validateMailService(input) {
 function validateRegistry(registry, spec) {
   const keys = (value, allowed) => value && typeof value === "object" && !Object.keys(value).some(k => !allowed.includes(k));
   if (!registry || registry.contract !== "drumee.mail-registry/1" || !Number.isSafeInteger(registry.generation) || registry.generation < 1 || !Array.isArray(registry.mailboxes) || !Array.isArray(registry.aliases) || !Array.isArray(registry.accounts)) fail("MAIL_REGISTRY_INVALID");
-  if (!keys(registry, ["contract", "generation", "mailboxes", "aliases", "accounts", "domains"])) fail("MAIL_REGISTRY_INVALID");
+  if (!keys(registry, ["contract", "generation", "mailboxes", "aliases", "accounts", "domains", "service_hostname"])) fail("MAIL_REGISTRY_INVALID");
+  if (registry.service_hostname !== undefined && registry.service_hostname !== spec.hostname) fail("MAIL_REGISTRY_INVALID");
   const ids = new Set(), addresses = new Set(), accounts = new Set();
   const local = value => address(value) && spec.domains.includes(value.split("@")[1]);
   for (const b of registry.mailboxes) {

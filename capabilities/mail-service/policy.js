@@ -2,6 +2,46 @@
 // Bounded private native Postfix socketmap / access policy / before-queue Milter.
 // No passwords, message bodies, arbitrary commands or external network calls.
 const net = require("node:net"), fs = require("node:fs");
+// Parse CFWS and quoted strings before comparing an authentication service ID.
+// External Authentication-Results are retained as untrusted transit metadata.
+function withoutComments(value) {
+  const unfolded = value.replace(/\r?\n[ \t]+/g, " ");
+  if (/[\r\n\0]/.test(unfolded) || unfolded.length > 8192) return null;
+  let out = "", depth = 0, quoted = false, escaped = false;
+  for (const c of unfolded) {
+    if (escaped) { if (!depth) out += c; escaped = false; continue; }
+    if (c === "\\") { if (!depth) out += c; escaped = true; continue; }
+    if (!depth && c === '"') { quoted = !quoted; out += c; continue; }
+    if (!quoted && c === "(") { if (++depth > 8) return null; continue; }
+    if (!quoted && c === ")") { if (!depth) return null; if (!--depth) out += " "; continue; }
+    if (!depth) out += c;
+  }
+  return depth || quoted || escaped ? null : out.trim();
+}
+function authenticationService(value) {
+  const clean = withoutComments(value);
+  if (clean === null) return null;
+  const m = /^(?:"([a-z0-9.-]+)"|([a-z0-9.-]+))(?:\s+[0-9]+)?\s*;/i.exec(clean);
+  return m ? (m[1] || m[2]).toLowerCase().replace(/\.$/, "") : null;
+}
+function authorMailbox(value) {
+  const clean = withoutComments(value);
+  if (clean === null) return null;
+  let quoted = false, escaped = false, left = -1, right = -1;
+  for (let i = 0; i < clean.length; i++) {
+    const c = clean[i];
+    if (escaped) { escaped = false; continue; }
+    if (c === "\\" && quoted) { escaped = true; continue; }
+    if (c === '"') { quoted = !quoted; continue; }
+    if (quoted) continue;
+    if (c === "," || c === ":" || c === ";") return null;
+    if (c === "<") { if (left !== -1) return null; left = i; }
+    if (c === ">") { if (left === -1 || right !== -1) return null; right = i; }
+  }
+  if (quoted || escaped || (left === -1) !== (right === -1) || right !== -1 && clean.slice(right + 1).trim()) return null;
+  const address = (left === -1 ? clean : clean.slice(left + 1, right)).trim().toLowerCase();
+  return /^[a-z0-9][a-z0-9._-]{0,63}@[a-z0-9.-]+$/.test(address) && !address.includes("..") ? address : null;
+}
 function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0") {
   function registry() {
     if (fs.existsSync(directory + "/admission-closed")) throw Error("barrier");
@@ -62,7 +102,7 @@ function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0")
         const cmd = String.fromCharCode(buffer[4]), data = buffer.subarray(5, length + 4); buffer = buffer.subarray(length + 4);
         try {
           if (cmd === "D") { const fields = data.subarray(1).toString().split("\0"); for (let i = 0; i < fields.length - 1; i += 2) macros[fields[i]] = fields[i + 1]; continue; }
-          if (cmd === "O") { const opts = Buffer.alloc(12); opts.writeUInt32BE(6); reply("O", opts); continue; }
+          if (cmd === "O") { const opts = Buffer.alloc(12); opts.writeUInt32BE(6); if (!(data.readUInt32BE(4) & 0x10)) { socket.destroy(); continue; } opts.writeUInt32BE(0x10, 4); reply("O", opts); continue; }
           if (cmd === "Q") { socket.end(); continue; }
           if (cmd === "A") { envelope = ""; headers = []; headerSize = 0; continue; }
           if (cmd === "M") { envelope = data.toString().split("\0")[0].replace(/^<|>$/g, "").toLowerCase(); headers = []; headerSize = 0; const a = current(); if (!a) { reject("421 4.7.0 Credential generation revoked"); continue; } if (!envelope || !a.envelope.includes(envelope)) { reject("550 5.7.1 Envelope sender unauthorized"); continue; } }
@@ -70,8 +110,20 @@ function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0")
           if (["T", "N", "E"].includes(cmd) && !current()) { reject("421 4.7.0 Credential generation revoked"); continue; }
           if (cmd === "E") {
             const a = current(), from = headers.filter(x => x[0] === "from"), sender = headers.filter(x => x[0] === "sender");
-            const parse = value => { if (/[\r\n,]/.test(value)) return null; const m = /^(?:[^<>]*<([^<>]+)>|([^<>\s]+))$/.exec(value.trim()); return m ? (m[1] || m[2]).toLowerCase() : null; };
-            if (from.length !== 1 || !a.header.includes(parse(from[0][1])) || sender.length > 1 || sender.length && parse(sender[0][1]) !== parse(from[0][1]) || headers.some(x => x[0].startsWith("resent-"))) { reject("550 5.7.1 Author header unauthorized"); continue; }
+            if (from.length !== 1 || !a.header.includes(authorMailbox(from[0][1])) || sender.length > 1 || sender.length && authorMailbox(sender[0][1]) !== authorMailbox(from[0][1]) || headers.some(x => x[0].startsWith("resent-"))) { reject("550 5.7.1 Author header unauthorized"); continue; }
+            const identity = registry().service_hostname;
+            if (!identity) throw Error("missing service identity");
+            let ordinal = 0; const remove = [];
+            for (const [name, value] of headers) if (name === "authentication-results") {
+              ordinal++;
+              const asserted = authenticationService(value);
+              if (asserted === null) { reject("550 5.7.1 Malformed authentication result"); return; }
+              if (asserted === identity) remove.push(ordinal);
+            }
+            for (const index of remove.reverse()) {
+              const prefix = Buffer.alloc(4); prefix.writeUInt32BE(index);
+              reply("m", Buffer.concat([prefix, Buffer.from("Authentication-Results\0\0")]));
+            }
           }
           reply("c");
         } catch { reject("451 4.3.0 Submission policy unavailable"); }
@@ -81,4 +133,4 @@ function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0")
   const servers = [socketmap, access, milter]; servers.forEach((server, i) => server.listen(ports[i], host)); return servers;
 }
 if (require.main === module) startPolicy("/registry");
-module.exports = { startPolicy };
+module.exports = { startPolicy, authenticationService, authorMailbox };

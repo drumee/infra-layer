@@ -8,9 +8,12 @@ function planMailService(spec, resources = {}) {
   const normalized = checked.normalized;
   const registry = V.validateRegistry(resources.registry || { contract: "drumee.mail-registry/1", generation: 1, mailboxes: [], aliases: [], accounts: [] }, normalized);
   registry.domains = normalized.domains;
+  registry.service_hostname = normalized.hostname;
   if (resources.secret_sources !== undefined && (!Array.isArray(resources.secret_sources) || resources.secret_sources.some(x => !x || Object.keys(x).sort().join(",") !== "file,ref" || !/^secret:[a-z][a-z0-9-]*\/[a-z][a-z0-9-]*$/.test(x.ref) || typeof x.file !== "string" || !path.isAbsolute(x.file) || path.normalize(x.file) !== x.file) || new Set(resources.secret_sources.map(x => x.ref)).size !== resources.secret_sources.length)) V.fail("MAIL_SECRET_SOURCES_INVALID");
-  const body = { contract: "drumee.mail-plan/1", spec: normalized, registry, secret_sources: resources.secret_sources || [] };
-  return { ...body, revision: V.digest(body), applicable: true, diagnostics: [], artifacts: R.render(normalized, registry) };
+  const artifacts = R.render(normalized, registry);
+  const implementation = V.digest({ artifacts, policy: fs.readFileSync(__dirname + "/policy.js", "utf8") });
+  const body = { implementation, contract: "drumee.mail-plan/1", spec: normalized, registry, secret_sources: resources.secret_sources || [] };
+  return { ...body, revision: V.digest(body), applicable: true, diagnostics: [], artifacts };
 }
 function checkedPlan(plan) {
   if (!plan || !plan.applicable) V.fail("MAIL_PLAN_REQUIRED");
@@ -39,7 +42,7 @@ function composeMailService(plan, distribution = {}) {
   if (!distribution.acceptance) {
     const ports = { smtp25: [postfix, 25], submission587: [postfix, 587], submissions465: [postfix, 465], imaps993: [dovecot, 993] };
     for (const [name, [value, port]] of Object.entries(ports)) if (s.listeners[name].enabled) (value.ports ||= []).push({ target: port, published: port, host_ip: s.listeners[name].address });
-    (postfix.ports ||= []).push({ target: 587, published: s.networks.private_submission.port, host_ip: s.networks.private_submission.address });
+    (postfix.ports ||= []).push({ target: s.networks.private_submission.port, published: s.networks.private_submission.port, host_ip: s.networks.private_submission.address });
   }
   return { name: s.deployment.project, services: { postfix, dovecot, opendkim, policy }, networks: { edge: { name: s.deployment.project + "-edge", internal: distribution.acceptance === true, ipam: { config: [{ subnet: s.networks.edge_subnet, gateway: s.networks.edge_gateway }] }, labels: { "org.drumee.mail.owner": s.deployment.id } }, control: { name: s.deployment.project + "-control", internal: true, labels: { "org.drumee.mail.owner": s.deployment.id } } }, volumes: { sockets: { name: s.deployment.project + "-sockets", driver_opts: { type: "tmpfs", device: "tmpfs", o: "size=16777216,mode=0755" }, labels: { "org.drumee.mail.owner": s.deployment.id } } } };
 }
@@ -78,6 +81,23 @@ function prepareMailService(plan, context) {
   plan.spec.dkim.forEach((d, i) => { keys[`dkim-${i}.pem`] = secret(d.key_ref); });
   const crypto = require("node:crypto"), certificate = new crypto.X509Certificate(keys["certificate.pem"]);
   if (!certificate.checkHost(plan.spec.hostname) || Date.parse(certificate.validFrom) > Date.now() || Date.parse(certificate.validTo) <= Date.now() || !certificate.checkPrivateKey(crypto.createPrivateKey(keys["key.pem"]))) V.fail("MAIL_CERTIFICATE_INVALID");
+  const passwd = R.credentials(plan.registry, context.verifiers || {});
+  // A prepared candidate is immutable. Validate every supplied input before
+  // returning its seal; never rewrite live key material behind unchanged refs.
+  const sealFile = candidate + "/prepared.json";
+  if (fs.existsSync(sealFile)) {
+    const seal = JSON.parse(F.read(sealFile)); verifyPrepared(seal);
+    for (const [name, data] of Object.entries(keys)) {
+      const file = "keys/" + (name.startsWith("dkim-") ? "dkim/" : "tls/") + name;
+      if (seal.files[file] !== V.digest(data.toString())) V.fail("MAIL_SEALED_INPUT_CONFLICT");
+    }
+    if (V.digest(seal.private_files) !== V.digest(Object.fromEntries(Object.entries(passwd).map(([name, data]) => [name, V.digest(data)]))) || V.digest(seal.compose) !== V.digest(composeMailService(plan, { acceptance: context.acceptance === true }))) V.fail("MAIL_SEALED_INPUT_CONFLICT");
+    return seal;
+  }
+  for (const [name, content] of Object.entries(passwd)) {
+    const file = root + "/durable/registry/private/generation-" + plan.registry.generation + "/" + name;
+    if (fs.existsSync(file) && F.read(file).toString() !== content) V.fail("MAIL_REGISTRY_GENERATION_CONFLICT");
+  }
   // Native verification uses the same existing, root-owned OpenSSL boundary.
   for (const [name, data] of Object.entries(keys)) {
     if (name.startsWith("dkim-")) { const key = crypto.createPrivateKey(data); if (key.asymmetricKeyType !== "rsa" || key.asymmetricKeyDetails.modulusLength < 2048) V.fail("MAIL_DKIM_KEY_INVALID"); }
@@ -87,7 +107,6 @@ function prepareMailService(plan, context) {
   if (verified.status !== 0) V.fail("MAIL_CERTIFICATE_INVALID");
   for (const [name, content] of Object.entries(plan.artifacts)) F.atomic(candidate + "/config/" + name, content, 0o644);
   F.atomic(candidate + "/policy.js", fs.readFileSync(__dirname + "/policy.js"), 0o644);
-  const passwd = R.credentials(plan.registry, context.verifiers || {});
   for (const [name, content] of Object.entries(passwd)) {
     const file = root + "/durable/registry/private/generation-" + plan.registry.generation + "/" + name;
     if (fs.existsSync(file) && fs.readFileSync(file, "utf8") !== content) V.fail("MAIL_REGISTRY_GENERATION_CONFLICT");
@@ -109,7 +128,7 @@ function prepareMailService(plan, context) {
   files["policy.js"] = V.digest(fs.readFileSync(candidate + "/policy.js").toString());
   files["registry.json"] = V.digest(JSON.stringify(plan.registry));
   for (const name of Object.keys(keys)) { const file = "keys/" + (name.startsWith("dkim-") ? "dkim/" : "tls/") + name; files[file] = V.digest(fs.readFileSync(candidate + "/" + file).toString()); }
-  const prepared = { contract: "drumee.mail-prepared/1", revision: plan.revision, root, project: plan.spec.deployment.project, compose, compose_file: candidate + "/compose.json", certificate_fingerprint: certificate.fingerprint256, private_files: Object.fromEntries(Object.entries(passwd).map(([name, content]) => [name, V.digest(content)])), registry_generation: plan.registry.generation, transport_digest: V.digest(plan.spec), files };
+  const prepared = { contract: "drumee.mail-prepared/1", revision: plan.revision, root, project: plan.spec.deployment.project, compose, compose_file: candidate + "/compose.json", certificate_fingerprint: certificate.fingerprint256, storage: Object.fromEntries(["spool", "mailboxes", "registry", "registry/private", "registry/public", "operator-state"].map(name => { const stat = fs.lstatSync(root + "/durable/" + name); return [name, { dev: stat.dev, ino: stat.ino }]; })), private_files: Object.fromEntries(Object.entries(passwd).map(([name, content]) => [name, V.digest(content)])), registry_generation: plan.registry.generation, transport_digest: V.digest(plan.spec), files };
   F.atomic(prepared.compose_file, JSON.stringify(compose, null, 2));
   const publicRegistry = root + "/durable/registry/public";
   if (!fs.existsSync(publicRegistry + "/current.json")) F.atomic(publicRegistry + "/current.json", JSON.stringify(plan.registry));
@@ -118,10 +137,15 @@ function prepareMailService(plan, context) {
   return prepared;
 }
 function verifyPrepared(prepared) {
+  if (!prepared || prepared.contract !== "drumee.mail-prepared/1" || typeof prepared.root !== "string" || prepared.compose_file !== prepared.root + "/candidates/" + prepared.revision + "/compose.json") V.fail("MAIL_PREPARED_TAMPERED");
   const directory = path.dirname(prepared.compose_file), stored = JSON.parse(F.read(directory + "/prepared.json"));
+  if (V.digest(JSON.parse(F.read(prepared.compose_file))) !== V.digest(prepared.compose)) V.fail("MAIL_PREPARED_TAMPERED");
   if (V.digest(stored) !== V.digest(prepared)) V.fail("MAIL_PREPARED_TAMPERED");
   for (const [file, digest] of Object.entries(prepared.private_files)) if (V.digest(F.read(prepared.root + "/durable/registry/private/generation-" + prepared.registry_generation + "/" + file).toString()) !== digest) V.fail("MAIL_PREPARED_TAMPERED");
-  for (const [file, digest] of Object.entries(prepared.files)) if (V.digest(F.read(directory + "/" + file, false).toString()) !== digest) V.fail("MAIL_PREPARED_TAMPERED");
+  for (const [file, digest] of Object.entries(prepared.files)) {
+    const full = directory + "/" + file, stat = fs.lstatSync(full), secret = file.startsWith("keys/");
+    if (stat.mode & (secret ? 0o077 : 0o022) || V.digest(F.read(full, secret).toString()) !== digest) V.fail("MAIL_PREPARED_TAMPERED");
+  }
 }
 function activateMailRegistry(prepared, context) {
   if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
@@ -164,7 +188,7 @@ function activateMailRegistry(prepared, context) {
         const successor = next.mailboxes.find(x => x.id === box.id);
         const oldVerifier = oldPasswd.find(x => x.startsWith(box.address + ":"));
         const newVerifier = newPasswd.find(x => x.startsWith(box.address + ":"));
-        if (!successor || !successor.imap_enabled || successor.address !== box.address || oldVerifier !== newVerifier) docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "kick", box.address]);
+        if (!successor || !successor.imap_enabled || successor.address !== box.address || successor.quota_bytes !== box.quota_bytes || oldVerifier !== newVerifier) docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "kick", box.address]);
       }
       F.atomic(pub + "/current.json", JSON.stringify(next));
       F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, phase: "applied" }));
@@ -174,19 +198,68 @@ function activateMailRegistry(prepared, context) {
     } catch { V.fail("MAIL_APPLY_INCOMPLETE"); }
   });
 }
+function verifyStorage(prepared) {
+  const owner = JSON.parse(F.read(prepared.root + "/owner.json"));
+  if (owner.project !== prepared.project || owner.uid !== process.getuid()) V.fail("MAIL_RESOURCE_IDENTITY_MISMATCH");
+  for (const [name, identity] of Object.entries(prepared.storage)) {
+    const file = prepared.root + "/durable/" + name;
+    F.directory(file);
+    const stat = fs.lstatSync(file);
+    if (stat.dev !== identity.dev || stat.ino !== identity.ino || stat.mode & 0o022) V.fail("MAIL_STORAGE_GUARD_FAILED");
+  }
+  for (const [name, resource] of [["spool", "mail-queue"], ["mailboxes", "mailboxes"]]) {
+    const file = prepared.root + "/durable/" + name + "/.infra-owner", stat = fs.lstatSync(file);
+    if (!stat.isFile() || stat.isSymbolicLink() || stat.nlink !== 1 || ![0, owner.uid].includes(stat.uid) || stat.mode & 0o022 || fs.readFileSync(file, "utf8") !== JSON.stringify({ owner: owner.id, resource })) V.fail("MAIL_STORAGE_GUARD_FAILED");
+  }
+  const privateRoot = prepared.root + "/durable/registry/private";
+  const pointer = fs.lstatSync(privateRoot + "/current");
+  if (!pointer.isSymbolicLink() || pointer.uid !== owner.uid || !/^generation-[1-9][0-9]*$/.test(fs.readlinkSync(privateRoot + "/current"))) V.fail("MAIL_SECRET_PROJECTION_MISMATCH");
+  F.privateDirectory(privateRoot + "/" + fs.readlinkSync(privateRoot + "/current"));
+  for (const file of Object.keys(prepared.private_files)) F.read(privateRoot + "/" + fs.readlinkSync(privateRoot + "/current") + "/" + file);
+  return owner;
+}
+function verifyRuntimeRole(prepared, role, actual) {
+  const expected = prepared.compose.services[role], owner = JSON.parse(F.read(prepared.root + "/owner.json"));
+  if (!expected || actual.Config.Labels["org.drumee.mail.owner"] !== owner.id || actual.Config.Labels["org.drumee.mail.revision"] !== prepared.revision || actual.Config.Labels["org.drumee.mail.role"] !== role) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
+  if (actual.Image !== expected.image) V.fail("MAIL_RUNTIME_IMAGE_MISMATCH");
+  const equal = (a, b) => V.digest(a) === V.digest(b), sorted = a => [...(a || [])].sort();
+  if (!equal(actual.Config.Entrypoint, expected.entrypoint) || !equal(actual.Config.Cmd || [], expected.command || []) || actual.Config.User !== (expected.user || "") || !actual.HostConfig.ReadonlyRootfs || actual.HostConfig.Privileged || actual.HostConfig.PidMode || actual.HostConfig.Devices?.length || actual.HostConfig.DeviceRequests?.length) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
+  const caps = a => sorted((a || []).map(x => x.replace(/^CAP_/, "").toUpperCase()));
+  if (!equal(caps(actual.HostConfig.CapDrop), caps(expected.cap_drop)) || !equal(caps(actual.HostConfig.CapAdd), caps(expected.cap_add)) || !equal(sorted(actual.HostConfig.SecurityOpt), sorted(expected.security_opt))) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
+  const networks = Object.keys(actual.NetworkSettings.Networks).sort(), expectedNetworks = expected.networks.map(name => prepared.compose.networks[name].name).sort();
+  if (!equal(networks, expectedNetworks)) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
+  const ports = {};
+  for (const p of expected.ports || []) (ports[p.target + "/tcp"] ||= []).push({ HostIp: p.host_ip, HostPort: String(p.published) });
+  if (!equal(actual.HostConfig.PortBindings || {}, ports)) V.fail("MAIL_RUNTIME_LISTENER_MISMATCH");
+  const mounts = expected.volumes.map(v => typeof v === "string" ? { type: "volume", name: prepared.compose.volumes[v.split(":")[0]].name, target: v.split(":")[1], rw: true } : { type: "bind", source: v.source, target: v.target, rw: !v.read_only });
+  if (mounts.length !== actual.Mounts.length || mounts.some(e => !actual.Mounts.some(a => a.Type === e.type && a.Destination === e.target && a.RW === e.rw && (e.type === "bind" ? a.Source === e.source && a.Propagation === "rprivate" : a.Name === e.name)))) V.fail("MAIL_RUNTIME_MOUNT_MISMATCH");
+  if (!equal(actual.HostConfig.Tmpfs, Object.fromEntries(expected.tmpfs.map(x => { const i = x.indexOf(":"); return [x.slice(0, i), x.slice(i + 1)]; })))) V.fail("MAIL_RUNTIME_MOUNT_MISMATCH");
+}
+function verifyRuntime(prepared) {
+  const owner = verifyStorage(prepared);
+  for (const network of Object.values(prepared.compose.networks)) {
+    const found = docker(["network", "ls", "-q", "--filter", "name=^" + network.name + "$"]).trim();
+    if (!found) continue;
+    const actual = JSON.parse(docker(["network", "inspect", found]))[0];
+    if (actual.Name !== network.name || actual.Driver !== "bridge" || actual.Internal !== network.internal || actual.Labels?.["org.drumee.mail.owner"] !== owner.id || actual.EnableIPv6 || network.ipam && V.digest(actual.IPAM.Config) !== V.digest(network.ipam.config.map(x => ({ Subnet: x.subnet, Gateway: x.gateway })))) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
+  }
+  for (const volume of Object.values(prepared.compose.volumes)) {
+    const found = docker(["volume", "ls", "-q", "--filter", "name=^" + volume.name + "$"]).trim();
+    if (!found) continue;
+    const actual = JSON.parse(docker(["volume", "inspect", found]))[0];
+    if (actual.Name !== volume.name || actual.Labels?.["org.drumee.mail.owner"] !== owner.id || actual.Driver !== "local" || V.digest(actual.Options) !== V.digest(volume.driver_opts)) V.fail("MAIL_RUNTIME_STORAGE_MISMATCH");
+  }
+  const ids = docker(["ps", "-aq", "--filter", "label=com.docker.compose.project=" + prepared.project]).trim().split("\n").filter(Boolean), roles = new Set();
+  for (const id of ids) {
+    const current = JSON.parse(docker(["inspect", id]))[0], role = current.Config.Labels["com.docker.compose.service"];
+    if (roles.has(role)) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH"); roles.add(role);
+    verifyRuntimeRole(prepared, role, current);
+  }
+}
 function operateMailService(prepared, operation, context) {
   if (context?.authorized !== true || !["start", "stop", "restart", "status"].includes(operation)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared);
-  const ids = docker(["ps", "-aq", "--filter", "label=com.docker.compose.project=" + prepared.project]).trim().split("\n").filter(Boolean);
-  for (const id of ids) {
-    const current = JSON.parse(docker(["inspect", id]))[0], role = current.Config.Labels["com.docker.compose.service"];
-    if (!Object.hasOwn(prepared.compose.services, role) || current.Config.Labels["org.drumee.mail.owner"] !== JSON.parse(F.read(prepared.root + "/owner.json")).id) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
-    if (current.State.Running) {
-      const actual = Object.keys(current.NetworkSettings.Networks).sort();
-      const expected = prepared.compose.services[role].networks.map(name => prepared.compose.networks[name].name).sort();
-      if (V.digest(actual) !== V.digest(expected)) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
-    }
-  }
+  verifyRuntime(prepared);
   if (operation !== "status" && context.acceptance !== true) V.fail("MAIL_TARGET_QUALIFICATION_REQUIRED");
   // Full generation barriers/session coordination is deliberately not claimed by
   // this initial activation primitive. Never clear an incomplete security barrier.

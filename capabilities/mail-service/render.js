@@ -58,18 +58,19 @@ maillog_file_prefixes = /dev
 biff = no
 append_dot_mydomain = no
 `;
-  const submission = wrapper => `${wrapper ? "465" : "587"} inet n - n - - smtpd
+  const submission = (wrapper, privateListener = false) => `${privateListener ? m.networks.private_submission.port : wrapper ? "465" : "587"} inet n - n - - smtpd
  -o smtpd_tls_security_level=encrypt
  -o smtpd_tls_wrappermode=${wrapper ? "yes" : "no"}
  -o smtpd_sasl_auth_enable=yes
  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
- -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+ -o smtpd_client_restrictions=${privateListener ? "check_client_access,cidr:/config/private-sources" : "permit_sasl_authenticated,reject"}
+${privateListener ? " -o smtpd_delay_reject=no\n" : ""}
  -o smtpd_sender_restrictions=reject_authenticated_sender_login_mismatch
  -o smtpd_milters=inet:policy:10003,inet:opendkim:8891
  -o milter_macro_daemon_name=ORIGINATING
 `;
   const master = `25 inet n - n - - smtpd
-${submission(false)}${submission(true)}pickup unix n - n 60 1 pickup
+${submission(false)}${submission(true)}${submission(false, true)}pickup unix n - n 60 1 pickup
 cleanup unix n - n - 0 cleanup
 qmgr unix n - n 300 1 qmgr
 tlsmgr unix - - n 1000? 1 tlsmgr
@@ -188,7 +189,7 @@ chmod 755 /config
 postfix -c /config check
 exec postfix -c /config start-fg
 `;
-  return { "main.cf": base, "master.cf": master, "dovecot.conf": dovecot, "opendkim.conf": opendkim, "key-table": keytable, "signing-table": signing, "tls-policy": q.require_verify_domains.map(d => `${d} verify`).join("\n") + "\n", "postfix-entrypoint.sh": entrypoint, "dovecot-entrypoint.sh": `#!/bin/sh
+  return { "main.cf": base, "master.cf": master, "dovecot.conf": dovecot, "opendkim.conf": opendkim, "key-table": keytable, "signing-table": signing, "private-sources": m.networks.private_submission.allowed_sources.map(cidr => `${cidr} OK`).join("\n") + "\n0.0.0.0/0 REJECT Private submission source forbidden\n", "tls-policy": q.require_verify_domains.map(d => `${d} verify`).join("\n") + "\n", "postfix-entrypoint.sh": entrypoint, "dovecot-entrypoint.sh": `#!/bin/sh
 set -eu
 test -f /mailboxes/.infra-owner || exit 78
 test "$(cat /mailboxes/.infra-owner)" = '${JSON.stringify({ owner: m.deployment.id, resource: "mailboxes" })}' || exit 78

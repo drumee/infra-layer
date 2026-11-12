@@ -22,3 +22,14 @@ test("Mail plan defaults, isolated composition, tamper and registry guards", () 
   assert.throws(() => api.composeMailService(corrupt), { code: "MAIL_PLAN_TAMPERED" });
   assert.throws(() => api.planMailService(example, { registry: { contract: "drumee.mail-registry/1", generation: 0, mailboxes: [], aliases: [], accounts: [] } }), { code: "MAIL_REGISTRY_INVALID" });
 });
+test("Originating author parser and Authentication-Results identity boundaries", () => {
+  const { authenticationService, authorMailbox } = require("../../capabilities/mail-service/policy");
+  assert.equal(authenticationService('(comment) "MAIL.OXYMOT.FR." 1\r\n\t; spf=pass'), "mail.oxymot.fr");
+  assert.equal(authenticationService('upstream.invalid; reason="mail.oxymot.fr"'), "upstream.invalid");
+  assert.equal(authenticationService('mail.oxymot.fr.invalid; spf=pass'), "mail.oxymot.fr.invalid");
+  assert.equal(authenticationService('mail.oxymot.fr\r\nX-Injected: bad'), null);
+  assert.equal(authorMailbox('"Contact, team" (support) <contact@oxymot.fr>'), "contact@oxymot.fr");
+  assert.equal(authorMailbox('contact@oxymot.fr,second@oxymot.fr'), null);
+  assert.equal(authorMailbox('group:contact@oxymot.fr;'), null);
+  assert.equal(authorMailbox('"ignored <address>" <contact@oxymot.fr>'), "contact@oxymot.fr");
+});

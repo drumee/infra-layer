@@ -1,7 +1,7 @@
 export interface Mailbox { id: string; address: string; quota_bytes: number; receive_enabled: boolean; imap_enabled: boolean; submission_enabled: boolean }
 export interface Alias { address: string; mailbox_id: string; receive_enabled: boolean }
 export interface Account { id: string; enabled: boolean; credential_generation: number; envelope_from: string[]; header_from: string[] }
-export interface Registry { contract: 'drumee.mail-registry/1'; generation: number; mailboxes: Mailbox[]; aliases: Alias[]; accounts: Account[]; domains?: string[] }
+export interface Registry { contract: 'drumee.mail-registry/1'; generation: number; mailboxes: Mailbox[]; aliases: Alias[]; accounts: Account[]; domains?: string[]; service_hostname?: string }
 export interface MailServiceSpec {
   contract: 'drumee.mail-service/1';
   deployment: { id: string; project: string; root: string; backup_root: string; owner_uid: number; owner_gid: number; images: Record<'postfix'|'dovecot'|'opendkim'|'helper', string> };
@@ -15,8 +15,8 @@ export interface MailServiceSpec {
   registry: { schema: 'drumee.mail-registry/1'; bootstrap: 'empty' };
 }
 export interface Diagnostic { code: string; path: string; severity: 'error'|'warning' }
-export interface MailPlan { contract: 'drumee.mail-plan/1'; applicable: true; revision: string; spec: MailServiceSpec; registry: Registry; secret_sources: { ref: string; file: string }[]; artifacts: Record<string,string>; diagnostics: Diagnostic[] }
-export interface PreparedMail { contract: 'drumee.mail-prepared/1'; root: string; project: string; revision: string; compose: object; compose_file: string; certificate_fingerprint: string; registry_generation: number; transport_digest: string; files: Record<string,string>; private_files: Record<string,string> }
+export interface MailPlan { contract: 'drumee.mail-plan/1'; implementation: string; applicable: true; revision: string; spec: MailServiceSpec; registry: Registry; secret_sources: { ref: string; file: string }[]; artifacts: Record<string,string>; diagnostics: Diagnostic[] }
+export interface PreparedMail { contract: 'drumee.mail-prepared/1'; root: string; project: string; revision: string; compose: object; compose_file: string; certificate_fingerprint: string; registry_generation: number; transport_digest: string; files: Record<string,string>; private_files: Record<string,string>; storage: Record<string,{dev:number;ino:number}> }
 export function validateMailService(spec: unknown): { valid: boolean; normalized?: MailServiceSpec; diagnostics: Diagnostic[] };
 export function validateRegistry(registry: unknown, spec: MailServiceSpec): Registry;
 export function planMailService(spec: MailServiceSpec, resources?: { registry?: Registry; secret_sources?: { ref: string; file: string }[] }): MailPlan | { applicable: false; diagnostics: Diagnostic[] };

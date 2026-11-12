@@ -105,6 +105,18 @@ try:
     check('other-mailbox-isolated',not client('imap','second@oxymot.fr','inbound-primary')['matches'])
     for name in client('checks')['checks']:check(name,True)
     for name in client('tls-checks')['checks']:check(name,True)
+    r=d('run','--rm','--network',project+'-edge','--user','1000:1000','--mount',f'type=bind,source={HERE},target=/lab,readonly','--mount',f'type=bind,source={keys},target=/keys,readonly','--entrypoint','python3',CLIENT_IMAGE,'/lab/header-probe.py')
+    correlation=json.loads(r.stdout)['correlation'];wait(lambda:any(correlation.encode() in p.read_bytes() for p in (base/'witness').glob('message-*.eml')))
+    header=run(['python3',str(HERE/'header-check.py'),str(base)])
+    check('local-authentication-results-removed-external-results-preserved',json.loads(header.stdout)['status'].startswith('PASS'))
+    message=next(p for p in (base/'witness').glob('message-*.eml') if correlation.encode() in p.read_bytes())
+    check('native-dkim-verifies-after-duplicate-folded-header-removal',d('run','--rm','-i','--network',project+'-edge','--dns','10.243.47.53','--entrypoint','opendkim-testmsg',IMAGE,input=message.read_bytes(),ok=False).returncode==0)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+        pending=pool.submit(client,'policy-eom');wait(lambda:(base/'control/policy-data-ready').exists())
+        count=len(list((base/'witness').glob('message-*.eml')))
+        d('compose','-p',project,'-f',str(file),'stop','policy');write(base/'control/policy-data-release','go')
+        check('header-policy-unavailable-before-final-250',400<=pending.result()['temporary_code']<500 and len(list((base/'witness').glob('message-*.eml')))==count and not queue())
+        d('compose','-p',project,'-f',str(file),'start','policy')
     # Neither registry failure nor policy failure is allowed to become a permit.
     public=base/'service/durable/registry/public/current.json'
     original=public.read_bytes();public.rename(public.with_suffix('.saved'))

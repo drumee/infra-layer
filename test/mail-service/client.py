@@ -176,3 +176,16 @@ elif action == 'rotation-sessions':
     with IMAP('dovecot',993,ssl_context=ctx,timeout=8) as s:
         s.login('contact@oxymot.fr',cfg['contact']);assert s.select('INBOX')[0]=='OK';results.append('rotated-imap-password-retains-mailbox')
     print(json.dumps({'checks':results}))
+elif action == 'policy-eom':
+    with connect() as s:
+        assert s.mail('contact@oxymot.fr')[0]==250
+        assert s.rcpt('sink@dest.invalid')[0]==250
+        assert s.docmd('DATA')[0]==354
+        s.send(b'From: contact@oxymot.fr\r\nAuthentication-Results: mail.oxymot.fr; spf=pass\r\n\r\nsynthetic EOM refusal\r\n')
+        pathlib.Path('/control/policy-data-ready').write_text('ready')
+        for _ in range(600):
+            if pathlib.Path('/control/policy-data-release').exists():break
+            time.sleep(.1)
+        else:raise TimeoutError('policy fault coordination')
+        s.send(b'.\r\n');code,_=s.getreply();assert 400<=code<500
+    print(json.dumps({'temporary_code':code}))
