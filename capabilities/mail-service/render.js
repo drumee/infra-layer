@@ -190,12 +190,12 @@ mkdir -p /config
 cp -a /source/. /config/
 chown root:root /config /config/*
 chmod 755 /config
+if nft list table inet drumee_mail_private >/dev/null 2>&1; then exit 78; fi
 nft -f /source/private-input.nft
 postfix -c /config check
 exec setpriv --bounding-set=-net_admin --inh-caps=-net_admin --ambient-caps=-net_admin postfix -c /config start-fg
 `;
-  const privateInput = `destroy table inet drumee_mail_private
-table inet drumee_mail_private {
+  const privateInput = `table inet drumee_mail_private {
  chain input {
   type filter hook input priority -10; policy accept;
   tcp dport ${m.networks.private_submission.port} ip saddr { ${m.networks.private_submission.allowed_sources.join(", ")} } accept
