@@ -8,7 +8,7 @@ try:
  else:
   s.ehlo();assert 'auth' not in s.esmtp_features
   ctx=ssl.create_default_context(cafile='/keys/ca.pem');s._host='mail.oxymot.fr';s.starttls(context=ctx);s.ehlo();assert s.mail('contact@oxymot.fr')[0]==530;
-  try:s.login('ghost',cfg['ghost']+'-wrong');raise AssertionError('bad password accepted')
+  try:s.auth('PLAIN',lambda challenge=None:'\0ghost\0'+cfg['ghost']+'-wrong');raise AssertionError('bad password accepted')
   except smtplib.SMTPAuthenticationError as e:assert e.smtp_code==535
   s.login('oxymotion',cfg['oxymotion']);assert s.mail('second@oxymot.fr')[0]==250;s.rset();s.quit();result.update(status='PASS',tls_verified=True,authentication_required=True,bad_password_code=535,account='oxymotion')
 except (smtplib.SMTPConnectError,smtplib.SMTPServerDisconnected,socket.timeout,ConnectionError,OSError) as e:

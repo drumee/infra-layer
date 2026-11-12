@@ -198,12 +198,13 @@ exec setpriv --bounding-set=-net_admin,-setpcap --inh-caps=-net_admin --ambient-
   const privateInput = `table inet drumee_mail_private {
  chain input {
   type filter hook input priority -10; policy accept;
+  tcp dport ${m.networks.private_submission.port} ip saddr ${m.networks.edge_gateway} counter drop
   tcp dport ${m.networks.private_submission.port} ip saddr { ${m.networks.private_submission.allowed_sources.join(", ")} } counter accept
   tcp dport ${m.networks.private_submission.port} counter drop
  }
 }
 `;
-  return { "private-input.nft": privateInput, "main.cf": base, "master.cf": master, "dovecot.conf": dovecot, "opendkim.conf": opendkim, "key-table": keytable, "signing-table": signing, "private-sources": m.networks.private_submission.allowed_sources.map(cidr => `${cidr} OK`).join("\n") + "\n0.0.0.0/0 REJECT Private submission source forbidden\n", "tls-policy": q.require_verify_domains.map(d => `${d} verify`).join("\n") + "\n", "postfix-entrypoint.sh": entrypoint, "dovecot-entrypoint.sh": `#!/bin/sh
+  return { "private-input.nft": privateInput, "main.cf": base, "master.cf": master, "dovecot.conf": dovecot, "opendkim.conf": opendkim, "key-table": keytable, "signing-table": signing, "private-sources": `${m.networks.edge_gateway} REJECT Source identity hidden by gateway\n` + m.networks.private_submission.allowed_sources.map(cidr => `${cidr} OK`).join("\n") + "\n0.0.0.0/0 REJECT Private submission source forbidden\n", "tls-policy": q.require_verify_domains.map(d => `${d} verify`).join("\n") + "\n", "postfix-entrypoint.sh": entrypoint, "dovecot-entrypoint.sh": `#!/bin/sh
 set -eu
 test -f /mailboxes/.infra-owner || exit 78
 test "$(cat /mailboxes/.infra-owner)" = '${JSON.stringify({ owner: m.deployment.id, resource: "mailboxes" })}' || exit 78
