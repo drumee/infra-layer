@@ -25,6 +25,8 @@ test("Mail plan defaults, isolated composition, tamper and registry guards", () 
 test("Originating author parser and Authentication-Results identity boundaries", () => {
   const { authenticationService, authorMailbox } = require("../../capabilities/mail-service/policy");
   assert.equal(authenticationService('(comment) "MAIL.OXYMOT.FR." 1\r\n\t; spf=pass'), "mail.oxymot.fr");
+  assert.equal(authenticationService('"mail\\.oxymot.fr"; spf=pass'), "mail.oxymot.fr");
+  assert.equal(authenticationService('"external relay"; spf=pass'), "external relay");
   assert.equal(authenticationService('upstream.invalid; reason="mail.oxymot.fr"'), "upstream.invalid");
   assert.equal(authenticationService('mail.oxymot.fr.invalid; spf=pass'), "mail.oxymot.fr.invalid");
   assert.equal(authenticationService('mail.oxymot.fr\r\nX-Injected: bad'), null);

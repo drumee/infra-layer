@@ -18,11 +18,25 @@ function withoutComments(value) {
   }
   return depth || quoted || escaped ? null : out.trim();
 }
-function authenticationService(value) {
-  const clean = withoutComments(value);
+function authenticationService(headerValue) {
+  const clean = withoutComments(headerValue);
   if (clean === null) return null;
-  const m = /^(?:"([a-z0-9.-]+)"|([a-z0-9.-]+))(?:\s+[0-9]+)?\s*;/i.exec(clean);
-  return m ? (m[1] || m[2]).toLowerCase().replace(/\.$/, "") : null;
+  let value = "", position = 0;
+  if (clean[0] === '"') {
+    position = 1; let closed = false;
+    while (position < clean.length) {
+      let c = clean[position++];
+      if (c === '"') { closed = true; break; }
+      if (c === "\\") { if (position === clean.length) return null; c = clean[position++]; }
+      value += c;
+    }
+    if (!closed) return null;
+  } else {
+    while (position < clean.length && !/[\s;]/.test(clean[position])) value += clean[position++];
+    if (!/^[!#$%&'*+\-.^_`|~a-z0-9]+$/i.test(value)) return null;
+  }
+  if (!value || !/^(?:\s+[0-9]+)?\s*;/.test(clean.slice(position))) return null;
+  return value.toLowerCase().replace(/\.$/, "");
 }
 function authorMailbox(value) {
   const clean = withoutComments(value);

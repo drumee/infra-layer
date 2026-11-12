@@ -11,7 +11,7 @@ function planMailService(spec, resources = {}) {
   registry.service_hostname = normalized.hostname;
   if (resources.secret_sources !== undefined && (!Array.isArray(resources.secret_sources) || resources.secret_sources.some(x => !x || Object.keys(x).sort().join(",") !== "file,ref" || !/^secret:[a-z][a-z0-9-]*\/[a-z][a-z0-9-]*$/.test(x.ref) || typeof x.file !== "string" || !path.isAbsolute(x.file) || path.normalize(x.file) !== x.file) || new Set(resources.secret_sources.map(x => x.ref)).size !== resources.secret_sources.length)) V.fail("MAIL_SECRET_SOURCES_INVALID");
   const artifacts = R.render(normalized, registry);
-  const implementation = V.digest({ artifacts, policy: fs.readFileSync(__dirname + "/policy.js", "utf8") });
+  const implementation = V.digest({ artifacts, policy: fs.readFileSync(__dirname + "/policy.js", "utf8"), api: fs.readFileSync(__filename, "utf8"), validation: fs.readFileSync(__dirname + "/validation.js", "utf8"), schema: fs.readFileSync(__dirname + "/schema.json", "utf8"), version: require("../../package.json").version });
   const body = { implementation, contract: "drumee.mail-plan/1", spec: normalized, registry, secret_sources: resources.secret_sources || [] };
   return { ...body, revision: V.digest(body), applicable: true, diagnostics: [], artifacts };
 }
@@ -26,7 +26,7 @@ function composeMailService(plan, distribution = {}) {
   if (distribution.private_bind && distribution.acceptance !== true) V.fail("MAIL_DISTRIBUTION_INVALID");
   const s = plan.spec, root = s.deployment.root, candidate = root + "/candidates/" + plan.revision, images = s.deployment.images;
   const bind = (source, target, read_only = true) => ({ type: "bind", source, target, read_only, bind: { create_host_path: false } });
-  const service = (role, networks) => ({ image: images[role === "policy" ? "helper" : role].split("@").at(-1), read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], networks, restart: "unless-stopped", labels: { "org.drumee.mail.owner": s.deployment.id, "org.drumee.mail.revision": plan.revision, "org.drumee.mail.role": role }, tmpfs: ["/run:rw,nosuid,size=64m", "/tmp:rw,noexec,nosuid,size=32m"], volumes: [] });
+  const service = (role, networks) => ({ image: images[role === "policy" ? "helper" : role].split("@").at(-1), read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], networks, restart: "no", labels: { "org.drumee.mail.owner": s.deployment.id, "org.drumee.mail.revision": plan.revision, "org.drumee.mail.role": role }, tmpfs: ["/run:rw,nosuid,size=64m", "/tmp:rw,noexec,nosuid,size=32m"], volumes: [] });
   const postfix = service("postfix", ["edge", "control"]), dovecot = service("dovecot", ["edge"]), opendkim = service("opendkim", ["control"]), policy = service("policy", ["control"]);
   for (const value of [postfix, dovecot]) value.cap_add = ["CHOWN", "SETUID", "SETGID", "DAC_OVERRIDE", "FOWNER", "KILL", "NET_BIND_SERVICE"];
   dovecot.cap_add.push("SYS_CHROOT");
@@ -137,7 +137,9 @@ function prepareMailService(plan, context) {
   const publicRegistry = root + "/durable/registry/public";
   if (!fs.existsSync(publicRegistry + "/current.json")) F.atomic(publicRegistry + "/current.json", JSON.stringify(plan.registry));
   if (!fs.existsSync(root + "/durable/operator-state/transport-digest")) F.atomic(root + "/durable/operator-state/transport-digest", prepared.transport_digest);
+  if (!fs.existsSync(root + "/durable/operator-state/account-generations.json")) F.atomic(root + "/durable/operator-state/account-generations.json", JSON.stringify(Object.fromEntries(plan.registry.accounts.map(a => [a.id, a.credential_generation]))));
   F.atomic(candidate + "/prepared.json", JSON.stringify(prepared));
+  if (!fs.existsSync(root + "/durable/operator-state/runtime-revision")) F.atomic(root + "/durable/operator-state/runtime-revision", prepared.revision);
   return prepared;
 }
 function verifyPrepared(prepared) {
@@ -160,10 +162,22 @@ function activateMailRegistry(prepared, context) {
     const previous = JSON.parse(F.read(pub + "/current.json")), next = JSON.parse(F.read(path.dirname(prepared.compose_file) + "/registry.json"));
     if (previous.generation === next.generation && V.digest(previous) === V.digest(next) && !fs.existsSync(pub + "/admission-closed")) return { applied: true, changed: false, generation: next.generation };
     if (previous.generation !== context.expected_generation || next.generation <= previous.generation) V.fail("MAIL_REGISTRY_REVISION_CONFLICT");
+    const accountFile = state + "/account-generations.json", generations = JSON.parse(F.read(accountFile));
+    const oldSMTP = F.read(priv + "/generation-" + previous.generation + "/smtp.passwd").toString().split("\n"), newSMTP = F.read(priv + "/generation-" + next.generation + "/smtp.passwd").toString().split("\n");
+    for (const account of next.accounts) {
+      const old = previous.accounts.find(a => a.id === account.id);
+      const changed = old && (V.digest([old.enabled, old.envelope_from, old.header_from]) !== V.digest([account.enabled, account.envelope_from, account.header_from]) || oldSMTP.find(x => x.startsWith(account.id + ":")) !== newSMTP.find(x => x.startsWith(account.id + ":")));
+      if (old && account.credential_generation < old.credential_generation || changed && account.credential_generation <= old.credential_generation || !old && account.credential_generation <= (generations[account.id] || 0)) V.fail("MAIL_CREDENTIAL_GENERATION_REQUIRED");
+      generations[account.id] = Math.max(generations[account.id] || 0, account.credential_generation);
+    }
     const ids = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=dovecot"]).trim().split("\n").filter(Boolean);
     if (ids.length !== 1) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
     const current = JSON.parse(docker(["inspect", ids[0]]))[0], owner = JSON.parse(F.read(root + "/owner.json"));
     if (current.Config.Labels["org.drumee.mail.owner"] !== owner.id) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
+    const runtimeRevision = F.read(state + "/runtime-revision").toString();
+    if (!/^[a-f0-9]{64}$/.test(runtimeRevision)) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
+    const runtimePrepared = JSON.parse(F.read(root + "/candidates/" + runtimeRevision + "/prepared.json"));
+    verifyPrepared(runtimePrepared); verifyRuntimeRole(runtimePrepared, "dovecot", current);
     F.atomic(pub + "/admission-closed", JSON.stringify({ from: previous.generation, to: next.generation }));
     F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, phase: "applying" }));
     try {
@@ -186,6 +200,14 @@ function activateMailRegistry(prepared, context) {
         }
         if (!observed) V.fail("MAIL_REGISTRY_AUTH_GENERATION_MISMATCH");
       }
+      for (const box of next.mailboxes) {
+        let observed = false;
+        for (let retry = 0; retry < 20 && !observed; retry++) {
+          observed = docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "user", "-f", "quota/Mailbox/storage_size", box.address]).trim() === box.quota_bytes + "B";
+          if (!observed) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 50);
+        }
+        if (!observed) V.fail("MAIL_REGISTRY_USERDB_GENERATION_MISMATCH");
+      }
       const oldPasswd = F.read(priv + "/generation-" + previous.generation + "/imap.passwd").toString().split("\n");
       const newPasswd = F.read(priv + "/generation-" + next.generation + "/imap.passwd").toString().split("\n");
       for (const box of previous.mailboxes) {
@@ -194,6 +216,7 @@ function activateMailRegistry(prepared, context) {
         const newVerifier = newPasswd.find(x => x.startsWith(box.address + ":"));
         if (!successor || !successor.imap_enabled || successor.address !== box.address || successor.quota_bytes !== box.quota_bytes || oldVerifier !== newVerifier) docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "kick", box.address]);
       }
+      F.atomic(accountFile, JSON.stringify(generations));
       F.atomic(pub + "/current.json", JSON.stringify(next));
       F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, phase: "applied" }));
       fs.unlinkSync(pub + "/admission-closed");
@@ -220,6 +243,14 @@ function verifyStorage(prepared) {
   if (!pointer.isSymbolicLink() || pointer.uid !== owner.uid || !/^generation-[1-9][0-9]*$/.test(fs.readlinkSync(privateRoot + "/current"))) V.fail("MAIL_SECRET_PROJECTION_MISMATCH");
   F.privateDirectory(privateRoot + "/" + fs.readlinkSync(privateRoot + "/current"));
   for (const file of Object.keys(prepared.private_files)) F.read(privateRoot + "/" + fs.readlinkSync(privateRoot + "/current") + "/" + file);
+  const barrier = prepared.root + "/durable/registry/public/admission-closed", current = JSON.parse(F.read(prepared.root + "/durable/registry/public/current.json"));
+  if (current.service_hostname !== prepared.hostname || !fs.existsSync(barrier) && fs.readlinkSync(privateRoot + "/current") !== "generation-" + current.generation) V.fail("MAIL_SECRET_PROJECTION_MISMATCH");
+  const intentFile = prepared.root + "/durable/operator-state/registry-intent.json";
+  if (!fs.existsSync(barrier) && fs.existsSync(intentFile)) {
+    const intent = JSON.parse(F.read(intentFile));
+    if (intent.phase !== "applied" || intent.to !== current.generation || !/^[a-f0-9]{64}$/.test(intent.revision)) V.fail("MAIL_SECRET_PROJECTION_MISMATCH");
+    verifyPrepared(JSON.parse(F.read(prepared.root + "/candidates/" + intent.revision + "/prepared.json")));
+  }
   readTLS(prepared.root);
   return owner;
 }
@@ -227,6 +258,7 @@ function verifyRuntimeRole(prepared, role, actual) {
   const expected = prepared.compose.services[role], owner = JSON.parse(F.read(prepared.root + "/owner.json"));
   if (!expected || actual.Config.Labels["org.drumee.mail.owner"] !== owner.id || actual.Config.Labels["org.drumee.mail.revision"] !== prepared.revision || actual.Config.Labels["org.drumee.mail.role"] !== role) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
   if (actual.Image !== expected.image) V.fail("MAIL_RUNTIME_IMAGE_MISMATCH");
+  if (actual.HostConfig.RestartPolicy.Name !== expected.restart) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
   const equal = (a, b) => V.digest(a) === V.digest(b), sorted = a => [...(a || [])].sort();
   if (!equal(actual.HostConfig.Dns || [], expected.dns || []) || !equal(actual.HostConfig.DnsOptions || [], expected.dns_opt || []) || !equal(actual.HostConfig.DnsSearch || [], expected.dns_search || []) || actual.HostConfig.ExtraHosts?.length || actual.HostConfig.GroupAdd?.length || Object.keys(actual.HostConfig.Sysctls || {}).length) V.fail("MAIL_RUNTIME_NETWORK_MISMATCH");
   if (!equal(actual.Config.Entrypoint, expected.entrypoint) || !equal(actual.Config.Cmd || [], expected.command || []) || actual.Config.User !== (expected.user ?? JSON.parse(docker(["image", "inspect", expected.image]))[0].Config.User ?? "") || !actual.HostConfig.ReadonlyRootfs || actual.HostConfig.Privileged || actual.HostConfig.PidMode || actual.HostConfig.Devices?.length || actual.HostConfig.DeviceRequests?.length) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH");
@@ -266,6 +298,7 @@ function readTLS(root) {
   const directory = root + "/durable/tls", link = fs.lstatSync(directory + "/current"), target = fs.readlinkSync(directory + "/current");
   if (!link.isSymbolicLink() || link.uid !== process.getuid() || !/^generation-[a-f0-9]{64}$/.test(target)) V.fail("MAIL_TLS_PROJECTION_MISMATCH");
   const seal = JSON.parse(F.read(directory + "/" + target + "/seal.json"));
+  if (Object.keys(seal.files).sort().join(",") !== "ca.pem,certificate.pem,key.pem") V.fail("MAIL_TLS_PROJECTION_MISMATCH");
   for (const [name, hash] of Object.entries(seal.files)) if (V.digest(F.read(directory + "/" + target + "/" + name).toString()) !== hash) V.fail("MAIL_TLS_PROJECTION_MISMATCH");
   return { target, seal, directory: directory + "/" + target };
 }
@@ -360,15 +393,17 @@ function observeMailService(prepared, context) {
   if (!Number.isSafeInteger(queueLimit) || queueLimit < 1 || queueLimit > 604800 || !Number.isSafeInteger(authLimit) || authLimit < 1 || authLimit > 10000) V.fail("MAIL_MONITORING_INVALID");
   verifyPrepared(prepared); verifyStorage(prepared);
   const registry = JSON.parse(F.read(prepared.root + "/durable/registry/public/current.json"));
-  const roles = {};
+  const roles = {}, running = {}, alerts = [];
   for (const role of ["postfix", "dovecot"]) {
-    const ids = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=" + role]).trim().split("\n").filter(Boolean);
+    const ids = docker(["ps", "-aq", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=" + role]).trim().split("\n").filter(Boolean);
     if (ids.length !== 1) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH"); roles[role] = ids[0];
-    verifyRuntimeRole(prepared, role, JSON.parse(docker(["inspect", ids[0]]))[0]);
+    const actual = JSON.parse(docker(["inspect", ids[0]]))[0]; verifyRuntimeRole(prepared, role, actual);
+    running[role] = actual.State.Running;
+    if (!running[role]) alerts.push({ code: "MAIL_SERVICE_UNAVAILABLE", resource: role });
   }
-  const queue = docker(["exec", roles.postfix, "postqueue", "-c", "/config", "-j"]).trim().split("\n").filter(Boolean).map(x => JSON.parse(x));
+  const queue = running.postfix ? docker(["exec", roles.postfix, "postqueue", "-c", "/config", "-j"]).trim().split("\n").filter(Boolean).map(x => JSON.parse(x)) : [];
   const oldest = queue.length ? Math.max(...queue.map(x => Math.max(0, Date.now() / 1000 - x.arrival_time))) : 0;
-  const alerts = [], disks = {};
+  const disks = {};
   for (const name of ["spool", "mailboxes"]) {
     const s = fs.statfsSync(prepared.root + "/durable/" + name);
     disks[name] = { available_bytes: s.bavail * s.bsize, total_bytes: s.blocks * s.bsize };
@@ -386,7 +421,7 @@ function observeMailService(prepared, context) {
   for (const role of Object.values(roles)) failures += (docker(["logs", "--since", "10m", role], true).match(/SASL [^\n]*authentication failed|auth failed|Authentication failed/gi) || []).length;
   if (failures >= authLimit) alerts.push({ code: "MAIL_AUTH_FAILURES" });
   const quotas = [];
-  for (const mailbox of registry.mailboxes) {
+  for (const mailbox of running.dovecot ? registry.mailboxes : []) {
     const rows = JSON.parse(docker(["exec", roles.dovecot, "doveadm", "-c", "/registry/active.conf", "-f", "json", "quota", "get", "-u", mailbox.address]));
     for (const row of rows) {
       const normalized = Object.fromEntries(Object.entries(row).map(([key, value]) => [key.toLowerCase(), value]));
@@ -399,12 +434,13 @@ function observeMailService(prepared, context) {
   const stateFile = prepared.root + "/durable/policy-state/counters.json";
   const state = fs.existsSync(stateFile) ? JSON.parse(F.read(stateFile)) : { rate_limited: 0 };
   if (state.rate_limited) alerts.push({ code: "MAIL_ACCOUNT_RATE_LIMIT" });
-  return { contract: "drumee.mail-observation/1", queue: { count: queue.length, oldest_age_seconds: oldest }, disks, quotas, authentication_failures_10m: failures, certificate_expires_at: certificate.validTo, alerts };
+  return { contract: "drumee.mail-observation/1", healthy: !alerts.length, queue: { count: running.postfix ? queue.length : null, oldest_age_seconds: running.postfix ? oldest : null }, disks, quotas, authentication_failures_10m: failures, certificate_expires_at: certificate.validTo, alerts };
 }
 function operateMailService(prepared, operation, context) {
-  if (context?.authorized !== true || !["start", "stop", "restart", "status"].includes(operation)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  if (context?.authorized !== true || !["start", "stop", "restart", "status", "preflight"].includes(operation)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared);
   verifyRuntime(prepared);
+  if (operation === "preflight") return { revision: prepared.revision, operation, native_output: "MAIL_PREFLIGHT_OK" };
   if (operation !== "status" && context.acceptance !== true) V.fail("MAIL_TARGET_QUALIFICATION_REQUIRED");
   // Full generation barriers/session coordination is deliberately not claimed by
   // this initial activation primitive. Never clear an incomplete security barrier.

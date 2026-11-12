@@ -8,6 +8,11 @@ server.on("message", (query, peer) => {
   offset++; const type = query.readUInt16BE(offset), question = query.subarray(12, offset + 4), domain = labels.join("."); let records = [], flags = 0x8580;
   const mode = fs.readFileSync("/control/dns-mode", "utf8").trim();
   if (mode === "failure") flags = 0x8582;
+  else if (domain === "missing.invalid") flags = 0x8583;
+  else if (type === 15 && domain === "null.invalid") records = [Buffer.from([0, 0, 0])];
+  else if (type === 15 && domain === "alternate.invalid") records = [Buffer.concat([Buffer.from([0, 10]), name("down.dest.invalid")]), Buffer.concat([Buffer.from([0, 20]), name("mx.dest.invalid")])];
+  else if (type === 15 && ["multi.invalid", "strict.invalid", "expire.invalid"].includes(domain)) records = [Buffer.concat([Buffer.from([0, 10]), name("mx.dest.invalid")])];
+  else if (type === 1 && domain === "down.dest.invalid") records = [Buffer.from([10, 243, 47, 55])];
   else if (type === 15 && domain === "dest.invalid") { const pref = Buffer.alloc(2); pref.writeUInt16BE(10); records = [Buffer.concat([pref, name("mx.dest.invalid")])]; }
   else if (type === 1 && domain === "mx.dest.invalid") records = [Buffer.from([10, 243, 47, 54])];
   else if (type === 16 && domain === "mail2026a._domainkey.oxymot.fr") {

@@ -3,6 +3,7 @@ import base64
 import email
 import hashlib
 import json
+import re
 import os
 import pathlib
 import socket
@@ -30,7 +31,7 @@ def durable(name, data):
         os.close(fd)
 
 
-def record(data, mode):
+def record(data, mode, recipients, secure):
     parsed = email.message_from_bytes(data)
     correlation = parsed.get('Message-ID', '')
     assert correlation.endswith('@fixture.invalid>')
@@ -42,7 +43,7 @@ def record(data, mode):
             durable(f'message-{index:06d}.eml', data)
         event = {'index': index, 'at_ns': time.time_ns(), 'message_id': correlation,
                  'sha256': digest, 'bytes': len(data), 'mode': mode,
-                 'durable_acceptance': accepted, 'final_250_sent': mode in ['accept', 'plain']}
+                 'recipients': recipients, 'tls': secure, 'durable_acceptance': accepted, 'final_250_sent': mode in ['accept', 'plain']}
         durable(f'event-{index:06d}.json', (json.dumps(event)+'\n').encode())
 
 
@@ -54,6 +55,9 @@ class Handler(socketserver.StreamRequestHandler):
     def handle(self):
         self.request.settimeout(30)
         secure = authenticated = False
+        recipients=[]
+        if os.environ.get('LAB_GREETING_TEMPFAIL')=='1':
+            self.send('421 4.3.0 Controlled primary MX unavailable');return
         self.send('220 receiver ESMTP synthetic witness')
         try:
             while line := self.rfile.readline(1048577):
@@ -79,9 +83,16 @@ class Handler(socketserver.StreamRequestHandler):
                     authenticated = len(fields) == 3 and fields[1].decode() == CFG['user'] and fields[2].decode() == CFG['password']
                     self.send('235 2.7.0 Authenticated' if authenticated else '535 5.7.8 Refused')
                 elif verb == 'MAIL':
+                    recipients=[]
                     self.send('250 2.1.0 Sender OK')
                 elif verb == 'RCPT':
-                    self.send('250 2.1.5 Recipient OK' if 'sink@dest.invalid' in command else '550 5.1.1 Refused')
+                    match=re.match(r'RCPT TO:<([^<>]+)>',command,re.I);address=match.group(1).lower() if match else ''
+                    local,_,domain=address.partition('@')
+                    if local=='later' and (not pathlib.Path('/control/recipient-mode').exists() or pathlib.Path('/control/recipient-mode').read_text().strip()!='accept'):
+                        self.send('451 4.3.0 Controlled recipient deferred')
+                    elif local in ['sink','later'] and domain.endswith('.invalid'):
+                        recipients.append(address);self.send('250 2.1.5 Recipient OK')
+                    else:self.send('550 5.1.1 Refused')
                 elif verb == 'DATA':
                     self.send('354 End with dot')
                     data = bytearray()
@@ -92,7 +103,7 @@ class Handler(socketserver.StreamRequestHandler):
                         if len(data) > 1048576:
                             return
                     mode = pathlib.Path('/control/mode').read_text().strip()
-                    record(bytes(data), mode)
+                    record(bytes(data), mode, recipients, secure)
                     if mode == 'uncertain':
                         self.request.shutdown(socket.SHUT_RDWR)
                         return
@@ -101,6 +112,7 @@ class Handler(socketserver.StreamRequestHandler):
                     self.send('221 Bye')
                     return
                 elif verb in ['RSET', 'NOOP']:
+                    if verb=='RSET':recipients=[]
                     self.send('250 OK')
                 else:
                     self.send('502 Unsupported')

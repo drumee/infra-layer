@@ -22,11 +22,11 @@ export function validateRegistry(registry: unknown, spec: MailServiceSpec): Regi
 export function planMailService(spec: MailServiceSpec, resources?: { registry?: Registry; secret_sources?: { ref: string; file: string }[] }): MailPlan | { applicable: false; diagnostics: Diagnostic[] };
 export function composeMailService(plan: MailPlan, distribution?: { acceptance?: boolean; private_bind?: boolean }): object;
 export function prepareMailService(plan: MailPlan, context: { authorized: boolean; acceptance?: boolean; private_bind?: boolean; verifiers?: Record<string,string> }): PreparedMail;
-export function operateMailService(prepared: PreparedMail, operation: 'start'|'stop'|'restart'|'status', context: { authorized: boolean; acceptance?: boolean }): { revision: string; operation: string; native_output: string };
+export function operateMailService(prepared: PreparedMail, operation: 'start'|'stop'|'restart'|'status'|'preflight', context: { authorized: boolean; acceptance?: boolean }): { revision: string; operation: string; native_output: string };
 
 export function activateMailRegistry(prepared: PreparedMail, context: { authorized: boolean; expected_generation: number }): { applied: true; changed: boolean; generation: number; smtp_revocation?: string; imap_affected_sessions_kicked?: boolean };
 
-export function observeMailService(prepared: PreparedMail, context: { authorized: boolean; queue_age_seconds?: number; auth_failures?: number }): { contract: 'drumee.mail-observation/1'; queue: {count:number;oldest_age_seconds:number}; disks: Record<string,{available_bytes:number;total_bytes:number}>; quotas: {id:string;used_bytes:number;limit_bytes:number}[]; authentication_failures_10m:number; certificate_expires_at:string; alerts: {code:string;resource?:string;mailbox_id?:string}[] };
+export function observeMailService(prepared: PreparedMail, context: { authorized: boolean; queue_age_seconds?: number; auth_failures?: number }): { contract: 'drumee.mail-observation/1'; healthy:boolean; queue: {count:number|null;oldest_age_seconds:number|null}; disks: Record<string,{available_bytes:number;total_bytes:number}>; quotas: {id:string;used_bytes:number;limit_bytes:number}[]; authentication_failures_10m:number; certificate_expires_at:string; alerts: {code:string;resource?:string;mailbox_id?:string}[] };
 
 export function rotateMailTLS(prepared: PreparedMail, sources: {certificate_file:string;key_file:string;ca_file:string}, context:{authorized:boolean}): {changed:boolean;fingerprint:string;endpoints?:object[]};
 export function reconcileMailTLS(prepared: PreparedMail, context:{authorized:boolean}): {reconciled:true;fingerprint:string;endpoints:object[]};

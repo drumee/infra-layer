@@ -82,7 +82,7 @@ try:
     compose['services']['dns']={'image':NODE,'entrypoint':['node','/lab/dns.cjs'],'volumes':[str(HERE)+':/lab:ro',str(base/'control')+':/control:ro'],'networks':{'edge':{'ipv4_address':'10.243.47.53'}},'read_only':True}
     compose['services']['mx']={'image':CLIENT_IMAGE,'user':'1000:1000','entrypoint':['python3','/lab/mx.py'],'volumes':[str(HERE)+':/lab:ro',str(keys)+':/keys:ro',str(base/'control')+':/control:ro',str(base/'witness')+':/witness'],'networks':{'edge':{'ipv4_address':'10.243.47.54'}},'read_only':True}
     compose['services']['postfix']['dns']=['10.243.47.53']
-    for service in compose['services'].values():service['restart']='unless-stopped' if os.environ.get('MAIL02_RETAIN_RUNTIME')=='1' else 'no'
+    for name in ['dns','mx']:compose['services'][name]['restart']='unless-stopped' if os.environ.get('MAIL02_RETAIN_RUNTIME')=='1' else 'no'
     write(file,compose)
     d('compose','-p',project,'-f',str(file),'up','-d')
     wait(lambda:json.loads(d('inspect',project+'-postfix-1').stdout)[0]['State'].get('Health',{}).get('Status')=='healthy')

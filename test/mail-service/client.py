@@ -189,3 +189,20 @@ elif action == 'policy-eom':
         else:raise TimeoutError('policy fault coordination')
         s.send(b'.\r\n');code,_=s.getreply();assert 400<=code<500
     print(json.dumps({'temporary_code':code}))
+elif action == 'multi-send':
+    recipients,tag=sys.argv[2:]
+    with connect() as s:
+        s.sendmail('contact@oxymot.fr',recipients.split(','),'From: contact@oxymot.fr\r\nDate: '+email.utils.formatdate()+'\r\nMessage-ID: <'+tag+'@fixture.invalid>\r\nSubject: '+tag+'\r\n\r\nSynthetic recipient disposition')
+    print(json.dumps({'accepted':True,'tag':tag}))
+elif action == 'dsn':
+    tag=sys.argv[2]
+    with IMAP('dovecot',993,ssl_context=ctx,timeout=8) as s:
+        s.login('contact@oxymot.fr',cfg['contact']);s.select('INBOX');typ,ids=s.search(None,'TEXT',tag);parts=[]
+        import email
+        for ident in ids[0].split():
+            message=email.message_from_bytes(s.fetch(ident,'(RFC822)')[1][0][1])
+            for part in message.walk():
+                if part.get_content_type()=='message/delivery-status':
+                    for block in part.get_payload():
+                        if block.get('Final-Recipient'):parts.append({'recipient':block['Final-Recipient'],'status':block.get('Status'),'action':block.get('Action')})
+    print(json.dumps({'dispositions':parts}))

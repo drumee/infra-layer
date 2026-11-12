@@ -11,5 +11,6 @@ with connect() as smtp:
   'Authentication-Results: upstream.invalid; dkim=none reason="mail.oxymot.fr"\r\n'+
   'Authentication-Results: (comment)\r\n\t"MAIL.OXYMOT.FR." 1\r\n\t; dkim=pass header.d=forged.invalid\r\n'+
   'Authentication-Results: mail.oxymot.fr.invalid; spf=none\r\n'+
+  'authentication-results: "mail\\.oxymot.fr"; spf=pass\r\n'+
   'Subject: Synthetic header negative control\r\n\r\n'+correlation)
 print(json.dumps({'correlation':correlation,'accepted_by_postfix':True}))
