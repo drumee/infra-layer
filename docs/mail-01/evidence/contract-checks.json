@@ -1,0 +1,66 @@
+{
+  "scope": "MAIL-01 schema + selected semantic design hypotheses; no filesystem/runtime validation",
+  "cases": [
+    {
+      "file": "anonymous-network.invalid.json",
+      "expected_valid": false,
+      "observed_valid": false,
+      "pass": true
+    },
+    {
+      "file": "backoff-order.invalid.json",
+      "expected_valid": false,
+      "observed_valid": false,
+      "pass": true
+    },
+    {
+      "file": "cleartext-submission.invalid.json",
+      "expected_valid": false,
+      "observed_valid": false,
+      "pass": true
+    },
+    {
+      "file": "ipv6-unqualified.invalid.json",
+      "expected_valid": false,
+      "observed_valid": false,
+      "pass": true
+    },
+    {
+      "file": "missing-dkim-domain.invalid.json",
+      "expected_valid": false,
+      "observed_valid": false,
+      "pass": true
+    },
+    {
+      "file": "overlapping-roots.invalid.json",
+      "expected_valid": false,
+      "observed_valid": false,
+      "pass": true
+    },
+    {
+      "file": "raw-password.invalid.json",
+      "expected_valid": false,
+      "observed_valid": false,
+      "pass": true
+    },
+    {
+      "file": "relay-in-direct.invalid.json",
+      "expected_valid": false,
+      "observed_valid": false,
+      "pass": true
+    },
+    {
+      "file": "service.valid.json",
+      "expected_valid": true,
+      "observed_valid": true,
+      "pass": true
+    },
+    {
+      "file": "unknown-contract.invalid.json",
+      "expected_valid": false,
+      "observed_valid": false,
+      "pass": true
+    }
+  ],
+  "status": "PASS"
+}

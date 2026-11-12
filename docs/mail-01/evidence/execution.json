@@ -1,0 +1,64 @@
+{
+  "recorded_at_utc": "2026-11-12T06:22:16.483475+00:00",
+  "receipts": [
+    {
+      "name": "contract-checks",
+      "argv": [
+        "/tmp/mail01-validation/bin/python",
+        "/tmp/mail01-infra/docs/mail-01/lab/check_contract.py"
+      ],
+      "start_utc": "2026-11-12T06:22:08.477980+00:00",
+      "end_utc": "2026-11-12T06:22:08.577183+00:00",
+      "exit": 0,
+      "stdout_sha256": "ca1df73dfe780199e93d2d20af67e26fd372f66d05da3d031fe51ff43b238875",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "native-hypotheses",
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--name",
+        "mail01-hypothesis-probe",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=/tmp/mail01-infra/docs/mail-01/lab,target=/lab,readonly",
+        "--tmpfs",
+        "/run:rw,nosuid,size=128m",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8"
+      ],
+      "start_utc": "2026-11-12T06:22:08.577383+00:00",
+      "end_utc": "2026-11-12T06:22:16.473720+00:00",
+      "exit": 0,
+      "stdout_sha256": "ae44f2fdcb6b5e2c34aa2f63e4402a2e3b6f9b12dec395018b4ec357127a55d9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "source_sha256": {
+    "lab/Dockerfile": "9066f4b83d5f6968eba1ee4177cf067f8a810584f0d7e755cec96c88786f4c5f",
+    "lab/check_contract.py": "c6f7dd8c5e6582e65f317cf2ca12bbbf9be04f7ba72da378c474b3cef63ad4db",
+    "lab/probe.py": "f2853b6ccf19afaa8cd27106521b59041f9a581d8d86f2ddc6bd121b1943f61d",
+    "examples/anonymous-network.invalid.json": "fac69e24336b2cffca95781e7aa0844943bcb61825cdec7d5ccb93008f28b63b",
+    "examples/backoff-order.invalid.json": "76f64470ec81ff1decdeebba43adcb28ec0fdeacfad1ed92df44e286bce340aa",
+    "examples/cleartext-submission.invalid.json": "2017457678570937b19eb90366971ad477130653189d577eea8240fff3e141e5",
+    "examples/ipv6-unqualified.invalid.json": "f0f34f310db4e09a701d1c85beb2067b9196c38b5770565ee6a7a0c77da807f0",
+    "examples/missing-dkim-domain.invalid.json": "115a21cc9c00c394972cdeff9fb7a8ea39f35620e6823281e7f1f162d26712fe",
+    "examples/overlapping-roots.invalid.json": "56b480ca3fe4ff79c655839e4356ccbed93800a53007177613865a7a4aa22bbf",
+    "examples/raw-password.invalid.json": "760719fc47b779b819a6aca5b0134a182b4d44589596d17de04f6db9ed1588d4",
+    "examples/relay-in-direct.invalid.json": "dedb5ada692d1a89b3caa3cba3b89b8ca119555549f27195fdcae73db15bda05",
+    "examples/service.valid.json": "84c9cf868fb70f9da53b2c44dee1f5053e8d9ed08dee3f185be6ba18296eb35a",
+    "examples/unknown-contract.invalid.json": "a88f21753ffd89a587935d5693f8dcc90d5e1a1c55844b1e7091ce886dc6725b",
+    "mail-service.v1.schema.json": "c7fb36a7b932c7dcf6deefab2730a91057e5b811ac02772f4e15311a318e3bf3"
+  },
+  "native_image_id": "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+  "base_image_id": "sha256:a02cc47d0ebca12a55759edb00757b3a8cdd00112ad4afe9a4ff7b5337ffe843",
+  "cleanup": {
+    "probe_container_absent": true,
+    "networks_created": 0,
+    "volumes_created": 0,
+    "host_ports_published": 0,
+    "image_retained_local_unpublished": true
+  }
+}
