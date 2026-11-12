@@ -14,7 +14,7 @@ import time
 ROOT = pathlib.Path('/witness')
 LOCK = threading.Lock()
 CFG = json.loads(pathlib.Path('/keys/receiver.json').read_text())
-CTX = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+CTX = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 CTX.minimum_version = ssl.TLSVersion.TLSv1_2
 CTX.load_cert_chain('/keys/receiver.pem', '/keys/receiver.key')
 
