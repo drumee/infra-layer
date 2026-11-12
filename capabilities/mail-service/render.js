@@ -193,7 +193,7 @@ chmod 755 /config
 if nft list table inet drumee_mail_private >/dev/null 2>&1; then exit 78; fi
 nft -f /source/private-input.nft
 postfix -c /config check
-exec setpriv --bounding-set=-net_admin --inh-caps=-net_admin --ambient-caps=-net_admin postfix -c /config start-fg
+exec setpriv --bounding-set=-net_admin,-setpcap --inh-caps=-net_admin --ambient-caps=-net_admin postfix -c /config start-fg
 `;
   const privateInput = `table inet drumee_mail_private {
  chain input {

@@ -30,7 +30,7 @@ function composeMailService(plan, distribution = {}) {
   const postfix = service("postfix", ["edge", "control"]), dovecot = service("dovecot", ["edge"]), opendkim = service("opendkim", ["control"]), policy = service("policy", ["control"]);
   for (const value of [postfix, dovecot]) value.cap_add = ["CHOWN", "SETUID", "SETGID", "DAC_OVERRIDE", "FOWNER", "KILL", "NET_BIND_SERVICE"];
   dovecot.cap_add.push("SYS_CHROOT");
-  postfix.cap_add.push("NET_ADMIN"); // fixed namespace-only rule install; dropped before exec
+  postfix.cap_add.push("NET_ADMIN", "SETPCAP"); // fixed namespace-only rule install; dropped before exec
   postfix.tmpfs.push("/config:rw,noexec,nosuid,size=16777216");
   postfix.volumes = [bind(candidate + "/config", "/source"), bind(root + "/durable/tls", "/keys"), bind(root + "/durable/spool", "/var/spool/postfix", false), "sockets:/run/mail-sockets"];
   postfix.entrypoint = ["/bin/sh", "/source/postfix-entrypoint.sh"];
