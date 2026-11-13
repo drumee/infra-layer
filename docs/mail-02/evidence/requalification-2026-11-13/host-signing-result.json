@@ -1,0 +1,222 @@
+{
+  "status": "PASS_NATIVE_SIGNER_OUTAGE_AND_OPERATIONAL_ROUTES",
+  "signer_outage": {
+    "temporary_code": 454,
+    "before_final_acceptance": true,
+    "elapsed_seconds": 0.013408218015683815
+  },
+  "queue_unchanged": true,
+  "operational_routes": [
+    {
+      "address": "postmaster@oxymot.fr",
+      "mailbox": "22222222-2222-4222-8222-222222222222",
+      "matches": 1
+    },
+    {
+      "address": "abuse@oxymot.fr",
+      "mailbox": "22222222-2222-4222-8222-222222222222",
+      "matches": 1
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "stop",
+        "opendkim"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3e5dd355ae880f8964672a0f486b00bd570b49d1dc4864b6ee4ee5df32155782"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-4tpncu6z/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,smtplib,time;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import ctx,cfg\nstarted=time.monotonic()\ntry:\n with smtplib.SMTP('postfix',587,timeout=180) as s:\n  s.ehlo('fixture.invalid');s._host='mail.oxymot.fr';s.starttls(context=ctx);s.ehlo('fixture.invalid');s.login('oxymotion',cfg['oxymotion'])\n  s.sendmail('second@oxymot.fr',['second@oxymot.fr'],'From: second@oxymot.fr\\r\\nSubject: synthetic signer outage\\r\\n\\r\\nnot accepted')\n raise AssertionError('missing signer accepted')\nexcept smtplib.SMTPResponseException as e:assert 400<=e.smtp_code<500;print(json.dumps({'temporary_code':e.smtp_code,'before_final_acceptance':True,'elapsed_seconds':time.monotonic()-started}))\n"
+      ],
+      "exit": 0,
+      "stdout_sha256": "749ea6056bc7c542950124bafd2567f2837e9665d968d3e5e73fe65b883eb61e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "start",
+        "opendkim"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f211cf1c622e6165f92c48b11e7ba55658f9c7cd7e055a07f86eae76e7c10342"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-4tpncu6z/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "postmaster@oxymot.fr",
+        "postmaster-4e27e4c99a4f40dfa3c138b225e69e1b",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e419481182377ea12deb8d5f8529330e50ad7b6e58bde213f2e81a7c581f5ffc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-4tpncu6z/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "second@oxymot.fr",
+        "postmaster-4e27e4c99a4f40dfa3c138b225e69e1b"
+      ],
+      "exit": 0,
+      "stdout_sha256": "64b343d95fdd785b8efae93e4009671115336ca5cf61b590d581d22a4ab88c7e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-4tpncu6z/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "abuse@oxymot.fr",
+        "abuse-9136d29ce964497ab24d5dc0f244a51f",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "875308e5b3538081ef8e7d9c62cf9a86142414ddba3982ce43cd377324016b6a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-4tpncu6z/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "second@oxymot.fr",
+        "abuse-9136d29ce964497ab24d5dc0f244a51f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "05ab2bc1e260e915e7d4f7bcfacdff3c4e80a1db1932ac3ab8b45dea3f4221ce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

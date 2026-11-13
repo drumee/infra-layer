@@ -1,0 +1,175 @@
+{
+  "status": "PASS_MISSING_ACTUAL_MOUNT_REFUSED",
+  "checks": [
+    "mail-stopped-before-unmount",
+    "missing-loop-source-refuses-unit-dependency-before-exposure",
+    "underlying-sentinel-and-files-unchanged",
+    "retained-image-hash-unchanged-before-recovery",
+    "explicit-mount-recovery-and-preflight"
+  ],
+  "image_sha256_when_stopped": "b165fda55559fc6b87a4d1072bba34f228b68a48cd5f9f92845f89ef731fe7af",
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "version",
+        "--format",
+        "{{.Server.Version}}"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8484e7b831ba500ccf015246dc0a7b3f98de3c11519b347437ff8e91db018257",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/home/lab/work/r15/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "boot-unit",
+        "--config",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "abf4586299f34d492a6bad16a6000c89e7e8a49310a5340e5865acda5bdb113b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "sudo",
+        "install",
+        "-m",
+        "0644",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/mail02-profile-3379ee3f.service",
+        "/etc/systemd/system/mail02-profile-3379ee3f.service"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "sudo",
+        "systemctl",
+        "daemon-reload"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "sudo",
+        "systemctl",
+        "start",
+        "mail02-profile-3379ee3f.service"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "sudo",
+        "systemctl",
+        "stop",
+        "mail02-profile-3379ee3f.service"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-3379ee3f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "sudo",
+        "systemctl",
+        "stop",
+        "home-lab-mail02\\x2dbounded\\x2db46585eb.mount"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "sudo",
+        "systemctl",
+        "start",
+        "mail02-profile-3379ee3f.service"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "68a99ad647d4ce9dcae2b581e2d17b666fdbf546308f9f942ebd290f696e5b57"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-profile-3379ee3f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "sudo",
+        "systemctl",
+        "reset-failed"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "sudo",
+        "systemctl",
+        "start",
+        "home-lab-mail02\\x2dbounded\\x2db46585eb.mount"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "sudo",
+        "systemctl",
+        "start",
+        "mail02-profile-3379ee3f.service"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/home/lab/work/r15/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "preflight",
+        "--config",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bde9c6b9169db795d663678a5d6309223fa68cd4d939078199d524a41151eb26",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

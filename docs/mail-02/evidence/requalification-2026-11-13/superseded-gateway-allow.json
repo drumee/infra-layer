@@ -1,0 +1,433 @@
+{
+  "runtime": {
+    "bindings": {
+      "1587/tcp": [
+        {
+          "HostIp": "10.243.47.1",
+          "HostPort": "1587"
+        }
+      ]
+    },
+    "ports": {
+      "1587/tcp": [
+        {
+          "HostIp": "10.243.47.1",
+          "HostPort": "1587"
+        }
+      ]
+    },
+    "pid1_bounding_caps": "0x4eb",
+    "private_rules": {
+      "nftables": [
+        {
+          "metainfo": {
+            "version": "1.1.3",
+            "release_name": "Commodore Bullmoose #4",
+            "json_schema_version": 1
+          }
+        },
+        {
+          "table": {
+            "family": "inet",
+            "name": "drumee_mail_private",
+            "handle": 2
+          }
+        },
+        {
+          "chain": {
+            "family": "inet",
+            "table": "drumee_mail_private",
+            "name": "input",
+            "handle": 1,
+            "type": "filter",
+            "hook": "input",
+            "prio": -10,
+            "policy": "accept"
+          }
+        },
+        {
+          "rule": {
+            "family": "inet",
+            "table": "drumee_mail_private",
+            "chain": "input",
+            "handle": 3,
+            "expr": [
+              {
+                "match": {
+                  "op": "==",
+                  "left": {
+                    "payload": {
+                      "protocol": "tcp",
+                      "field": "dport"
+                    }
+                  },
+                  "right": 1587
+                }
+              },
+              {
+                "match": {
+                  "op": "==",
+                  "left": {
+                    "payload": {
+                      "protocol": "ip",
+                      "field": "saddr"
+                    }
+                  },
+                  "right": {
+                    "set": [
+                      {
+                        "prefix": {
+                          "addr": "10.243.47.0",
+                          "len": 25
+                        }
+                      },
+                      {
+                        "prefix": {
+                          "addr": "10.243.48.0",
+                          "len": 24
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "counter": {
+                  "packets": 41,
+                  "bytes": 6334
+                }
+              },
+              {
+                "accept": null
+              }
+            ]
+          }
+        },
+        {
+          "rule": {
+            "family": "inet",
+            "table": "drumee_mail_private",
+            "chain": "input",
+            "handle": 4,
+            "expr": [
+              {
+                "match": {
+                  "op": "==",
+                  "left": {
+                    "payload": {
+                      "protocol": "tcp",
+                      "field": "dport"
+                    }
+                  },
+                  "right": 1587
+                }
+              },
+              {
+                "counter": {
+                  "packets": 0,
+                  "bytes": 0
+                }
+              },
+              {
+                "drop": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "status": "FAIL_PRIVATE_NETWORKS",
+  "checks": [
+    {
+      "name": "allowed-client-generation-0",
+      "status": "PASS",
+      "observation": {
+        "expected": "allowed",
+        "status": "PASS",
+        "tls_verified": true,
+        "authentication_required": true,
+        "bad_password_code": 535,
+        "account": "oxymotion"
+      }
+    },
+    {
+      "name": "forbidden-client-generation-0",
+      "status": "FAIL",
+      "observation": {
+        "expected": "forbidden",
+        "status": "FAIL",
+        "reason": "unapproved source received SMTP greeting"
+      }
+    },
+    {
+      "name": "allowed-client-generation-1",
+      "status": "PASS",
+      "observation": {
+        "expected": "allowed",
+        "status": "PASS",
+        "tls_verified": true,
+        "authentication_required": true,
+        "bad_password_code": 535,
+        "account": "oxymotion"
+      }
+    },
+    {
+      "name": "forbidden-client-generation-1",
+      "status": "FAIL",
+      "observation": {
+        "expected": "forbidden",
+        "status": "FAIL",
+        "reason": "unapproved source received SMTP greeting"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--subnet",
+        "10.243.48.0/24",
+        "--label",
+        "drumee.mail02.synthetic-client=true",
+        "mail02-client-61fd5859"
+      ],
+      "exit": 0,
+      "stdout_sha256": "95163f2cbc101a82dbfdf0dca43967479348414a4a0acbaea2331a8ccfb550dc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-client-61fd5859",
+        "--ip",
+        "10.243.48.10",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-592q1xko/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r9/infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/private-probe.py",
+        "10.243.47.1",
+        "allowed"
+      ],
+      "exit": 0,
+      "stdout_sha256": "17c2e1f7d2e1c2d78a09aa2df7a565495f3c3851263eb1ab95a7f604ce8802e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "mail02-client-61fd5859"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3ce555d1fc69cd31e7ad7bb28bef32b25fa53185a6aec19511f386641644c67a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--subnet",
+        "10.243.49.0/24",
+        "--label",
+        "drumee.mail02.synthetic-client=true",
+        "mail02-client-be80328e"
+      ],
+      "exit": 0,
+      "stdout_sha256": "415f02da2bf108e8de249c3adc9afcf7beabc4d6af5b48e34d08ab647e9bd640",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-client-be80328e",
+        "--ip",
+        "10.243.49.10",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-592q1xko/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r9/infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/private-probe.py",
+        "10.243.47.1",
+        "forbidden"
+      ],
+      "exit": 0,
+      "stdout_sha256": "58792a1195211c1047c88531fbf7cb5e80e67e3e80aeea2a08d0b05fa2dd9588",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "mail02-client-be80328e"
+      ],
+      "exit": 0,
+      "stdout_sha256": "718e4ec9142612d24ca856b3819855b793c6e3fc99dccbefae32c3c2cc432074",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--subnet",
+        "10.243.48.0/24",
+        "--label",
+        "drumee.mail02.synthetic-client=true",
+        "mail02-client-a20c18e2"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bc825026dc5e983200db78fcab7dfb76c1fac9ba13cb1d569a9b818d2dbe5a48",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-client-a20c18e2",
+        "--ip",
+        "10.243.48.11",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-592q1xko/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r9/infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/private-probe.py",
+        "10.243.47.1",
+        "allowed"
+      ],
+      "exit": 0,
+      "stdout_sha256": "17c2e1f7d2e1c2d78a09aa2df7a565495f3c3851263eb1ab95a7f604ce8802e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "mail02-client-a20c18e2"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6975662d6d80fefdb9be35beed01516cf33ce35fc4bb47c11544f9ad01a42931",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--subnet",
+        "10.243.49.0/24",
+        "--label",
+        "drumee.mail02.synthetic-client=true",
+        "mail02-client-e2298f72"
+      ],
+      "exit": 0,
+      "stdout_sha256": "07734b29513da9ca8ceb07a72c97a16feb306ce9f2aa448421c56e1a35fd9571",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-client-e2298f72",
+        "--ip",
+        "10.243.49.11",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-592q1xko/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r9/infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/private-probe.py",
+        "10.243.47.1",
+        "forbidden"
+      ],
+      "exit": 0,
+      "stdout_sha256": "58792a1195211c1047c88531fbf7cb5e80e67e3e80aeea2a08d0b05fa2dd9588",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "mail02-client-e2298f72"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9f5f06421fbb6616c251e127becf0176875e1d2a17665f5d6b1d4208f1208de9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-profile-14dc94ac-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bc9c518e71a2136fb8b1b7626bc81c11e8d112e059d8a3019f87e2d4b0aa3274",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-14dc94ac-postfix-1",
+        "cat",
+        "/proc/1/status"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5e7f55f8b9f18e798785e4bee1056df79a291d39a9d223760c624091c79333ab",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-14dc94ac-postfix-1",
+        "nft",
+        "-j",
+        "list",
+        "table",
+        "inet",
+        "drumee_mail_private"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f1da931ab1c5e05d499e9b4504ced084faeedc1228ae11d2e7a46738631d7765",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

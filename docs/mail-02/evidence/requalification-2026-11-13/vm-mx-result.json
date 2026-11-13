@@ -1,0 +1,689 @@
+{
+  "status": "PASS_ADVANCED_MX",
+  "checks": [
+    {
+      "name": "alternate-mx-after-primary-421",
+      "status": "PASS",
+      "observation": [
+        {
+          "index": 9,
+          "at_ns": 1794528624781108504,
+          "message_id": "<0a110666-alternate@fixture.invalid>",
+          "sha256": "cdcde133c3085f61542f065c350572e17bb546c57d992ac80ade4754a0f1ed72",
+          "bytes": 957,
+          "mode": "accept",
+          "recipients": [
+            "sink@alternate.invalid"
+          ],
+          "tls": true,
+          "durable_acceptance": true,
+          "final_250_sent": true
+        }
+      ]
+    },
+    {
+      "name": "permanent-route-missing.invalid",
+      "status": "PASS",
+      "observation": [
+        {
+          "recipient": "rfc822; sink@missing.invalid",
+          "status": "5.4.4",
+          "action": "failed"
+        }
+      ]
+    },
+    {
+      "name": "permanent-route-null.invalid",
+      "status": "PASS",
+      "observation": [
+        {
+          "recipient": "rfc822; sink@null.invalid",
+          "status": "5.1.0",
+          "action": "failed"
+        }
+      ]
+    },
+    {
+      "name": "multi-recipient-success-defer-permanent-failure",
+      "status": "PASS",
+      "observation": {
+        "events": [
+          {
+            "index": 11,
+            "at_ns": 1794528629606549267,
+            "message_id": "<0a110666-multi@fixture.invalid>",
+            "sha256": "a0e3a2069f1ea942864fc88229f69355855d73a84dcfc3e3fbe2a0ef763f45ba",
+            "bytes": 892,
+            "mode": "accept",
+            "recipients": [
+              "later@multi.invalid"
+            ],
+            "tls": true,
+            "durable_acceptance": true,
+            "final_250_sent": true
+          },
+          {
+            "index": 10,
+            "at_ns": 1794528628511563146,
+            "message_id": "<0a110666-multi@fixture.invalid>",
+            "sha256": "a0e3a2069f1ea942864fc88229f69355855d73a84dcfc3e3fbe2a0ef763f45ba",
+            "bytes": 892,
+            "mode": "accept",
+            "recipients": [
+              "sink@multi.invalid"
+            ],
+            "tls": true,
+            "durable_acceptance": true,
+            "final_250_sent": true
+          }
+        ],
+        "dsn": [
+          {
+            "recipient": "rfc822; blocked@multi.invalid",
+            "status": "5.1.1",
+            "action": "failed"
+          }
+        ],
+        "initial_pending_queue_id": "454036024F"
+      }
+    },
+    {
+      "name": "domain-strict-no-plaintext-fallback-and-verified-recovery",
+      "status": "PASS",
+      "observation": {
+        "deferred_queue_id": "9430E60251",
+        "delivery": [
+          {
+            "index": 12,
+            "at_ns": 1794528632188048396,
+            "message_id": "<0a110666-strict-domain@fixture.invalid>",
+            "sha256": "b57401b28bb393566986fc0263575f52507d86e372b4cb155ab9ca11dd375c8c",
+            "bytes": 959,
+            "mode": "accept",
+            "recipients": [
+              "sink@strict.invalid"
+            ],
+            "tls": true,
+            "durable_acceptance": true,
+            "final_250_sent": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "native-forced-expiry-produces-local-dsn",
+      "status": "PASS",
+      "observation": {
+        "expired_queue_id": "E9D0D60253",
+        "dsn": [
+          {
+            "recipient": "rfc822; sink@expire.invalid",
+            "status": "4.3.0",
+            "action": "failed"
+          }
+        ]
+      }
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "up",
+        "-d",
+        "dns",
+        "mx",
+        "mxdown"
+      ],
+      "at": "2026-11-13T00:10:12.248634+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "003c167041bf75a6ac78d915d58d1a213ab3bffcc7464862be3f7df6989455f8"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "restart",
+        "dns",
+        "mx"
+      ],
+      "at": "2026-11-13T00:10:22.946570+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8de317ce43441b61d44ddff53563cb4abba0239c60f0d3869c83612069c588db"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@alternate.invalid",
+        "0a110666-alternate",
+        "587"
+      ],
+      "at": "2026-11-13T00:10:24.827216+00:00",
+      "exit": 0,
+      "stdout_sha256": "9a10384474b48c86be9799ad0ada10e44fbadec40fa4ef04d5ce87f5c21dd3d1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@missing.invalid",
+        "0a110666-missing.invalid",
+        "587"
+      ],
+      "at": "2026-11-13T00:10:25.594498+00:00",
+      "exit": 0,
+      "stdout_sha256": "d4cc0862abc28612a9f7c70bd4a26df0bec95d7e4d3e3b1260fbe63426966ca1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "dsn",
+        "0a110666-missing.invalid"
+      ],
+      "at": "2026-11-13T00:10:26.309618+00:00",
+      "exit": 0,
+      "stdout_sha256": "3f14f2fc96fd4550f081df90ca3a844ba19cf8beabbda5818b69cee08c63a4a6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@null.invalid",
+        "0a110666-null.invalid",
+        "587"
+      ],
+      "at": "2026-11-13T00:10:27.132538+00:00",
+      "exit": 0,
+      "stdout_sha256": "ed6521ec7c63d12f37604275bba7af0074b4a483d1255543de046cd652d53383",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "dsn",
+        "0a110666-null.invalid"
+      ],
+      "at": "2026-11-13T00:10:27.797318+00:00",
+      "exit": 0,
+      "stdout_sha256": "00a5a77239a6d695c234b687e746a217b7aa982f9b8aab29a14f8309a0e647ec",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "multi-send",
+        "sink@multi.invalid,later@multi.invalid,blocked@multi.invalid",
+        "0a110666-multi"
+      ],
+      "at": "2026-11-13T00:10:28.570779+00:00",
+      "exit": 0,
+      "stdout_sha256": "561b63c3d25b8b413d311c05f14804a28e5c4f2c767c4f4c8b94e55a1229ab2b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-13T00:10:28.690670+00:00",
+      "exit": 0,
+      "stdout_sha256": "bc9f286e0a33d2c90b1b4de47390818076ea8aad3d36c53406c4fb69b4b0641a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "dsn",
+        "0a110666-multi"
+      ],
+      "at": "2026-11-13T00:10:29.390643+00:00",
+      "exit": 0,
+      "stdout_sha256": "ef1c108a8d1d706c7eca0e1864a39ee32428d3ba7b97e9dd18719e0114afa6ef",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "at": "2026-11-13T00:10:29.505025+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "/bin/sh",
+        "-ec",
+        "printf \"%s\\n\" \"strict.invalid verify\" > /config/tls-policy"
+      ],
+      "at": "2026-11-13T00:10:29.878047+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postfix",
+        "-c",
+        "/config",
+        "reload"
+      ],
+      "at": "2026-11-13T00:10:30.033866+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "21b5f4b3070c10aa9de66ac612f6b7c1f619708aebc25b7978be1f8374666b79"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@strict.invalid",
+        "0a110666-strict-domain",
+        "587"
+      ],
+      "at": "2026-11-13T00:10:31.866317+00:00",
+      "exit": 0,
+      "stdout_sha256": "277e814bc7e52728408cb94f45d81e158f17e3acc45e2944fabdc8521849d6f1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-13T00:10:31.976407+00:00",
+      "exit": 0,
+      "stdout_sha256": "afcb2a4a33e1bd5c7c58ba6254ea5db31a278b8ea82f9d15f8a75242e28e9de3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "at": "2026-11-13T00:10:32.086216+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-13T00:10:32.463350+00:00",
+      "exit": 0,
+      "stdout_sha256": "07583b5a8143fd2e60ca2579b48c19e01b2a2190198885d4db9961a2214845ab",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@expire.invalid",
+        "0a110666-expiry",
+        "587"
+      ],
+      "at": "2026-11-13T00:10:33.259700+00:00",
+      "exit": 0,
+      "stdout_sha256": "cf4e1da1b957da43ffe8ab923f01c9450e860252fe0193792bcf4fc45632594c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-13T00:10:33.376588+00:00",
+      "exit": 0,
+      "stdout_sha256": "e8fb4a6271bfa6acfa012d979adc15447a8a4d6ebea23d8d6f6c874b26509845",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postsuper",
+        "-c",
+        "/config",
+        "-e",
+        "E9D0D60253"
+      ],
+      "at": "2026-11-13T00:10:33.490776+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a752b057f592565a7a9425954d0ceda82c69342a62666f50bf9d4a5f163bf77b"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "at": "2026-11-13T00:10:33.601988+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-b180ca68-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "dsn",
+        "0a110666-expiry"
+      ],
+      "at": "2026-11-13T00:10:34.309854+00:00",
+      "exit": 0,
+      "stdout_sha256": "61f7d2ed3f6e3cb4471253eee73603bdaca37df60728b85eacf798be58f7af40",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "/bin/sh",
+        "-ec",
+        ": > /config/tls-policy"
+      ],
+      "at": "2026-11-13T00:10:34.422624+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postfix",
+        "-c",
+        "/config",
+        "reload"
+      ],
+      "at": "2026-11-13T00:10:34.576413+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "21b5f4b3070c10aa9de66ac612f6b7c1f619708aebc25b7978be1f8374666b79"
+    }
+  ],
+  "source_sha256": "e24bcb15e57a757bf9aa2843f33cf58ad4b51cd4bcd22ae0e8e6ef8bb49abf14"
+}

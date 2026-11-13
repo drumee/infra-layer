@@ -1,0 +1,125 @@
+{
+  "status": "PASS_NATIVE_ACCOUNT_RATE_LIMIT",
+  "first": {
+    "permitted": 60,
+    "temporary_refusal": 451,
+    "other_account": 250
+  },
+  "after_restart": {
+    "temporary_refusal_after_policy_restart": 451
+  },
+  "observation": {
+    "contract": "drumee.mail-observation/1",
+    "healthy": false,
+    "queue": {
+      "count": 0,
+      "oldest_age_seconds": 0
+    },
+    "disks": {
+      "spool": {
+        "available_bytes": 1094797901824,
+        "total_bytes": 1966309933056
+      },
+      "mailboxes": {
+        "available_bytes": 1094797901824,
+        "total_bytes": 1966309933056
+      }
+    },
+    "quotas": [
+      {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "used_bytes": 1154048,
+        "limit_bytes": 2097152
+      },
+      {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "used_bytes": 1355776,
+        "limit_bytes": 2097152
+      }
+    ],
+    "authentication_failures_10m": 0,
+    "certificate_expires_at": "Nov 15 00:07:47 2026 GMT",
+    "alerts": [
+      {
+        "code": "MAIL_CERTIFICATE_EXPIRES_7_DAYS"
+      },
+      {
+        "code": "MAIL_ACCOUNT_RATE_LIMIT"
+      }
+    ]
+  },
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-4tpncu6z/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect\ncodes=[]\nwith connect() as s:\n for i in range(65):\n  code,_=s.mail('contact@oxymot.fr');codes.append(code)\n  if code>=400:break\n  s.rset()\nassert 400<=codes[-1]<500\nwith connect(auth='oxymotion') as s:\n other=s.mail('second@oxymot.fr')[0];assert other==250;s.rset()\nprint(json.dumps({'permitted':sum(c==250 for c in codes),'temporary_refusal':codes[-1],'other_account':other}))\n"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c91b7bf55c47905dac4f9b11f3972fd5833ef8fc467c99fe8b7ac1dc8ad43fed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "restart",
+        "policy"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bfda6fbdddc7103d83b4c2cbdd3b0457e6237788692710febbad3f3b1b7b2fe5"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-4tpncu6z/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect;time.sleep(1);s=connect();a=s.mail('contact@oxymot.fr')[0];s.close();assert 400<=a<500;print(json.dumps({'temporary_refusal_after_policy_restart':a}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7844bfed52fa6bd43363ca8af9a53e0d02cab30934ffe787990321a912b50b76",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/tmp/mail02-profile-7srq_gu8/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "fb7a331996400aca89a0bfee2d0d8433378eac37afba7a299fe72be482777a31",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

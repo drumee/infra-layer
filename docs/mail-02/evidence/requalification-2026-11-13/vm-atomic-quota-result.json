@@ -1,0 +1,782 @@
+{
+  "status": "PASS_ATOMIC_QUOTA_NATIVE",
+  "checks": [
+    {
+      "name": "high",
+      "status": "PASS",
+      "observation": {
+        "status": "PASS_ATOMIC_HIGH",
+        "append": "NO",
+        "lmtp": 250,
+        "virtual_bytes": 900645,
+        "quota_bytes": 1048576,
+        "overlap_observed": true,
+        "timings": {
+          "lmtp_start": 29991.242504342,
+          "append_start": 29991.243297615,
+          "lmtp_end": 29991.287566735,
+          "append_end": 29991.301072049
+        }
+      }
+    },
+    {
+      "name": "fits",
+      "status": "PASS",
+      "observation": {
+        "status": "PASS_ATOMIC_FITS",
+        "append": "OK",
+        "lmtp": 250,
+        "virtual_bytes": 800803,
+        "quota_bytes": 1048576,
+        "overlap_observed": true,
+        "timings": {
+          "lmtp_start": 29992.516201084,
+          "append_start": 29992.516699297,
+          "append_end": 29992.564430063,
+          "lmtp_end": 29992.604854133
+        }
+      }
+    },
+    {
+      "name": "copy-race",
+      "status": "PASS",
+      "observation": {
+        "status": "PASS_ATOMIC_COPY-RACE",
+        "append": "OK",
+        "lmtp": 452,
+        "virtual_bytes": 900472,
+        "quota_bytes": 1048576,
+        "overlap_observed": true,
+        "timings": {
+          "append_start": 29993.841897806,
+          "lmtp_start": 29993.841980276,
+          "append_end": 29993.900882916,
+          "lmtp_end": 29993.919642304
+        }
+      }
+    },
+    {
+      "name": "move-race",
+      "status": "PASS",
+      "observation": {
+        "status": "PASS_ATOMIC_MOVE-RACE",
+        "append": "OK",
+        "lmtp": 250,
+        "virtual_bytes": 900803,
+        "quota_bytes": 1048576,
+        "overlap_observed": true,
+        "timings": {
+          "append_start": 29995.216555584,
+          "lmtp_start": 29995.216611957,
+          "append_end": 29995.26912843,
+          "lmtp_end": 29995.307750457
+        }
+      }
+    },
+    {
+      "name": "copy-move",
+      "status": "PASS",
+      "observation": {
+        "status": "PASS_ATOMIC_COPY_MOVE",
+        "excess_copy": "NO",
+        "move_without_staging_headroom": "NO",
+        "positive_move_preserves_virtual_bytes": 400314
+      }
+    },
+    {
+      "name": "namespace-churn",
+      "status": "PASS",
+      "observation": {
+        "status": "PASS_ATOMIC_NAMESPACE_CHURN",
+        "observations": [
+          {
+            "iteration": 0,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 32,
+              "renames": 3
+            },
+            "timings": {
+              "append_start": 29998.393484773,
+              "lmtp_start": 29998.395328298,
+              "append_end": 29998.467109239,
+              "lmtp_end": 29998.474734703
+            }
+          },
+          {
+            "iteration": 1,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 33,
+              "renames": 2
+            },
+            "timings": {
+              "append_start": 29999.373349534,
+              "lmtp_start": 29999.374813304,
+              "append_end": 29999.4461084,
+              "lmtp_end": 29999.453647282
+            }
+          },
+          {
+            "iteration": 2,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 33,
+              "renames": 3
+            },
+            "timings": {
+              "append_start": 30000.375457999,
+              "lmtp_start": 30000.376730866,
+              "append_end": 30000.448077237,
+              "lmtp_end": 30000.454085422
+            }
+          },
+          {
+            "iteration": 3,
+            "append": "NO",
+            "lmtp": 250,
+            "virtual_bytes": 900803,
+            "concurrent_activity": {
+              "flags": 39,
+              "renames": 3
+            },
+            "timings": {
+              "lmtp_start": 30001.371409733,
+              "append_start": 30001.372197429,
+              "lmtp_end": 30001.441161631,
+              "append_end": 30001.462244254
+            }
+          },
+          {
+            "iteration": 4,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 40,
+              "renames": 4
+            },
+            "timings": {
+              "append_start": 30002.430532306,
+              "lmtp_start": 30002.431761928,
+              "append_end": 30002.507808168,
+              "lmtp_end": 30002.528730165
+            }
+          },
+          {
+            "iteration": 5,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 50,
+              "renames": 24
+            },
+            "timings": {
+              "append_start": 30003.516908049,
+              "lmtp_start": 30003.518289103,
+              "append_end": 30003.598719008,
+              "lmtp_end": 30003.636838909
+            }
+          },
+          {
+            "iteration": 6,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 31,
+              "renames": 3
+            },
+            "timings": {
+              "lmtp_start": 30004.556741214,
+              "append_start": 30004.558612114,
+              "append_end": 30004.626153949,
+              "lmtp_end": 30004.629475738
+            }
+          },
+          {
+            "iteration": 7,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 31,
+              "renames": 1
+            },
+            "timings": {
+              "append_start": 30005.554729133,
+              "lmtp_start": 30005.556103853,
+              "append_end": 30005.622266479,
+              "lmtp_end": 30005.628767684
+            }
+          },
+          {
+            "iteration": 8,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 36,
+              "renames": 4
+            },
+            "timings": {
+              "append_start": 30006.555778718,
+              "lmtp_start": 30006.557277382,
+              "append_end": 30006.632125118,
+              "lmtp_end": 30006.639527916
+            }
+          },
+          {
+            "iteration": 9,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 46,
+              "renames": 12
+            },
+            "timings": {
+              "append_start": 30007.550052717,
+              "lmtp_start": 30007.551368305,
+              "append_end": 30007.623025839,
+              "lmtp_end": 30007.654450876
+            }
+          },
+          {
+            "iteration": 10,
+            "append": "OK",
+            "lmtp": 452,
+            "virtual_bytes": 900472,
+            "concurrent_activity": {
+              "flags": 34,
+              "renames": 2
+            },
+            "timings": {
+              "lmtp_start": 30008.606223002,
+              "append_start": 30008.607161426,
+              "append_end": 30008.68105368,
+              "lmtp_end": 30008.684709106
+            }
+          },
+          {
+            "iteration": 11,
+            "append": "NO",
+            "lmtp": 250,
+            "virtual_bytes": 900803,
+            "concurrent_activity": {
+              "flags": 45,
+              "renames": 2
+            },
+            "timings": {
+              "append_start": 30009.603771631,
+              "lmtp_start": 30009.605089512,
+              "lmtp_end": 30009.681534023,
+              "append_end": 30009.704068242
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "held-write-crash-and-queued-retry",
+      "status": "PASS",
+      "observation": {
+        "kernel_lock_observed": true,
+        "interrupted_worker_pid": 191,
+        "separate_uuid_delivered": true,
+        "queued_ids": [
+          "2A0F380AD"
+        ]
+      }
+    },
+    {
+      "name": "restart-recounts-committed-Maildir",
+      "status": "PASS"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.90",
+        "--mount",
+        "type=volume,source=mail02-profile-3379ee3f-sockets,target=/run/mail-sockets",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/quota-control,target=/control",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/atomic-check.py",
+        "high"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e08fee33e379ed3bb0cfb79d19c73cd8ffc9be30f201bf1c059ae4014d6d336f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.90",
+        "--mount",
+        "type=volume,source=mail02-profile-3379ee3f-sockets,target=/run/mail-sockets",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/quota-control,target=/control",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/atomic-check.py",
+        "fits"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e885934d5e80cac04adf32bed3d62ea04237ccc96ee2bdeeeb2cf8d7c0b60b8d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.90",
+        "--mount",
+        "type=volume,source=mail02-profile-3379ee3f-sockets,target=/run/mail-sockets",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/quota-control,target=/control",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/atomic-check.py",
+        "copy-race"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9b64cdb40cf7b29212ed2f4da21354a4d118f112308bf3106544d7344f582601",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.90",
+        "--mount",
+        "type=volume,source=mail02-profile-3379ee3f-sockets,target=/run/mail-sockets",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/quota-control,target=/control",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/atomic-check.py",
+        "move-race"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8b785929c845c4be4cc134b56e4cbefcaa4e8d0e857a703ec18d590671a28cbc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.90",
+        "--mount",
+        "type=volume,source=mail02-profile-3379ee3f-sockets,target=/run/mail-sockets",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/quota-control,target=/control",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/atomic-check.py",
+        "copy-move"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5b5598fbe16d70c4a664e8a4669d73d8d5e3f319ae8bf7a2a1bc9313bda065c4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.90",
+        "--mount",
+        "type=volume,source=mail02-profile-3379ee3f-sockets,target=/run/mail-sockets",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/quota-control,target=/control",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/atomic-check.py",
+        "namespace-churn"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a10d09f55995ab9760c7488df295384ea40b06d10d2f8cb26bdbf16cce8c8ecf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "5000:5000",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/durable/mailboxes/22222222-2222-4222-8222-222222222222,target=/box,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import fcntl,json,time;f=open('/box/home/.drumee-quota.lock','rb');held=False\nfor i in range(100):\n try:fcntl.flock(f,fcntl.LOCK_EX|fcntl.LOCK_NB);fcntl.flock(f,fcntl.LOCK_UN)\n except BlockingIOError:held=True;break\n time.sleep(.02)\nassert held;print(json.dumps({'kernel_lock_observed':held}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "eec9372d044b306da6377bd95a1519803ed2e81964222d9d60b95f4dd9940a3a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "queued-lock-8f0dd126429d42769ff161e184caf71b",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "38623f1471798dfa416a6cd9d6aaa609248199136848af115339bd088a42e713",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7da5923e6eb3075371077bb7fddb70bf45a207c781926bab92aa9a2fb8bae89d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "contact@oxymot.fr",
+        "other-uuid-70c1f5c2eecf415791f20ccd9913356f",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "75fad5a5f5a8b455b2ef58d08097fa806e067d9fba606a2d4fb3b89e29deb5ba",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "contact@oxymot.fr",
+        "other-uuid-70c1f5c2eecf415791f20ccd9913356f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6ebf65bd8295434edaa8507b8383fa18f6351abd3ef9600f15c7eb946103c420",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "dovecot",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "-f",
+        "json",
+        "who"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a7f6ecb0a19620257390b139b6a339bdf0e21dfd441a70033b240cb09a4cab7d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "dovecot",
+        "cat",
+        "/proc/191/status"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5b83ccb730946b2c1da4d4febc1ae40afc78fc15b15ba4d9569a44d5048cbaa8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "dovecot",
+        "kill",
+        "-KILL",
+        "191"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "second@oxymot.fr",
+        "queued-lock-8f0dd126429d42769ff161e184caf71b"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c5a17c46bfc66c189213d86619fd65486dce860f83cf836550bbb20e1a161e51",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.90",
+        "--mount",
+        "type=volume,source=mail02-profile-3379ee3f-sockets,target=/run/mail-sockets",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/quota-control,target=/control",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/atomic-check.py",
+        "hold"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0023156c60cd9538ff38cba86c6db2a9cd2e4bf07dea895c7c507db3444aa6b3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "restart",
+        "dovecot"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4fa018756ffdb20892cf111166eebdce3f5a3a12e60c669ad76391f1184e3d82"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "second@oxymot.fr",
+        "queued-lock-8f0dd126429d42769ff161e184caf71b"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c5a17c46bfc66c189213d86619fd65486dce860f83cf836550bbb20e1a161e51",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

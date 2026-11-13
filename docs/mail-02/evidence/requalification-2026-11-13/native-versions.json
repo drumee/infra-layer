@@ -1,0 +1,55 @@
+{
+  "postfix": {
+    "argv": [
+      "postconf",
+      "-h",
+      "mail_version"
+    ],
+    "exit": 0,
+    "stdout": "3.10.13\n",
+    "stderr": ""
+  },
+  "dovecot": {
+    "argv": [
+      "dovecot",
+      "--version"
+    ],
+    "exit": 0,
+    "stdout": "2.4.1-4 (7d8c0e5759)\n",
+    "stderr": ""
+  },
+  "opendkim": {
+    "argv": [
+      "opendkim",
+      "-V"
+    ],
+    "exit": 0,
+    "stdout": "opendkim: OpenDKIM Filter v2.11.0\n\tCompiled with OpenSSL 3.5.7 9 Jun 2026\n\tSMFI_VERSION 0x1000001\n\tlibmilter version 1.0.1\n\tSupported signing algorithms:\n\t\trsa-sha1\n\t\trsa-sha256\n\t\ted25519-sha256\n\tSupported canonicalization algorithms:\n\t\trelaxed\n\t\tsimple\n\tActive code options:\n\t\tQUERY_CACHE\n\t\tUSE_DB\n\t\tUSE_LDAP\n\t\tUSE_LUA\n\t\tUSE_ODBX\n\t\tUSE_UNBOUND\n\t\t_FFR_ATPS\n\t\t_FFR_RBL\n\t\t_FFR_REPLACE_RULES\n\t\t_FFR_SENDER_MACRO\n\t\t_FFR_STATS\n\t\t_FFR_VBR\n\tlibopendkim 2.11.0: atps query_cache\n",
+    "stderr": ""
+  },
+  "module": {
+    "argv": [
+      "sha256sum",
+      "/usr/lib/dovecot/modules/lib10_quota_plugin.so"
+    ],
+    "exit": 0,
+    "stdout": "01fec4a55d42add0d62b939216bec57869513b2dab6b55c83ae51c93dd22f4c5  /usr/lib/dovecot/modules/lib10_quota_plugin.so\n",
+    "stderr": ""
+  },
+  "packages": {
+    "argv": [
+      "dpkg-query",
+      "-W",
+      "-f",
+      "${Package}=${Version}\n",
+      "postfix",
+      "opendkim",
+      "dovecot-core",
+      "nftables",
+      "util-linux"
+    ],
+    "exit": 0,
+    "stdout": "dovecot-core=1:2.4.1+dfsg1-6+deb13u7\nnftables=1.1.3-1\nopendkim=2.11.0~beta2-9.1+b1\npostfix=3.10.13-0+deb13u1\nutil-linux=2.41.5-0+deb13u1\n",
+    "stderr": ""
+  }
+}

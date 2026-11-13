@@ -1,236 +1,244 @@
-# Reproduction and retained evidence
+# Reproducing the isolated MAIL-02 qualification
 
-Read [qualification.md](qualification.md) first. The current result is
-**MAIL-02_BLOCKED**, including two observed implementation failures. Use only a
-private synthetic laboratory, the exact images and a DNS server without external
-forwarding. Never replace `.invalid` destinations with real recipients. A successful
-process exit alone is insufficient: several diagnostic drivers deliberately write
-a FAIL report without exiting nonzero. Assert each report's status/checks.
+Use [qualification.md](qualification.md) for the current verdict, image identities,
+scenario dispositions and evidence. Run only with synthetic identities/messages,
+private files and controlled `.invalid` SMTP receivers. Never substitute a real
+recipient. A rendered config or successful process exit is not transport proof.
+Assert each result's status and individual checks; observation contracts have a
+`contract` field rather than a test `status`.
 
-## Frozen package and installed consumer
+## Acquire the frozen package and engines
 
-Node22, Docker/Compose and the retained image export are prerequisites. This run
-used the archive from producer `4a73f8984fc1c0f884a8735d741551d8721d31d9`; test
-checkpoint `168498d130a35ea7e2fccef46987cf2a9f5b4b71` has identical packed bytes.
-Additional final documentation does not change those bytes.
+Use the two final draft-PR revisions, Node22, the pinned local image exports and
+Docker/Compose. The frozen producer is
+`de5ea272fe40c77dded529d03ef3ce1f174472ab`; later test/documentation changes leave
+all50 packed members identical. The unpublished package is
+`0.1.0-alpha.7-mail02.15`. Retain its exact archive and verify SHA256
+`03a1402e447015e20b41900b05edfda00ea0ea01ae3b5e7b358b7d88d071aa99` and the SRI/member
+inventory in `evidence/requalification-2026-11-13/archive.json`. Do not publish it.
+A changed npm tar stream is not silently substituted for this frozen archive.
 
 ```sh
-git worktree add --detach /tmp/mail02-reproduce 168498d130a35ea7e2fccef46987cf2a9f5b4b71
-cd /tmp/mail02-reproduce
+# Infra worktree; the general suites do not send real SMTP.
 npm ci --ignore-scripts --no-audit --no-fund
 npm test
 npm run test:contracts
 npm run lint
 npm run test:package
-mkdir -m 700 /tmp/mail02-reproduce-pack
-npm pack --ignore-scripts --pack-destination /tmp/mail02-reproduce-pack
-sha256sum /tmp/mail02-reproduce-pack/drumee-infra-layer-0.1.0-alpha.7-mail02.4.tgz
-```
 
-Require SHA256 `3332f762399dc9a482447ca1e021ba197c733ff83502ce9f99eb1ea4c8fea1a8`,
-SRI and all50 members in
-[`archive.json`](evidence/requalification-2026-11-12/archive.json). Never substitute
-a changed archive. In Debian's `feat/mail-02-profile` worktree with the final lock:
-
-```sh
-node profiles/mail/acquire.cjs /tmp/mail02-reproduce-pack/drumee-infra-layer-0.1.0-alpha.7-mail02.4.tgz
+# Debian worktree; archive installation disables scripts and has no source fallback.
+node profiles/mail/acquire.cjs /absolute/private/drumee-infra-layer-0.1.0-alpha.7-mail02.15.tgz
 node --test tests/mail/profile.cjs
 bash tests/run-all.sh
+install -m 600 profiles/mail/infra-source-lock.json profiles/mail/.cache/consumer/mail02-receipt.json
 ```
 
-The acquisition verifies the archive before installation, disables scripts, checks
-a closed installed inventory and has no registry/sibling-source fallback. Copy the
-public archive receipt to the private installed consumer, then run Infra's fixtures:
+`acquire.cjs` verifies SHA256/SRI before install. Every consumer import verifies
+closed installed inventory and member hashes. For an offline guest without npm,
+copy the already installed private consumer plus receipt, then call the same
+`consumer.cjs.verify(installedPath, receipt)` before use. Do not create a sibling
+source fallback. Type validation uses TypeScript5.9.3, strict/ES2022/Node16 module
+resolution, and the installed-consumer fixture in evidence.
+
+Load the exact images from qualification.md. The custom quota module is mandatory:
+stock Dovecot count quota is the reproduced failing baseline. The native image
+config ID is `sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f`.
+It contains the module hash `01fec4a55d42add0d62b939216bec57869513b2dab6b55c83ae51c93dd22f4c5`.
+Verify it before use, for example:
 
 ```sh
-install -m 600 docs/mail-02/evidence/requalification-2026-11-12/archive.json /absolute/CONSUMER/mail02-receipt.json
-MAIL02_CONSUMER=/absolute/CONSUMER MAIL02_RETAIN_RUNTIME=1 python3 test/mail-service/run.py
+docker image inspect sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f --format '{{.Id}}'
+docker run --rm --network none --entrypoint sha256sum sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f /usr/lib/dovecot/modules/lib10_quota_plugin.so
 ```
 
-`CONSUMER` is Debian `profiles/mail/.cache/consumer` or a separately installed
-private consumer. Load exact local image config IDs from qualification.md first;
-a new build/ID is a new qualification. `docker load` does not restore RepoDigests;
-inside the guest set `MAIL02_NODE_IMAGE=sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7`.
-The native image has Postfix/OpenDKIM/Dovecot/OpenSSL but no Node; use the pinned
-Node helper for metadata operations.
+`node profiles/mail/build.cjs` is a separate rebuild path: exact base config ID,
+pinned source commit and15 hashes, bounded source patches, pinned Dovecot-dev ABI,
+fixed apt snapshot inherited from the base, a temporary compiler, and a native
+image receipt. It formats no mail storage. A different module/image is a new
+qualification, even when native syntax checks pass. Local config IDs are not
+registry manifest digests; the parametric Dockerfile still has the documented
+static packaging failure. Release acquisition remains outside this lot.
 
-The main harness prints a private `RUN/report.json`. It creates two UUID boxes,
-hello/postmaster/abuse aliases, distinct ghost/oxymotion credentials, a lab CA,
-certificates and RSA2048 DKIM key. Password hashing uses stdin; verifiers and keys
-remain in protected files. SMTP/LMTP/IMAP use native binaries and independent
-fsynced receiver files. The report records commands/exits/output hashes, not
-credential output or message content. Keep private root permissions0700.
+## Native transport, controlled MX and original regression
 
-The45 checks include the original42. The added assertions inspect the delivered
-message: three local Authentication-Results assertions are removed, including
-folded/repeated/quoted variants, while two external results remain untrusted;
-DKIM still verifies. Stopping policy after DATA354 produces4xx before final250.
-Do not use the historical .0 header failure as the current verdict.
+In the Infra worktree, set `CONSUMER` to the absolute Debian
+`profiles/mail/.cache/consumer` and `SCRIPTS` to the absolute Infra
+`test/mail-service`. Copy fixture files to an immutable private snapshot before a
+run; the harness checks that its source files did not change during execution.
 
 ```sh
-python3 test/mail-service/mx-check.py "$RUN"
-python3 test/mail-service/life-check.py "$RUN/report.json"
+MAIL02_CONSUMER="$CONSUMER" MAIL02_RETAIN_RUNTIME=1 python3 "$SCRIPTS/run.py"
 ```
 
-`mx-check` uses only the lab DNS/MX. It checks alternate421, NXDOMAIN/Null MX,
-250/451/550 recipient disposition, strict-domain TLS without clear fallback and
-native forced expiry (`postsuper -e` for a specific synthetic ID). It restores its
-recorded tmpfs policy overrides. `life-check` owns separate synthetic client
-projects and compares complete mail identities during their lifecycle changes.
-These are account fixtures, not real Ghost/Oxy compatibility tests.
+The harness prints `RUN/report.json`. It owns two UUID boxes, an alias and separate
+ghost/oxymotion accounts, a lab CA/leaf/DKIM key, DNS without external forwarding,
+and a durable SMTP witness. Password hashing uses stdin and protected files;
+reports contain output hashes, not verifiers or private keys. Preserve root0700
+and credential files0600. Node helpers execute outside the native engine, which
+contains no Node/Python runtime. In a guest loaded from image exports, set
+`MAIL02_NODE_IMAGE=sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7`.
 
-## Separate pure profile
-
-The DNS/MX auxiliary services and temporary DNS overrides in the first harness are
-explicit test inputs, not an allowed production composition. Strict full-role
-preflight must use the pure four-service Debian profile. After all harness tests,
-stop only that unique harness project with its runtime compose file; preserve
-storage and omit `-v`/prune/message deletion:
-
-```sh
-docker compose -p "$PROJECT" -f "$RUN/compose.json" down --remove-orphans
-# In Debian's worktree, using final test drivers:
-MAIL02_RETAIN_RUNTIME=1 MAIL02_PRIVATE_BIND=1 python3 tests/mail/native-lifecycle.py "$RUN"
-```
-
-This creates a fresh `PROFILE` root and private copies of all source secrets.
-`MAIL02_PRIVATE_BIND=1` requests port1587 **inside the disposable VM** only. Do not
-use it to open a production/physical-host port. Without this flag no host port is
-published. Do not attach application backend networks. Exact commands used for the
-workstation's pure profile were:
-
-```sh
-python3 tests/mail/tls-native.py /tmp/mail02-profile-770kpico /tmp/mail02-native-og0e6pku /tmp/mail02-infra/test/mail-service
-python3 tests/mail/identity-controls.py /tmp/mail02-profile-770kpico
-python3 tests/mail/protocol-native.py /tmp/mail02-profile-770kpico /tmp/mail02-native-og0e6pku /tmp/mail02-infra/test/mail-service
-python3 tests/mail/registry-native.py /tmp/mail02-profile-770kpico /tmp/mail02-native-og0e6pku /tmp/mail02-infra/test/mail-service
-python3 tests/mail/rate-native.py /tmp/mail02-profile-770kpico /tmp/mail02-native-og0e6pku /tmp/mail02-infra/test/mail-service
-python3 tests/mail/signing-native.py /tmp/mail02-profile-770kpico /tmp/mail02-native-og0e6pku /tmp/mail02-infra/test/mail-service
-```
-
-Use newly printed paths for a fresh run. TLS checks stage SAN/key faults and sealed
-same-ref replacements, rotate all five listener fingerprints, preserve negotiated
-SMTP sessions/account for retired IMAP sessions, kill Dovecot during reload and
-require explicit successful reconciliation with admission closed. No generic
-arbitrary-command fault hook is added to the product API.
-
-Identity checks stop all four cores, alter one owned fixture, assert a specific
-refusal and zero running cores, compare full data/metadata hashes, then restore
-the original. Replacement-target sentinels are retained. Protocol negatives use
-distinct IPs instead of disabling Dovecot penalties. Registry tests advance beyond
-all staged immutable generation numbers, including failed candidates; they do not
-reuse/overwrite a failed generation. Quota-change test preserves its appended
-message and prior accepted local recipient. Rate test emits no DATA and confirms
-persistence across policy restart. Signer outage must return4xx with unchanged
-queue; native Postfix in this run refused as early as STARTTLS454. It also delivers
-synthetic postmaster/abuse messages and reads the expected second UUID via IMAP.
-
-## Guest, private routing and actual reboot
-
-The retained runner is QEMU container `mail02-qualification-vm` on testbox under
-`/home/somanos/mail02-vm`. Its outer network was disconnected before testing;
-QEMU's SSH host-forward listens only on127.0.0.1 inside that container. No physical
-host TCP port is published. The base qcow2/export hashes are in qualification.md.
-Never reboot testbox or run the following reboot on the workstation.
-
-Commands **inside the disposable guest**, with uid1000/gid1001:
-
-```sh
-TMPDIR=/home/lab/runs MAIL02_CONSUMER=/home/lab/work/r4/consumer \
-MAIL02_NODE_IMAGE=sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7 \
-MAIL02_RETAIN_RUNTIME=1 python3 /home/lab/work/r4/infra/test/mail-service/run.py
-# After retaining the base evidence, run the pure profile with its own private inputs.
-TMPDIR=/home/lab/runs MAIL02_RETAIN_RUNTIME=1 MAIL02_PRIVATE_BIND=1 \
-python3 /home/lab/work/r4/debian/tests/mail/native-lifecycle.py /home/lab/runs/mail02-native-rf42i3o0
-python3 /home/lab/work/r4/debian/tests/mail/private-network.py /home/lab/runs/mail02-profile-yxjq7li_ /home/lab/runs/mail02-native-rf42i3o0 /home/lab/work/r4/infra/test/mail-service
-python3 /home/lab/work/r4/debian/tests/mail/boot-native.py /home/lab/runs/mail02-profile-yxjq7li_ /home/lab/runs/mail02-native-rf42i3o0 /home/lab/work/r4/infra/test/mail-service stage
-sudo systemctl reboot --no-block
-# Reconnect through the existing container-local SSH forward, then:
-python3 /home/lab/work/r4/debian/tests/mail/boot-native.py /home/lab/runs/mail02-profile-yxjq7li_ /home/lab/runs/mail02-native-rf42i3o0 /home/lab/work/r4/infra/test/mail-service verify
-python3 /home/lab/work/r4/debian/tests/mail/private-network.py /home/lab/runs/mail02-profile-yxjq7li_ /home/lab/runs/mail02-native-rf42i3o0 /home/lab/work/r4/infra/test/mail-service
-```
-
-The stage driver installs a mail-owned unit only in the guest, with
-RequiresMountsFor, preflight and start/stop. All cores use `restart:no`, preventing
-a Docker restart from bypassing whole-service validation. Stage writes one delivered
-message, then a second accepted/deferred local message with Dovecot stopped.
-Verification confirms a changed guest boot ID, guarded activation, retained prior
-content, native queue flush and exactly one observed second-message IMAP match.
-This is same-storage restart persistence, not backup restoration.
-
-The private-network driver creates/recreates separate owned routed client bridges
-48/49, never attaches them to mail or a foreign backend, and attempts the gateway
-with CA/hostname verification and required auth. The expected positive source48
-currently gets ECONNREFUSED, as does forbidden49. The four results are FAIL overall;
-do not treat universal denial as a working filter. An initial internal client
-bridge had no gateway route; that failed attempt is retained separately. No
-firewall bypass was made. Keep this gate failed until the network design works.
-
-## Concurrent quota failure
-
-Run on the fresh base harness's empty second box, before reusing it for any other
-content test. Attach a root helper **only inside the lab** to the internal edge
-and existing Unix-socket volume, mounting protected synthetic client keys read-only:
+Require45 native PASS checks, including delivered duplicate/folded local
+Authentication-Results removal, retained external results, valid DKIM, and policy
+failure after DATA354 but before final250. The original quota-race fixture runs
+before application lifecycle probes while the second box's INBOX is empty:
 
 ```sh
 docker run --rm --network "$PROJECT-edge" \
   --mount "type=volume,source=$PROJECT-sockets,target=/run/mail-sockets" \
   --mount "type=bind,source=$RUN/keys,target=/keys,readonly" \
-  --mount "type=bind,source=$INFRA/test/mail-service,target=/lab,readonly" \
-  --entrypoint python3 \
-  sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8 \
-  /lab/quota-race.py
+  --mount "type=bind,source=$SCRIPTS,target=/lab,readonly" \
+  --entrypoint python3 sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8 /lab/quota-race.py
+python3 "$SCRIPTS/mx-check.py" "$RUN"
+python3 "$SCRIPTS/life-check.py" "$RUN/report.json"
+python3 "$SCRIPTS/mx-expiry-check.py" "$RUN"
 ```
 
-Read the actual volume name from prepared compose; do not guess a foreign volume.
-The helper seeds650k, synchronizes APPEND250k and LMTP250k after DATA354, then reads
-RFC822 sizes. On this candidate the first iteration accepts both and reports
-`FAIL_CONCURRENT_QUOTA_OVERSHOOT`. Preserve that failed mailbox and obtain an
-independent read-only physical-file witness. The script's bounded retry cleanup
-is only for its explicitly synthetic empty qualification mailbox, not existing
-user mail; do not rerun against a box with unrelated content. No setting of
-`lmtp_user_concurrency_limit` alone resolves the IMAP race.
+`PROJECT` is the run's recorded project. The original race retains its seed and
+removes only its synthetic candidates between20 rounds; never aim it at an existing
+mailbox. Its empty-folder cleanup now skips an empty IMAP message set. The MX driver
+checks actual per-recipient outcomes and independent fsynced receiver events.
+Forced expiry uses `postsuper -e` for a named synthetic ID; it is not a natural
+five-day timer run. The expired-MX driver requires a native deferred certificate
+failure, no plaintext witness, then one observed TLS delivery after peer recovery.
+It restores its laboratory overrides. The receiver never forwards messages.
 
-## Bounded disk pressure
+## Canonical independent profile and remaining native drivers
 
-This requires guest-only integration privileges. Create a **new** owner-controlled
-file and directory with O_EXCL/absence checks; never use a block device or an
-existing image. The run used a256MiB file, ext4, loop mount with nodev/nosuid and
-owner1000:1001 mode0700 at `/home/lab/bounded-mail02`. Stop/down the other owned
-profile first so its network pool is free. Exact format/mount commands, after
-exclusive creation and `ftruncate(256*1024*1024)`, were:
+Stop/down only the owned native-harness project, retaining all data and volumes,
+before reusing its lab subnet for a fresh canonical profile. Do not use `down -v`,
+prune, queue deletion or Maildir copying to repair a test. In the Debian worktree:
 
 ```sh
-/usr/sbin/mkfs.ext4 -F -q /home/lab/runs/mail02-bounded-qualification.ext4
-sudo mount -o loop,nodev,nosuid /home/lab/runs/mail02-bounded-qualification.ext4 /home/lab/bounded-mail02
-sudo chown 1000:1001 /home/lab/bounded-mail02
-sudo chmod 700 /home/lab/bounded-mail02
-TMPDIR=/home/lab/bounded-mail02 MAIL02_RETAIN_RUNTIME=1 \
-python3 /home/lab/work/r4/debian/tests/mail/native-lifecycle.py /home/lab/runs/mail02-native-rf42i3o0
-python3 /home/lab/work/r4/debian/tests/mail/disk-native.py /home/lab/bounded-mail02/mail02-profile-iwu13a5j /home/lab/runs/mail02-native-rf42i3o0 /home/lab/work/r4/infra/test/mail-service
+MAIL02_RETAIN_RUNTIME=1 python3 tests/mail/native-lifecycle.py "$RUN"
 ```
 
-The disk driver verifies findmnt reports loop/ext4 and size<512MiB. It delivers
-one old message, accepts/defer another with Dovecot stopped, and allocates only a
-new synthetic filler until48MiB remain. It checks SMTP452, unchanged queue IDs,
-queue-age/disk alerts, removes only the filler in finally, restarts Dovecot,
-flushes the queue and reads old/new messages. Queue/spool/Maildirs are never purged.
+The driver prints `PROFILE/result.json`, clones protected synthetic inputs,
+prepares/installs only the four canonical services, exercises preflight and
+lifecycle guards, and retains the runtime. `SOURCE` below is the original `RUN`.
+Execute each command and verify its named result JSON:
 
-## Results, cleanup and rollback
+```sh
+python3 tests/mail/quota-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/registry-cache-native.py "$PROFILE"
+python3 tests/mail/tls-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/tls-extra.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/tls-chain-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/protocol-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/registry-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/session-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/write-failure.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/quota-reconcile-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/identity-controls.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/foreign-resources.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/signing-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/rate-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+```
 
-Inspect each JSON check, not just exit0. Share only sanitized reports, receipts,
-source hashes and logs already reviewed for secrets. Retain native receiver
-messages, private keys/verifiers and raw logs privately. The evidence manifest
-hashes the committed public artifacts. Compare final packed50 members and Debian
-runtime/test hashes before attributing results to a final SHA.
+Use a fresh profile for the full sequence. Drivers retain their owned synthetic
+seeds, failed candidate generations and negative-target sentinels; replaying a
+single driver may have additional fresh-fixture preconditions. Never reset an
+account-generation high-water mark, ledger or deduplication key to make a test pass.
 
-Stop only the named lab projects, without `-v`, prune or `postsuper -d`. Disable
-only the generated guest mail unit after its proof. Unmount the owned loop mount
-after stopping its writers, retaining its image and private roots. Power off only
-the disposable guest after evidence collection. Returning to an earlier code
-candidate must preserve each instance's accepted queue; never run two copies.
+Quota probes synchronize native LMTP DATA and IMAP operations, record overlapping
+times, read RFC822.SIZE independently, exercise simultaneous flags/folder renames,
+observe the kernel lock, kill only the identified lab IMAP worker, prove another
+UUID remains live, and verify queued retry/restart. Write-failure uses the owned
+Maildir/tmp mode, then restores it. COPY/MOVE headroom semantics are documented in
+the native design. Registry-cache uses11 same-size quota changes and checks native
+userdb plus increasing whole-second generation mtimes. Active-session tests cover
+both sides of final SMTP acceptance, combined flag disable and the retained UUID
+projection used by future deletion tombstones. They do not implement MAIL03.
 
-`SMTP_RECOVERY_UNQUALIFIED` remains for Oxy coordinated state and the complete new
-profile. Do not reset the ledger/dedup key, and do not describe a reboot as a
-replacement-storage restore. Publication, production activation, DNS/PTR and host
-firewall changes require a later lot.
+The expired fixtures use explicit past start/end dates. Negative `-days` creates an
+invalid inverted interval on older OpenSSL and is rejected by OpenSSL3.5; it is not
+the final expiry proof. The signer probe permits Docker DNS resolution of a withdrawn
+service alias within its client deadline; only an explicit native4xx plus unchanged
+queue passes. An early timeout is a failed observation, not accepted evidence.
+Distinct client IPs retain native Dovecot authentication penalties.
+
+## Dedicated Docker26 guest, real mount and normal reboot
+
+Only use the dedicated qualification VM. Keep the outer QEMU container disconnected
+from every physical-host network and without published ports. Never reboot the
+physical SSH host. The guest has its own Docker26 engine and retained image files.
+
+Repeat the same native harness, original race, MX and lifecycle checks there.
+For the canonical private path, set `MAIL02_PRIVATE_BIND=1` only in this disconnected
+guest. The acceptance composition then uses its canonical routed edge and an exact
+gateway1587 binding; clients use the separate static frontal endpoint.
+
+Create **new** bounded storage with the guest-only driver:
+
+```sh
+python3 tests/mail/mount-native.py create
+# Read the returned MANIFEST, MOUNT and mount-unit name.
+TMPDIR="$MOUNT" MAIL02_PRIVATE_BIND=1 MAIL02_RETAIN_RUNTIME=1 \
+  python3 tests/mail/native-lifecycle.py "$RUN"
+```
+
+The driver creates an O_EXCL256MiB file, formats only that new file, installs an
+owned loop/ext4 systemd mount and preserves an underlying fallback sentinel. A
+failed setup file is retained and never formatted again. The profile and all its
+durable resources must be below the new mount. Repeat the canonical driver matrix
+there; prove native versions/image/module match the workstation.
+
+```sh
+python3 tests/mail/private-network.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/disk-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/mount-native.py refuse "$MANIFEST" "$PROFILE"
+python3 tests/mail/boot-native.py "$PROFILE" "$SOURCE" "$SCRIPTS" stage
+```
+
+The private driver creates independent Ghost/Oxymotion/forbidden Compose projects,
+with read-only CA and **only each app's own SMTP credential**. It checks verified
+STARTTLS, no-auth/wrong-password refusal, sender-specific submission and local
+receiver evidence. Unknown frontal sources and a backend-only masqueraded source
+must be dropped at packet input. It recreates projects without changing mail IDs
+or deleting the external frontal network. Require eight PASS observations.
+
+The disk driver verifies loop/ext4 and size before allocating only its own pressure
+file. It establishes prior accepted mail and a deferred message, measures the
+64MiB-or10% refusal threshold, requires SMTP452 with unchanged accepted queue and
+alerts, removes only the pressure file, then proves old/new message access.
+
+The missing-mount driver stops the owned mail unit/writers, unmounts only the owned
+loop filesystem, renames its source file to a retained name, and attempts the mail
+unit. A failed mount dependency must prevent all core exposure. The underlying
+sentinel/directory listing and retained filesystem hash must be unchanged. Its
+`finally` path restores the source name, mount and guarded unit; no data copy or
+fallback directory creation is allowed.
+
+`boot-native stage` installs the generated mail-owned unit, checks its guarded
+start and mount requirements, preserves a prior local message, accepts another
+while LMTP is stopped, and records the nonempty queue and guest boot ID. From the
+**guest control channel only**, request a normal reboot:
+
+```sh
+sudo systemctl reboot --no-block
+```
+
+Reconnect to the same dedicated guest. Without editing rules, network options,
+mounts, markers or credentials, run:
+
+```sh
+python3 tests/mail/boot-native.py "$PROFILE" "$SOURCE" "$SCRIPTS" verify
+python3 tests/mail/quota-reconcile-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/private-network.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/rate-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
+```
+
+Require changed boot ID, active mail-owned unit, preflight, retained old body
+hashes, exactly one observed delivery of the pending local message and private
+positive/negative results after recreation. Preserve separate pre/post-reboot
+private reports. Run rate last to avoid deliberately filling the Ghost rate bucket
+before other positive submissions. Allow only natural window expiry; do not reset
+persistent counters. Reboot on existing storage is **not replacement-storage
+restoration**.
+
+After collection, stop only owned lab projects/units, retaining queue/Maildir/registry,
+negative targets and loop images. Unmount only after writers stop. Disable only
+owned guest units before shutting down the dedicated guest; no purge or production
+cleanup. Protect private evidence and publish only the reviewed nonsecret reports.
+Full new-profile and coordinated Oxy-form restoration remain
+**SMTP_RECOVERY_UNQUALIFIED**.

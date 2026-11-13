@@ -1,0 +1,953 @@
+{
+  "status": "PASS_SYNTHETIC_APPLICATION_LIFECYCLES",
+  "checks": [
+    "oxymotion-stop-does-not-interrupt-peer-or-mx",
+    "oxymotion-update-independent",
+    "oxymotion-failed-start-independent",
+    "oxymotion-rollback-independent",
+    "ghost-stop-does-not-interrupt-peer-or-mx",
+    "ghost-update-independent",
+    "ghost-failed-start-independent",
+    "ghost-rollback-independent"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "08f8d5d1ae4544e07818c79a18b451fd36490163813ec88198e4e1a990552d52",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-dovecot-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9868e96028fd51bff3ee1352bebf0ad3626057ea3f33eade1c0bf49125ce1c07",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-policy-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4e1b88b78de4b4e70d2cc86e1b0cd2f38eef984b2f1cf5d31cda34968d209e57",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-opendkim-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "515dbf94a3c7e962a59a6b70da21af761d2e5e6c8387a8a08e297d09e4504339",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-ghostfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/ghost-fixture.json",
+        "up",
+        "-d"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "fb0f03f2506468e0d4f57793703adb916d1c4d6d4a7b50e0c4b9a53de83dd196"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-oxymotionfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/oxymotion-fixture.json",
+        "up",
+        "-d"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2cf8744375ef5512bd028b76e59845fca2c85161a38cd38c557e7bf3764f1343"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-oxymotionfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/oxymotion-fixture.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "7eac21c9e394288572c0b55bc27b0bae4894e60bb94264e60204c6c53159c50b"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-ghostfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5ffcf5931ec829e37bd3650cac83a48963443ff325798990e6df1d45c6018c28",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "1d5dbe21b290",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@dest.invalid",
+        "81c3e649-oxymotion-stopped",
+        "587"
+      ],
+      "exit": 0,
+      "stdout_sha256": "51d05345518b4eed56edcbf7bff8e83a8f0b7ac8ddac851c3fc8beed5f26d6fb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "1d5dbe21b290",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "rx-81c3e649-oxymotion-stopped",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3bdccb4e7c4f49d9de25b616ae8d5854be7f0e4c7f1ffa74c8462b79c5797973",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "cbb9e7198c4deee6933a9fe617ec2e3789cb1876004fa672ed58adf4707c4195",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-dovecot-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "75c7b751dd3c9d4ad2180db608f7da4fd031f0e6e5070fb31635c6d2c0667235",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-policy-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "488f4b0f8c9f7874a13f0d93e458530ebb54f48b66348d206ba4b534eff09c87",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-opendkim-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "515dbf94a3c7e962a59a6b70da21af761d2e5e6c8387a8a08e297d09e4504339",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-oxymotionfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/oxymotion-fixture.json",
+        "up",
+        "-d"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "7fc3a058af3d50478e9f240cc6b2eed929205afae9a0ae11bf723dba3121300e"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-ghostfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5ffcf5931ec829e37bd3650cac83a48963443ff325798990e6df1d45c6018c28",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "1d5dbe21b290",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@dest.invalid",
+        "81c3e649-oxymotion-updated",
+        "587"
+      ],
+      "exit": 0,
+      "stdout_sha256": "295bc9d40235cab0010a59c398ecb25b5e7a9986368b21261cdd1d8d7f68a3a9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "1d5dbe21b290",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "rx-81c3e649-oxymotion-updated",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7a43b83aabbef69d71056378c09db09637bb7d92986c2eb5d95c6404be07156a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "cbb9e7198c4deee6933a9fe617ec2e3789cb1876004fa672ed58adf4707c4195",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-dovecot-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "75c7b751dd3c9d4ad2180db608f7da4fd031f0e6e5070fb31635c6d2c0667235",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-policy-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "488f4b0f8c9f7874a13f0d93e458530ebb54f48b66348d206ba4b534eff09c87",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-opendkim-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "515dbf94a3c7e962a59a6b70da21af761d2e5e6c8387a8a08e297d09e4504339",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-oxymotionfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/oxymotion-fixture.json",
+        "up",
+        "-d"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "7fc3a058af3d50478e9f240cc6b2eed929205afae9a0ae11bf723dba3121300e"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-oxymotionfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6b350491912e468a47f3bb64b0935aef642b29081add7f3286430efd78efe27f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "7e3b7433b300"
+      ],
+      "exit": 0,
+      "stdout_sha256": "431e4be11b861177df3cd03d7fffae64498e79d3ef57c4a2a1d7c193643ea909",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-ghostfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5ffcf5931ec829e37bd3650cac83a48963443ff325798990e6df1d45c6018c28",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "1d5dbe21b290",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@dest.invalid",
+        "81c3e649-oxymotion-failed-start",
+        "587"
+      ],
+      "exit": 0,
+      "stdout_sha256": "33d8da0125c8d46fdf3e74321f12fdd33cda2059bdac7abf6ec391227c8c2eb2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "1d5dbe21b290",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "rx-81c3e649-oxymotion-failed-start",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7d1d15cf5d98845ab759f11e7d933da8db7138f174942e7482a4c6bd5eb8d892",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "477acd0414d243d495428183e1ca20f1855ff5f336cd2e53b4559a431d96b391",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-dovecot-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "04ca658899208687b0bca941fe34836bb94f7250bf849fbfff2ade705f9d1ee2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-policy-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "488f4b0f8c9f7874a13f0d93e458530ebb54f48b66348d206ba4b534eff09c87",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-opendkim-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "569fbb2a85a91c3d1a2f155193c14a0a62a49c333dfc94d9f41b67858aad5615",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-oxymotionfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/oxymotion-fixture.json",
+        "up",
+        "-d"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "7fc3a058af3d50478e9f240cc6b2eed929205afae9a0ae11bf723dba3121300e"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-oxymotionfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "16c70841f679bc7c3faea93b877dd1a0c25e6304c91942c37b60e466a218895f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "debf1fe9e8ee",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "oxymotion",
+        "second@oxymot.fr",
+        "sink@dest.invalid",
+        "81c3e649-oxymotion-rollback",
+        "587"
+      ],
+      "exit": 0,
+      "stdout_sha256": "50714eda50a50f2d9aef22ec3d50c8cdad70be776b908adebd4d94ddb5d67707",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "debf1fe9e8ee",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "rx-81c3e649-oxymotion-rollback",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "68bff4ec3462bd358ffce884cdfc8a34bd6d3a2aadb84f1331cfccf26594acbe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7958686fd87a3a46d5707aa1df68aca34f424fe3f1d195c5d2cd26bc21de2d81",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-dovecot-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "04ca658899208687b0bca941fe34836bb94f7250bf849fbfff2ade705f9d1ee2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-policy-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "488f4b0f8c9f7874a13f0d93e458530ebb54f48b66348d206ba4b534eff09c87",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-opendkim-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "515dbf94a3c7e962a59a6b70da21af761d2e5e6c8387a8a08e297d09e4504339",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-ghostfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/ghost-fixture.json",
+        "stop"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "20ae158362e5709470f16f80e91ef07905a8ea724dd552879fb1592e0291dfa9"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-oxymotionfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "16c70841f679bc7c3faea93b877dd1a0c25e6304c91942c37b60e466a218895f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "debf1fe9e8ee",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "oxymotion",
+        "second@oxymot.fr",
+        "sink@dest.invalid",
+        "81c3e649-ghost-stopped",
+        "587"
+      ],
+      "exit": 0,
+      "stdout_sha256": "fb286e93795ab98b2851fb99df04276b72f4b97902a2f1f5f5365543c61dfb4a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "debf1fe9e8ee",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "rx-81c3e649-ghost-stopped",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5afa7ff2dd95a696483b5d963fefdb8a9fc1081fde2e479ec7ca77355b485332",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9e6da4fc83cacf42c8438ee625c734c3ee48ca40cddf4b3db5c04cab0faa431e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-dovecot-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9868e96028fd51bff3ee1352bebf0ad3626057ea3f33eade1c0bf49125ce1c07",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-policy-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "488f4b0f8c9f7874a13f0d93e458530ebb54f48b66348d206ba4b534eff09c87",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-opendkim-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "515dbf94a3c7e962a59a6b70da21af761d2e5e6c8387a8a08e297d09e4504339",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-ghostfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/ghost-fixture.json",
+        "up",
+        "-d"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8c1eefaaa55ec3d81ee71067c7da1a17bce76bf3b1dbe65a509b0a94b831c137"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-oxymotionfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "16c70841f679bc7c3faea93b877dd1a0c25e6304c91942c37b60e466a218895f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "debf1fe9e8ee",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "oxymotion",
+        "second@oxymot.fr",
+        "sink@dest.invalid",
+        "81c3e649-ghost-updated",
+        "587"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8a0c0050453becb76f7df9f4b88862ca5f0106cc4b2810fbf20a23933933af40",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "debf1fe9e8ee",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "rx-81c3e649-ghost-updated",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "df93eb652bddca6fef4ffa7b038795125cfdf5219fd8e9e8f97f1e7addca005b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9e6da4fc83cacf42c8438ee625c734c3ee48ca40cddf4b3db5c04cab0faa431e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-dovecot-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "75c7b751dd3c9d4ad2180db608f7da4fd031f0e6e5070fb31635c6d2c0667235",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-policy-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "488f4b0f8c9f7874a13f0d93e458530ebb54f48b66348d206ba4b534eff09c87",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-opendkim-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "515dbf94a3c7e962a59a6b70da21af761d2e5e6c8387a8a08e297d09e4504339",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-ghostfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/ghost-fixture.json",
+        "up",
+        "-d"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8c1eefaaa55ec3d81ee71067c7da1a17bce76bf3b1dbe65a509b0a94b831c137"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-ghostfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bbeb1050120f0864712095b839c1c231dfb5fcd57d02c38e19446b39cafe978e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "37a6ac38f07b"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e5f5a8efbcc89f327e45637b3ffd2b0ffec35356b4d133599911c5fea94da0ca",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-oxymotionfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "16c70841f679bc7c3faea93b877dd1a0c25e6304c91942c37b60e466a218895f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "debf1fe9e8ee",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "oxymotion",
+        "second@oxymot.fr",
+        "sink@dest.invalid",
+        "81c3e649-ghost-failed-start",
+        "587"
+      ],
+      "exit": 0,
+      "stdout_sha256": "064c8be32a8a750437142953576884f131ec7e5ead1a7e998668516096e865af",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "debf1fe9e8ee",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "rx-81c3e649-ghost-failed-start",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b294c34809f7692c9b3d791c583590dbde15a931d145b0cc16ac8b548a16645c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a47142316e58ff0465a60854a34913f7b5f68d1a0aa45aa527c61e7683d7e6cc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-dovecot-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9868e96028fd51bff3ee1352bebf0ad3626057ea3f33eade1c0bf49125ce1c07",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-policy-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "488f4b0f8c9f7874a13f0d93e458530ebb54f48b66348d206ba4b534eff09c87",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-opendkim-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "515dbf94a3c7e962a59a6b70da21af761d2e5e6c8387a8a08e297d09e4504339",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-b180ca68-ghostfixture",
+        "-f",
+        "/home/lab/runs/mail02-native-0rigtug7/ghost-fixture.json",
+        "up",
+        "-d"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8c1eefaaa55ec3d81ee71067c7da1a17bce76bf3b1dbe65a509b0a94b831c137"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-b180ca68-ghostfixture"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1044a2394d8d0d39ccb1c54dde9e0e76fa0ece46a99cfd6d3244782f30e6e046",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "1a02cff9939b",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@dest.invalid",
+        "81c3e649-ghost-rollback",
+        "587"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bc91c518498ac4c401fc436320e00ce24de80cc63f54931397f3a35246da1ade",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "1a02cff9939b",
+        "python3",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "rx-81c3e649-ghost-rollback",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ecb403c2ed9ac2a2b3268f771b5fa3bf06cd63f910d02aadd353d95913825582",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-postfix-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "022f9fd6266f942dbe1e706baab2c30ce8418ff723821ad8235fa36d359be0d2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-dovecot-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9868e96028fd51bff3ee1352bebf0ad3626057ea3f33eade1c0bf49125ce1c07",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-policy-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15cbc1439c4c9351a0bdbe919c9be50953b01c153451466ac3f9f474fc759ba9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-b180ca68-opendkim-1"
+      ],
+      "exit": 0,
+      "stdout_sha256": "569fbb2a85a91c3d1a2f155193c14a0a62a49c333dfc94d9f41b67858aad5615",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "mail_runtime_identity_unchanged": true,
+  "application_backend_not_adopted": true
+}

@@ -1,0 +1,214 @@
+{
+  "status": "PASS_NATIVE_WRITE_FAILURE_ROLLBACK",
+  "refusal": {
+    "imap_append": "NO"
+  },
+  "kernel_lock": {
+    "released_after_error": true
+  },
+  "accepted_queue_ids": [
+    "F0E4085DA"
+  ],
+  "observed_delivery_after_permission_recovery": 1,
+  "new_write": {
+    "imap_append": "OK"
+  },
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/durable/mailboxes/22222222-2222-4222-8222-222222222222,target=/box",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os; p=pathlib.Path('/box/Maildir/tmp');assert p.is_dir() and not p.is_symlink() and p.stat().st_uid==5000;os.chmod(p,0o500)"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import IMAP,cfg,ctx;s=IMAP('dovecot',993,ssl_context=ctx,timeout=8);s.login('second@oxymot.fr',cfg['second']);code=s.append('INBOX',None,None,b'From: outside@dest.invalid\\r\\nSubject: refused write\\r\\n\\r\\nsynthetic')[0];assert code=='NO';s.logout();print(json.dumps({'imap_append':code}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6ab591aa72775bb03506fe84841f8b99dab02695db70b1896e89b9bda46150b6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "write-failure-11c5f5b098044181a2562d713e1e878f",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "df238cac919c9c45eae9b80f5fb02658a291dedbb309be6e1cd5262f6e653c23",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "640020456807585bc72dae94676ecfb3dc0878459f786b9e6ad4a2f4ba73db57",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/durable/mailboxes/22222222-2222-4222-8222-222222222222,target=/box",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os; p=pathlib.Path('/box/Maildir/tmp');assert p.is_dir() and not p.is_symlink() and p.stat().st_uid==5000;os.chmod(p,0o700)"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/durable/mailboxes/22222222-2222-4222-8222-222222222222,target=/box",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import fcntl,json;f=open('/box/home/.drumee-quota.lock','rb');fcntl.flock(f,fcntl.LOCK_EX|fcntl.LOCK_NB);print(json.dumps({'released_after_error':True}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9abcb2f1f718be94c2ffd0bef29df533e254de79c484f09cdc9d5d196f27d9f7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "second@oxymot.fr",
+        "write-failure-11c5f5b098044181a2562d713e1e878f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ba44b6e3f83f0ad7d8ca757c879c56b700c697c5fcda7649bf8cec7f4586b9c2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import IMAP,cfg,ctx;s=IMAP('dovecot',993,ssl_context=ctx,timeout=8);s.login('second@oxymot.fr',cfg['second']);code=s.append('INBOX',None,None,b'From: outside@dest.invalid\\r\\nSubject: recovered write\\r\\n\\r\\nsynthetic')[0];assert code=='OK';s.logout();print(json.dumps({'imap_append':code}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "86b8709e63b0b6abe15126317b84d6a57fa2f6215385d9f76226170431524134",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

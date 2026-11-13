@@ -1,0 +1,783 @@
+{
+  "status": "PASS_FOREIGN_RESOURCE_CONTROLS",
+  "checks": [
+    {
+      "name": "edge-owner",
+      "status": "PASS",
+      "code": "MAIL_RUNTIME_NETWORK_MISMATCH",
+      "no_core_exposure": true,
+      "target_identity_unchanged": true
+    },
+    {
+      "name": "edge-internal",
+      "status": "PASS",
+      "code": "MAIL_RUNTIME_NETWORK_MISMATCH",
+      "no_core_exposure": true,
+      "target_identity_unchanged": true
+    },
+    {
+      "name": "edge-ipam",
+      "status": "PASS",
+      "code": "MAIL_RUNTIME_NETWORK_MISMATCH",
+      "no_core_exposure": true,
+      "target_identity_unchanged": true
+    },
+    {
+      "name": "control-owner",
+      "status": "PASS",
+      "code": "MAIL_RUNTIME_NETWORK_MISMATCH",
+      "no_core_exposure": true,
+      "target_identity_unchanged": true
+    },
+    {
+      "name": "control-internal",
+      "status": "PASS",
+      "code": "MAIL_RUNTIME_NETWORK_MISMATCH",
+      "no_core_exposure": true,
+      "target_identity_unchanged": true
+    },
+    {
+      "name": "volume-owner",
+      "status": "PASS",
+      "code": "MAIL_RUNTIME_STORAGE_MISMATCH",
+      "no_core_exposure": true,
+      "target_identity_unchanged": true
+    },
+    {
+      "name": "volume-options",
+      "status": "PASS",
+      "code": "MAIL_RUNTIME_STORAGE_MISMATCH",
+      "no_core_exposure": true,
+      "target_identity_unchanged": true
+    }
+  ],
+  "retained_targets": [
+    {
+      "root": "/tmp/mail02-foreign-kl5ahu7k",
+      "type": "network",
+      "name": "mail02-foreign-8c3bbf38-edge",
+      "id": "d9e4f9a592dda4a305274246472195f64a2f8d703658ae4cc934b4877a192a48"
+    },
+    {
+      "root": "/tmp/mail02-foreign-ieb0ko2p",
+      "type": "network",
+      "name": "mail02-foreign-a15f9fe6-edge",
+      "id": "8787d9d05ebae2dc4c84fe65772d971bcd0fffca831c5067a4f336a8b5fe48e7"
+    },
+    {
+      "root": "/tmp/mail02-foreign-ye57es1z",
+      "type": "network",
+      "name": "mail02-foreign-d8bdc554-edge",
+      "id": "72e43ea9e803ac673bdbfe9bd37bb2f9eb20ecd9dd63641e1940edf62b77c441"
+    },
+    {
+      "root": "/tmp/mail02-foreign-x5ixmwwq",
+      "type": "network",
+      "name": "mail02-foreign-a19f671d-control",
+      "id": "de82a1c4b35e8523760ab4143d87ee731adbefc762050351662c75d1db6c016e"
+    },
+    {
+      "root": "/tmp/mail02-foreign-kn6tyzbb",
+      "type": "network",
+      "name": "mail02-foreign-66e503ef-control",
+      "id": "b917c735fc247f306522baf260de1591a1120a189186e0b0d57c716955d4afb0"
+    },
+    {
+      "root": "/tmp/mail02-foreign-znjeoet4",
+      "type": "volume",
+      "name": "mail02-foreign-3a518777-sockets",
+      "id": "mail02-foreign-3a518777-sockets"
+    },
+    {
+      "root": "/tmp/mail02-foreign-u_yzhpsg",
+      "type": "volume",
+      "name": "mail02-foreign-696bcd47-sockets",
+      "id": "mail02-foreign-696bcd47-sockets"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "network",
+        "ls",
+        "-q"
+      ],
+      "exit": 0,
+      "stdout_sha256": "cfe19eb2524f8b857c8f1b1225e6b847a5d522cdd225452e82ad798528c3fbfc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "0fba86b3e4bd",
+        "a5de72fecf55",
+        "7a11de4b2583",
+        "6ab343a5df47",
+        "02b4589f2622",
+        "431486b00b0f",
+        "eea09c4f9428",
+        "47de7ec7d1b7",
+        "cda0d95a22e2",
+        "620250fc5e65",
+        "2dba811e1e24",
+        "b8910ce06da9",
+        "e2b10096f32b",
+        "d48e319457ad",
+        "864d2f37b310",
+        "d912698b70da",
+        "df37f6010665",
+        "a6c82089e785",
+        "e815459f703b",
+        "f4fa19adeed8",
+        "519727621a19",
+        "7a1b2dedbf65",
+        "2d155988db0e",
+        "05648de6328d",
+        "10dedc05e572",
+        "f5e8410a4d68",
+        "714c60476c03",
+        "a60c8932b053",
+        "0dfb27600ce8",
+        "14cd9ac1d8b9",
+        "5e50eb10023d",
+        "acbf4d7cae57",
+        "230007444a44",
+        "8183a8fd8e8c",
+        "809d8e8f3611",
+        "4b2f2ffd2680"
+      ],
+      "exit": 0,
+      "stdout_sha256": "01bb37b56c91146071e3b56a3d65284e9a4cd70f75980f403f1b01eb9d79d34e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "prepare",
+        "/tmp/mail02-foreign-kl5ahu7k/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "011b4b702a5553692c0b1ce31c114fccd7755fb4792db5d84e6f2af5ad4d448d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--label",
+        "org.drumee.mail.owner=synthetic-foreign-owner",
+        "--label",
+        "drumee.qualification.owner=mail02-foreign-8c3bbf38",
+        "--internal",
+        "--subnet",
+        "10.252.2.0/24",
+        "--gateway",
+        "10.252.2.1",
+        "mail02-foreign-8c3bbf38-edge"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3f8561846c2652076b2fb272744f088440110de5ddee0f0c26657ef181377c22",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-8c3bbf38-edge"
+      ],
+      "exit": 0,
+      "stdout_sha256": "93a86220bd6a1084b3508408e85e46417e0bfb3e217c316115dc8f3b914cabe6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-foreign-kl5ahu7k/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "3836fa641be2ade55f03d3c61f315fec2562e220d48c81ab771eea19132eb80a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-foreign-8c3bbf38"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-8c3bbf38-edge"
+      ],
+      "exit": 0,
+      "stdout_sha256": "93a86220bd6a1084b3508408e85e46417e0bfb3e217c316115dc8f3b914cabe6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "prepare",
+        "/tmp/mail02-foreign-ieb0ko2p/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "39da68f8e56db0f6ec5f6b3e64d66d8728e3f056dbb313bba750eefedd023e1f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--label",
+        "org.drumee.mail.owner=mail02-foreign-a15f9fe6",
+        "--label",
+        "drumee.qualification.owner=mail02-foreign-a15f9fe6",
+        "--subnet",
+        "10.252.4.0/24",
+        "--gateway",
+        "10.252.4.1",
+        "mail02-foreign-a15f9fe6-edge"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7e354da807e2ee35f658437892412ff31602c53deb588a4e196eb73642ee8122",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-a15f9fe6-edge"
+      ],
+      "exit": 0,
+      "stdout_sha256": "37bf734e0243afc7e5a84bd8c35a89ae101a50750b1a17d98106de6939116df9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-foreign-ieb0ko2p/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "3836fa641be2ade55f03d3c61f315fec2562e220d48c81ab771eea19132eb80a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-foreign-a15f9fe6"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-a15f9fe6-edge"
+      ],
+      "exit": 0,
+      "stdout_sha256": "37bf734e0243afc7e5a84bd8c35a89ae101a50750b1a17d98106de6939116df9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "prepare",
+        "/tmp/mail02-foreign-ye57es1z/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7e8d2bbf37c8ffb2d204e98764ded181a8af4b751f8cbb7b914625997944e56b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--label",
+        "org.drumee.mail.owner=mail02-foreign-d8bdc554",
+        "--label",
+        "drumee.qualification.owner=mail02-foreign-d8bdc554",
+        "--internal",
+        "--subnet",
+        "10.252.8.0/24",
+        "--gateway",
+        "10.252.8.1",
+        "mail02-foreign-d8bdc554-edge"
+      ],
+      "exit": 0,
+      "stdout_sha256": "820a4bfb0d7f0d23e0e8f38622a591e48c1a25c71867c59c1aa9a227a138c396",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-d8bdc554-edge"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a286cfc824aaf38d289fffa244b671847b366fa822e308eb38d1544b39ee2560",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-foreign-ye57es1z/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "3836fa641be2ade55f03d3c61f315fec2562e220d48c81ab771eea19132eb80a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-foreign-d8bdc554"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-d8bdc554-edge"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a286cfc824aaf38d289fffa244b671847b366fa822e308eb38d1544b39ee2560",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "prepare",
+        "/tmp/mail02-foreign-x5ixmwwq/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f0348fcfe069e72ea398d0b0c836efda25b68531d2702136a05a7f2e96f2af4d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--label",
+        "org.drumee.mail.owner=synthetic-foreign-owner",
+        "--label",
+        "drumee.qualification.owner=mail02-foreign-a19f671d",
+        "--internal",
+        "--subnet",
+        "10.252.10.0/24",
+        "--gateway",
+        "10.252.10.1",
+        "mail02-foreign-a19f671d-control"
+      ],
+      "exit": 0,
+      "stdout_sha256": "886f45e3acb07a9b83388e11ce00392b35887ae96ff69c1ed64378f4f1749a93",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-a19f671d-control"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d9de6c61c4e74d5bfa1e552921091e46cfff5803450bc51160ee130fe9197a44",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-foreign-x5ixmwwq/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "3836fa641be2ade55f03d3c61f315fec2562e220d48c81ab771eea19132eb80a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-foreign-a19f671d"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-a19f671d-control"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d9de6c61c4e74d5bfa1e552921091e46cfff5803450bc51160ee130fe9197a44",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "prepare",
+        "/tmp/mail02-foreign-kn6tyzbb/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4ab33f9e59633539b852f17612c7bcf9ffa9834ba321d560ea33291b93c948ad",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--label",
+        "org.drumee.mail.owner=mail02-foreign-66e503ef",
+        "--label",
+        "drumee.qualification.owner=mail02-foreign-66e503ef",
+        "--subnet",
+        "10.252.12.0/24",
+        "--gateway",
+        "10.252.12.1",
+        "mail02-foreign-66e503ef-control"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3fa44878950b6528010dac0f772ee828d1a00da1a701dbce091557fedef39c61",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-66e503ef-control"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7266fc17acad0e848de21115c9773805bddb01cbdd788523b2cedc584ad94c55",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-foreign-kn6tyzbb/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "3836fa641be2ade55f03d3c61f315fec2562e220d48c81ab771eea19132eb80a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-foreign-66e503ef"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-foreign-66e503ef-control"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7266fc17acad0e848de21115c9773805bddb01cbdd788523b2cedc584ad94c55",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "prepare",
+        "/tmp/mail02-foreign-znjeoet4/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "190cb940d0f425e6febd1fb7752cf01e3c9ad9613a815a8c5b3120dc61d8cc8e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "org.drumee.mail.owner=synthetic-foreign-owner",
+        "--label",
+        "drumee.qualification.owner=mail02-foreign-3a518777",
+        "mail02-foreign-3a518777-sockets"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5d62c803b79a224565b3a76adc7cbbd65ecad35c5c3caf34e5a4fbf3378fcfe6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=volume,source=mail02-foreign-3a518777-sockets,target=/data",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib;pathlib.Path('/data/retained.txt').write_text('pre-existing synthetic target data')"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "mail02-foreign-3a518777-sockets"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4893b97785fd698338333177a5723e1fa5b0a3af5b53bf15e5ba733cd4f3a729",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-foreign-znjeoet4/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "dc8e0fbc76ff425bcb88e7bb1e4f81e14fa4099f2a650da5428fe592b5228b70",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-foreign-3a518777"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "mail02-foreign-3a518777-sockets"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4893b97785fd698338333177a5723e1fa5b0a3af5b53bf15e5ba733cd4f3a729",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=volume,source=mail02-foreign-3a518777-sockets,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib;assert pathlib.Path('/data/retained.txt').read_text()=='pre-existing synthetic target data'"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "prepare",
+        "/tmp/mail02-foreign-u_yzhpsg/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8813ce76cebdb82f657c61901fcf407048ff5d4fb6c8093e1cb522511793788f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "org.drumee.mail.owner=mail02-foreign-696bcd47",
+        "--label",
+        "drumee.qualification.owner=mail02-foreign-696bcd47",
+        "mail02-foreign-696bcd47-sockets"
+      ],
+      "exit": 0,
+      "stdout_sha256": "79241f4c58378f9d906aefdbb3f5fdaa0169baad42e5ee82af428c084d99e9d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=volume,source=mail02-foreign-696bcd47-sockets,target=/data",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib;pathlib.Path('/data/retained.txt').write_text('pre-existing synthetic target data')"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "mail02-foreign-696bcd47-sockets"
+      ],
+      "exit": 0,
+      "stdout_sha256": "86a97abaf563ef9409184d418b31e405b31aa15afafcf3482b2015ac6b630909",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "bash",
+        "/tmp/mail02-debian/bin/drumee-ctl",
+        "--profile",
+        "mail",
+        "start",
+        "--config",
+        "/tmp/mail02-foreign-u_yzhpsg/config.json",
+        "--execute"
+      ],
+      "exit": 1,
+      "stdout_sha256": "dc8e0fbc76ff425bcb88e7bb1e4f81e14fa4099f2a650da5428fe592b5228b70",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=mail02-foreign-696bcd47"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "mail02-foreign-696bcd47-sockets"
+      ],
+      "exit": 0,
+      "stdout_sha256": "86a97abaf563ef9409184d418b31e405b31aa15afafcf3482b2015ac6b630909",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=volume,source=mail02-foreign-696bcd47-sockets,target=/data,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib;assert pathlib.Path('/data/retained.txt').read_text()=='pre-existing synthetic target data'"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
