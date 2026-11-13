@@ -135,6 +135,20 @@ python3 tests/mail/signing-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
 python3 tests/mail/rate-native.py "$PROFILE" "$SOURCE" "$SCRIPTS"
 ```
 
+For the actual expunge/space-release scenario, use a **separate** fresh canonical
+profile with an empty second mailbox; preserve it after the check. Do not insert
+this into a populated profile's sequence:
+
+```sh
+python3 tests/mail/quota-release-native.py "$RELEASE_PROFILE" "$SOURCE" "$SCRIPTS"
+python3 tests/mail/quota-reconcile-native.py "$RELEASE_PROFILE" "$SOURCE" "$SCRIPTS"
+```
+
+The script accepts a500KiB message through SMTP25, observes native quota452 and its
+queue ID, expunges only its own800KiB seed in a dedicated folder, keeps the1MiB quota
+unchanged, and proves one queued delivery after capacity is freed. The delivered
+message remains stored. Stop only that owned project before reusing the lab subnet.
+
 Use a fresh profile for the full sequence. Drivers retain their owned synthetic
 seeds, failed candidate generations and negative-target sentinels; replaying a
 single driver may have additional fresh-fixture preconditions. Never reset an

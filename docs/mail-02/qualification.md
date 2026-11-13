@@ -25,6 +25,7 @@ Historical `74f72c9` remains unavailable; no new provenance is invented for it.
 | --- | --- |
 | Infra runtime/test checkpoint | `0c8d0edb69183e9b87725e127ab8b15f4cf1e8cd` |
 | Debian runtime/test checkpoint | `2497f4da4cafe645598fdf0cda1aaa2c15d7aff4` |
+| Supplemental expunge/retry driver | Debian `54773065d6d9c348e601e2f2366b3fb614235297` |
 | Frozen producer | `de5ea272fe40c77dded529d03ef3ce1f174472ab` |
 | Package | `@drumee/infra-layer@0.1.0-alpha.7-mail02.15`, unpublished local archive |
 | Archive SHA256 | `03a1402e447015e20b41900b05edfda00ea0ea01ae3b5e7b358b7d88d071aa99` |
@@ -157,6 +158,7 @@ A report's PASS must be checked: not every diagnostic driver exits nonzero on FA
 | Original quota regression,20 rounds each | PASS host + guest | `*-original-race-result.json`; `quota-race.py` via the owned LMTP socket/edge |
 | Atomic high/fitting APPEND, COPY/MOVE,12 flag/namespace races, kernel-lock contention, worker death, other UUID, deferred retry, restart count | PASS host + guest | `*-atomic-quota-result.json`,8 controls; Debian `quota-native.py PROFILE SOURCE SCRIPTS` |
 | Independent IMAP totals and native quota counters after guarded restart/guest reboot | PASS host + guest | `*-quota-reconciliation-result.json`,2 UUIDs; `quota-reconcile-native.py`; logical bytes/messages and upward KiB rounding match |
+| Quota-full deferred delivery after actual space release | PASS host, fresh dedicated profile | `host-quota-release-result.json`: unchanged1MiB limit, SMTP250 then native LMTP452, only the owned800KiB synthetic IMAP seed expunged, queue flushed, one observed delivery and reconciled counters |
 | Rapid equal-size registry generations | PASS host + guest | `*-registry-cache-result.json`,11 changes; `registry-cache-native.py PROFILE` |
 | MX alternatives, NXDOMAIN, Null MX, partial recipient disposition, strict-domain TLS, forced native expiry | PASS host + guest | `*-mx-result.json`,6 controls; Infra `mx-check.py RUN` |
 | Strict outgoing TLS to an expired MX | PASS host | `host-mx-expiry-result.json`; Infra `mx-expiry-check.py RUN`: deferred certificate failure, no plaintext witness, then exactly one observed TLS delivery after replacing the peer certificate |

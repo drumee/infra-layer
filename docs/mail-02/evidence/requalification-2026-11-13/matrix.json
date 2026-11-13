@@ -205,14 +205,17 @@
         "vm-atomic-quota-result.json",
         "vm-write-failure-result.json",
         "vm-quota-reconciliation-result.json",
-        "vm-boot-result.json"
+        "vm-boot-result.json",
+        "host-quota-release-result.json",
+        "host-quota-release-reconciliation.json"
       ],
       "drivers": [
         "quota-race.py",
         "quota-native.py",
         "write-failure.py",
         "quota-reconcile-native.py",
-        "boot-native.py"
+        "boot-native.py",
+        "quota-release-native.py"
       ],
       "command_reference": "../../reproduction.md"
     },

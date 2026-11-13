@@ -39,7 +39,8 @@
     "tests/mail/profile.cjs": "deb0fefb9b1ebae1e0d9e131673a89f02ab68331163fc2297c7d4c46f19ea51b",
     "tests/mail/api.cjs": "592e55acda42f01377c9d607942098ce4ee556f0aaf2ebcb79e061dcd3ecfad0",
     "bin/drumee-ctl": "67355857b042a988a02352e1bc953bd9926ef9d16190fc3f7ef97300186aef33",
-    "profiles/mail/Dockerfile.native": "fad692f765b028a1c047ad0257320ae26cc4114eb59fa2246e5f312c15ee6f3e"
+    "profiles/mail/Dockerfile.native": "fad692f765b028a1c047ad0257320ae26cc4114eb59fa2246e5f312c15ee6f3e",
+    "tests/mail/quota-release-native.py": "22844369d05b0a850a7e6e22f64ccc8af206ce41acb40e508505eaffb1fc0265"
   },
   "infra_test_sha256": {
     "client.py": "bb062cb821a234dde187784539df0abbee41f86d000cdca543db8eba58a3823a",
@@ -63,5 +64,6 @@
     "tls-session.py": "8afa4963b1063c637310770c900d91389fd45960fffa92f12d9599529f64095a",
     "header-probe.py": "edf73c7477aaca5b4129462512eb5c845a0382300bbcec8fa5785cc40c54447a"
   },
-  "capture_relay_diff": ""
+  "capture_relay_diff": "",
+  "supplemental_quota_release_checkpoint": "54773065d6d9c348e601e2f2366b3fb614235297"
 }
