@@ -1,0 +1,7 @@
+Nov 13 06:45:14 mail postfix/smtpd[219]: BFD728667: client=gracious_dubinsky.mail02-profile-3379ee3f-edge[10.243.47.2]
+Nov 13 06:45:14 mail postfix/cleanup[231]: BFD728667: message-id=<boot-e5ab5e7c016c4136bc8dbff76bbb49cd-queued@fixture.invalid>
+Nov 13 06:45:14 mail postfix/qmgr[210]: BFD728667: from=<outside@dest.invalid>, size=468, nrcpt=1 (queue active)
+Nov 13 06:45:14 mail postfix/lmtp[232]: BFD728667: to=<mbx-11111111-1111-4111-8111-111111111111@local.invalid>, orig_to=<contact@oxymot.fr>, relay=none, delay=0.01, delays=0.01/0/0/0, dsn=4.4.1, status=deferred (connect to mail.oxymot.fr[/run/mail-sockets/lmtp]: Connection refused)
+Nov 13 06:47:59 mail postfix/qmgr[210]: BFD728667: from=<outside@dest.invalid>, size=468, nrcpt=1 (queue active)
+Nov 13 06:48:00 mail postfix/lmtp[698]: BFD728667: to=<mbx-11111111-1111-4111-8111-111111111111@local.invalid>, orig_to=<contact@oxymot.fr>, relay=mail.oxymot.fr[/run/mail-sockets/lmtp], delay=165, delays=165/0.03/0.03/0.04, dsn=2.0.0, status=sent (250 2.0.0 <mbx-11111111-1111-4111-8111-111111111111@local.invalid> QeSjAqCy9moLAAAAchjTdw Saved)
+Nov 13 06:48:00 mail postfix/qmgr[210]: BFD728667: removed

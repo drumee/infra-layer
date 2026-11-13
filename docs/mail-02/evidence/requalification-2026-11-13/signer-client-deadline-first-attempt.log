@@ -1,0 +1,37 @@
+    result=json.loads(helper('-c',code).stdout);after=comp('exec','-T','postfix','postqueue','-c','/config','-j').stdout;assert before==after
+                      ~~~~~~^^^^^^^^^^^
+  File "/home/lab/work/r15/mail02-debian/tests/mail/signing-native.py", line 7, in helper
+    def helper(*args):return run(['docker','run','--rm','--network',project+'-edge','--user','1000:1000','--mount',f'type=bind,source={source}/keys,target=/keys,readonly','--mount',f'type=bind,source={scripts},target=/lab,readonly','--entrypoint','python3',image,*args])
+                             ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lab/work/r15/mail02-debian/tests/mail/signing-native.py", line 5, in run
+    r=subprocess.run(args,capture_output=True,timeout=120);commands.append({'argv':args,'exit':r.returncode,'stdout_sha256':hashlib.sha256(r.stdout).hexdigest(),'stderr_sha256':hashlib.sha256(r.stderr).hexdigest()});assert r.returncode==0,r.stderr.decode()[-1000:];return r
+                                                                                                                                                                                                                               ^^^^^^^^^^^^^^^
+AssertionError: exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+    with connect(auth='oxymotion') as s:
+         ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/lab/client.py", line 28, in connect
+    s = Implicit('postfix', port, timeout=8, context=ctx) if port == 465 else smtplib.SMTP('postfix', port, timeout=8)
+                                                                              ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/lib/python3.13/smtplib.py", line 343, in connect
+    (code, msg) = self.getreply()
+                  ~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/smtplib.py", line 401, in getreply
+    raise SMTPServerDisconnected("Connection unexpectedly closed: "
+                                 + str(e))
+smtplib.SMTPServerDisconnected: Connection unexpectedly closed: timed out
+
+{"name": "control-owner", "status": "PASS", "code": "MAIL_RUNTIME_NETWORK_MISMATCH", "no_core_exposure": true, "target_identity_unchanged": true}
+{"name": "control-internal", "status": "PASS", "code": "MAIL_RUNTIME_NETWORK_MISMATCH", "no_core_exposure": true, "target_identity_unchanged": true}
+{"name": "volume-owner", "status": "PASS", "code": "MAIL_RUNTIME_STORAGE_MISMATCH", "no_core_exposure": true, "target_identity_unchanged": true}
+{"name": "volume-options", "status": "PASS", "code": "MAIL_RUNTIME_STORAGE_MISMATCH", "no_core_exposure": true, "target_identity_unchanged": true}
+REPORT /home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/foreign-resource-result.json
+mail02-profile-3379ee3f-postfix-1
+mail02-profile-3379ee3f-dovecot-1
+mail02-profile-3379ee3f-policy-1
+mail02-profile-3379ee3f-opendkim-1

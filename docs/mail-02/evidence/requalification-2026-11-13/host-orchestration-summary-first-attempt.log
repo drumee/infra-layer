@@ -1,0 +1,37 @@
+START quota-native
+EXIT quota-native 0
+START registry-cache-native
+EXIT registry-cache-native 0
+START tls-native
+EXIT tls-native 0
+START tls-extra
+EXIT tls-extra 0
+START tls-chain-native
+EXIT tls-chain-native 0
+START protocol-native
+EXIT protocol-native 0
+START registry-native
+EXIT registry-native 0
+START session-native
+EXIT session-native 0
+START write-failure
+EXIT write-failure 0
+START identity-controls
+EXIT identity-controls 0
+START foreign-resources
+EXIT foreign-resources 0
+START signing-native
+EXIT signing-native 0
+START rate-native
+EXIT rate-native 0
+foreign-resource-result.json PASS_FOREIGN_RESOURCE_CONTROLS
+expiry-result.json PASS_NATIVE_TLS_EXPIRY_CONTROLS
+atomic-quota-result.json PASS_ATOMIC_QUOTA_NATIVE
+registry-result.json PASS_NATIVE_REGISTRY_CONTROLS
+rate-result.json PASS_NATIVE_ACCOUNT_RATE_LIMIT
+alerts-result.json None
+Traceback (most recent call last):
+  File "/tmp/mail02-r3-full15.py", line 8, in <module>
+    value=json.loads(file.read_text());print(file.name,value.get('status'),flush=True);assert value.get('status','').startswith('PASS'),file
+                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: /tmp/mail02-profile-7srq_gu8/alerts-result.json
