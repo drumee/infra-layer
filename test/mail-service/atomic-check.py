@@ -55,6 +55,41 @@ elif action=='copy-move':
   for f in folders:assert s.create(f)[0]=='OK'
   assert s.append(folders[0],None,None,body(200000,'small'))[0]=='OK';s.select(folders[0]);assert s.copy('1',folders[1])[0]=='OK';before=usage(s,['INBOX',*folders]);s.select(folders[0]);assert s.xatom('MOVE','1',folders[2])[0]=='OK';after=usage(s,['INBOX',*folders]);assert before==after;cleanup(s,folders)
  print(json.dumps({'status':'PASS_ATOMIC_COPY_MOVE','excess_copy':copy,'move_without_staging_headroom':move,'positive_move_preserves_virtual_bytes':before}))
+elif action=='namespace-churn':
+ observations=[]
+ for iteration in range(12):
+  folders=[tag+'-seed-a',tag+'-seed-b',tag+'-destination'];current=folders[0]
+  with login() as s:
+   assert s.create(current)[0]=='OK';assert s.create(folders[2])[0]=='OK';assert s.append(current,None,None,body(650000,'seed'))[0]=='OK'
+  barrier=threading.Barrier(4);stop=threading.Event();activity={'flags':0,'renames':0};timings={}
+  def reader():
+   with login() as s:
+    s.select(current);barrier.wait()
+    while not stop.is_set():
+     assert s.fetch('1','(FLAGS RFC822.SIZE)')[0]=='OK';s.store('1','+FLAGS','(\\Seen)');s.store('1','-FLAGS','(\\Seen)');activity['flags']+=1
+  def renamer():
+   with login() as s:
+    barrier.wait();src,dst=folders[:2]
+    while not stop.is_set():
+     assert s.rename(src,dst)[0]=='OK';activity['renames']+=1;src,dst=dst,src
+    if src!=current:assert s.rename(src,current)[0]=='OK'
+  def appender():
+   with login() as s:
+    barrier.wait();timings['append_start']=time.monotonic();ret=s.append(folders[2],None,None,body(250000,'append'))[0];timings['append_end']=time.monotonic();return ret
+  def deliverer():
+   with smtplib.LMTP('/run/mail-sockets/lmtp',timeout=20) as s:
+    s.ehlo();s.mail('outside@dest.invalid');assert s.rcpt('mbx-22222222-2222-4222-8222-222222222222@local.invalid')[0]==250;assert s.docmd('DATA')[0]==354
+    barrier.wait();timings['lmtp_start']=time.monotonic();s.send(body(250000,'lmtp')+b'\r\n.\r\n');ret=s.getreply()[0];timings['lmtp_end']=time.monotonic();return ret
+  with concurrent.futures.ThreadPoolExecutor(4) as pool:
+   r=pool.submit(reader);n=pool.submit(renamer);a=pool.submit(appender);b=pool.submit(deliverer)
+   try:a,b=a.result(),b.result()
+   finally:stop.set()
+   r.result();n.result()
+  with login() as s:
+   size=usage(s,['INBOX',current,folders[2]]);assert size<=1048576 and (a=='OK')+(b==250)==1
+   assert activity['flags'] and activity['renames'];assert max(timings['append_start'],timings['lmtp_start'])<min(timings['append_end'],timings['lmtp_end'])
+   observations.append({'iteration':iteration,'append':a,'lmtp':b,'virtual_bytes':size,'concurrent_activity':activity,'timings':timings});cleanup(s,[current,folders[2]])
+ print(json.dumps({'status':'PASS_ATOMIC_NAMESPACE_CHURN','observations':observations}))
 elif action=='hold':
  s=login();folder=tag+'-hold';s.create(folder);s.select(folder);wire=body(250000,'interrupted');s.send(b'HOLD APPEND '+folder.encode()+b' {'+str(len(wire)).encode()+b'}\r\n');line=s.readline();assert line.startswith(b'+');s.send(wire[:1000]);pathlib.Path('/control/held.json').write_text(json.dumps({'folder':folder,'tag':tag}));time.sleep(30)
  try:s.noop();raise AssertionError('interrupted worker survived')

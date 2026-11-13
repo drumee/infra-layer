@@ -33,5 +33,6 @@ for iteration in range(20):
  # Keep seed; remove only the explicit synthetic race candidates between rounds.
  with imap() as s:
   for folder in ['INBOX','Race-Append']:
-   s.select(folder);s.store('1:*','+FLAGS','(\\Deleted)');s.expunge()
+   s.select(folder);ids=s.search(None,'ALL')[1][0]
+   if ids:s.store(ids.replace(b' ',b','),'+FLAGS','(\\Deleted)');s.expunge()
 print(json.dumps({'status':'PASS_CONCURRENT_QUOTA','observations':results}))
