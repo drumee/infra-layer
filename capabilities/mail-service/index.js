@@ -226,6 +226,22 @@ function activateMailRegistry(prepared, context) {
     F.atomic(pub + "/admission-closed", JSON.stringify({ from: previous.generation, to: next.generation }));
     F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, phase: "applying" }));
     try {
+      // Dovecot passwd-file caches by whole-second mtime + size, not inode.
+      // Distinguish equal-size rapid generations before publishing their pointer.
+      // Content remains sealed; only this native cache-invalidation metadata changes.
+      const names = Object.keys(prepared.private_files);
+      const generationPath = generation => priv + "/generation-" + generation + "/";
+      const previousStamp = Math.max(...names.map(name => Math.floor(fs.statSync(generationPath(previous.generation) + name).mtimeMs / 1000)));
+      const stamp = Math.max(Math.floor(Date.now() / 1000), previousStamp + 1);
+      for (const name of names) {
+        const file = generationPath(next.generation) + name;
+        F.read(file, true);
+        const fd = fs.openSync(file, fs.constants.O_RDWR | fs.constants.O_NOFOLLOW);
+        try {
+          fs.futimesSync(fd, stamp, stamp); fs.fsyncSync(fd);
+          if (Math.floor(fs.fstatSync(fd).mtimeMs / 1000) !== stamp) V.fail("MAIL_REGISTRY_TIMESTAMP_UNSUPPORTED");
+        } finally { fs.closeSync(fd); }
+      }
       // Switch the complete immutable credential/userdb projection at once.
       // Do not SIGHUP Dovecot 2.4.1: it also retires unrelated IMAP workers.
       const pending = priv + "/.current-" + require("node:crypto").randomUUID();

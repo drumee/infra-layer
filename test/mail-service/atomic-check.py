@@ -58,13 +58,13 @@ elif action=='copy-move':
 elif action=='namespace-churn':
  observations=[]
  for iteration in range(12):
-  folders=[tag+'-seed-a',tag+'-seed-b',tag+'-destination'];current=folders[0]
+  folders=[tag+'-seed-a',tag+'-seed-b',tag+'-destination',tag+'-reader'];current=folders[0]
   with login() as s:
-   assert s.create(current)[0]=='OK';assert s.create(folders[2])[0]=='OK';assert s.append(current,None,None,body(650000,'seed'))[0]=='OK'
+   assert s.create(current)[0]=='OK';assert s.create(folders[2])[0]=='OK';assert s.create(folders[3])[0]=='OK';assert s.append(current,None,None,body(350000,'seed'))[0]=='OK';assert s.append(folders[3],None,None,body(300000,'reader'))[0]=='OK'
   barrier=threading.Barrier(4);stop=threading.Event();activity={'flags':0,'renames':0};timings={}
   def reader():
    with login() as s:
-    s.select(current);barrier.wait()
+    s.select(folders[3]);barrier.wait()
     while not stop.is_set():
      assert s.fetch('1','(FLAGS RFC822.SIZE)')[0]=='OK';s.store('1','+FLAGS','(\\Seen)');s.store('1','-FLAGS','(\\Seen)');activity['flags']+=1
   def renamer():
@@ -86,9 +86,9 @@ elif action=='namespace-churn':
    finally:stop.set()
    r.result();n.result()
   with login() as s:
-   size=usage(s,['INBOX',current,folders[2]]);assert size<=1048576 and (a=='OK')+(b==250)==1
+   size=usage(s,['INBOX',current,folders[2],folders[3]]);assert size<=1048576 and (a=='OK')+(b==250)==1
    assert activity['flags'] and activity['renames'];assert max(timings['append_start'],timings['lmtp_start'])<min(timings['append_end'],timings['lmtp_end'])
-   observations.append({'iteration':iteration,'append':a,'lmtp':b,'virtual_bytes':size,'concurrent_activity':activity,'timings':timings});cleanup(s,[current,folders[2]])
+   observations.append({'iteration':iteration,'append':a,'lmtp':b,'virtual_bytes':size,'concurrent_activity':activity,'timings':timings});cleanup(s,[current,folders[2],folders[3]])
  print(json.dumps({'status':'PASS_ATOMIC_NAMESPACE_CHURN','observations':observations}))
 elif action=='hold':
  s=login();folder=tag+'-hold';s.create(folder);s.select(folder);wire=body(250000,'interrupted');s.send(b'HOLD APPEND '+folder.encode()+b' {'+str(len(wire)).encode()+b'}\r\n');line=s.readline();assert line.startswith(b'+');s.send(wire[:1000]);pathlib.Path('/control/held.json').write_text(json.dumps({'folder':folder,'tag':tag}));time.sleep(30)
