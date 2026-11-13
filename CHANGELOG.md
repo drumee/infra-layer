@@ -1,3 +1,20 @@
+# 0.1.0-alpha.7-mail02.4 — unpublished follow-up candidate
+
+- Remove forged local Authentication-Results, preserving external transit results.
+- Seal key inputs and stage TLS generations with endpoint probes and rollback.
+- Guard runtime identity, projections and Maildir ownership/inodes before exposure.
+- Add guarded boot, credential high-water marks, disk admission and observations.
+- Preserve capture/relay, zero production dependencies and recovery refusals.
+- Native count quota still fails the concurrent LMTP/IMAP hard-limit requirement;
+  MAIL-02 remains blocked pending complete evidence and a qualified correction.
+
+# 0.1.0-alpha.7-mail02.0 — unpublished isolated mail-service candidate
+
+- Add the MAIL-01 mail-service validator, types, native planning and isolated lifecycle.
+- Add native SMTP/DKIM/LMTP/IMAPS laboratory and generation revocation evidence.
+- Preserve capture/relay and the no-production-dependency package policy.
+- MAIL-02 is not fully qualified; production activation and recovery remain refused.
+
 # 0.1.0-alpha.6 — external SMTP authentication candidate, unpublished
 
 - Validate provider authentication accounts separately from internal identifiers.
@@ -65,6 +82,13 @@ The following notes describe its unpublished preparation; alpha.4 has since been
   Debian's source receipt do not identify this new 41-file candidate.
 
 # Changelog
+
+## 0.1.0-alpha.7-mail02.13 (unpublished qualification candidate)
+
+- Declare a static mail-owned frontal endpoint for independent source-preserving Docker client attachments.
+- Install a fixed private-source packet filter inside the Postfix namespace, dropping NET_ADMIN before execution.
+- Requalify against the separately built atomic native quota module; no production dependency is added.
+
 
 ## 0.1.0-alpha.2 — release candidate, unpublished
 

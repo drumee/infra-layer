@@ -1,0 +1,9 @@
+{"status": "PASS_REBOOT_AND_SPOOL_GUARDS", "before_boot": "698058cb-d8d6-41f9-adaf-c04849028f84", "after_boot": "e0214f82-75d3-4baa-9956-aa7258ed9aca", "queue_ids": ["DF4F444626"], "preserved_files": 46, "imap_primary_readable": true, "unix_sockets_recreated": true, "missing_spool_refused": true, "wrong_spool_exit": 78, "original_source_preserved": true}
+Traceback (most recent call last):
+  File "/home/lab/work/test/mail-service/life-check.py", line 33, in <module>
+    docker(*cmd,'stop');send(other,target+'-stopped');checks.append(target+'-stop-does-not-interrupt-peer-or-mx')
+                        ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lab/work/test/mail-service/life-check.py", line 28, in send
+    assert identity()==before
+           ^^^^^^^^^^^^^^^^^^
+AssertionError

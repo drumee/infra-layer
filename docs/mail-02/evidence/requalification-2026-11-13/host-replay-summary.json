@@ -1,0 +1,21 @@
+{
+  "status": "PASS_NATIVE_HOST_REPLAY",
+  "reports": {
+    "foreign-resource-result.json": "PASS_FOREIGN_RESOURCE_CONTROLS",
+    "expiry-result.json": "PASS_NATIVE_TLS_EXPIRY_CONTROLS",
+    "atomic-quota-result.json": "PASS_ATOMIC_QUOTA_NATIVE",
+    "registry-result.json": "PASS_NATIVE_REGISTRY_CONTROLS",
+    "rate-result.json": "PASS_NATIVE_ACCOUNT_RATE_LIMIT",
+    "alerts-result.json": "drumee.mail-observation/1",
+    "result.json": "PASS_ISOLATED_PROFILE_LIFECYCLE",
+    "identity-result.json": "PASS_NATIVE_IDENTITY_CONTROLS",
+    "signing-result.json": "PASS_NATIVE_SIGNER_OUTAGE_AND_OPERATIONAL_ROUTES",
+    "expired-issuer-result.json": "PASS_EXPIRED_ISSUER_NATIVE",
+    "tls-result.json": "PASS_NATIVE_TLS_GENERATIONS",
+    "protocol-result.json": "PASS_NATIVE_PROTOCOL_NEGATIVES",
+    "registry-cache-result.json": "PASS_NATIVE_RAPID_REGISTRY_GENERATIONS",
+    "write-failure-result.json": "PASS_NATIVE_WRITE_FAILURE_ROLLBACK",
+    "session-result.json": "PASS_NATIVE_ACCEPTANCE_BOUNDARIES"
+  },
+  "orchestration_note": "All thirteen drivers exited zero. The first summary wrapper incorrectly required a status field on the separate observation contract; the corrected report validation accepts only drumee.mail-observation/1 for alerts-result.json. This did not change any native assertion."
+}

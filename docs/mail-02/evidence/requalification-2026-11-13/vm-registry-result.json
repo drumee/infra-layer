@@ -1,0 +1,491 @@
+{
+  "status": "PASS_NATIVE_REGISTRY_CONTROLS",
+  "checks": [
+    {
+      "name": "receive-disable-refuses-primary-and-alias-but-preserves-imap-and-app-smtp",
+      "status": "PASS",
+      "observation": {
+        "primary": 550,
+        "alias": 550,
+        "imap_and_app_smtp": true
+      }
+    },
+    {
+      "name": "imap-disable-preserves-reception-and-app-submission",
+      "status": "PASS",
+      "observation": {
+        "rcpt": 250,
+        "imap_authenticated": false
+      }
+    },
+    {
+      "name": "optional-human-submission-restricted-to-own-address",
+      "status": "PASS",
+      "observation": {
+        "own": 250,
+        "foreign": 550
+      }
+    },
+    {
+      "name": "retired-alias-refused-while-primary-remains",
+      "status": "PASS",
+      "observation": {
+        "retired_alias": 550,
+        "primary": 250
+      }
+    },
+    {
+      "name": "mailbox-removal-refuses-loss-of-retained-delivery-identity",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RETAINED_DELIVERY_IDENTITY_REQUIRED"
+      }
+    },
+    {
+      "name": "grant-change-requires-new-credential-generation",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_CREDENTIAL_GENERATION_REQUIRED"
+      }
+    },
+    {
+      "name": "quota-change-alerts-and-retained-accepted-local-delivery",
+      "status": "PASS",
+      "observation": {
+        "quota_alerts": [
+          "MAIL_CERTIFICATE_EXPIRES_7_DAYS",
+          "MAIL_AUTH_FAILURES",
+          "MAIL_QUOTA_HIGH",
+          "MAIL_QUOTA_AT_LIMIT"
+        ],
+        "accepted_queued_message_delivered_after_receive_disable": true,
+        "mail_preserved": true
+      }
+    },
+    {
+      "name": "incomplete-generation-alert",
+      "status": "PASS",
+      "observation": {
+        "alert": "MAIL_GENERATION_INCOMPLETE"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-e06f9377af36447389b893b1a67f0283.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1b5396a45132e2400d0f7f06add0063005ecfc73439cde18237ac4afb9022b72",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.71",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(25,None,False);s.mail('outside@dest.invalid');a=s.rcpt('contact@oxymot.fr')[0];b=s.rcpt('hello@oxymot.fr')[0];s.close();i=IMAP('dovecot',993,ssl_context=ctx,timeout=8);i.login('contact@oxymot.fr',cfg['contact']);assert i.select('INBOX')[0]=='OK';i.logout();s=connect();s.quit();print(json.dumps({'primary':a,'alias':b,'imap_and_app_smtp':True}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1d3f02eddf1e270ed3e62aa013c9efb41db4acdd8193b76b0dda8a7fe228bb19",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-0ec4ccff22774f95abe7b5b07974fb92.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "42a080560ace28fb5d1ce848ebafd2a4c53372349ff112db272f3f24c0a5bbbe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-e6242d6e4c084720a3d8e5cd6ceff7f2.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1d1bd153a29c11e91b7da99515c3f3dc36016bebe970b6731dcb7a1abbcee6d6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.72",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(25,None,False);s.mail('outside@dest.invalid');a=s.rcpt('contact@oxymot.fr')[0];s.close();s=connect();s.quit();i=IMAP('dovecot',993,ssl_context=ctx,timeout=8)\ntry:i.login('contact@oxymot.fr',cfg['contact']);accepted=True\nexcept imaplib.IMAP4.error:accepted=False\ni.logout();print(json.dumps({'rcpt':a,'imap_authenticated':accepted}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "753af8accb6e30c00b11b2668124a14071f4a4fc942886b9449f1e545a684e19",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-a20b10c304d146c0bd7f1a288dbc1d31.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "491806753ff2665419092d497d35ed500a15442f49983d8dcd86adce82ada83f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-ff7ba6e90ea842ea830178f755bcb8d5.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c11723963792a99bf245dd1df2e28660516e61bff7612221cf6cb27cb5242ce3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.73",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(587,None);s.login('contact@oxymot.fr',cfg['contact']);a=s.mail('contact@oxymot.fr')[0];s.rset();b=s.mail('second@oxymot.fr')[0];s.close();print(json.dumps({'own':a,'foreign':b}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "691ab6bdb235ac39afe21c5849d608588022077a1fa1f4f53c3d3c0bff17ac9b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-2385ad119d164291bdc999e44de0f727.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "729e6f2d12c7cf24c366d884c2d55f2e67632ec0228ebb257252c1cb4ecaffc3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-614cd90597274fd188f0f8844b5a3a2f.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1c3946b205c53f7fa0fb76a272da13532eb733b8f9e7f787a8b6e6042e48d2d5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.74",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(25,None,False);s.mail('outside@dest.invalid');a=s.rcpt('hello@oxymot.fr')[0];b=s.rcpt('contact@oxymot.fr')[0];s.close();print(json.dumps({'retired_alias':a,'primary':b}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bbc5eb89fa11c8ce76550818b901b14cf4b09b0718b7c1400689c4ad567ccee0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-2f37d6d62bef4fcf9b05520699ea58fa.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "240d5696fa8877ad33f133d04463728a726a7d14a8a7daa0c81316fefca27c90",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-b741b25cb25e4048b2e59ada08b4eaa5.json"
+      ],
+      "exit": 1,
+      "stdout_sha256": "1cb63a77f67d1ee737783ee2901b817fde66d28944a6ba30d75610e05db790e4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-b51e02bd947c4c70b67202335bbcd6f0.json"
+      ],
+      "exit": 1,
+      "stdout_sha256": "3b2b0c2b0eff529fdc7609190fa775f90393971cb71f308ac28b2365a879b56d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-9f42eff30e1441a289eb54c275707b45.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "acd08d247ed9b2be58276b6b2943f4544f033f9329b1152a4324854fa22d1f24",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.75",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;i=IMAP('dovecot',993,ssl_context=ctx,timeout=8);i.login('contact@oxymot.fr',cfg['contact']);a=i.append('INBOX',None,None,b'From: quota@dest.invalid\\r\\nSubject: retained quota change\\r\\n\\r\\n'+b'x'*1150000)[0];i.logout();print(json.dumps({'append':a}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f2148b9e9546e6b6fcc4d8009b7ce50d1c7ea8e9af5686868a7aba1f19053f1b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-5f734a611d544bf6a6543a6204f39866.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "aff9831dcfcefa3169cf3f13854334d06d3fc81faeeba050f051e76e941e2494",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6d4b640873dd6a28575c8990ca24380cc754875a9d299e2e2173df337d9290a8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.76",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(25,None,False);s.sendmail('outside@dest.invalid',['contact@oxymot.fr'],'From: outside@dest.invalid\\r\\nSubject: retained-disabled-acb766f1e8f24db19e55abcb3d748434\\r\\n\\r\\nretained-disabled-acb766f1e8f24db19e55abcb3d748434');s.quit();print(json.dumps({'accepted':True}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ac1493cdfbb3763e43f1accfce43b45e29e5e9286b3a5a65300b13b36170acee",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b32ff01c67a594c90734a28631fd820ba8c01faf94fb808007bf046da6b443e1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-96954f9486b64cb2992eb0f74a918340.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "76d3ec947a1964e71763248f93ba4bf773fa74a071bc5c79d9fa6eb128ae3941",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-3379ee3f",
+        "-f",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/service/candidates/3d782de648d6c45340dc5e99c8481ba7963abd6934f2d5acc6673b25a9c832a1/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-3379ee3f-edge",
+        "--ip",
+        "10.243.47.77",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-0rigtug7/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r15/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;i=IMAP('dovecot',993,ssl_context=ctx,timeout=8);i.login('contact@oxymot.fr',cfg['contact']);i.select('INBOX');a=i.search(None,'TEXT','retained-disabled-acb766f1e8f24db19e55abcb3d748434')[1][0].split();i.logout();print(json.dumps({'matches':len(a)}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c6314d2c6071c73d904d0402c2b6c5df22f469396d4a5c927ecf9b03c7f0ac6d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/registry-request-47e891ea91ff47e295b84c92dd138859.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4e765535427e0a1d5cbb5903f83108d1ce1933fb5b6f92aa0fbd575b2f572b8a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8dc9586c0353d115e7dfb6aebadd7b290cf51bd03ca9ac90c9f1d3bf2d778ced",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/r15/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-v_lfe9a2/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b5e91eba8b41ab459d86f479fc3ccebde8869aaa91a562bec4bc08768cfaf26a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

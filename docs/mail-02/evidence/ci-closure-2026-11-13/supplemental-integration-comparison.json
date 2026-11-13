@@ -1,0 +1,25 @@
+{
+  "infra-integration.log": {
+    "status": "FAIL",
+    "failures": [
+      "real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion",
+      "BIND9 restart and recreation preserve zone serial and TSIG fingerprint",
+      "controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias",
+      "BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses"
+    ],
+    "native_services_test_sha256": "87bfe8e47889621f17bc851b7a1cc848e13ee973661cf1a1ee1eddb5dcc3242a"
+  },
+  "infra-start-integration.log": {
+    "status": "FAIL",
+    "failures": [
+      "real BIND9 serves declared A/SOA/TXT over UDP and TCP, NXDOMAIN and no unintended recursion",
+      "BIND9 restart and recreation preserve zone serial and TSIG fingerprint",
+      "controlled relay verifies STARTTLS trust and authenticates outbound to an isolated capture alias",
+      "BIND9 zone change explicitly advances serial and serves declared AAAA records without selecting container addresses"
+    ],
+    "native_services_test_sha256": "87bfe8e47889621f17bc851b7a1cc848e13ee973661cf1a1ee1eddb5dcc3242a"
+  },
+  "baseline_revision": "a8661a80937fc3dddf6ba55911351771102ee785",
+  "same_command": "npm run test:integration",
+  "claim": "The four failures reproduce on the starting revision; no runner attribution or general-suite PASS is claimed. This supplemental integration command is not a required hosted quality job."
+}

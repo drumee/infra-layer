@@ -1,0 +1,22 @@
+{
+  "status": "OBSERVED_BEFORE_CORRECTION",
+  "package": "0.1.0-alpha.7-mail02.14",
+  "public_generation": 23,
+  "private_pointer": "generation-24",
+  "expected_second_quota_bytes": 2097152,
+  "native_userdb_observed_bytes": 1048576,
+  "admission_barrier_preserved": true,
+  "users_stat": [
+    {
+      "generation": 23,
+      "mtime_seconds": 1794528278,
+      "size": 873
+    },
+    {
+      "generation": 24,
+      "mtime_seconds": 1794528278,
+      "size": 873
+    }
+  ],
+  "correction_evidence": "host-registry-cache-result.json and vm-registry-cache-result.json"
+}

@@ -1,0 +1,164 @@
+{
+  "old_image": "sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f",
+  "new_image": "sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56",
+  "config_equal": true,
+  "rootfs_entries": {
+    "old": 7533,
+    "new": 7533
+  },
+  "changed_entries": [
+    {
+      "path": "etc/shadow",
+      "old": {
+        "type": "0",
+        "mode": "0o640",
+        "uid": 0,
+        "gid": 42,
+        "link": "",
+        "sha256": "6431d04acd78fd804b083d2297dd73cefb2f770491d50fd6faf56b9cf614d0fe"
+      },
+      "new": {
+        "type": "0",
+        "mode": "0o640",
+        "uid": 0,
+        "gid": 42,
+        "link": "",
+        "sha256": "9debf63c6bc0fb14e9718fb7addc203ea7db2be346695cd801db98467f1e197b"
+      }
+    },
+    {
+      "path": "etc/shadow-",
+      "old": {
+        "type": "0",
+        "mode": "0o640",
+        "uid": 0,
+        "gid": 42,
+        "link": "",
+        "sha256": "09eeed924c26a86c3864afbb41b2bb3c4e9e1218c567c7f8e4802ad9402661d6"
+      },
+      "new": {
+        "type": "0",
+        "mode": "0o640",
+        "uid": 0,
+        "gid": 42,
+        "link": "",
+        "sha256": "aa87345b3639e882793e0944204c3d9e23a69dd7882085409399102042ae3894"
+      }
+    },
+    {
+      "path": "etc/ssl/certs/ssl-cert-snakeoil.pem",
+      "old": {
+        "type": "0",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0,
+        "link": "",
+        "sha256": "fa74fe567b92cef4328a0af5bd1e3746c48842653a35700719a9bbc14830acc1"
+      },
+      "new": {
+        "type": "0",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0,
+        "link": "",
+        "sha256": "3e9dd24e5031f5651c7d50d25c15c63834bcdd6eb601390c1116a308feee45a0"
+      }
+    },
+    {
+      "path": "etc/ssl/private/ssl-cert-snakeoil.key",
+      "old": {
+        "type": "0",
+        "mode": "0o640",
+        "uid": 0,
+        "gid": 105,
+        "link": "",
+        "sha256": "d9ba43c75268d2c9520003637f898e6e775a431f3bef943c084bf63730613d30"
+      },
+      "new": {
+        "type": "0",
+        "mode": "0o640",
+        "uid": 0,
+        "gid": 105,
+        "link": "",
+        "sha256": "bcde0d2821abf51c1dc13494c72640c2b34abd12733dfedd6e03373406e10164"
+      }
+    },
+    {
+      "path": "var/cache/ldconfig/aux-cache",
+      "old": {
+        "type": "0",
+        "mode": "0o600",
+        "uid": 0,
+        "gid": 0,
+        "link": "",
+        "sha256": "822a2ad228ec3efe878c5ddcfa0266b796b5ce30bbcb9459f32846bc773a8ef5"
+      },
+      "new": {
+        "type": "0",
+        "mode": "0o600",
+        "uid": 0,
+        "gid": 0,
+        "link": "",
+        "sha256": "aa1449baa9717267e54de97405190faca5371d2b849b229bd9dcc74c4bfdd30a"
+      }
+    },
+    {
+      "path": "var/log/apt/history.log",
+      "old": {
+        "type": "0",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0,
+        "link": "",
+        "sha256": "548a55ba54a6d74977a4ce4ac1c4deaa5730d546e6dec68f5b4fcdd844208723"
+      },
+      "new": {
+        "type": "0",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0,
+        "link": "",
+        "sha256": "f13ac5a5ec1e69ffe586bcef70ba42486bf09aeb42d19fc8aea630ffb05d45e1"
+      }
+    },
+    {
+      "path": "var/log/apt/term.log",
+      "old": {
+        "type": "0",
+        "mode": "0o640",
+        "uid": 0,
+        "gid": 4,
+        "link": "",
+        "sha256": "a0ad7f2db9d061032b67948ee3aaceed20c40525ec6c02002dc729f38f9c48f2"
+      },
+      "new": {
+        "type": "0",
+        "mode": "0o640",
+        "uid": 0,
+        "gid": 4,
+        "link": "",
+        "sha256": "f40ba293b2cdbaf9a9eee15ec9351b91ea4bc9896929996d700bf9bc70a89a38"
+      }
+    },
+    {
+      "path": "var/log/dpkg.log",
+      "old": {
+        "type": "0",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0,
+        "link": "",
+        "sha256": "46c4b3ca740cf0f4d9695180090db668fa35e9d9498357071900ecdfdeabeaa2"
+      },
+      "new": {
+        "type": "0",
+        "mode": "0o644",
+        "uid": 0,
+        "gid": 0,
+        "link": "",
+        "sha256": "fdb17dc5722248d8613d678427a40528d2dc2edc2b47514b842364dae7a9ce59"
+      }
+    }
+  ],
+  "timestamp_fields_ignored": true
+}

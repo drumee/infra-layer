@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/tmp/mail02-debian/tests/mail/signing-native.py", line 15, in <module>
+    result=json.loads(helper('-c',code).stdout);after=comp('exec','-T','postfix','postqueue','-c','/config','-j').stdout;assert before==after
+                      ^^^^^^^^^^^^^^^^^
+  File "/tmp/mail02-debian/tests/mail/signing-native.py", line 7, in helper
+    def helper(*args):return run(['docker','run','--rm','--network',project+'-edge','--user','1000:1000','--mount',f'type=bind,source={source}/keys,target=/keys,readonly','--mount',f'type=bind,source={scripts},target=/lab,readonly','--entrypoint','python3',image,*args])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mail02-debian/tests/mail/signing-native.py", line 5, in run
+    r=subprocess.run(args,capture_output=True,timeout=120);commands.append({'argv':args,'exit':r.returncode,'stdout_sha256':hashlib.sha256(r.stdout).hexdigest(),'stderr_sha256':hashlib.sha256(r.stderr).hexdigest()});assert r.returncode==0,r.stderr.decode()[-1000:];return r
+                                                                                                                                                                                                                               ^^^^^^^^^^^^^^^
+AssertionError: Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+    with connect(auth='oxymotion') as s:
+         ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/lab/client.py", line 32, in connect
+    s.starttls(context=ctx)
+    ~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/smtplib.py", line 794, in starttls
+    raise SMTPResponseException(resp, reply)
+smtplib.SMTPResponseException: (454, b'4.3.0 Try again later')
+

@@ -1,0 +1,44 @@
+{
+  "contract": "drumee.mail-observation/1",
+  "healthy": false,
+  "queue": {
+    "count": 1,
+    "oldest_age_seconds": 3.693000078201294
+  },
+  "disks": {
+    "spool": {
+      "available_bytes": 50330624,
+      "total_bytes": 241081344
+    },
+    "mailboxes": {
+      "available_bytes": 50330624,
+      "total_bytes": 241081344
+    }
+  },
+  "quotas": [],
+  "authentication_failures_10m": 4,
+  "certificate_expires_at": "Nov 15 00:08:11 2026 GMT",
+  "alerts": [
+    {
+      "code": "MAIL_SERVICE_UNAVAILABLE",
+      "resource": "dovecot"
+    },
+    {
+      "code": "MAIL_DISK_PRESSURE",
+      "resource": "spool"
+    },
+    {
+      "code": "MAIL_DISK_PRESSURE",
+      "resource": "mailboxes"
+    },
+    {
+      "code": "MAIL_CERTIFICATE_EXPIRES_7_DAYS"
+    },
+    {
+      "code": "MAIL_QUEUE_AGE"
+    },
+    {
+      "code": "MAIL_AUTH_FAILURES"
+    }
+  ]
+}

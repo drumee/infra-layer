@@ -1,0 +1,12 @@
+"use strict";
+const fs = require("node:fs"), { createRequire } = require("node:module");
+if (!process.env.MAIL02_CONSUMER) throw Error("MAIL02_INSTALLED_CONSUMER_REQUIRED");
+const api = createRequire(process.env.MAIL02_CONSUMER + "/package.json")("@drumee/infra-layer/mail-service");
+const input = JSON.parse(fs.readFileSync(process.argv[2])), previous = JSON.parse(fs.readFileSync(input.previous));
+const registry = structuredClone(previous.plan.registry); registry.generation++;
+registry.accounts.find(x => x.id === "ghost").credential_generation++;
+const plan = api.planMailService(previous.plan.spec, { registry, secret_sources: previous.plan.secret_sources });
+const prepared = api.prepareMailService(plan, { authorized: true, acceptance: true, verifiers: input.verifiers });
+const result = api.activateMailRegistry(prepared, { authorized: true, expected_generation: previous.plan.registry.generation });
+fs.writeFileSync(input.output, JSON.stringify({ prepared, result }), { mode: 0o600 });
+console.log(JSON.stringify(result));

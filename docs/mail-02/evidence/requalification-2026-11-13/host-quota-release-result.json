@@ -1,0 +1,181 @@
+{
+  "status": "PASS_NATIVE_QUOTA_EXPUNGE_RELEASE",
+  "accepted": {
+    "queue_id": "6E34B1B43A14",
+    "smtp_final_code": 250,
+    "seed_bytes": 800113
+  },
+  "deferred_before_release": {
+    "queue_name": "deferred",
+    "queue_id": "6E34B1B43A14",
+    "arrival_time": 1794554398,
+    "message_size": 501064,
+    "forced_expire": false,
+    "sender": "outside@dest.invalid",
+    "recipients": [
+      {
+        "address": "mbx-22222222-2222-4222-8222-222222222222@local.invalid",
+        "delay_reason": "host mail.oxymot.fr[/run/mail-sockets/lmtp] said: 452 4.2.2 <mbx-22222222-2222-4222-8222-222222222222@local.invalid> Quota exceeded (mailbox for user is full) (in reply to end of DATA command)"
+      }
+    ]
+  },
+  "release": {
+    "only_owned_seed_expunged": true
+  },
+  "after_release": {
+    "matches": 1
+  },
+  "quota_unchanged_bytes": 1048576,
+  "driver_sha256": "22844369d05b0a850a7e6e22f64ccc8af206ce41acb40e508505eaffb1fc0265",
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-63f5b1da",
+        "-f",
+        "/tmp/mail02-profile-htp2yihs/service/candidates/1ce592994783eefacb1813d6f82e032b163c64b1715b24df63158ad51dfe37b5/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-63f5b1da-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-grgx4xg8/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib,smtplib,re;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import IMAP,ctx,cfg;tag='quota-release-39bb206ac1ce42319d0f2f65c2ebf40b';s=IMAP('dovecot',993,ssl_context=ctx,timeout=20);s.login('second@oxymot.fr',cfg['second']);s.select('INBOX');assert not s.search(None,'ALL')[1][0];assert s.create(tag)[0]=='OK';wire=('From: outside@dest.invalid\\r\\nMessage-ID: <'+tag+'-seed@fixture.invalid>\\r\\n\\r\\n').encode()+b'x'*800000;assert s.append(tag,None,None,wire)[0]=='OK';s.logout();c=smtplib.SMTP('postfix',25,timeout=20);c.ehlo();assert c.mail('outside@dest.invalid')[0]==250;assert c.rcpt('second@oxymot.fr')[0]==250;code,response=c.data(('From: outside@dest.invalid\\r\\nMessage-ID: <'+tag+'-pending@fixture.invalid>\\r\\n\\r\\n').encode()+b'y'*500000);assert code==250;q=re.search(rb'queued as ([A-Z0-9]+)',response).group(1).decode();c.quit();print(json.dumps({'queue_id':q,'smtp_final_code':code,'seed_bytes':len(wire)}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "916d8a5f18d06161938fd39f23f0a30ddd7d3ed3bfe993cc3826e48835d5a320",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-63f5b1da",
+        "-f",
+        "/tmp/mail02-profile-htp2yihs/service/candidates/1ce592994783eefacb1813d6f82e032b163c64b1715b24df63158ad51dfe37b5/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1161d880fa2bdc93f7459ed3bbb077962caf0de210092795f437ead601efea7f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-63f5b1da-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-grgx4xg8/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib,smtplib,re;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import IMAP,ctx,cfg;tag='quota-release-39bb206ac1ce42319d0f2f65c2ebf40b';s=IMAP('dovecot',993,ssl_context=ctx,timeout=20);s.login('second@oxymot.fr',cfg['second']);s.select('INBOX');assert not s.search(None,'HEADER','Message-ID',tag+'-pending')[1][0];s.select(tag);ids=s.search(None,'HEADER','Message-ID',tag+'-seed')[1][0];assert len(ids.split())==1;assert s.store(ids,'+FLAGS','(\\\\Deleted)')[0]=='OK';assert s.expunge()[0]=='OK';assert not s.search(None,'ALL')[1][0];s.select('INBOX');assert s.delete(tag)[0]=='OK';s.logout();print(json.dumps({'only_owned_seed_expunged':True}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ee16a4d811fceaf3873e70d58d72f4734b5c5007da58758304ade70abd6c443c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-63f5b1da",
+        "-f",
+        "/tmp/mail02-profile-htp2yihs/service/candidates/1ce592994783eefacb1813d6f82e032b163c64b1715b24df63158ad51dfe37b5/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-63f5b1da-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-grgx4xg8/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib,smtplib,re;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import IMAP,ctx,cfg;tag='quota-release-39bb206ac1ce42319d0f2f65c2ebf40b';s=IMAP('dovecot',993,ssl_context=ctx,timeout=20);s.login('second@oxymot.fr',cfg['second']);s.select('INBOX');ids=s.search(None,'HEADER','Message-ID',tag+'-pending')[1][0];n=len(ids.split());s.logout();print(json.dumps({'matches':n}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c6314d2c6071c73d904d0402c2b6c5df22f469396d4a5c927ecf9b03c7f0ac6d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-63f5b1da",
+        "-f",
+        "/tmp/mail02-profile-htp2yihs/service/candidates/1ce592994783eefacb1813d6f82e032b163c64b1715b24df63158ad51dfe37b5/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

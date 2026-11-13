@@ -1,0 +1,214 @@
+{
+  "status": "PASS_NATIVE_WRITE_FAILURE_ROLLBACK",
+  "refusal": {
+    "imap_append": "NO"
+  },
+  "kernel_lock": {
+    "released_after_error": true
+  },
+  "accepted_queue_ids": [
+    "B6BA61B44DA9"
+  ],
+  "observed_delivery_after_permission_recovery": 1,
+  "new_write": {
+    "imap_append": "OK"
+  },
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-jm4vwss3/service/durable/mailboxes/22222222-2222-4222-8222-222222222222,target=/box",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os; p=pathlib.Path('/box/Maildir/tmp');assert p.is_dir() and not p.is_symlink() and p.stat().st_uid==5000;os.chmod(p,0o500)"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-a565be8a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-t1wfjs9f/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import IMAP,cfg,ctx;s=IMAP('dovecot',993,ssl_context=ctx,timeout=8);s.login('second@oxymot.fr',cfg['second']);code=s.append('INBOX',None,None,b'From: outside@dest.invalid\\r\\nSubject: refused write\\r\\n\\r\\nsynthetic')[0];assert code=='NO';s.logout();print(json.dumps({'imap_append':code}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6ab591aa72775bb03506fe84841f8b99dab02695db70b1896e89b9bda46150b6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-a565be8a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-t1wfjs9f/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "second@oxymot.fr",
+        "write-failure-2b87ba9bec42452b993d2e3cdac81909",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "cacdb2e0151d52e57c18b05b0680f10990ca7a78e78034cd85648da8adca2202",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-a565be8a",
+        "-f",
+        "/tmp/mail02-profile-jm4vwss3/service/candidates/61395fc3d0a572edeaea50289af6a93300f694b82bb7f2e821ff86f5e9d651fc/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "29d205f4fad201b43ee8e8748a03767307825fd8cced9b1a6e0cc751855f420e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-jm4vwss3/service/durable/mailboxes/22222222-2222-4222-8222-222222222222,target=/box",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import pathlib,os; p=pathlib.Path('/box/Maildir/tmp');assert p.is_dir() and not p.is_symlink() and p.stat().st_uid==5000;os.chmod(p,0o700)"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-jm4vwss3/service/durable/mailboxes/22222222-2222-4222-8222-222222222222,target=/box",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import fcntl,json;f=open('/box/home/.drumee-quota.lock','rb');fcntl.flock(f,fcntl.LOCK_EX|fcntl.LOCK_NB);print(json.dumps({'released_after_error':True}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9abcb2f1f718be94c2ffd0bef29df533e254de79c484f09cdc9d5d196f27d9f7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-a565be8a",
+        "-f",
+        "/tmp/mail02-profile-jm4vwss3/service/candidates/61395fc3d0a572edeaea50289af6a93300f694b82bb7f2e821ff86f5e9d651fc/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-a565be8a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-t1wfjs9f/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "second@oxymot.fr",
+        "write-failure-2b87ba9bec42452b993d2e3cdac81909"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ba44b6e3f83f0ad7d8ca757c879c56b700c697c5fcda7649bf8cec7f4586b9c2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-a565be8a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-t1wfjs9f/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import IMAP,cfg,ctx;s=IMAP('dovecot',993,ssl_context=ctx,timeout=8);s.login('second@oxymot.fr',cfg['second']);code=s.append('INBOX',None,None,b'From: outside@dest.invalid\\r\\nSubject: recovered write\\r\\n\\r\\nsynthetic')[0];assert code=='OK';s.logout();print(json.dumps({'imap_append':code}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "86b8709e63b0b6abe15126317b84d6a57fa2f6215385d9f76226170431524134",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

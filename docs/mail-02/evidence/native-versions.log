@@ -1,0 +1,35 @@
+mail_version = 3.10.13
+2.4.1-4 (7d8c0e5759)
+opendkim: OpenDKIM Filter v2.11.0
+	Compiled with OpenSSL 3.5.7 9 Jun 2026
+	SMFI_VERSION 0x1000001
+	libmilter version 1.0.1
+	Supported signing algorithms:
+		rsa-sha1
+		rsa-sha256
+		ed25519-sha256
+	Supported canonicalization algorithms:
+		relaxed
+		simple
+	Active code options:
+		QUERY_CACHE
+		USE_DB
+		USE_LDAP
+		USE_LUA
+		USE_ODBX
+		USE_UNBOUND
+		_FFR_ATPS
+		_FFR_RBL
+		_FFR_REPLACE_RULES
+		_FFR_SENDER_MACRO
+		_FFR_STATS
+		_FFR_VBR
+	libopendkim 2.11.0: atps query_cache
+dovecot-core	1:2.4.1+dfsg1-6+deb13u7
+dovecot-imapd	1:2.4.1+dfsg1-6+deb13u7
+dovecot-lmtpd	1:2.4.1+dfsg1-6+deb13u7
+opendkim	2.11.0~beta2-9.1+b1
+postfix	3.10.13-0+deb13u1
+uid=102(postfix) gid=103(postfix) groups=103(postfix),45(sasl)
+postdrop:x:104:
+uid=103(dovecot) gid=106(dovecot) groups=106(dovecot)

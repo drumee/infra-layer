@@ -1,0 +1,1854 @@
+{
+  "project": "mail02-9db2985a",
+  "private_root": "/tmp/mail02-native-99kwppxf",
+  "checks": [
+    {
+      "name": "internal-networks-no-host-publications",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "both-app-accounts-deliver-via-mx25",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "native-dkim-verifies-message-000001.eml",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "native-dkim-verifies-message-000002.eml",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "primary-and-alias-read-in-contact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "inbound-not-locally-signed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "other-mailbox-isolated",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "mx-no-auth-starttls-offered",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "anonymous-relay-denied",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "unknown-local-recipient-denied-at-rcpt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "auth-before-tls-refused",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "account-envelope-grant-enforced",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "account-header-grant-enforced",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "smtp-account-denied-imap",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "imap-cross-mailbox-path-denied",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "wrong-peer-name-refused",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "untrusted-issuer-refused",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "submission-requires-authentication",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "465-requires-tls-first-byte",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "unauthorized-header-variant-denied",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "unauthorized-header-variant-denied",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "unauthorized-header-variant-denied",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "registry-unavailable-tempfails-rcpt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "policy-process-failure-tempfails",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "dns-servfail-retains-deferred-message",
+      "pass": true,
+      "detail": {
+        "queue_name": "deferred",
+        "queue_id": "974A41A0B5E1",
+        "arrival_time": 1794475591,
+        "message_size": 435,
+        "forced_expire": false,
+        "sender": "contact@oxymot.fr",
+        "recipients": [
+          {
+            "address": "sink@dest.invalid",
+            "delay_reason": "Host or domain name not found. Name service error for name=dest.invalid type=MX: Host not found, try again"
+          }
+        ]
+      }
+    },
+    {
+      "name": "dns-recovery-drains-controlled-message",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "mx-451-retains-deferred-message",
+      "pass": true,
+      "detail": {
+        "queue_name": "deferred",
+        "queue_id": "655CF1A0B5E1",
+        "arrival_time": 1794475592,
+        "message_size": 449,
+        "forced_expire": false,
+        "sender": "contact@oxymot.fr",
+        "recipients": [
+          {
+            "address": "sink@dest.invalid",
+            "delay_reason": "host mx.dest.invalid[10.243.47.54] said: 451 4.3.0 Synthetic temporary refusal (in reply to end of DATA command)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mx-550-produces-local-dsn-not-endless-retry",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "strict-outbound-no-plaintext-fallback",
+      "pass": true,
+      "detail": {
+        "queue_name": "deferred",
+        "queue_id": "9FF4D1A0B644",
+        "arrival_time": 1794475599,
+        "message_size": 454,
+        "forced_expire": false,
+        "sender": "contact@oxymot.fr",
+        "recipients": [
+          {
+            "address": "sink@dest.invalid",
+            "delay_reason": "TLS is required, but was not offered by host mx.dest.invalid[10.243.47.54]"
+          }
+        ]
+      }
+    },
+    {
+      "name": "opportunistic-mode-delivers-without-starttls",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "imap-append-quota-hard-limit",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "full-mailbox-smtp-acceptance",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "lmtp-full-quota-tempfails-and-queue-persists",
+      "pass": true,
+      "detail": {
+        "queue_name": "deferred",
+        "queue_id": "879D81A0B62A",
+        "arrival_time": 1794475603,
+        "message_size": 501038,
+        "forced_expire": false,
+        "sender": "external@dest.invalid",
+        "recipients": [
+          {
+            "address": "mbx-11111111-1111-4111-8111-111111111111@local.invalid",
+            "delay_reason": "host mail.oxymot.fr[/run/mail-sockets/lmtp] said: 452 4.2.2 <mbx-11111111-1111-4111-8111-111111111111@local.invalid> Quota exceeded (mailbox for user is full) (in reply to end of DATA command)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ordinary-stop-start-preserves-queued-quota-message",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-x509",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-days",
+        "2",
+        "-subj",
+        "/CN=MAIL02 lab CA",
+        "-addext",
+        "basicConstraints=critical,CA:TRUE",
+        "-addext",
+        "keyUsage=critical,keyCertSign,cRLSign",
+        "-keyout",
+        "/tmp/mail02-native-99kwppxf/keys/ca.key",
+        "-out",
+        "/tmp/mail02-native-99kwppxf/keys/ca.pem"
+      ],
+      "at": "2026-11-12T09:25:58.201546+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c2bcb706b891e6329688b7ce7ba5c288faf5e6714b88ced5d3fd4fd7d99e423d"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=mail.oxymot.fr",
+        "-keyout",
+        "/tmp/mail02-native-99kwppxf/keys/mail.key",
+        "-out",
+        "/tmp/mail02-native-99kwppxf/keys/mail.csr"
+      ],
+      "at": "2026-11-12T09:25:58.466167+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "91aeb6a2f2725f61147f8b804973babc14be6e113a26042e0eb4a225298df6d5"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/mail02-native-99kwppxf/keys/mail.csr",
+        "-CA",
+        "/tmp/mail02-native-99kwppxf/keys/ca.pem",
+        "-CAkey",
+        "/tmp/mail02-native-99kwppxf/keys/ca.key",
+        "-set_serial",
+        "1",
+        "-days",
+        "2",
+        "-extfile",
+        "/tmp/mail02-native-99kwppxf/keys/mail.ext",
+        "-out",
+        "/tmp/mail02-native-99kwppxf/keys/mail.pem"
+      ],
+      "at": "2026-11-12T09:25:58.539863+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "12a7fe53874901d3c33878bdfacc5f638a13406b89bdf693df85afe688b1f68e"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=mx.dest.invalid",
+        "-keyout",
+        "/tmp/mail02-native-99kwppxf/keys/receiver.key",
+        "-out",
+        "/tmp/mail02-native-99kwppxf/keys/receiver.csr"
+      ],
+      "at": "2026-11-12T09:25:58.568037+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "40486d24936f103e9246551dfa2074685fdce570cfd5f85ad475964640ed79a8"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/mail02-native-99kwppxf/keys/receiver.csr",
+        "-CA",
+        "/tmp/mail02-native-99kwppxf/keys/ca.pem",
+        "-CAkey",
+        "/tmp/mail02-native-99kwppxf/keys/ca.key",
+        "-set_serial",
+        "2",
+        "-days",
+        "2",
+        "-extfile",
+        "/tmp/mail02-native-99kwppxf/keys/receiver.ext",
+        "-out",
+        "/tmp/mail02-native-99kwppxf/keys/receiver.pem"
+      ],
+      "at": "2026-11-12T09:25:58.691124+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "15270f820254920025003361e2ac0d2a7dc49fc71bb8a64b4c2cb817bfde36cf"
+    },
+    {
+      "argv": [
+        "openssl",
+        "genpkey",
+        "-algorithm",
+        "RSA",
+        "-pkeyopt",
+        "rsa_keygen_bits:2048",
+        "-out",
+        "/tmp/mail02-native-99kwppxf/keys/dkim.pem"
+      ],
+      "at": "2026-11-12T09:25:58.719249+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e1e4451cb72846cdb88e72b375236dd61838d2dc160ce4e6d892a4b5d4515a22"
+    },
+    {
+      "argv": [
+        "openssl",
+        "pkey",
+        "-in",
+        "/tmp/mail02-native-99kwppxf/keys/dkim.pem",
+        "-pubout",
+        "-outform",
+        "DER"
+      ],
+      "at": "2026-11-12T09:25:58.929042+00:00",
+      "exit": 0,
+      "stdout_sha256": "a0274b673e28fd32b399a2544b4fe8510859dbbeedb8632e0a47c662ac790afc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "none",
+        "--entrypoint",
+        "doveadm",
+        "sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b",
+        "pw",
+        "-s",
+        "ARGON2ID"
+      ],
+      "at": "2026-11-12T09:25:58.933800+00:00",
+      "exit": 0,
+      "stdout_sha256": "e77cc58023911a720d458a2471bf52053edd58ddb866864a125f03ea6e2d240b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "none",
+        "--entrypoint",
+        "doveadm",
+        "sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b",
+        "pw",
+        "-s",
+        "ARGON2ID"
+      ],
+      "at": "2026-11-12T09:25:59.281987+00:00",
+      "exit": 0,
+      "stdout_sha256": "d041eae91990418cf2686857579b192877d5e52aa657d1d37c90594328b6184d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "none",
+        "--entrypoint",
+        "doveadm",
+        "sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b",
+        "pw",
+        "-s",
+        "ARGON2ID"
+      ],
+      "at": "2026-11-12T09:25:59.537905+00:00",
+      "exit": 0,
+      "stdout_sha256": "ab9424a077471a72b5d2bb6c27d937278df4fa23ed346f486065cbf140ac9db5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "none",
+        "--entrypoint",
+        "doveadm",
+        "sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b",
+        "pw",
+        "-s",
+        "ARGON2ID"
+      ],
+      "at": "2026-11-12T09:25:59.782090+00:00",
+      "exit": 0,
+      "stdout_sha256": "866169e7ec00de79c58f97d668efc61712d19f1c629322c6640632065e4314ad",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392",
+        "--format",
+        "{{.Id}}"
+      ],
+      "at": "2026-11-12T09:26:00.062108+00:00",
+      "exit": 0,
+      "stdout_sha256": "348716e1f6f144ac13bc59ac0a188e66bf9e7b8721d3d17d24f4b60268f5a0c3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-infra/test/mail-service/prepare.cjs",
+        "/tmp/mail02-native-99kwppxf/input.json"
+      ],
+      "at": "2026-11-12T09:26:00.071627+00:00",
+      "exit": 0,
+      "stdout_sha256": "b456b8431823e26108ced13394757406dfc159886af91717b065fb1b4ec6601d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "up",
+        "-d"
+      ],
+      "at": "2026-11-12T09:26:00.343838+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "75cc559d8d9011101979e8dc5c8f4eaf454ebe13dfac4df29382848b9c26093c"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:01.040769+00:00",
+      "exit": 0,
+      "stdout_sha256": "67d8d4e3f96e538c2b837c4dbe4b77bf9973ade726b4eb03cfd7649b30ee6490",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:01.300201+00:00",
+      "exit": 0,
+      "stdout_sha256": "ac23a8572f010350d853250212d9ee51c22b2f631300fa3241a2912ffa3a7d3a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:01.560246+00:00",
+      "exit": 0,
+      "stdout_sha256": "9b5b381755eb2a55902250962f904c4be71d39ad9e0a9a96c0581a3f37249526",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:01.820500+00:00",
+      "exit": 0,
+      "stdout_sha256": "71733ecb6af51d7b59c592340157916ddb11587d94da9f0a7ed5588796175f1a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:02.080972+00:00",
+      "exit": 0,
+      "stdout_sha256": "ac23a8572f010350d853250212d9ee51c22b2f631300fa3241a2912ffa3a7d3a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:02.340665+00:00",
+      "exit": 0,
+      "stdout_sha256": "ac23a8572f010350d853250212d9ee51c22b2f631300fa3241a2912ffa3a7d3a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:02.601008+00:00",
+      "exit": 0,
+      "stdout_sha256": "67d8d4e3f96e538c2b837c4dbe4b77bf9973ade726b4eb03cfd7649b30ee6490",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:02.861078+00:00",
+      "exit": 0,
+      "stdout_sha256": "9b5b381755eb2a55902250962f904c4be71d39ad9e0a9a96c0581a3f37249526",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:03.120965+00:00",
+      "exit": 0,
+      "stdout_sha256": "2c48b03f6af522869b8da1cd5abf87551ec0a7d3a4999db2c94fc6b19b95bdc0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-9db2985a-edge"
+      ],
+      "at": "2026-11-12T09:26:03.130512+00:00",
+      "exit": 0,
+      "stdout_sha256": "60a233cc9556f8b118b03f86804810dc849fe8a6693b688bd2e74c5c00ae38ce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "mail02-9db2985a-control"
+      ],
+      "at": "2026-11-12T09:26:03.139799+00:00",
+      "exit": 0,
+      "stdout_sha256": "e1ea2d2527fbc9e11dd0b22c7a63e3ee38aad459260f5e027b3b72fcff043c41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@dest.invalid",
+        "ghost-transaction",
+        "587"
+      ],
+      "at": "2026-11-12T09:26:03.149294+00:00",
+      "exit": 0,
+      "stdout_sha256": "f93c57a96d8da7f3c12404444362ed24b705db79e8de89a14ba1cd0ea1e6d5bd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "oxymotion",
+        "second@oxymot.fr",
+        "sink@dest.invalid",
+        "motion-transaction",
+        "465"
+      ],
+      "at": "2026-11-12T09:26:03.764827+00:00",
+      "exit": 0,
+      "stdout_sha256": "96d391a18f52d78928e29e66c66a9e708e415b2e6b72b41c40ebf439a83fb0f0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:04.349080+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--dns",
+        "10.243.47.53",
+        "--entrypoint",
+        "opendkim-testmsg",
+        "sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b"
+      ],
+      "at": "2026-11-12T09:26:04.455678+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--dns",
+        "10.243.47.53",
+        "--entrypoint",
+        "opendkim-testmsg",
+        "sha256:f3fe9dc4eeb6cb8b1ba3efd61c6743159ba8313e2901983e9300ca6e4a5d733b"
+      ],
+      "at": "2026-11-12T09:26:04.881336+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "-",
+        "external@dest.invalid",
+        "contact@oxymot.fr",
+        "inbound-primary",
+        "25"
+      ],
+      "at": "2026-11-12T09:26:05.277061+00:00",
+      "exit": 0,
+      "stdout_sha256": "a00f883d2ec40c4691986bb36cfa57803ed70a8c55b1c029b6160b5079c3cb68",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "-",
+        "external@dest.invalid",
+        "hello@oxymot.fr",
+        "inbound-alias",
+        "25"
+      ],
+      "at": "2026-11-12T09:26:05.677153+00:00",
+      "exit": 0,
+      "stdout_sha256": "d00641ec9a31b04c94b416ee3539c518185d54caa4937d7bdf3f9d0b90edff7e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "contact@oxymot.fr",
+        "inbound-primary"
+      ],
+      "at": "2026-11-12T09:26:06.061594+00:00",
+      "exit": 0,
+      "stdout_sha256": "c5a17c46bfc66c189213d86619fd65486dce860f83cf836550bbb20e1a161e51",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "contact@oxymot.fr",
+        "inbound-primary"
+      ],
+      "at": "2026-11-12T09:26:06.539241+00:00",
+      "exit": 0,
+      "stdout_sha256": "c5a17c46bfc66c189213d86619fd65486dce860f83cf836550bbb20e1a161e51",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "contact@oxymot.fr",
+        "inbound-alias"
+      ],
+      "at": "2026-11-12T09:26:07.051331+00:00",
+      "exit": 0,
+      "stdout_sha256": "79f1bbfc21a8794f9828650a12c670896f9851539c4d8b3e54895b318c8991cf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "second@oxymot.fr",
+        "inbound-primary"
+      ],
+      "at": "2026-11-12T09:26:07.498621+00:00",
+      "exit": 0,
+      "stdout_sha256": "e73b95bf51f73fb46df09d05f0ea630b6c0bf0f8044c61ac009be40ccaea93a0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "checks"
+      ],
+      "at": "2026-11-12T09:26:07.977447+00:00",
+      "exit": 0,
+      "stdout_sha256": "bf53b44b04a65307d8c15024ab32f5fa591e4153db4e31e77bb5e4ba7ed8c104",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "tls-checks"
+      ],
+      "at": "2026-11-12T09:26:14.542524+00:00",
+      "exit": 0,
+      "stdout_sha256": "08ca24cee89923ce40178fb5bef37437ed70381b9b9fbbb5bec6bcc12ad22bea",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "local-rcpt"
+      ],
+      "at": "2026-11-12T09:26:17.177990+00:00",
+      "exit": 0,
+      "stdout_sha256": "79ca115c5765a62209739695a770657b9908aaafd37b230a803ca3c86ba08a76",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "stop",
+        "policy"
+      ],
+      "at": "2026-11-12T09:26:17.528879+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "108ba4ece3aa1c300f209b4af531349db349dca1720b96c19f6e699f6e6ba2b0"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "policy-failure"
+      ],
+      "at": "2026-11-12T09:26:27.750909+00:00",
+      "exit": 0,
+      "stdout_sha256": "27dd7d1dd2f91143ebe8f6c2536072a41f631c52c45cb622d7c90a122123d9f7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "start",
+        "policy"
+      ],
+      "at": "2026-11-12T09:26:28.181207+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "983dc8e8765ccf3ea7b47d3a81157cb1a6d60ac7e15adb32fc99064332343983"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@dest.invalid",
+        "dns-unavailable",
+        "587"
+      ],
+      "at": "2026-11-12T09:26:31.351832+00:00",
+      "exit": 0,
+      "stdout_sha256": "dcc98c90af5b2a370095e62e252b1c24829982b54c4130cc884b32d22daf352b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:31.847731+00:00",
+      "exit": 0,
+      "stdout_sha256": "d7a9d4cc6f9f5c1e717f005a7d081b9b8d10c5fb74edd9fe05735d0384f428d5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "at": "2026-11-12T09:26:31.932478+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:32.033077+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@dest.invalid",
+        "mx-temporary-refusal",
+        "587"
+      ],
+      "at": "2026-11-12T09:26:32.137240+00:00",
+      "exit": 0,
+      "stdout_sha256": "2877edbfc1f62c55df932e6012a3b72e9f551332e3a2ba497eac3e9492930d9f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:32.709373+00:00",
+      "exit": 0,
+      "stdout_sha256": "1291b0537721fc170f843b273a23030b93b21c847e4dfdebe502eb642acdfbba",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "at": "2026-11-12T09:26:32.800528+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:32.884501+00:00",
+      "exit": 0,
+      "stdout_sha256": "de145eae2a2d7479d018f39f9c9cf3419f95f597eec279bd59a3c5372cace3fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:33.189696+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "blocked@dest.invalid",
+        "permanent-recipient-refusal",
+        "587"
+      ],
+      "at": "2026-11-12T09:26:33.288375+00:00",
+      "exit": 0,
+      "stdout_sha256": "8ead41fb99754c8c525b02bfd97573051f5b4cea7539f0e344da49560ef8be16",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "contact@oxymot.fr",
+        "permanent-recipient-refusal"
+      ],
+      "at": "2026-11-12T09:26:33.825059+00:00",
+      "exit": 0,
+      "stdout_sha256": "49d700bb8496c748fe6d6da0c9ece64cf76defbc69d7872d5632506a03d2713a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:34.269173+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postconf",
+        "-c",
+        "/config",
+        "-e",
+        "smtp_tls_security_level=verify"
+      ],
+      "at": "2026-11-12T09:26:34.354856+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postfix",
+        "-c",
+        "/config",
+        "reload"
+      ],
+      "at": "2026-11-12T09:26:34.413744+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "21b5f4b3070c10aa9de66ac612f6b7c1f619708aebc25b7978be1f8374666b79"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "ghost",
+        "contact@oxymot.fr",
+        "sink@dest.invalid",
+        "strict-no-clear-fallback",
+        "587"
+      ],
+      "at": "2026-11-12T09:26:39.330656+00:00",
+      "exit": 0,
+      "stdout_sha256": "722a6d7c8b8fdf8944a29d8d08ab6e2ba8a9a999e8e7b7be66cb6f085337f7c9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:39.920911+00:00",
+      "exit": 0,
+      "stdout_sha256": "1db07d8b4bc083e5f324c00a3d6011688814d94cc67d1d440bf510ab84973a69",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postconf",
+        "-c",
+        "/config",
+        "-e",
+        "smtp_tls_security_level=may"
+      ],
+      "at": "2026-11-12T09:26:40.022906+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postfix",
+        "-c",
+        "/config",
+        "reload"
+      ],
+      "at": "2026-11-12T09:26:40.110267+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "21b5f4b3070c10aa9de66ac612f6b7c1f619708aebc25b7978be1f8374666b79"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "at": "2026-11-12T09:26:42.629064+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:42.734622+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "fill-quota"
+      ],
+      "at": "2026-11-12T09:26:42.826917+00:00",
+      "exit": 0,
+      "stdout_sha256": "71e68658ccfef3d68da7c070307db2712011542c99b1ad7bd2c5c19b311ccde9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-9db2985a-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-99kwppxf/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "large-local"
+      ],
+      "at": "2026-11-12T09:26:43.333058+00:00",
+      "exit": 0,
+      "stdout_sha256": "aa25535c5218b4c9452508e2a6adbc8d5deac0e60e964d5268218d435329d9ce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:43.765284+00:00",
+      "exit": 0,
+      "stdout_sha256": "2933953b01bb3ba34b32af95d6f21063ff44a4632c90349fd354bac1d306ca21",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:43.852452+00:00",
+      "exit": 0,
+      "stdout_sha256": "2933953b01bb3ba34b32af95d6f21063ff44a4632c90349fd354bac1d306ca21",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "stop",
+        "postfix",
+        "dovecot"
+      ],
+      "at": "2026-11-12T09:26:43.956402+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f3d13954aaf74d4345bcd232852d155ce21a14904e33ecccee896811d7f0b82b"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "start",
+        "dovecot",
+        "postfix"
+      ],
+      "at": "2026-11-12T09:26:44.433609+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "19aa50f9d775fab4f8e5feafcd4df10632c43dc14039e65aea5d2ce71b599c1c"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:44.744164+00:00",
+      "exit": 0,
+      "stdout_sha256": "e77a12aa6cce796842476548749426721340e3fd52a006abfa05d2f1f674aa1e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:45.035238+00:00",
+      "exit": 0,
+      "stdout_sha256": "e77a12aa6cce796842476548749426721340e3fd52a006abfa05d2f1f674aa1e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:45.295766+00:00",
+      "exit": 0,
+      "stdout_sha256": "e77a12aa6cce796842476548749426721340e3fd52a006abfa05d2f1f674aa1e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:45.556137+00:00",
+      "exit": 0,
+      "stdout_sha256": "47e0eb01a2f3c2bba9a5355297b291819fec9b19ecc85abf8096a20fd8b56787",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:45.816355+00:00",
+      "exit": 0,
+      "stdout_sha256": "47e0eb01a2f3c2bba9a5355297b291819fec9b19ecc85abf8096a20fd8b56787",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:46.077062+00:00",
+      "exit": 0,
+      "stdout_sha256": "e77a12aa6cce796842476548749426721340e3fd52a006abfa05d2f1f674aa1e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:46.337249+00:00",
+      "exit": 0,
+      "stdout_sha256": "e77a12aa6cce796842476548749426721340e3fd52a006abfa05d2f1f674aa1e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:46.597525+00:00",
+      "exit": 0,
+      "stdout_sha256": "e77a12aa6cce796842476548749426721340e3fd52a006abfa05d2f1f674aa1e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "mail02-9db2985a-postfix-1"
+      ],
+      "at": "2026-11-12T09:26:46.857804+00:00",
+      "exit": 0,
+      "stdout_sha256": "d92114c80b5220736b3c334ea8f504118cf10179cf14a3a3d9955f7f353a66d9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "at": "2026-11-12T09:26:46.868815+00:00",
+      "exit": 0,
+      "stdout_sha256": "2933953b01bb3ba34b32af95d6f21063ff44a4632c90349fd354bac1d306ca21",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "logs",
+        "--no-color",
+        "postfix"
+      ],
+      "at": "2026-11-12T09:26:46.975309+00:00",
+      "exit": 0,
+      "stdout_sha256": "162f2686e5c3c097357dc22681785ca25707c83c21aff9cd49e35eeee5490f7f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "logs",
+        "--no-color",
+        "dovecot"
+      ],
+      "at": "2026-11-12T09:26:47.017830+00:00",
+      "exit": 0,
+      "stdout_sha256": "39b605938a0efdb8814844f0e36f5e20d06eaa0c892eeeb8ecb7cb4175918f12",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "logs",
+        "--no-color",
+        "opendkim"
+      ],
+      "at": "2026-11-12T09:26:47.058231+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "logs",
+        "--no-color",
+        "policy"
+      ],
+      "at": "2026-11-12T09:26:47.098233+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "logs",
+        "--no-color",
+        "mx"
+      ],
+      "at": "2026-11-12T09:26:47.138567+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "logs",
+        "--no-color",
+        "dns"
+      ],
+      "at": "2026-11-12T09:26:47.179353+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-9db2985a",
+        "-f",
+        "/tmp/mail02-native-99kwppxf/compose.json",
+        "down"
+      ],
+      "at": "2026-11-12T09:26:47.219786+00:00",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f7f126d0eb16f128d243c625da02a59874f7f0b05e094831c522238d9056d6a4"
+    }
+  ],
+  "status": "PASS_IMPLEMENTED_SUBSET",
+  "source_sha256": {
+    "client.py": "5ab2472ca4cf4ab6421048d170a85c17585c871045c0b08ff46cbaf7abbd9faa",
+    "dns.cjs": "c0fda6c5efa2c9f2cd8ba46c0589a7ff075cb6f7fb7ce890dfd7c0cce203cc7f",
+    "mx.py": "9822fccf1f42f6f3a2f62426ae7ab5824a9059bae91d82aebd62c445b4c12e17",
+    "prepare.cjs": "123f082ef4ec2f3e0e13bd73e4974589916be078f608761152e11fdd8b0f1f51",
+    "run.py": "e17387e453b0d13b13bc1bffd7bb30a65e01d00edd4dfe7e6f5ebbb86879c2e8"
+  }
+}

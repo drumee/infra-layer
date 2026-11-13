@@ -1,0 +1,108 @@
+{
+  "status": "PASS_NATIVE_QUOTA_RECONCILIATION",
+  "checks": [
+    {
+      "status": "PASS",
+      "imap": {
+        "address": "contact@oxymot.fr",
+        "virtual_bytes": 1153862,
+        "messages": 6,
+        "folders": [
+          {
+            "name": "INBOX",
+            "virtual_bytes": 1153862,
+            "messages": 6
+          }
+        ]
+      },
+      "native_storage_kib": 1127,
+      "native_messages": 6,
+      "quota_bytes": 2097152
+    },
+    {
+      "status": "PASS",
+      "imap": {
+        "address": "second@oxymot.fr",
+        "virtual_bytes": 1358496,
+        "messages": 11,
+        "folders": [
+          {
+            "name": "atomic-f44dd86df2f743189f548e7221802206-hold",
+            "virtual_bytes": 0,
+            "messages": 0
+          },
+          {
+            "name": "INBOX",
+            "virtual_bytes": 1358496,
+            "messages": 11
+          }
+        ]
+      },
+      "native_storage_kib": 1327,
+      "native_messages": 11,
+      "quota_bytes": 2097152
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-4tpncu6z/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/quota-read-check.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "50e179c40c22e9ac186dfdb20ebee267ce926d6a166fbd1c3d2f182c56671e11",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-e5aeee94-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "-f",
+        "json",
+        "quota",
+        "get",
+        "-u",
+        "contact@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "2a2a4b7e8f6d015345161b00f5e4322b1456463bed8e096f7e7ed31ce02836c1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-e5aeee94-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "-f",
+        "json",
+        "quota",
+        "get",
+        "-u",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c6baf3e9b9e133ea163bd2db4a89927dfbb0192f42f4f191dc1e84700242af83",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

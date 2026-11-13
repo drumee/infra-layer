@@ -1,0 +1,23 @@
+# Run in separate clean worktrees at ff6e6b399128e6332c984fc2e8e60f660bd5f881,
+# 54773065d6d9c348e601e2f2366b3fb614235297, and the final PR head.
+# ShellCheck is v0.11.0; replay-shellcheck.sh is the Run-check Bash block from
+# ludeeus/action-shellcheck@00b27aa7cb85167568cb48a3838b75f4265f2bca/action.yaml,
+# with github.action_path resolved to its local checkout.
+export PATH=/tmp/mail02-close-tools:$PATH
+export INPUT_SCANDIR=.
+export INPUT_CHECK_TOGETHER=
+export INPUT_EXCLUDE_ARGS='! -path *./.git/* ! -path *.go ! -path */mvnw ! -path *./builder/src/* ! -path */builder/src/* ! -path builder/src ! -path *./target/* ! -path */target/* ! -path target'
+export INPUT_ADDITIONAL_FILE_ARGS=
+export INPUT_SHELLCHECK_OPTIONS='-S warning --format=gcc'
+export GITHUB_OUTPUT=/absolute/private/action-output.txt
+bash /tmp/mail02-close-tools/replay-shellcheck.sh
+# Assert statuscode=0 in action-output.txt, not merely Bash exit=0.
+# Packaging: git archive each exact SHA into separate /qual/NAME on the same
+# pinned trixie container; git init and git add --force . preserve scan inventory.
+# Install tools once with the workflow's exact commands:
+# apt-get update
+# apt-get install -y --no-install-recommends git ca-certificates
+# In each /qual/NAME:
+# scripts/check-packaging.sh
+# Save full stdout/stderr and actual exit status; compare diagnostics by rule,
+# relative file and cause, ignoring changed line numbers.

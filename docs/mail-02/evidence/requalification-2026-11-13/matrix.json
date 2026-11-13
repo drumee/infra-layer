@@ -1,0 +1,325 @@
+{
+  "contract": "drumee.mail-02-qualification/1",
+  "scope": "isolated transport only",
+  "status": "MAIL-02_BLOCKED",
+  "producer": "de5ea272fe40c77dded529d03ef3ce1f174472ab",
+  "image": "sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f",
+  "rows": [
+    {
+      "id": "RX-01",
+      "status": "PASS",
+      "evidence": [
+        "host-final-45.json",
+        "vm-final-45.json"
+      ],
+      "drivers": [
+        "run.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "RX-02",
+      "status": "PASS",
+      "evidence": [
+        "host-final-45.json",
+        "vm-final-45.json",
+        "vm-registry-result.json"
+      ],
+      "drivers": [
+        "run.py",
+        "registry-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "RX-03",
+      "status": "PASS",
+      "evidence": [
+        "vm-final-45.json",
+        "vm-protocol-result.json"
+      ],
+      "drivers": [
+        "run.py",
+        "protocol-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "RX-04",
+      "status": "PASS",
+      "evidence": [
+        "vm-registry-result.json",
+        "vm-session-result.json"
+      ],
+      "drivers": [
+        "registry-native.py",
+        "session-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "AUTH-01",
+      "status": "PASS",
+      "evidence": [
+        "vm-final-45.json",
+        "vm-private-before-reboot.json",
+        "vm-private-after-reboot.json"
+      ],
+      "drivers": [
+        "run.py",
+        "private-network.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "AUTH-02",
+      "status": "PASS",
+      "evidence": [
+        "vm-final-45.json",
+        "vm-protocol-result.json"
+      ],
+      "drivers": [
+        "run.py",
+        "protocol-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "AUTH-03",
+      "status": "PASS",
+      "evidence": [
+        "vm-final-45.json",
+        "vm-session-result.json"
+      ],
+      "drivers": [
+        "run.py",
+        "session-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "AUTH-04",
+      "status": "PASS",
+      "evidence": [
+        "vm-protocol-result.json",
+        "vm-registry-result.json"
+      ],
+      "drivers": [
+        "protocol-native.py",
+        "registry-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "TLS-01",
+      "status": "PASS",
+      "evidence": [
+        "vm-expiry-result.json",
+        "vm-expired-issuer-result.json",
+        "host-mx-expiry-result.json",
+        "vm-private-after-reboot.json"
+      ],
+      "drivers": [
+        "tls-extra.py",
+        "tls-chain-native.py",
+        "mx-expiry-check.py",
+        "private-network.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "TLS-02",
+      "status": "PASS",
+      "evidence": [
+        "vm-tls-result.json",
+        "vm-private-after-reboot.json"
+      ],
+      "drivers": [
+        "tls-native.py",
+        "private-network.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "OUT-01",
+      "status": "PASS",
+      "evidence": [
+        "vm-final-45.json",
+        "vm-mx-result.json"
+      ],
+      "drivers": [
+        "run.py",
+        "mx-check.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "OUT-02",
+      "status": "PASS",
+      "evidence": [
+        "vm-final-45.json",
+        "vm-mx-result.json",
+        "host-mx-expiry-result.json"
+      ],
+      "drivers": [
+        "run.py",
+        "mx-check.py",
+        "mx-expiry-check.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "SIGN-01",
+      "status": "PASS",
+      "evidence": [
+        "vm-final-45.json",
+        "vm-signing-result.json"
+      ],
+      "drivers": [
+        "run.py",
+        "signing-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "IMAP-01",
+      "status": "PASS",
+      "evidence": [
+        "vm-final-45.json",
+        "vm-protocol-result.json",
+        "vm-identity-result.json"
+      ],
+      "drivers": [
+        "run.py",
+        "protocol-native.py",
+        "identity-controls.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "QUOTA-01",
+      "status": "PASS",
+      "evidence": [
+        "host-original-race-result.json",
+        "vm-original-race-result.json",
+        "vm-atomic-quota-result.json",
+        "vm-write-failure-result.json",
+        "vm-quota-reconciliation-result.json",
+        "vm-boot-result.json",
+        "host-quota-release-result.json",
+        "host-quota-release-reconciliation.json"
+      ],
+      "drivers": [
+        "quota-race.py",
+        "quota-native.py",
+        "write-failure.py",
+        "quota-reconcile-native.py",
+        "boot-native.py",
+        "quota-release-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "ROT-01",
+      "status": "PASS",
+      "evidence": [
+        "vm-final-45.json",
+        "vm-session-result.json",
+        "vm-registry-cache-result.json"
+      ],
+      "drivers": [
+        "run.py",
+        "session-native.py",
+        "registry-cache-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "LIFE-01",
+      "status": "PASS",
+      "evidence": [
+        "vm-life-result.json",
+        "vm-result.json"
+      ],
+      "drivers": [
+        "life-check.py",
+        "native-lifecycle.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "LIFE-02",
+      "status": "PASS",
+      "evidence": [
+        "vm-identity-result.json",
+        "vm-mount-result.json",
+        "vm-boot-result.json"
+      ],
+      "drivers": [
+        "identity-controls.py",
+        "mount-native.py",
+        "boot-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "NET-01",
+      "status": "PASS",
+      "evidence": [
+        "vm-private-before-reboot.json",
+        "vm-private-after-reboot.json",
+        "vm-identity-result.json",
+        "vm-foreign-resource-result.json"
+      ],
+      "drivers": [
+        "private-network.py",
+        "identity-controls.py",
+        "foreign-resources.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    },
+    {
+      "id": "OBS-01",
+      "status": "PASS",
+      "evidence": [
+        "vm-expiry-result.json",
+        "vm-registry-result.json",
+        "vm-alerts-result.json",
+        "vm-disk-result.json",
+        "vm-disk-pressure-observation.json",
+        "vm-rate-result.json",
+        "vm-tls-result.json"
+      ],
+      "drivers": [
+        "tls-extra.py",
+        "registry-native.py",
+        "disk-native.py",
+        "rate-native.py",
+        "tls-native.py"
+      ],
+      "command_reference": "../../reproduction.md"
+    }
+  ],
+  "out_of_scope": {
+    "CLI-01/02 and TX-01": "MAIL03",
+    "APP-01": "MAIL04",
+    "BK-01/02": "MAIL05: SMTP_RECOVERY_UNQUALIFIED for this profile and coordinated Oxy-form",
+    "MIG-01 and public/DNS/PTR": "later authorized lot"
+  },
+  "retained_repository_ci_failures": "ci.json; unchanged baseline, no protection waived",
+  "native_transport_status": "PASS",
+  "remaining_gates": [
+    {
+      "id": "CI-DEBIAN-LINT",
+      "status": "FAIL",
+      "evidence": "ci.json",
+      "cause": "91 unchanged ShellCheck diagnostics; gate not waived"
+    },
+    {
+      "id": "CI-DEBIAN-PACKAGING",
+      "status": "FAIL",
+      "evidence": "ci.json",
+      "cause": "15 unchanged selected diagnostics including mail profile parametric FROM; local config-ID precheck does not satisfy manifest acquisition gate"
+    }
+  ]
+}

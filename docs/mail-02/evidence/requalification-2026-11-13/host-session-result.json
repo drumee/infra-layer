@@ -1,0 +1,793 @@
+{
+  "status": "PASS_NATIVE_ACCEPTANCE_BOUNDARIES",
+  "checks": [
+    {
+      "name": "grant-only-during-data",
+      "status": "PASS",
+      "generation": 28,
+      "observation": {
+        "status": "PASS_INFLIGHT_REVOCATION",
+        "final_code": 421,
+        "final_250": false
+      },
+      "no_new_queue": true
+    },
+    {
+      "name": "password-rotation-during-data",
+      "status": "PASS",
+      "generation": 30,
+      "observation": {
+        "status": "PASS_INFLIGHT_REVOCATION",
+        "final_code": 421,
+        "final_250": false
+      },
+      "no_new_queue": true
+    },
+    {
+      "name": "rotated-new-authentication",
+      "status": "PASS",
+      "observation": {
+        "old_password_code": 535
+      }
+    },
+    {
+      "name": "final-250-before-revocation-retains-instance-queue",
+      "status": "PASS",
+      "queue_id": "A6B141B43414",
+      "observed_deliveries": 1
+    },
+    {
+      "name": "all-disabled-retained-delivery-projection",
+      "status": "PASS",
+      "mailbox_id": "11111111-1111-4111-8111-111111111111",
+      "new_access": {
+        "primary": 550,
+        "retired_alias": 550,
+        "imap_refused": true,
+        "human_smtp_refused": true
+      },
+      "sessions": {
+        "status": "PASS_COMBINED_SESSION_REVOCATION",
+        "old_smtp_code": 421,
+        "old_imap_disconnected": true
+      },
+      "accepted_before_disable_read_once_after_imap_only_reenable": true
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-0115217228ed4f6db73b099cd0d18bae.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1916a9bc6438d232184ebededf56b9654585e2d7b404146f57d737152a935e4d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.101",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/transaction-probe.py",
+        "inflight",
+        "grant-only-during-data-8582bc8aadf44449bd768d8d376cc928"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ea9c5f812b6d498ebe632b1079c9d8cd9cd189b68f792fd275e89019d49ef24c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-9607650af6e04b27a4d1a787198d9c2c.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9fa28c8c9f004d608eb482228eb7e47cb7c6ed97618eb20f3630c965192f5dcb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "none",
+        "--entrypoint",
+        "doveadm",
+        "sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f",
+        "pw",
+        "-s",
+        "ARGON2ID"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f5edb8134cf2c42fdc9240158e2a18dcc9b83e968996af33b3ca28a8f1dd0899",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-54e348dca30643149b1dcb5f2ce64bde.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3ffa05ce3e85abf151879855542832ad5d3b349000c73c7fb2d319aaf05c0254",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.102",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/transaction-probe.py",
+        "inflight",
+        "password-rotation-during-data-7bc59a02b91a44858f0d9ee0fa422e99"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ea9c5f812b6d498ebe632b1079c9d8cd9cd189b68f792fd275e89019d49ef24c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.103",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib,smtplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(587,None)\ntry:s.auth('PLAIN',lambda challenge=None:'\\0ghost\\0'+cfg['ghost']);raise AssertionError('old password accepted')\nexcept smtplib.SMTPAuthenticationError as e:assert e.smtp_code==535;print(json.dumps({'old_password_code':e.smtp_code}))\ns.close()"
+      ],
+      "exit": 0,
+      "stdout_sha256": "79696b21b9d5eb9152d241cca6aa8b7e406b7ad2c6ef7e4509fa7d167c83538c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.104",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib,smtplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect();s.quit();print(json.dumps({'new_password':True}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e803b4ebb14788b5b3fe1dc54a44acbc3ae8652c9aff481a67ffc62dba06a671",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-85e72c4468d945fdb93cc58d9d0c0cad.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "54b643ea30ec621518498c5800c93434a9cc98959a8ef55eab9dbebdf0a538d6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-89248ac544674c2fa4277ac3c163cd71.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5ea1e4436a3cfa287a974a5ed4478487a173d391e3e2b581d37bd611b94d99d8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.105",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib,smtplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=IMAP('dovecot',993,ssl_context=ctx,timeout=8);s.login('second@oxymot.fr',cfg['second']);assert s.append('INBOX',None,None,b'From: outside@dest.invalid\\r\\nSubject: retained boundary seed\\r\\n\\r\\n'+b'x'*1100000)[0]=='OK';s.logout();print(json.dumps({'seeded':True}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d9d20502a6eb0e7b4744da8c60a66b85c2c4b17f186865be46a2dc1b6a1e5df8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-4e6f5271dfb243b98dacce15e1869e0c.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3021d90b70c17bf103e7e02c97ae1f4e2cd3b46c7f1b22ca84f61da423afcba1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.106",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/transaction-probe.py",
+        "accepted",
+        "accepted-before-revoke-81fc77243b2544cfb758aef504361026"
+      ],
+      "exit": 0,
+      "stdout_sha256": "72bdd38570df8f31052408abdd22801018f5d606eb83ba1bc309e5afecb8a1d7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e0adb27b781c338f6a327b620bf19837de38e8a455780a446f8f3ab605c6e592",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-6b5f66a10d7846239a5610e40a60d13d.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6416f4a01522f4216b2bcad9ec307eafd2a535c610f1ff1da0dd1e338188699c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e0adb27b781c338f6a327b620bf19837de38e8a455780a446f8f3ab605c6e592",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-b6af53d9ccc74958b480acbb76bcda79.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8c69e7ce6f7bffd4722de6209960c6cf9c795f0afa0082b9f760f12306194712",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.107",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "second@oxymot.fr",
+        "accepted-before-revoke-81fc77243b2544cfb758aef504361026"
+      ],
+      "exit": 0,
+      "stdout_sha256": "49d700bb8496c748fe6d6da0c9ece64cf76defbc69d7872d5632506a03d2713a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-8285396acaa543699e3ab9fd04d074a5.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "91c80f280a47d479c7e58bc5501650e8c19e67bc247bd9ffb8fe9cd06feb81d5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-e6c17a9d09e44cdb8c43e0116e080b7e.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3b01f08beee25dfd5f7f92dfe3e8d6d0aae55e90815775c4b0d296b9bc1d215c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "dovecot",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "-f",
+        "json",
+        "quota",
+        "get",
+        "-u",
+        "contact@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3be814293e0685bc4e630753c7830e8e7d336e419eed3d0fe832b6505dc479e2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-214a8001709b4a46beba66adbbfcf5c6.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4fd46983fb0f0a69bd15ef9e19d18dd9f782a033b926cd81c8d12395156b1991",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.109",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "send",
+        "-",
+        "outside@dest.invalid",
+        "contact@oxymot.fr",
+        "all-disabled-cac2d45f2cd444a2b5f9c35950b23a2a",
+        "25"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6f440454f29d3d760bd2e0c303336165bc8d0f047e67f4ea7ebd25d14748b53e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-j"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a598dbc427c21c7d589cfd6d71b36e36aeace210cf598e7e1391cef681c564a1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-7b0ce23e03904917a03f3d158952b572.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7b91829a8b26f3ad024f30b60c1352e07b611fc735d977fdbbcff686c8b5c17f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.108",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/transaction-probe.py",
+        "human-sessions",
+        "all-disabled-cac2d45f2cd444a2b5f9c35950b23a2a"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d92be80adc655ef2c4ea6b82c6900d977d09eab82134dd960aa3632b7a2e4335",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "mail02-profile-e5aeee94",
+        "-f",
+        "/tmp/mail02-profile-7srq_gu8/service/candidates/f6dddf6ff15310147f8b8e17b5bcbe70a98fd2ddf2dcca30a3c4e104c2e00f3e/compose.json",
+        "exec",
+        "-T",
+        "postfix",
+        "postqueue",
+        "-c",
+        "/config",
+        "-f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.110",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,imaplib,smtplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(25,None,False);s.mail('outside@dest.invalid');a=s.rcpt('contact@oxymot.fr')[0];b=s.rcpt('hello@oxymot.fr')[0];s.close();i=IMAP('dovecot',993,ssl_context=ctx,timeout=8)\ntry:i.login('contact@oxymot.fr',cfg['contact']);raise AssertionError('disabled IMAP accepted')\nexcept imaplib.IMAP4.error:pass\ni.logout();s=connect(587,None)\ntry:s.auth('PLAIN',lambda challenge=None:'\\0contact@oxymot.fr\\0'+cfg['contact']);raise AssertionError('disabled human SMTP accepted')\nexcept smtplib.SMTPAuthenticationError as e:assert e.smtp_code==535\ns.close();print(json.dumps({'primary':a,'retired_alias':b,'imap_refused':True,'human_smtp_refused':True}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "99f3a4b25ca274d85817ced5124ffc2add62731d6cd5eaa1964906a630b5965b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-05768bdb87934fcc9f5e52cfce6bf604.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6a7e467e85ec70bdb39d89b7bd8c5057a294dbc51e01627f6f199ca980e9fe6d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-e5aeee94-edge",
+        "--ip",
+        "10.243.47.111",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-7srq_gu8/session-private/control,target=/control",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/client.py",
+        "imap",
+        "contact@oxymot.fr",
+        "all-disabled-cac2d45f2cd444a2b5f9c35950b23a2a"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f3ab97b5cc01b0cb4d52a68075d0317dd8254501598cd740d1929b19404eccd9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-9b3d2344f1644033b73e2f6a3d28c2fe.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c57908854bdaa32b707307dd4d7e613949ee8fa2338617e26d49d6e3cb2227f8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-7srq_gu8/config.json",
+        "/tmp/mail02-profile-7srq_gu8/session-private/request-7cf213825d1c4ce5a086ff4d0706b8a7.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61173e0568a64558e6dd2044eedd3105e2c34a5c3c4af1b6826ca874971b6ae2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

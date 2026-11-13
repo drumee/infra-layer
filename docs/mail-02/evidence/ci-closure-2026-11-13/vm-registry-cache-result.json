@@ -1,0 +1,403 @@
+{
+  "status": "PASS_NATIVE_RAPID_REGISTRY_GENERATIONS",
+  "checks": [
+    {
+      "generation": 3,
+      "quota_bytes": 1048576,
+      "users_mtime_seconds": 1794596784,
+      "native_userdb": "1048576B",
+      "status": "PASS"
+    },
+    {
+      "generation": 4,
+      "quota_bytes": 2097152,
+      "users_mtime_seconds": 1794596786,
+      "native_userdb": "2097152B",
+      "status": "PASS"
+    },
+    {
+      "generation": 5,
+      "quota_bytes": 1048576,
+      "users_mtime_seconds": 1794596788,
+      "native_userdb": "1048576B",
+      "status": "PASS"
+    },
+    {
+      "generation": 6,
+      "quota_bytes": 2097152,
+      "users_mtime_seconds": 1794596789,
+      "native_userdb": "2097152B",
+      "status": "PASS"
+    },
+    {
+      "generation": 7,
+      "quota_bytes": 1048576,
+      "users_mtime_seconds": 1794596791,
+      "native_userdb": "1048576B",
+      "status": "PASS"
+    },
+    {
+      "generation": 8,
+      "quota_bytes": 2097152,
+      "users_mtime_seconds": 1794596793,
+      "native_userdb": "2097152B",
+      "status": "PASS"
+    },
+    {
+      "generation": 9,
+      "quota_bytes": 1048576,
+      "users_mtime_seconds": 1794596794,
+      "native_userdb": "1048576B",
+      "status": "PASS"
+    },
+    {
+      "generation": 10,
+      "quota_bytes": 2097152,
+      "users_mtime_seconds": 1794596796,
+      "native_userdb": "2097152B",
+      "status": "PASS"
+    },
+    {
+      "generation": 11,
+      "quota_bytes": 1048576,
+      "users_mtime_seconds": 1794596798,
+      "native_userdb": "1048576B",
+      "status": "PASS"
+    },
+    {
+      "generation": 12,
+      "quota_bytes": 2097152,
+      "users_mtime_seconds": 1794596799,
+      "native_userdb": "2097152B",
+      "status": "PASS"
+    },
+    {
+      "generation": 13,
+      "quota_bytes": 1048576,
+      "users_mtime_seconds": 1794596801,
+      "native_userdb": "1048576B",
+      "status": "PASS"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/3.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "437b8fa18cf5b9253661e65cfcb87df935f08b519da7e85ad44a1ddec70972eb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15b67f4f9546aadeecb3976b4203fb717a738ba7ffe56da8bb84a56ad5ebfbbe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/4.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "193d4e3c0b7e22e16ccd7efcb4c010a8f4c32699f73c590b031d2db799d1add5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "aeced93a4655b1ff2e722f5cef186f1c5d40cd793777d87991406864c8928fe9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/5.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "06dd75b33b55209c5fa6a303bbb41f3b19184c1f92eab4378d7a4e155683327c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15b67f4f9546aadeecb3976b4203fb717a738ba7ffe56da8bb84a56ad5ebfbbe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/6.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "13b97acaa4d684e3531ddf13d29a4ba9e57bf5784bf6daab8b3c28fca972d4f6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "aeced93a4655b1ff2e722f5cef186f1c5d40cd793777d87991406864c8928fe9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/7.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "90780477c5f0616251d74aaca250561d5907fbb3058d5acd7e0829924f764795",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15b67f4f9546aadeecb3976b4203fb717a738ba7ffe56da8bb84a56ad5ebfbbe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/8.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c0cb0b73561104458b4cd87c2954ff90e499163ffe0b8fccd6fdd83907cbd961",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "aeced93a4655b1ff2e722f5cef186f1c5d40cd793777d87991406864c8928fe9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/9.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8120371ed13a511086bf985920e276eca1d308f389d038f1b40f92019e903068",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15b67f4f9546aadeecb3976b4203fb717a738ba7ffe56da8bb84a56ad5ebfbbe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/10.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "496eb36d547cf15ae26424ddca8189db2b1ba7ec1d629c7a18ae20fc5e934d29",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "aeced93a4655b1ff2e722f5cef186f1c5d40cd793777d87991406864c8928fe9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/11.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "378f7a12c1f12ceff3ba617f932776bfd31b10b7241d2809f204f5ed47535313",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15b67f4f9546aadeecb3976b4203fb717a738ba7ffe56da8bb84a56ad5ebfbbe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/12.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "2a4dd565d2a1bf535c3279e35289d3e920b6140c9ee0f0489db8ef7aaf3ed0be",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "aeced93a4655b1ff2e722f5cef186f1c5d40cd793777d87991406864c8928fe9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/home/lab/work/ci-close/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/config.json",
+        "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/cache-probe-9c0e37de7a29453099b10c16028b1c2a/13.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "05fba748c442c6bca448e18cb8285b8433880b3e58b3a30f91b7518f9f00574f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "mail02-profile-068b270c-dovecot-1",
+        "doveadm",
+        "-c",
+        "/registry/active.conf",
+        "user",
+        "-f",
+        "quota/Mailbox/storage_size",
+        "second@oxymot.fr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15b67f4f9546aadeecb3976b4203fb717a738ba7ffe56da8bb84a56ad5ebfbbe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

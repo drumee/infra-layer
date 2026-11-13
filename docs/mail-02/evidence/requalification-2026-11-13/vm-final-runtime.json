@@ -1,0 +1,156 @@
+{
+  "postfix": {
+    "image": "sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f",
+    "id": "447c0174718b1f3c692c7c68ef37b0a82d3d1cef76518eba7538c122e67de6f2",
+    "networks": {
+      "mail02-profile-3379ee3f-control": {
+        "IPAMConfig": {},
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-3379ee3f-postfix-1",
+          "postfix"
+        ],
+        "MacAddress": "02:42:c0:a8:80:04",
+        "NetworkID": "aaab3d9fea758a2223b4b623fb355a3658d73b29970900af9c3d2be3a2e45077",
+        "EndpointID": "8ed71be1ce2e45542219e1ed7e326c08c85e9737731f8406b3e487a53e378d5b",
+        "Gateway": "",
+        "IPAddress": "192.168.128.4",
+        "IPPrefixLen": 20,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-3379ee3f-postfix-1",
+          "postfix",
+          "447c0174718b"
+        ]
+      },
+      "mail02-profile-3379ee3f-edge": {
+        "IPAMConfig": {
+          "IPv4Address": "10.243.47.254"
+        },
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-3379ee3f-postfix-1",
+          "postfix",
+          "mail.oxymot.fr"
+        ],
+        "MacAddress": "02:42:0a:f3:2f:fe",
+        "NetworkID": "1bae5dc9a9ecc4f393a9aa0b59a182cbd269b4ea58a176cc96be4cfd147e80d9",
+        "EndpointID": "f7aaf9346e45e809bafbc9f6426ed57217a18da13e898d0a84b5aa55d16f476f",
+        "Gateway": "10.243.47.1",
+        "IPAddress": "10.243.47.254",
+        "IPPrefixLen": 24,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-3379ee3f-postfix-1",
+          "postfix",
+          "mail.oxymot.fr",
+          "447c0174718b"
+        ]
+      }
+    },
+    "ports": {
+      "1587/tcp": [
+        {
+          "HostIp": "10.243.47.1",
+          "HostPort": "1587"
+        }
+      ]
+    }
+  },
+  "dovecot": {
+    "image": "sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f",
+    "id": "0828b8015f0ffd02b2432ca6120a7937d6df03518426a644db5474284b3dd003",
+    "networks": {
+      "mail02-profile-3379ee3f-edge": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-3379ee3f-dovecot-1",
+          "dovecot"
+        ],
+        "MacAddress": "02:42:0a:f3:2f:02",
+        "NetworkID": "1bae5dc9a9ecc4f393a9aa0b59a182cbd269b4ea58a176cc96be4cfd147e80d9",
+        "EndpointID": "8fd0648a0db047cc43c000df8c1240b7831253d674e7f285a6cf3dd7f9e0aae8",
+        "Gateway": "10.243.47.1",
+        "IPAddress": "10.243.47.2",
+        "IPPrefixLen": 24,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-3379ee3f-dovecot-1",
+          "dovecot",
+          "0828b8015f0f"
+        ]
+      }
+    },
+    "ports": {}
+  },
+  "opendkim": {
+    "image": "sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f",
+    "id": "0c725b1b1e4f8b57395f19b9c8fc74eb8459aebed1da1f26ea348853ccfbe6c8",
+    "networks": {
+      "mail02-profile-3379ee3f-control": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-3379ee3f-opendkim-1",
+          "opendkim"
+        ],
+        "MacAddress": "02:42:c0:a8:80:03",
+        "NetworkID": "aaab3d9fea758a2223b4b623fb355a3658d73b29970900af9c3d2be3a2e45077",
+        "EndpointID": "c7655723f8d6fcfd935b6e40a892328395239d4d66142fc73bbc3ea8073c55f5",
+        "Gateway": "",
+        "IPAddress": "192.168.128.3",
+        "IPPrefixLen": 20,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-3379ee3f-opendkim-1",
+          "opendkim",
+          "0c725b1b1e4f"
+        ]
+      }
+    },
+    "ports": {}
+  },
+  "policy": {
+    "image": "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7",
+    "id": "1a31a77607c023830337dae749f6550b78ffb0fd3e3e831f4e58e9d4d18786d6",
+    "networks": {
+      "mail02-profile-3379ee3f-control": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-3379ee3f-policy-1",
+          "policy"
+        ],
+        "MacAddress": "02:42:c0:a8:80:02",
+        "NetworkID": "aaab3d9fea758a2223b4b623fb355a3658d73b29970900af9c3d2be3a2e45077",
+        "EndpointID": "6da513fbde66349590a115fc051e3f541835cbe87e5c504159c16f59f5594a72",
+        "Gateway": "",
+        "IPAddress": "192.168.128.2",
+        "IPPrefixLen": 20,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-3379ee3f-policy-1",
+          "policy",
+          "1a31a77607c0"
+        ]
+      }
+    },
+    "ports": {}
+  }
+}

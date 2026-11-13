@@ -1,0 +1,318 @@
+{
+  "status": "FAIL_NATIVE_REGISTRY_CONTROLS",
+  "checks": [
+    {
+      "name": "receive-disable-refuses-primary-and-alias-but-preserves-imap-and-app-smtp",
+      "status": "PASS",
+      "observation": {
+        "primary": 550,
+        "alias": 550,
+        "imap_and_app_smtp": true
+      }
+    },
+    {
+      "name": "imap-disable-preserves-reception-and-app-submission",
+      "status": "PASS",
+      "observation": {
+        "rcpt": 250,
+        "imap_authenticated": false
+      }
+    },
+    {
+      "name": "optional-human-submission-restricted-to-own-address",
+      "status": "PASS",
+      "observation": {
+        "own": 250,
+        "foreign": 550
+      }
+    },
+    {
+      "name": "retired-alias-refused-while-primary-remains",
+      "status": "PASS",
+      "observation": {
+        "retired_alias": 550,
+        "primary": 250
+      }
+    },
+    {
+      "name": "mailbox-removal-refuses-loss-of-retained-delivery-identity",
+      "status": "PASS",
+      "observation": {
+        "code": "MAIL_RETAINED_DELIVERY_IDENTITY_REQUIRED"
+      }
+    },
+    {
+      "name": "grant-change-requires-new-credential-generation",
+      "status": "FAIL",
+      "reason": ""
+    },
+    {
+      "name": "quota-change-alerts-and-retained-accepted-local-delivery",
+      "status": "FAIL",
+      "reason": "registry command failed ['node', '/tmp/mail02-debian/tests/mail/api.cjs', 'registry']{\"ok\":false,\"code\":\"MAIL_REGISTRY_GENERATION_CONFLICT\"}\n"
+    },
+    {
+      "name": "incomplete-generation-alert",
+      "status": "PASS",
+      "observation": {
+        "alert": "MAIL_GENERATION_INCOMPLETE"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-a5639b5291f24e91aea84e4c283f98e7.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "437b8fa18cf5b9253661e65cfcb87df935f08b519da7e85ad44a1ddec70972eb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-d5749ba5-edge",
+        "--ip",
+        "10.243.47.71",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-og0e6pku/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(25,None,False);s.mail('outside@dest.invalid');a=s.rcpt('contact@oxymot.fr')[0];b=s.rcpt('hello@oxymot.fr')[0];s.close();i=IMAP('dovecot',993,ssl_context=ctx,timeout=8);i.login('contact@oxymot.fr',cfg['contact']);assert i.select('INBOX')[0]=='OK';i.logout();s=connect();s.quit();print(json.dumps({'primary':a,'alias':b,'imap_and_app_smtp':True}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1d3f02eddf1e270ed3e62aa013c9efb41db4acdd8193b76b0dda8a7fe228bb19",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-9b7d6f13853344829b7f6f6de14a524e.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "193d4e3c0b7e22e16ccd7efcb4c010a8f4c32699f73c590b031d2db799d1add5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-8b141a57c0b34477984249ef1e27def5.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "06dd75b33b55209c5fa6a303bbb41f3b19184c1f92eab4378d7a4e155683327c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-d5749ba5-edge",
+        "--ip",
+        "10.243.47.72",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-og0e6pku/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(25,None,False);s.mail('outside@dest.invalid');a=s.rcpt('contact@oxymot.fr')[0];s.close();s=connect();s.quit();i=IMAP('dovecot',993,ssl_context=ctx,timeout=8)\ntry:i.login('contact@oxymot.fr',cfg['contact']);accepted=True\nexcept imaplib.IMAP4.error:accepted=False\ni.logout();print(json.dumps({'rcpt':a,'imap_authenticated':accepted}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "753af8accb6e30c00b11b2668124a14071f4a4fc942886b9449f1e545a684e19",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-d9225d45f7ff4b70b95d5f02ad77f20f.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "13b97acaa4d684e3531ddf13d29a4ba9e57bf5784bf6daab8b3c28fca972d4f6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-5eec0c444e11486582733152cb98a753.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "90780477c5f0616251d74aaca250561d5907fbb3058d5acd7e0829924f764795",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-d5749ba5-edge",
+        "--ip",
+        "10.243.47.73",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-og0e6pku/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(587,None);s.login('contact@oxymot.fr',cfg['contact']);a=s.mail('contact@oxymot.fr')[0];s.rset();b=s.mail('second@oxymot.fr')[0];s.close();print(json.dumps({'own':a,'foreign':b}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "691ab6bdb235ac39afe21c5849d608588022077a1fa1f4f53c3d3c0bff17ac9b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-0b57dfee2f934354bcf92271f5f2cc66.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c0cb0b73561104458b4cd87c2954ff90e499163ffe0b8fccd6fdd83907cbd961",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-d8bfaf1dbcfe41689aa343ee66c04d6a.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8120371ed13a511086bf985920e276eca1d308f389d038f1b40f92019e903068",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-profile-d5749ba5-edge",
+        "--ip",
+        "10.243.47.74",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-og0e6pku/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import sys,json,time,smtplib,imaplib;sys.path.insert(0,'/lab');sys.argv=['probe','probe'];from client import connect,IMAP,cfg,ctx;s=connect(25,None,False);s.mail('outside@dest.invalid');a=s.rcpt('hello@oxymot.fr')[0];b=s.rcpt('contact@oxymot.fr')[0];s.close();print(json.dumps({'retired_alias':a,'primary':b}))"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bbc5eb89fa11c8ce76550818b901b14cf4b09b0718b7c1400689c4ad567ccee0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-23498c90d0c3487ca392ac43d8556c9b.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "496eb36d547cf15ae26424ddca8189db2b1ba7ec1d629c7a18ae20fc5e934d29",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-043d5adcf204461e8c5b2a33a25f2930.json"
+      ],
+      "exit": 1,
+      "stdout_sha256": "1cb63a77f67d1ee737783ee2901b817fde66d28944a6ba30d75610e05db790e4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-458c4482f1dc4fa6922dfa136b7fe1f5.json"
+      ],
+      "exit": 1,
+      "stdout_sha256": "edf5b732fdf5cb4f177ba924d30b476d22e262864379bb723645e76e94d78453",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "registry",
+        "/tmp/mail02-profile-770kpico/config.json",
+        "/tmp/mail02-profile-770kpico/registry-request-a8a0766f0df34c86a80ffd9541fb1244.json"
+      ],
+      "exit": 1,
+      "stdout_sha256": "edf5b732fdf5cb4f177ba924d30b476d22e262864379bb723645e76e94d78453",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/tmp/mail02-profile-770kpico/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4f2ba81abd3ac8ae7a12387896da109a5179489eb78c4e593d78a2ae98a82b6d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/tmp/mail02-profile-770kpico/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b3f06ac45a728f5cc599a68dff9b7fd9f6d8d2cf805de580123c504b0d0c4e3c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

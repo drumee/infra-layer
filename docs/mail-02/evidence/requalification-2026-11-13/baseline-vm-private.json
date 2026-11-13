@@ -1,0 +1,263 @@
+{
+  "status": "FAIL_PRIVATE_NETWORKS",
+  "checks": [
+    {
+      "name": "allowed-client-generation-0",
+      "status": "FAIL",
+      "observation": {
+        "expected": "allowed",
+        "status": "FAIL",
+        "access_blocked": true,
+        "exception": "ConnectionRefusedError",
+        "errno": 111,
+        "smtp_code": null
+      }
+    },
+    {
+      "name": "forbidden-client-generation-0",
+      "status": "PASS",
+      "observation": {
+        "expected": "forbidden",
+        "status": "PASS",
+        "access_blocked": true,
+        "exception": "ConnectionRefusedError",
+        "errno": 111,
+        "smtp_code": null
+      }
+    },
+    {
+      "name": "allowed-client-generation-1",
+      "status": "FAIL",
+      "observation": {
+        "expected": "allowed",
+        "status": "FAIL",
+        "access_blocked": true,
+        "exception": "ConnectionRefusedError",
+        "errno": 111,
+        "smtp_code": null
+      }
+    },
+    {
+      "name": "forbidden-client-generation-1",
+      "status": "PASS",
+      "observation": {
+        "expected": "forbidden",
+        "status": "PASS",
+        "access_blocked": true,
+        "exception": "ConnectionRefusedError",
+        "errno": 111,
+        "smtp_code": null
+      }
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--subnet",
+        "10.243.48.0/24",
+        "--label",
+        "drumee.mail02.synthetic-client=true",
+        "mail02-client-4916c31f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "40f5a7536c81ddb39108f01d93f9ad140eda7d281eca0e8fb6d7fd274b52f9ea",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-client-4916c31f",
+        "--ip",
+        "10.243.48.10",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-2vo2bfwl/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r4/infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/private-probe.py",
+        "10.243.47.1",
+        "allowed"
+      ],
+      "exit": 0,
+      "stdout_sha256": "847cae82d7db2a9fd4440163e90492948a149a01bae40c4fba6f81135c45205b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "mail02-client-4916c31f"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5af24ffef277fea3579a7b4fff197ff5fd20c04641c8f979119018df757be9bd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--subnet",
+        "10.243.49.0/24",
+        "--label",
+        "drumee.mail02.synthetic-client=true",
+        "mail02-client-b84daaae"
+      ],
+      "exit": 0,
+      "stdout_sha256": "395ca378cf5ec31c59e2ffe68a5559b0c2b8cd096d3222145f70177ad7fa0292",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-client-b84daaae",
+        "--ip",
+        "10.243.49.10",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-2vo2bfwl/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r4/infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/private-probe.py",
+        "10.243.47.1",
+        "forbidden"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a24a50136954a3b1bfca9bec50704e772ffe5bd873b56ff1fb881b9bbe7890ca",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "mail02-client-b84daaae"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5ab733d4105c302f3a137f71549dfa8dae2dd437173e98381987d909f2e9edb6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--subnet",
+        "10.243.48.0/24",
+        "--label",
+        "drumee.mail02.synthetic-client=true",
+        "mail02-client-dac28eff"
+      ],
+      "exit": 0,
+      "stdout_sha256": "2a15b663668b1076e1438eaf94ca108ed9a7143f74b5bd44e74528bd52039506",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-client-dac28eff",
+        "--ip",
+        "10.243.48.10",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-2vo2bfwl/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r4/infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/private-probe.py",
+        "10.243.47.1",
+        "allowed"
+      ],
+      "exit": 0,
+      "stdout_sha256": "847cae82d7db2a9fd4440163e90492948a149a01bae40c4fba6f81135c45205b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "mail02-client-dac28eff"
+      ],
+      "exit": 0,
+      "stdout_sha256": "79a63996203f5a805c9a82e66b7fd9ea475e723f0938b73016150e3d5b29e4e4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--subnet",
+        "10.243.49.0/24",
+        "--label",
+        "drumee.mail02.synthetic-client=true",
+        "mail02-client-f79bac7c"
+      ],
+      "exit": 0,
+      "stdout_sha256": "eb4fc164251e371d74bfe1cff9a001a6ffa86147f138f624c31b5244a8394d75",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "mail02-client-f79bac7c",
+        "--ip",
+        "10.243.49.10",
+        "--user",
+        "1000:1000",
+        "--mount",
+        "type=bind,source=/home/lab/runs/mail02-native-2vo2bfwl/keys,target=/keys,readonly",
+        "--mount",
+        "type=bind,source=/home/lab/work/r4/infra/test/mail-service,target=/lab,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "/lab/private-probe.py",
+        "10.243.47.1",
+        "forbidden"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a24a50136954a3b1bfca9bec50704e772ffe5bd873b56ff1fb881b9bbe7890ca",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "mail02-client-f79bac7c"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e5989c36b7f33f90e5fba490756271b10e41f0ca9730498b582ee23b0611288b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
