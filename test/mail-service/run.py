@@ -11,7 +11,7 @@ import uuid
 import concurrent.futures
 
 HERE=pathlib.Path(__file__).resolve().parent
-IMAGE='sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f'
+IMAGE='sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56'
 CLIENT_IMAGE='sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8'
 NODE='sha256:4a'  # Resolved from an immutable available Node image below.
 NODE_REF=os.environ.get('MAIL02_NODE_IMAGE','node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392')

@@ -1,0 +1,19 @@
+{
+  "native_configuration_bytes_identical": true,
+  "old_image": "local/mail@sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f",
+  "new_image": "local/mail@sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56",
+  "artifacts": {
+    "private-input.nft": "7950908dc417bb0dd897d66b1eec356fcee276456214cf33c11d48712d42b4c4",
+    "main.cf": "40327cdec6e1fd1c454a77a5d0339c44c6b886aad05a910cf221a161fb584a34",
+    "master.cf": "931cdebb3e58ca3f985d30a7af548d2adcc88b9256279fec0b30e312ee8efa41",
+    "dovecot.conf": "4abf419f342f20657312c04569b8273c004f28de5a79a9ebc2ef4c981f4185ae",
+    "opendkim.conf": "a10dcf0b46bb7b91e67cb485abeb43a10158a8e0d8efe6aa60b8357c8ecb3541",
+    "key-table": "af9894b1889e95d8f29f70d13e3b3ff9cf9e46a297d5527c5a6fd55e672830b1",
+    "signing-table": "e285439d909eeae8925f77abf33011378e9b457558c02c60e28d398f0f7dd7f7",
+    "private-sources": "ba9286659344c1f13003eab5fe51db74b3b539ac8f55ff1bcac3204e7719d9d3",
+    "tls-policy": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "postfix-entrypoint.sh": "d028125daf8fa8499d10f2a2a082d6dc011515b1d6327cc9981f9fcb699fb539",
+    "dovecot-entrypoint.sh": "698bcdeaf22c2e7776a08396ec6c66fed1a30f6ed1a5da2c7061e0599c483275"
+  },
+  "package_sha256": "03a1402e447015e20b41900b05edfda00ea0ea01ae3b5e7b358b7d88d071aa99"
+}

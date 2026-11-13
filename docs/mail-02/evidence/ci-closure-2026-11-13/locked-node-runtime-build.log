@@ -1,0 +1,467 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.server
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile.server
+#1 transferring dockerfile: 4.63kB done
+#1 DONE 0.0s
+
+#2 [context helpers] load .dockerignore
+#2 transferring helpers: 95B done
+#2 DONE 0.0s
+
+#3 [context node-runtime] load .dockerignore
+#3 transferring node-runtime: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee
+#4 ...
+
+#5 [auth] library/node:pull token for registry-1.docker.io
+#5 DONE 0.0s
+
+#6 [internal] load metadata for docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#6 ...
+
+#4 [internal] load metadata for docker.io/library/node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee
+#4 DONE 1.6s
+
+#6 [internal] load metadata for docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#6 DONE 1.6s
+
+#7 [internal] load .dockerignore
+#7 transferring context: 2B done
+#7 DONE 0.0s
+
+#8 [context node-runtime] load from client
+#8 transferring node-runtime: 94.33kB done
+#8 DONE 0.0s
+
+#9 [runtime 1/9] FROM docker.io/library/node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee
+#9 resolve docker.io/library/node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee 0.0s done
+#9 ...
+
+#10 [context helpers] load from client
+#10 transferring helpers: 2.41kB done
+#10 DONE 0.1s
+
+#11 [context helpers] load from client
+#11 transferring helpers: 3.43kB done
+#11 DONE 0.1s
+
+#12 [internal] load build context
+#12 transferring context: 207B done
+#12 DONE 0.1s
+
+#9 [runtime 1/9] FROM docker.io/library/node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee
+#9 sha256:076cba098ace87d6950e8fa4cc530bfe59834eba28f30061e8526d6f00bf52c8 0B / 3.31kB 0.2s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 0B / 49.90MB 0.2s
+#9 sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee 5.22kB / 5.22kB done
+#9 sha256:47725aca53d3295ec2d3be8f62726599b3033cc262edc2c7e429909b3ac599fc 1.93kB / 1.93kB done
+#9 sha256:b774d993885c47eca14db241ba8cc7e5789235142f76e4a2a6a65ec350a1bac0 6.77kB / 6.77kB done
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 0B / 28.25MB 0.2s
+#9 sha256:076cba098ace87d6950e8fa4cc530bfe59834eba28f30061e8526d6f00bf52c8 3.31kB / 3.31kB 0.2s done
+#9 sha256:aa4e8910862263c3bad50c754fb555bbbb7661c41e35ba703ae082ec6749c175 0B / 1.71MB 0.3s
+#9 sha256:aa4e8910862263c3bad50c754fb555bbbb7661c41e35ba703ae082ec6749c175 1.05MB / 1.71MB 0.7s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 2.10MB / 28.25MB 0.9s
+#9 sha256:aa4e8910862263c3bad50c754fb555bbbb7661c41e35ba703ae082ec6749c175 1.71MB / 1.71MB 0.9s
+#9 sha256:aa4e8910862263c3bad50c754fb555bbbb7661c41e35ba703ae082ec6749c175 1.71MB / 1.71MB 0.9s done
+#9 sha256:cce880541c96dc730321857781d113e3c75c0cb383f9510300922762006d734e 448B / 448B 1.0s done
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 4.19MB / 28.25MB 1.6s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 6.29MB / 28.25MB 2.2s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 8.39MB / 28.25MB 2.8s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 3.15MB / 49.90MB 3.1s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 10.49MB / 28.25MB 3.5s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 12.58MB / 28.25MB 3.9s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 14.68MB / 28.25MB 4.4s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 6.29MB / 49.90MB 4.8s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 16.78MB / 28.25MB 5.1s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 18.87MB / 28.25MB 6.5s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 20.97MB / 28.25MB 7.8s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 9.44MB / 49.90MB 8.3s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 23.07MB / 28.25MB 9.3s
+#9 ...
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 resolve docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb 0.0s done
+#13 sha256:cb7c8430c81cdac83074501ee7e3ce46a1c3b8b12e9ef50b5c4e5651d36dd456 6.70kB / 6.70kB done
+#13 sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb 5.15kB / 5.15kB done
+#13 sha256:69c6e263db01e9946c7743bbbe9f7b1ba0df384d27ec09e08e5832d6acd3daf3 2.49kB / 2.49kB done
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 14.68MB / 48.53MB 9.9s
+#13 ...
+
+#9 [runtime 1/9] FROM docker.io/library/node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 25.17MB / 28.25MB 11.3s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 12.58MB / 49.90MB 11.5s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 27.26MB / 28.25MB 12.1s
+#9 sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 28.25MB / 28.25MB 12.4s done
+#9 extracting sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 0.1s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 15.73MB / 49.90MB 13.0s
+#9 extracting sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3 0.6s done
+#9 extracting sha256:076cba098ace87d6950e8fa4cc530bfe59834eba28f30061e8526d6f00bf52c8 done
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 18.87MB / 49.90MB 14.5s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 22.02MB / 49.90MB 16.6s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 25.17MB / 49.90MB 18.3s
+#9 ...
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 23.07MB / 48.53MB 19.1s
+#13 sha256:338554e9113fa6731ba588cb8f45e85b3e3fe7ada531ee7d7b0bc9291d616727 15.73MB / 23.87MB 19.1s
+#13 ...
+
+#9 [runtime 1/9] FROM docker.io/library/node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 28.31MB / 49.90MB 20.1s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 31.46MB / 49.90MB 22.3s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 34.60MB / 49.90MB 24.4s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 37.75MB / 49.90MB 26.8s
+#9 ...
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 30.41MB / 48.53MB 26.9s
+#13 sha256:338554e9113fa6731ba588cb8f45e85b3e3fe7ada531ee7d7b0bc9291d616727 23.87MB / 23.87MB 22.8s done
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 10.49MB / 64.43MB 26.9s
+#13 ...
+
+#9 [runtime 1/9] FROM docker.io/library/node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 40.89MB / 49.90MB 29.0s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 44.04MB / 49.90MB 31.4s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 47.19MB / 49.90MB 32.6s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 49.90MB / 49.90MB 33.7s
+#9 sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 49.90MB / 49.90MB 33.8s done
+#9 extracting sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79
+#9 ...
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 35.65MB / 48.53MB 34.4s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 25.17MB / 64.43MB 34.4s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 0B / 211.83MB 34.4s
+#13 ...
+
+#9 [runtime 1/9] FROM docker.io/library/node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee
+#9 extracting sha256:0c4023204e5b4bcd551170279c40ff58285cc8ea87ddf9ff25cb3713e6ecda79 0.8s done
+#9 extracting sha256:aa4e8910862263c3bad50c754fb555bbbb7661c41e35ba703ae082ec6749c175 0.0s done
+#9 extracting sha256:cce880541c96dc730321857781d113e3c75c0cb383f9510300922762006d734e done
+#9 DONE 34.8s
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 29.36MB / 64.43MB 37.1s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 11.53MB / 211.83MB 37.4s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 36.70MB / 48.53MB 39.5s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 23.07MB / 211.83MB 40.4s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 33.55MB / 64.43MB 41.8s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 34.60MB / 211.83MB 44.1s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 37.75MB / 48.53MB 44.6s
+#13 ...
+
+#14 [runtime 2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates     && if [ "0" = "1" ]; then apt-get install -y --no-install-recommends          graphicsmagick poppler-utils libreoffice dcraw p7zip-full ffmpeg inotify-tools; fi     && rm -rf /var/lib/apt/lists/*
+#14 2.510 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#14 7.147 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#14 7.487 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+#14 7.773 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+#14 ...
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 36.70MB / 64.43MB 47.0s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 45.09MB / 211.83MB 49.2s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 37.75MB / 48.53MB 49.7s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 39.85MB / 64.43MB 52.2s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 49.28MB / 211.83MB 54.2s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 38.80MB / 48.53MB 54.8s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 42.99MB / 64.43MB 57.2s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 60.82MB / 211.83MB 58.1s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 47.19MB / 64.43MB 58.9s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 39.85MB / 48.53MB 59.9s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 51.38MB / 64.43MB 60.5s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 72.35MB / 211.83MB 61.3s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 55.57MB / 64.43MB 61.8s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 59.77MB / 64.43MB 63.6s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 40.89MB / 48.53MB 65.1s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 63.96MB / 64.43MB 65.1s
+#13 sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 64.43MB / 64.43MB 65.2s done
+#13 sha256:2abb2fbacec979ded7fa2357b313c5124380b0b64ac8973f17f1918d6628e9af 0B / 3.32kB 65.5s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 83.89MB / 211.83MB 65.8s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 95.42MB / 211.83MB 68.0s
+#13 ...
+
+#14 [runtime 2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates     && if [ "0" = "1" ]; then apt-get install -y --no-install-recommends          graphicsmagick poppler-utils libreoffice dcraw p7zip-full ffmpeg inotify-tools; fi     && rm -rf /var/lib/apt/lists/*
+#14 33.41 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#14 34.20 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [370 kB]
+#14 34.97 Fetched 9408 kB in 35s (272 kB/s)
+#14 34.97 Reading package lists...
+#14 35.37 Reading package lists...
+#14 35.77 Building dependency tree...
+#14 35.86 Reading state information...
+#14 35.96 The following additional packages will be installed:
+#14 35.96   libbrotli1 libcurl4 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3
+#14 35.96   libkrb5support0 libldap-2.5-0 libnghttp2-14 libpsl5 librtmp1 libsasl2-2
+#14 35.96   libsasl2-modules-db libssh2-1 libssl3 openssl
+#14 35.96 Suggested packages:
+#14 35.96   krb5-doc krb5-user
+#14 35.96 Recommended packages:
+#14 35.96   krb5-locales libldap-common publicsuffix libsasl2-modules
+#14 36.03 The following NEW packages will be installed:
+#14 36.03   ca-certificates curl libbrotli1 libcurl4 libgssapi-krb5-2 libk5crypto3
+#14 36.03   libkeyutils1 libkrb5-3 libkrb5support0 libldap-2.5-0 libnghttp2-14 libpsl5
+#14 36.03   librtmp1 libsasl2-2 libsasl2-modules-db libssh2-1 libssl3 openssl
+#14 ...
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 42.99MB / 48.53MB 73.8s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 116.39MB / 211.83MB 73.8s
+#13 sha256:2abb2fbacec979ded7fa2357b313c5124380b0b64ac8973f17f1918d6628e9af 3.32kB / 3.32kB 68.4s done
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 13.63MB / 58.53MB 73.8s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 16.78MB / 58.53MB 76.4s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 44.04MB / 48.53MB 78.8s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 119.54MB / 211.83MB 78.8s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 18.87MB / 58.53MB 81.5s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 44.04MB / 48.53MB 84.0s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 122.68MB / 211.83MB 84.0s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 20.97MB / 58.53MB 86.5s
+#13 ...
+
+#14 [runtime 2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates     && if [ "0" = "1" ]; then apt-get install -y --no-install-recommends          graphicsmagick poppler-utils libreoffice dcraw p7zip-full ffmpeg inotify-tools; fi     && rm -rf /var/lib/apt/lists/*
+#14 41.93 0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
+#14 41.93 Need to get 5846 kB of archives.
+#14 41.93 After this operation, 14.8 MB of additional disk space will be used.
+#14 41.93 Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 libssl3 amd64 3.0.22-1~deb12u2 [2040 kB]
+#14 ...
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 44.04MB / 48.53MB 89.1s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 125.83MB / 211.83MB 89.1s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 23.07MB / 58.53MB 91.6s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 45.09MB / 48.53MB 94.2s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 128.97MB / 211.83MB 94.2s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 25.17MB / 58.53MB 96.7s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 45.09MB / 48.53MB 99.4s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 131.07MB / 211.83MB 99.4s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 27.26MB / 58.53MB 101.8s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 47.19MB / 48.53MB 104.5s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 134.22MB / 211.83MB 104.5s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 28.31MB / 58.53MB 106.9s
+#13 sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 48.53MB / 48.53MB 107.4s done
+#13 extracting sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0
+#13 sha256:172a422ce4a36c6d2aa066b7ae520780dda81978d08087142a42f9b1724a6277 0B / 1.25MB 107.7s
+#13 extracting sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0 0.9s done
+#13 extracting sha256:338554e9113fa6731ba588cb8f45e85b3e3fe7ada531ee7d7b0bc9291d616727 0.1s
+#13 extracting sha256:338554e9113fa6731ba588cb8f45e85b3e3fe7ada531ee7d7b0bc9291d616727 0.3s done
+#13 extracting sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 139.46MB / 211.83MB 109.6s
+#13 extracting sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d 1.2s done
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 31.46MB / 58.53MB 110.8s
+#13 ...
+
+#14 [runtime 2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates     && if [ "0" = "1" ]; then apt-get install -y --no-install-recommends          graphicsmagick poppler-utils libreoffice dcraw p7zip-full ffmpeg inotify-tools; fi     && rm -rf /var/lib/apt/lists/*
+#14 67.49 Get:2 http://deb.debian.org/debian-security bookworm-security/main amd64 openssl amd64 3.0.22-1~deb12u2 [1442 kB]
+#14 ...
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:172a422ce4a36c6d2aa066b7ae520780dda81978d08087142a42f9b1724a6277 0B / 1.25MB 112.7s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 146.80MB / 211.83MB 114.7s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 32.51MB / 58.53MB 115.9s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 154.14MB / 211.83MB 119.8s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 34.60MB / 58.53MB 121.0s
+#13 sha256:172a422ce4a36c6d2aa066b7ae520780dda81978d08087142a42f9b1724a6277 0B / 1.25MB 122.8s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 165.68MB / 211.83MB 124.1s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 35.65MB / 58.53MB 126.1s
+#13 sha256:172a422ce4a36c6d2aa066b7ae520780dda81978d08087142a42f9b1724a6277 1.05MB / 1.25MB 126.7s
+#13 sha256:172a422ce4a36c6d2aa066b7ae520780dda81978d08087142a42f9b1724a6277 1.25MB / 1.25MB 127.4s done
+#13 sha256:450e9cb70a6440dfaf79aaef83c21f539552ee71a7c44366f7f36a0092c58282 0B / 450B 127.5s
+#13 sha256:450e9cb70a6440dfaf79aaef83c21f539552ee71a7c44366f7f36a0092c58282 450B / 450B 128.2s done
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 174.06MB / 211.83MB 129.2s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 37.75MB / 58.53MB 131.3s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 185.60MB / 211.83MB 133.8s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 40.89MB / 58.53MB 134.2s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 197.13MB / 211.83MB 137.2s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 44.04MB / 58.53MB 137.7s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 208.67MB / 211.83MB 139.7s
+#13 sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 211.83MB / 211.83MB 140.4s done
+#13 extracting sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 47.19MB / 58.53MB 140.8s
+#13 ...
+
+#14 [runtime 2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates     && if [ "0" = "1" ]; then apt-get install -y --no-install-recommends          graphicsmagick poppler-utils libreoffice dcraw p7zip-full ffmpeg inotify-tools; fi     && rm -rf /var/lib/apt/lists/*
+#14 96.39 Get:3 http://deb.debian.org/debian-security bookworm-security/main amd64 ca-certificates all 20250419~deb12u2 [161 kB]
+#14 96.81 Get:4 http://deb.debian.org/debian-security bookworm-security/main amd64 libbrotli1 amd64 1.0.9-2+deb12u1 [275 kB]
+#14 97.64 Get:5 http://deb.debian.org/debian bookworm/main amd64 libkrb5support0 amd64 1.20.1-2+deb12u5 [33.2 kB]
+#14 97.66 Get:6 http://deb.debian.org/debian bookworm/main amd64 libk5crypto3 amd64 1.20.1-2+deb12u5 [79.7 kB]
+#14 97.89 Get:7 http://deb.debian.org/debian bookworm/main amd64 libkeyutils1 amd64 1.6.3-2 [8808 B]
+#14 98.56 Get:8 http://deb.debian.org/debian bookworm/main amd64 libkrb5-3 amd64 1.20.1-2+deb12u5 [332 kB]
+#14 99.23 Get:9 http://deb.debian.org/debian bookworm/main amd64 libgssapi-krb5-2 amd64 1.20.1-2+deb12u5 [135 kB]
+#14 99.56 Get:10 http://deb.debian.org/debian-security bookworm-security/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg-10+deb12u1 [20.5 kB]
+#14 99.59 Get:11 http://deb.debian.org/debian-security bookworm-security/main amd64 libsasl2-2 amd64 2.1.28+dfsg-10+deb12u1 [59.9 kB]
+#14 99.76 Get:12 http://deb.debian.org/debian bookworm/main amd64 libldap-2.5-0 amd64 2.5.13+dfsg-5 [183 kB]
+#14 100.2 Get:13 http://deb.debian.org/debian bookworm/main amd64 libnghttp2-14 amd64 1.52.0-1+deb12u3 [72.4 kB]
+#14 100.4 Get:14 http://deb.debian.org/debian bookworm/main amd64 libpsl5 amd64 0.21.2-1 [58.7 kB]
+#14 102.6 Get:15 http://deb.debian.org/debian bookworm/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b2 [60.8 kB]
+#14 102.8 Get:16 http://deb.debian.org/debian-security bookworm-security/main amd64 libssh2-1 amd64 1.10.0-3+deb12u1 [176 kB]
+#14 103.4 Get:17 http://deb.debian.org/debian bookworm/main amd64 libcurl4 amd64 7.88.1-10+deb12u15 [392 kB]
+#14 104.3 Get:18 http://deb.debian.org/debian bookworm/main amd64 curl amd64 7.88.1-10+deb12u15 [316 kB]
+#14 104.9 debconf: delaying package configuration, since apt-utils is not installed
+#14 104.9 Fetched 5846 kB in 1min 9s (85.0 kB/s)
+#14 104.9 Selecting previously unselected package libssl3:amd64.
+#14 104.9 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6096 files and directories currently installed.)
+#14 104.9 Preparing to unpack .../00-libssl3_3.0.22-1~deb12u2_amd64.deb ...
+#14 104.9 Unpacking libssl3:amd64 (3.0.22-1~deb12u2) ...
+#14 105.0 Selecting previously unselected package openssl.
+#14 105.0 Preparing to unpack .../01-openssl_3.0.22-1~deb12u2_amd64.deb ...
+#14 105.0 Unpacking openssl (3.0.22-1~deb12u2) ...
+#14 105.1 Selecting previously unselected package ca-certificates.
+#14 105.1 Preparing to unpack .../02-ca-certificates_20250419~deb12u2_all.deb ...
+#14 105.1 Unpacking ca-certificates (20250419~deb12u2) ...
+#14 105.2 Selecting previously unselected package libbrotli1:amd64.
+#14 105.2 Preparing to unpack .../03-libbrotli1_1.0.9-2+deb12u1_amd64.deb ...
+#14 105.2 Unpacking libbrotli1:amd64 (1.0.9-2+deb12u1) ...
+#14 105.2 Selecting previously unselected package libkrb5support0:amd64.
+#14 105.2 Preparing to unpack .../04-libkrb5support0_1.20.1-2+deb12u5_amd64.deb ...
+#14 105.2 Unpacking libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+#14 105.2 Selecting previously unselected package libk5crypto3:amd64.
+#14 105.2 Preparing to unpack .../05-libk5crypto3_1.20.1-2+deb12u5_amd64.deb ...
+#14 105.2 Unpacking libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+#14 105.3 Selecting previously unselected package libkeyutils1:amd64.
+#14 105.3 Preparing to unpack .../06-libkeyutils1_1.6.3-2_amd64.deb ...
+#14 105.3 Unpacking libkeyutils1:amd64 (1.6.3-2) ...
+#14 105.3 Selecting previously unselected package libkrb5-3:amd64.
+#14 105.3 Preparing to unpack .../07-libkrb5-3_1.20.1-2+deb12u5_amd64.deb ...
+#14 105.3 Unpacking libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+#14 105.3 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#14 105.3 Preparing to unpack .../08-libgssapi-krb5-2_1.20.1-2+deb12u5_amd64.deb ...
+#14 105.3 Unpacking libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#14 105.4 Selecting previously unselected package libsasl2-modules-db:amd64.
+#14 105.4 Preparing to unpack .../09-libsasl2-modules-db_2.1.28+dfsg-10+deb12u1_amd64.deb ...
+#14 105.4 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#14 105.4 Selecting previously unselected package libsasl2-2:amd64.
+#14 105.4 Preparing to unpack .../10-libsasl2-2_2.1.28+dfsg-10+deb12u1_amd64.deb ...
+#14 105.4 Unpacking libsasl2-2:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#14 105.4 Selecting previously unselected package libldap-2.5-0:amd64.
+#14 105.4 Preparing to unpack .../11-libldap-2.5-0_2.5.13+dfsg-5_amd64.deb ...
+#14 105.4 Unpacking libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#14 105.5 Selecting previously unselected package libnghttp2-14:amd64.
+#14 105.5 Preparing to unpack .../12-libnghttp2-14_1.52.0-1+deb12u3_amd64.deb ...
+#14 105.5 Unpacking libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#14 105.5 Selecting previously unselected package libpsl5:amd64.
+#14 105.5 Preparing to unpack .../13-libpsl5_0.21.2-1_amd64.deb ...
+#14 105.5 Unpacking libpsl5:amd64 (0.21.2-1) ...
+#14 105.5 Selecting previously unselected package librtmp1:amd64.
+#14 105.5 Preparing to unpack .../14-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_amd64.deb ...
+#14 105.5 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#14 105.5 Selecting previously unselected package libssh2-1:amd64.
+#14 105.5 Preparing to unpack .../15-libssh2-1_1.10.0-3+deb12u1_amd64.deb ...
+#14 105.5 Unpacking libssh2-1:amd64 (1.10.0-3+deb12u1) ...
+#14 105.6 Selecting previously unselected package libcurl4:amd64.
+#14 105.6 Preparing to unpack .../16-libcurl4_7.88.1-10+deb12u15_amd64.deb ...
+#14 105.6 Unpacking libcurl4:amd64 (7.88.1-10+deb12u15) ...
+#14 105.6 Selecting previously unselected package curl.
+#14 105.6 Preparing to unpack .../17-curl_7.88.1-10+deb12u15_amd64.deb ...
+#14 105.6 Unpacking curl (7.88.1-10+deb12u15) ...
+#14 105.6 Setting up libkeyutils1:amd64 (1.6.3-2) ...
+#14 105.7 Setting up libpsl5:amd64 (0.21.2-1) ...
+#14 105.7 Setting up libbrotli1:amd64 (1.0.9-2+deb12u1) ...
+#14 105.7 Setting up libssl3:amd64 (3.0.22-1~deb12u2) ...
+#14 105.7 Setting up libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#14 105.7 Setting up libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+#14 105.8 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#14 105.8 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#14 105.8 Setting up libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+#14 105.8 Setting up libsasl2-2:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#14 105.8 Setting up libssh2-1:amd64 (1.10.0-3+deb12u1) ...
+#14 105.8 Setting up libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+#14 105.8 Setting up openssl (3.0.22-1~deb12u2) ...
+#14 105.8 Setting up libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#14 105.8 Setting up ca-certificates (20250419~deb12u2) ...
+#14 105.9 debconf: unable to initialize frontend: Dialog
+#14 105.9 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#14 105.9 debconf: falling back to frontend: Readline
+#14 105.9 debconf: unable to initialize frontend: Readline
+#14 105.9 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#14 105.9 debconf: falling back to frontend: Teletype
+#14 106.1 Updating certificates in /etc/ssl/certs...
+#14 106.5 148 added, 0 removed; done.
+#14 106.5 Setting up libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#14 106.5 Setting up libcurl4:amd64 (7.88.1-10+deb12u15) ...
+#14 106.5 Setting up curl (7.88.1-10+deb12u15) ...
+#14 106.5 Processing triggers for libc-bin (2.36-9+deb12u14) ...
+#14 106.6 Processing triggers for ca-certificates (20250419~deb12u2) ...
+#14 ...
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 50.33MB / 58.53MB 141.8s
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 53.48MB / 58.53MB 142.2s
+#13 ...
+
+#14 [runtime 2/9] RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates     && if [ "0" = "1" ]; then apt-get install -y --no-install-recommends          graphicsmagick poppler-utils libreoffice dcraw p7zip-full ffmpeg inotify-tools; fi     && rm -rf /var/lib/apt/lists/*
+#14 106.6 Updating certificates in /etc/ssl/certs...
+#14 106.8 0 added, 0 removed; done.
+#14 106.8 Running hooks in /etc/ca-certificates/update.d...
+#14 106.8 done.
+#14 DONE 107.5s
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 56.62MB / 58.53MB 142.7s
+#13 ...
+
+#15 [runtime 3/9] COPY --from=node-runtime package.json package-lock.json /opt/drumee-node-runtime/
+#15 DONE 0.7s
+
+#13 [build 1/4] FROM docker.io/library/node:22-bookworm@sha256:e13726ca604184d7a91fcacab1fc09eefd642dc28e79ac34e85540dd93b78cfb
+#13 sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 58.53MB / 58.53MB 143.0s done
+#13 extracting sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16 3.3s done
+#13 extracting sha256:2abb2fbacec979ded7fa2357b313c5124380b0b64ac8973f17f1918d6628e9af done
+#13 extracting sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c
+#13 extracting sha256:7cd13466dc1ba1debf0e39b2b8e5c3a3cc68e39ec442a3cbf846dd1ed163f69c 1.3s done
+#13 extracting sha256:172a422ce4a36c6d2aa066b7ae520780dda81978d08087142a42f9b1724a6277
+#13 extracting sha256:172a422ce4a36c6d2aa066b7ae520780dda81978d08087142a42f9b1724a6277 0.0s done
+#13 extracting sha256:450e9cb70a6440dfaf79aaef83c21f539552ee71a7c44366f7f36a0092c58282 done
+#13 DONE 145.5s
+
+#16 [runtime 4/9] RUN npm ci --prefix /opt/drumee-node-runtime --omit=dev --ignore-scripts --no-audit --no-fund
+#16 1.136 npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#16 1.161 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+#16 1.332 npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+#16 1.668 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#16 1.724 npm warn deprecated gauge@3.0.2: This package is no longer supported.
+#16 1.839 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+#16 2.412 npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+#16 2.783 
+#16 2.783 added 224 packages in 3s
+#16 2.784 npm notice
+#16 2.784 npm notice New major version of npm available! 10.9.9 -> 12.2.2
+#16 2.784 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#16 2.784 npm notice To update run: npm install -g npm@12.2.2
+#16 2.784 npm notice
+#16 ...
+
+#17 [build 2/4] WORKDIR /app
+#17 DONE 1.1s
+
+#16 [runtime 4/9] RUN npm ci --prefix /opt/drumee-node-runtime --omit=dev --ignore-scripts --no-audit --no-fund
+#16 DONE 3.6s
+
+#18 [build 3/4] COPY . /app
+#18 DONE 0.0s
+
+#19 [build 4/4] RUN if [ "0" = "1" ]; then npm ci || npm install;     elif [ ! -d /app/node_modules ] || [ -z "$(ls -A /app/node_modules 2>/dev/null)" ]; then       echo "FATAL: INSTALL_DEPS=0 but the build context has no node_modules." >&2;       echo "  The image would ship without its dependencies and crash at startup," >&2;       echo "  yet the build would report success — so fail here instead." >&2;       echo "  Fix: run 'npm ci' in the source checkout, or build with" >&2;       echo "  INSTALL_DEPS=1 (needs @drumee registry auth)." >&2;       exit 1;     fi     && npm run build --if-present     && rm -rf /app/.git
+#19 DONE 0.7s
+
+#20 [runtime 5/9] COPY --chown=www-data:www-data --from=build /app/ /srv/drumee/runtime/server/main/
+#20 DONE 0.0s
+
+#21 [runtime 6/9] COPY --from=helpers entrypoint.sh /usr/local/bin/drumee-entrypoint
+#21 DONE 0.0s
+
+#22 [runtime 7/9] COPY --from=helpers ecosystem.config.js /srv/drumee/runtime/server/ecosystem.config.js
+#22 DONE 0.1s
+
+#23 [runtime 8/9] RUN chmod +x /usr/local/bin/drumee-entrypoint     && mkdir -p /data /etc/drumee/credential /srv/drumee/runtime/ui/main     && chown www-data:www-data /data /etc/drumee /etc/drumee/credential          /srv/drumee /srv/drumee/runtime /srv/drumee/runtime/server /srv/drumee/runtime/ui /srv/drumee/runtime/ui/main
+#23 DONE 0.2s
+
+#24 [runtime 9/9] WORKDIR /srv/drumee/runtime/server
+#24 DONE 0.1s
+
+#25 exporting to image
+#25 exporting layers
+#25 exporting layers 0.6s done
+#25 writing image sha256:0c8230d697a2db7220d41916c7f9131f0a0eb11f6f07160cfce205564611308e done
+#25 naming to docker.io/library/mail02-legacy-runtime-ci-smoke done
+#25 DONE 0.6s

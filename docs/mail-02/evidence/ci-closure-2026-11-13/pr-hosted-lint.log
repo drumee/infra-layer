@@ -1,0 +1,424 @@
+﻿2026-11-13T07:23:12.9728883Z Current runner version: '2.338.2'
+2026-11-13T07:23:12.9747590Z ##[group]Runner Image Provisioner
+2026-11-13T07:23:12.9748321Z Hosted Compute Agent
+2026-11-13T07:23:12.9748815Z Version: 20261103.629
+2026-11-13T07:23:12.9749216Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-13T07:23:12.9749699Z Build Date: 2026-11-03T17:26:59Z
+2026-11-13T07:23:12.9750171Z Worker ID: {1c3290f2-81aa-44ad-9920-0ce9afbe756d}
+2026-11-13T07:23:12.9750608Z Region: westus3
+2026-11-13T07:23:12.9750983Z Cloud: Azure
+2026-11-13T07:23:12.9751353Z ##[endgroup]
+2026-11-13T07:23:12.9752211Z ##[group]Operating System
+2026-11-13T07:23:12.9752634Z Ubuntu
+2026-11-13T07:23:12.9752965Z 26.04.1
+2026-11-13T07:23:12.9753339Z LTS
+2026-11-13T07:23:12.9753678Z ##[endgroup]
+2026-11-13T07:23:12.9754060Z ##[group]Runner Image
+2026-11-13T07:23:12.9754467Z Image: ubuntu-26.04
+2026-11-13T07:23:12.9754829Z Version: 20261111.196.1
+2026-11-13T07:23:12.9755688Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-13T07:23:12.9756637Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-13T07:23:12.9757580Z ##[endgroup]
+2026-11-13T07:23:12.9759515Z ##[group]GITHUB_TOKEN Permissions
+2026-11-13T07:23:12.9761090Z Actions: write
+2026-11-13T07:23:12.9761495Z ArtifactMetadata: write
+2026-11-13T07:23:12.9761916Z Attestations: write
+2026-11-13T07:23:12.9762290Z Checks: write
+2026-11-13T07:23:12.9762643Z CodeQuality: write
+2026-11-13T07:23:12.9763031Z Contents: write
+2026-11-13T07:23:12.9763413Z CopilotRequests: write
+2026-11-13T07:23:12.9763775Z Deployments: write
+2026-11-13T07:23:12.9764173Z Discussions: write
+2026-11-13T07:23:12.9764567Z Drives: write
+2026-11-13T07:23:12.9764932Z Issues: write
+2026-11-13T07:23:12.9765386Z Metadata: read
+2026-11-13T07:23:12.9765718Z Models: read
+2026-11-13T07:23:12.9766100Z Packages: write
+2026-11-13T07:23:12.9766444Z Pages: write
+2026-11-13T07:23:12.9766805Z PullRequests: write
+2026-11-13T07:23:12.9767225Z RepositoryProjects: write
+2026-11-13T07:23:12.9767613Z SecurityEvents: write
+2026-11-13T07:23:12.9768107Z Statuses: write
+2026-11-13T07:23:12.9768491Z VulnerabilityAlerts: read
+2026-11-13T07:23:12.9768890Z ##[endgroup]
+2026-11-13T07:23:12.9770408Z Secret source: Actions
+2026-11-13T07:23:12.9770940Z Cache mode: write
+2026-11-13T07:23:12.9771444Z Prepare workflow directory
+2026-11-13T07:23:12.9993965Z Prepare all required actions
+2026-11-13T07:23:13.0027199Z Getting action download info
+2026-11-13T07:23:13.3304444Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-13T07:23:13.4130788Z Download action repository 'ludeeus/action-shellcheck@00b27aa7cb85167568cb48a3838b75f4265f2bca' (SHA:00b27aa7cb85167568cb48a3838b75f4265f2bca)
+2026-11-13T07:23:13.7968231Z Complete job name: lint
+2026-11-13T07:23:13.8491546Z ##[group]Run actions/checkout@v4
+2026-11-13T07:23:13.8491980Z with:
+2026-11-13T07:23:13.8492235Z   repository: drumee/debian
+2026-11-13T07:23:13.8494308Z   token: ***
+2026-11-13T07:23:13.8494574Z   ssh-strict: true
+2026-11-13T07:23:13.8494822Z   ssh-user: git
+2026-11-13T07:23:13.8495076Z   persist-credentials: true
+2026-11-13T07:23:13.8495354Z   clean: true
+2026-11-13T07:23:13.8495613Z   sparse-checkout-cone-mode: true
+2026-11-13T07:23:13.8495911Z   fetch-depth: 1
+2026-11-13T07:23:13.8496160Z   fetch-tags: false
+2026-11-13T07:23:13.8496420Z   show-progress: true
+2026-11-13T07:23:13.8496678Z   lfs: false
+2026-11-13T07:23:13.8496915Z   submodules: false
+2026-11-13T07:23:13.8497178Z   set-safe-directory: true
+2026-11-13T07:23:13.8497467Z   allow-unsafe-pr-checkout: false
+2026-11-13T07:23:13.8497827Z ##[endgroup]
+2026-11-13T07:23:14.0823742Z Syncing repository: drumee/debian
+2026-11-13T07:23:14.0825028Z ##[group]Getting Git version info
+2026-11-13T07:23:14.0825760Z Working directory is '/home/runner/work/debian/debian'
+2026-11-13T07:23:14.0826318Z [command]/usr/bin/git version
+2026-11-13T07:23:14.0840652Z git version 2.56.1
+2026-11-13T07:23:14.0858802Z ##[endgroup]
+2026-11-13T07:23:14.0863485Z Temporarily overriding HOME='/home/runner/work/_temp/0aa78a7f-552d-42dc-946b-4ef4ae75421d' before making global git config changes
+2026-11-13T07:23:14.0864348Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-13T07:23:14.0867391Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/debian/debian
+2026-11-13T07:23:14.0927031Z Deleting the contents of '/home/runner/work/debian/debian'
+2026-11-13T07:23:14.0930113Z ##[group]Initializing the repository
+2026-11-13T07:23:14.0933329Z [command]/usr/bin/git init /home/runner/work/debian/debian
+2026-11-13T07:23:14.1066959Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-13T07:23:14.1068546Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-13T07:23:14.1069767Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-13T07:23:14.1070607Z hint: call:
+2026-11-13T07:23:14.1071092Z hint:
+2026-11-13T07:23:14.1071635Z hint: 	git config --global init.defaultBranch <name>
+2026-11-13T07:23:14.1072328Z hint:
+2026-11-13T07:23:14.1073108Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-13T07:23:14.1074048Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-13T07:23:14.1074762Z hint:
+2026-11-13T07:23:14.1075223Z hint: 	git branch -m <name>
+2026-11-13T07:23:14.1075679Z hint:
+2026-11-13T07:23:14.1076282Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-13T07:23:14.1077314Z Initialized empty Git repository in /home/runner/work/debian/debian/.git/
+2026-11-13T07:23:14.1117495Z [command]/usr/bin/git remote add origin https://github.com/drumee/debian
+2026-11-13T07:23:14.1119133Z ##[endgroup]
+2026-11-13T07:23:14.1119833Z ##[group]Disabling automatic garbage collection
+2026-11-13T07:23:14.1122021Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-13T07:23:14.1152599Z ##[endgroup]
+2026-11-13T07:23:14.1153259Z ##[group]Setting up auth
+2026-11-13T07:23:14.1158221Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T07:23:14.1187724Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T07:23:14.1573380Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T07:23:14.1602701Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T07:23:14.1830046Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T07:23:14.1859400Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T07:23:14.2082914Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-13T07:23:14.2115941Z ##[endgroup]
+2026-11-13T07:23:14.2116517Z ##[group]Fetching the repository
+2026-11-13T07:23:14.2122762Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +54773065d6d9c348e601e2f2366b3fb614235297:refs/remotes/origin/feat/mail-02-profile
+2026-11-13T07:23:15.0859515Z From https://github.com/drumee/debian
+2026-11-13T07:23:15.0860811Z  * [new ref]         54773065d6d9c348e601e2f2366b3fb614235297 -> origin/feat/mail-02-profile
+2026-11-13T07:23:15.0863522Z ##[endgroup]
+2026-11-13T07:23:15.0864307Z ##[group]Determining the checkout info
+2026-11-13T07:23:15.0866683Z ##[endgroup]
+2026-11-13T07:23:15.0870212Z [command]/usr/bin/git sparse-checkout disable
+2026-11-13T07:23:15.0919413Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-13T07:23:15.0948503Z ##[group]Checking out the ref
+2026-11-13T07:23:15.0959753Z [command]/usr/bin/git checkout --progress --force -B feat/mail-02-profile refs/remotes/origin/feat/mail-02-profile
+2026-11-13T07:23:15.1443766Z Switched to a new branch 'feat/mail-02-profile'
+2026-11-13T07:23:15.1446545Z branch 'feat/mail-02-profile' set up to track 'origin/feat/mail-02-profile'.
+2026-11-13T07:23:15.1453240Z ##[endgroup]
+2026-11-13T07:23:15.1498174Z [command]/usr/bin/git log -1 --format=%H
+2026-11-13T07:23:15.1519850Z 54773065d6d9c348e601e2f2366b3fb614235297
+2026-11-13T07:23:15.1714814Z ##[group]Run fail=0
+2026-11-13T07:23:15.1715285Z [36;1mfail=0[0m
+2026-11-13T07:23:15.1715700Z [36;1mwhile IFS= read -r f; do[0m
+2026-11-13T07:23:15.1716294Z [36;1m  bash -n "$f" || { echo "syntax error: $f"; fail=1; }[0m
+2026-11-13T07:23:15.1717044Z [36;1mdone < <(git ls-files '*.sh' 'bin/*' | grep -v '/src/')[0m
+2026-11-13T07:23:15.1717662Z [36;1mexit $fail[0m
+2026-11-13T07:23:15.1763315Z shell: /usr/bin/bash -e {0}
+2026-11-13T07:23:15.1763737Z ##[endgroup]
+2026-11-13T07:23:15.6731690Z ##[group]Run ludeeus/action-shellcheck@00b27aa7cb85167568cb48a3838b75f4265f2bca
+2026-11-13T07:23:15.6732034Z with:
+2026-11-13T07:23:15.6732218Z   version: v0.11.0
+2026-11-13T07:23:15.6732398Z   severity: warning
+2026-11-13T07:23:15.6732591Z   ignore_paths: builder/src target
+2026-11-13T07:23:15.6732797Z   scandir: .
+2026-11-13T07:23:15.6732974Z   disable_matcher: false
+2026-11-13T07:23:15.6733193Z   format: gcc
+2026-11-13T07:23:15.6733406Z ##[endgroup]
+2026-11-13T07:23:15.6781630Z ##[start-action display=Download shellcheck;id=__ludeeus_action-shellcheck.__run]
+2026-11-13T07:23:15.6818764Z ##[group]Run if [[ "Linux" == "macOS" ]]; then
+2026-11-13T07:23:15.6819091Z [36;1mif [[ "Linux" == "macOS" ]]; then[0m
+2026-11-13T07:23:15.6819341Z [36;1m  osvariant="darwin"[0m
+2026-11-13T07:23:15.6819559Z [36;1melse[0m
+2026-11-13T07:23:15.6819768Z [36;1m  osvariant="linux"[0m
+2026-11-13T07:23:15.6819983Z [36;1mfi[0m
+2026-11-13T07:23:15.6820170Z [36;1m[0m
+2026-11-13T07:23:15.6820535Z [36;1mbaseurl="https://github.com/koalaman/shellcheck/releases/download"[0m
+2026-11-13T07:23:15.6820860Z [36;1m[0m
+2026-11-13T07:23:15.6821260Z [36;1mcurl -Lso "/home/runner/work/_actions/ludeeus/action-shellcheck/00b27aa7cb85167568cb48a3838b75f4265f2bca/sc.tar.xz" \[0m
+2026-11-13T07:23:15.6821772Z [36;1m  "${baseurl}/${INPUT_VERSION}/shellcheck-${INPUT_VERSION}.${osvariant}.x86_64.tar.xz"[0m
+2026-11-13T07:23:15.6822099Z [36;1m[0m
+2026-11-13T07:23:15.6822657Z [36;1mtar -xf "/home/runner/work/_actions/ludeeus/action-shellcheck/00b27aa7cb85167568cb48a3838b75f4265f2bca/sc.tar.xz" -C "/home/runner/work/_actions/ludeeus/action-shellcheck/00b27aa7cb85167568cb48a3838b75f4265f2bca"[0m
+2026-11-13T07:23:15.6823463Z [36;1mmv "/home/runner/work/_actions/ludeeus/action-shellcheck/00b27aa7cb85167568cb48a3838b75f4265f2bca/shellcheck-${INPUT_VERSION}/shellcheck" \[0m
+2026-11-13T07:23:15.6824064Z [36;1m  "/home/runner/work/_actions/ludeeus/action-shellcheck/00b27aa7cb85167568cb48a3838b75f4265f2bca/shellcheck"[0m
+2026-11-13T07:23:15.6867138Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-13T07:23:15.6867420Z env:
+2026-11-13T07:23:15.6867623Z   INPUT_VERSION: v0.11.0
+2026-11-13T07:23:15.6867842Z ##[endgroup]
+2026-11-13T07:23:16.1107171Z ##[end-action id=__ludeeus_action-shellcheck.__run;outcome=success;conclusion=success;duration_ms=432]
+2026-11-13T07:23:16.1110254Z ##[start-action display=Display shellcheck version;id=__ludeeus_action-shellcheck.__run_2]
+2026-11-13T07:23:16.1131036Z ##[group]Run "/home/runner/work/_actions/ludeeus/action-shellcheck/00b27aa7cb85167568cb48a3838b75f4265f2bca/shellcheck" --version
+2026-11-13T07:23:16.1131647Z [36;1m"/home/runner/work/_actions/ludeeus/action-shellcheck/00b27aa7cb85167568cb48a3838b75f4265f2bca/shellcheck" --version[0m
+2026-11-13T07:23:16.1177566Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-13T07:23:16.1177805Z ##[endgroup]
+2026-11-13T07:23:16.1245941Z ShellCheck - shell script analysis tool
+2026-11-13T07:23:16.1246608Z version: 0.11.0
+2026-11-13T07:23:16.1247246Z license: GNU General Public License, version 3
+2026-11-13T07:23:16.1247735Z website: https://www.shellcheck.net
+2026-11-13T07:23:16.1259400Z ##[end-action id=__ludeeus_action-shellcheck.__run_2;outcome=success;conclusion=success;duration_ms=14]
+2026-11-13T07:23:16.1262027Z ##[start-action display=Set options;id=__ludeeus_action-shellcheck.options]
+2026-11-13T07:23:16.1276979Z ##[group]Run declare -a options
+2026-11-13T07:23:16.1277196Z [36;1mdeclare -a options[0m
+2026-11-13T07:23:16.1277403Z [36;1mif [[ -n "${INPUT_SEVERITY}" ]]; then[0m
+2026-11-13T07:23:16.1277648Z [36;1m  options+=("-S ${INPUT_SEVERITY}")[0m
+2026-11-13T07:23:16.1277844Z [36;1mfi[0m
+2026-11-13T07:23:16.1278219Z [36;1moptions+=("--format=${INPUT_FORMAT}")[0m
+2026-11-13T07:23:16.1278454Z [36;1mecho "options=${options[@]}" >> $GITHUB_OUTPUT[0m
+2026-11-13T07:23:16.1316834Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-13T07:23:16.1317059Z env:
+2026-11-13T07:23:16.1317378Z   INPUT_SEVERITY: warning
+2026-11-13T07:23:16.1317568Z   INPUT_FORMAT: gcc
+2026-11-13T07:23:16.1317728Z ##[endgroup]
+2026-11-13T07:23:16.1398976Z ##[end-action id=__ludeeus_action-shellcheck.options;outcome=success;conclusion=success;duration_ms=13]
+2026-11-13T07:23:16.1404243Z ##[start-action display=Gather excluded paths;id=__ludeeus_action-shellcheck.exclude]
+2026-11-13T07:23:16.1420874Z ##[group]Run declare -a excludes
+2026-11-13T07:23:16.1421110Z [36;1mdeclare -a excludes[0m
+2026-11-13T07:23:16.1421371Z [36;1mset -f # temporarily disable globbing so that globs in input aren't expanded[0m
+2026-11-13T07:23:16.1421638Z [36;1m[0m
+2026-11-13T07:23:16.1421801Z [36;1mexcludes+=("! -path *./.git/*")[0m
+2026-11-13T07:23:16.1422000Z [36;1mexcludes+=("! -path *.go")[0m
+2026-11-13T07:23:16.1422222Z [36;1mexcludes+=("! -path */mvnw")[0m
+2026-11-13T07:23:16.1422419Z [36;1mif [[ -n "${INPUT_IGNORE}" ]]; then[0m
+2026-11-13T07:23:16.1422626Z [36;1m  for path in ${INPUT_IGNORE}; do[0m
+2026-11-13T07:23:16.1422850Z [36;1m    excludes+=("! -path *./$path/*")[0m
+2026-11-13T07:23:16.1423066Z [36;1m    excludes+=("! -path */$path/*")[0m
+2026-11-13T07:23:16.1423267Z [36;1m    excludes+=("! -path $path")[0m
+2026-11-13T07:23:16.1423445Z [36;1m  done[0m
+2026-11-13T07:23:16.1423590Z [36;1melse[0m
+2026-11-13T07:23:16.1423760Z [36;1m  for path in ${INPUT_IGNORE_PATHS}; do[0m
+2026-11-13T07:23:16.1423977Z [36;1m    excludes+=("! -path *./$path/*")[0m
+2026-11-13T07:23:16.1424179Z [36;1m    excludes+=("! -path */$path/*")[0m
+2026-11-13T07:23:16.1424373Z [36;1m    excludes+=("! -path $path")[0m
+2026-11-13T07:23:16.1424552Z [36;1m  done[0m
+2026-11-13T07:23:16.1424696Z [36;1mfi[0m
+2026-11-13T07:23:16.1424838Z [36;1m[0m
+2026-11-13T07:23:16.1424999Z [36;1mfor name in ${INPUT_IGNORE_NAMES}; do[0m
+2026-11-13T07:23:16.1425204Z [36;1m  excludes+=("! -name $name")[0m
+2026-11-13T07:23:16.1425380Z [36;1mdone[0m
+2026-11-13T07:23:16.1425562Z [36;1mecho "excludes=${excludes[@]}" >> $GITHUB_OUTPUT[0m
+2026-11-13T07:23:16.1425785Z [36;1m[0m
+2026-11-13T07:23:16.1425932Z [36;1mset +f # re-enable globbing[0m
+2026-11-13T07:23:16.1468984Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-13T07:23:16.1469219Z env:
+2026-11-13T07:23:16.1469366Z   INPUT_IGNORE: 
+2026-11-13T07:23:16.1469532Z   INPUT_IGNORE_PATHS: builder/src target
+2026-11-13T07:23:16.1469723Z   INPUT_IGNORE_NAMES: 
+2026-11-13T07:23:16.1469883Z ##[endgroup]
+2026-11-13T07:23:16.1534668Z ##[end-action id=__ludeeus_action-shellcheck.exclude;outcome=success;conclusion=success;duration_ms=12]
+2026-11-13T07:23:16.1537108Z ##[start-action display=Gather additional files;id=__ludeeus_action-shellcheck.additional]
+2026-11-13T07:23:16.1552397Z ##[group]Run declare -a files
+2026-11-13T07:23:16.1552606Z [36;1mdeclare -a files[0m
+2026-11-13T07:23:16.1552799Z [36;1mfor file in ${INPUT_ADDITIONAL_FILES}; do[0m
+2026-11-13T07:23:16.1553015Z [36;1m  files+=("-o -name *$file")[0m
+2026-11-13T07:23:16.1553209Z [36;1mdone[0m
+2026-11-13T07:23:16.1553390Z [36;1mecho "files=${files[@]}" >> $GITHUB_OUTPUT[0m
+2026-11-13T07:23:16.1593950Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-13T07:23:16.1594173Z env:
+2026-11-13T07:23:16.1594323Z   INPUT_ADDITIONAL_FILES: 
+2026-11-13T07:23:16.1594493Z ##[endgroup]
+2026-11-13T07:23:16.1654549Z ##[end-action id=__ludeeus_action-shellcheck.additional;outcome=success;conclusion=success;duration_ms=11]
+2026-11-13T07:23:16.1657522Z ##[start-action display=Run the check;id=__ludeeus_action-shellcheck.check]
+2026-11-13T07:23:16.1673755Z ##[group]Run statuscode=0
+2026-11-13T07:23:16.1673968Z [36;1mstatuscode=0[0m
+2026-11-13T07:23:16.1674138Z [36;1mdeclare -a filepaths[0m
+2026-11-13T07:23:16.1674339Z [36;1mshebangregex="^#! */[^ ]*/(env *)?[abk]*sh"[0m
+2026-11-13T07:23:16.1674550Z [36;1m[0m
+2026-11-13T07:23:16.1674779Z [36;1mset -f # temporarily disable globbing so that globs in inputs aren't expanded[0m
+2026-11-13T07:23:16.1675040Z [36;1m[0m
+2026-11-13T07:23:16.1675338Z [36;1mwhile IFS= read -r -d '' file; do[0m
+2026-11-13T07:23:16.1675549Z [36;1m  filepaths+=("$file")[0m
+2026-11-13T07:23:16.1675737Z [36;1mdone < <(find "${INPUT_SCANDIR}" \[0m
+2026-11-13T07:23:16.1675947Z [36;1m    ${INPUT_EXCLUDE_ARGS} \[0m
+2026-11-13T07:23:16.1676131Z [36;1m    -type f \[0m
+2026-11-13T07:23:16.1676293Z [36;1m    '(' \[0m
+2026-11-13T07:23:16.1676450Z [36;1m    -name '*.bash' \[0m
+2026-11-13T07:23:16.1676628Z [36;1m    -o -name '.bashrc' \[0m
+2026-11-13T07:23:16.1676808Z [36;1m    -o -name 'bashrc' \[0m
+2026-11-13T07:23:16.1676992Z [36;1m    -o -name '.bash_aliases' \[0m
+2026-11-13T07:23:16.1677188Z [36;1m    -o -name '.bash_completion' \[0m
+2026-11-13T07:23:16.1677382Z [36;1m    -o -name '.bash_login' \[0m
+2026-11-13T07:23:16.1677572Z [36;1m    -o -name '.bash_logout' \[0m
+2026-11-13T07:23:16.1677760Z [36;1m    -o -name '.bash_profile' \[0m
+2026-11-13T07:23:16.1677949Z [36;1m    -o -name 'bash_profile' \[0m
+2026-11-13T07:23:16.1678315Z [36;1m    -o -name '*.ksh' \[0m
+2026-11-13T07:23:16.1678506Z [36;1m    -o -name 'suid_profile' \[0m
+2026-11-13T07:23:16.1678691Z [36;1m    -o -name '*.zsh' \[0m
+2026-11-13T07:23:16.1678870Z [36;1m    -o -name '.zlogin' \[0m
+2026-11-13T07:23:16.1679049Z [36;1m    -o -name 'zlogin' \[0m
+2026-11-13T07:23:16.1679228Z [36;1m    -o -name '.zlogout' \[0m
+2026-11-13T07:23:16.1679409Z [36;1m    -o -name 'zlogout' \[0m
+2026-11-13T07:23:16.1679594Z [36;1m    -o -name '.zprofile' \[0m
+2026-11-13T07:23:16.1679777Z [36;1m    -o -name 'zprofile' \[0m
+2026-11-13T07:23:16.1679956Z [36;1m    -o -name '.zsenv' \[0m
+2026-11-13T07:23:16.1680131Z [36;1m    -o -name 'zsenv' \[0m
+2026-11-13T07:23:16.1680309Z [36;1m    -o -name '.zshrc' \[0m
+2026-11-13T07:23:16.1680482Z [36;1m    -o -name 'zshrc' \[0m
+2026-11-13T07:23:16.1680656Z [36;1m    -o -name '*.sh' \[0m
+2026-11-13T07:23:16.1680838Z [36;1m    -o -path '*/.profile' \[0m
+2026-11-13T07:23:16.1681023Z [36;1m    -o -path '*/profile' \[0m
+2026-11-13T07:23:16.1681201Z [36;1m    -o -name '*.shlib' \[0m
+2026-11-13T07:23:16.1681402Z [36;1m    ${INPUT_ADDITIONAL_FILE_ARGS} \[0m
+2026-11-13T07:23:16.1681591Z [36;1m    ')' \[0m
+2026-11-13T07:23:16.1681746Z [36;1m    -print0)[0m
+2026-11-13T07:23:16.1681899Z [36;1m[0m
+2026-11-13T07:23:16.1682054Z [36;1mwhile IFS= read -r -d '' file; do[0m
+2026-11-13T07:23:16.1682283Z [36;1m  head -n1 "$file" | grep -Eqs "$shebangregex" || continue[0m
+2026-11-13T07:23:16.1682516Z [36;1m  filepaths+=("$file")[0m
+2026-11-13T07:23:16.1682700Z [36;1mdone < <(find "${INPUT_SCANDIR}" \[0m
+2026-11-13T07:23:16.1682897Z [36;1m    ${INPUT_EXCLUDE_ARGS} \[0m
+2026-11-13T07:23:16.1683103Z [36;1m    -type f ! -name '*.*' -perm /111 \[0m
+2026-11-13T07:23:16.1683300Z [36;1m    -print0)[0m
+2026-11-13T07:23:16.1683452Z [36;1m[0m
+2026-11-13T07:23:16.1683617Z [36;1mif [[ -n "${INPUT_CHECK_TOGETHER}" ]]; then[0m
+2026-11-13T07:23:16.1683977Z [36;1m  "/home/runner/work/_actions/ludeeus/action-shellcheck/00b27aa7cb85167568cb48a3838b75f4265f2bca/shellcheck" \[0m
+2026-11-13T07:23:16.1684431Z [36;1m    ${INPUT_SHELLCHECK_OPTIONS} \[0m
+2026-11-13T07:23:16.1684638Z [36;1m    "${filepaths[@]}" || statuscode=$?[0m
+2026-11-13T07:23:16.1684827Z [36;1melse[0m
+2026-11-13T07:23:16.1684990Z [36;1m  for file in "${filepaths[@]}"; do[0m
+2026-11-13T07:23:16.1685328Z [36;1m    "/home/runner/work/_actions/ludeeus/action-shellcheck/00b27aa7cb85167568cb48a3838b75f4265f2bca/shellcheck" \[0m
+2026-11-13T07:23:16.1685666Z [36;1m      ${INPUT_SHELLCHECK_OPTIONS} \[0m
+2026-11-13T07:23:16.1685863Z [36;1m      "$file" || statuscode=$?[0m
+2026-11-13T07:23:16.1686042Z [36;1m  done[0m
+2026-11-13T07:23:16.1686187Z [36;1mfi[0m
+2026-11-13T07:23:16.1686325Z [36;1m[0m
+2026-11-13T07:23:16.1686504Z [36;1mecho "filepaths=${filepaths[@]}" >> $GITHUB_OUTPUT[0m
+2026-11-13T07:23:16.1686750Z [36;1mecho "statuscode=$statuscode" >> $GITHUB_OUTPUT[0m
+2026-11-13T07:23:16.1686953Z [36;1m[0m
+2026-11-13T07:23:16.1687104Z [36;1mset +f # re-enable globbing[0m
+2026-11-13T07:23:16.1726549Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-13T07:23:16.1726782Z env:
+2026-11-13T07:23:16.1726933Z   INPUT_SCANDIR: .
+2026-11-13T07:23:16.1727097Z   INPUT_CHECK_TOGETHER: 
+2026-11-13T07:23:16.1727505Z   INPUT_EXCLUDE_ARGS: ! -path *./.git/* ! -path *.go ! -path */mvnw ! -path *./builder/src/* ! -path */builder/src/* ! -path builder/src ! -path *./target/* ! -path */target/* ! -path target
+2026-11-13T07:23:16.1727928Z   INPUT_ADDITIONAL_FILE_ARGS: 
+2026-11-13T07:23:16.1728322Z   INPUT_SHELLCHECK_OPTIONS: -S warning --format=gcc
+2026-11-13T07:23:16.1728530Z ##[endgroup]
+2026-11-13T07:23:16.3081173Z ./schemas-patch/patch.sh:1:1: error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive. [SC2148]
+2026-11-13T07:23:16.3082111Z ./schemas-patch/patch.sh:1:1: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:16.3841911Z ./schemas-patch/build.sh:29:1: warning: REPO_BASE appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:16.3842509Z ./schemas-patch/build.sh:60:23: warning: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
+2026-11-13T07:23:16.3842903Z ./schemas-patch/build.sh:115:10: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:16.4043720Z ./schemas-patch/bin/patch-from-manifest.sh:2:22: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:16.4044844Z ./schemas-patch/bin/patch-from-manifest.sh:14:8: warning: Declare and assign separately to avoid masking return values. [SC2155]
+2026-11-13T07:23:16.4048722Z ./schemas-patch/bin/patch-from-manifest.sh:21:1: error: To assign the output of a command, use var=$(cmd) . [SC2037]
+2026-11-13T07:23:16.4049212Z ./schemas-patch/bin/patch-from-manifest.sh:23:1: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:16.4049666Z ./schemas-patch/bin/patch-from-manifest.sh:42:54: warning: opt is referenced but not assigned. [SC2154]
+2026-11-13T07:23:16.4214390Z ./bootstrap/usr/lib/drumee/entrypoint/lib.sh:56:3: warning: In POSIX sh, 'local' is undefined. [SC3043]
+2026-11-13T07:23:16.5166374Z ./ui/build.sh:22:5: warning: compile appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:16.7380799Z ./ui/build.sh:71:10: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:16.7381498Z ./tests/run-all.sh:7:1: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:16.7878668Z ./tests/config-parity.sh:103:52: error: Use braces when expanding arrays, e.g. ${array[idx]} (or ${var}[.. to quiet). [SC1087]
+2026-11-13T07:23:16.8990711Z ./tests/wizard-install.sh:7:58: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:17.1810468Z ./tests/native/control-deps.sh:15:61: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:17.3921025Z ./static/build.sh:20:5: warning: force appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:17.3922307Z ./static/build.sh:24:5: warning: compile appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:17.3928154Z ./static/build.sh:28:5: warning: enableApi appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:17.3928949Z ./static/build.sh:40:1: warning: control appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:17.3929300Z ./static/build.sh:55:10: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:17.4119088Z ./builder/build.sh:23:1: warning: REPO_BASE appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:17.4119906Z ./builder/build.sh:34:9: warning: Quotes/backslashes will be treated literally. Use an array. [SC2089]
+2026-11-13T07:23:17.4128142Z ./builder/build.sh:35:7: warning: Quotes/backslashes in this variable will not be respected. [SC2090]
+2026-11-13T07:23:17.4129224Z ./builder/build.sh:36:7: warning: Quotes/backslashes in this variable will not be respected. [SC2090]
+2026-11-13T07:23:17.4129744Z ./builder/build.sh:37:7: warning: Quotes/backslashes in this variable will not be respected. [SC2090]
+2026-11-13T07:23:17.4130302Z ./builder/build.sh:38:7: warning: Quotes/backslashes in this variable will not be respected. [SC2090]
+2026-11-13T07:23:17.4130780Z ./builder/build.sh:39:7: warning: Quotes/backslashes in this variable will not be respected. [SC2090]
+2026-11-13T07:23:17.5294402Z ./infra/var/lib/drumee/utils/functions.sh:1:1: error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive. [SC2148]
+2026-11-13T07:23:17.5503233Z ./infra/build.sh:14:1: warning: type appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:17.5504057Z ./infra/build.sh:21:1: warning: REPO_BASE appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:17.5529521Z ./infra/build.sh:42:10: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:17.5597802Z ./infra/sample.sh:1:1: error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive. [SC2148]
+2026-11-13T07:23:17.5694521Z ./server/usr/share/drumee/sbin/log-history.sh:4:1: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:17.5695470Z ./server/usr/share/drumee/sbin/log-history.sh:8:13: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:17.5840077Z ./server/usr/share/drumee/sbin/log-rotate.sh:4:1: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:17.5840962Z ./server/usr/share/drumee/sbin/log-rotate.sh:11:19: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:17.5841636Z ./server/usr/share/drumee/sbin/log-rotate.sh:13:16: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:17.5842358Z ./server/usr/share/drumee/sbin/log-rotate.sh:13:37: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:17.5843005Z ./server/usr/share/drumee/sbin/log-rotate.sh:15:23: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:17.5843720Z ./server/usr/share/drumee/sbin/log-rotate.sh:19:13: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:17.6021778Z ./server/usr/share/drumee/admin/templates/.profile:1:1: error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive. [SC2148]
+2026-11-13T07:23:17.6279081Z ./server/usr/share/drumee/admin/templates/.bashrc:1:1: error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive. [SC2148]
+2026-11-13T07:23:17.6279757Z ./server/usr/share/drumee/admin/templates/.bashrc:104:7: warning: ShellCheck can't follow non-constant source. Use a directive to specify location. [SC1090]
+2026-11-13T07:23:17.6644798Z ./server/usr/share/drumee/admin/admin.sh:21:4: warning: swap appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:17.6645987Z ./server/usr/share/drumee/admin/admin.sh:30:6: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:17.6952231Z ./server/usr/share/drumee/bin/make-zip.sh:13:1: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:17.7390068Z ./server/usr/share/drumee/bin/db-patch-scan.sh:6:10: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:17.8246798Z ./server/build.sh:77:10: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:18.1727315Z ./scripts/release-status.sh:313:5: warning: Variable was used as an array but is now assigned a string. [SC2178]
+2026-11-13T07:23:18.1727827Z ./scripts/release-status.sh:315:8: warning: Expanding an array without an index only gives the first element. [SC2128]
+2026-11-13T07:23:18.1728415Z ./scripts/release-status.sh:315:34: warning: Expanding an array without an index only gives the first element. [SC2128]
+2026-11-13T07:23:18.2007147Z ./scripts/build-seed.sh:50:3: warning: This flag is used as a command name. Bad line break or missing [ .. ]? [SC2215]
+2026-11-13T07:23:18.3181506Z ./scripts/publish-images.sh:79:3: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:18.3182059Z ./scripts/publish-images.sh:83:44: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:18.3182594Z ./scripts/publish-images.sh:89:3: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:18.3183106Z ./scripts/publish-images.sh:98:3: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:18.3183673Z ./scripts/publish-images.sh:103:3: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:18.3184176Z ./scripts/publish-images.sh:110:5: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:18.3184676Z ./scripts/publish-images.sh:118:5: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:19.3332935Z ./scripts/containers.sh:37:1: warning: c_blue appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:19.3333619Z ./scripts/containers.sh:140:25: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:19.3916533Z ./admin/build.sh:27:8: warning: ShellCheck can't follow non-constant source. Use a directive to specify location. [SC1090]
+2026-11-13T07:23:19.3917595Z ./admin/build.sh:28:8: warning: ShellCheck can't follow non-constant source. Use a directive to specify location. [SC1090]
+2026-11-13T07:23:19.3918569Z ./admin/build.sh:39:5: warning: force appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:19.3919165Z ./admin/build.sh:59:23: warning: build_dir is referenced but not assigned. [SC2154]
+2026-11-13T07:23:19.3919632Z ./admin/build.sh:63:10: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:19.4160968Z ./admin/opt/drumee/schemas/patch.sh:28:1: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:19.4649438Z ./meta/build.sh:23:10: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:19.6040075Z ./utils/env.sh:1:1: error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive. [SC2148]
+2026-11-13T07:23:19.6959331Z ./utils/functions.sh:1:1: error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive. [SC2148]
+2026-11-13T07:23:19.6960054Z ./utils/functions.sh:133:24: warning: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined. [SC2166]
+2026-11-13T07:23:19.6960572Z ./utils/functions.sh:202:20: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:19.6961045Z ./utils/functions.sh:203:20: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:19.6961507Z ./utils/functions.sh:228:18: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:19.6962022Z ./utils/functions.sh:229:18: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:19.8001396Z ./schemas/build.sh:19:1: warning: REPO_BASE appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:19.8002032Z ./schemas/build.sh:83:10: error: Iterating over ls output is fragile. Use globs. [SC2045]
+2026-11-13T07:23:19.8118920Z ./schemas-patch/bin/patch-from-file:2:22: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:20.0430315Z ./bootstrap/usr/lib/drumee/entrypoint/schemas:91:26: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:20.3318652Z ./infra/var/lib/drumee/utils/cron/tmp-files-cleaner:32:28: warning: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
+2026-11-13T07:23:20.4025620Z ./server/usr/sbin/drumee-plugin:52:11: warning: This pattern always overrides a later one on line 52. [SC2221]
+2026-11-13T07:23:20.4026207Z ./server/usr/sbin/drumee-plugin:52:17: warning: This pattern never matches because of a previous pattern on line 52. [SC2222]
+2026-11-13T07:23:20.4290798Z ./server/usr/share/drumee/admin/create-server:11:4: warning: start appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:20.4291520Z ./server/usr/share/drumee/admin/create-server:28:6: warning: Quote this to prevent word splitting. [SC2046]
+2026-11-13T07:23:20.4292068Z ./server/usr/share/drumee/admin/create-server:57:5: warning: script_dir appears unused. Verify use (or export if used externally). [SC2034]
+2026-11-13T07:23:20.4505836Z ./server/system/usr/sbin/drumee:46:1: warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails. [SC2164]
+2026-11-13T07:23:20.4506605Z ./server/system/usr/sbin/drumee:84:11: warning: Use "$@" (with quotes) to prevent whitespace problems. [SC2048]
+2026-11-13T07:23:20.5352797Z ./bin/drumee-plugin:52:11: warning: This pattern always overrides a later one on line 52. [SC2221]
+2026-11-13T07:23:20.5353373Z ./bin/drumee-plugin:52:17: warning: This pattern never matches because of a previous pattern on line 52. [SC2222]
+2026-11-13T07:23:20.6308366Z ##[end-action id=__ludeeus_action-shellcheck.check;outcome=success;conclusion=success;duration_ms=4464]
+2026-11-13T07:23:20.6311310Z ##[start-action display=Exit action;id=__ludeeus_action-shellcheck.__run_3]
+2026-11-13T07:23:20.6329322Z ##[group]Run exit 1
+2026-11-13T07:23:20.6329468Z [36;1mexit 1[0m
+2026-11-13T07:23:20.6371914Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-13T07:23:20.6372117Z ##[endgroup]
+2026-11-13T07:23:20.6438874Z ##[error]Process completed with exit code 1.
+2026-11-13T07:23:20.6444306Z ##[end-action id=__ludeeus_action-shellcheck.__run_3;outcome=failure;conclusion=failure;duration_ms=13]
+2026-11-13T07:23:20.6552585Z Post job cleanup.
+2026-11-13T07:23:20.7116393Z [command]/usr/bin/git version
+2026-11-13T07:23:20.7154210Z git version 2.56.1
+2026-11-13T07:23:20.7183067Z Temporarily overriding HOME='/home/runner/work/_temp/3e44a519-05f1-4adf-a425-e5e472e54f4d' before making global git config changes
+2026-11-13T07:23:20.7183727Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-13T07:23:20.7187434Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/debian/debian
+2026-11-13T07:23:20.7231122Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T07:23:20.7273875Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T07:23:20.7556919Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T07:23:20.7557745Z http.https://github.com/.extraheader
+2026-11-13T07:23:20.7560396Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-13T07:23:20.7592909Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T07:23:20.7861583Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T07:23:20.7890484Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T07:23:20.8237563Z Cleaning up orphan processes
+2026-11-13T07:23:20.8495936Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

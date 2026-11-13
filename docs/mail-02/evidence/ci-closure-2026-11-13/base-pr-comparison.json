@@ -1,0 +1,1297 @@
+{
+  "base_sha": "ff6e6b399128e6332c984fc2e8e60f660bd5f881",
+  "pr_sha": "54773065d6d9c348e601e2f2366b3fb614235297",
+  "shellcheck_version": "0.11.0",
+  "threshold": "warning",
+  "action_sha": "00b27aa7cb85167568cb48a3838b75f4265f2bca",
+  "base_diagnostics": [
+    {
+      "file": "utils/env.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 133,
+      "column": 24,
+      "rule": "SC2166",
+      "cause": "warning: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 202,
+      "column": 20,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 203,
+      "column": 20,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 228,
+      "column": 18,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 229,
+      "column": 18,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 23,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: REPO_BASE appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 34,
+      "column": 9,
+      "rule": "SC2089",
+      "cause": "warning: Quotes/backslashes will be treated literally. Use an array."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 35,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 36,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 37,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 38,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 39,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "bootstrap/usr/lib/drumee/entrypoint/lib.sh",
+      "line": 56,
+      "column": 3,
+      "rule": "SC3043",
+      "cause": "warning: In POSIX sh, 'local' is undefined."
+    },
+    {
+      "file": "infra/sample.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "infra/build.sh",
+      "line": 14,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: type appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "infra/build.sh",
+      "line": 21,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: REPO_BASE appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "infra/build.sh",
+      "line": 42,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "infra/var/lib/drumee/utils/functions.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-history.sh",
+      "line": 4,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-history.sh",
+      "line": 8,
+      "column": 13,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 4,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 11,
+      "column": 19,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 13,
+      "column": 16,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 13,
+      "column": 37,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 15,
+      "column": 23,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 19,
+      "column": 13,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "server/usr/share/drumee/bin/db-patch-scan.sh",
+      "line": 6,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "server/usr/share/drumee/bin/make-zip.sh",
+      "line": 13,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/admin.sh",
+      "line": 21,
+      "column": 4,
+      "rule": "SC2034",
+      "cause": "warning: swap appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/admin.sh",
+      "line": 30,
+      "column": 6,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/templates/.bashrc",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/templates/.bashrc",
+      "line": 104,
+      "column": 7,
+      "rule": "SC1090",
+      "cause": "warning: ShellCheck can't follow non-constant source. Use a directive to specify location."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/templates/.profile",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "server/build.sh",
+      "line": 77,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "meta/build.sh",
+      "line": 23,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "ui/build.sh",
+      "line": 22,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: compile appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "ui/build.sh",
+      "line": 71,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "scripts/release-status.sh",
+      "line": 313,
+      "column": 5,
+      "rule": "SC2178",
+      "cause": "warning: Variable was used as an array but is now assigned a string."
+    },
+    {
+      "file": "scripts/release-status.sh",
+      "line": 315,
+      "column": 8,
+      "rule": "SC2128",
+      "cause": "warning: Expanding an array without an index only gives the first element."
+    },
+    {
+      "file": "scripts/release-status.sh",
+      "line": 315,
+      "column": 34,
+      "rule": "SC2128",
+      "cause": "warning: Expanding an array without an index only gives the first element."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 79,
+      "column": 3,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 83,
+      "column": 44,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 89,
+      "column": 3,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 98,
+      "column": 3,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 103,
+      "column": 3,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 110,
+      "column": 5,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 118,
+      "column": 5,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/containers.sh",
+      "line": 37,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: c_blue appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "scripts/containers.sh",
+      "line": 140,
+      "column": 25,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "scripts/build-seed.sh",
+      "line": 50,
+      "column": 3,
+      "rule": "SC2215",
+      "cause": "warning: This flag is used as a command name. Bad line break or missing [ .. ]?"
+    },
+    {
+      "file": "tests/run-all.sh",
+      "line": 7,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "tests/config-parity.sh",
+      "line": 103,
+      "column": 52,
+      "rule": "SC1087",
+      "cause": "error: Use braces when expanding arrays, e.g. ${array[idx]} (or ${var}[.. to quiet)."
+    },
+    {
+      "file": "tests/wizard-install.sh",
+      "line": 7,
+      "column": 58,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "tests/native/control-deps.sh",
+      "line": 15,
+      "column": 61,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "admin/opt/drumee/schemas/patch.sh",
+      "line": 28,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 27,
+      "column": 8,
+      "rule": "SC1090",
+      "cause": "warning: ShellCheck can't follow non-constant source. Use a directive to specify location."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 28,
+      "column": 8,
+      "rule": "SC1090",
+      "cause": "warning: ShellCheck can't follow non-constant source. Use a directive to specify location."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 39,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: force appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 59,
+      "column": 23,
+      "rule": "SC2154",
+      "cause": "warning: build_dir is referenced but not assigned."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 63,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "schemas/build.sh",
+      "line": 19,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: REPO_BASE appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "schemas/build.sh",
+      "line": 83,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 2,
+      "column": 22,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 14,
+      "column": 8,
+      "rule": "SC2155",
+      "cause": "warning: Declare and assign separately to avoid masking return values."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 21,
+      "column": 1,
+      "rule": "SC2037",
+      "cause": "error: To assign the output of a command, use var=$(cmd) ."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 23,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 42,
+      "column": 54,
+      "rule": "SC2154",
+      "cause": "warning: opt is referenced but not assigned."
+    },
+    {
+      "file": "schemas-patch/patch.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "schemas-patch/patch.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "schemas-patch/build.sh",
+      "line": 29,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: REPO_BASE appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "schemas-patch/build.sh",
+      "line": 60,
+      "column": 23,
+      "rule": "SC2166",
+      "cause": "warning: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined."
+    },
+    {
+      "file": "schemas-patch/build.sh",
+      "line": 115,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 20,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: force appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 24,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: compile appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 28,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: enableApi appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 40,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: control appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 55,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "bin/drumee-plugin",
+      "line": 52,
+      "column": 11,
+      "rule": "SC2221",
+      "cause": "warning: This pattern always overrides a later one on line 52."
+    },
+    {
+      "file": "bin/drumee-plugin",
+      "line": 52,
+      "column": 17,
+      "rule": "SC2222",
+      "cause": "warning: This pattern never matches because of a previous pattern on line 52."
+    },
+    {
+      "file": "bootstrap/usr/lib/drumee/entrypoint/schemas",
+      "line": 91,
+      "column": 26,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "infra/var/lib/drumee/utils/cron/tmp-files-cleaner",
+      "line": 32,
+      "column": 28,
+      "rule": "SC2166",
+      "cause": "warning: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined."
+    },
+    {
+      "file": "server/system/usr/sbin/drumee",
+      "line": 46,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "server/system/usr/sbin/drumee",
+      "line": 84,
+      "column": 11,
+      "rule": "SC2048",
+      "cause": "warning: Use \"$@\" (with quotes) to prevent whitespace problems."
+    },
+    {
+      "file": "server/usr/sbin/drumee-plugin",
+      "line": 52,
+      "column": 11,
+      "rule": "SC2221",
+      "cause": "warning: This pattern always overrides a later one on line 52."
+    },
+    {
+      "file": "server/usr/sbin/drumee-plugin",
+      "line": 52,
+      "column": 17,
+      "rule": "SC2222",
+      "cause": "warning: This pattern never matches because of a previous pattern on line 52."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/create-server",
+      "line": 11,
+      "column": 4,
+      "rule": "SC2034",
+      "cause": "warning: start appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/create-server",
+      "line": 28,
+      "column": 6,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/create-server",
+      "line": 57,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: script_dir appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-file",
+      "line": 2,
+      "column": 22,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    }
+  ],
+  "pr_diagnostics": [
+    {
+      "file": "utils/env.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 133,
+      "column": 24,
+      "rule": "SC2166",
+      "cause": "warning: Prefer [ p ] || [ q ] as [ p -o q ] is not well defined."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 202,
+      "column": 20,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 203,
+      "column": 20,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 228,
+      "column": 18,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "utils/functions.sh",
+      "line": 229,
+      "column": 18,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 23,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: REPO_BASE appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 34,
+      "column": 9,
+      "rule": "SC2089",
+      "cause": "warning: Quotes/backslashes will be treated literally. Use an array."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 35,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 36,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 37,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 38,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "builder/build.sh",
+      "line": 39,
+      "column": 7,
+      "rule": "SC2090",
+      "cause": "warning: Quotes/backslashes in this variable will not be respected."
+    },
+    {
+      "file": "bootstrap/usr/lib/drumee/entrypoint/lib.sh",
+      "line": 56,
+      "column": 3,
+      "rule": "SC3043",
+      "cause": "warning: In POSIX sh, 'local' is undefined."
+    },
+    {
+      "file": "infra/sample.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "infra/build.sh",
+      "line": 14,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: type appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "infra/build.sh",
+      "line": 21,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: REPO_BASE appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "infra/build.sh",
+      "line": 42,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "infra/var/lib/drumee/utils/functions.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-history.sh",
+      "line": 4,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-history.sh",
+      "line": 8,
+      "column": 13,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 4,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 11,
+      "column": 19,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 13,
+      "column": 16,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 13,
+      "column": 37,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 15,
+      "column": 23,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/sbin/log-rotate.sh",
+      "line": 19,
+      "column": 13,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "server/usr/share/drumee/bin/db-patch-scan.sh",
+      "line": 6,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "server/usr/share/drumee/bin/make-zip.sh",
+      "line": 13,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/admin.sh",
+      "line": 21,
+      "column": 4,
+      "rule": "SC2034",
+      "cause": "warning: swap appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/admin.sh",
+      "line": 30,
+      "column": 6,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/templates/.bashrc",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/templates/.bashrc",
+      "line": 104,
+      "column": 7,
+      "rule": "SC1090",
+      "cause": "warning: ShellCheck can't follow non-constant source. Use a directive to specify location."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/templates/.profile",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "server/build.sh",
+      "line": 77,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "meta/build.sh",
+      "line": 23,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "ui/build.sh",
+      "line": 22,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: compile appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "ui/build.sh",
+      "line": 71,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "scripts/release-status.sh",
+      "line": 313,
+      "column": 5,
+      "rule": "SC2178",
+      "cause": "warning: Variable was used as an array but is now assigned a string."
+    },
+    {
+      "file": "scripts/release-status.sh",
+      "line": 315,
+      "column": 8,
+      "rule": "SC2128",
+      "cause": "warning: Expanding an array without an index only gives the first element."
+    },
+    {
+      "file": "scripts/release-status.sh",
+      "line": 315,
+      "column": 34,
+      "rule": "SC2128",
+      "cause": "warning: Expanding an array without an index only gives the first element."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 79,
+      "column": 3,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 83,
+      "column": 44,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 89,
+      "column": 3,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 98,
+      "column": 3,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 103,
+      "column": 3,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 110,
+      "column": 5,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/publish-images.sh",
+      "line": 118,
+      "column": 5,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "scripts/containers.sh",
+      "line": 37,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: c_blue appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "scripts/containers.sh",
+      "line": 140,
+      "column": 25,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "scripts/build-seed.sh",
+      "line": 50,
+      "column": 3,
+      "rule": "SC2215",
+      "cause": "warning: This flag is used as a command name. Bad line break or missing [ .. ]?"
+    },
+    {
+      "file": "tests/run-all.sh",
+      "line": 7,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "tests/config-parity.sh",
+      "line": 103,
+      "column": 52,
+      "rule": "SC1087",
+      "cause": "error: Use braces when expanding arrays, e.g. ${array[idx]} (or ${var}[.. to quiet)."
+    },
+    {
+      "file": "tests/wizard-install.sh",
+      "line": 7,
+      "column": 58,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "tests/native/control-deps.sh",
+      "line": 15,
+      "column": 61,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "admin/opt/drumee/schemas/patch.sh",
+      "line": 28,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 27,
+      "column": 8,
+      "rule": "SC1090",
+      "cause": "warning: ShellCheck can't follow non-constant source. Use a directive to specify location."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 28,
+      "column": 8,
+      "rule": "SC1090",
+      "cause": "warning: ShellCheck can't follow non-constant source. Use a directive to specify location."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 39,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: force appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 59,
+      "column": 23,
+      "rule": "SC2154",
+      "cause": "warning: build_dir is referenced but not assigned."
+    },
+    {
+      "file": "admin/build.sh",
+      "line": 63,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "schemas/build.sh",
+      "line": 19,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: REPO_BASE appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "schemas/build.sh",
+      "line": 83,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 2,
+      "column": 22,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 14,
+      "column": 8,
+      "rule": "SC2155",
+      "cause": "warning: Declare and assign separately to avoid masking return values."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 21,
+      "column": 1,
+      "rule": "SC2037",
+      "cause": "error: To assign the output of a command, use var=$(cmd) ."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 23,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-manifest.sh",
+      "line": 42,
+      "column": 54,
+      "rule": "SC2154",
+      "cause": "warning: opt is referenced but not assigned."
+    },
+    {
+      "file": "schemas-patch/patch.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2148",
+      "cause": "error: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive."
+    },
+    {
+      "file": "schemas-patch/patch.sh",
+      "line": 1,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "schemas-patch/build.sh",
+      "line": 29,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: REPO_BASE appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "schemas-patch/build.sh",
+      "line": 60,
+      "column": 23,
+      "rule": "SC2166",
+      "cause": "warning: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined."
+    },
+    {
+      "file": "schemas-patch/build.sh",
+      "line": 115,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 20,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: force appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 24,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: compile appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 28,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: enableApi appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 40,
+      "column": 1,
+      "rule": "SC2034",
+      "cause": "warning: control appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "static/build.sh",
+      "line": 55,
+      "column": 10,
+      "rule": "SC2045",
+      "cause": "error: Iterating over ls output is fragile. Use globs."
+    },
+    {
+      "file": "bin/drumee-plugin",
+      "line": 52,
+      "column": 11,
+      "rule": "SC2221",
+      "cause": "warning: This pattern always overrides a later one on line 52."
+    },
+    {
+      "file": "bin/drumee-plugin",
+      "line": 52,
+      "column": 17,
+      "rule": "SC2222",
+      "cause": "warning: This pattern never matches because of a previous pattern on line 52."
+    },
+    {
+      "file": "bootstrap/usr/lib/drumee/entrypoint/schemas",
+      "line": 91,
+      "column": 26,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "infra/var/lib/drumee/utils/cron/tmp-files-cleaner",
+      "line": 32,
+      "column": 28,
+      "rule": "SC2166",
+      "cause": "warning: Prefer [ p ] && [ q ] as [ p -a q ] is not well defined."
+    },
+    {
+      "file": "server/system/usr/sbin/drumee",
+      "line": 46,
+      "column": 1,
+      "rule": "SC2164",
+      "cause": "warning: Use 'cd ... || exit' or 'cd ... || return' in case cd fails."
+    },
+    {
+      "file": "server/system/usr/sbin/drumee",
+      "line": 84,
+      "column": 11,
+      "rule": "SC2048",
+      "cause": "warning: Use \"$@\" (with quotes) to prevent whitespace problems."
+    },
+    {
+      "file": "server/usr/sbin/drumee-plugin",
+      "line": 52,
+      "column": 11,
+      "rule": "SC2221",
+      "cause": "warning: This pattern always overrides a later one on line 52."
+    },
+    {
+      "file": "server/usr/sbin/drumee-plugin",
+      "line": 52,
+      "column": 17,
+      "rule": "SC2222",
+      "cause": "warning: This pattern never matches because of a previous pattern on line 52."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/create-server",
+      "line": 11,
+      "column": 4,
+      "rule": "SC2034",
+      "cause": "warning: start appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/create-server",
+      "line": 28,
+      "column": 6,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    },
+    {
+      "file": "server/usr/share/drumee/admin/create-server",
+      "line": 57,
+      "column": 5,
+      "rule": "SC2034",
+      "cause": "warning: script_dir appears unused. Verify use (or export if used externally)."
+    },
+    {
+      "file": "schemas-patch/bin/patch-from-file",
+      "line": 2,
+      "column": 22,
+      "rule": "SC2046",
+      "cause": "warning: Quote this to prevent word splitting."
+    }
+  ],
+  "new_by_rule_file_cause": [],
+  "removed_by_rule_file_cause": [],
+  "packaging_introduced": [
+    {
+      "file": "profiles/mail/Dockerfile.native",
+      "source_line": 3,
+      "filtered_gate_line": 2,
+      "rule": "FROM without digest",
+      "cause": "ARG default is a mutable tag; build.cjs verifies config ID but passes no immutable FROM override"
+    }
+  ],
+  "packaging_gate_byte_identical_between_base_and_pr": true
+}

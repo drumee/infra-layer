@@ -42,13 +42,13 @@ resolution, and the installed-consumer fixture in evidence.
 
 Load the exact images from qualification.md. The custom quota module is mandatory:
 stock Dovecot count quota is the reproduced failing baseline. The native image
-config ID is `sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f`.
+config ID is `sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56`.
 It contains the module hash `01fec4a55d42add0d62b939216bec57869513b2dab6b55c83ae51c93dd22f4c5`.
 Verify it before use, for example:
 
 ```sh
-docker image inspect sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f --format '{{.Id}}'
-docker run --rm --network none --entrypoint sha256sum sha256:f2b46de95f1fc1abf4d1d9b9acd8512ab6caa0d448b084690dd1d19988a6af2f /usr/lib/dovecot/modules/lib10_quota_plugin.so
+docker image inspect sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56 --format '{{.Id}}'
+docker run --rm --network none --entrypoint sha256sum sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56 /usr/lib/dovecot/modules/lib10_quota_plugin.so
 ```
 
 `node profiles/mail/build.cjs` is a separate rebuild path: exact base config ID,
@@ -56,8 +56,13 @@ pinned source commit and15 hashes, bounded source patches, pinned Dovecot-dev AB
 fixed apt snapshot inherited from the base, a temporary compiler, and a native
 image receipt. It formats no mail storage. A different module/image is a new
 qualification, even when native syntax checks pass. Local config IDs are not
-registry manifest digests; the parametric Dockerfile still has the documented
-static packaging failure. Release acquisition remains outside this lot.
+registry manifest digests. The native FROM now uses the verified local OCI
+manifest described in [ci-closure.md](ci-closure.md), imported through a pinned
+BuildKit named context without publication. Release acquisition remains outside
+this lot. Run `python3 tests/mail/native-base.test.py` in the Debian worktree
+before building; corrupt/missing blobs, a changed/mutable/absent FROM and a
+populated target must be refused. The closed layout is reconstructed from the
+expected local base config ID; no tag fallback is permitted.
 
 ## Native transport, controlled MX and original regression
 
@@ -256,3 +261,14 @@ owned guest units before shutting down the dedicated guest; no purge or producti
 cleanup. Protect private evidence and publish only the reviewed nonsecret reports.
 Full new-profile and coordinated Oxy-form restoration remain
 **SMTP_RECOVERY_UNQUALIFIED**.
+
+## Debian gate closure
+
+The exact base/PR replay, unchanged gate commands, tool versions and normalized
+diagnostic comparison are in [ci-closure.md](ci-closure.md) and its evidence
+folder. `shellcheck-replay.txt` records the composite action inputs and emitted
+status check. Use separate clean worktrees so generated files cannot change the
+scanner inventory. Run `bash tests/run-all.sh`, `python3 tests/ci-baseline-regression.py`,
+`python3 tests/mail/native-base.test.py` and `node --test tests/mail/profile.cjs`;
+then require green hosted lint, packaging, suite and minimal-application-contract
+jobs on the final PR13 SHA. No inherited failure is waived.

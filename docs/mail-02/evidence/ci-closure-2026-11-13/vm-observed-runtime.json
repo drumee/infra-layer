@@ -1,0 +1,331 @@
+[
+  {
+    "id": "c604be51f7e258ff59a85b31923c1ea0ae978e91708086411dde25c5be0241e6",
+    "image": "sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56",
+    "ports": {
+      "1587/tcp": [
+        {
+          "HostIp": "10.243.47.1",
+          "HostPort": "1587"
+        }
+      ]
+    },
+    "networks": {
+      "mail02-profile-068b270c-control": {
+        "IPAMConfig": {},
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-068b270c-postfix-1",
+          "postfix"
+        ],
+        "MacAddress": "02:42:ac:16:00:03",
+        "NetworkID": "c7092d90604dd08e4dc7c7828bba7c79256f3c5e0b6e0cf575d9572f7d21c406",
+        "EndpointID": "db4ab7ccc22f162c73dd5e38b1ba41e0b0625f232192a6b4f0c49a497a1407bd",
+        "Gateway": "",
+        "IPAddress": "172.22.0.3",
+        "IPPrefixLen": 16,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-068b270c-postfix-1",
+          "postfix",
+          "c604be51f7e2"
+        ]
+      },
+      "mail02-profile-068b270c-edge": {
+        "IPAMConfig": {
+          "IPv4Address": "10.243.47.254"
+        },
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-068b270c-postfix-1",
+          "postfix",
+          "mail.oxymot.fr"
+        ],
+        "MacAddress": "02:42:0a:f3:2f:fe",
+        "NetworkID": "d9a835fc78585935d574e4ba2cb41df42e04709ecb1d639f412b173123597a6c",
+        "EndpointID": "0d7ff08ddcd428e00709f74f72116bc07520660e261320f3248115585c676a5e",
+        "Gateway": "10.243.47.1",
+        "IPAddress": "10.243.47.254",
+        "IPPrefixLen": 24,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-068b270c-postfix-1",
+          "postfix",
+          "mail.oxymot.fr",
+          "c604be51f7e2"
+        ]
+      }
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/durable/tls",
+        "Destination": "/keys",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "volume",
+        "Name": "mail02-profile-068b270c-sockets",
+        "Source": "/var/lib/docker/volumes/mail02-profile-068b270c-sockets/_data",
+        "Destination": "/run/mail-sockets",
+        "Driver": "local",
+        "Mode": "rw",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/candidates/72395918fd4004dd8485f016815977874b858bf3ec95b9de628d48a043762232/config",
+        "Destination": "/source",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/durable/spool",
+        "Destination": "/var/spool/postfix",
+        "Mode": "",
+        "RW": true,
+        "Propagation": "rprivate"
+      }
+    ],
+    "cap_drop": [
+      "ALL"
+    ],
+    "cap_add": [
+      "CAP_CHOWN",
+      "CAP_DAC_OVERRIDE",
+      "CAP_FOWNER",
+      "CAP_KILL",
+      "CAP_NET_ADMIN",
+      "CAP_NET_BIND_SERVICE",
+      "CAP_SETGID",
+      "CAP_SETPCAP",
+      "CAP_SETUID"
+    ]
+  },
+  {
+    "id": "abf76f6f1976288450d9647c7047e0c2f31e6ae53f8d7135615710e5eee77504",
+    "image": "sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56",
+    "ports": {},
+    "networks": {
+      "mail02-profile-068b270c-edge": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-068b270c-dovecot-1",
+          "dovecot"
+        ],
+        "MacAddress": "02:42:0a:f3:2f:02",
+        "NetworkID": "d9a835fc78585935d574e4ba2cb41df42e04709ecb1d639f412b173123597a6c",
+        "EndpointID": "26a5ed4e7faeeeaa3a2bf49d4dfe3b0fbbc078704f98676973a3524d1434c610",
+        "Gateway": "10.243.47.1",
+        "IPAddress": "10.243.47.2",
+        "IPPrefixLen": 24,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-068b270c-dovecot-1",
+          "dovecot",
+          "abf76f6f1976"
+        ]
+      }
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/candidates/72395918fd4004dd8485f016815977874b858bf3ec95b9de628d48a043762232/config",
+        "Destination": "/config",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/durable/tls",
+        "Destination": "/keys",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/durable/mailboxes",
+        "Destination": "/mailboxes",
+        "Mode": "",
+        "RW": true,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/durable/registry/private",
+        "Destination": "/registry",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "volume",
+        "Name": "mail02-profile-068b270c-sockets",
+        "Source": "/var/lib/docker/volumes/mail02-profile-068b270c-sockets/_data",
+        "Destination": "/run/mail-sockets",
+        "Driver": "local",
+        "Mode": "rw",
+        "RW": true,
+        "Propagation": ""
+      }
+    ],
+    "cap_drop": [
+      "ALL"
+    ],
+    "cap_add": [
+      "CAP_CHOWN",
+      "CAP_DAC_OVERRIDE",
+      "CAP_FOWNER",
+      "CAP_KILL",
+      "CAP_NET_BIND_SERVICE",
+      "CAP_SETGID",
+      "CAP_SETUID",
+      "CAP_SYS_CHROOT"
+    ]
+  },
+  {
+    "id": "b1dffb2389cd74d03bd504d101ab6aa01d291a63ed0ad528292389d19dfe952f",
+    "image": "sha256:d0a16be756b6ec6658aecb8b7bcf87fa6c7d0d7fcc6ca53ad14bb49a4c90bdd7",
+    "ports": {},
+    "networks": {
+      "mail02-profile-068b270c-control": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-068b270c-policy-1",
+          "policy"
+        ],
+        "MacAddress": "02:42:ac:16:00:02",
+        "NetworkID": "c7092d90604dd08e4dc7c7828bba7c79256f3c5e0b6e0cf575d9572f7d21c406",
+        "EndpointID": "62b39dab69d49a8f3b58a969da3faae0bcecfb581f643f76d5be77b5a440b264",
+        "Gateway": "",
+        "IPAddress": "172.22.0.2",
+        "IPPrefixLen": 16,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-068b270c-policy-1",
+          "policy",
+          "b1dffb2389cd"
+        ]
+      }
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/candidates/72395918fd4004dd8485f016815977874b858bf3ec95b9de628d48a043762232/policy.js",
+        "Destination": "/app/policy.js",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/durable/registry/public",
+        "Destination": "/registry",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/durable/policy-state",
+        "Destination": "/state",
+        "Mode": "",
+        "RW": true,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/durable/mailboxes/.infra-owner",
+        "Destination": "/storage/mailboxes",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/durable/spool/.infra-owner",
+        "Destination": "/storage/spool",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "cap_drop": [
+      "ALL"
+    ],
+    "cap_add": null
+  },
+  {
+    "id": "69852e5edf8997d63e16339bae0e43c9f3fbb7da50c1faea2d8ef80b68bbaf70",
+    "image": "sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56",
+    "ports": {},
+    "networks": {
+      "mail02-profile-068b270c-control": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": [
+          "mail02-profile-068b270c-opendkim-1",
+          "opendkim"
+        ],
+        "MacAddress": "02:42:ac:16:00:04",
+        "NetworkID": "c7092d90604dd08e4dc7c7828bba7c79256f3c5e0b6e0cf575d9572f7d21c406",
+        "EndpointID": "24ed301da13de15f5f119a2282843efe9f88366990eb72bd00897db46c17f928",
+        "Gateway": "",
+        "IPAddress": "172.22.0.4",
+        "IPPrefixLen": 16,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DriverOpts": null,
+        "DNSNames": [
+          "mail02-profile-068b270c-opendkim-1",
+          "opendkim",
+          "69852e5edf89"
+        ]
+      }
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/candidates/72395918fd4004dd8485f016815977874b858bf3ec95b9de628d48a043762232/config",
+        "Destination": "/config",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/lab/mail02-bounded-b46585eb/mail02-profile-yb7vx405/service/candidates/72395918fd4004dd8485f016815977874b858bf3ec95b9de628d48a043762232/keys/dkim",
+        "Destination": "/keys",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "cap_drop": [
+      "ALL"
+    ],
+    "cap_add": null
+  }
+]

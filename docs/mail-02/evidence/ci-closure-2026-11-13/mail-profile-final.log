@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: mail profile uses the closed locked package inventory and detects corruption, extras and links
+ok 1 - mail profile uses the closed locked package inventory and detects corruption, extras and links
+  ---
+  duration_ms: 20.897869
+  type: 'test'
+  ...
+# Subtest: mail profile renderer and operator dispatch remain distinct from Team and administrative MAIL-03 verbs
+ok 2 - mail profile renderer and operator dispatch remain distinct from Team and administrative MAIL-03 verbs
+  ---
+  duration_ms: 65.368905
+  type: 'test'
+  ...
+# Subtest: corrupt archive fails before acquisition and preserves the installed consumer
+ok 3 - corrupt archive fails before acquisition and preserves the installed consumer
+  ---
+  duration_ms: 26.006483
+  type: 'test'
+  ...
+# Subtest: Private Docker descriptor uses the mail-owned frontend without adopting a backend
+ok 4 - Private Docker descriptor uses the mail-owned frontend without adopting a backend
+  ---
+  duration_ms: 10.531309
+  type: 'test'
+  ...
+# Subtest: A missing mail state refuses before fallback creation
+ok 5 - A missing mail state refuses before fallback creation
+  ---
+  duration_ms: 41.504818
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 211.362742

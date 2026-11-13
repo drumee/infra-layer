@@ -1,0 +1,29 @@
+Packaging invariants - /qual/pr
+
+ok    no git clone / REPO_BASE in any Dockerfile
+FAIL  FROM without a digest - the base image will drift silently
+  deploy/docker/Dockerfile.infra-init:2:FROM ${SERVER_IMAGE}
+deploy/docker/Dockerfile.populate:2:FROM ${SERVER_IMAGE}
+deploy/docker/Dockerfile.schemas:1:FROM debian:bookworm-slim
+deploy/docker/Dockerfile.server:2:FROM node:22-bookworm AS build
+deploy/docker/Dockerfile.server:18:FROM node:22-slim AS runtime
+deploy/docker/Dockerfile.static:1:FROM alpine:3
+deploy/docker/Dockerfile.ui:2:FROM node:22-bookworm AS build
+deploy/docker/Dockerfile.ui:22:FROM alpine:3 AS runtime
+deploy/docker/Dockerfile.wireguard:1:FROM node:22-slim
+profiles/mail/Dockerfile.native:2:FROM ${MAIL_TOOLS_IMAGE}
+scripts/Dockerfile.seed:1:FROM debian:bookworm-slim
+scripts/Dockerfile.seed-check:1:FROM debian:bookworm-slim
+ok    no curl piped into bash/sh/gpg
+ok    apt-get update always paired with its install
+ok    --no-install-recommends used throughout
+FAIL  npm install -g - use drumee-node-runtime instead
+  deploy/docker/Dockerfile.server:24:    && npm install -g pm2
+ok    no build tooling in runtime images
+ok    Drumee packages always pinned
+ok    mutual exclusion and version anchor declared on every role
+ok    no hardcoded component version in any control file
+ok    Architecture matches the payload
+ok    release-manifest.yaml present
+
+Invariants violated. See docs/distribution.md.

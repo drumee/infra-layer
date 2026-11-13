@@ -1,0 +1,399 @@
+{
+  "status": "PASS_NATIVE_TLS_EXPIRY_CONTROLS",
+  "checks": [
+    {
+      "name": "expired-leaf-refused-before-native-activation",
+      "status": "PASS",
+      "code": "MAIL_CERTIFICATE_INVALID"
+    },
+    {
+      "name": "expiry-transition-31-days",
+      "status": "PASS",
+      "alerts": []
+    },
+    {
+      "name": "expiry-transition-20-days",
+      "status": "PASS",
+      "alerts": [
+        "MAIL_CERTIFICATE_EXPIRES_30_DAYS"
+      ]
+    },
+    {
+      "name": "expiry-transition-10-days",
+      "status": "PASS",
+      "alerts": [
+        "MAIL_CERTIFICATE_EXPIRES_14_DAYS"
+      ]
+    },
+    {
+      "name": "expiry-transition-6-days",
+      "status": "PASS",
+      "alerts": [
+        "MAIL_CERTIFICATE_EXPIRES_7_DAYS"
+      ]
+    },
+    {
+      "name": "expired-peer-and-missing-starttls-refused-without-auth",
+      "status": "PASS",
+      "observation": {
+        "expired_verify_code": 10,
+        "missing_starttls_refused": true,
+        "auth_emitted": false
+      }
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-new",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=mail.oxymot.fr",
+        "-keyout",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days-1.key",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days-1.csr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b6438cb687d862714745fbc6bcdb02fea625537eb7cf606135e72a1d4bcefe4f"
+    },
+    {
+      "argv": [
+        "openssl",
+        "ca",
+        "-batch",
+        "-notext",
+        "-config",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/issuer-state-9d4d44bec8ce46ac9bcd46658f0f43ed/ca.cnf",
+        "-extensions",
+        "leaf",
+        "-startdate",
+        "20260101000000Z",
+        "-enddate",
+        "20260102000000Z",
+        "-in",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days-1.csr",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days-1.pem"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "32350780894e1dfae7a66c6d44ce66e19641bde59ef9a34a8aa0a827967841de"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "rotate",
+        "/tmp/mail02-profile-jm4vwss3/config.json",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/request-ca859123bdb04e7db0827f02d9890857.json"
+      ],
+      "exit": 1,
+      "stdout_sha256": "3110feb38a66060c1b8ec196dff2ca062dd47da228a4579196bd339c6309223a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-new",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=mail.oxymot.fr",
+        "-keyout",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days31.key",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days31.csr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a161e8a8b880a6b9ecbc305e3886522efef53acb2abdaa42f1aa480c2b392bf7"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days31.csr",
+        "-CA",
+        "/tmp/mail02-native-t1wfjs9f/keys/ca.pem",
+        "-CAkey",
+        "/tmp/mail02-native-t1wfjs9f/keys/ca.key",
+        "-set_serial",
+        "131",
+        "-days",
+        "31",
+        "-extfile",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/leaf.ext",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days31.pem"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "12a7fe53874901d3c33878bdfacc5f638a13406b89bdf693df85afe688b1f68e"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "rotate",
+        "/tmp/mail02-profile-jm4vwss3/config.json",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/request-54da4127d96841ddb177633c53789b44.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4e4fe908d078dc5caef29862a4d54f1c4d85dfaf3ff167bedfa017d7e69458c2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/tmp/mail02-profile-jm4vwss3/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ce86d94635681bcc0fb510154f0e062612d7b121bcf6110ecc1af2242c54143e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-new",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=mail.oxymot.fr",
+        "-keyout",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days20.key",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days20.csr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "46df006e2c23086e780637f4f0e733f242f50b873cb659e6d377edfb46a4b055"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days20.csr",
+        "-CA",
+        "/tmp/mail02-native-t1wfjs9f/keys/ca.pem",
+        "-CAkey",
+        "/tmp/mail02-native-t1wfjs9f/keys/ca.key",
+        "-set_serial",
+        "120",
+        "-days",
+        "20",
+        "-extfile",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/leaf.ext",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days20.pem"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "12a7fe53874901d3c33878bdfacc5f638a13406b89bdf693df85afe688b1f68e"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "rotate",
+        "/tmp/mail02-profile-jm4vwss3/config.json",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/request-b22308c0d14a45bc88d2348795dca766.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e1844671d380e7e752a2859700b561e4850507881c17860054712115c9cda475",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/tmp/mail02-profile-jm4vwss3/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b07e6ef2ed0ed9d7e8f44a769992134c4ab8dd0cd48a09e04f971cc60c265c28",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-new",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=mail.oxymot.fr",
+        "-keyout",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days10.key",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days10.csr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bfb58a21f3ba277fe65a5f650d7bffe14a2e558eea1575bb8a1eb66a234bd776"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days10.csr",
+        "-CA",
+        "/tmp/mail02-native-t1wfjs9f/keys/ca.pem",
+        "-CAkey",
+        "/tmp/mail02-native-t1wfjs9f/keys/ca.key",
+        "-set_serial",
+        "110",
+        "-days",
+        "10",
+        "-extfile",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/leaf.ext",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days10.pem"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "12a7fe53874901d3c33878bdfacc5f638a13406b89bdf693df85afe688b1f68e"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "rotate",
+        "/tmp/mail02-profile-jm4vwss3/config.json",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/request-7a14ec153e49435bbe52f04c87662d43.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "dd46f382dd120fd1a691d86aedaf5e4e6b9dfaea201240d7c4cbe0b72b4d603f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/tmp/mail02-profile-jm4vwss3/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ffbcbf26048d9a7203d6dd21d59ddc94afa2d67b0401158101953b19c54fccb0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-new",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=mail.oxymot.fr",
+        "-keyout",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days6.key",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days6.csr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b4ff69a4665ac7ae26bcdef0a6e8e84afdcd1790a0225529ed9c5c7b59198b5c"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days6.csr",
+        "-CA",
+        "/tmp/mail02-native-t1wfjs9f/keys/ca.pem",
+        "-CAkey",
+        "/tmp/mail02-native-t1wfjs9f/keys/ca.key",
+        "-set_serial",
+        "106",
+        "-days",
+        "6",
+        "-extfile",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/leaf.ext",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/days6.pem"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "12a7fe53874901d3c33878bdfacc5f638a13406b89bdf693df85afe688b1f68e"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "rotate",
+        "/tmp/mail02-profile-jm4vwss3/config.json",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/request-7244d3f2025e4d5382834a4eebdef764.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5cc836cf0a1f4365e5a011046fb4d11ecdf50451f16338e03e2d450725a6cfa7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "observe",
+        "/tmp/mail02-profile-jm4vwss3/config.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b70bb554b5439ce1e1575a64672e1a2bca242273daa04a7f0a6e1fb5609cc539",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-jm4vwss3/expiry-fixtures,target=/expired,readonly",
+        "--mount",
+        "type=bind,source=/tmp/mail02-native-t1wfjs9f/keys,target=/keys,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import ssl,socket,threading,json,smtplib\nctx=ssl.create_default_context(cafile='/keys/ca.pem');server=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);server.load_cert_chain('/expired/days-1.pem','/expired/days-1.key');listener=socket.socket();listener.bind(('127.0.0.1',0));listener.listen();port=listener.getsockname()[1]\ndef expired_peer():\n c,_=listener.accept()\n try:server.wrap_socket(c,server_side=True).close()\n except ssl.SSLError:c.close()\nt=threading.Thread(target=expired_peer);t.start()\ntry:ctx.wrap_socket(socket.create_connection(('127.0.0.1',port)),server_hostname='mail.oxymot.fr');raise AssertionError('expired peer trusted')\nexcept ssl.SSLCertVerificationError as e:assert e.verify_code==10;expiry_code=e.verify_code\nt.join();listener.close();listener=socket.socket();listener.bind(('127.0.0.1',0));listener.listen();port=listener.getsockname()[1];wire=[]\ndef plain_peer():\n c,_=listener.accept();c.sendall(b'220 fixture.invalid SMTP\\r\\n');wire.append(c.recv(4096));c.sendall(b'250 fixture.invalid\\r\\n');wire.append(c.recv(4096));c.close()\nt=threading.Thread(target=plain_peer);t.start();s=smtplib.SMTP('127.0.0.1',port,timeout=5);s.ehlo()\ntry:s.starttls(context=ctx);raise AssertionError('missing STARTTLS accepted')\nexcept smtplib.SMTPNotSupportedError:pass\ns.close();t.join();listener.close();assert b'AUTH' not in b''.join(wire).upper();print(json.dumps({'expired_verify_code':expiry_code,'missing_starttls_refused':True,'auth_emitted':False}))\n"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e31a84d515b262072e148867b42fa85b7c8cf77bb5612f0b1b262498d979f8cf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "rotate",
+        "/tmp/mail02-profile-jm4vwss3/config.json",
+        "/tmp/mail02-profile-jm4vwss3/expiry-fixtures/request-aaf9adcb480d4c1b90a85ff3b91f069d.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d038200067191b18c496bbe36a6de51cde906137f678a4958208e1039a441d30",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

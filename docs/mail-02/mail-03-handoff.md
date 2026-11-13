@@ -1,8 +1,10 @@
 # MAIL-03 handoff from the isolated transport qualification
 
-**MAIL-02_BLOCKED globally by the retained Debian lint/packaging checks.**
-All native transport rows pass and both initial defects are closed. Do not present
-this as an unconditionally completed prerequisite while those gates fail.
+**MAIL-02_QUALIFIED for isolated transport.** Required Debian gates are green;
+read [the gate closure and rebuilt-image evidence](ci-closure.md). The new native
+image is `sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56`.
+Its quota module and frozen package bytes are unchanged; native tests, Docker26
+private clients/recreation/reboot and guarded queue recovery are replayed on it.
 
 Read the [qualification verdict/matrix](qualification.md) and
 [reproduction procedure](reproduction.md). The frozen transport package is
@@ -135,8 +137,10 @@ response: the signer fault test requires explicit native4xx and no acceptance.
 rate and incomplete-generation information. Keep the measured64MiB-or10% disk
 refusal,60 MAIL attempts/account/minute and7/14/30-day expiry transitions. Future
 operator notification plumbing and actual application compatibility remain later
-lots. Debian ShellCheck/packaging CI debt is unchanged from the initial baseline;
-release acquisition remains a separate failing static gate, not waived here.
+lots. Debian ShellCheck/packaging causes are fixed with unchanged gates; the
+real local OCI manifest replaces the parametric FROM. Preserve its integrity
+checks and BuildKit context binding in future build changes. Public release
+acquisition/publication remains outside this lot.
 
 **SMTP_RECOVERY_UNQUALIFIED** applies independently to coordinated Oxy-form
 restoration and the new profile's queue/registry/Maildir/IMAP/secrets/keys restore.

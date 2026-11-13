@@ -1,0 +1,151 @@
+{
+  "status": "PASS_EXPIRED_ISSUER_NATIVE",
+  "activation_code": "MAIL_CERTIFICATE_INVALID",
+  "active_generation_unchanged": true,
+  "client": {
+    "issuer_verify_code": 10,
+    "auth_emitted": false
+  },
+  "commands": [
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-new",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=Expired lab issuer",
+        "-keyout",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer.key",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer.csr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3199a2470023c64d92ac0e64e33dc825f607ba05571232b54bee87e43298d05"
+    },
+    {
+      "argv": [
+        "openssl",
+        "req",
+        "-new",
+        "-newkey",
+        "rsa:2048",
+        "-nodes",
+        "-subj",
+        "/CN=mail.oxymot.fr",
+        "-keyout",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/leaf.key",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/leaf.csr"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a505d47d4b6d4f995c1c9a10986985fe334b3e6539bee83f938f9bf5ae1c9f32"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer.csr",
+        "-signkey",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer.key",
+        "-set_serial",
+        "999",
+        "-days",
+        "2",
+        "-extfile",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer.ext",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer-state-9c09673377dc462392861c2fb8a531fe/bootstrap.pem"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4587f53e310688545b2530f08a4c847171415cd6ff8e21a72d7acb8f0878f447"
+    },
+    {
+      "argv": [
+        "openssl",
+        "ca",
+        "-batch",
+        "-notext",
+        "-config",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer-state-9c09673377dc462392861c2fb8a531fe/ca.cnf",
+        "-extensions",
+        "leaf",
+        "-startdate",
+        "20260101000000Z",
+        "-enddate",
+        "20260102000000Z",
+        "-in",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer.csr",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer.pem",
+        "-selfsign"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "40d1047e34c5ba6c55d088fc44eb18eab799b5e691f3607cfc643e9243898e48"
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-req",
+        "-in",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/leaf.csr",
+        "-CA",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer.pem",
+        "-CAkey",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/issuer.key",
+        "-set_serial",
+        "901",
+        "-days",
+        "2",
+        "-extfile",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/leaf.ext",
+        "-out",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/leaf.pem"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "12a7fe53874901d3c33878bdfacc5f638a13406b89bdf693df85afe688b1f68e"
+    },
+    {
+      "argv": [
+        "node",
+        "/tmp/mail02-debian/tests/mail/api.cjs",
+        "rotate",
+        "/tmp/mail02-profile-jm4vwss3/config.json",
+        "/tmp/mail02-profile-jm4vwss3/expired-issuer/request.json"
+      ],
+      "exit": 1,
+      "stdout_sha256": "3110feb38a66060c1b8ec196dff2ca062dd47da228a4579196bd339c6309223a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--mount",
+        "type=bind,source=/tmp/mail02-profile-jm4vwss3/expired-issuer,target=/chain,readonly",
+        "--entrypoint",
+        "python3",
+        "sha256:36afa984f1187ff7fef17356fa7ead13af9a756681ac4a0c234a58fdc38f47e8",
+        "-c",
+        "import ssl,socket,threading,json\nctx=ssl.create_default_context(cafile='/chain/issuer.pem');server=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);server.load_cert_chain('/chain/leaf.pem','/chain/leaf.key');sock=socket.socket();sock.bind(('127.0.0.1',0));sock.listen();port=sock.getsockname()[1]\ndef peer():\n c,_=sock.accept()\n try:server.wrap_socket(c,server_side=True).close()\n except ssl.SSLError:c.close()\nt=threading.Thread(target=peer);t.start()\ntry:ctx.wrap_socket(socket.create_connection(('127.0.0.1',port)),server_hostname='mail.oxymot.fr');raise AssertionError('expired issuer trusted')\nexcept ssl.SSLCertVerificationError as e:assert e.verify_code==10;print(json.dumps({'issuer_verify_code':e.verify_code,'auth_emitted':False}))\nt.join();sock.close()\n"
+      ],
+      "exit": 0,
+      "stdout_sha256": "47d7da03103048947d0ad2bafbaa4333c96a3e0dd44bf93b52b1dd2b95b702d1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

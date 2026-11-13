@@ -1,0 +1,74 @@
+
+> @drumee/debian-minimal-application@0.0.0-il5 test
+> node --test test/*.test.js
+
+TAP version 13
+# Subtest: minimal application selects only its explicit native host and operator metadata
+ok 1 - minimal application selects only its explicit native host and operator metadata
+  ---
+  duration_ms: 9.612517
+  type: 'test'
+  ...
+# Subtest: canonical manifest rejects public bindings, mutable images, undeclared dependencies and secret values
+ok 2 - canonical manifest rejects public bindings, mutable images, undeclared dependencies and secret values
+  ---
+  duration_ms: 5.487575
+  type: 'test'
+  ...
+# Subtest: operator profile binds identity, resources, ownership, backup policy and immutable code paths
+ok 3 - operator profile binds identity, resources, ownership, backup policy and immutable code paths
+  ---
+  duration_ms: 4.342262
+  type: 'test'
+  ...
+# Subtest: existing CLI dispatch, JSON renderer and explicit mutation guards work without Docker
+ok 4 - existing CLI dispatch, JSON renderer and explicit mutation guards work without Docker
+  ---
+  duration_ms: 160.163399
+  type: 'test'
+  ...
+# Subtest: profile uses public lifecycle exports and adds no session, identity SQL or SMTP stack
+ok 5 - profile uses public lifecycle exports and adds no session, identity SQL or SMTP stack
+  ---
+  duration_ms: 0.587709
+  type: 'test'
+  ...
+# Subtest: installed alpha.6 profile separates external accounts from internal submission and requires verified relay TLS
+ok 6 - installed alpha.6 profile separates external accounts from internal submission and requires verified relay TLS
+  ---
+  duration_ms: 34.819363
+  type: 'test'
+  ...
+# Subtest: installed canonical external secret import preserves bytes, refuses final newlines and retains consumer ACLs
+ok 7 - installed canonical external secret import preserves bytes, refuses final newlines and retains consumer ACLs
+  ---
+  duration_ms: 17.183059
+  type: 'test'
+  ...
+# Subtest: published registry acquisition and installed bytes identify qualified alpha.6
+ok 8 - published registry acquisition and installed bytes identify qualified alpha.6
+  ---
+  duration_ms: 5.3181
+  type: 'test'
+  ...
+# Subtest: floating references, old source integrity and wrong package versions fail before building
+ok 9 - floating references, old source integrity and wrong package versions fail before building
+  ---
+  duration_ms: 1.254534
+  type: 'test'
+  ...
+# Subtest: modified, missing, unexpected and linked installed members are rejected
+ok 10 - modified, missing, unexpected and linked installed members are rejected
+  ---
+  duration_ms: 24.043819
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 243.305664

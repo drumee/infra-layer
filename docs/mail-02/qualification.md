@@ -1,14 +1,20 @@
 # MAIL-02 final isolated qualification
 
-**MAIL-02_BLOCKED by the retained Debian hosted lint/packaging gates.**
-All20 isolated transport matrix rows pass on the exact configuration below; the
-two initial implementation defects are closed. The global verdict is not promoted
-while applicable hosted gates fail, including this profile's parametric FROM.
-The two initial defects are reproduced and corrected. This dossier distinguishes
-measured transport results, the network amendment, inherited CI failures, and
-restoration work that remains outside this qualification. Both PRs remain drafts:
+**MAIL-02_QUALIFIED for the isolated transport configuration.**
+The Debian ShellCheck and packaging gates are corrected without relaxing either
+control. The rebuilt native image is independently requalified on the workstation
+and Docker26 guest. All20 transport matrix rows and both45-control native replays
+pass. Read the [CI closure addendum](ci-closure.md) for the exact base comparison,
+new image, diagnostic inventory, green hosted jobs and impact analysis. Current
+machine evidence is in [ci-closure-2026-11-13](evidence/ci-closure-2026-11-13/).
+
+The remainder records the previous native checkpoint and its mechanisms; older
+image/checkpoint identities and evidence remain historical. The current image is
+`sha256:ab41ba434fa20afd54f71f43fc31ad2aaa94260193a4e9b56cc0e5c971fb1a56`;
+the quota module and frozen package remain byte-identical. Both PRs remain drafts:
 [Infra38](https://github.com/drumee/infra-layer/pull/38) and
-[Debian13](https://github.com/drumee/debian/pull/13).
+[Debian13](https://github.com/drumee/debian/pull/13). Deployment and restoration
+qualification are separate decisions.
 
 ## Audited and tested identities
 
@@ -201,19 +207,27 @@ checks and5 locked-profile tests, no skips. The exact archive receipt is separat
 from npm's package-audit archive metadata; compare all50 member hashes as well as
 the frozen archive used for native tests.
 
-Hosted checks are recorded in [ci.json](evidence/requalification-2026-11-13/ci.json):
-[Infra43382545851](https://github.com/drumee/infra-layer/actions/runs/43382545851) and
-[Debian43382546758](https://github.com/drumee/debian/actions/runs/43382546758).
-They cover the final runtime/test checkpoints; subsequent dossier commits preserve
-all attested runtime and packed bytes. Live PR checks cover the final documentation
-tips as well. Infra unit/contracts/eslint/packaging/
-dependencies pass. Debian suite and minimal-application-contract pass. Its lint
-and packaging jobs still FAIL:91 ShellCheck diagnostics and15 selected packaging
-diagnostics equal the initial b5a9c70 baseline, zero added/removed. No threshold or
-protection is changed. This is retained repository debt, not a runner attribution
-or a green-CI claim. In particular the local builder verifies its base config ID,
-but the parametric Dockerfile FROM remains a failing static acquisition gate;
-registry acquisition/publication and release readiness are not qualified here.
+The earlier hosted checkpoint and failures remain in historical
+[ci.json](evidence/requalification-2026-11-13/ci.json). Their replacement is the
+[closure checkpoint](evidence/ci-closure-2026-11-13/ci-code-checkpoint.json):
+Debian [43489578609](https://github.com/drumee/debian/actions/runs/43489578609),
+code `5d7afefb459b74a8569635ec05183925f0480f66`, passes lint, packaging, suite and
+minimal-application-contract. The separately reviewable inherited-debt PR14 is
+also green. Final documentation-tip checks and exact final SHAs are linked in
+[PR13 checks](https://github.com/drumee/debian/pull/13/checks) and
+[PR38 checks](https://github.com/drumee/infra-layer/pull/38/checks), and recorded in
+the PR delivery descriptions. No failing required gate is waived.
+
+The closure replays409 Infra unit tests,24 contracts, package installed-consumer
+checks and lint (zero errors/new findings;23 existing warnings); Debian333 suite
+checks,5 mail profile tests,6 OCI/FROM guards,8 maintenance regressions,10 minimal
+application tests and8 plugin-artifact tests pass. A supplemental Infra
+`npm run test:integration` still fails four old services scenarios (three BIND9
+query/restart cases and one controlled relay setup). The same four fail on the
+starting Infra SHA a8661a8 in this environment with unchanged sources, as shown
+by the closure's full logs and comparison. This command is not a required hosted
+quality job. No general integration-suite PASS or runner-cause diagnosis is
+claimed; the autonomous native matrix uses its own controlled DNS/SMTP peers.
 
 CLI administration remains MAIL03; real Ghost/application integration remains
 MAIL04. All public ports, Internet recipients, DNS/PTR, publication, deployment
@@ -230,22 +244,12 @@ Preserve each accepted queue, Oxy ledger and deduplication key. An `accepted` en
 is not recipient receipt. Old-backup replay and lost final SMTP/LMTP acknowledgments
 can duplicate delivery; there is no exactly-once claim.
 
-## Precise remaining gates
+## Closure and remaining scope
 
-No native transport matrix criterion remains open. The following applicable
-hosted checks still prevent a global MAIL02 qualification:
+No MAIL-02 transport criterion or required hosted gate remains open. The corrected
+base comparison includes one PR-introduced mail FROM failure and91 inherited
+ShellCheck diagnostics; [ci-closure.md](ci-closure.md) documents their resolution.
+The current20-row machine matrix contains no FAIL/BLOCKED transport row.
+Supplemental historical service-suite failures remain explicitly recorded above.
 
-1. **Debian lint FAIL:**91 ShellCheck diagnostics, identical to b5a9c70. Resolve the
-   repository findings and replay the unchanged gate; this lot adds no ShellCheck
-   diagnostic and does not weaken its threshold.
-2. **Debian packaging FAIL:**15 selected diagnostics, identical to b5a9c70,
-   including `profiles/mail/Dockerfile.native`'s `FROM ${MAIL_TOOLS_IMAGE}`. The
-   local builder checks the actual base config ID, but that is not a registry
-   manifest pin and is not a passing static acquisition check. Provide a real,
-   attested immutable base/acquisition recipe, fix the other inherited findings,
-   and replay the unchanged gate. Do not label a config ID as a registry digest
-   or add a comment/exception to manufacture a PASS. If new image bytes result,
-   replay the native matrix on them. Publication/deployment remain unauthorized
-   in this lot; a required new published artifact needs a separate owner decision.
-
-[MAIL03 handoff](mail-03-handoff.md). **MAIL-02_BLOCKED**
+[MAIL03 handoff](mail-03-handoff.md). **MAIL-02_QUALIFIED**
