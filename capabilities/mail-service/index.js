@@ -532,6 +532,14 @@ function observeMailService(prepared, context) {
   if (state.rate_limited) alerts.push({ code: "MAIL_ACCOUNT_RATE_LIMIT" });
   return { contract: "drumee.mail-observation/1", healthy: !alerts.length, queue: { count: running.postfix ? queue.length : null, oldest_age_seconds: running.postfix ? oldest : null }, disks, quotas, authentication_failures_10m: failures, certificate_expires_at: certificate.validTo, alerts };
 }
+function verifyMailCredentials(prepared, verifiers, context) {
+  if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  verifyPrepared(prepared); verifyRuntime(prepared);
+  const root = prepared.root + "/durable/registry", registry = JSON.parse(F.read(root + "/public/current.json"));
+  const files = R.credentials(registry, verifiers);
+  for (const [file, content] of Object.entries(files)) if (F.read(root + "/private/generation-" + registry.generation + "/" + file).toString() !== content) V.fail("MAIL_CREDENTIAL_SNAPSHOT_MISMATCH");
+  return { verified: true, generation: registry.generation };
+}
 function observeMailMailbox(prepared, id, context) {
   if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared); verifyRuntime(prepared);
@@ -566,4 +574,4 @@ function operateMailService(prepared, operation, context) {
   const args = operation === "start" ? ["up", "-d"] : operation === "status" ? ["ps", "--format", "json"] : [operation];
   return { revision: prepared.revision, operation, native_output: docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args]) };
 }
-module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, observeMailMailbox, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };
+module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, verifyMailCredentials, observeMailMailbox, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };

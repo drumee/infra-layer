@@ -34,3 +34,5 @@ export function reconcileMailTLS(prepared: PreparedMail, context:{authorized:boo
 export function stageMailRegistryBarrier(prepared: PreparedMail, context:{authorized:boolean;expected_generation:number}): {barrier:true;generation:number};
 
 export function observeMailMailbox(prepared: PreparedMail, id:string, context:{authorized:boolean}): {id:string;used_bytes:number;messages:number;quota_bytes:number;over_quota:boolean;observed_at:string;advisory:true};
+
+export function verifyMailCredentials(prepared: PreparedMail, verifiers:Record<string,string>, context:{authorized:boolean}): {verified:true;generation:number};
