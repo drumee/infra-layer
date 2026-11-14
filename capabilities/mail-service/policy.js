@@ -88,7 +88,7 @@ function startPolicy(directory, ports = [10001, 10002, 10003, 10004], host = "0.
   }
   const mailbox = (r, value) => r.mailboxes.find(b => b.address === value) || r.mailboxes.find(b => b.id === r.aliases.find(a => a.address === value && a.receive_enabled)?.mailbox_id);
   function principals(r) {
-    return [...r.accounts.filter(a => a.enabled).map(a => ({ token: `acct-${a.id}-g${a.credential_generation}`, envelope: a.envelope_from, header: a.header_from, unhealthy: a.dsn_mailbox_id !== undefined ? !r.mailboxes.some(b => b.id === a.dsn_mailbox_id && b.receive_enabled) : !a.envelope_from.some(value => mailbox(r, value)?.receive_enabled) })), ...r.mailboxes.filter(b => b.submission_enabled).map(b => ({ token: `mbx-${b.id}-g${r.generation}`, envelope: [b.address], header: [b.address] }))];
+    return [...r.accounts.filter(a => a.enabled).map(a => ({ token: `acct-${a.id}-g${a.credential_generation}`, envelope: a.envelope_from, header: a.header_from, unhealthy: a.dsn_mailbox_id !== undefined ? !r.mailboxes.some(b => b.id === a.dsn_mailbox_id && b.receive_enabled) : !a.envelope_from.some(value => mailbox(r, value)?.receive_enabled) })), ...r.mailboxes.filter(b => b.submission_enabled).map(b => ({ token: `mbx-${b.id}-g${b.credential_generation || r.generation}`, envelope: [b.address], header: [b.address] }))];
   }
   const socketmap = net.createServer(socket => {
     let buffer = Buffer.alloc(0); socket.setTimeout(10000, () => socket.destroy());

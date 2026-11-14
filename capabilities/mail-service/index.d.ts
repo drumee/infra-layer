@@ -1,4 +1,4 @@
-export interface Mailbox { id: string; address: string; quota_bytes: number; receive_enabled: boolean; imap_enabled: boolean; submission_enabled: boolean }
+export interface Mailbox { id: string; address: string; quota_bytes: number; receive_enabled: boolean; imap_enabled: boolean; submission_enabled: boolean; credential_generation?: number }
 export interface Alias { address: string; mailbox_id: string; receive_enabled: boolean }
 export interface Account { id: string; enabled: boolean; credential_generation: number; envelope_from: string[]; header_from: string[]; dsn_mailbox_id?: string }
 export interface Registry { contract: 'drumee.mail-registry/1'; generation: number; mailboxes: Mailbox[]; aliases: Alias[]; accounts: Account[]; domains?: string[]; service_hostname?: string }
@@ -22,7 +22,7 @@ export function validateRegistry(registry: unknown, spec: MailServiceSpec): Regi
 export function planMailService(spec: MailServiceSpec, resources?: { registry?: Registry; secret_sources?: { ref: string; file: string }[] }): MailPlan | { applicable: false; diagnostics: Diagnostic[] };
 export function composeMailService(plan: MailPlan, distribution?: { acceptance?: boolean; private_bind?: boolean }): object;
 export function prepareMailService(plan: MailPlan, context: { authorized: boolean; acceptance?: boolean; private_bind?: boolean; verifiers?: Record<string,string> }): PreparedMail;
-export function operateMailService(prepared: PreparedMail, operation: 'start'|'stop'|'restart'|'status'|'preflight', context: { authorized: boolean; acceptance?: boolean }): { revision: string; operation: string; native_output: string };
+export function operateMailService(prepared: PreparedMail, operation: 'start'|'stop'|'restart'|'status'|'preflight', context: { authorized: boolean; acceptance?: boolean; recovery_target?: PreparedMail }): { revision: string; operation: string; native_output: string };
 
 export function activateMailRegistry(prepared: PreparedMail, context: { authorized: boolean; expected_generation: number }): { applied: true; changed: boolean; generation: number; smtp_revocation?: string; imap_affected_sessions_kicked?: boolean };
 
@@ -32,3 +32,5 @@ export function rotateMailTLS(prepared: PreparedMail, sources: {certificate_file
 export function reconcileMailTLS(prepared: PreparedMail, context:{authorized:boolean}): {reconciled:true;fingerprint:string;endpoints:object[]};
 
 export function stageMailRegistryBarrier(prepared: PreparedMail, context:{authorized:boolean;expected_generation:number}): {barrier:true;generation:number};
+
+export function observeMailMailbox(prepared: PreparedMail, id:string, context:{authorized:boolean}): {id:string;used_bytes:number;messages:number;quota_bytes:number;over_quota:boolean;observed_at:string;advisory:true};

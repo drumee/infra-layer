@@ -67,7 +67,8 @@ function validateRegistry(registry, spec) {
   const ids = new Set(), addresses = new Set(), accounts = new Set();
   const local = value => address(value) && spec.domains.includes(value.split("@")[1]);
   for (const b of registry.mailboxes) {
-    if (!keys(b, ["id", "address", "quota_bytes", "receive_enabled", "imap_enabled", "submission_enabled"]) || !/^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(b.id) || ids.has(b.id) || !local(b.address) || addresses.has(b.address) || !Number.isSafeInteger(b.quota_bytes) || b.quota_bytes < 1048576 || b.quota_bytes > 1099511627776 || [b.receive_enabled, b.imap_enabled, b.submission_enabled].some(x => typeof x !== "boolean")) fail("MAIL_MAILBOX_INVALID");
+    if (!keys(b, ["id", "address", "quota_bytes", "receive_enabled", "imap_enabled", "submission_enabled", "credential_generation"]) || !/^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(b.id) || ids.has(b.id) || !local(b.address) || addresses.has(b.address) || !Number.isSafeInteger(b.quota_bytes) || b.quota_bytes < 1048576 || b.quota_bytes > 1099511627776 || [b.receive_enabled, b.imap_enabled, b.submission_enabled].some(x => typeof x !== "boolean")) fail("MAIL_MAILBOX_INVALID");
+    if (b.credential_generation !== undefined && (!Number.isSafeInteger(b.credential_generation) || b.credential_generation < 1)) fail("MAIL_MAILBOX_INVALID");
     ids.add(b.id); addresses.add(b.address);
   }
   for (const a of registry.aliases) {
@@ -75,7 +76,7 @@ function validateRegistry(registry, spec) {
     addresses.add(a.address);
   }
   for (const a of registry.accounts) {
-    if (!keys(a, ["id", "enabled", "credential_generation", "envelope_from", "header_from", "dsn_mailbox_id"]) || !/^[a-z][a-z0-9-]{0,62}$/.test(a.id) || accounts.has(a.id) || !Number.isSafeInteger(a.credential_generation) || a.credential_generation < 1 || typeof a.enabled !== "boolean" || ![a.envelope_from, a.header_from].every(x => Array.isArray(x) && (!a.enabled || x.length) && x.every(local)) || a.envelope_from.some(x => !addresses.has(x))) fail("MAIL_ACCOUNT_INVALID");
+    if (!keys(a, ["id", "enabled", "credential_generation", "envelope_from", "header_from", "dsn_mailbox_id"]) || !/^[a-z][a-z0-9-]{0,62}$/.test(a.id) || accounts.has(a.id) || ids.has(a.id) || !Number.isSafeInteger(a.credential_generation) || a.credential_generation < 1 || typeof a.enabled !== "boolean" || ![a.envelope_from, a.header_from].every(x => Array.isArray(x) && (!a.enabled || x.length) && x.every(local)) || a.envelope_from.some(x => !addresses.has(x))) fail("MAIL_ACCOUNT_INVALID");
     if (a.dsn_mailbox_id !== undefined && !ids.has(a.dsn_mailbox_id)) fail("MAIL_ACCOUNT_INVALID");
     accounts.add(a.id);
   }

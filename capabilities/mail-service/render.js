@@ -224,7 +224,7 @@ function credentials(registry, verifiers) {
   const user = (login, b) => `${login}::5000:5000::/mailboxes/${b.id}/home::userdb_mail_path=/mailboxes/${b.id}/Maildir userdb_quota/Mailbox/storage_size=${b.quota_bytes}B`;
   return {
     "imap.passwd": registry.mailboxes.filter(b => b.imap_enabled).map(b => `${b.address}:${get(b.id)}`).join("\n") + "\n",
-    "smtp.passwd": [...registry.accounts.filter(a => a.enabled).map(a => `${a.id}:${get(a.id)}::::::user=acct-${a.id}-g${a.credential_generation}`), ...registry.mailboxes.filter(b => b.submission_enabled).map(b => `${b.address}:${get(b.id)}::::::user=mbx-${b.id}-g${registry.generation}`)].join("\n") + "\n",
+    "smtp.passwd": [...registry.accounts.filter(a => a.enabled).map(a => `${a.id}:${get(a.id)}::::::user=acct-${a.id}-g${a.credential_generation}`), ...registry.mailboxes.filter(b => b.submission_enabled).map(b => `${b.address}:${get(b.id)}::::::user=mbx-${b.id}-g${b.credential_generation || registry.generation}`)].join("\n") + "\n",
     users: registry.mailboxes.flatMap(b => [user(b.address, b), user(`mbx-${b.id}@local.invalid`, b)]).join("\n") + "\n"
   };
 }

@@ -222,6 +222,15 @@ function activateMailRegistry(prepared, context) {
       if (old && account.credential_generation < old.credential_generation || changed && account.credential_generation <= old.credential_generation || !old && !resume && account.credential_generation <= (generations[account.id] || 0)) V.fail("MAIL_CREDENTIAL_GENERATION_REQUIRED");
       generations[account.id] = Math.max(generations[account.id] || 0, account.credential_generation);
     }
+    for (const box of next.mailboxes.filter(b => b.credential_generation !== undefined)) {
+      const old = previous.mailboxes.find(b => b.id === box.id);
+      if (!old) continue;
+      const generation = old.credential_generation || previous.generation;
+      const oldIMAP = F.read(priv + "/generation-" + previous.generation + "/imap.passwd").toString().split("\n").find(x => x.startsWith(old.address + ":"));
+      const newIMAP = F.read(priv + "/generation-" + next.generation + "/imap.passwd").toString().split("\n").find(x => x.startsWith(box.address + ":"));
+      const changed = old.address !== box.address || old.imap_enabled !== box.imap_enabled || old.submission_enabled !== box.submission_enabled || oldIMAP !== newIMAP;
+      if (box.credential_generation < generation || changed && box.credential_generation <= generation) V.fail("MAIL_CREDENTIAL_GENERATION_REQUIRED");
+    }
     const ids = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=dovecot"]).trim().split("\n").filter(Boolean);
     if (ids.length !== 1) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
     const current = JSON.parse(docker(["inspect", ids[0]]))[0], owner = JSON.parse(F.read(root + "/owner.json"));
@@ -523,6 +532,20 @@ function observeMailService(prepared, context) {
   if (state.rate_limited) alerts.push({ code: "MAIL_ACCOUNT_RATE_LIMIT" });
   return { contract: "drumee.mail-observation/1", healthy: !alerts.length, queue: { count: running.postfix ? queue.length : null, oldest_age_seconds: running.postfix ? oldest : null }, disks, quotas, authentication_failures_10m: failures, certificate_expires_at: certificate.validTo, alerts };
 }
+function observeMailMailbox(prepared, id, context) {
+  if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  verifyPrepared(prepared); verifyRuntime(prepared);
+  const registry = JSON.parse(F.read(prepared.root + "/durable/registry/public/current.json"));
+  const box = registry.mailboxes.find(b => b.id === id);
+  if (!box) V.fail("MAIL_NOT_FOUND");
+  const ids = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=dovecot"]).trim().split("\n").filter(Boolean);
+  if (ids.length !== 1) V.fail("MAIL_DEPENDENCY_UNAVAILABLE");
+  const rows = JSON.parse(docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "-f", "json", "mailbox", "status", "-u", "mbx-" + id + "@local.invalid", "messages vsize", "*"]));
+  const values = rows.map(row => ({ messages: Number(row.messages), bytes: Number(row.vsize) }));
+  if (values.some(row => !Number.isSafeInteger(row.messages) || row.messages < 0 || !Number.isSafeInteger(row.bytes) || row.bytes < 0)) V.fail("MAIL_NATIVE_OPERATION_FAILED");
+  const used_bytes = values.reduce((sum, row) => sum + row.bytes, 0), messages = values.reduce((sum, row) => sum + row.messages, 0);
+  return { id, used_bytes, messages, quota_bytes: box.quota_bytes, over_quota: used_bytes > box.quota_bytes, observed_at: new Date().toISOString(), advisory: true };
+}
 function operateMailService(prepared, operation, context) {
   if (context?.authorized !== true || !["start", "stop", "restart", "status", "preflight"].includes(operation)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared);
@@ -531,8 +554,16 @@ function operateMailService(prepared, operation, context) {
   if (operation !== "status" && context.acceptance !== true) V.fail("MAIL_TARGET_QUALIFICATION_REQUIRED");
   // Full generation barriers/session coordination is deliberately not claimed by
   // this initial activation primitive. Never clear an incomplete security barrier.
-  if (["start", "restart"].includes(operation) && fs.existsSync(prepared.root + "/durable/registry/public/admission-closed")) V.fail("MAIL_GENERATION_ACTIVATION_UNQUALIFIED");
+  if (["start", "restart"].includes(operation) && fs.existsSync(prepared.root + "/durable/registry/public/admission-closed")) {
+    const target = context.recovery_target;
+    if (!target) V.fail("MAIL_GENERATION_ACTIVATION_UNQUALIFIED");
+    verifyPrepared(target);
+    const intent = JSON.parse(F.read(prepared.root + "/durable/operator-state/registry-intent.json"));
+    if (target.root !== prepared.root || target.project !== prepared.project || target.transport_digest !== prepared.transport_digest || intent.revision !== target.revision || intent.to !== target.registry_generation || !["applying", "applied"].includes(intent.phase)) V.fail("MAIL_RECOVERY_REQUIRED");
+    // Existing-storage restart only. Both SMTP and native auth gates remain closed.
+    // No projection, queue, resource or identity guard is bypassed or cleared here.
+  }
   const args = operation === "start" ? ["up", "-d"] : operation === "status" ? ["ps", "--format", "json"] : [operation];
   return { revision: prepared.revision, operation, native_output: docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args]) };
 }
-module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };
+module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, observeMailMailbox, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };
