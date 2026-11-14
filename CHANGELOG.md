@@ -1,3 +1,9 @@
+# 0.1.0-alpha.7-mail03.8 — unpublished quota-transition packaging correction
+
+- Keep the quota-lock helper's container path distinct from host home paths so
+  the unchanged package isolation guard accepts the candidate. Preserve its mount,
+  no-follow inode checks, native flock semantics, image and admission protections.
+
 # 0.1.0-alpha.7-mail03.7 — unpublished quota-transition correction
 
 - Reproduce stale in-flight LMTP admission across a reported quota decrease.
