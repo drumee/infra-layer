@@ -470,3 +470,13 @@ and [reproduction procedure](https://github.com/drumee/infra-layer/blob/feat/mai
 Public activation and recovery remain refused. Administrative mailbox, alias,
 account and password CLI verbs belong to MAIL-03. Complete standalone recovery
 and coordinated Oxy-form recovery remain `SMTP_RECOVERY_UNQUALIFIED`.
+
+## MAIL-03 administrative engine
+
+The unpublished MAIL-03 candidate adds sealed admission/release ordering, exact
+usage and bootstrap verification, stable mailbox principal generations and guarded
+retained-backup content purge. Debian owns the SQLite authority and existing
+drumee-ctl administrative namespace. Read [engine amendments](docs/mail-03/engine.md)
+and the paired qualification dossier before using this acceptance-only candidate.
+Native image and quota module bytes remain unchanged. Publication, merge,
+production activation and replacement-storage/coordinated restore are not authorized.

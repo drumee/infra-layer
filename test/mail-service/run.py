@@ -81,10 +81,15 @@ try:
     saved=json.loads((base/'prepared.json').read_text());compose=saved['prepared']['compose']
     compose['services']['dns']={'image':NODE,'entrypoint':['node','/lab/dns.cjs'],'volumes':[str(HERE)+':/lab:ro',str(base/'control')+':/control:ro'],'networks':{'edge':{'ipv4_address':'10.243.47.53'}},'read_only':True}
     compose['services']['mx']={'image':CLIENT_IMAGE,'user':'1000:1000','entrypoint':['python3','/lab/mx.py'],'volumes':[str(HERE)+':/lab:ro',str(keys)+':/keys:ro',str(base/'control')+':/control:ro',str(base/'witness')+':/witness'],'networks':{'edge':{'ipv4_address':'10.243.47.54'}},'read_only':True}
-    compose['services']['postfix']['dns']=['10.243.47.53']
+    assert compose['services']['postfix']['dns']==['10.243.47.53']  # sealed declarative laboratory resolver
     for name in ['dns','mx']:compose['services'][name]['restart']='unless-stopped' if os.environ.get('MAIL02_RETAIN_RUNTIME')=='1' else 'no'
+    # Fixtures belong to a separate project. Activation must continue to reject
+    # every unexpected container in the mail service's ownership boundary.
+    fixtures={'services':{name:compose['services'].pop(name) for name in ['dns','mx']},'networks':{'edge':{'external':True,'name':project+'-edge'}}}
+    write(base/'fixtures.json',fixtures)
     write(file,compose)
     d('compose','-p',project,'-f',str(file),'up','-d')
+    d('compose','-p',project+'-fixtures','-f',str(base/'fixtures.json'),'up','-d')
     wait(lambda:json.loads(d('inspect',project+'-postfix-1').stdout)[0]['State'].get('Health',{}).get('Status')=='healthy')
     check('internal-networks-no-host-publications',all(json.loads(d('network','inspect',project+'-'+n).stdout)[0]['Internal'] for n in ['edge','control']) and all(not x.get('ports') for x in compose['services'].values()))
     # First real submission must traverse Postfix, policy, OpenDKIM, DNS MX and SMTP25.
@@ -184,9 +189,12 @@ except Exception as e:
 finally:
     if file.exists():
         for name in ['postfix','dovecot','opendkim','policy','mx','dns']:
-            output=d('compose','-p',project,'-f',str(file),'logs','--no-color',name,ok=False)
+            fixture=name in ['mx','dns']
+            output=d('compose','-p',project+('-fixtures' if fixture else ''),'-f',str(base/'fixtures.json' if fixture else file),'logs','--no-color',name,ok=False)
             (base/(name+'.log')).write_bytes(output.stdout+output.stderr)
-        if os.environ.get('MAIL02_RETAIN_RUNTIME')!='1':d('compose','-p',project,'-f',str(file),'down',ok=False)
+        if os.environ.get('MAIL02_RETAIN_RUNTIME')!='1':
+            d('compose','-p',project+'-fixtures','-f',str(base/'fixtures.json'),'down',ok=False)
+            d('compose','-p',project,'-f',str(file),'down',ok=False)
         report['runtime_retained']=os.environ.get('MAIL02_RETAIN_RUNTIME')=='1'
     report['source_sha256']=frozen_sources
     report['sources_unchanged']=frozen_sources=={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in HERE.iterdir() if p.is_file()}

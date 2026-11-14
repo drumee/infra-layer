@@ -4,6 +4,7 @@ if (!process.env.MAIL02_CONSUMER) throw Error("MAIL02_INSTALLED_CONSUMER_REQUIRE
 const api = createRequire(process.env.MAIL02_CONSUMER + "/package.json")("@drumee/infra-layer/mail-service");
 const i = JSON.parse(fs.readFileSync(process.argv[2])), spec = require("../../docs/mail-01/examples/service.valid.json");
 spec.deployment = { ...spec.deployment, root: i.root, backup_root: i.root + "-backups", id: i.project, project: i.project, owner_uid: process.getuid(), owner_gid: process.getgid(), images: Object.fromEntries(["postfix", "dovecot", "opendkim", "helper"].map(k => [k, "local/mail@" + (k === "helper" ? i.node_image : i.image)])) };
+spec.networks.dns_servers = ["10.243.47.53"];
 spec.networks.edge_subnet = "10.243.47.0/24"; spec.networks.edge_gateway = "10.243.47.1"; spec.networks.private_submission.address = "10.243.47.1";
 spec.networks.private_submission.allowed_sources = ["10.243.47.0/25"];
 const registry = { contract: "drumee.mail-registry/1", generation: 1,

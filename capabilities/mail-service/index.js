@@ -1,6 +1,7 @@
 "use strict";
 const fs = require("node:fs"), path = require("node:path"), { spawnSync } = require("node:child_process");
 const V = require("./validation"), R = require("./render"), F = require("../../lib/filesystem-safety");
+const mailLock = require("./lock"), Purge = require("./purge");
 const { resolveTrustedExecutable, systemEnvironment } = require("../../internal/system-tools");
 function planMailService(spec, resources = {}) {
   if (!resources || Object.keys(resources).some(k => !["registry", "secret_sources"].includes(k))) V.fail("MAIL_RESOURCES_INVALID");
@@ -11,7 +12,7 @@ function planMailService(spec, resources = {}) {
   registry.service_hostname = normalized.hostname;
   if (resources.secret_sources !== undefined && (!Array.isArray(resources.secret_sources) || resources.secret_sources.some(x => !x || Object.keys(x).sort().join(",") !== "file,ref" || !/^secret:[a-z][a-z0-9-]*\/[a-z][a-z0-9-]*$/.test(x.ref) || typeof x.file !== "string" || !path.isAbsolute(x.file) || path.normalize(x.file) !== x.file) || new Set(resources.secret_sources.map(x => x.ref)).size !== resources.secret_sources.length)) V.fail("MAIL_SECRET_SOURCES_INVALID");
   const artifacts = R.render(normalized, registry);
-  const implementation = V.digest({ artifacts, policy: fs.readFileSync(__dirname + "/policy.js", "utf8"), api: fs.readFileSync(__filename, "utf8"), validation: fs.readFileSync(__dirname + "/validation.js", "utf8"), schema: fs.readFileSync(__dirname + "/schema.json", "utf8"), version: require("../../package.json").version });
+  const implementation = V.digest({ artifacts, policy: fs.readFileSync(__dirname + "/policy.js", "utf8"), api: fs.readFileSync(__filename, "utf8"), lock: fs.readFileSync(__dirname + "/lock.js", "utf8"), purge: fs.readFileSync(__dirname + "/purge.js", "utf8"), rendering: fs.readFileSync(__dirname + "/render.js", "utf8"), validation: fs.readFileSync(__dirname + "/validation.js", "utf8"), schema: fs.readFileSync(__dirname + "/schema.json", "utf8"), version: require("../../package.json").version });
   const private_endpoint = { address: V.privateServiceAddress(normalized), hostname: normalized.hostname, port: normalized.networks.private_submission.port, network: normalized.deployment.project + "-edge" };
   const body = { private_endpoint, implementation, contract: "drumee.mail-plan/1", spec: normalized, registry, secret_sources: resources.secret_sources || [] };
   return { ...body, revision: V.digest(body), applicable: true, diagnostics: [], artifacts };
@@ -28,8 +29,9 @@ function composeMailService(plan, distribution = {}) {
   const s = plan.spec, root = s.deployment.root, candidate = root + "/candidates/" + plan.revision, images = s.deployment.images;
   const bind = (source, target, read_only = true) => ({ type: "bind", source, target, read_only, bind: { create_host_path: false } });
   const service = (role, networks) => ({ image: images[role === "policy" ? "helper" : role].split("@").at(-1), read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], networks, restart: "no", labels: { "org.drumee.mail.owner": s.deployment.id, "org.drumee.mail.revision": plan.revision, "org.drumee.mail.role": role }, tmpfs: ["/run:rw,nosuid,size=64m", "/tmp:rw,noexec,nosuid,size=32m"], volumes: [] });
-  const postfix = service("postfix", ["edge", "control"]), dovecot = service("dovecot", ["edge"]), opendkim = service("opendkim", ["control"]), policy = service("policy", ["control"]);
+  const postfix = service("postfix", ["edge", "control"]), dovecot = service("dovecot", ["edge", "control"]), opendkim = service("opendkim", ["control"]), policy = service("policy", ["control"]);
   for (const value of [postfix, dovecot]) value.cap_add = ["CHOWN", "SETUID", "SETGID", "DAC_OVERRIDE", "FOWNER", "KILL", "NET_BIND_SERVICE"];
+  if (s.networks.dns_servers) postfix.dns = s.networks.dns_servers;
   postfix.networks = { edge: { ipv4_address: plan.private_endpoint.address, aliases: [s.hostname] }, control: {} };
   dovecot.cap_add.push("SYS_CHROOT");
   postfix.cap_add.push("NET_ADMIN", "SETPCAP"); // fixed namespace-only rule install; dropped before exec
@@ -197,13 +199,76 @@ function verifyPrepared(prepared) {
     if (stat.mode & (secret ? 0o077 : 0o022) || V.digest(F.read(full, secret).toString()) !== digest) V.fail("MAIL_PREPARED_TAMPERED");
   }
 }
+function postfixWorkers(id) {
+  const command = 'for f in /proc/[0-9]*/comm; do read -r name < "$f" 2>/dev/null || continue; case "$name" in qmgr|lmtp) printf "%s %s\\n" "$f" "$name";; esac; done; exit 0';
+  const lines = docker(["exec", id, "/bin/sh", "-c", command]).trim().split("\n").filter(Boolean);
+  const result = { qmgr: [], lmtp: [] };
+  for (const line of lines) { const match = line.match(/^\/proc\/([0-9]+)\/comm (qmgr|lmtp)$/); if (!match) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH"); result[match[2]].push(match[1]); }
+  return result;
+}
+function quotaLockProbe(prepared, ids) {
+  const code = `const fs=require('node:fs'),cp=require('node:child_process');const fd=fs.openSync('/quota-home/.drumee-quota.lock',fs.constants.O_RDWR|fs.constants.O_CREAT|fs.constants.O_NOFOLLOW,0o600);try{const s=fs.fstatSync(fd);if(!s.isFile()||s.uid!==5000||s.gid!==5000||s.nlink!==1||(s.mode&0o7777)!==0o600||s.size!==0)process.exit(1);const r=cp.spawnSync('/usr/bin/flock',['--exclusive','--nonblock','3'],{stdio:['ignore','ignore','ignore',fd]});if(r.status!==0)process.exit(1);}finally{fs.closeSync(fd);}console.log('locked');`;
+  for (const id of ids) if (docker(["run", "--rm", "--network", "none", "--read-only", "--user", "5000:5000", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--memory", "67108864", "--cpus", "1", "--pids-limit", "32", "--mount", `type=bind,source=${prepared.root}/durable/mailboxes/${id}/home,target=/quota-home`, "--entrypoint", "node", prepared.compose.services.policy.image, "-e", code]).trim() !== "locked") V.fail("MAIL_APPLY_INCOMPLETE");
+}
+function quotaDrain(prepared, previous, next, dovecot) {
+  const boxes = previous.mailboxes.filter(old => next.mailboxes.some(b => b.id === old.id && b.quota_bytes !== old.quota_bytes));
+  if (!boxes.length) return null;
+  const values = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=postfix"]).trim().split("\n").filter(Boolean);
+  if (values.length !== 1) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
+  const postfix = values[0], file = prepared.root + "/durable/operator-state/quota-drain.json", old = fs.existsSync(file) ? JSON.parse(F.read(file)) : null;
+  if (old && (old.contract !== "drumee.mail-quota-drain/1" || !["draining", "waiting", "restoring", "released"].includes(old.phase) || !/^[a-f0-9]{64}$/.test(old.revision) || !Array.isArray(old.mailbox_ids) || !Array.isArray(old.previous_qmgr))) V.fail("MAIL_INTEGRITY_FAILURE");
+  const active = old && ["draining", "waiting", "restoring"].includes(old.phase), setting = docker(["exec", postfix, "postconf", "-c", "/config", "-h", "defer_transports"]).trim();
+  if (active && old.revision !== prepared.revision || setting !== "" && !(setting === "lmtp" && active && old.revision === prepared.revision)) V.fail("MAIL_RECOVERY_REQUIRED");
+  const before = postfixWorkers(postfix); if (before.qmgr.length !== 1) V.fail("MAIL_DEPENDENCY_UNAVAILABLE");
+  const record = { contract: "drumee.mail-quota-drain/1", revision: prepared.revision, from: previous.generation, to: next.generation, mailbox_ids: boxes.map(b => b.id), previous_qmgr: before.qmgr, phase: "draining" };
+  F.atomic(file, JSON.stringify(record));
+  // Stop new local delivery dispatch; reload retires existing Postfix agents
+  // gracefully. Never stop/reload Dovecot or kill an active LMTP writer.
+  docker(["exec", postfix, "postconf", "-c", "/config", "-e", "defer_transports=lmtp"]);
+  docker(["exec", postfix, "postfix", "-c", "/config", "reload"]);
+  for (const box of boxes) docker(["exec", dovecot, "doveadm", "-c", "/registry/active.conf", "kick", box.address]);
+  F.atomic(file, JSON.stringify({ ...record, phase: "waiting" }));
+  let ready = false; const deadline = Date.now() + 10000;
+  while (Date.now() < deadline && !ready) {
+    const workers = postfixWorkers(postfix), services = JSON.parse(docker(["exec", dovecot, "doveadm", "-c", "/registry/active.conf", "-f", "json", "service", "status", "lmtp"]));
+    const people = JSON.parse(docker(["exec", dovecot, "doveadm", "-c", "/registry/active.conf", "-f", "json", "who"]));
+    const affected = Array.isArray(people) && people.some(row => boxes.some(box => Object.values(row).includes(box.address)));
+    ready = Array.isArray(people) && !affected && workers.qmgr.length === 1 && !before.qmgr.includes(workers.qmgr[0]) && !workers.lmtp.length && Array.isArray(services) && services.length === 1 && services[0].name === "lmtp" && services[0].client_limit === "1" && services[0].process_count === services[0].process_avail && services[0].listen_pending === "n";
+    if (!ready) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+  }
+  if (!ready) V.fail("MAIL_APPLY_INCOMPLETE");
+  // No old recipient context or affected IMAP session remains; new auth is
+  // barred and qmgr defers LMTP. Verify native per-UUID writer locks are free.
+  quotaLockProbe(prepared, record.mailbox_ids);
+  return { file, record, postfix };
+}
+function quotaResume(drain) {
+  if (!drain) return;
+  F.atomic(drain.file, JSON.stringify({ ...drain.record, phase: "restoring" }));
+  const before = postfixWorkers(drain.postfix); if (before.qmgr.length !== 1) V.fail("MAIL_DEPENDENCY_UNAVAILABLE");
+  docker(["exec", drain.postfix, "postconf", "-c", "/config", "-X", "defer_transports"]);
+  docker(["exec", drain.postfix, "postfix", "-c", "/config", "reload"]);
+  let ready = false; const deadline = Date.now() + 10000;
+  while (Date.now() < deadline && !ready) {
+    const workers = postfixWorkers(drain.postfix); ready = workers.qmgr.length === 1 && !before.qmgr.includes(workers.qmgr[0]);
+    if (!ready) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+  }
+  if (!ready || docker(["exec", drain.postfix, "postconf", "-c", "/config", "-h", "defer_transports"]).trim() !== "") V.fail("MAIL_APPLY_INCOMPLETE");
+  F.atomic(drain.file, JSON.stringify({ ...drain.record, phase: "released" }));
+}
 function activateMailRegistry(prepared, context) {
   if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared);
   const root = prepared.root, pub = root + "/durable/registry/public", priv = root + "/durable/registry/private", state = root + "/durable/operator-state";
   if (F.read(state + "/transport-digest").toString() !== prepared.transport_digest) V.fail("MAIL_REGISTRY_TRANSPORT_MISMATCH");
-  return F.lock(root, () => {
-    const previous = JSON.parse(F.read(pub + "/current.json")), next = JSON.parse(F.read(path.dirname(prepared.compose_file) + "/registry.json"));
+  return mailLock(root, () => {
+    const currentPublic = JSON.parse(F.read(pub + "/current.json")), next = JSON.parse(F.read(path.dirname(prepared.compose_file) + "/registry.json"));
+    const intentFile = state + "/registry-intent.json";
+    const intent = fs.existsSync(intentFile) ? JSON.parse(F.read(intentFile)) : null;
+    const resume = fs.existsSync(pub + "/admission-closed") && intent && intent.revision === prepared.revision && intent.to === next.generation && ["applying", "applied"].includes(intent.phase) && intent.previous_registry;
+    if (fs.existsSync(pub + "/admission-closed") && !resume) V.fail("MAIL_RECOVERY_REQUIRED");
+    const previous = resume ? intent.previous_registry : currentPublic;
+    if (resume && (previous.generation !== intent.from || ![V.digest(previous), V.digest(next)].includes(V.digest(currentPublic)))) V.fail("MAIL_REGISTRY_REVISION_CONFLICT");
     if (previous.generation === next.generation && V.digest(previous) === V.digest(next) && !fs.existsSync(pub + "/admission-closed")) return { applied: true, changed: false, generation: next.generation };
     if (previous.generation !== context.expected_generation || next.generation <= previous.generation) V.fail("MAIL_REGISTRY_REVISION_CONFLICT");
     if (previous.mailboxes.some(box => !next.mailboxes.some(x => x.id === box.id))) V.fail("MAIL_RETAINED_DELIVERY_IDENTITY_REQUIRED");
@@ -211,9 +276,18 @@ function activateMailRegistry(prepared, context) {
     const oldSMTP = F.read(priv + "/generation-" + previous.generation + "/smtp.passwd").toString().split("\n"), newSMTP = F.read(priv + "/generation-" + next.generation + "/smtp.passwd").toString().split("\n");
     for (const account of next.accounts) {
       const old = previous.accounts.find(a => a.id === account.id);
-      const changed = old && (V.digest([old.enabled, old.envelope_from, old.header_from]) !== V.digest([account.enabled, account.envelope_from, account.header_from]) || oldSMTP.find(x => x.startsWith(account.id + ":")) !== newSMTP.find(x => x.startsWith(account.id + ":")));
-      if (old && account.credential_generation < old.credential_generation || changed && account.credential_generation <= old.credential_generation || !old && account.credential_generation <= (generations[account.id] || 0)) V.fail("MAIL_CREDENTIAL_GENERATION_REQUIRED");
+      const changed = old && (V.digest([old.enabled, old.envelope_from, old.header_from, old.dsn_mailbox_id]) !== V.digest([account.enabled, account.envelope_from, account.header_from, account.dsn_mailbox_id]) || oldSMTP.find(x => x.startsWith(account.id + ":")) !== newSMTP.find(x => x.startsWith(account.id + ":")));
+      if (old && account.credential_generation < old.credential_generation || changed && account.credential_generation <= old.credential_generation || !old && !resume && account.credential_generation <= (generations[account.id] || 0)) V.fail("MAIL_CREDENTIAL_GENERATION_REQUIRED");
       generations[account.id] = Math.max(generations[account.id] || 0, account.credential_generation);
+    }
+    for (const box of next.mailboxes.filter(b => b.credential_generation !== undefined)) {
+      const old = previous.mailboxes.find(b => b.id === box.id);
+      if (!old) continue;
+      const generation = old.credential_generation || previous.generation;
+      const oldIMAP = F.read(priv + "/generation-" + previous.generation + "/imap.passwd").toString().split("\n").find(x => x.startsWith(old.address + ":"));
+      const newIMAP = F.read(priv + "/generation-" + next.generation + "/imap.passwd").toString().split("\n").find(x => x.startsWith(box.address + ":"));
+      const changed = old.address !== box.address || old.imap_enabled !== box.imap_enabled || old.submission_enabled !== box.submission_enabled || oldIMAP !== newIMAP;
+      if (box.credential_generation < generation || changed && box.credential_generation <= generation) V.fail("MAIL_CREDENTIAL_GENERATION_REQUIRED");
     }
     const ids = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=dovecot"]).trim().split("\n").filter(Boolean);
     if (ids.length !== 1) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
@@ -222,10 +296,16 @@ function activateMailRegistry(prepared, context) {
     const runtimeRevision = F.read(state + "/runtime-revision").toString();
     if (!/^[a-f0-9]{64}$/.test(runtimeRevision)) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
     const runtimePrepared = JSON.parse(F.read(root + "/candidates/" + runtimeRevision + "/prepared.json"));
-    verifyPrepared(runtimePrepared); verifyRuntimeRole(runtimePrepared, "dovecot", current);
+    verifyPrepared(runtimePrepared); verifyRuntime(runtimePrepared); verifyRuntimeRole(runtimePrepared, "dovecot", current);
+    const mailboxIds = Object.keys(prepared.mailbox_identities);
+    if (V.digest(inspectMaildirs(root, prepared.compose.services.policy.image, mailboxIds, mailboxIds)) !== V.digest(prepared.mailbox_identities)) V.fail("MAIL_MAILBOX_IDENTITY_MISMATCH");
+    const runtimeFiles = value => Object.fromEntries(Object.entries(value.files).filter(([file]) => file === "policy.js" || file.startsWith("config/")));
+    if (V.digest(runtimeFiles(prepared)) !== V.digest(runtimeFiles(runtimePrepared))) V.fail("MAIL_RUNTIME_UPGRADE_REQUIRED");
+    F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, previous_registry: previous, phase: "applying" }));
     F.atomic(pub + "/admission-closed", JSON.stringify({ from: previous.generation, to: next.generation }));
-    F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, phase: "applying" }));
+    if (context.barrier_only) return { barrier: true, generation: next.generation };
     try {
+      const drain = quotaDrain(prepared, previous, next, ids[0]);
       // Dovecot passwd-file caches by whole-second mtime + size, not inode.
       // Distinguish equal-size rapid generations before publishing their pointer.
       // Content remains sealed; only this native cache-invalidation metadata changes.
@@ -264,7 +344,7 @@ function activateMailRegistry(prepared, context) {
       for (const box of next.mailboxes) {
         let observed = false;
         for (let retry = 0; retry < 20 && !observed; retry++) {
-          observed = docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "user", "-f", "quota/Mailbox/storage_size", box.address]).trim() === box.quota_bytes + "B";
+          observed = [box.address, "mbx-" + box.id + "@local.invalid"].every(login => docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "user", "-f", "quota/Mailbox/storage_size", login]).trim() === box.quota_bytes + "B");
           if (!observed) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 50);
         }
         if (!observed) V.fail("MAIL_REGISTRY_USERDB_GENERATION_MISMATCH");
@@ -279,13 +359,15 @@ function activateMailRegistry(prepared, context) {
       }
       F.atomic(accountFile, JSON.stringify(generations));
       F.atomic(pub + "/current.json", JSON.stringify(next));
-      F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, phase: "applied" }));
-      fs.unlinkSync(pub + "/admission-closed");
+      quotaResume(drain);
+      F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, previous_registry: previous, phase: "applied" }));
+      if (!context.keep_barrier) fs.unlinkSync(pub + "/admission-closed");
       const directory = fs.openSync(pub, fs.constants.O_RDONLY); try { fs.fsyncSync(directory); } finally { fs.closeSync(directory); }
       return { applied: true, changed: true, generation: next.generation, smtp_revocation: "next-MAIL-DATA", imap_affected_sessions_kicked: true };
     } catch { V.fail("MAIL_APPLY_INCOMPLETE"); }
   });
 }
+function stageMailRegistryBarrier(prepared, context) { return activateMailRegistry(prepared, { ...context, barrier_only: true }); }
 function verifyStorage(prepared) {
   const owner = JSON.parse(F.read(prepared.root + "/owner.json"));
   if (owner.contract !== "drumee.mail-owner/1" || owner.project !== prepared.project || owner.uid !== process.getuid() || owner.gid !== process.getgid() || owner.id !== prepared.compose.services.postfix.labels["org.drumee.mail.owner"]) V.fail("MAIL_RESOURCE_IDENTITY_MISMATCH");
@@ -423,7 +505,7 @@ function probeTLS(prepared, fingerprint) {
 function rotateMailTLS(prepared, sources, context) {
   if (context?.authorized !== true || !sources || Object.keys(sources).sort().join(",") !== "ca_file,certificate_file,key_file") V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared); verifyRuntime(prepared);
-  return F.lock(prepared.root, () => {
+  return mailLock(prepared.root, () => {
     const root = prepared.root, state = root + "/durable/operator-state/tls-intent.json", barrier = root + "/durable/registry/public/admission-closed";
     if (fs.existsSync(barrier)) V.fail("MAIL_GENERATION_ACTIVATION_UNQUALIFIED");
     const previous = readTLS(root), next = stageTLS(root, prepared.hostname, { "certificate.pem": F.read(sources.certificate_file), "key.pem": F.read(sources.key_file), "ca.pem": F.read(sources.ca_file) });
@@ -451,7 +533,7 @@ function rotateMailTLS(prepared, sources, context) {
 function reconcileMailTLS(prepared, context) {
   if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared); verifyRuntime(prepared);
-  return F.lock(prepared.root, () => {
+  return mailLock(prepared.root, () => {
     const state = prepared.root + "/durable/operator-state/tls-intent.json", intent = JSON.parse(F.read(state));
     if (intent.phase !== "rollback-incomplete" || readTLS(prepared.root).target !== intent.previous) V.fail("MAIL_TLS_RECONCILIATION_REFUSED");
     reloadTLS(prepared); const endpoints = probeTLS(prepared, intent.old_fingerprint);
@@ -514,6 +596,74 @@ function observeMailService(prepared, context) {
   if (state.rate_limited) alerts.push({ code: "MAIL_ACCOUNT_RATE_LIMIT" });
   return { contract: "drumee.mail-observation/1", healthy: !alerts.length, queue: { count: running.postfix ? queue.length : null, oldest_age_seconds: running.postfix ? oldest : null }, disks, quotas, authentication_failures_10m: failures, certificate_expires_at: certificate.validTo, alerts };
 }
+function purgeMailMailbox(prepared, input, context) {
+  return Purge.control(prepared, input, context, { verifyPrepared, verifyRuntime, mailLock, docker });
+}
+function releaseMailRegistry(prepared, context) {
+  if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  verifyPrepared(prepared);
+  return mailLock(prepared.root, () => {
+    const root = prepared.root, state = root + "/durable/operator-state", pub = root + "/durable/registry/public";
+    const runtime = JSON.parse(F.read(root + "/candidates/" + F.read(state + "/runtime-revision").toString() + "/prepared.json"));
+    verifyRuntime(runtime);
+    const intent = JSON.parse(F.read(state + "/registry-intent.json")), registry = JSON.parse(F.read(pub + "/current.json")), target = JSON.parse(F.read(path.dirname(prepared.compose_file) + "/registry.json"));
+    if (intent.phase !== "applied" || intent.revision !== prepared.revision || V.digest(registry) !== V.digest(target) || fs.readlinkSync(root + "/durable/registry/private/current") !== "generation-" + registry.generation) V.fail("MAIL_RECOVERY_REQUIRED");
+    const drainFile = state + "/quota-drain.json";
+    if (fs.existsSync(drainFile) && JSON.parse(F.read(drainFile)).phase !== "released") V.fail("MAIL_RECOVERY_REQUIRED");
+    if (fs.existsSync(pub + "/admission-closed")) {
+      const mailboxIds = Object.keys(prepared.mailbox_identities);
+      if (V.digest(inspectMaildirs(root, prepared.compose.services.policy.image, mailboxIds, mailboxIds)) !== V.digest(prepared.mailbox_identities)) V.fail("MAIL_MAILBOX_IDENTITY_MISMATCH");
+      let ready = false;
+      for (let retry = 0; retry < 40 && !ready; retry++) {
+        const ids = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project]).trim().split("\n").filter(Boolean);
+        if (ids.length === 4) ready = JSON.parse(docker(["inspect", ...ids])).every(c => c.State.Running && !c.State.Paused && (!c.State.Health || c.State.Health.Status === "healthy"));
+        if (!ready) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+      }
+      if (!ready) V.fail("MAIL_DEPENDENCY_UNAVAILABLE");
+      fs.unlinkSync(pub + "/admission-closed");
+    }
+    const fd = fs.openSync(pub, "r"); try { fs.fsyncSync(fd); } finally { fs.closeSync(fd); }
+    return { released: true, generation: registry.generation };
+  });
+}
+function finishMailPurge(prepared, operationId, context) {
+  if (context?.authorized !== true || context.acceptance !== true || !/^[a-f0-9-]{36}$/.test(operationId)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  verifyPrepared(prepared);
+  return mailLock(prepared.root, () => {
+    const root = prepared.root, state = root + "/durable/operator-state", pub = root + "/durable/registry/public";
+    const file = state + "/purge-" + operationId + ".json", receipt = JSON.parse(F.read(file)), intent = JSON.parse(F.read(state + "/registry-intent.json")), registry = JSON.parse(F.read(pub + "/current.json"));
+    if (!["erased", "applied"].includes(receipt.phase) || receipt.identity.target !== prepared.revision || intent.phase !== "applied" || intent.revision !== prepared.revision || registry.generation !== prepared.registry_generation || fs.readlinkSync(root + "/durable/registry/private/current") !== "generation-" + registry.generation) V.fail("MAIL_RECOVERY_REQUIRED");
+    if (receipt.phase === "applied" && !fs.existsSync(pub + "/admission-closed")) return { purged: true, retained_identity: true, backup_id: receipt.identity.backup_id };
+    const runtime = JSON.parse(F.read(root + "/candidates/" + F.read(state + "/runtime-revision").toString() + "/prepared.json")); verifyRuntime(runtime);
+    docker(["compose", "-p", runtime.project, "-f", runtime.compose_file, "stop"]);
+    if (docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project]).trim()) V.fail("MAIL_PURGE_REFERENCED");
+    F.atomic(file, JSON.stringify({ ...receipt, phase: "applied" }));
+    fs.unlinkSync(pub + "/admission-closed"); const fd = fs.openSync(pub, "r"); try { fs.fsyncSync(fd); } finally { fs.closeSync(fd); }
+    return { purged: true, retained_identity: true, backup_id: receipt.identity.backup_id };
+  });
+}
+function verifyMailCredentials(prepared, verifiers, context) {
+  if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  verifyPrepared(prepared); verifyRuntime(prepared);
+  const root = prepared.root + "/durable/registry", registry = JSON.parse(F.read(root + "/public/current.json"));
+  const files = R.credentials(registry, verifiers);
+  for (const [file, content] of Object.entries(files)) if (F.read(root + "/private/generation-" + registry.generation + "/" + file).toString() !== content) V.fail("MAIL_CREDENTIAL_SNAPSHOT_MISMATCH");
+  return { verified: true, generation: registry.generation };
+}
+function observeMailMailbox(prepared, id, context) {
+  if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  verifyPrepared(prepared); verifyRuntime(prepared);
+  const registry = JSON.parse(F.read(prepared.root + "/durable/registry/public/current.json"));
+  const box = registry.mailboxes.find(b => b.id === id);
+  if (!box) V.fail("MAIL_NOT_FOUND");
+  const ids = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=dovecot"]).trim().split("\n").filter(Boolean);
+  if (ids.length !== 1) V.fail("MAIL_DEPENDENCY_UNAVAILABLE");
+  const rows = JSON.parse(docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "-f", "json", "mailbox", "status", "-u", "mbx-" + id + "@local.invalid", "messages vsize", "*"]));
+  const values = rows.map(row => ({ messages: Number(row.messages), bytes: Number(row.vsize) }));
+  if (values.some(row => !Number.isSafeInteger(row.messages) || row.messages < 0 || !Number.isSafeInteger(row.bytes) || row.bytes < 0)) V.fail("MAIL_NATIVE_OPERATION_FAILED");
+  const used_bytes = values.reduce((sum, row) => sum + row.bytes, 0), messages = values.reduce((sum, row) => sum + row.messages, 0);
+  return { id, used_bytes, messages, quota_bytes: box.quota_bytes, over_quota: used_bytes > box.quota_bytes, observed_at: new Date().toISOString(), advisory: true };
+}
 function operateMailService(prepared, operation, context) {
   if (context?.authorized !== true || !["start", "stop", "restart", "status", "preflight"].includes(operation)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared);
@@ -522,8 +672,16 @@ function operateMailService(prepared, operation, context) {
   if (operation !== "status" && context.acceptance !== true) V.fail("MAIL_TARGET_QUALIFICATION_REQUIRED");
   // Full generation barriers/session coordination is deliberately not claimed by
   // this initial activation primitive. Never clear an incomplete security barrier.
-  if (["start", "restart"].includes(operation) && fs.existsSync(prepared.root + "/durable/registry/public/admission-closed")) V.fail("MAIL_GENERATION_ACTIVATION_UNQUALIFIED");
+  if (["start", "restart"].includes(operation) && fs.existsSync(prepared.root + "/durable/registry/public/admission-closed")) {
+    const target = context.recovery_target;
+    if (!target) V.fail("MAIL_GENERATION_ACTIVATION_UNQUALIFIED");
+    verifyPrepared(target);
+    const intent = JSON.parse(F.read(prepared.root + "/durable/operator-state/registry-intent.json"));
+    if (target.root !== prepared.root || target.project !== prepared.project || target.transport_digest !== prepared.transport_digest || intent.revision !== target.revision || intent.to !== target.registry_generation || !["applying", "applied"].includes(intent.phase)) V.fail("MAIL_RECOVERY_REQUIRED");
+    // Existing-storage restart only. Both SMTP and native auth gates remain closed.
+    // No projection, queue, resource or identity guard is bypassed or cleared here.
+  }
   const args = operation === "start" ? ["up", "-d"] : operation === "status" ? ["ps", "--format", "json"] : [operation];
   return { revision: prepared.revision, operation, native_output: docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args]) };
 }
-module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };
+module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, purgeMailMailbox, finishMailPurge, releaseMailRegistry, verifyMailCredentials, observeMailMailbox, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };

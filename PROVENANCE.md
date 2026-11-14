@@ -1,5 +1,14 @@
 # Infra Layer IL-1 provenance
 
+MAIL-03 additive source: this repository, branched from qualified MAIL-02 PR38
+465d4e91553edd204b1e3b5ace9ad64791235403, paired with Debian PR13
+ad1c7be3c0a6860fb1cfa58918d79cd026828a95. New admission/lock/purge mechanisms
+are original implementations of docs/mail-01/operations.md; native authentication
+uses the documented Dovecot2.4.1 auth-policy interface. No new production dependency,
+image or quota module is imported. The consumer source lock records each exact
+unpublished archive and producer commit; docs/mail-03/engine.md records amendments.
+Historical source ledgers below remain unchanged.
+
 Architecture approval: transient `a31b544f565ca4438f1ed8df5eccb21bf0486104`,
 `docs/refactoring/34-infra-layer-foundation.md`, refined by the IL-1 request.
 Implementation baseline: transient branch `refactor/mapping`,

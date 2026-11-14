@@ -36,7 +36,7 @@ function validateMailService(input) {
       for (const key of shape.required || []) if (value[key] === undefined) error("MAIL_FIELD_REQUIRED", field + "." + key);
     } else if (shape.type === "array") {
       if (!Array.isArray(value)) { error("MAIL_ARRAY_REQUIRED", field); return; }
-      if (value.length < (shape.minItems || 0) || shape.uniqueItems && new Set(value.map(x => JSON.stringify(canonical(x)))).size !== value.length) error("MAIL_ARRAY_INVALID", field);
+      if (value.length < (shape.minItems || 0) || shape.maxItems !== undefined && value.length > shape.maxItems || shape.uniqueItems && new Set(value.map(x => JSON.stringify(canonical(x)))).size !== value.length) error("MAIL_ARRAY_INVALID", field);
       value.forEach((v, i) => visit(v, shape.items, field + "." + i));
     } else if (shape.type === "string") {
       if (typeof value !== "string" || shape.pattern && !new RegExp(shape.pattern).test(value) || shape.format === "ipv4" && net.isIP(value) !== 4) error("MAIL_STRING_INVALID", field);
@@ -51,6 +51,7 @@ function validateMailService(input) {
   if (![d.root, d.backup_root].every(root) || d.root === d.backup_root || d.root.startsWith(d.backup_root + "/") || d.backup_root.startsWith(d.root + "/")) error("MAIL_STORAGE_OVERLAP", "deployment");
   const gateway = s.networks.edge_gateway.split(".").reduce((a, x) => a * 256 + Number(x), 0);
   if (!subnet || subnet[1]-subnet[0]<7 || gateway <= subnet[0] || gateway >= subnet[1] || !privateIP(s.networks.edge_gateway) || s.networks.private_submission.address !== s.networks.edge_gateway) error("MAIL_NETWORK_INVALID", "networks");
+  if (s.networks.dns_servers?.some(ip => { const first = Number(ip.split(".")[0]); return first === 0 || first === 127 || first >= 224; })) error("MAIL_DNS_INVALID", "networks.dns_servers");
   for (const source of s.networks.private_submission.allowed_sources) if (!cidr(source) || !privateIP(source.split("/")[0])) error("MAIL_SOURCE_INVALID", "networks.private_submission.allowed_sources");
   if (s.outbound.minimal_backoff_seconds > s.outbound.maximal_backoff_seconds || s.outbound.queue_run_delay_seconds > s.outbound.maximal_backoff_seconds) error("MAIL_BACKOFF_INVALID", "outbound");
   if (s.delivery.message_size_bytes > s.delivery.default_quota_bytes) error("MAIL_QUOTA_INVALID", "delivery");
@@ -67,7 +68,8 @@ function validateRegistry(registry, spec) {
   const ids = new Set(), addresses = new Set(), accounts = new Set();
   const local = value => address(value) && spec.domains.includes(value.split("@")[1]);
   for (const b of registry.mailboxes) {
-    if (!keys(b, ["id", "address", "quota_bytes", "receive_enabled", "imap_enabled", "submission_enabled"]) || !/^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(b.id) || ids.has(b.id) || !local(b.address) || addresses.has(b.address) || !Number.isSafeInteger(b.quota_bytes) || b.quota_bytes < 1048576 || b.quota_bytes > 1099511627776 || [b.receive_enabled, b.imap_enabled, b.submission_enabled].some(x => typeof x !== "boolean")) fail("MAIL_MAILBOX_INVALID");
+    if (!keys(b, ["id", "address", "quota_bytes", "receive_enabled", "imap_enabled", "submission_enabled", "credential_generation"]) || !/^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(b.id) || ids.has(b.id) || !local(b.address) || addresses.has(b.address) || !Number.isSafeInteger(b.quota_bytes) || b.quota_bytes < 1048576 || b.quota_bytes > 1099511627776 || [b.receive_enabled, b.imap_enabled, b.submission_enabled].some(x => typeof x !== "boolean")) fail("MAIL_MAILBOX_INVALID");
+    if (b.credential_generation !== undefined && (!Number.isSafeInteger(b.credential_generation) || b.credential_generation < 1)) fail("MAIL_MAILBOX_INVALID");
     ids.add(b.id); addresses.add(b.address);
   }
   for (const a of registry.aliases) {
@@ -75,7 +77,8 @@ function validateRegistry(registry, spec) {
     addresses.add(a.address);
   }
   for (const a of registry.accounts) {
-    if (!keys(a, ["id", "enabled", "credential_generation", "envelope_from", "header_from"]) || !/^[a-z][a-z0-9-]{0,62}$/.test(a.id) || accounts.has(a.id) || !Number.isSafeInteger(a.credential_generation) || a.credential_generation < 1 || typeof a.enabled !== "boolean" || ![a.envelope_from, a.header_from].every(x => Array.isArray(x) && x.length && x.every(local)) || a.envelope_from.some(x => !addresses.has(x))) fail("MAIL_ACCOUNT_INVALID");
+    if (!keys(a, ["id", "enabled", "credential_generation", "envelope_from", "header_from", "dsn_mailbox_id"]) || !/^[a-z][a-z0-9-]{0,62}$/.test(a.id) || accounts.has(a.id) || ids.has(a.id) || !Number.isSafeInteger(a.credential_generation) || a.credential_generation < 1 || typeof a.enabled !== "boolean" || ![a.envelope_from, a.header_from].every(x => Array.isArray(x) && (!a.enabled || x.length) && x.every(local)) || a.envelope_from.some(x => !addresses.has(x))) fail("MAIL_ACCOUNT_INVALID");
+    if (a.dsn_mailbox_id !== undefined && !ids.has(a.dsn_mailbox_id)) fail("MAIL_ACCOUNT_INVALID");
     accounts.add(a.id);
   }
   return structuredClone(registry);

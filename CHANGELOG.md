@@ -1,3 +1,34 @@
+# 0.1.0-alpha.7-mail03.8 — unpublished quota-transition packaging correction
+
+- Keep the quota-lock helper's container path distinct from host home paths so
+  the unchanged package isolation guard accepts the candidate. Preserve its mount,
+  no-follow inode checks, native flock semantics, image and admission protections.
+
+# 0.1.0-alpha.7-mail03.7 — unpublished quota-transition correction
+
+- Reproduce stale in-flight LMTP admission across a reported quota decrease.
+- Defer local dispatch and gracefully retire Postfix delivery contexts before
+  publishing quota changes; preserve accepted mail and unrelated IMAP sessions.
+- Revoke affected IMAP contexts and verify the native UUID writer locks are free.
+  A bounded busy drain keeps admission closed and returns incomplete, never success.
+- Probe primary/internal UUID userdb limits, restore delivery, then allow the
+  durable administrative commit/release protocol. Native image/module bytes stay
+  unchanged; final native qualification is required for this new orchestration.
+
+# 0.1.0-alpha.7-mail03.6 — unpublished administrative engine candidate
+
+- Extend qualified MAIL-02 with crash-released mail locks, sealed reconciliation
+  and admission fencing until the administrative commit is durable.
+- Add private credential snapshot verification, exact virtual-byte observations,
+  mailbox credential generations and explicit monitored application DSN UUIDs.
+- Gate native authentication on the existing policy/control network without
+  password, hash or login attributes; seal declarative resolver overrides.
+- Verify complete runtime/template/storage identities before registry activation.
+- Add separately guarded retained-backup content purge with queue/writer refusals,
+  inode preservation and interruption recovery. Restoration remains unqualified.
+- Preserve capture/relay, native image/module bytes and zero production dependencies.
+  This candidate is local/unpublished; qualification evidence is in the paired dossier.
+
 # 0.1.0-alpha.7-mail02.4 — unpublished follow-up candidate
 
 - Remove forged local Authentication-Results, preserving external transit results.

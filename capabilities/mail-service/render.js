@@ -115,6 +115,11 @@ auth_debug = no
 auth_debug_passwords = no
 auth_verbose_passwords = no
 auth_username_format = %{user | lower}
+auth_policy_server_url = http://policy:10004/
+auth_policy_hash_nonce = admission-only-no-password-attribute
+auth_policy_request_attributes =
+auth_policy_reject_on_fail = yes
+auth_policy_report_after_auth = no
 mail_driver = maildir
 mailbox_list_index = no
 mail_home = /mailboxes/unassigned
@@ -215,11 +220,11 @@ exec dovecot -F -c /registry/active.conf
 ` };
 }
 function credentials(registry, verifiers) {
-  const get = id => { const v = verifiers[id]; if (typeof v !== "string" || !/^\{ARGON2ID\}[^\r\n:]{20,1024}$/.test(v)) throw Object.assign(new Error("MAIL_VERIFIER_INVALID"), { code: "MAIL_VERIFIER_INVALID" }); return v; };
+  const get = id => { const v = verifiers[id]; if (typeof v !== "string" || !/^\{ARGON2ID\}\$argon2id\$v=19\$m=65536,t=3,p=1\$[A-Za-z0-9+/]{16,128}\$[A-Za-z0-9+/]{32,128}$/.test(v)) throw Object.assign(new Error("MAIL_VERIFIER_INVALID"), { code: "MAIL_VERIFIER_INVALID" }); return v; };
   const user = (login, b) => `${login}::5000:5000::/mailboxes/${b.id}/home::userdb_mail_path=/mailboxes/${b.id}/Maildir userdb_quota/Mailbox/storage_size=${b.quota_bytes}B`;
   return {
     "imap.passwd": registry.mailboxes.filter(b => b.imap_enabled).map(b => `${b.address}:${get(b.id)}`).join("\n") + "\n",
-    "smtp.passwd": [...registry.accounts.filter(a => a.enabled).map(a => `${a.id}:${get(a.id)}::::::user=acct-${a.id}-g${a.credential_generation}`), ...registry.mailboxes.filter(b => b.submission_enabled).map(b => `${b.address}:${get(b.id)}::::::user=mbx-${b.id}-g${registry.generation}`)].join("\n") + "\n",
+    "smtp.passwd": [...registry.accounts.filter(a => a.enabled).map(a => `${a.id}:${get(a.id)}::::::user=acct-${a.id}-g${a.credential_generation}`), ...registry.mailboxes.filter(b => b.submission_enabled).map(b => `${b.address}:${get(b.id)}::::::user=mbx-${b.id}-g${b.credential_generation || registry.generation}`)].join("\n") + "\n",
     users: registry.mailboxes.flatMap(b => [user(b.address, b), user(`mbx-${b.id}@local.invalid`, b)]).join("\n") + "\n"
   };
 }
