@@ -1,3 +1,17 @@
+# 0.1.0-alpha.7-mail03.6 — unpublished administrative engine candidate
+
+- Extend qualified MAIL-02 with crash-released mail locks, sealed reconciliation
+  and admission fencing until the administrative commit is durable.
+- Add private credential snapshot verification, exact virtual-byte observations,
+  mailbox credential generations and explicit monitored application DSN UUIDs.
+- Gate native authentication on the existing policy/control network without
+  password, hash or login attributes; seal declarative resolver overrides.
+- Verify complete runtime/template/storage identities before registry activation.
+- Add separately guarded retained-backup content purge with queue/writer refusals,
+  inode preservation and interruption recovery. Restoration remains unqualified.
+- Preserve capture/relay, native image/module bytes and zero production dependencies.
+  This candidate is local/unpublished; qualification evidence is in the paired dossier.
+
 # 0.1.0-alpha.7-mail02.4 — unpublished follow-up candidate
 
 - Remove forged local Authentication-Results, preserving external transit results.
