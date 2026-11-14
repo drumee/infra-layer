@@ -81,7 +81,7 @@ try:
     saved=json.loads((base/'prepared.json').read_text());compose=saved['prepared']['compose']
     compose['services']['dns']={'image':NODE,'entrypoint':['node','/lab/dns.cjs'],'volumes':[str(HERE)+':/lab:ro',str(base/'control')+':/control:ro'],'networks':{'edge':{'ipv4_address':'10.243.47.53'}},'read_only':True}
     compose['services']['mx']={'image':CLIENT_IMAGE,'user':'1000:1000','entrypoint':['python3','/lab/mx.py'],'volumes':[str(HERE)+':/lab:ro',str(keys)+':/keys:ro',str(base/'control')+':/control:ro',str(base/'witness')+':/witness'],'networks':{'edge':{'ipv4_address':'10.243.47.54'}},'read_only':True}
-    compose['services']['postfix']['dns']=['10.243.47.53']
+    assert compose['services']['postfix']['dns']==['10.243.47.53']  # sealed declarative laboratory resolver
     for name in ['dns','mx']:compose['services'][name]['restart']='unless-stopped' if os.environ.get('MAIL02_RETAIN_RUNTIME')=='1' else 'no'
     write(file,compose)
     d('compose','-p',project,'-f',str(file),'up','-d')

@@ -36,7 +36,7 @@ function validateMailService(input) {
       for (const key of shape.required || []) if (value[key] === undefined) error("MAIL_FIELD_REQUIRED", field + "." + key);
     } else if (shape.type === "array") {
       if (!Array.isArray(value)) { error("MAIL_ARRAY_REQUIRED", field); return; }
-      if (value.length < (shape.minItems || 0) || shape.uniqueItems && new Set(value.map(x => JSON.stringify(canonical(x)))).size !== value.length) error("MAIL_ARRAY_INVALID", field);
+      if (value.length < (shape.minItems || 0) || shape.maxItems !== undefined && value.length > shape.maxItems || shape.uniqueItems && new Set(value.map(x => JSON.stringify(canonical(x)))).size !== value.length) error("MAIL_ARRAY_INVALID", field);
       value.forEach((v, i) => visit(v, shape.items, field + "." + i));
     } else if (shape.type === "string") {
       if (typeof value !== "string" || shape.pattern && !new RegExp(shape.pattern).test(value) || shape.format === "ipv4" && net.isIP(value) !== 4) error("MAIL_STRING_INVALID", field);
@@ -51,6 +51,7 @@ function validateMailService(input) {
   if (![d.root, d.backup_root].every(root) || d.root === d.backup_root || d.root.startsWith(d.backup_root + "/") || d.backup_root.startsWith(d.root + "/")) error("MAIL_STORAGE_OVERLAP", "deployment");
   const gateway = s.networks.edge_gateway.split(".").reduce((a, x) => a * 256 + Number(x), 0);
   if (!subnet || subnet[1]-subnet[0]<7 || gateway <= subnet[0] || gateway >= subnet[1] || !privateIP(s.networks.edge_gateway) || s.networks.private_submission.address !== s.networks.edge_gateway) error("MAIL_NETWORK_INVALID", "networks");
+  if (s.networks.dns_servers?.some(ip => { const first = Number(ip.split(".")[0]); return first === 0 || first === 127 || first >= 224; })) error("MAIL_DNS_INVALID", "networks.dns_servers");
   for (const source of s.networks.private_submission.allowed_sources) if (!cidr(source) || !privateIP(source.split("/")[0])) error("MAIL_SOURCE_INVALID", "networks.private_submission.allowed_sources");
   if (s.outbound.minimal_backoff_seconds > s.outbound.maximal_backoff_seconds || s.outbound.queue_run_delay_seconds > s.outbound.maximal_backoff_seconds) error("MAIL_BACKOFF_INVALID", "outbound");
   if (s.delivery.message_size_bytes > s.delivery.default_quota_bytes) error("MAIL_QUOTA_INVALID", "delivery");

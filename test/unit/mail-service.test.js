@@ -46,3 +46,9 @@ test("Private acceptance uses canonical routing and an exact source packet filte
   assert.match(plan.artifacts["postfix-entrypoint.sh"],/nft -f \/source\/private-input.nft/);
   assert.match(plan.artifacts["postfix-entrypoint.sh"],/setpriv --bounding-set=-net_admin/);
 });
+
+test("Declared DNS resolvers are sealed compose inputs rather than a runtime override", () => {
+  const input=structuredClone(example);input.networks.dns_servers=["10.243.47.53"];
+  const plan=api.planMailService(input);assert.equal(plan.applicable,true);assert.deepEqual(api.composeMailService(plan,{acceptance:true}).services.postfix.dns,["10.243.47.53"]);
+  for(const resolvers of [[],["127.0.0.1"],["0.0.0.0"],["224.0.0.1"],["bad"],["10.0.0.1","10.0.0.1"],["10.0.0.1","10.0.0.2","10.0.0.3","10.0.0.4"]]){const bad=structuredClone(input);bad.networks.dns_servers=resolvers;assert.equal(api.validateMailService(bad).valid,false);}
+});

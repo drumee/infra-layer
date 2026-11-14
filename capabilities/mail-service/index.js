@@ -1,7 +1,7 @@
 "use strict";
 const fs = require("node:fs"), path = require("node:path"), { spawnSync } = require("node:child_process");
 const V = require("./validation"), R = require("./render"), F = require("../../lib/filesystem-safety");
-const mailLock = require("./lock");
+const mailLock = require("./lock"), Purge = require("./purge");
 const { resolveTrustedExecutable, systemEnvironment } = require("../../internal/system-tools");
 function planMailService(spec, resources = {}) {
   if (!resources || Object.keys(resources).some(k => !["registry", "secret_sources"].includes(k))) V.fail("MAIL_RESOURCES_INVALID");
@@ -12,7 +12,7 @@ function planMailService(spec, resources = {}) {
   registry.service_hostname = normalized.hostname;
   if (resources.secret_sources !== undefined && (!Array.isArray(resources.secret_sources) || resources.secret_sources.some(x => !x || Object.keys(x).sort().join(",") !== "file,ref" || !/^secret:[a-z][a-z0-9-]*\/[a-z][a-z0-9-]*$/.test(x.ref) || typeof x.file !== "string" || !path.isAbsolute(x.file) || path.normalize(x.file) !== x.file) || new Set(resources.secret_sources.map(x => x.ref)).size !== resources.secret_sources.length)) V.fail("MAIL_SECRET_SOURCES_INVALID");
   const artifacts = R.render(normalized, registry);
-  const implementation = V.digest({ artifacts, policy: fs.readFileSync(__dirname + "/policy.js", "utf8"), api: fs.readFileSync(__filename, "utf8"), validation: fs.readFileSync(__dirname + "/validation.js", "utf8"), schema: fs.readFileSync(__dirname + "/schema.json", "utf8"), version: require("../../package.json").version });
+  const implementation = V.digest({ artifacts, policy: fs.readFileSync(__dirname + "/policy.js", "utf8"), api: fs.readFileSync(__filename, "utf8"), lock: fs.readFileSync(__dirname + "/lock.js", "utf8"), purge: fs.readFileSync(__dirname + "/purge.js", "utf8"), rendering: fs.readFileSync(__dirname + "/render.js", "utf8"), validation: fs.readFileSync(__dirname + "/validation.js", "utf8"), schema: fs.readFileSync(__dirname + "/schema.json", "utf8"), version: require("../../package.json").version });
   const private_endpoint = { address: V.privateServiceAddress(normalized), hostname: normalized.hostname, port: normalized.networks.private_submission.port, network: normalized.deployment.project + "-edge" };
   const body = { private_endpoint, implementation, contract: "drumee.mail-plan/1", spec: normalized, registry, secret_sources: resources.secret_sources || [] };
   return { ...body, revision: V.digest(body), applicable: true, diagnostics: [], artifacts };
@@ -31,6 +31,7 @@ function composeMailService(plan, distribution = {}) {
   const service = (role, networks) => ({ image: images[role === "policy" ? "helper" : role].split("@").at(-1), read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], networks, restart: "no", labels: { "org.drumee.mail.owner": s.deployment.id, "org.drumee.mail.revision": plan.revision, "org.drumee.mail.role": role }, tmpfs: ["/run:rw,nosuid,size=64m", "/tmp:rw,noexec,nosuid,size=32m"], volumes: [] });
   const postfix = service("postfix", ["edge", "control"]), dovecot = service("dovecot", ["edge", "control"]), opendkim = service("opendkim", ["control"]), policy = service("policy", ["control"]);
   for (const value of [postfix, dovecot]) value.cap_add = ["CHOWN", "SETUID", "SETGID", "DAC_OVERRIDE", "FOWNER", "KILL", "NET_BIND_SERVICE"];
+  if (s.networks.dns_servers) postfix.dns = s.networks.dns_servers;
   postfix.networks = { edge: { ipv4_address: plan.private_endpoint.address, aliases: [s.hostname] }, control: {} };
   dovecot.cap_add.push("SYS_CHROOT");
   postfix.cap_add.push("NET_ADMIN", "SETPCAP"); // fixed namespace-only rule install; dropped before exec
@@ -238,9 +239,13 @@ function activateMailRegistry(prepared, context) {
     const runtimeRevision = F.read(state + "/runtime-revision").toString();
     if (!/^[a-f0-9]{64}$/.test(runtimeRevision)) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
     const runtimePrepared = JSON.parse(F.read(root + "/candidates/" + runtimeRevision + "/prepared.json"));
-    verifyPrepared(runtimePrepared); verifyRuntimeRole(runtimePrepared, "dovecot", current);
-    F.atomic(pub + "/admission-closed", JSON.stringify({ from: previous.generation, to: next.generation }));
+    verifyPrepared(runtimePrepared); verifyRuntime(runtimePrepared); verifyRuntimeRole(runtimePrepared, "dovecot", current);
+    const mailboxIds = Object.keys(prepared.mailbox_identities);
+    if (V.digest(inspectMaildirs(root, prepared.compose.services.policy.image, mailboxIds, mailboxIds)) !== V.digest(prepared.mailbox_identities)) V.fail("MAIL_MAILBOX_IDENTITY_MISMATCH");
+    const runtimeFiles = value => Object.fromEntries(Object.entries(value.files).filter(([file]) => file === "policy.js" || file.startsWith("config/")));
+    if (V.digest(runtimeFiles(prepared)) !== V.digest(runtimeFiles(runtimePrepared))) V.fail("MAIL_RUNTIME_UPGRADE_REQUIRED");
     F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, previous_registry: previous, phase: "applying" }));
+    F.atomic(pub + "/admission-closed", JSON.stringify({ from: previous.generation, to: next.generation }));
     if (context.barrier_only) return { barrier: true, generation: next.generation };
     try {
       // Dovecot passwd-file caches by whole-second mtime + size, not inode.
@@ -297,7 +302,7 @@ function activateMailRegistry(prepared, context) {
       F.atomic(accountFile, JSON.stringify(generations));
       F.atomic(pub + "/current.json", JSON.stringify(next));
       F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, previous_registry: previous, phase: "applied" }));
-      fs.unlinkSync(pub + "/admission-closed");
+      if (!context.keep_barrier) fs.unlinkSync(pub + "/admission-closed");
       const directory = fs.openSync(pub, fs.constants.O_RDONLY); try { fs.fsyncSync(directory); } finally { fs.closeSync(directory); }
       return { applied: true, changed: true, generation: next.generation, smtp_revocation: "next-MAIL-DATA", imap_affected_sessions_kicked: true };
     } catch { V.fail("MAIL_APPLY_INCOMPLETE"); }
@@ -532,6 +537,50 @@ function observeMailService(prepared, context) {
   if (state.rate_limited) alerts.push({ code: "MAIL_ACCOUNT_RATE_LIMIT" });
   return { contract: "drumee.mail-observation/1", healthy: !alerts.length, queue: { count: running.postfix ? queue.length : null, oldest_age_seconds: running.postfix ? oldest : null }, disks, quotas, authentication_failures_10m: failures, certificate_expires_at: certificate.validTo, alerts };
 }
+function purgeMailMailbox(prepared, input, context) {
+  return Purge.control(prepared, input, context, { verifyPrepared, verifyRuntime, mailLock, docker });
+}
+function releaseMailRegistry(prepared, context) {
+  if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  verifyPrepared(prepared);
+  return mailLock(prepared.root, () => {
+    const root = prepared.root, state = root + "/durable/operator-state", pub = root + "/durable/registry/public";
+    const runtime = JSON.parse(F.read(root + "/candidates/" + F.read(state + "/runtime-revision").toString() + "/prepared.json"));
+    verifyRuntime(runtime);
+    const intent = JSON.parse(F.read(state + "/registry-intent.json")), registry = JSON.parse(F.read(pub + "/current.json")), target = JSON.parse(F.read(path.dirname(prepared.compose_file) + "/registry.json"));
+    if (intent.phase !== "applied" || intent.revision !== prepared.revision || V.digest(registry) !== V.digest(target) || fs.readlinkSync(root + "/durable/registry/private/current") !== "generation-" + registry.generation) V.fail("MAIL_RECOVERY_REQUIRED");
+    if (fs.existsSync(pub + "/admission-closed")) {
+      const mailboxIds = Object.keys(prepared.mailbox_identities);
+      if (V.digest(inspectMaildirs(root, prepared.compose.services.policy.image, mailboxIds, mailboxIds)) !== V.digest(prepared.mailbox_identities)) V.fail("MAIL_MAILBOX_IDENTITY_MISMATCH");
+      let ready = false;
+      for (let retry = 0; retry < 40 && !ready; retry++) {
+        const ids = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project]).trim().split("\n").filter(Boolean);
+        if (ids.length === 4) ready = JSON.parse(docker(["inspect", ...ids])).every(c => c.State.Running && !c.State.Paused && (!c.State.Health || c.State.Health.Status === "healthy"));
+        if (!ready) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+      }
+      if (!ready) V.fail("MAIL_DEPENDENCY_UNAVAILABLE");
+      fs.unlinkSync(pub + "/admission-closed");
+    }
+    const fd = fs.openSync(pub, "r"); try { fs.fsyncSync(fd); } finally { fs.closeSync(fd); }
+    return { released: true, generation: registry.generation };
+  });
+}
+function finishMailPurge(prepared, operationId, context) {
+  if (context?.authorized !== true || context.acceptance !== true || !/^[a-f0-9-]{36}$/.test(operationId)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  verifyPrepared(prepared);
+  return mailLock(prepared.root, () => {
+    const root = prepared.root, state = root + "/durable/operator-state", pub = root + "/durable/registry/public";
+    const file = state + "/purge-" + operationId + ".json", receipt = JSON.parse(F.read(file)), intent = JSON.parse(F.read(state + "/registry-intent.json")), registry = JSON.parse(F.read(pub + "/current.json"));
+    if (!["erased", "applied"].includes(receipt.phase) || receipt.identity.target !== prepared.revision || intent.phase !== "applied" || intent.revision !== prepared.revision || registry.generation !== prepared.registry_generation || fs.readlinkSync(root + "/durable/registry/private/current") !== "generation-" + registry.generation) V.fail("MAIL_RECOVERY_REQUIRED");
+    if (receipt.phase === "applied" && !fs.existsSync(pub + "/admission-closed")) return { purged: true, retained_identity: true, backup_id: receipt.identity.backup_id };
+    const runtime = JSON.parse(F.read(root + "/candidates/" + F.read(state + "/runtime-revision").toString() + "/prepared.json")); verifyRuntime(runtime);
+    docker(["compose", "-p", runtime.project, "-f", runtime.compose_file, "stop"]);
+    if (docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project]).trim()) V.fail("MAIL_PURGE_REFERENCED");
+    F.atomic(file, JSON.stringify({ ...receipt, phase: "applied" }));
+    fs.unlinkSync(pub + "/admission-closed"); const fd = fs.openSync(pub, "r"); try { fs.fsyncSync(fd); } finally { fs.closeSync(fd); }
+    return { purged: true, retained_identity: true, backup_id: receipt.identity.backup_id };
+  });
+}
 function verifyMailCredentials(prepared, verifiers, context) {
   if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared); verifyRuntime(prepared);
@@ -574,4 +623,4 @@ function operateMailService(prepared, operation, context) {
   const args = operation === "start" ? ["up", "-d"] : operation === "status" ? ["ps", "--format", "json"] : [operation];
   return { revision: prepared.revision, operation, native_output: docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args]) };
 }
-module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, verifyMailCredentials, observeMailMailbox, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };
+module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, purgeMailMailbox, finishMailPurge, releaseMailRegistry, verifyMailCredentials, observeMailMailbox, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };
