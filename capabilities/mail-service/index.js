@@ -199,6 +199,63 @@ function verifyPrepared(prepared) {
     if (stat.mode & (secret ? 0o077 : 0o022) || V.digest(F.read(full, secret).toString()) !== digest) V.fail("MAIL_PREPARED_TAMPERED");
   }
 }
+function postfixWorkers(id) {
+  const command = 'for f in /proc/[0-9]*/comm; do read -r name < "$f" 2>/dev/null || continue; case "$name" in qmgr|lmtp) printf "%s %s\\n" "$f" "$name";; esac; done; exit 0';
+  const lines = docker(["exec", id, "/bin/sh", "-c", command]).trim().split("\n").filter(Boolean);
+  const result = { qmgr: [], lmtp: [] };
+  for (const line of lines) { const match = line.match(/^\/proc\/([0-9]+)\/comm (qmgr|lmtp)$/); if (!match) V.fail("MAIL_RUNTIME_EXECUTION_MISMATCH"); result[match[2]].push(match[1]); }
+  return result;
+}
+function quotaLockProbe(prepared, ids) {
+  const code = `const fs=require('node:fs'),cp=require('node:child_process');const fd=fs.openSync('/home/.drumee-quota.lock',fs.constants.O_RDWR|fs.constants.O_CREAT|fs.constants.O_NOFOLLOW,0o600);try{const s=fs.fstatSync(fd);if(!s.isFile()||s.uid!==5000||s.gid!==5000||s.nlink!==1||(s.mode&0o7777)!==0o600||s.size!==0)process.exit(1);const r=cp.spawnSync('/usr/bin/flock',['--exclusive','--nonblock','3'],{stdio:['ignore','ignore','ignore',fd]});if(r.status!==0)process.exit(1);}finally{fs.closeSync(fd);}console.log('locked');`;
+  for (const id of ids) if (docker(["run", "--rm", "--network", "none", "--read-only", "--user", "5000:5000", "--cap-drop", "ALL", "--security-opt", "no-new-privileges:true", "--memory", "67108864", "--cpus", "1", "--pids-limit", "32", "--mount", `type=bind,source=${prepared.root}/durable/mailboxes/${id}/home,target=/home`, "--entrypoint", "node", prepared.compose.services.policy.image, "-e", code]).trim() !== "locked") V.fail("MAIL_APPLY_INCOMPLETE");
+}
+function quotaDrain(prepared, previous, next, dovecot) {
+  const boxes = previous.mailboxes.filter(old => next.mailboxes.some(b => b.id === old.id && b.quota_bytes !== old.quota_bytes));
+  if (!boxes.length) return null;
+  const values = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=postfix"]).trim().split("\n").filter(Boolean);
+  if (values.length !== 1) V.fail("MAIL_RUNTIME_IDENTITY_MISMATCH");
+  const postfix = values[0], file = prepared.root + "/durable/operator-state/quota-drain.json", old = fs.existsSync(file) ? JSON.parse(F.read(file)) : null;
+  if (old && (old.contract !== "drumee.mail-quota-drain/1" || !["draining", "waiting", "restoring", "released"].includes(old.phase) || !/^[a-f0-9]{64}$/.test(old.revision) || !Array.isArray(old.mailbox_ids) || !Array.isArray(old.previous_qmgr))) V.fail("MAIL_INTEGRITY_FAILURE");
+  const active = old && ["draining", "waiting", "restoring"].includes(old.phase), setting = docker(["exec", postfix, "postconf", "-c", "/config", "-h", "defer_transports"]).trim();
+  if (active && old.revision !== prepared.revision || setting !== "" && !(setting === "lmtp" && active && old.revision === prepared.revision)) V.fail("MAIL_RECOVERY_REQUIRED");
+  const before = postfixWorkers(postfix); if (before.qmgr.length !== 1) V.fail("MAIL_DEPENDENCY_UNAVAILABLE");
+  const record = { contract: "drumee.mail-quota-drain/1", revision: prepared.revision, from: previous.generation, to: next.generation, mailbox_ids: boxes.map(b => b.id), previous_qmgr: before.qmgr, phase: "draining" };
+  F.atomic(file, JSON.stringify(record));
+  // Stop new local delivery dispatch; reload retires existing Postfix agents
+  // gracefully. Never stop/reload Dovecot or kill an active LMTP writer.
+  docker(["exec", postfix, "postconf", "-c", "/config", "-e", "defer_transports=lmtp"]);
+  docker(["exec", postfix, "postfix", "-c", "/config", "reload"]);
+  for (const box of boxes) docker(["exec", dovecot, "doveadm", "-c", "/registry/active.conf", "kick", box.address]);
+  F.atomic(file, JSON.stringify({ ...record, phase: "waiting" }));
+  let ready = false; const deadline = Date.now() + 10000;
+  while (Date.now() < deadline && !ready) {
+    const workers = postfixWorkers(postfix), services = JSON.parse(docker(["exec", dovecot, "doveadm", "-c", "/registry/active.conf", "-f", "json", "service", "status", "lmtp"]));
+    const people = JSON.parse(docker(["exec", dovecot, "doveadm", "-c", "/registry/active.conf", "-f", "json", "who"]));
+    const affected = Array.isArray(people) && people.some(row => boxes.some(box => Object.values(row).includes(box.address)));
+    ready = Array.isArray(people) && !affected && workers.qmgr.length === 1 && !before.qmgr.includes(workers.qmgr[0]) && !workers.lmtp.length && Array.isArray(services) && services.length === 1 && services[0].name === "lmtp" && services[0].client_limit === "1" && services[0].process_count === services[0].process_avail && services[0].listen_pending === "n";
+    if (!ready) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+  }
+  if (!ready) V.fail("MAIL_APPLY_INCOMPLETE");
+  // No old recipient context or affected IMAP session remains; new auth is
+  // barred and qmgr defers LMTP. Verify native per-UUID writer locks are free.
+  quotaLockProbe(prepared, record.mailbox_ids);
+  return { file, record, postfix };
+}
+function quotaResume(drain) {
+  if (!drain) return;
+  F.atomic(drain.file, JSON.stringify({ ...drain.record, phase: "restoring" }));
+  const before = postfixWorkers(drain.postfix); if (before.qmgr.length !== 1) V.fail("MAIL_DEPENDENCY_UNAVAILABLE");
+  docker(["exec", drain.postfix, "postconf", "-c", "/config", "-X", "defer_transports"]);
+  docker(["exec", drain.postfix, "postfix", "-c", "/config", "reload"]);
+  let ready = false; const deadline = Date.now() + 10000;
+  while (Date.now() < deadline && !ready) {
+    const workers = postfixWorkers(drain.postfix); ready = workers.qmgr.length === 1 && !before.qmgr.includes(workers.qmgr[0]);
+    if (!ready) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+  }
+  if (!ready || docker(["exec", drain.postfix, "postconf", "-c", "/config", "-h", "defer_transports"]).trim() !== "") V.fail("MAIL_APPLY_INCOMPLETE");
+  F.atomic(drain.file, JSON.stringify({ ...drain.record, phase: "released" }));
+}
 function activateMailRegistry(prepared, context) {
   if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared);
@@ -248,6 +305,7 @@ function activateMailRegistry(prepared, context) {
     F.atomic(pub + "/admission-closed", JSON.stringify({ from: previous.generation, to: next.generation }));
     if (context.barrier_only) return { barrier: true, generation: next.generation };
     try {
+      const drain = quotaDrain(prepared, previous, next, ids[0]);
       // Dovecot passwd-file caches by whole-second mtime + size, not inode.
       // Distinguish equal-size rapid generations before publishing their pointer.
       // Content remains sealed; only this native cache-invalidation metadata changes.
@@ -286,7 +344,7 @@ function activateMailRegistry(prepared, context) {
       for (const box of next.mailboxes) {
         let observed = false;
         for (let retry = 0; retry < 20 && !observed; retry++) {
-          observed = docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "user", "-f", "quota/Mailbox/storage_size", box.address]).trim() === box.quota_bytes + "B";
+          observed = [box.address, "mbx-" + box.id + "@local.invalid"].every(login => docker(["exec", ids[0], "doveadm", "-c", "/registry/active.conf", "user", "-f", "quota/Mailbox/storage_size", login]).trim() === box.quota_bytes + "B");
           if (!observed) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 50);
         }
         if (!observed) V.fail("MAIL_REGISTRY_USERDB_GENERATION_MISMATCH");
@@ -301,6 +359,7 @@ function activateMailRegistry(prepared, context) {
       }
       F.atomic(accountFile, JSON.stringify(generations));
       F.atomic(pub + "/current.json", JSON.stringify(next));
+      quotaResume(drain);
       F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, previous_registry: previous, phase: "applied" }));
       if (!context.keep_barrier) fs.unlinkSync(pub + "/admission-closed");
       const directory = fs.openSync(pub, fs.constants.O_RDONLY); try { fs.fsyncSync(directory); } finally { fs.closeSync(directory); }
@@ -549,6 +608,8 @@ function releaseMailRegistry(prepared, context) {
     verifyRuntime(runtime);
     const intent = JSON.parse(F.read(state + "/registry-intent.json")), registry = JSON.parse(F.read(pub + "/current.json")), target = JSON.parse(F.read(path.dirname(prepared.compose_file) + "/registry.json"));
     if (intent.phase !== "applied" || intent.revision !== prepared.revision || V.digest(registry) !== V.digest(target) || fs.readlinkSync(root + "/durable/registry/private/current") !== "generation-" + registry.generation) V.fail("MAIL_RECOVERY_REQUIRED");
+    const drainFile = state + "/quota-drain.json";
+    if (fs.existsSync(drainFile) && JSON.parse(F.read(drainFile)).phase !== "released") V.fail("MAIL_RECOVERY_REQUIRED");
     if (fs.existsSync(pub + "/admission-closed")) {
       const mailboxIds = Object.keys(prepared.mailbox_identities);
       if (V.digest(inspectMaildirs(root, prepared.compose.services.policy.image, mailboxIds, mailboxIds)) !== V.digest(prepared.mailbox_identities)) V.fail("MAIL_MAILBOX_IDENTITY_MISMATCH");

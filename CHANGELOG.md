@@ -1,3 +1,14 @@
+# 0.1.0-alpha.7-mail03.7 — unpublished quota-transition correction
+
+- Reproduce stale in-flight LMTP admission across a reported quota decrease.
+- Defer local dispatch and gracefully retire Postfix delivery contexts before
+  publishing quota changes; preserve accepted mail and unrelated IMAP sessions.
+- Revoke affected IMAP contexts and verify the native UUID writer locks are free.
+  A bounded busy drain keeps admission closed and returns incomplete, never success.
+- Probe primary/internal UUID userdb limits, restore delivery, then allow the
+  durable administrative commit/release protocol. Native image/module bytes stay
+  unchanged; final native qualification is required for this new orchestration.
+
 # 0.1.0-alpha.7-mail03.6 — unpublished administrative engine candidate
 
 - Extend qualified MAIL-02 with crash-released mail locks, sealed reconciliation

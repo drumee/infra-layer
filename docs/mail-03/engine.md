@@ -72,6 +72,31 @@ Native isolation/outage/session tests are required; rendering alone is insuffici
 Private submission retains MAIL-02 network amendment B, source drops, verified TLS,
 mandatory AUTH and independent client projects, including Docker26 reboot.
 
+## Quota transition fence
+
+The mail03.6 held-LMTP test exposed a stale recipient context: a 1,200,435-byte
+message completed after a successful shrink to1,048,576. Static post-change races
+alone do not qualify runtime quota transitions. Mail03.7 defers LMTP dispatch in
+Postfix, gracefully reloads its queue manager/agents, revokes affected IMAP
+sessions and waits for old local-delivery clients to finish. It verifies queue
+manager replacement, no remaining Postfix LMTP agents, Dovecot client availability,
+absence of affected IMAP sessions and free native UUID quota locks. New
+authentication is barred throughout. It never kills an active LMTP writer or
+reloads Dovecot; unrelated IMAP reads continue.
+
+Only after draining may the complete userdb generation change. Both primary and
+internal UUID limits are probed. Local dispatch is restored and its queue manager
+verified before the native apply returns. A durable quota-drain intent makes each
+step repeatable; an unowned defer setting refuses. Busy writers produce bounded
+MAIL_APPLY_INCOMPLETE with closed admission, retained queue and old applied state.
+Reconcile waits for those writers to finish, then applies the same target. A
+previously accepted old-limit delivery may legitimately put existing use above a
+new smaller limit: successful output must already report over_quota:true. It must
+never announce a shrink while such a recipient context can still commit later.
+Postfix sessions may retire gracefully during this local-delivery maintenance;
+credential-only changes do not use this fence. Image and native module bytes stay
+unchanged. This new orchestration requires its own native evidence.
+
 ## Explicit guarded content purge
 
 purgeMailMailbox requires a stopped tombstoned UUID, empty queue, no unresolved
