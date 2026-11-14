@@ -1,6 +1,7 @@
 "use strict";
 const fs = require("node:fs"), path = require("node:path"), { spawnSync } = require("node:child_process");
 const V = require("./validation"), R = require("./render"), F = require("../../lib/filesystem-safety");
+const mailLock = require("./lock");
 const { resolveTrustedExecutable, systemEnvironment } = require("../../internal/system-tools");
 function planMailService(spec, resources = {}) {
   if (!resources || Object.keys(resources).some(k => !["registry", "secret_sources"].includes(k))) V.fail("MAIL_RESOURCES_INVALID");
@@ -202,8 +203,14 @@ function activateMailRegistry(prepared, context) {
   verifyPrepared(prepared);
   const root = prepared.root, pub = root + "/durable/registry/public", priv = root + "/durable/registry/private", state = root + "/durable/operator-state";
   if (F.read(state + "/transport-digest").toString() !== prepared.transport_digest) V.fail("MAIL_REGISTRY_TRANSPORT_MISMATCH");
-  return F.lock(root, () => {
-    const previous = JSON.parse(F.read(pub + "/current.json")), next = JSON.parse(F.read(path.dirname(prepared.compose_file) + "/registry.json"));
+  return mailLock(root, () => {
+    const currentPublic = JSON.parse(F.read(pub + "/current.json")), next = JSON.parse(F.read(path.dirname(prepared.compose_file) + "/registry.json"));
+    const intentFile = state + "/registry-intent.json";
+    const intent = fs.existsSync(intentFile) ? JSON.parse(F.read(intentFile)) : null;
+    const resume = fs.existsSync(pub + "/admission-closed") && intent && intent.revision === prepared.revision && intent.to === next.generation && ["applying", "applied"].includes(intent.phase) && intent.previous_registry;
+    if (fs.existsSync(pub + "/admission-closed") && !resume) V.fail("MAIL_RECOVERY_REQUIRED");
+    const previous = resume ? intent.previous_registry : currentPublic;
+    if (resume && (previous.generation !== intent.from || ![V.digest(previous), V.digest(next)].includes(V.digest(currentPublic)))) V.fail("MAIL_REGISTRY_REVISION_CONFLICT");
     if (previous.generation === next.generation && V.digest(previous) === V.digest(next) && !fs.existsSync(pub + "/admission-closed")) return { applied: true, changed: false, generation: next.generation };
     if (previous.generation !== context.expected_generation || next.generation <= previous.generation) V.fail("MAIL_REGISTRY_REVISION_CONFLICT");
     if (previous.mailboxes.some(box => !next.mailboxes.some(x => x.id === box.id))) V.fail("MAIL_RETAINED_DELIVERY_IDENTITY_REQUIRED");
@@ -211,8 +218,8 @@ function activateMailRegistry(prepared, context) {
     const oldSMTP = F.read(priv + "/generation-" + previous.generation + "/smtp.passwd").toString().split("\n"), newSMTP = F.read(priv + "/generation-" + next.generation + "/smtp.passwd").toString().split("\n");
     for (const account of next.accounts) {
       const old = previous.accounts.find(a => a.id === account.id);
-      const changed = old && (V.digest([old.enabled, old.envelope_from, old.header_from]) !== V.digest([account.enabled, account.envelope_from, account.header_from]) || oldSMTP.find(x => x.startsWith(account.id + ":")) !== newSMTP.find(x => x.startsWith(account.id + ":")));
-      if (old && account.credential_generation < old.credential_generation || changed && account.credential_generation <= old.credential_generation || !old && account.credential_generation <= (generations[account.id] || 0)) V.fail("MAIL_CREDENTIAL_GENERATION_REQUIRED");
+      const changed = old && (V.digest([old.enabled, old.envelope_from, old.header_from, old.dsn_mailbox_id]) !== V.digest([account.enabled, account.envelope_from, account.header_from, account.dsn_mailbox_id]) || oldSMTP.find(x => x.startsWith(account.id + ":")) !== newSMTP.find(x => x.startsWith(account.id + ":")));
+      if (old && account.credential_generation < old.credential_generation || changed && account.credential_generation <= old.credential_generation || !old && !resume && account.credential_generation <= (generations[account.id] || 0)) V.fail("MAIL_CREDENTIAL_GENERATION_REQUIRED");
       generations[account.id] = Math.max(generations[account.id] || 0, account.credential_generation);
     }
     const ids = docker(["ps", "-q", "--filter", "label=com.docker.compose.project=" + prepared.project, "--filter", "label=com.docker.compose.service=dovecot"]).trim().split("\n").filter(Boolean);
@@ -224,7 +231,8 @@ function activateMailRegistry(prepared, context) {
     const runtimePrepared = JSON.parse(F.read(root + "/candidates/" + runtimeRevision + "/prepared.json"));
     verifyPrepared(runtimePrepared); verifyRuntimeRole(runtimePrepared, "dovecot", current);
     F.atomic(pub + "/admission-closed", JSON.stringify({ from: previous.generation, to: next.generation }));
-    F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, phase: "applying" }));
+    F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, previous_registry: previous, phase: "applying" }));
+    if (context.barrier_only) return { barrier: true, generation: next.generation };
     try {
       // Dovecot passwd-file caches by whole-second mtime + size, not inode.
       // Distinguish equal-size rapid generations before publishing their pointer.
@@ -279,13 +287,14 @@ function activateMailRegistry(prepared, context) {
       }
       F.atomic(accountFile, JSON.stringify(generations));
       F.atomic(pub + "/current.json", JSON.stringify(next));
-      F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, phase: "applied" }));
+      F.atomic(state + "/registry-intent.json", JSON.stringify({ from: previous.generation, to: next.generation, revision: prepared.revision, previous_registry: previous, phase: "applied" }));
       fs.unlinkSync(pub + "/admission-closed");
       const directory = fs.openSync(pub, fs.constants.O_RDONLY); try { fs.fsyncSync(directory); } finally { fs.closeSync(directory); }
       return { applied: true, changed: true, generation: next.generation, smtp_revocation: "next-MAIL-DATA", imap_affected_sessions_kicked: true };
     } catch { V.fail("MAIL_APPLY_INCOMPLETE"); }
   });
 }
+function stageMailRegistryBarrier(prepared, context) { return activateMailRegistry(prepared, { ...context, barrier_only: true }); }
 function verifyStorage(prepared) {
   const owner = JSON.parse(F.read(prepared.root + "/owner.json"));
   if (owner.contract !== "drumee.mail-owner/1" || owner.project !== prepared.project || owner.uid !== process.getuid() || owner.gid !== process.getgid() || owner.id !== prepared.compose.services.postfix.labels["org.drumee.mail.owner"]) V.fail("MAIL_RESOURCE_IDENTITY_MISMATCH");
@@ -423,7 +432,7 @@ function probeTLS(prepared, fingerprint) {
 function rotateMailTLS(prepared, sources, context) {
   if (context?.authorized !== true || !sources || Object.keys(sources).sort().join(",") !== "ca_file,certificate_file,key_file") V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared); verifyRuntime(prepared);
-  return F.lock(prepared.root, () => {
+  return mailLock(prepared.root, () => {
     const root = prepared.root, state = root + "/durable/operator-state/tls-intent.json", barrier = root + "/durable/registry/public/admission-closed";
     if (fs.existsSync(barrier)) V.fail("MAIL_GENERATION_ACTIVATION_UNQUALIFIED");
     const previous = readTLS(root), next = stageTLS(root, prepared.hostname, { "certificate.pem": F.read(sources.certificate_file), "key.pem": F.read(sources.key_file), "ca.pem": F.read(sources.ca_file) });
@@ -451,7 +460,7 @@ function rotateMailTLS(prepared, sources, context) {
 function reconcileMailTLS(prepared, context) {
   if (context?.authorized !== true) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared); verifyRuntime(prepared);
-  return F.lock(prepared.root, () => {
+  return mailLock(prepared.root, () => {
     const state = prepared.root + "/durable/operator-state/tls-intent.json", intent = JSON.parse(F.read(state));
     if (intent.phase !== "rollback-incomplete" || readTLS(prepared.root).target !== intent.previous) V.fail("MAIL_TLS_RECONCILIATION_REFUSED");
     reloadTLS(prepared); const endpoints = probeTLS(prepared, intent.old_fingerprint);
@@ -526,4 +535,4 @@ function operateMailService(prepared, operation, context) {
   const args = operation === "start" ? ["up", "-d"] : operation === "status" ? ["ps", "--format", "json"] : [operation];
   return { revision: prepared.revision, operation, native_output: docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args]) };
 }
-module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };
+module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };

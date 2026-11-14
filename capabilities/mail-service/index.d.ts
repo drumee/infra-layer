@@ -1,6 +1,6 @@
 export interface Mailbox { id: string; address: string; quota_bytes: number; receive_enabled: boolean; imap_enabled: boolean; submission_enabled: boolean }
 export interface Alias { address: string; mailbox_id: string; receive_enabled: boolean }
-export interface Account { id: string; enabled: boolean; credential_generation: number; envelope_from: string[]; header_from: string[] }
+export interface Account { id: string; enabled: boolean; credential_generation: number; envelope_from: string[]; header_from: string[]; dsn_mailbox_id?: string }
 export interface Registry { contract: 'drumee.mail-registry/1'; generation: number; mailboxes: Mailbox[]; aliases: Alias[]; accounts: Account[]; domains?: string[]; service_hostname?: string }
 export interface MailServiceSpec {
   contract: 'drumee.mail-service/1';
@@ -30,3 +30,5 @@ export function observeMailService(prepared: PreparedMail, context: { authorized
 
 export function rotateMailTLS(prepared: PreparedMail, sources: {certificate_file:string;key_file:string;ca_file:string}, context:{authorized:boolean}): {changed:boolean;fingerprint:string;endpoints?:object[]};
 export function reconcileMailTLS(prepared: PreparedMail, context:{authorized:boolean}): {reconciled:true;fingerprint:string;endpoints:object[]};
+
+export function stageMailRegistryBarrier(prepared: PreparedMail, context:{authorized:boolean;expected_generation:number}): {barrier:true;generation:number};

@@ -88,7 +88,7 @@ function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0",
   }
   const mailbox = (r, value) => r.mailboxes.find(b => b.address === value) || r.mailboxes.find(b => b.id === r.aliases.find(a => a.address === value && a.receive_enabled)?.mailbox_id);
   function principals(r) {
-    return [...r.accounts.filter(a => a.enabled).map(a => ({ token: `acct-${a.id}-g${a.credential_generation}`, envelope: a.envelope_from, header: a.header_from })), ...r.mailboxes.filter(b => b.submission_enabled).map(b => ({ token: `mbx-${b.id}-g${r.generation}`, envelope: [b.address], header: [b.address] }))];
+    return [...r.accounts.filter(a => a.enabled).map(a => ({ token: `acct-${a.id}-g${a.credential_generation}`, envelope: a.envelope_from, header: a.header_from, unhealthy: a.dsn_mailbox_id !== undefined && !r.mailboxes.some(b => b.id === a.dsn_mailbox_id && b.receive_enabled) })), ...r.mailboxes.filter(b => b.submission_enabled).map(b => ({ token: `mbx-${b.id}-g${r.generation}`, envelope: [b.address], header: [b.address] }))];
   }
   const socketmap = net.createServer(socket => {
     let buffer = Buffer.alloc(0); socket.setTimeout(10000, () => socket.destroy());
@@ -142,9 +142,10 @@ function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0",
           if (cmd === "O") { const opts = Buffer.alloc(12); opts.writeUInt32BE(6); if (!(data.readUInt32BE(4) & 0x10)) { socket.destroy(); continue; } opts.writeUInt32BE(0x10, 4); reply("O", opts); continue; }
           if (cmd === "Q") { socket.end(); continue; }
           if (cmd === "A") { envelope = ""; headers = []; headerSize = 0; continue; }
-          if (cmd === "M") { envelope = data.toString().split("\0")[0].replace(/^<|>$/g, "").toLowerCase(); headers = []; headerSize = 0; const a = current(); if (!a) { reject((macros["{auth_authen}"] || macros.auth_authen) ? "421 4.7.0 Credential generation revoked" : "530 5.7.0 Authentication required"); continue; } if (!envelope || !a.envelope.includes(envelope)) { reject("550 5.7.1 Envelope sender unauthorized"); continue; } if (!accountRate(a.token)) { reject("451 4.7.0 Account submission rate exceeded"); continue; } }
+          if (cmd === "M") { envelope = data.toString().split("\0")[0].replace(/^<|>$/g, "").toLowerCase(); headers = []; headerSize = 0; const a = current(); if (!a) { reject((macros["{auth_authen}"] || macros.auth_authen) ? "421 4.7.0 Credential generation revoked" : "530 5.7.0 Authentication required"); continue; } if (a.unhealthy) { reject("451 4.3.0 DSN mailbox unavailable"); continue; } if (!envelope || !a.envelope.includes(envelope)) { reject("550 5.7.1 Envelope sender unauthorized"); continue; } if (!accountRate(a.token)) { reject("451 4.7.0 Account submission rate exceeded"); continue; } }
           if (cmd === "L") { const [name, value] = data.toString().split("\0"); headerSize += data.length; if (headerSize > 65536 || headers.length >= 128) { reject("550 5.6.0 Header limit"); continue; } headers.push([name.toLowerCase(), value]); }
           if (["T", "N", "E"].includes(cmd) && !current()) { reject("421 4.7.0 Credential generation revoked"); continue; }
+          if (["T", "N", "E"].includes(cmd) && current().unhealthy) { reject("451 4.3.0 DSN mailbox unavailable"); continue; }
           if (cmd === "E") {
             const a = current(), from = headers.filter(x => x[0] === "from"), sender = headers.filter(x => x[0] === "sender");
             if (from.length !== 1 || !a.header.includes(authorMailbox(from[0][1])) || sender.length > 1 || sender.length && authorMailbox(sender[0][1]) !== authorMailbox(from[0][1]) || headers.some(x => x[0].startsWith("resent-"))) { reject("550 5.7.1 Author header unauthorized"); continue; }

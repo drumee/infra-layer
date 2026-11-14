@@ -2,7 +2,7 @@
 // Internal Debian system-tool boundary. Deliberately absent from package exports.
 const fs = require("node:fs");
 const path = require("node:path");
-const tools = Object.freeze({ docker: "/usr/bin/docker", ss: "/usr/bin/ss", openssl: "/usr/bin/openssl" });
+const tools = Object.freeze({ docker: "/usr/bin/docker", ss: "/usr/bin/ss", openssl: "/usr/bin/openssl", flock: "/usr/bin/flock" });
 function refuse() { throw Object.assign(new Error("UNTRUSTED_SYSTEM_EXECUTABLE"), { code: "UNTRUSTED_SYSTEM_EXECUTABLE" }); }
 function rootOwned(stat, link = false) {
   if (stat.uid !== 0 || (!link && (stat.mode & 0o022))) refuse();

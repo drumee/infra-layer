@@ -75,7 +75,8 @@ function validateRegistry(registry, spec) {
     addresses.add(a.address);
   }
   for (const a of registry.accounts) {
-    if (!keys(a, ["id", "enabled", "credential_generation", "envelope_from", "header_from"]) || !/^[a-z][a-z0-9-]{0,62}$/.test(a.id) || accounts.has(a.id) || !Number.isSafeInteger(a.credential_generation) || a.credential_generation < 1 || typeof a.enabled !== "boolean" || ![a.envelope_from, a.header_from].every(x => Array.isArray(x) && x.length && x.every(local)) || a.envelope_from.some(x => !addresses.has(x))) fail("MAIL_ACCOUNT_INVALID");
+    if (!keys(a, ["id", "enabled", "credential_generation", "envelope_from", "header_from", "dsn_mailbox_id"]) || !/^[a-z][a-z0-9-]{0,62}$/.test(a.id) || accounts.has(a.id) || !Number.isSafeInteger(a.credential_generation) || a.credential_generation < 1 || typeof a.enabled !== "boolean" || ![a.envelope_from, a.header_from].every(x => Array.isArray(x) && (!a.enabled || x.length) && x.every(local)) || a.envelope_from.some(x => !addresses.has(x))) fail("MAIL_ACCOUNT_INVALID");
+    if (a.dsn_mailbox_id !== undefined && !ids.has(a.dsn_mailbox_id)) fail("MAIL_ACCOUNT_INVALID");
     accounts.add(a.id);
   }
   return structuredClone(registry);
