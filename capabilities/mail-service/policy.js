@@ -56,7 +56,7 @@ function authorMailbox(value) {
   const address = (left === -1 ? clean : clean.slice(left + 1, right)).trim().toLowerCase();
   return /^[a-z0-9][a-z0-9._-]{0,63}@[a-z0-9.-]+$/.test(address) && !address.includes("..") ? address : null;
 }
-function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0", stateDirectory = null) {
+function startPolicy(directory, ports = [10001, 10002, 10003, 10004], host = "0.0.0.0", stateDirectory = null) {
   let counters = { accounts: {}, rate_limited: 0 };
   if (stateDirectory && fs.existsSync(stateDirectory + "/counters.json")) counters = JSON.parse(fs.readFileSync(stateDirectory + "/counters.json"));
   function admit() {
@@ -88,7 +88,7 @@ function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0",
   }
   const mailbox = (r, value) => r.mailboxes.find(b => b.address === value) || r.mailboxes.find(b => b.id === r.aliases.find(a => a.address === value && a.receive_enabled)?.mailbox_id);
   function principals(r) {
-    return [...r.accounts.filter(a => a.enabled).map(a => ({ token: `acct-${a.id}-g${a.credential_generation}`, envelope: a.envelope_from, header: a.header_from, unhealthy: a.dsn_mailbox_id !== undefined && !r.mailboxes.some(b => b.id === a.dsn_mailbox_id && b.receive_enabled) })), ...r.mailboxes.filter(b => b.submission_enabled).map(b => ({ token: `mbx-${b.id}-g${r.generation}`, envelope: [b.address], header: [b.address] }))];
+    return [...r.accounts.filter(a => a.enabled).map(a => ({ token: `acct-${a.id}-g${a.credential_generation}`, envelope: a.envelope_from, header: a.header_from, unhealthy: a.dsn_mailbox_id !== undefined ? !r.mailboxes.some(b => b.id === a.dsn_mailbox_id && b.receive_enabled) : !a.envelope_from.some(value => mailbox(r, value)?.receive_enabled) })), ...r.mailboxes.filter(b => b.submission_enabled).map(b => ({ token: `mbx-${b.id}-g${r.generation}`, envelope: [b.address], header: [b.address] }))];
   }
   const socketmap = net.createServer(socket => {
     let buffer = Buffer.alloc(0); socket.setTimeout(10000, () => socket.destroy());
@@ -168,7 +168,17 @@ function startPolicy(directory, ports = [10001, 10002, 10003], host = "0.0.0.0",
       }
     }); socket.on("error", () => {});
   });
-  const servers = [socketmap, access, milter]; servers.forEach((server, i) => { server.maxConnections = 64; server.listen(ports[i], host); }); return servers;
+  // Dovecot sends no password, hash, login or other attributes to this gate.
+  const auth = require("node:http").createServer({ maxHeaderSize: 4096, requestTimeout: 2000 }, (request, response) => {
+    let bytes = 0;
+    request.on("data", chunk => { bytes += chunk.length; if (bytes > 1024) request.destroy(); });
+    request.on("end", () => {
+      try { registry(); response.writeHead(200, { "content-type": "application/json" }); response.end('{"status":0}'); }
+      catch { response.writeHead(503, { "content-type": "application/json" }); response.end('{"status":-1}'); }
+    });
+    request.on("error", () => {});
+  });
+  const servers = ports.length >= 4 ? [socketmap, access, milter, auth] : [socketmap, access, milter]; servers.forEach((server, i) => { server.maxConnections = 64; server.listen(ports[i], host); }); return servers;
 }
-if (require.main === module) startPolicy("/registry", [10001, 10002, 10003], "0.0.0.0", "/state");
+if (require.main === module) startPolicy("/registry", [10001, 10002, 10003, 10004], "0.0.0.0", "/state");
 module.exports = { startPolicy, authenticationService, authorMailbox };

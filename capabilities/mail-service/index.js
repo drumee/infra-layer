@@ -29,7 +29,7 @@ function composeMailService(plan, distribution = {}) {
   const s = plan.spec, root = s.deployment.root, candidate = root + "/candidates/" + plan.revision, images = s.deployment.images;
   const bind = (source, target, read_only = true) => ({ type: "bind", source, target, read_only, bind: { create_host_path: false } });
   const service = (role, networks) => ({ image: images[role === "policy" ? "helper" : role].split("@").at(-1), read_only: true, cap_drop: ["ALL"], security_opt: ["no-new-privileges:true"], networks, restart: "no", labels: { "org.drumee.mail.owner": s.deployment.id, "org.drumee.mail.revision": plan.revision, "org.drumee.mail.role": role }, tmpfs: ["/run:rw,nosuid,size=64m", "/tmp:rw,noexec,nosuid,size=32m"], volumes: [] });
-  const postfix = service("postfix", ["edge", "control"]), dovecot = service("dovecot", ["edge"]), opendkim = service("opendkim", ["control"]), policy = service("policy", ["control"]);
+  const postfix = service("postfix", ["edge", "control"]), dovecot = service("dovecot", ["edge", "control"]), opendkim = service("opendkim", ["control"]), policy = service("policy", ["control"]);
   for (const value of [postfix, dovecot]) value.cap_add = ["CHOWN", "SETUID", "SETGID", "DAC_OVERRIDE", "FOWNER", "KILL", "NET_BIND_SERVICE"];
   postfix.networks = { edge: { ipv4_address: plan.private_endpoint.address, aliases: [s.hostname] }, control: {} };
   dovecot.cap_add.push("SYS_CHROOT");
