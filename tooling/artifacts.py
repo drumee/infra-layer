@@ -19,7 +19,12 @@ import uuid
 CONTRACT = 'drumee.artifact-run/1'
 POLICY = 'drumee.artifact-retention/1'
 MANIFEST = 'artifact-manifest.json'
-CONTROL = {MANIFEST, '.lease', 'checksums.json', 'events.jsonl'}
+LEASE = '.lease'
+EVENTS = 'events.jsonl'
+CHECKSUMS = 'checksums.json'
+ATOMIC_PREFIX = '.atomic-'
+CLEANUP_EVENTS = '.cleanup-events.jsonl'
+CONTROL = {MANIFEST, LEASE, CHECKSUMS, EVENTS}
 STATES = {'active', 'resumable', 'completed'}
 EPHEMERAL = {'tmpfs', 'ramfs', 'overlay', 'aufs', 'squashfs'}
 
@@ -51,10 +56,14 @@ def unique(pairs):
     return out
 
 
+def reject_nonfinite(unused):
+    raise ValueError('ARTIFACT_JSON_NONFINITE')
+
+
 def decode(data):
     try:
         return json.loads(data, object_pairs_hook=unique,
-                          parse_constant=lambda value: (_ for _ in ()).throw(ValueError('ARTIFACT_JSON_NONFINITE')))
+                          parse_constant=reject_nonfinite)
     except RecursionError:
         raise ValueError('ARTIFACT_JSON_NESTING_INVALID') from None
 
@@ -107,7 +116,7 @@ def read_at(fd, name):
 
 
 def atomic_at(fd, name, value):
-    temporary = '.atomic-' + uuid.uuid4().hex
+    temporary = ATOMIC_PREFIX + uuid.uuid4().hex
     file = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600, dir_fd=fd)
     try:
         with os.fdopen(file, 'w') as stream:
@@ -140,7 +149,7 @@ def append_at(fd, name, event):
 def root_store(create=False, persistent=False):
     home = pathlib.Path.home()
     # Do not let an alias of /tmp (or a symlinked HOME) supply the durable root.
-    if home.resolve() != home or any(home == p or p in home.parents for p in [pathlib.Path('/tmp'), pathlib.Path('/var/tmp')]):
+    if home.resolve() != home or any(p.stat().st_mode & 0o002 for p in [home, *home.parents]):
         raise ValueError('ARTIFACT_HOME_UNSAFE')
     for path in [home, *home.parents]:
         if path.is_symlink():
@@ -195,7 +204,7 @@ def run_directory(root, project, lot, execution, create=False):
 
 @contextlib.contextmanager
 def lease(fd, inherit=True):
-    file = os.open('.lease', os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600, dir_fd=fd)
+    file = os.open(LEASE, os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600, dir_fd=fd)
     try:
         secure_stat(os.fstat(file))
         if mount_id(file) != mount_id(fd):
@@ -328,7 +337,7 @@ def sizes(fd):
 def checkpoint(fd, m, resume=None):
     inventory = {}
     def add(name, info, file):
-        if file is not None and name not in CONTROL and not name.startswith('.atomic-'):
+        if file is not None and name not in CONTROL and not name.startswith(ATOMIC_PREFIX):
             digest = hashlib.sha256()
             with os.fdopen(os.dup(file), 'rb') as stream:
                 for block in iter(lambda: stream.read(1024 * 1024), b''):
@@ -338,13 +347,13 @@ def checkpoint(fd, m, resume=None):
     walk(fd, add, skip_root=skipped)
     value = {'contract': 'drumee.artifact-checksums/1', 'at': stamp(), 'files': inventory,
              'excluded': skipped, 'exclusion_reason': 'live runtime; backup protection retained' if skipped else None}
-    atomic_at(fd, 'checksums.json', value)
+    atomic_at(fd, CHECKSUMS, value)
     if resume is not None:
         m['resume'] = resume
     m['updated_at'] = stamp()
     m['checksums_sha256'] = hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
     atomic_at(fd, MANIFEST, m)
-    append_at(fd, 'events.jsonl', {'at': stamp(), 'state': m['state'], 'resume': m.get('resume'), 'files': len(inventory)})
+    append_at(fd, EVENTS, {'at': stamp(), 'state': m['state'], 'resume': m.get('resume'), 'files': len(inventory)})
     return value
 
 
@@ -368,7 +377,7 @@ def initialize(project, lot, execution, retention_days=None):
 
 
 def remove_contents(fd, released):
-    for entry in sorted(os.scandir(fd), key=lambda e: (e.name in {MANIFEST, '.lease'}, e.name)):
+    for entry in sorted(os.scandir(fd), key=lambda e: (e.name in {MANIFEST, LEASE}, e.name)):
         info = entry.stat(follow_symlinks=False)
         if stat.S_ISDIR(info.st_mode):
             child = directory_at(fd, entry.name, mount_id(fd))
@@ -399,102 +408,139 @@ def remove_contents(fd, released):
     os.fsync(fd)
 
 
-def cleanup(apply=False, project=None, lot=None, execution=None):
-    rows = []
+def unsafe_row(path, reason):
+    return {'path': str(path), 'eligible': False, 'age_days': None, 'size_bytes': None,
+            'action': 'preserved', 'reason': reason}
+
+
+def revalidate_cleanup(fd, parent, execution, root, manifest):
+    current = validate_manifest(read_at(fd, MANIFEST), manifest['project'], manifest['lot'], execution)
+    if not eligibility(current, policy_at(root))[0] or current != manifest:
+        raise ValueError('ARTIFACT_ELIGIBILITY_CHANGED')
+    sizes(fd)
+    identity = os.fstat(fd)
+    linked = os.stat(execution, dir_fd=parent, follow_symlinks=False)
+    if (identity.st_dev, identity.st_ino) != (linked.st_dev, linked.st_ino):
+        raise ValueError('ARTIFACT_IDENTITY_CHANGED')
+    return current, identity
+
+
+def incomplete_cleanup(fd, root, row, manifest, released):
+    if MANIFEST in os.listdir(fd):
+        manifest.update(state='resumable', completed_at=None,
+                        resume={'next': 'manual review of partial cleanup'})
+        atomic_at(fd, MANIFEST, manifest)
+    row.update(action='incomplete', released=released)
+    append_at(root, CLEANUP_EVENTS, {'at': stamp(), 'action': 'deletion-incomplete',
+                                    'path': row['path'], **released})
+
+
+def apply_cleanup(fd, parent, execution, root, row, manifest):
+    current, identity = revalidate_cleanup(fd, parent, execution, root, manifest)
+    released = {'size_bytes': 0, 'allocated_bytes': 0}
+    free_before = os.fstatvfs(root).f_bavail * os.fstatvfs(root).f_frsize
+    append_at(root, CLEANUP_EVENTS, {'at': stamp(), 'action': 'deletion-started',
+        'path': row['path'], 'identity': [identity.st_dev, identity.st_ino], 'reason': row['reason']})
     try:
-        store = root_store(persistent=True)
-        with store as (root, _), global_lock(root):
+        remove_contents(fd, released)
+        os.rmdir(execution, dir_fd=parent)
+        os.fsync(parent)
+    except BaseException:
+        incomplete_cleanup(fd, root, row, current, released)
+        raise
+    free_after = os.fstatvfs(root).f_bavail * os.fstatvfs(root).f_frsize
+    row.update(action='deleted', released=released, filesystem_free_delta_bytes=free_after-free_before)
+    append_at(root, CLEANUP_EVENTS, {'at': stamp(), **row})
+
+
+def cleanup_execution(root, project, lot, execution, policy, apply):
+    path = pathlib.Path.home() / 'artifacts' / project / lot / execution
+    row = unsafe_row(path, 'manual review')
+    try:
+        identifier(execution)
+        with run_directory(root, project, lot, execution) as (fd, parent), lease(fd, inherit=False):
+            m = validate_manifest(read_at(fd, MANIFEST), project, lot, execution)
+            row.update(age_days=(now() - timestamp(m['created_at'])).total_seconds()/86400,
+                       retention_days=retention(m, policy))
+            row['eligible'], row['reason'] = eligibility(m, policy)
+            row.update(sizes(fd))
+            if row['eligible'] and apply:
+                apply_cleanup(fd, parent, execution, root, row, m)
+    except (ValueError, OSError, KeyError, TypeError) as error:
+        row.update(eligible=False, reason='manual review: ' + type(error).__name__ + ' ' + str(error))
+    return row
+
+
+def selected_names(fd, selected=None, hide_control=False):
+    return [name for name in sorted(os.listdir(fd))
+            if (not selected or name == selected) and not (hide_control and name.startswith('.'))]
+
+
+def cleanup_lot(root, project, project_fd, lot, execution, policy, apply):
+    path = pathlib.Path.home() / 'artifacts' / project / lot
+    try:
+        fd = directory_at(project_fd, identifier(lot), mount_id(root))
+    except (ValueError, OSError):
+        return [unsafe_row(path, 'unsafe lot; manual review')]
+    try:
+        return [cleanup_execution(root, project, lot, name, policy, apply)
+                for name in selected_names(fd, execution)]
+    finally:
+        os.close(fd)
+
+
+def cleanup_project(root, project, lot, execution, policy, apply):
+    path = pathlib.Path.home() / 'artifacts' / project
+    try:
+        fd = directory_at(root, identifier(project), mount_id(root))
+    except (ValueError, OSError):
+        return [unsafe_row(path, 'unsafe project; manual review')]
+    try:
+        rows = []
+        for name in selected_names(fd, lot):
+            rows.extend(cleanup_lot(root, project, fd, name, execution, policy, apply))
+        return rows
+    finally:
+        os.close(fd)
+
+
+def cleanup(apply=False, project=None, lot=None, execution=None):
+    try:
+        with root_store(persistent=True) as (root, _), global_lock(root):
             policy = policy_at(root)
-            for p in sorted(os.listdir(root)):
-                if p.startswith('.') or (project and p != project):
-                    continue
-                try:
-                    pfd = directory_at(root, identifier(p), mount_id(root))
-                except (ValueError, OSError):
-                    rows.append({'path': str(pathlib.Path.home() / 'artifacts' / p), 'eligible': False, 'age_days': None, 'size_bytes': None, 'action': 'preserved', 'reason': 'unsafe project; manual review'}); continue
-                try:
-                    for l in sorted(os.listdir(pfd)):
-                        if lot and l != lot:
-                            continue
-                        try:
-                            lfd = directory_at(pfd, identifier(l), mount_id(root))
-                        except (ValueError, OSError):
-                            rows.append({'path': str(pathlib.Path.home() / 'artifacts' / p / l), 'eligible': False, 'age_days': None, 'size_bytes': None, 'action': 'preserved', 'reason': 'unsafe lot; manual review'}); continue
-                        try:
-                            for e in sorted(os.listdir(lfd)):
-                                if execution and e != execution:
-                                    continue
-                                path = pathlib.Path.home() / 'artifacts' / p / l / e
-                                row = {'path': str(path), 'eligible': False, 'age_days': None, 'size_bytes': None, 'action': 'preserved'}
-                                try:
-                                    identifier(e)
-                                    with run_directory(root, p, l, e) as (fd, parent), lease(fd, inherit=False):
-                                        m = validate_manifest(read_at(fd, MANIFEST), p, l, e)
-                                        row.update(age_days=(now() - timestamp(m['created_at'])).total_seconds()/86400,
-                                                   retention_days=retention(m, policy))
-                                        row['eligible'], row['reason'] = eligibility(m, policy)
-                                        row.update(sizes(fd))
-                                        if row['eligible'] and apply:
-                                            # Re-read state/policy/identity and scan again immediately before deletion.
-                                            current = validate_manifest(read_at(fd, MANIFEST), p, l, e)
-                                            if not eligibility(current, policy_at(root))[0] or current != m:
-                                                raise ValueError('ARTIFACT_ELIGIBILITY_CHANGED')
-                                            sizes(fd)
-                                            identity = os.fstat(fd)
-                                            linked = os.stat(e, dir_fd=parent, follow_symlinks=False)
-                                            if (identity.st_dev, identity.st_ino) != (linked.st_dev, linked.st_ino):
-                                                raise ValueError('ARTIFACT_IDENTITY_CHANGED')
-                                            released = {'size_bytes': 0, 'allocated_bytes': 0}
-                                            free_before = os.fstatvfs(root).f_bavail * os.fstatvfs(root).f_frsize
-                                            append_at(root, '.cleanup-events.jsonl', {'at': stamp(), 'action': 'deletion-started', 'path': str(path), 'identity': [identity.st_dev, identity.st_ino], 'reason': row['reason']})
-                                            try:
-                                                remove_contents(fd, released)
-                                                os.rmdir(e, dir_fd=parent); os.fsync(parent)
-                                            except BaseException:
-                                                # A partial cleanup must not be selected automatically again.
-                                                if MANIFEST in os.listdir(fd):
-                                                    current['state'] = 'resumable'; current['completed_at'] = None
-                                                    current['resume'] = {'next': 'manual review of partial cleanup'}
-                                                    atomic_at(fd, MANIFEST, current)
-                                                row.update(action='incomplete', released=released)
-                                                append_at(root, '.cleanup-events.jsonl', {'at': stamp(), 'action': 'deletion-incomplete', 'path': str(path), **released})
-                                                raise
-                                            free_after = os.fstatvfs(root).f_bavail * os.fstatvfs(root).f_frsize
-                                            row.update(action='deleted', released=released, filesystem_free_delta_bytes=free_after-free_before)
-                                            append_at(root, '.cleanup-events.jsonl', {'at': stamp(), **row})
-                                except (ValueError, OSError, KeyError, TypeError) as error:
-                                    row.update(eligible=False, reason='manual review: ' + type(error).__name__ + ' ' + str(error))
-                                rows.append(row)
-                        finally:
-                            os.close(lfd)
-                finally:
-                    os.close(pfd)
+            rows = []
+            for name in selected_names(root, project, True):
+                rows.extend(cleanup_project(root, name, lot, execution, policy, apply))
+            return rows
     except FileNotFoundError:
         return []
-    return rows
+
+
+def changed_manifest(m, args):
+    for key in ['pinned', 'qualification_required', 'backup_required', 'retention_days']:
+        value = getattr(args, key, None)
+        if value is not None:
+            m[key] = days(value) if key == 'retention_days' else value
+    if args.state:
+        m['state'] = args.state
+        m['completed_at'] = stamp() if args.state == 'completed' else None
 
 
 def mutate(args):
     with root_store(persistent=True) as (root, _), global_lock(root), run_directory(root, args.project, args.lot, args.execution) as (fd, _), lease(fd):
         m = validate_manifest(read_at(fd, MANIFEST), args.project, args.lot, args.execution)
         if args.command == 'update':
-            for key in ['pinned', 'qualification_required', 'backup_required', 'retention_days']:
-                value = getattr(args, key, None)
-                if value is not None:
-                    m[key] = days(value) if key == 'retention_days' else value
-            if args.state:
-                m['state'] = args.state
-                m['completed_at'] = stamp() if args.state == 'completed' else None
+            changed_manifest(m, args)
         return checkpoint(fd, m, decode(args.resume) if getattr(args, 'resume', None) else None)
 
 
 def verify_run(fd, m):
-    expected = read_at(fd, 'checksums.json')
+    expected = read_at(fd, CHECKSUMS)
     if hashlib.sha256(json.dumps(expected, sort_keys=True).encode()).hexdigest() != m.get('checksums_sha256'):
         raise ValueError('ARTIFACT_CHECKSUM_MANIFEST_CHANGED')
     actual = {}
     def collect(name, info, file):
-        if file is not None and name not in CONTROL and not name.startswith('.atomic-'):
+        if file is not None and name not in CONTROL and not name.startswith(ATOMIC_PREFIX):
             digest = hashlib.sha256()
             with os.fdopen(os.dup(file), 'rb') as stream:
                 for block in iter(lambda: stream.read(1024 * 1024), b''):
@@ -515,7 +561,7 @@ def export_run(fd, m):
     # Only regular, private, same-mount evidence; runtime work stays in its VM disk.
     with tarfile.open(fileobj=sys.stdout.buffer, mode='w|') as archive:
         def emit(name, info, file):
-            if name == '.lease' or name.startswith('.atomic-'):
+            if name == LEASE or name.startswith(ATOMIC_PREFIX):
                 return
             item = tarfile.TarInfo(name)
             item.uid = info.st_uid; item.gid = info.st_gid
@@ -565,7 +611,7 @@ def execute(args):
 
 
 def request_reboot(args):
-    if socket.gethostname() != 'mail02-qualification' or not re.fullmatch(r'[a-f0-9]{64}', args.host_receipt_sha256):
+    if socket.gethostname() not in {'mail02-qualification', 'mail06-qualification'} or not re.fullmatch(r'[a-f0-9]{64}', args.host_receipt_sha256):
         raise ValueError('ARTIFACT_REBOOT_TARGET_OR_RECEIPT_INVALID')
     with root_store(persistent=True) as (root, _), run_directory(root, args.project, args.lot, args.execution) as (fd, _), lease(fd):
         m = validate_manifest(read_at(fd, MANIFEST), args.project, args.lot, args.execution)
@@ -577,13 +623,12 @@ def request_reboot(args):
         m['resume'].update(reboot_pending=True, boot_id=pathlib.Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
                            host_receipt_sha256=args.host_receipt_sha256)
         atomic_at(fd, MANIFEST, m)
-        append_at(fd, 'events.jsonl', {'at': stamp(), 'event': 'reboot-requested', 'resume': m['resume']})
+        append_at(fd, EVENTS, {'at': stamp(), 'event': 'reboot-requested', 'resume': m['resume']})
         subprocess.run(['sudo', 'systemctl', 'reboot', '--no-block'], check=True, timeout=30)
     return {'reboot_requested': True}
 
 
-def main(argv=None):
-    os.umask(0o077)
+def parse_arguments(argv):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
     init = sub.add_parser('init')
@@ -607,34 +652,52 @@ def main(argv=None):
     clean = sub.add_parser('cleanup'); clean.add_argument('--apply', action='store_true')
     for name in ['project', 'lot', 'execution']:
         clean.add_argument('--' + name, type=identifier)
-    args = parser.parse_args(argv)
-    try:
-        if args.command == 'request-reboot':
-            result = request_reboot(args)
-        elif args.command == 'exec':
-            return execute(args)
-        elif args.command in ['verify', 'export']:
-            with root_store(persistent=True) as (root, _), run_directory(root, args.project, args.lot, args.execution) as (fd, _), lease(fd):
-                m = validate_manifest(read_at(fd, MANIFEST), args.project, args.lot, args.execution)
-                if args.command == 'export':
-                    export_run(fd, m); return 0
-                result = verify_run(fd, m)
-        elif args.command == 'init':
-            result = {'path': str(initialize(args.project, args.lot, args.execution, args.retention_days))}
-        elif args.command in ['update', 'checkpoint']:
-            result = mutate(args)
-        elif args.command == 'retention':
-            with root_store(True, True) as (fd, _), global_lock(fd):
-                policy = policy_at(fd); rule = policy['projects'].setdefault(identifier(args.project), {})
-                if args.lot:
-                    rule.setdefault('lots', {})[identifier(args.lot)] = days(args.days)
-                else:
-                    rule['days'] = days(args.days)
-                atomic_at(fd, '.retention.json', policy); result = policy
+    return parser.parse_args(argv)
+
+
+def handle_verify_export(args):
+    with root_store(persistent=True) as (root, _), run_directory(root, args.project, args.lot, args.execution) as (fd, _), lease(fd):
+        m = validate_manifest(read_at(fd, MANIFEST), args.project, args.lot, args.execution)
+        if args.command == 'export':
+            export_run(fd, m)
+            return None
+        return verify_run(fd, m)
+
+
+def handle_retention(args):
+    with root_store(True, True) as (fd, _), global_lock(fd):
+        policy = policy_at(fd)
+        rule = policy['projects'].setdefault(identifier(args.project), {})
+        if args.lot:
+            rule.setdefault('lots', {})[identifier(args.lot)] = days(args.days)
         else:
-            result = {'apply': args.apply, 'runs': cleanup(args.apply, args.project, args.lot, args.execution)}
+            rule['days'] = days(args.days)
+        atomic_at(fd, '.retention.json', policy)
+        return policy
+
+
+def dispatch(args):
+    actions = {'request-reboot': request_reboot, 'update': mutate, 'checkpoint': mutate,
+               'verify': handle_verify_export, 'export': handle_verify_export, 'retention': handle_retention}
+    if args.command == 'init':
+        return {'path': str(initialize(args.project, args.lot, args.execution, args.retention_days))}
+    if args.command == 'cleanup':
+        return {'apply': args.apply, 'runs': cleanup(args.apply, args.project, args.lot, args.execution)}
+    return actions[args.command](args)
+
+
+def main(argv=None):
+    os.umask(0o077)
+    args = parse_arguments(argv)
+    try:
+        if args.command == 'exec':
+            return execute(args)
+        result = dispatch(args)
+        if args.command == 'export':
+            return 0
         if args.command == 'cleanup' and any(row['action'] == 'incomplete' for row in result['runs']):
-            print(json.dumps({'ok': False, 'code': 'ARTIFACT_CLEANUP_INCOMPLETE', 'data': result}, indent=2)); return 1
+            print(json.dumps({'ok': False, 'code': 'ARTIFACT_CLEANUP_INCOMPLETE', 'data': result}, indent=2))
+            return 1
         print(json.dumps({'ok': True, 'data': result}, indent=2))
         return 0
     except (ValueError, OSError, KeyError, TypeError, subprocess.SubprocessError) as error:

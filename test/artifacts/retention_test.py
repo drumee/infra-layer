@@ -114,4 +114,23 @@ class Retention(unittest.TestCase):
   with patch.object(vm.socket,'gethostname',return_value='workstation'),patch.object(vm.subprocess,'check_output') as command:
    with self.assertRaisesRegex(ValueError,'MUST_BE_TESTBOX'):vm.observe(None)
    command.assert_not_called()
+ def test_guest_cli_fields_are_json_not_remote_shell_source(self):
+  import sys,importlib
+  from types import SimpleNamespace
+  sys.path.insert(0,str(source.parent));vm=importlib.import_module('qualification-vm')
+  attack='"; touch /unapproved-sentinel; #'
+  args=SimpleNamespace(container='mail06-qualification-vm',guest_tool=attack,guest_tool_sha256='a'*64,project=self.project,lot=self.lot,execution=self.ident)
+  command,data=vm.guest(args,'identity');self.assertEqual(command[-1],vm.REMOTE_COMMAND);self.assertNotIn(attack,' '.join(command));self.assertEqual(json.loads(data)['tool'],attack)
+  result=subprocess.run(['python3','-I','-c',vm.REMOTE],input=data,capture_output=True)
+  self.assertNotEqual(result.returncode,0);self.assertIn(b'QUALIFICATION_TOOL_PATH_INVALID',result.stderr)
+ def test_guest_profile_is_closed_and_tool_identity_is_verified(self):
+  import sys,importlib
+  from types import SimpleNamespace
+  sys.path.insert(0,str(source.parent));vm=importlib.import_module('qualification-vm')
+  with self.assertRaisesRegex(ValueError,'PROFILE_INVALID'):vm.profile(SimpleNamespace(container='--privileged'))
+  tool=self.path/'tool.py';tool.write_text('raise RuntimeError("MUST_NOT_RUN")');tool.chmod(0o600)
+  args=SimpleNamespace(container='mail06-qualification-vm',guest_tool=str(tool),guest_tool_sha256=hashlib.sha256(tool.read_bytes()).hexdigest(),project=self.project,lot=self.lot,execution=self.ident)
+  _,data=vm.guest(args,'identity');result=subprocess.run(['python3','-I','-c',vm.REMOTE],input=data,capture_output=True)
+  self.assertEqual(result.returncode,0);self.assertEqual(json.loads(result.stdout)['tool_sha256'],args.guest_tool_sha256)
+  bad=json.loads(data);bad['sha256']='0'*64;result=subprocess.run(['python3','-I','-c',vm.REMOTE],input=json.dumps(bad).encode(),capture_output=True);self.assertNotEqual(result.returncode,0)
 if __name__=='__main__':unittest.main()
