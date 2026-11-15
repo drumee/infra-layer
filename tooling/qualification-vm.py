@@ -13,6 +13,7 @@ import tarfile
 import uuid
 import artifacts as store
 
+SSH_KEY = '/vm/id_ed25519'
 VM_PROFILES = {
     'mail02-qualification-vm': ('mail02-qualification-vm', 'mail02-qualification'),
     'mail06-qualification-vm': ('mail06-qualification-vm', 'mail06-qualification'),
@@ -55,7 +56,7 @@ def guest(args, operation, **extra):
     known_hosts = '/vm/known_hosts' if container == 'mail06-qualification-vm' else '/root/.ssh/known_hosts'
     command = ['/usr/bin/docker', 'exec', '--user', '0', '-i', container,
                '/usr/bin/ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=10',
-               '-o', 'UserKnownHostsFile=' + known_hosts, '-i', '/vm/id_ed25519',
+               '-o', 'UserKnownHostsFile=' + known_hosts, '-i', SSH_KEY,
                '-p', '2222', 'lab@127.0.0.1', REMOTE_COMMAND]
     request = {'operation': operation, 'tool': args.guest_tool, 'sha256': args.guest_tool_sha256,
                'project': args.project, 'lot': args.lot, 'execution': args.execution, **extra}
@@ -225,7 +226,7 @@ def main():
         parser.add_argument(name, type=store.identifier)
     parser.add_argument('--container', default='mail02-qualification-vm', choices=VM_PROFILES)
     parser.add_argument('--guest-user', default='lab', choices=['lab'])
-    parser.add_argument('--key', default='/vm/id_ed25519', choices=['/vm/id_ed25519'])
+    parser.add_argument('--key', default=SSH_KEY, choices=[SSH_KEY])
     parser.add_argument('--guest-tool', required=True)
     parser.add_argument('--guest-tool-sha256', required=True)
     args = parser.parse_args()
