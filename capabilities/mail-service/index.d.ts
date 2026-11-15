@@ -17,12 +17,18 @@ export interface MailServiceSpec {
 export interface Diagnostic { code: string; path: string; severity: 'error'|'warning' }
 export interface MailPlan { private_endpoint: { address:string;hostname:string;port:number;network:string }; contract: 'drumee.mail-plan/1'; implementation: string; applicable: true; revision: string; spec: MailServiceSpec; registry: Registry; secret_sources: { ref: string; file: string }[]; artifacts: Record<string,string>; diagnostics: Diagnostic[] }
 export interface PreparedMail { contract: 'drumee.mail-prepared/1'; hostname: string; private_port: number; root: string; project: string; revision: string; compose: object; compose_file: string; certificate_fingerprint: string; registry_generation: number; transport_digest: string; files: Record<string,string>; private_files: Record<string,string>; storage: Record<string,{dev:number;ino:number;uid:number;gid:number;mode:number}>; mailbox_identities: Record<string,Record<string,{dev:number;ino:number}>> }
+export interface PrivateActivationReceipt {
+  contract: 'drumee.mail-private-activation/1'; mode: 'private'; approval_id: string;
+  target_hostname: string; machine_id: string; docker_version: '29.9.2';
+  transport_digest: string; ca_sha256: string; smtp_destinations: string[];
+  storage: { root: string; uuid: string; root_dev: number; root_ino: number; filesystem: 'ext4' };
+}
 export function validateMailService(spec: unknown): { valid: boolean; normalized?: MailServiceSpec; diagnostics: Diagnostic[] };
 export function validateRegistry(registry: unknown, spec: MailServiceSpec): Registry;
 export function planMailService(spec: MailServiceSpec, resources?: { registry?: Registry; secret_sources?: { ref: string; file: string }[] }): MailPlan | { applicable: false; diagnostics: Diagnostic[] };
-export function composeMailService(plan: MailPlan, distribution?: { acceptance?: boolean; private_bind?: boolean }): object;
-export function prepareMailService(plan: MailPlan, context: { authorized: boolean; acceptance?: boolean; private_bind?: boolean; verifiers?: Record<string,string> }): PreparedMail;
-export function operateMailService(prepared: PreparedMail, operation: 'start'|'stop'|'restart'|'status'|'preflight', context: { authorized: boolean; acceptance?: boolean; recovery_target?: PreparedMail }): { revision: string; operation: string; native_output: string };
+export function composeMailService(plan: MailPlan, distribution?: { acceptance?: boolean; private_bind?: boolean; activation?: PrivateActivationReceipt }): object;
+export function prepareMailService(plan: MailPlan, context: { authorized: boolean; acceptance?: boolean; private_bind?: boolean; activation?: PrivateActivationReceipt; verifiers?: Record<string,string> }): PreparedMail;
+export function operateMailService(prepared: PreparedMail, operation: 'start'|'stop'|'restart'|'status'|'preflight', context: { authorized: boolean; acceptance?: boolean; activation?: PrivateActivationReceipt; recovery_target?: PreparedMail }): { revision: string; operation: string; native_output: string };
 
 export function activateMailRegistry(prepared: PreparedMail, context: { authorized: boolean; expected_generation: number; keep_barrier?:boolean }): { applied: true; changed: boolean; generation: number; smtp_revocation?: string; imap_affected_sessions_kicked?: boolean };
 
