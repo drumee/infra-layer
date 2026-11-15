@@ -1,5 +1,11 @@
 # MAIL-05 cold standalone recovery implementation
 
+**MAIL-05_QUALIFIED** for the exact isolated runtime and replacement-storage scope
+below. The paired Oxymot fixture security gate is green at
+`aab4b7cd58d388c69679a533a2907d86a43d0cc9`, with zero new/accepted issues and
+zero annotations. Earlier blocked observations below are historical. Coordinated
+Oxy-form remains `SMTP_RECOVERY_UNQUALIFIED`.
+
 Work starts at Infra PR39 `1b60818f4f60cc6b54976184dbd6f0585b717a68`.
 The paired Debian branch starts at MAIL-04 PR16
 `d50cf30a287c829832e6748c5b6ffcd8d976fa9e`; client qualification consumes
@@ -51,8 +57,25 @@ are not protocol evidence.
 
 The paired Oxymot dossier now records exact archive digests, host/guest boot IDs,
 per-recipient duplication observations, independent witness verification and
-protected evidence export. The source security gate on recovered Oxymot487f52c
-remains failed; overall MAIL-05 is blocked pending its security-gate disposition. The supplemental native extraction,
+protected evidence export. The source security gate initially failed on recovered
+Oxymot487f52c; that historical block is resolved by fixture-only corrections at
+Oxymotaab4b7cd58d388c69679a533a2907d86a43d0cc9. The supplemental native extraction,
 partial-promotion, sealing and offline-hold interruption matrix also passes on
 Oxymot4e39d6f2fac38ba243fae3a182d5a7c60641d745. No source guard is lifted by this documentation.
 See the paired `docs/mail-05/qualification.md` and `mail-06-handoff.md` in draft122.
+
+
+## Final source-gate disposition
+
+All standalone native gates pass on the pinned producer, Debian writer/reader,
+images and filesystem identities above. SonarCloud and both recovery-contracts
+jobs now pass on the paired Oxymot correction, without exclusions, suppressions or
+threshold changes. Ten adversarial tests and six focused read-only checks in the
+same Docker26 guest confirm observer compatibility, all 37 durable witness IDs,
+unchanged 20/2 quota rounds and byte-identical invalid-archive fixture output.
+GNU tar 1.35 edits only an exclusive private copy of the fully validated fixture;
+no archive-derived entry is passed to an output writer or extracted on disk.
+No production/runtime bytes changed and no full native replay is claimed for the
+fixture-only patch. The native sources remain frozen at the exact references
+above. Sources, all targets and archives remain retained; mail services stay stopped
+with empty queues. The paired final dossier and MAIL-06 handoff are in draft122.
