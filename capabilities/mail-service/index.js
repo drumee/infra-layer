@@ -664,8 +664,34 @@ function observeMailMailbox(prepared, id, context) {
   const used_bytes = values.reduce((sum, row) => sum + row.bytes, 0), messages = values.reduce((sum, row) => sum + row.messages, 0);
   return { id, used_bytes, messages, quota_bytes: box.quota_bytes, over_quota: used_bytes > box.quota_bytes, observed_at: new Date().toISOString(), advisory: true };
 }
+// Called only after the distribution has verified a cold checkpoint on a distinct
+// replacement mount. Normal start never repairs identity seals.
+function rebindMailServiceStorage(prepared, context) {
+  if (context?.authorized !== true || !/^[a-f0-9]{64}$/.test(context.checkpoint || "")) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  const fence = JSON.parse(F.read(prepared.root + "/recovery-fence.json"));
+  if (fence.phase !== "restoring" || fence.checkpoint !== context.checkpoint || fence.source_device === fs.statSync(prepared.root).dev) V.fail("MAIL_RECOVERY_REQUIRED");
+  verifyPrepared(prepared);
+  const running = docker(["ps", "-q"]).trim().split("\n").filter(Boolean);
+  for (const id of running) {
+    const actual = JSON.parse(docker(["inspect", id]))[0];
+    if ((actual.Mounts || []).some(m => m.Type === "bind" && (m.Source === prepared.root || m.Source.startsWith(prepared.root + "/")))) V.fail("MAIL_RECOVERY_WRITERS_PRESENT");
+  }
+  const next = JSON.parse(JSON.stringify(prepared));
+  for (const [name, identity] of Object.entries(next.storage)) {
+    const stat = fs.lstatSync(prepared.root + "/durable/" + name);
+    if (!stat.isDirectory() || stat.isSymbolicLink() || stat.uid !== identity.uid || stat.gid !== identity.gid || (stat.mode & 0o7777) !== identity.mode) V.fail("MAIL_STORAGE_GUARD_FAILED");
+    identity.dev = stat.dev; identity.ino = stat.ino;
+  }
+  next.mailbox_identities = inspectMaildirs(prepared.root, prepared.compose.services.policy.image, Object.keys(prepared.mailbox_identities), Object.keys(prepared.mailbox_identities));
+  F.atomic(path.dirname(prepared.compose_file) + "/prepared.json", JSON.stringify(next));
+  return next;
+}
 function operateMailService(prepared, operation, context) {
   if (context?.authorized !== true || !["start", "stop", "restart", "status", "preflight"].includes(operation)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  if (fs.existsSync(prepared.root + "/recovery-fence.json")) {
+    const fence = JSON.parse(F.read(prepared.root + "/recovery-fence.json")), stat = fs.statSync(prepared.root);
+    if (fence.phase !== "released" || fence.device !== stat.dev || fence.inode !== stat.ino) V.fail("MAIL_RECOVERY_FENCED");
+  }
   verifyPrepared(prepared);
   verifyRuntime(prepared);
   if (operation === "preflight") return { revision: prepared.revision, operation, native_output: "MAIL_PREFLIGHT_OK" };
@@ -684,4 +710,4 @@ function operateMailService(prepared, operation, context) {
   const args = operation === "start" ? ["up", "-d"] : operation === "status" ? ["ps", "--format", "json"] : [operation];
   return { revision: prepared.revision, operation, native_output: docker(["compose", "-p", prepared.project, "-f", prepared.compose_file, ...args]) };
 }
-module.exports = { validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, purgeMailMailbox, finishMailPurge, releaseMailRegistry, verifyMailCredentials, observeMailMailbox, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };
+module.exports = { rebindMailServiceStorage, validateMailService: V.validateMailService, validateRegistry: V.validateRegistry, planMailService, composeMailService, prepareMailService, activateMailRegistry, stageMailRegistryBarrier, purgeMailMailbox, finishMailPurge, releaseMailRegistry, verifyMailCredentials, observeMailMailbox, observeMailService, rotateMailTLS, reconcileMailTLS, operateMailService };

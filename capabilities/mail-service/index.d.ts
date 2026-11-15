@@ -41,3 +41,6 @@ export function purgeMailMailbox(prepared: PreparedMail, input:{spec:MailService
 export function finishMailPurge(prepared:PreparedMail,operationId:string,context:{authorized:boolean;acceptance:true}):{purged:true;retained_identity:true;backup_id:string};
 
 export function releaseMailRegistry(prepared:PreparedMail,context:{authorized:boolean}):{released:true;generation:number};
+
+/** Offline identity re-sealing after an externally verified cold checkpoint. Never repairs normal startup. */
+export function rebindMailServiceStorage(prepared: PreparedMail, context: {authorized: boolean; checkpoint: string}): PreparedMail;
