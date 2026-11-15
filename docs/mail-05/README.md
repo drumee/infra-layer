@@ -37,3 +37,22 @@ tested runtime. It does not cover physical host loss, arbitrary relocation,
 offsite storage/encryption/key custody or unlisted artifact/schema/filesystem
 changes. Coordinated Oxy-form recovery remains `SMTP_RECOVERY_UNQUALIFIED`.
 All PRs remain drafts; no merge, publication or production intervention.
+
+## Post-workstation-reboot recovery audit (2026-11-15)
+
+The surviving source is this branch, not the workstation's former temporary
+worktree. The actual execution host is `testbox`; its owned outer container
+`mail02-qualification-vm` runs guest `mail02-qualification`, Docker26.1.5+dfsg1.
+The persistent guest disk and `/home/lab/work/mail05-recovery/final-run` retained
+the final native campaign and its first startup-flush failure. The replay resumes
+at that missing command, preserves its failed receipt and completes the final
+current-writer roundtrip and a distinct guest reboot. Local workstation reboots
+are not protocol evidence.
+
+The paired Oxymot dossier now records exact archive digests, host/guest boot IDs,
+per-recipient duplication observations, independent witness verification and
+protected evidence export. The source security gate on recovered Oxymot487f52c
+remains failed; overall MAIL-05 is blocked pending its security-gate disposition. The supplemental native extraction,
+partial-promotion, sealing and offline-hold interruption matrix also passes on
+Oxymot4e39d6f2fac38ba243fae3a182d5a7c60641d745. No source guard is lifted by this documentation.
+See the paired `docs/mail-05/qualification.md` and `mail-06-handoff.md` in draft122.
