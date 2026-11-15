@@ -480,3 +480,14 @@ drumee-ctl administrative namespace. Read [engine amendments](docs/mail-03/engin
 and the paired qualification dossier before using this acceptance-only candidate.
 Native image and quota module bytes remain unchanged. Publication, merge,
 production activation and replacement-storage/coordinated restore are not authorized.
+
+## Explicit private mail activation candidate
+
+MAIL-06 adds an explicit private-target receipt distinct from laboratory acceptance
+and future public commissioning. The receipt binds host/machine identity, a
+dedicated ext4 mount, approved transport/image/network allocations and the trust
+anchor. Private mode rejects every public listener and fences SMTP egress to
+explicitly approved private synthetic receivers (empty in the target plan).
+Existing resource seals, registry barriers and restored-queue holds remain enforced.
+This is an unpublished candidate; only an exact qualified MAIL-06 delivery record
+can support an installation decision. It does not authorize public activation.
