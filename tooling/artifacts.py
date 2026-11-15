@@ -52,8 +52,11 @@ def unique(pairs):
 
 
 def decode(data):
-    return json.loads(data, object_pairs_hook=unique,
-                      parse_constant=lambda value: (_ for _ in ()).throw(ValueError('ARTIFACT_JSON_NONFINITE')))
+    try:
+        return json.loads(data, object_pairs_hook=unique,
+                          parse_constant=lambda value: (_ for _ in ()).throw(ValueError('ARTIFACT_JSON_NONFINITE')))
+    except RecursionError:
+        raise ValueError('ARTIFACT_JSON_NESTING_INVALID') from None
 
 
 def mount_id(fd):
@@ -258,6 +261,8 @@ def policy_at(fd):
     days(value['default_days'])
     for project, rule in value['projects'].items():
         identifier(project)
+        if not isinstance(rule, dict) or not isinstance(rule.get('lots', {}), dict):
+            raise ValueError('ARTIFACT_RETENTION_INVALID')
         if rule.get('days') is not None:
             days(rule['days'])
         for lot, count in rule.get('lots', {}).items():
@@ -406,7 +411,7 @@ def cleanup(apply=False, project=None, lot=None, execution=None):
                 try:
                     pfd = directory_at(root, identifier(p), mount_id(root))
                 except (ValueError, OSError):
-                    rows.append({'path': str(pathlib.Path.home() / 'artifacts' / p), 'eligible': False, 'reason': 'unsafe project; manual review'}); continue
+                    rows.append({'path': str(pathlib.Path.home() / 'artifacts' / p), 'eligible': False, 'age_days': None, 'size_bytes': None, 'action': 'preserved', 'reason': 'unsafe project; manual review'}); continue
                 try:
                     for l in sorted(os.listdir(pfd)):
                         if lot and l != lot:
@@ -414,7 +419,7 @@ def cleanup(apply=False, project=None, lot=None, execution=None):
                         try:
                             lfd = directory_at(pfd, identifier(l), mount_id(root))
                         except (ValueError, OSError):
-                            rows.append({'path': str(pathlib.Path.home() / 'artifacts' / p / l), 'eligible': False, 'reason': 'unsafe lot; manual review'}); continue
+                            rows.append({'path': str(pathlib.Path.home() / 'artifacts' / p / l), 'eligible': False, 'age_days': None, 'size_bytes': None, 'action': 'preserved', 'reason': 'unsafe lot; manual review'}); continue
                         try:
                             for e in sorted(os.listdir(lfd)):
                                 if execution and e != execution:
@@ -428,8 +433,7 @@ def cleanup(apply=False, project=None, lot=None, execution=None):
                                         row.update(age_days=(now() - timestamp(m['created_at'])).total_seconds()/86400,
                                                    retention_days=retention(m, policy))
                                         row['eligible'], row['reason'] = eligibility(m, policy)
-                                        if row['eligible']:
-                                            row.update(sizes(fd))
+                                        row.update(sizes(fd))
                                         if row['eligible'] and apply:
                                             # Re-read state/policy/identity and scan again immediately before deletion.
                                             current = validate_manifest(read_at(fd, MANIFEST), p, l, e)
@@ -452,6 +456,7 @@ def cleanup(apply=False, project=None, lot=None, execution=None):
                                                     current['state'] = 'resumable'; current['completed_at'] = None
                                                     current['resume'] = {'next': 'manual review of partial cleanup'}
                                                     atomic_at(fd, MANIFEST, current)
+                                                row.update(action='incomplete', released=released)
                                                 append_at(root, '.cleanup-events.jsonl', {'at': stamp(), 'action': 'deletion-incomplete', 'path': str(path), **released})
                                                 raise
                                             free_after = os.fstatvfs(root).f_bavail * os.fstatvfs(root).f_frsize
@@ -628,6 +633,8 @@ def main(argv=None):
                 atomic_at(fd, '.retention.json', policy); result = policy
         else:
             result = {'apply': args.apply, 'runs': cleanup(args.apply, args.project, args.lot, args.execution)}
+        if args.command == 'cleanup' and any(row['action'] == 'incomplete' for row in result['runs']):
+            print(json.dumps({'ok': False, 'code': 'ARTIFACT_CLEANUP_INCOMPLETE', 'data': result}, indent=2)); return 1
         print(json.dumps({'ok': True, 'data': result}, indent=2))
         return 0
     except (ValueError, OSError, KeyError, TypeError, subprocess.SubprocessError) as error:

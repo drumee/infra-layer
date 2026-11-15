@@ -38,7 +38,8 @@ class Retention(unittest.TestCase):
    file.write_bytes(data);self.assertFalse(self.rows(True)[0]['eligible']);self.assertTrue(self.path.exists())
   file.unlink();self.assertFalse(self.rows(True)[0]['eligible']);file.write_bytes(original);file.chmod(0o600)
  def test_symlink_and_hardlink_never_followed(self):
-  with tempfile.TemporaryDirectory() as tmp:
+  # The hardlink witness must share the run filesystem (/tmp can be tmpfs).
+  with tempfile.TemporaryDirectory(dir=self.path) as tmp:
    sentinel=pathlib.Path(tmp)/'sentinel';sentinel.write_text('preserve');sentinel.chmod(0o600)
    link=self.path/'external';link.symlink_to(sentinel);self.expired();self.assertFalse(self.rows(True)[0]['eligible']);self.assertEqual(sentinel.read_text(),'preserve');link.unlink()
    os.link(sentinel,link);self.assertFalse(self.rows(True)[0]['eligible']);self.assertEqual(sentinel.read_text(),'preserve');link.unlink()
@@ -96,4 +97,21 @@ class Retention(unittest.TestCase):
   with patch.object(a.subprocess,'check_output',return_value=json.dumps(mount)):
    with self.assertRaisesRegex(ValueError,'NOT_PERSISTENT'): 
     with a.root_store(persistent=True):pass
+ def test_host_reboot_refuses_unstaged_or_legacy_storage(self):
+  from types import SimpleNamespace
+  import sys
+  sys.path.insert(0,str(source.parent));import importlib
+  vm=importlib.import_module('qualification-vm')
+  args=SimpleNamespace(project=self.project,lot=self.lot,execution=self.ident)
+  info={'Mounts':[{'Destination':'/vm','Source':'/tmp/legacy-vm'}]}
+  for resume,reason in [({},'NOT_STAGED'),({'reboot_required':True},'COLD_ADOPTION')]:
+   with patch.object(vm,'synchronize',return_value=(self.path,{'guest_resume':resume})),patch.object(vm,'observe',return_value=(info,{})),patch.object(vm.subprocess,'run') as command:
+    with self.assertRaisesRegex(ValueError,reason):vm.reboot(args)
+    command.assert_not_called()
+ def test_host_gate_refuses_wrong_execution_host(self):
+  import sys,importlib
+  sys.path.insert(0,str(source.parent));vm=importlib.import_module('qualification-vm')
+  with patch.object(vm.socket,'gethostname',return_value='workstation'),patch.object(vm.subprocess,'check_output') as command:
+   with self.assertRaisesRegex(ValueError,'MUST_BE_TESTBOX'):vm.observe(None)
+   command.assert_not_called()
 if __name__=='__main__':unittest.main()

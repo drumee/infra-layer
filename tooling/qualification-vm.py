@@ -122,12 +122,29 @@ def reboot(args):
             raise ValueError('QUALIFICATION_VM_BACKING_UNSAFE')
     with store.root_store(persistent=True) as (root, _), store.run_directory(root, args.project, args.lot, args.execution) as (fd, _), store.lease(fd):
         m = store.validate_manifest(store.read_at(fd, store.MANIFEST), args.project, args.lot, args.execution)
+        # FD mount IDs reject hidden bind mounts as well as different devices.
+        opened = []
+        parent = fd
+        backing = {}
+        try:
+            for part in base.relative_to(path).parts:
+                parent = store.directory_at(parent, part, store.mount_id(fd)); opened.append(parent)
+            for name in ['guest.qcow2', 'base.qcow2', 'seed.iso']:
+                file = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=parent)
+                try:
+                    info = os.fstat(file); store.secure_stat(info)
+                    if store.mount_id(file) != store.mount_id(fd):
+                        raise ValueError('QUALIFICATION_VM_BACKING_MOUNT')
+                    backing[name] = {'device': info.st_dev, 'inode': info.st_ino, 'bytes': info.st_size}
+                finally:os.close(file)
+        finally:
+            for directory in reversed(opened):os.close(directory)
         store.verify_run(fd, m)
         evidence = store.directory_at(fd, 'evidence', store.mount_id(fd))
         try:
             store.atomic_at(evidence, 'pre-reboot-' + uuid.uuid4().hex + '.json',
                             {'at': store.stamp(), 'verified_host_path': str(path),
-                             'host_copy': receipt, 'vm_storage': str(base), 'action': 'guest reboot only'})
+                             'host_copy': receipt, 'vm_storage': str(base), 'backing_identities': backing, 'action': 'guest reboot only'})
         finally:
             os.close(evidence)
         store.checkpoint(fd, m, {'next': 'reconnect guest and execute next phase', 'phase': resume.get('phase')})
