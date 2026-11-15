@@ -5,7 +5,7 @@ const V = require("./validation"), F = require("../../lib/filesystem-safety");
 const CONTRACT = "drumee.mail-private-activation/1";
 const sha = data => crypto.createHash("sha256").update(data).digest("hex");
 function shape(value, fields) {
-  return value && typeof value === "object" && !Array.isArray(value) && Object.keys(value).sort().join(",") === fields.sort().join(",");
+  return value && typeof value === "object" && !Array.isArray(value) && Object.keys(value).sort((a, b) => a.localeCompare(b)).join(",") === fields.sort((a, b) => a.localeCompare(b)).join(",");
 }
 function privateIPv4(ip) {
   if (typeof ip !== "string" || net.isIP(ip) !== 4) return false;
