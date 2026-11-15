@@ -696,8 +696,10 @@ function releaseMailRegistry(prepared, context) {
   });
 }
 function finishMailPurge(prepared, operationId, context) {
-  if (context?.authorized !== true || context.acceptance !== true || !/^[a-f0-9-]{36}$/.test(operationId)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
+  if (context?.authorized !== true || !/^[a-f0-9-]{36}$/.test(operationId)) V.fail("MAIL_ACTIVATION_UNAUTHORIZED");
   verifyPrepared(prepared);
+  const privateAuthorized = Private.prepared(prepared, context, nativeCommand, readTLS(prepared.root));
+  if (context.acceptance !== true && !privateAuthorized) V.fail("MAIL_TARGET_QUALIFICATION_REQUIRED");
   return mailLock(prepared.root, () => {
     const root = prepared.root, state = root + "/durable/operator-state", pub = root + "/durable/registry/public";
     const file = state + "/purge-" + operationId + ".json", receipt = JSON.parse(F.read(file)), intent = JSON.parse(F.read(state + "/registry-intent.json")), registry = JSON.parse(F.read(pub + "/current.json"));
