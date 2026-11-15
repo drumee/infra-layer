@@ -212,7 +212,7 @@ function preparedRecord(plan, context, resources) {
   return prepared;
 }
 function persistPreparation(plan, root, candidate, prepared) {
-  F.atomic(prepared.compose_file, JSON.stringify(compose, null, 2));
+  F.atomic(prepared.compose_file, JSON.stringify(prepared.compose, null, 2));
   const publicRegistry = root + "/durable/registry/public";
   if (!fs.existsSync(publicRegistry + "/current.json")) F.atomic(publicRegistry + "/current.json", JSON.stringify(plan.registry));
   if (!fs.existsSync(root + "/durable/operator-state/transport-digest")) F.atomic(root + "/durable/operator-state/transport-digest", prepared.transport_digest);
